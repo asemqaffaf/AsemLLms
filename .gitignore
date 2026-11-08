@@ -14,3 +14,4 @@ tinyllm/export/
 **/data/
 # local SearXNG settings contain a generated secret key
 tinyllm/searxng/settings.yml
+tinyllm/export_tf/

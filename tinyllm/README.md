@@ -61,3 +61,23 @@ On the chat page, tick "Let Qwen (LM Studio, local) answer from the search resul
 your LM Studio model to answer using only those numbered results (citing `[1]`, `[2]`). Set the model in
 `config/sys.config` (`lmstudio_url`, `lmstudio_model`; it must be a loaded chat model). If LM Studio is down, the
 page says so and tinyllm answers instead. Search results are treated as untrusted text and the answer is only displayed.
+
+## Transformer
+
+`arch => transformer` trains a small GPT-style decoder (learned positions, pre-LayerNorm, causal multi-head
+attention, ReLU MLP, residuals) in `tinyllm_tf.erl`, with hand-written backprop that the test suite checks against
+numerical gradients for every tensor. Same parallel workers, same `tinyllm:train/2`:
+
+    tinyllm:train(Text, #{tokenizer => word, arch => transformer, context => 32,
+                          dim => 64, heads => 4, layers => 2, ff => 128, batch => 8, steps => 2500, lr => 0.003}).
+
+On a task that needs a 7-token lookback, the transformer scores 0.25 against 0.41 for the 4-token-window MLP
+(`tf_uses_long_range_context` in the tests). On the 138 KB chat dataset both models mostly memorize.
+
+## Publishing to Hugging Face
+
+    escript scripts/export.escript chat_word.bin export/        # per model
+    escript scripts/export.escript chat_tf.bin export_tf/
+    python3 scripts/pack_release.py release/ <user>/AsemLLM export/ export_tf/   # checks the Python loader against Erlang
+
+Published: https://huggingface.co/asemqaffaf/AsemLLM (MLP at the root, transformer in `transformer/`).

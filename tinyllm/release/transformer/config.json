@@ -1,0 +1,17 @@
+{
+  "model_type": "asemllm",
+  "architecture": "transformer",
+  "vocab_size": 1631,
+  "context_length": 32,
+  "dim": 64,
+  "heads": 4,
+  "layers": 2,
+  "ff_dim": 128,
+  "activation": "relu",
+  "norm": "pre-layernorm (eps 1e-5)",
+  "positional": "learned",
+  "tokenizer": "word",
+  "unk_token_id": 0,
+  "num_parameters": 279007,
+  "tokenizer_regex": " ?[A-Za-z0-9']+| ?[^\\sA-Za-z0-9']|\\n|\\s"
+}

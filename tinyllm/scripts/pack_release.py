@@ -1,48 +1,74 @@
 #!/usr/bin/env python3
-"""Build the Hugging Face release folder for AsemLLM from `export/` (see scripts/export.escript).
+"""Build the Hugging Face release folder for AsemLLM from exported models (see scripts/export.escript).
 
-    python3 scripts/pack_release.py export/ release/ [repo_id]
+    python3 scripts/pack_release.py OUT REPO MLP_EXPORT_DIR [TRANSFORMER_EXPORT_DIR]
 
-Writes: model.safetensors, config.json, vocab.json, asemllm.py (standalone numpy loader),
-README.md (model card), LICENSE. Then checks the Python loader against the Erlang test vector.
+OUT/            MLP model: model.safetensors, config.json, vocab.json
+OUT/transformer/ transformer model (if given)
+OUT/asemllm.py, README.md, LICENSE
+
+Every packed model is checked against the Erlang implementation's logits before anything is written as "done".
 """
-import json, math, shutil, sys
+import json, math, shutil, sys, importlib
 from pathlib import Path
 import numpy as np
 from safetensors.numpy import save_file
 
-src, out = Path(sys.argv[1]), Path(sys.argv[2])
-repo = sys.argv[3] if len(sys.argv) > 3 else "YOUR_USERNAME/AsemLLM"
+out, repo, mlp_src = Path(sys.argv[1]), sys.argv[2], Path(sys.argv[3])
+tf_src = Path(sys.argv[4]) if len(sys.argv) > 4 else None
 out.mkdir(parents=True, exist_ok=True)
+TOKEN_RE = " ?[A-Za-z0-9']+| ?[^\\sA-Za-z0-9']|\\n|\\s"
 
-meta = json.loads((src / "meta.json").read_text())
-cfg, stats = meta["cfg"], meta["stats"]
-w = json.loads((src / "weights.json").read_text())
-tensors = {
-    "embedding": np.array(w["e"], dtype=np.float32),
-    "w1": np.array(w["w1"], dtype=np.float32), "b1": np.array(w["b1"], dtype=np.float32),
-    "w2": np.array(w["w2"], dtype=np.float32), "b2": np.array(w["b2"], dtype=np.float32),
-}
-V, N, D, H = cfg["vocab"], cfg["context"], cfg["embed"], cfg["hidden"]
-assert tensors["embedding"].shape == (V, D) and tensors["w1"].shape == (H, N * D)
-assert tensors["w2"].shape == (V, H) and tensors["b1"].shape == (H,) and tensors["b2"].shape == (V,)
-params = sum(t.size for t in tensors.values())
-save_file(tensors, str(out / "model.safetensors"), metadata={"format": "np", "name": "AsemLLM"})
 
-(out / "config.json").write_text(json.dumps({
-    "model_type": "asemllm", "architecture": "embedding-mlp-language-model",
-    "vocab_size": V, "context_length": N, "embedding_dim": D, "hidden_dim": H,
-    "activation": "tanh", "tokenizer": meta["tokenizer"], "unk_token_id": 0,
-    "num_parameters": params,
-    "tokenizer_regex": " ?[A-Za-z0-9']+| ?[^\\sA-Za-z0-9']|\\n|\\s",
-}, indent=2) + "\n")
-shutil.copy(src / "vocab.json", out / "vocab.json")
+def f32(x):
+    return np.array(x, dtype=np.float32)
+
+
+def pack(src, dest):
+    """Write one model's files into `dest`; return (config, num_params, stats)."""
+    dest.mkdir(parents=True, exist_ok=True)
+    meta = json.loads((src / "meta.json").read_text())
+    cfg, stats = meta["cfg"], meta["stats"]
+    w = json.loads((src / "weights.json").read_text())
+    V, T = cfg["vocab"], cfg["context"]
+    if cfg.get("arch", "mlp") == "mlp":
+        N, D, H = T, cfg["embed"], cfg["hidden"]
+        tensors = {"embedding": f32(w["e"]), "w1": f32(w["w1"]), "b1": f32(w["b1"]),
+                   "w2": f32(w["w2"]), "b2": f32(w["b2"])}
+        assert tensors["embedding"].shape == (V, D) and tensors["w1"].shape == (H, N * D)
+        config = {"model_type": "asemllm", "architecture": "embedding-mlp-language-model",
+                  "vocab_size": V, "context_length": N, "embedding_dim": D, "hidden_dim": H, "activation": "tanh"}
+    else:
+        D, L, Hd, F = cfg["dim"], cfg["layers"], cfg["heads"], cfg["ff"]
+        tensors = {"embedding": f32(w["e"]), "positional": f32(w["p"]), "lnf_g": f32(w["lnfg"]),
+                   "lnf_b": f32(w["lnfb"]), "wout": f32(w["wout"]), "bout": f32(w["bout"])}
+        names = {"ln1g": "ln1_g", "ln1b": "ln1_b", "wq": "wq", "wk": "wk", "wv": "wv", "wo": "wo",
+                 "ln2g": "ln2_g", "ln2b": "ln2_b", "w1": "w1", "b1": "b1", "w2": "w2", "b2": "b2"}
+        for i in range(1, L + 1):
+            for erl, py in names.items():
+                tensors[f"layers.{i - 1}.{py}"] = f32(w[f"{erl}.{i}"])
+        assert tensors["embedding"].shape == (V, D) and tensors["positional"].shape == (T, D)
+        config = {"model_type": "asemllm", "architecture": "transformer", "vocab_size": V, "context_length": T,
+                  "dim": D, "heads": Hd, "layers": L, "ff_dim": F, "activation": "relu",
+                  "norm": "pre-layernorm (eps 1e-5)", "positional": "learned"}
+    params = sum(t.size for t in tensors.values())
+    config.update({"tokenizer": meta["tokenizer"], "unk_token_id": 0, "num_parameters": params,
+                   "tokenizer_regex": TOKEN_RE})
+    save_file(tensors, str(dest / "model.safetensors"), metadata={"format": "np", "name": "AsemLLM"})
+    (dest / "config.json").write_text(json.dumps(config, indent=2) + "\n")
+    shutil.copy(src / "vocab.json", dest / "vocab.json")
+    return config, params, stats
+
+
+mlp_cfg, mlp_params, mlp_stats = pack(mlp_src, out)
+tf = pack(tf_src, out / "transformer") if tf_src else None
 shutil.copy("/opt/homebrew/Cellar/erlang/28.4.2/LICENSE.txt", out / "LICENSE")
 
-(out / "asemllm.py").write_text('''"""AsemLLM reference inference: numpy + safetensors only.
+(out / "asemllm.py").write_text('''"""AsemLLM reference inference: numpy + safetensors only. Runs both model variants.
 
-    python asemllm.py $'User: How do I cook pasta?\\nAssistant:'   # $'...' makes \\n a real newline
-    python asemllm.py --chat "How do I cook pasta?"
+    python asemllm.py --chat "What is a good movie?"                    # MLP model (this folder)
+    python asemllm.py --model transformer --chat "What is a good movie?"
+    python asemllm.py --model transformer $'User: How do I cook pasta?\\\\nAssistant:'   # $'..' = real newline
 """
 import json, re, sys
 from pathlib import Path
@@ -52,30 +78,61 @@ from safetensors.numpy import load_file
 TOKEN_RE = re.compile(rb" ?[A-Za-z0-9']+| ?[^\\sA-Za-z0-9']|\\n|\\s")
 
 
+def _ln(x, g, b):
+    mu = x.mean(-1, keepdims=True)
+    var = ((x - mu) ** 2).mean(-1, keepdims=True)
+    return (x - mu) / np.sqrt(var + 1e-5) * g + b
+
+
 class AsemLLM:
     def __init__(self, path="."):
         p = Path(path)
         self.cfg = json.loads((p / "config.json").read_text())
-        w = load_file(str(p / "model.safetensors"))
-        self.E, self.W1, self.b1, self.W2, self.b2 = (
-            w[k].astype(np.float64) for k in ("embedding", "w1", "b1", "w2", "b2"))
+        self.w = {k: v.astype(np.float64) for k, v in load_file(str(p / "model.safetensors")).items()}
         raw = json.loads((p / "vocab.json").read_text())
         self.tokens = [bytes.fromhex(t["hex"]) if isinstance(t, dict) else t.encode() for t in raw]
         self.index = {t: i for i, t in enumerate(self.tokens)}
         self.n = self.cfg["context_length"]
+        self.arch = self.cfg["architecture"]
         self.pad = self.index.get(b"\\n", 0)
 
     def logits(self, ctx_ids):
-        """Next-token logits for exactly `context_length` token ids."""
-        x = np.concatenate([self.E[i] for i in ctx_ids])
-        h = np.tanh(self.W1 @ x + self.b1)
-        return self.W2 @ h + self.b2
+        """Next-token logits. MLP: exactly `context_length` ids. Transformer: 1..`context_length` ids."""
+        w = self.w
+        if self.arch == "transformer":
+            return self._transformer_logits(ctx_ids)
+        x = np.concatenate([w["embedding"][i] for i in ctx_ids])
+        return w["w2"] @ np.tanh(w["w1"] @ x + w["b1"]) + w["b2"]
+
+    def _transformer_logits(self, ids):
+        w, c = self.w, self.cfg
+        T, D, H = len(ids), c["dim"], c["heads"]
+        dh = D // H
+        x = w["embedding"][ids] + w["positional"][:T]
+        mask = np.triu(np.full((T, T), -np.inf), k=1)           # causal: position t sees only s <= t
+        for i in range(c["layers"]):
+            g = lambda k: w[f"layers.{i}.{k}"]
+            xn = _ln(x, g("ln1_g"), g("ln1_b"))
+            q, k_, v = (xn @ g(n).T for n in ("wq", "wk", "wv"))
+            split = lambda m: m.reshape(T, H, dh).transpose(1, 0, 2)          # (heads, T, dh)
+            s = split(q) @ split(k_).transpose(0, 2, 1) / np.sqrt(dh) + mask
+            a = np.exp(s - s.max(-1, keepdims=True))
+            a /= a.sum(-1, keepdims=True)
+            ctx = (a @ split(v)).transpose(1, 0, 2).reshape(T, D)
+            x = x + ctx @ g("wo").T
+            xn = _ln(x, g("ln2_g"), g("ln2_b"))
+            x = x + np.maximum(xn @ g("w1").T + g("b1"), 0.0) @ g("w2").T + g("b2")
+        xf = _ln(x[-1], w["lnf_g"], w["lnf_b"])
+        return w["wout"] @ xf + w["bout"]
 
     def generate(self, prompt, max_tokens=100, temperature=0.7, seed=None, stop=()):
         """Continue `prompt` (str). Returns the continuation. Never emits <unk>."""
         rng = np.random.default_rng(seed)
         ids = [self.index.get(t, 0) for t in TOKEN_RE.findall(prompt.encode())]
-        ctx = ([self.pad] * max(0, self.n - len(ids)) + ids)[-self.n:]
+        if self.arch == "transformer":
+            ctx = (ids or [self.pad])[-self.n:]
+        else:
+            ctx = ([self.pad] * max(0, self.n - len(ids)) + ids)[-self.n:]
         stops = [s.encode() for s in stop]
         out = b""
         for _ in range(max_tokens):
@@ -85,7 +142,7 @@ class AsemLLM:
             p = np.exp(z - z.max())
             nxt = int(rng.choice(len(p), p=p / p.sum()))
             out += self.tokens[nxt]
-            ctx = ctx[1:] + [nxt]
+            ctx = (ctx + [nxt])[-self.n:]
             cut = [out.find(s) for s in stops if s in out]
             if cut:
                 out = out[:min(cut)]
@@ -101,7 +158,10 @@ class AsemLLM:
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    model = AsemLLM(Path(__file__).parent)
+    sub = "."
+    if args[:1] == ["--model"]:
+        sub, args = args[1], args[2:]
+    model = AsemLLM(Path(__file__).parent / sub)
     if args and args[0] == "--chat":
         print(model.chat([{"role": "user", "content": " ".join(args[1:])}]))
     else:
@@ -109,7 +169,37 @@ if __name__ == "__main__":
         print(text + model.generate(text, max_tokens=60))
 ''')
 
-val, uni, bi = stats["val_loss"], stats["unigram"], stats["bigram"]
+
+def row(name, stats):
+    v, u, b = stats["val_loss"], stats["unigram"], stats["bigram"]
+    return v, u, b
+
+
+m_val, m_uni, m_bi = row("mlp", mlp_stats)
+tf_section = ""
+if tf:
+    tcfg, tparams, tstats = tf
+    t_val = tstats["val_loss"]
+    tf_section = f"""
+### Transformer variant (`transformer/`)
+
+A small GPT-style decoder: **{tparams:,} parameters**, {tcfg['layers']} layers x {tcfg['heads']} heads, model dim {tcfg['dim']}
+(MLP width {tcfg['ff_dim']}), learned positions, pre-LayerNorm, causal attention over a {tcfg['context_length']}-token window,
+trained on the same data. Unlike the MLP it sees the whole prompt (up to {tcfg['context_length']} tokens).
+
+| Held-out loss | Value | Perplexity |
+|---|---|---|
+| Transformer (best checkpoint of {tstats.get('steps', 0):,} steps) | {t_val:.2f} | {math.exp(t_val):.0f} |
+
+The transformer overfits quickly on 138 KB: training loss kept falling while validation loss bottomed out early and
+rose again, so the saved weights are the best validation checkpoint, not the last step. Its loss is averaged over every
+position of held-out 32-token windows (including positions with little context), so it is **not directly comparable**
+to the MLP's single-next-token number.
+"""
+
+tf_row = ("| Transformer | `transformer/` | " + f"{tf[1]:,} | {tf[0]['context_length']} tokens | GPT-style decoder (attention) |") if tf else ""
+tf_cmd = 'python asemllm.py --model transformer --chat "What is a good movie?"    # transformer' if tf else ""
+
 (out / "README.md").write_text(f"""---
 license: apache-2.0
 language:
@@ -125,25 +215,23 @@ pipeline_tag: text-generation
 
 # AsemLLM
 
-A tiny word-level neural language model (**{params:,} parameters**) written, trained and served entirely in **Erlang**.
-Supervised worker processes compute gradients in parallel; there is no deep-learning framework involved.
-This repository holds the trained weights, the vocabulary and a small numpy reference loader.
+Tiny word-level language models written, trained and served entirely in **Erlang**, with no deep-learning framework:
+supervised worker processes compute gradients in parallel. This repository holds the trained weights, the vocabulary and a
+small numpy reference loader. **Source code (training, serving, web UI): https://github.com/asemqaffaf/AsemLLms**
 
-> **This is a toy model.** It learns the *style* of its training text (short `User:` / `Assistant:` dialogue) and
-> produces fluent-looking English, but it does **not** understand questions, and its answers are usually unrelated
-> to them. It can state false things confidently. Do not use it for anything that needs correct answers.
+> **These are toy models.** They learn the *style* of their training text (short `User:` / `Assistant:` dialogue) and
+> produce fluent-looking English, but they do **not** understand questions, and answers are usually unrelated to them.
+> They can state false things confidently. Do not use them for anything that needs correct answers.
 
-## Architecture
+## Two variants
 
-| | |
-|---|---|
-| Type | Embedding MLP language model (Bengio-style), **not** a transformer |
-| Context | {N} tokens |
-| Embedding / hidden size | {D} / {H} (tanh) |
-| Vocabulary | {V} tokens (words with their leading space, punctuation, newline; `<unk>` = id 0) |
-| Parameters | {params:,} |
+| | Where | Parameters | Window | Architecture |
+|---|---|---|---|---|
+| MLP | repository root | {mlp_params:,} | {mlp_cfg['context_length']} tokens | embedding -> tanh hidden layer -> softmax (Bengio-style) |
+{tf_row}
 
-`logits = W2 · tanh(W1 · concat(embedding[last {N} tokens]) + b1) + b2`
+Both use the same tokenizer: words with their leading space, punctuation marks and newlines; the {mlp_cfg['vocab_size']}-token vocabulary
+(top tokens seen at least twice, `<unk>` = id 0) is in `vocab.json`.
 
 ## Use it
 
@@ -151,65 +239,70 @@ This repository holds the trained weights, the vocabulary and a small numpy refe
 pip install numpy safetensors huggingface_hub
 huggingface-cli download {repo} --local-dir AsemLLM
 cd AsemLLM
-python asemllm.py --chat "What is a good movie?"
-python asemllm.py $'User: How do I cook pasta?\\nAssistant:'   # $'...' turns \\n into a real newline
+python asemllm.py --chat "What is a good movie?"                       # MLP
+{tf_cmd}
 ```
 
 ```python
 from asemllm import AsemLLM
-m = AsemLLM(".")
+m = AsemLLM(".")            # or AsemLLM("transformer")
 print(m.chat([{{"role": "user", "content": "Hello!"}}], temperature=0.5, seed=1))
 ```
 
-It uses a custom architecture, so it does **not** load in `transformers`, llama.cpp, Ollama or LM Studio.
-The weights are in `model.safetensors` (float32): `embedding`, `w1`, `b1`, `w2`, `b2`.
+They use custom architectures, so they do **not** load in `transformers`, llama.cpp, Ollama or LM Studio.
+Weights are float32 safetensors; `asemllm.py` is the reference implementation (verified against the Erlang code to ~1e-7 in logits).
 
 ## Training data
 
-About {stats.get("tokens", 0):,} tokens (138 KB) of short, synthetic `User:` / `Assistant:` conversations on everyday topics
+About {mlp_stats.get("tokens", 0):,} tokens (138 KB) of short, synthetic `User:` / `Assistant:` conversations on everyday topics
 (cooking, gardening, travel, study, hobbies, ...), written by a locally run 4B-parameter instruction model.
-No web scraping, no personal data. The text was filtered to well-formed dialogue lines and truncated mid-sentence
-generations were dropped. Because the data is machine-written, the model inherits the repetitiveness and the
-mistakes of its source.
+No web scraping, no personal data. Text was filtered to well-formed dialogue lines and truncated generations were dropped.
+Being machine-written, the data carries the repetitiveness and the mistakes of its source.
 
-## Training
+## Training (MLP)
 
-- Word-level tokenizer, top {V} tokens seen at least twice.
-- Adam, lr 0.005 decaying linearly to 10%, batch 128, gradient clipping at 5, {stats.get("steps", 0):,} steps; the checkpoint with the best validation loss is kept.
-- Data-parallel training on one Apple M1 Pro (10 Erlang worker processes), about {stats.get("seconds", 0) / 60:.0f} minutes.
-- Held-out set: the last 10% of the text.
+- Word tokenizer, Adam (lr 0.005, linear decay to 10%), batch 128, gradient clipping 5, {mlp_stats.get("steps", 0):,} steps; best-validation checkpoint kept.
+- Data-parallel training on one Apple M1 Pro (10 Erlang worker processes), about {mlp_stats.get("seconds", 0) / 60:.0f} minutes. Held-out set: last 10% of the text.
 
 ## Evaluation (held-out cross-entropy per token, lower is better)
 
 | Model | Loss | Perplexity |
 |---|---|---|
-| Unigram (word frequencies) | {uni:.2f} | {math.exp(uni):.0f} |
-| Bigram (previous word) | {bi:.2f} | {math.exp(bi):.0f} |
-| **AsemLLM** | **{val:.2f}** | **{math.exp(val):.0f}** |
-
-It beats the bigram baseline only modestly. With 138 KB of training text it largely memorizes phrases (training loss
-fell to about 1.3 while validation loss stopped improving at {val:.2f}).
+| Unigram baseline | {m_uni:.2f} | {math.exp(m_uni):.0f} |
+| Bigram baseline (previous word) | {m_bi:.2f} | {math.exp(m_bi):.0f} |
+| **AsemLLM MLP** | **{m_val:.2f}** | **{math.exp(m_val):.0f}** |
+{tf_section}
+With only 138 KB of text these models largely memorize phrases (MLP training loss fell to about 1.3 while validation loss stopped improving at {m_val:.2f}).
 
 ## Limitations
 
-- Tiny context ({N} tokens) and tiny data: replies mostly do not relate to the prompt.
-- English only; ASCII-centric vocabulary.
-- No safety training. Output reflects its (machine-written) training text.
-- Not suitable for any real application. It is meant for learning how language models work.
+- Tiny data and tiny models: replies mostly do not relate to the prompt. English only; ASCII-centric vocabulary.
+- No safety training; output reflects its machine-written training text.
+- Not suitable for any real application. It exists to show how language models work, end to end, in Erlang.
 
 ## License
 
 Apache-2.0 (see `LICENSE`).
 """)
 
-# --- check the standalone loader against the Erlang implementation ----------
+# ---- verify each packed model against the Erlang implementation -----------------------------
 sys.path.insert(0, str(out))
-import importlib; asem = importlib.import_module("asemllm")
-m = asem.AsemLLM(out)
-tv = json.loads((src / "test_vector.json").read_text())
-py = m.logits(tv["context"]); er = np.array(tv["logits"])
-err = float(np.max(np.abs(py - er)))
-assert int(py.argmax()) == int(er.argmax()), "argmax differs from Erlang"
-assert err < 1e-4, f"logits differ from Erlang by {err}"
-text = m.chat([{"role": "user", "content": "What is a good movie?"}], temperature=0.5, seed=1)
-print(f"packed {out}/ : {params:,} params, loader matches Erlang (max logit diff {err:.2e}); sample: {text!r}")
+asem = importlib.import_module("asemllm")
+
+
+def check(dest, src, label):
+    m = asem.AsemLLM(dest)
+    worst = 0.0
+    for tv in json.loads((src / "test_vectors.json").read_text()):
+        py, er = m.logits(tv["context"]), np.array(tv["logits"])
+        assert int(py.argmax()) == int(er.argmax()), f"{label}: argmax differs from Erlang"
+        worst = max(worst, float(np.max(np.abs(py - er))))
+    assert worst < 1e-4, f"{label}: logits differ from Erlang by {worst}"
+    sample = m.chat([{"role": "user", "content": "What is a good movie?"}], temperature=0.5, seed=1)
+    print(f"{label}: loader matches Erlang (max logit diff {worst:.2e}); sample: {sample!r}")
+
+
+check(out, mlp_src, "mlp")
+if tf:
+    check(out / "transformer", tf_src, "transformer")
+shutil.rmtree(out / "__pycache__", ignore_errors=True)
