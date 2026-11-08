@@ -10,17 +10,23 @@ permissions:
   contents: read
 
 jobs:
-
-  build:
-
+  test:
     runs-on: ubuntu-latest
-
-    container:
-      image: erlang:22.0.7
-
+    strategy:
+      fail-fast: false
+      matrix:
+        project: [ tinyllm, agents ]
+    defaults:
+      run:
+        working-directory: ${{ matrix.project }}
     steps:
-    - uses: actions/checkout@v4
-    - name: Compile
-      run: rebar3 compile
-    - name: Run tests
-      run: rebar3 do eunit, ct
+      - uses: actions/checkout@v4
+      # the code uses the built-in `json` module, which needs OTP 27 or newer
+      - uses: erlef/setup-beam@v1
+        with:
+          otp-version: "28"
+          rebar3-version: "3"
+      - name: Compile
+        run: rebar3 compile
+      - name: Tests
+        run: rebar3 eunit
