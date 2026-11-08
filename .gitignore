@@ -1,0 +1,16 @@
+# build output, crash dumps, OS junk
+_build/
+*.beam
+erl_crash.dump
+rebar3.crashdump
+.DS_Store
+__pycache__/
+
+# trained model binaries: weights are published separately (huggingface.co/asemqaffaf/AsemLLM)
+*.bin
+# intermediate JSON dump used to build the release package
+tinyllm/export/
+# Mnesia database directories
+**/data/
+# local SearXNG settings contain a generated secret key
+tinyllm/searxng/settings.yml

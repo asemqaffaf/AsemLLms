@@ -1,0 +1,11 @@
+{application, agents, [
+    {description, "Supervised LLM agent workers"},
+    {vsn, "0.1.0"},
+    {registered, [agents_sup, agent_sup]},
+    {mod, {agents_app, []}},
+    {applications, [kernel, stdlib, inets, ssl, public_key]},
+    {env, []},
+    {modules, []},
+    {licenses, ["Apache-2.0"]},
+    {links, []}
+ ]}.

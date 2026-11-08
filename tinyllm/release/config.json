@@ -1,0 +1,13 @@
+{
+  "model_type": "asemllm",
+  "architecture": "embedding-mlp-language-model",
+  "vocab_size": 1631,
+  "context_length": 5,
+  "embedding_dim": 24,
+  "hidden_dim": 64,
+  "activation": "tanh",
+  "tokenizer": "word",
+  "unk_token_id": 0,
+  "num_parameters": 152903,
+  "tokenizer_regex": " ?[A-Za-z0-9']+| ?[^\\sA-Za-z0-9']|\\n|\\s"
+}

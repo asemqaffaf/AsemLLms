@@ -1,0 +1,11 @@
+{application, tinyllm, [
+    {description, "A tiny neural language model, trained by parallel Erlang workers"},
+    {vsn, "0.1.0"},
+    {registered, [tinyllm_sup, tinyllm_worker_sup]},
+    {mod, {tinyllm_app, []}},
+    {applications, [kernel, stdlib, cowboy]},
+    {env, []},
+    {modules, []},
+    {licenses, ["Apache-2.0"]},
+    {links, []}
+ ]}.
