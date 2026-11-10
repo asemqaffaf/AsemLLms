@@ -189,8 +189,10 @@
 
 (defun pretrain (data-dir out-dir &key (size :1m) (ctx 128) (steps 1000) (batch 16) (workers 1) (lr 0.003d0) (min-lr-frac 0.1d0)
                                        (warmup 100) (clip 1d0) (seed 1) (eval-every 250) (val-windows 64) (eval-file nil) (log-path nil)
-                                       (sample-prompt "The") (config nil))
-  "Train from scratch on the shards in DATA-DIR; checkpoints and a JSONL log go to OUT-DIR. Returns a plist of final numbers."
+                                       (sample-prompt "The") (config nil) (log-every 0) (save-every 0))
+  "Train from scratch on the shards in DATA-DIR; checkpoints and a JSONL log go to OUT-DIR. Returns a plist of final numbers.
+LOG-EVERY N > 0 adds a \"train\" event every N steps (mean training loss since the last one, gradient norm, learning rate) to watch
+for divergence; SAVE-EVERY N > 0 keeps OUT-DIR/step-NNNNN.ckpt every N steps. Neither changes the numerics."
   (ensure-directories-exist (concatenate 'string out-dir "/"))
   (let* ((version (asem-data:verify data-dir))
          (manifest (asem-data:load-manifest data-dir))
@@ -208,7 +210,7 @@
          (m1 (map 'simple-vector (lambda (p) (new-dvec (length p))) params))
          (m2 (map 'simple-vector (lambda (p) (new-dvec (length p))) params))
          (sum-grads (make-grads cfg))
-         (b1 0.9l0) (b2 0.95l0)
+         (b1 0.9l0) (b2 0.95l0) (cur-lr 0l0) (last-nrm 0l0) (log-loss 0l0) (log-n 0)
          (best-val most-positive-double-float) (peak-mb 0l0) (acc-loss 0l0) (acc-n 0) (t0 (get-internal-real-time)) (t-last t0)
          (tokens-last 0)
          (log (open (or log-path (format nil "~a/log.jsonl" out-dir)) :direction :output :if-exists :supersede :external-format :utf-8))
@@ -259,13 +261,16 @@
                       (zero-grads sum-grads)
                       (loop for w in ws do (loop for g across (second w) for sg across sum-grads do (asem-train::add-into sg g)))
                       (incf acc-loss (reduce #'+ results)) (incf acc-n batch)
+                      (incf log-loss (reduce #'+ results)) (incf log-n batch)
                       (let ((inv (host-float (/ 1l0 batch))))
                         (loop for sg across sum-grads do (asem-train::scale-into sg inv))
                         (let ((nrm (asem-train::grad-norm sum-grads)))
+                          (setf last-nrm nrm)
                           (when (or (/= nrm nrm) (> nrm 1l30)) (error "non-finite gradient norm at step ~d: stopping instead of training on garbage" step))
                           (when (> nrm clip)
                             (loop for sg across sum-grads do (asem-train::scale-into sg (host-float (/ clip nrm)))))))
-                      (let* ((lrt (host-float (let ((l (lr-at (1- step) steps lr warmup min-lr-frac)))
+                      (setf cur-lr (lr-at (1- step) steps lr warmup min-lr-frac))
+                      (let* ((lrt (host-float (let ((l cur-lr))
                                                  (* l (/ (sqrt (- 1l0 (expt b2 step))) (- 1l0 (expt b1 step)))))))
                              (b1f (host-float b1)) (b2f (host-float b2)) (c1 (host-float (- 1l0 b1))) (c2 (host-float (- 1l0 b2))))
                         (loop for p across params for g across sum-grads for a across m1 for b across m2
@@ -276,6 +281,12 @@
                                        (setf (aref a i) (+ (* b1f (aref a i)) (* c1 gi)))
                                        (setf (aref b i) (+ (* b2f (aref b i)) (* c2 gi gi)))
                                        (decf (aref p i) (/ (* lrt (aref a i)) (+ (sqrt (aref b i)) 1d-8))))))))
+                      (when (and (plusp log-every) (zerop (mod step log-every)))
+                        (log-event log (list :event "train" :step step :tokens (* step batch ctx) :train-loss (/ log-loss (max 1 log-n))
+                                             :grad-norm last-nrm :lr cur-lr))
+                        (setf log-loss 0l0 log-n 0))
+                      (when (and (plusp save-every) (zerop (mod step save-every)))
+                        (save-checkpoint (format nil "~a/step-~5,'0d.ckpt" out-dir step) model :step step :data-version version))
                       (when (or (zerop (mod step eval-every)) (= step steps))
                         (evaluate step (* step batch ctx) (/ acc-loss acc-n))
                         (setf acc-loss 0l0 acc-n 0))))

@@ -200,4 +200,28 @@
         (rm-rf out)))
     (rm-rf data) (ignore-errors (delete-file evalf))))
 
+(deftest train-logging-and-intermediate-checkpoints-do-not-change-the-numbers
+  (let ((data (tmpdir "l")))
+    (make-data data)
+    (with-precisions (pkg fn)
+      (let* ((cfg (funcall (fn "PRESET-CONFIG") :1m 300 32)) (plain (tmpdir (format nil "p-~a" pkg))) (rich (tmpdir (format nil "q-~a" pkg)))
+             (r1 (funcall (fn "PRETRAIN") data plain :ctx 32 :steps 20 :batch 4 :eval-every 20 :val-windows 4 :config cfg :seed 6))
+             (r2 (funcall (fn "PRETRAIN") data rich :ctx 32 :steps 20 :batch 4 :eval-every 20 :val-windows 4 :config cfg :seed 6
+                                                    :log-every 5 :save-every 10)))
+        (check-equal (getf r1 :checkpoint-sha256) (getf r2 :checkpoint-sha256))          ; identical bytes with and without the options
+        (let* ((events (log-lines (format nil "~a/log.jsonl" rich)))
+               (trains (remove-if-not (lambda (e) (equal (asem-json:json-get e "event") "train")) events)))
+          (check-equal (mapcar (lambda (e) (asem-json:json-get e "step")) trains) '(5 10 15 20))
+          (check (every (lambda (e) (and (> (asem-json:json-get e "grad_norm") 0) (> (asem-json:json-get e "lr") 0) (> (asem-json:json-get e "train_loss") 0))) trains)
+                 "train events carry loss, gradient norm and learning rate"))
+        (check (and (probe-file (format nil "~a/step-00010.ckpt" rich)) (probe-file (format nil "~a/step-00020.ckpt" rich))) "intermediate checkpoints exist")
+        (check (not (probe-file (format nil "~a/step-00005.ckpt" rich))) "only every save-every steps")
+        ;; the checkpoint written at the last step holds the same weights as last.ckpt
+        (let ((a (funcall (fn "LOAD-CHECKPOINT") (format nil "~a/step-00020.ckpt" rich))) (b (funcall (fn "LOAD-CHECKPOINT") (format nil "~a/last.ckpt" rich))))
+          (check (every #'equalp (funcall (symbol-function (find-symbol "MODEL-PARAMS" (if (equal pkg "ASEM-PRETRAIN") "ASEM-TF" "ASEM-TF32"))) a)
+                        (funcall (symbol-function (find-symbol "MODEL-PARAMS" (if (equal pkg "ASEM-PRETRAIN") "ASEM-TF" "ASEM-TF32"))) b))
+                 "step-00020 equals last"))
+        (rm-rf plain) (rm-rf rich)))
+    (rm-rf data)))
+
 (run-all)

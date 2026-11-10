@@ -1,7 +1,7 @@
 ;;; Pretrain an AsemLLM from scratch on BPE shards built by bin/build-data.lisp.
 ;;;   sbcl --dynamic-space-size 12GB --script lisp/bin/pretrain.lisp data=DIR out=DIR [size=1m|3m|10m|25m] [steps=1000]
 ;;;        [batch=16] [ctx=128] [workers=4] [lr=0.003] [warmup=100] [clip=1.0] [seed=1] [eval-every=250] [val-windows=64]
-;;;        [eval=lisp/eval/asem_eval.jsonl] [precision=32|64]
+;;;        [eval=lisp/eval/asem_eval.jsonl] [precision=32|64] [log-every=N] [save-every=N]
 ;;; With TLM_BLAS=1 the matrix products and attention use Accelerate. Writes OUT/log.jsonl, OUT/best.ckpt, OUT/last.ckpt.
 (let ((here (directory-namestring *load-truename*)))
   (require :sb-posix)
@@ -26,4 +26,5 @@
              :steps (funcall num "steps" "1000") :batch (funcall num "batch" "16") :workers (funcall num "workers" "4")
              :lr (funcall flt "lr" "0.003") :warmup (funcall num "warmup" "100") :clip (funcall flt "clip" "1.0")
              :seed (funcall num "seed" "1") :eval-every (funcall num "eval-every" "250") :val-windows (funcall num "val-windows" "64")
-             :eval-file (and (probe-file eval-file) eval-file))))
+             :eval-file (and (probe-file eval-file) eval-file)
+             :log-every (funcall num "log-every" "0") :save-every (funcall num "save-every" "0"))))
