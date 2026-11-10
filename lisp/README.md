@@ -126,3 +126,25 @@ one must not). 1M model on the 1.7M-token snapshot: accuracy 24% (chance), calib
 - The data pipeline's near-duplicate index is in memory.
 - `tokenize` works on characters, the Erlang one on bytes; only non-ASCII text differs.
 - Model files are a text format (readable, slow for large models).
+
+## Stage 2: passage QA benchmark and supervised fine-tuning
+
+Results and the experiment log are in [`../docs/results-stage2.md`](../docs/results-stage2.md); the benchmark is described in
+[`eval/qa/README.md`](eval/qa/README.md).
+
+    # benchmark: locked test (1,000), dev (500), training set (here 256k items with generated training names)
+    sbcl --dynamic-space-size 8GB --script bin/qa-build.lisp data=../data/fineweb/stage1 out=../data/qa/v3 train-entities=synthetic train=256000
+    # fine-tune (reads only train.jsonl and dev.jsonl; best checkpoint chosen on dev accuracy)
+    TLM_BLAS=1 sbcl --dynamic-space-size 10GB --script bin/sft.lisp data=../data/fineweb/stage1 qa=../data/qa/v3 out=../data/runs/sft/x \
+         mode=text aux-lm=0.5 steps=8000 batch=32 workers=8 lr=5e-4 eval-every=250
+    # evaluate with controls (no question / no passage / mismatched / counterfactual question / reversed options)
+    TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script bin/qa-eval.lisp data=../data/fineweb/stage1 ckpt=../data/runs/sft/x/best.ckpt items=eval/qa/dev.jsonl mode=text
+    # does a checkpoint copy from its context at all?
+    sbcl --dynamic-space-size 4GB --script bin/induction-probe.lisp ckpt=../data/runs/final/10m/best.ckpt
+
+| File | What it is |
+|---|---|
+| `src/qagen.lisp`, `bin/qa-build.lisp` | Generator and builder of the QA data (held-out entities and wording, solver-checked keys, audits) |
+| `src/sft.lisp` (`sft32.lisp` derived) | SFT: answer-only loss through `forward-rows` / `backward-rows`, letter or text targets, AdamW, accumulation, exact resume, dev selection, controls |
+| `bin/sft.lisp`, `bin/qa-eval.lisp`, `bin/qa-chart.lisp`, `bin/induction-probe.lisp` | Training, evaluation (refuses the locked test unless `locked-test=1`), SVG charts, copy probe |
+| `src/tf.lisp` options | `config-tie` (gated tied copy path in the output head), `config-relpos` (relative-position attention biases); both start as exact no-ops when added to a checkpoint |
