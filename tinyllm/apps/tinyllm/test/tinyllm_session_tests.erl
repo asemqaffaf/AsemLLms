@@ -37,6 +37,10 @@ cache_logits_equal_full_forward() ->
                     ?assertEqual(tinyllm_tf:last_logits(P, Cfg, Prefix), Logits),
                     {Cache1, Prefix}
                 end, {tinyllm_tf:cache_new(Cfg), []}, Ids),
+    %% advance/4 (cache-only, skips the last layer's tail and the head) leaves the cache a later step can use
+    CA = lists:foldl(fun(I, C) -> tinyllm_tf:advance(P, Cfg, C, I) end, tinyllm_tf:cache_new(Cfg), lists:droplast(Ids)),
+    {LA, _} = tinyllm_tf:step(P, Cfg, CA, lists:last(Ids)),
+    ?assertEqual(tinyllm_tf:last_logits(P, Cfg, Ids), LA),
     %% truncating the cache and continuing from a different token matches a fresh pass
     {_, C8} = lists:foldl(fun(I, {_, C}) -> tinyllm_tf:step(P, Cfg, C, I) end, {x, tinyllm_tf:cache_new(Cfg)}, Ids),
     ?assertEqual(8, tinyllm_tf:cache_len(C8)),

@@ -281,24 +281,36 @@ cache_truncate(#{layers := Ls}, N) ->
 
 %% Feed one token id at position n+1. P must be prepare/1'd. -> {Logits for the next token, Cache1}.
 step(P, Cfg, Cache, Id) ->
-    {XL, Cache1} = run_token(P, Cfg, Cache, Id),
+    {XL, Cache1} = run_token(P, Cfg, Cache, Id, full),
     {Xf, _} = ln_row(XL, maps:get(lnfg, P), maps:get(lnfb, P)),
     {matvec(maps:get(wout, P), maps:get(bout, P), Xf), Cache1}.
 
-%% Like step/4 but only extends the cache: skips the final LayerNorm and the vocabulary projection, which
-%% is the most expensive single matrix product. Use it for every prompt token except the last.
-advance(P, Cfg, Cache, Id) -> element(2, run_token(P, Cfg, Cache, Id)).
+%% Like step/4 but only extends the cache, for every prompt token except the last. It skips what no later
+%% token can see: the final LayerNorm and vocabulary projection (the most expensive single matrix
+%% product) and, in the LAST layer, everything except that position's keys and values (its queries,
+%% attention output and MLP only feed this position's own output, which is not used).
+advance(P, Cfg, Cache, Id) -> element(2, run_token(P, Cfg, Cache, Id, kv_only)).
 
-run_token(P, #{heads := H}, #{n := N, layers := Ls} = Cache, Id) ->
+run_token(P, #{heads := H}, #{n := N, layers := Ls} = Cache, Id, Mode) ->
     Pos = N + 1,
     X0 = vadd(element(Id + 1, maps:get(et, P)), lists:nth(Pos, maps:get(p, P))),
-    {XL, Ls1} = step_layers(P, 1, X0, Ls, H, []),
+    {XL, Ls1} = step_layers(P, 1, X0, Ls, H, Mode, []),
     {XL, Cache#{n := Pos, layers := Ls1}}.
 
-step_layers(_, _, X, [], _, Acc) -> {X, lists:reverse(Acc)};
-step_layers(P, I, X, [LC | Rest], H, Acc) ->
+step_layers(_, _, X, [], _, _, Acc) -> {X, lists:reverse(Acc)};
+step_layers(P, I, X, [LC], H, kv_only, Acc) ->            %% last layer, output unused
+    {X, lists:reverse([layer_kv(P, I, X, LC, H) | Acc])};
+step_layers(P, I, X, [LC | Rest], H, Mode, Acc) ->
     {X1, LC1} = layer_step(P, I, X, LC, H),
-    step_layers(P, I + 1, X1, Rest, H, [LC1 | Acc]).
+    step_layers(P, I + 1, X1, Rest, H, Mode, [LC1 | Acc]).
+
+%% Extend one layer's cache with this position's keys and values only.
+layer_kv(P, I, Xin, {Ks, Vs}, Heads) ->
+    {Xn1, _} = ln_row(Xin, maps:get({ln1g, I}, P), maps:get({ln1b, I}, P)),
+    K = mv(maps:get({wk, I}, P), Xn1), V = mv(maps:get({wv, I}, P), Xn1),
+    Dh = length(K) div Heads,
+    {[Kc ++ [Kn] || {Kc, Kn} <- lists:zip(Ks, head_slices(K, Heads, Dh))],
+     [Vc ++ [Vn] || {Vc, Vn} <- lists:zip(Vs, head_slices(V, Heads, Dh))]}.
 
 layer_step(P, I, Xin, {Ks, Vs}, Heads) ->
     {Xn1, _} = ln_row(Xin, maps:get({ln1g, I}, P), maps:get({ln1b, I}, P)),

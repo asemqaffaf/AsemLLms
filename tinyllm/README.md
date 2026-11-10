@@ -128,19 +128,20 @@ same prompts and seed, best of 3, 10-core laptop; ms per turn):
 
 | model | variant | total | speedup | ms per turn |
 |---|---|---|---|---|
-| `chat_tf.bin`, context 32 | stateless | 2588 ms | 1.0x | 106 251 446 248 433 435 283 386 |
-| | session, exact | 2464 ms | 1.05x | 34 34 464 288 456 453 315 420 |
-| | session, evict=8 | 539 ms | 4.8x | 36 33 45 80 78 84 83 100 |
-| 64-dim 2-layer, context 128 | stateless | 10134 ms | 1.0x | 172 458 794 1165 1546 1900 2050 2049 |
-| | session, exact | 4888 ms | 2.07x | 44 45 51 52 54 54 2318 2270 |
-| | session, evict=8 | 1234 ms | 8.2x | 44 46 52 57 56 55 553 371 |
+| `chat_tf.bin`, context 32 | stateless | 2765 ms | 1.0x | 105 260 469 270 465 466 308 423 |
+| | session, exact | 1643 ms | 1.68x | 33 31 301 192 299 302 208 276 |
+| | session, evict=8 | 413 ms | 6.7x | 33 30 36 59 58 65 60 73 |
+| 64-dim 2-layer, context 128 | stateless | 10147 ms | 1.0x | 168 453 889 1165 1520 1881 2041 2031 |
+| | session, exact | 2984 ms | 3.4x | 41 40 43 45 46 47 1365 1357 |
+| | session, evict=8 | 823 ms | 12.3x | 41 40 43 44 45 46 337 228 |
 
 Reading it: while the window is not full the exact session costs a few tens of ms per turn whatever the history length
-(3x faster at turn 1, 20-40x by turn 6 at context 128). Once the window is full (turn 7 at context 128; from turn 3 at
-context 32, which the shipped model hits almost at once) exact mode is at parity with the stateless path, so with the
-32-token model the exact speedup is about 1x overall and the real win needs `evict` (or a longer context). The first
-version of the cache was 2x *slower* when full because every prefill token also computed the vocabulary projection;
-`tinyllm_tf:advance/4` skips it for all but the last token.
+(3x faster at turn 1, ~40x by turn 6 at context 128). Once the window is full (turn 7 at context 128; from turn 3 at
+context 32, which the shipped model hits almost at once) every token needs the whole window recomputed, because of the
+absolute positions. Exact mode is still ~1.5x faster than the stateless path there: prefill tokens skip the vocabulary
+projection and, in the last layer, everything except their keys and values (`tinyllm_tf:advance/4`), which nothing later
+can see. Beyond that, speed needs `evict` (or a longer context). The first version of the cache was 2x *slower* when full
+because every prefill token also computed the vocabulary projection.
 
 ## Benchmark and limits
 
