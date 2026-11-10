@@ -1,0 +1,51 @@
+The mitochondria is the organelle that produces most of a cell's usable chemical energy in the form of ATP.
+In 1969, Apollo 11 landed the first humans on the Moon, and Neil Armstrong stepped onto the surface on July 20.
+def fibonacci(n):\n    a, b = 0, 1\n    for _ in range(n):\n        a, b = b, a + b\n    return a
+To solve 3x + 7 = 22, subtract 7 from both sides to get 3x = 15, then divide by 3 to find x = 5.
+The Treaty of Westphalia in 1648 ended the Thirty Years' War and is often cited as the origin of the modern state system.
+SELECT customer_id, SUM(total) FROM orders WHERE created_at >= '2024-01-01' GROUP BY customer_id HAVING SUM(total) > 1000;
+Photosynthesis converts carbon dioxide and water into glucose and oxygen using energy from sunlight captured by chlorophyll.
+Bonjour, je voudrais réserver une table pour quatre personnes ce soir à vingt heures, s'il vous plaît.
+The derivative of sin(x) is cos(x), and the derivative of e to the power x is e to the power x.
+A hash table stores key-value pairs and offers average constant-time lookup by computing an index from the key.
+Mount Everest, on the border of Nepal and Tibet, rises about 8,849 metres above sea level and is the highest mountain on Earth.
+To make a basic vinaigrette, whisk three parts olive oil with one part vinegar, then season with salt, pepper and mustard.
+Der Rhein entspringt in den Schweizer Alpen und fließt durch mehrere Länder, bevor er in die Nordsee mündet.
+Inflation is the rate at which the general level of prices rises, which reduces the purchasing power of money over time.
+git rebase main replays your commits on top of the latest main, producing a linear history instead of a merge commit.
+Shakespeare wrote Hamlet around 1600, a tragedy about a Danish prince who seeks revenge for his father's murder.
+The speed of light in a vacuum is exactly 299,792,458 metres per second, a constant denoted by the letter c.
+Please summarize the following paragraph in one sentence, keeping the main claim and dropping the examples.
+A binary search repeatedly halves a sorted array, so it finds an element in O(log n) comparisons.
+The Amazon River carries more water than any other river and drains a basin covering roughly seven million square kilometres.
+Antibiotics kill bacteria or stop them from growing, but they are not effective against viruses such as the common cold.
+Para calcular el área de un círculo, multiplica pi por el radio al cuadrado.
+Dear Ms. Alvarez, thank you for your application. We would like to invite you for an interview next Tuesday at 10 a.m.
+In a neural network, backpropagation computes the gradient of the loss with respect to each weight using the chain rule.
+The French Revolution began in 1789 with the storming of the Bastille and led to the end of the monarchy in France.
+for i in range(10): print(i * i) prints the squares of the numbers from zero to nine, one per line.
+Tides are caused mainly by the gravitational pull of the Moon, with a smaller contribution from the Sun.
+Q: What is the capital of Australia? A: The capital of Australia is Canberra, not Sydney or Melbourne.
+Compound interest grows an amount by earning interest on both the original principal and the accumulated interest.
+The human heart has four chambers, and it pumps blood through the lungs to pick up oxygen before sending it to the body.
+To reverse a string in Python you can use slicing: reversed_text = text[::-1].
+Jupiter is the largest planet in the solar system, a gas giant with a mass more than twice that of all other planets combined.
+The committee will review the proposal, request any missing documents, and announce its decision within thirty days.
+HTTP status code 404 means the server could not find the requested resource, while 500 indicates an internal server error.
+Beethoven continued to compose masterpieces such as the Ninth Symphony even after he had become almost completely deaf.
+A prime number is a natural number greater than one that has no positive divisors other than one and itself.
+Water boils at 100 degrees Celsius at sea level, but at higher altitudes the boiling point is lower because air pressure drops.
+The company reported quarterly revenue of 4.2 billion dollars, up eight percent from the same period last year.
+To change a flat tire, loosen the lug nuts, jack up the car, remove the wheel, mount the spare, and tighten the nuts in a star pattern.
+Plate tectonics describes how the Earth's rigid outer shell is divided into plates that slowly move over the mantle.
+La Révolution industrielle a transformé l'économie européenne en remplaçant le travail manuel par des machines.
+A well-written function does one thing, has a clear name, and avoids side effects that surprise the caller.
+The Great Barrier Reef, off the coast of Queensland, is the largest coral reef system in the world and is visible from space.
+If a train leaves at 3 p.m. travelling at 60 miles per hour, it will have covered 150 miles by 5:30 p.m.
+Vaccines train the immune system to recognise a pathogen by exposing it to a harmless piece or weakened form of it.
+The Pythagorean theorem states that in a right triangle the square of the hypotenuse equals the sum of the squares of the other two sides.
+Kubernetes schedules containers across a cluster of machines and restarts them automatically when they fail.
+The Renaissance was a period of renewed interest in art, science and classical learning that began in Italy in the fourteenth century.
+Honesty matters in science because later work builds on earlier results, and one false claim can mislead many researchers.
+Pour the batter into a greased pan, bake at 180 degrees for thirty minutes, and let the cake cool before slicing.
+Entropy is a measure of disorder, and the second law of thermodynamics says that the entropy of an isolated system never decreases.

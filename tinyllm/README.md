@@ -153,7 +153,9 @@ concurrently and needs memory for all of them), every candidate starting from th
 a probe set (a reference set that must not get worse), and measures its drift from version 0. A candidate is
 kept only if heldout loss improves by more than `min_gain`, probe loss stays within `probe_tolerance`, and drift
 is within `drift_cap`; the best passing one becomes the new current version, otherwise nothing changes and the
-reason comes back. The last `retain` (5) versions plus version 0 are kept, and `rollback/1,2` steps back.
+reason comes back. With `control => shuffle` (or a `fun(Batch) -> Batch`) a passing candidate must also beat, by
+`control_margin`, a control trained at the same learning rate on a word-shuffled copy of the batch: part of any heldout
+gain is generic (the model adapting to short raw text), and without the control garbage passes. The last `retain` (5) versions plus version 0 are kept, and `rollback/1,2` steps back.
 Candidates run in their own processes with a per-candidate `timeout`, so an engine crash or hang costs one
 candidate, not the tuner. Only one round runs at a time; `current/1`, `versions/1` and `log/1` answer meanwhile.
 
@@ -170,15 +172,30 @@ candidate, not the tuner. Only one round runs at a time; `current/1`, `versions/
 tested without a GPU or a model. The worker protocol (command line in, one `RESULT k=v` line out) is documented
 at the top of `src/tinyllm_engine_port.erl`.
 
-`scripts/mlx_worker.py` is the MLX LoRA worker for a Mac. It was checked against mlx-lm 0.32.2 and mlx 0.32.4 on
-Linux CPU with a tiny random model, not on Apple silicon and not on a real downloaded model. That check found and
-fixed four bugs (no parseable "Train loss" line, `--adapter-path ""` needed to score the base, the default
+`scripts/mlx_worker.py` is the MLX LoRA worker for a Mac. It was checked on Linux CPU (mlx-lm 0.32.2, mlx 0.32.4) and on
+an M1 Pro (mlx-lm 0.31.3), both with a tiny random model, and then on a real model, Qwen3.5-4B (MLX 4-bit): 8 LoRA layers,
+rank 4, 20 steps, learning rates 1e-5 and 5e-5. There heldout/probe loss went 5.682/5.388 to 2.307/4.092 (v1) and
+1.161/3.972 (v2), a further round was rejected as `no_improvement`, and rollback to the base reproduced the baseline
+scores. That run committed a "garbage" round, because its loss fell too (word salad lowered heldout by 0.24 vs 1.16 for real
+data), and its 2-line heldout/probe sets were near-copies of the training text. Fixed with disjoint, larger sets
+(`scripts/make_eval_sets.py`: 40 train / 60 heldout dialogues sharing no user question, a shuffled-vocabulary garbage
+set, and `eval/probe_general.txt`, 51 varied general lines) and the control above. `scripts/tuner_gate.escript` checks
+all of it on a real model (all PASS on Qwen3.5-4B; baseline heldout/probe 2.971/2.409, real data 1.808/1.789, garbage
+rejected from the base and after training, rollback to base exact). The probe still falls with training (it measures
+the generic shift too), so it only catches regressions. On a 16 GB Mac use `TLM_MLX_BATCH=1 TLM_MLX_GRAD_CKPT=1
+TLM_MLX_MAX_SEQ=256`, or training runs out of Metal memory. Not covered: rollback to a middle version on a real model,
+and whether a gain on this chat data means better answers. The tiny-model check found and fixed four bugs (no parseable "Train loss" line, `--adapter-path ""` needed to score the base, the default
 `--num-layers 16` failing on small models, a deprecated entry point). To repeat it with no download:
 
     pip install mlx-lm                    # on Linux also: pip install "mlx[cpu]"
     rebar3 compile
     python3 scripts/tiny_mlx_model.py /tmp/tiny
     TLM_MLX_NUM_LAYERS=2 escript scripts/tuner_smoke.escript $(which python3) scripts/mlx_worker.py /tmp/tuner_root /tmp/tiny
+
+On a real model (set `TLM_MLX_NUM_LAYERS=8` and the memory variables above):
+
+    python3 scripts/make_eval_sets.py /tmp/sets
+    escript scripts/tuner_gate.escript $(which python3) scripts/mlx_worker.py /tmp/gate_root /tmp/sets /path/to/mlx/model
 
 mlx-lm prints losses with 3 decimals, so use `min_gain` of at least 0.002. Set `TLM_MLX_NUM_LAYERS` for models
 with fewer than 16 layers. Candidates run one at a time by default, so one MLX job holds the GPU at once.

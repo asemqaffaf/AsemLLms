@@ -1,11 +1,11 @@
 #!/usr/bin/env escript
+%%! -pa _build/default/lib/tinyllm/ebin
 %% End-to-end smoke test: the Erlang tuner driving the real MLX worker on the tiny random model.
 %% Run from tinyllm/ after `rebar3 compile`, with TLM_MLX_NUM_LAYERS=2:
 %%   python3 scripts/tiny_mlx_model.py /tmp/tiny
 %%   escript scripts/tuner_smoke.escript $(which python3) scripts/mlx_worker.py /tmp/tuner_root /tmp/tiny
 %% Expect: round 1 commits, the garbage round is rejected with the active weights unchanged, rollback restores
 %% the exact round-1 weights (same sha), and rolling back to the base reproduces the baseline scores.
-%%! -pa _build/default/lib/tinyllm/ebin
 main([Py, Worker, Root, Tiny]) ->
     Read = fun(F) -> {ok, B} = file:read_file(filename:join(Tiny, F)),
                      [L || L <- binary:split(B, <<"\n">>, [global]), L =/= <<>>] end,

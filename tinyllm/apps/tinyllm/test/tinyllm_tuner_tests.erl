@@ -74,6 +74,60 @@ min_gain_is_required_test() ->
     ?assertMatch({rejected, no_improvement, _}, tinyllm_tuner:learn(T, [1.0])),
     close(T).
 
+%% ---------------------------------------------------------------- control gate
+
+%% heldout_target 1.0, start 0.0: the real batch [1.0] pulls W toward the target; a control batch [0.0] does not.
+control_that_learns_nothing_lets_real_data_through_test() ->
+    T = start(#{probe_target => 1.0}, #{candidates => [0.1], steps => 5, control => fun(_) -> [0.0] end}),
+    {committed, 1, Info} = tinyllm_tuner:learn(T, [1.0]),
+    ?assertMatch(#{controls := [#{lr := 0.1}]}, Info),
+    [#{heldout := KHo}] = maps:get(controls, Info),
+    [#{heldout := Ho}] = maps:get(candidates, Info),
+    ?assert(Ho < KHo),
+    %% the control is released and never becomes the current version
+    near(weight(T), 1.0 - math:pow(0.8, 5)),
+    close(T).
+
+control_as_good_as_the_data_rejects_it_test() ->
+    %% the "garbage" teaches exactly what the real batch does, so the gain is not about the batch
+    T = start(#{probe_target => 1.0}, #{candidates => [0.1], steps => 5, control => fun(B) -> B end}),
+    ?assertMatch({rejected, no_better_than_control, #{controls := [_]}}, tinyllm_tuner:learn(T, [1.0])),
+    ?assertEqual(0, cur_id(T)),
+    close(T).
+
+control_margin_is_required_test() ->
+    T = start(#{probe_target => 1.0}, #{candidates => [0.1], steps => 5, control => fun(_) -> [0.0] end, control_margin => 5.0}),
+    ?assertMatch({rejected, no_better_than_control, _}, tinyllm_tuner:learn(T, [1.0])),
+    close(T).
+
+control_that_cannot_be_trained_is_not_evidence_test() ->
+    T = start(#{probe_target => 1.0}, #{candidates => [0.1], steps => 5, control => fun(_) -> [crash] end}),
+    ?assertMatch({rejected, no_better_than_control, _}, tinyllm_tuner:learn(T, [1.0])),
+    ?assertEqual(0, cur_id(T)),
+    close(T).
+
+control_is_not_trained_when_the_normal_gate_already_failed_test() ->
+    T = start(#{probe_target => 1.0}, #{candidates => [0.1], steps => 5, control => fun(_) -> [0.0] end}),
+    trained_from(),
+    ?assertMatch({rejected, no_improvement, Info} when not is_map_key(controls, Info), tinyllm_tuner:learn(T, [-5.0])),
+    ?assertEqual(1, length(trained_from())),
+    close(T).
+
+shuffle_keeps_the_words_and_loses_the_order_test() ->
+    In = <<"User: how much water does a plant need? Assistant: about an inch of water weekly.">>,
+    [Out] = tinyllm_tuner:control_batch(shuffle, [In]),
+    Words = fun(B) -> lists:sort(binary:split(B, <<" ">>, [global])) end,
+    ?assertEqual(Words(In), Words(Out)),
+    ?assertNotEqual(In, Out),
+    ?assertEqual([Out], tinyllm_tuner:control_batch(shuffle, [In])),   %% deterministic
+    ?assertEqual([7], tinyllm_tuner:control_batch(shuffle, [7])).
+
+bad_control_option_is_refused_test() ->
+    process_flag(trap_exit, true),
+    ?assertMatch({error, {bad_options, _}},
+                 tinyllm_tuner:start_link(#{engine => {?FAKE, #{}}, candidates => [0.1], control => nope})),
+    flush_exits().
+
 %% ---------------------------------------------------------------- candidate search
 
 best_passing_candidate_wins_test_() ->

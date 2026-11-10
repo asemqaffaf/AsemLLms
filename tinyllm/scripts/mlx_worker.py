@@ -10,7 +10,8 @@ NOT yet run on Apple silicon or on a real downloaded model. Facts it relies on, 
   - `--test` without `--train` loads the adapter in --adapter-path unless it is "" (then it scores the base);
   - the final summary line "Test loss X, Test ppl Y." is plain text and is what eval parses;
   - an adapter is a directory with adapters.safetensors and adapter_config.json.
-Env: TLM_MLX_NUM_LAYERS (LoRA layers; unset = mlx-lm default 16, which errors on models with fewer layers).
+Env: TLM_MLX_NUM_LAYERS (LoRA layers; unset = mlx-lm default 16, which errors on models with fewer layers);
+     TLM_MLX_BATCH, TLM_MLX_GRAD_CKPT=1, TLM_MLX_MAX_SEQ (training memory; see memory_args).
 Needs: pip install mlx-lm (on Linux: "mlx[cpu]" too).
 """
 import argparse
@@ -54,6 +55,17 @@ def layers_args():
     return ["--num-layers", n] if n else []
 
 
+def memory_args():
+    """Training memory knobs for machines where the default does not fit (a 4B model on a busy 16 GB Mac ran out of
+    Metal memory at batch 4): TLM_MLX_BATCH (default 4), TLM_MLX_GRAD_CKPT=1, TLM_MLX_MAX_SEQ (tokens per sample)."""
+    out = []
+    if os.environ.get("TLM_MLX_GRAD_CKPT") == "1":
+        out.append("--grad-checkpoint")
+    if os.environ.get("TLM_MLX_MAX_SEQ"):
+        out += ["--max-seq-length", os.environ["TLM_MLX_MAX_SEQ"]]
+    return out
+
+
 def loss_on(model, adapter, samples):
     """Mean token loss of base+adapter on the samples (adapter 'none' = the base model)."""
     with tempfile.TemporaryDirectory() as d:
@@ -83,11 +95,11 @@ def op_train(a):
     cfg = os.path.join(a.adapter_out, "lora.yaml")
     with open(cfg, "w") as f:
         f.write("lora_parameters:\n  rank: %d\n  scale: 20.0\n  dropout: 0.0\n" % a.rank)
-    batch = min(4, len(samples))
+    batch = min(int(os.environ.get("TLM_MLX_BATCH", "4")), len(samples))
     args = ["--model", a.base_model, "--train", "--data", data_dir, "--iters", str(a.steps),
             "--learning-rate", repr(a.lr), "--batch-size", str(batch), "--val-batches", "1",
             "--steps-per-report", "1", "--steps-per-eval", str(a.steps + 1), "--save-every", str(a.steps + 1),
-            "--adapter-path", a.adapter_out, "-c", cfg] + layers_args()
+            "--adapter-path", a.adapter_out, "-c", cfg] + layers_args() + memory_args()
     if a.adapter_in != "none":
         args += ["--resume-adapter-file", os.path.join(a.adapter_in, "adapters.safetensors")]
     run_lora(args)
