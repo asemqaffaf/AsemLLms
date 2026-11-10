@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" role="img" width="100%" style="max-width:920px" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif">
+<title>Copy-task loss on repeated random tokens (uniform = 8.95 nats; copying would approach 0)</title>
+<rect width="920" height="460" fill="#fcfcfb"/>
+<text x="64" y="24" font-size="15" fill="#1d1d1b">Copy-task loss on repeated random tokens (uniform = 8.95 nats; copying would approach 0)</text>
+<line x1="64" x2="770" y1="406.0" y2="406.0" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="410.0" text-anchor="end" font-size="12" fill="#52514e">8.40</text>
+<line x1="64" x2="770" y1="332.8" y2="332.8" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="336.8" text-anchor="end" font-size="12" fill="#52514e">8.60</text>
+<line x1="64" x2="770" y1="259.6" y2="259.6" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="263.6" text-anchor="end" font-size="12" fill="#52514e">8.80</text>
+<line x1="64" x2="770" y1="186.4" y2="186.4" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="190.4" text-anchor="end" font-size="12" fill="#52514e">9.00</text>
+<line x1="64" x2="770" y1="113.2" y2="113.2" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="117.2" text-anchor="end" font-size="12" fill="#52514e">9.20</text>
+<line x1="64" x2="770" y1="40.0" y2="40.0" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="44.0" text-anchor="end" font-size="12" fill="#52514e">9.40</text>
+<text x="64.0" y="426" text-anchor="middle" font-size="12" fill="#52514e">0</text>
+<text x="205.2" y="426" text-anchor="middle" font-size="12" fill="#52514e">120</text>
+<text x="346.4" y="426" text-anchor="middle" font-size="12" fill="#52514e">240</text>
+<text x="487.6" y="426" text-anchor="middle" font-size="12" fill="#52514e">360</text>
+<text x="628.8" y="426" text-anchor="middle" font-size="12" fill="#52514e">480</text>
+<text x="770.0" y="426" text-anchor="middle" font-size="12" fill="#52514e">600</text>
+<text x="417" y="450" text-anchor="middle" font-size="12" fill="#52514e">step</text>
+<line x1="64" x2="770" y1="204.7" y2="204.7" stroke="#868e96" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="776" y="208.7" font-size="12" fill="#868e96">chance</text>
+<polyline fill="none" stroke="#2a6fdb" stroke-width="2" points="87.5,-872.8 111.1,-122.6 134.6,59.7 158.1,105.3 181.7,141.9 205.2,164.0 228.7,177.4 252.3,197.3 275.8,202.1 299.3,216.0 322.9,220.1 346.4,230.0 369.9,241.5 393.5,251.5 417.0,254.4 440.5,261.7 464.1,262.3 487.6,281.2 511.1,291.3 534.7,292.7 558.2,291.0 581.7,302.9 605.3,311.4 628.8,311.9 652.3,317.7 675.9,326.2 699.4,324.7 722.9,325.5 746.5,326.8 770.0,330.4"/>
+<text x="776.0" y="54.0" font-size="12" fill="#2a6fdb">D1 10.5M lr1e-3 (8.607)</text>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="87.5,-862.6 111.1,-49.0 134.6,156.9 158.1,172.7 181.7,178.2 205.2,182.4 228.7,190.7 252.3,196.2 275.8,203.6 299.3,207.4 322.9,213.7 346.4,220.4 369.9,229.0 393.5,235.2 417.0,243.9 440.5,251.1 464.1,255.8 487.6,265.7 511.1,271.1 534.7,276.2 558.2,280.9 581.7,291.9 605.3,296.7"/>
+<text x="776.0" y="72.0" font-size="12" fill="#d9480f">D5 10.5M long untied (8.699)</text>
+<polyline fill="none" stroke="#2b8a3e" stroke-width="2" points="87.5,-862.6 111.1,-48.9 134.6,156.9 158.1,172.7 181.7,178.2 205.2,182.5 228.7,190.8 252.3,196.5 275.8,203.9 299.3,207.7 322.9,215.0 346.4,222.0 369.9,230.3 393.5,237.0 417.0,245.9 440.5,253.8 464.1,258.0 487.6,267.6 511.1,272.9 534.7,278.1 558.2,282.5"/>
+<text x="776.0" y="90.0" font-size="12" fill="#2b8a3e">D5 10.5M long tied (8.737)</text>
+<polyline fill="none" stroke="#862e9c" stroke-width="2" points="122.8,143.9 181.7,158.2 240.5,175.5 299.3,188.0 358.2,194.5 417.0,202.2 475.8,207.9 534.7,215.8 593.5,223.9 652.3,228.9 711.2,232.6 770.0,237.7"/>
+<text x="776.0" y="108.0" font-size="12" fill="#862e9c">D2 1.2M scratch (8.860)</text>
+<polyline fill="none" stroke="#c92a2a" stroke-width="2" points="122.8,-546.3 181.7,89.6 240.5,161.1 299.3,195.9 358.2,214.4 417.0,238.0 475.8,246.7 534.7,262.2 593.5,269.5 652.3,280.8 711.2,286.2 770.0,290.9"/>
+<text x="776.0" y="126.0" font-size="12" fill="#c92a2a">D3 1.2M pretrained (8.714)</text>
+</svg>

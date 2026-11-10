@@ -24,5 +24,6 @@
         (loop for tg in y for i from 0
               do (let ((lp (- (log (max 1d-30 (float (aref (funcall (funcall f "ACTS-PROBS") acts) (+ (* i v) tg)) 1d0))))))
                    (cond ((< i len) (incf first-sum lp)) ((> i len) (incf second-sum lp)))))))
-    (format t "{\"checkpoint\":~s,\"sequences\":~d,\"length\":~d,\"loss_first_copy\":~,4f,\"loss_second_copy\":~,4f,\"uniform\":~,4f}~%"
-            (opt-arg "ckpt" nil) n len (/ first-sum (* n len)) (/ second-sum (* n (1- len))) (log (float v 1d0)))))
+    (format t "{\"checkpoint\":~s,\"sequences\":~d,\"length\":~d,\"loss_first_copy\":~,4f,\"loss_second_copy\":~,4f,\"uniform\":~,4f,\"tie_gate\":~a}~%"
+            (opt-arg "ckpt" nil) n len (/ first-sum (* n len)) (/ second-sum (* n (1- len))) (log (float v 1d0))
+            (if (funcall (funcall f "CONFIG-TIE") cfg) (aref (svref (funcall (funcall f "MODEL-PARAMS") model) (funcall (funcall f "TIE-INDEX") cfg)) 0) "null"))))
