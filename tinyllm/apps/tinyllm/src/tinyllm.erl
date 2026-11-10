@@ -2,7 +2,8 @@
 %%   {ok, M} = tinyllm:train(tinyllm:erlang_corpus(), #{steps => 1500}),
 %%   tinyllm:generate(M, <<"-module(">>, 300, #{temperature => 0.7}).
 -module(tinyllm).
--export([train/2, generate/4, complete/4, chat/3, save/2, load/1, erlang_corpus/0, param_count/1]).
+-export([train/2, generate/4, complete/4, chat/3, save/2, load/1, erlang_corpus/0, param_count/1,
+         normalize/1, chat_prompt/1, sample_loop/8]).
 
 train(Corpus, Opts) -> tinyllm_train:train(Corpus, Opts).
 
@@ -63,18 +64,33 @@ complete(Model0, Prompt, Len, Opts) ->
                 {fun(C) -> tinyllm_tf:last_logits(PP, Cfg, C) end,
                  last_n_or_all(case Seed of [] -> [PadCtx]; _ -> Seed end, N)}
         end,
-    gen(LogitsFun, Ctx, N, Len, Temp, Inv, Tok, Stops, []).
+    {Text, Why, _} = sample_loop(fun(C) -> LogitsFun(C) end,
+                                 fun(C, I) -> last_n_or_all(C ++ [I], N) end,
+                                 Ctx, Len, Temp, Inv, Tok, Stops),
+    {Text, Why}.
 
-gen(_, _, _, 0, _, _, _, _, Acc) -> {tinyllm_tok:detokenize(lists:reverse(Acc)), length};
-gen(LogitsFun, Ctx, N, Len, Temp, Inv, Tok, Stops, Acc) ->
-    Logits0 = LogitsFun(Ctx),
+%% The sampling loop, shared by the stateless path above and by tinyllm_session (KV-cache).
+%%   LogitsFun(State) -> logits for the next token;  Push(State, TokenId) -> State with the token appended.
+%% Draws one random number per token, in the same order, whatever the state is, so equal logits
+%% and an equal seed give equal text. Returns {Text, stop | length, State}.
+%% Stops are matched only against the tail of the text (a stop string may span tokens), so the cost
+%% per token does not grow with the length of the reply.
+sample_loop(LogitsFun, Push, State, Len, Temp, Inv, Tok, Stops) ->
+    MaxStop = lists:max([0 | [byte_size(S) || S <- Stops]]),
+    gen(LogitsFun, Push, State, Len, Temp, Inv, Tok, Stops, MaxStop, <<>>).
+
+gen(_, _, State, 0, _, _, _, _, _, Text) -> {Text, length, State};
+gen(LogitsFun, Push, State, Len, Temp, Inv, Tok, Stops, MaxStop, Text) ->
+    Logits0 = LogitsFun(State),
     Logits = case Tok of word -> [-1.0e30 | tl(Logits0)]; char -> Logits0 end,   %% never emit <unk>
     I = tinyllm_nn:sample(tinyllm_nn:softmax(Logits, Temp), ok),
-    Acc1 = [element(I + 1, Inv) | Acc],
-    Text = tinyllm_tok:detokenize(lists:reverse(Acc1)),
-    case Stops =/= [] andalso binary:match(Text, Stops) of
-        {Pos, _} -> {binary:part(Text, 0, Pos), stop};
-        _ -> gen(LogitsFun, last_n_or_all(Ctx ++ [I], N), N, Len - 1, Temp, Inv, Tok, Stops, Acc1)
+    Piece = element(I + 1, Inv),
+    Text1 = <<Text/binary, Piece/binary>>,
+    %% a stop string ending in the new piece starts at most MaxStop - 1 bytes before it
+    From = max(0, byte_size(Text) - MaxStop + 1),
+    case Stops =/= [] andalso binary:match(Text1, Stops, [{scope, {From, byte_size(Text1) - From}}]) of
+        {Pos, _} -> {binary:part(Text1, 0, Pos), stop, Push(State, I)};
+        _ -> gen(LogitsFun, Push, Push(State, I), Len - 1, Temp, Inv, Tok, Stops, MaxStop, Text1)
     end.
 
 last_n_or_all(L, N) when length(L) > N -> lists:nthtail(length(L) - N, L);
@@ -85,12 +101,15 @@ last_n_or_all(L, _) -> L.
 %% (atom or binary keys; roles as atoms or binaries; system messages are ignored -
 %% this model has never seen them). Returns {Reply, stop | length}.
 chat(Model, Messages, Opts) ->
-    Turns = [turn(M) || M <- Messages],
-    Prompt = iolist_to_binary([[L, ": ", C, "\n"] || {L, C} <- Turns, L =/= skip]
-                              ++ ["Assistant:"]),
+    Prompt = chat_prompt(Messages),
     {Reply, Why} = complete(Model, Prompt, maps:get(max_chars, Opts, 200),
                             Opts#{stop => [<<"\n">>, <<"User:">>]}),
     {string:trim(Reply), Why}.
+
+%% The text the chat model is prompted with for a message list.
+chat_prompt(Messages) ->
+    Turns = [turn(M) || M <- Messages],
+    iolist_to_binary([[L, ": ", C, "\n"] || {L, C} <- Turns, L =/= skip] ++ ["Assistant:"]).
 
 turn(M) ->
     Role = field(role, M), Content = field(content, M),

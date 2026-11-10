@@ -5,7 +5,8 @@
 %% Tensors are nested lists; matrices are lists of rows (row j = weights of output unit j).
 %% Parameter keys are atoms or {Name, LayerIndex} tuples, so saved models load without new atoms.
 -module(tinyllm_tf).
--export([init/2, prepare/1, sequences/3, loss_grad/3, loss_only/3, last_logits/3, param_count/1]).
+-export([init/2, prepare/1, sequences/3, loss_grad/3, loss_only/3, last_logits/3, param_count/1,
+         cache_new/1, cache_len/1, cache_truncate/2, advance/4, step/4]).
 
 -import(tinyllm_nn, [dot/3, axpy/3, vadd/2, lincomb/3, acc_rows/3, zeros/1, matrix/4,
                      softmax/2, sub_at/2, matvec/3, zeros_like/1]).
@@ -259,3 +260,61 @@ last_logits(P0, Cfg, Ids) ->
     P = with_heads(P0, Cfg),
     {Xf, _} = forward(P, Cfg, Ids),
     matvec(maps:get(wout, P), maps:get(bout, P), lists:last(Xf)).
+
+%% ------------------------------------------------------------ KV-cache (incremental decoding)
+%% The cache holds, per layer and per head, the keys and values of every position seen so far, so
+%% step/4 only computes the NEW token: one row through each layer plus attention against the cached
+%% keys/values. It runs the same operations in the same order as forward/3 does for that row, so the
+%% logits are bit-for-bit the ones last_logits/3 gives for the whole prefix.
+%% Positions are absolute (learned position embeddings), so a cache is only valid for a prefix that
+%% starts at position 1: when a window slides, the cache must be rebuilt (see tinyllm_session).
+
+cache_new(#{layers := L, heads := H}) ->
+    #{n => 0, layers => [{lists:duplicate(H, []), lists:duplicate(H, [])} || _ <- lists:seq(1, L)]}.
+
+cache_len(#{n := N}) -> N.
+
+%% Keep only the first N positions (causal attention: they do not depend on later tokens).
+cache_truncate(#{n := M} = C, N) when N >= M -> C;
+cache_truncate(#{layers := Ls}, N) ->
+    #{n => N, layers => [{[lists:sublist(K, N) || K <- Ks], [lists:sublist(V, N) || V <- Vs]} || {Ks, Vs} <- Ls]}.
+
+%% Feed one token id at position n+1. P must be prepare/1'd. -> {Logits for the next token, Cache1}.
+step(P, Cfg, Cache, Id) ->
+    {XL, Cache1} = run_token(P, Cfg, Cache, Id),
+    {Xf, _} = ln_row(XL, maps:get(lnfg, P), maps:get(lnfb, P)),
+    {matvec(maps:get(wout, P), maps:get(bout, P), Xf), Cache1}.
+
+%% Like step/4 but only extends the cache: skips the final LayerNorm and the vocabulary projection, which
+%% is the most expensive single matrix product. Use it for every prompt token except the last.
+advance(P, Cfg, Cache, Id) -> element(2, run_token(P, Cfg, Cache, Id)).
+
+run_token(P, #{heads := H}, #{n := N, layers := Ls} = Cache, Id) ->
+    Pos = N + 1,
+    X0 = vadd(element(Id + 1, maps:get(et, P)), lists:nth(Pos, maps:get(p, P))),
+    {XL, Ls1} = step_layers(P, 1, X0, Ls, H, []),
+    {XL, Cache#{n := Pos, layers := Ls1}}.
+
+step_layers(_, _, X, [], _, Acc) -> {X, lists:reverse(Acc)};
+step_layers(P, I, X, [LC | Rest], H, Acc) ->
+    {X1, LC1} = layer_step(P, I, X, LC, H),
+    step_layers(P, I + 1, X1, Rest, H, [LC1 | Acc]).
+
+layer_step(P, I, Xin, {Ks, Vs}, Heads) ->
+    {Xn1, _} = ln_row(Xin, maps:get({ln1g, I}, P), maps:get({ln1b, I}, P)),
+    Q = mv(maps:get({wq, I}, P), Xn1), K = mv(maps:get({wk, I}, P), Xn1), V = mv(maps:get({wv, I}, P), Xn1),
+    D = length(Q), Dh = D div Heads, Scale = 1.0 / math:sqrt(Dh),
+    Qh = head_slices(Q, Heads, Dh), Kh = head_slices(K, Heads, Dh), Vh = head_slices(V, Heads, Dh),
+    Ks1 = [Kc ++ [Kn] || {Kc, Kn} <- lists:zip(Ks, Kh)],
+    Vs1 = [Vc ++ [Vn] || {Vc, Vn} <- lists:zip(Vs, Vh)],
+    Ctx = lists:append([begin
+                            A = softmax([dot(Qi, Kj, 0.0) * Scale || Kj <- Kc], 1.0),
+                            lincomb(A, Vc, Dh)
+                        end || {Qi, Kc, Vc} <- lists:zip3(Qh, Ks1, Vs1)]),
+    X2 = vadd(Xin, mv(maps:get({wo, I}, P), Ctx)),
+    {Xn2, _} = ln_row(X2, maps:get({ln2g, I}, P), maps:get({ln2b, I}, P)),
+    Hact = [max(0.0, Z) || Z <- matvec(maps:get({w1, I}, P), maps:get({b1, I}, P), Xn2)],
+    X3 = vadd(X2, matvec(maps:get({w2, I}, P), maps:get({b2, I}, P), Hact)),
+    {X3, {Ks1, Vs1}}.
+
+head_slices(Vec, Heads, Dh) -> [lists:sublist(Vec, H * Dh + 1, Dh) || H <- lists:seq(0, Heads - 1)].

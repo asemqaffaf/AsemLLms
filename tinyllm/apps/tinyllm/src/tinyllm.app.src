@@ -1,7 +1,7 @@
 {application, tinyllm, [
     {description, "A tiny neural language model, trained by parallel Erlang workers"},
     {vsn, "0.1.0"},
-    {registered, [tinyllm_sup, tinyllm_worker_sup]},
+    {registered, [tinyllm_sup, tinyllm_worker_sup, tinyllm_session_sup]},
     {mod, {tinyllm_app, []}},
     {applications, [kernel, stdlib, cowboy]},
     %% mnesia is started by tinyllm_memory (it must pick its directory first), so it is only included

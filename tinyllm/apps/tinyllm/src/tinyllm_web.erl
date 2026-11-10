@@ -8,7 +8,8 @@
 %%   POST /chat/delete   delete a saved conversation
 %%   GET  /api/conversations, GET|DELETE /api/conversations/<id>   saved chats (JSON, Mnesia)
 %%   GET  /v1/models, POST /v1/chat/completions   OpenAI-compatible, so other tools
-%%                       (and the `agents` workers) can use AsemLLM as an LLM
+%%                       (and the `agents` workers) can use AsemLLM as an LLM; an optional
+%%                       "session_id" keeps a KV-cache between requests (tinyllm_session)
 -module(tinyllm_web).
 -behaviour(cowboy_handler).
 -export([start/0, start/1, stop/0, init/2, execute/2]).
@@ -64,8 +65,13 @@ execute(Req, Env) ->
 load_model() ->
     Path = application:get_env(tinyllm, model_file, "model.bin"),
     case filelib:is_regular(Path) of
-        true -> persistent_term:put(tinyllm_model, tinyllm:load(Path));
-        false -> logger:warning("tinyllm: no model at ~s (train one: escript scripts/train.escript)", [Path])
+        true ->
+            M = tinyllm:load(Path),
+            persistent_term:put(tinyllm_model, M),
+            tinyllm_session:publish(model, M);    %% shared by all chat sessions (KV-cache)
+        false ->
+            tinyllm_session:unpublish(model),
+            logger:warning("tinyllm: no model at ~s (train one: escript scripts/train.escript)", [Path])
     end.
 
 model() -> persistent_term:get(tinyllm_model, undefined).
@@ -117,7 +123,9 @@ init(Req, chat_delete) ->
     case cowboy_req:method(Req) of
         <<"POST">> ->
             {ok, Form, Req1} = cowboy_req:read_urlencoded_body(Req, #{length => 1024}),
-            _ = tinyllm_memory:delete(proplists:get_value(<<"cid">>, Form, <<>>)),
+            Cid = proplists:get_value(<<"cid">>, Form, <<>>),
+            _ = tinyllm_memory:delete(Cid),
+            tinyllm_session:close(Cid),
             {ok, cowboy_req:reply(303, #{<<"location">> => <<"/chat">>}, Req1), chat_delete};
         _ -> {ok, html(405, <<"POST only">>, Req), chat_delete}
     end;
@@ -180,7 +188,9 @@ completions(Req0) ->
                                    S when is_integer(S) -> #{seed => S};
                                    _ -> #{}
                                end,
-                        {Reply, Why} = tinyllm:chat(M, Msgs, Opts#{temperature => Temp, max_chars => MaxTok}),
+                        ChatOpts = Opts#{temperature => Temp, max_chars => MaxTok},
+                        SessId = api_session_id(maps:get(<<"session_id">>, J, null)),
+                        {Reply, Why, Sess} = api_chat(M, SessId, Msgs, ChatOpts),
                         PromptChars = lists:sum([byte_size(C) || #{<<"content">> := C} <- Msgs]),
                         json(200, #{id => <<"chatcmpl-asemllm">>, object => <<"chat.completion">>,
                                     created => erlang:system_time(second), model => <<"AsemLLM">>,
@@ -188,10 +198,40 @@ completions(Req0) ->
                                                   message => #{role => <<"assistant">>, content => printable(Reply)},
                                                   finish_reason => case Why of stop -> <<"stop">>; length -> <<"length">> end}],
                                     usage => #{prompt_tokens => PromptChars, completion_tokens => byte_size(Reply),
-                                               total_tokens => PromptChars + byte_size(Reply)}}, Req)
+                                               total_tokens => PromptChars + byte_size(Reply)},
+                                    tinyllm_session => Sess}, Req)
                     catch throw:{bad, Msg} -> json(400, oai_error(Msg), Req) end;
                 {more, _, Req} -> json(413, oai_error(<<"body too large">>), Req)
             end
+    end.
+
+%% Optional "session_id" (<= 64 chars of [A-Za-z0-9_-]): requests that repeat it keep one KV-cache
+%% (tinyllm_session), so a client that resends the growing message list pays only for the new tokens.
+%% The reply is the same as without it. Without an id the call is stateless.
+api_session_id(null) -> none;
+api_session_id(Id) when is_binary(Id), byte_size(Id) >= 1, byte_size(Id) =< 64 ->
+    case re:run(Id, "^[A-Za-z0-9_-]+$", [{capture, none}]) of
+        match -> <<"api:", Id/binary>>;
+        nomatch -> throw({bad, <<"session_id may only contain letters, digits, _ and -">>})
+    end;
+api_session_id(_) -> throw({bad, <<"session_id must be a string of at most 64 characters">>}).
+
+api_chat(M, none, Msgs, Opts) ->
+    {Reply, Why} = tinyllm:chat(M, Msgs, Opts),
+    {Reply, Why, null};
+api_chat(M, Id, Msgs, Opts) ->
+    case application:get_env(tinyllm, sessions, true) andalso open_session(Id) of
+        {ok, Pid} ->
+            try
+                Before = tinyllm_session:info(Pid),
+                {Reply, Why} = tinyllm_session:chat(Pid, Msgs, Opts),
+                After = tinyllm_session:info(Pid),
+                {Reply, Why, #{computed => maps:get(computed, After) - maps:get(computed, Before),
+                               reused => maps:get(reused, After) - maps:get(reused, Before)}}
+            catch exit:_ -> {R, W} = tinyllm:chat(M, Msgs, Opts), {R, W, null} end;
+        _ ->
+            {Reply2, Why2} = tinyllm:chat(M, Msgs, Opts),
+            {Reply2, Why2, null}
     end.
 
 oai_error(Msg) -> #{error => #{message => Msg, type => <<"invalid_request_error">>}}.
@@ -288,22 +328,46 @@ chat_submit(Req0) ->
                     {qwen, {ok, Query2, Rs2}} when Rs2 =/= [] ->
                         case tinyllm_lmstudio:answer(Query2, Rs2) of
                             {ok, Text} -> {<<"Qwen">>, one_line(Text, 1200), undefined};
-                            {error, Why2} -> {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean), qwen_error(Why2)}
+                            {error, Why2} -> {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean, Cid), qwen_error(Why2)}
                         end;
                     {qwen, {ok, _, []}} ->
-                        {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean), <<"No search results to answer from.">>};
+                        {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean, Cid), <<"No search results to answer from.">>};
                     _ ->
-                        {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean), undefined}
+                        {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean, Cid), undefined}
                 end,
             New = <<Transcript/binary, "User: ", Clean/binary, "\n", Label/binary, ": ", Reply/binary, "\n">>,
             {Shown, Err2} = save_turns(Cid, [{<<"User">>, Clean}, {Label, Reply}], trim_transcript(New), Err),
             html(200, render_chat(Shown, <<>>, Err2, Web, Found, Cid), Req)
     end.
 
-tinyllm_reply(M, Transcript, Clean) ->
+tinyllm_reply(M, Transcript, Clean, Cid) ->
     Turns = parse_transcript(Transcript) ++ [#{<<"role">> => <<"user">>, <<"content">> => Clean}],
-    {Reply, _} = tinyllm:chat(M, Turns, #{temperature => 0.7, max_chars => 200}),
+    {Reply, _} = chat_reply(M, Cid, Turns, #{temperature => 0.7, max_chars => 200}),
     printable(Reply).
+
+%% Chat turns of a saved conversation run in that conversation's session (tinyllm_session), which keeps
+%% the KV-cache between turns; same replies as tinyllm:chat/3, less recomputation. Without a session
+%% (sessions disabled, memory off, too many open, or one that died) fall back to the stateless call.
+chat_reply(M, Cid, Turns, Opts) ->
+    case session_for(Cid) of
+        {ok, Pid} ->
+            try tinyllm_session:chat(Pid, Turns, Opts)
+            catch exit:_ -> tinyllm:chat(M, Turns, Opts) end;
+        none -> tinyllm:chat(M, Turns, Opts)
+    end.
+
+session_for(Id) ->
+    case application:get_env(tinyllm, sessions, true) andalso tinyllm_memory:enabled()
+         andalso tinyllm_memory:valid_id(Id) of
+        true -> open_session(Id);
+        false -> none
+    end.
+
+open_session(Id) ->
+    try tinyllm_session:get_or_start(Id, {pt, model}, #{evict => application:get_env(tinyllm, session_evict, 1)}) of
+        {ok, Pid} -> {ok, Pid};
+        _ -> none
+    catch _:_ -> none end.
 
 one_line(Text, Max) ->
     Flat = binary:replace(printable(Text), [<<"\r">>, <<"\n">>], <<" ">>, [global]),
@@ -426,7 +490,7 @@ conversations_api(<<"GET">>, Id, Req) ->
     end;
 conversations_api(<<"DELETE">>, Id, Req) when Id =/= undefined ->
     case tinyllm_memory:delete(Id) of
-        ok -> json(200, #{deleted => Id}, Req);
+        ok -> tinyllm_session:close(Id), json(200, #{deleted => Id}, Req);
         {error, bad_id} -> json(400, #{error => <<"bad conversation id">>}, Req);
         {error, disabled} -> json(503, #{error => <<"conversation memory is disabled">>}, Req);
         {error, _} -> json(500, #{error => <<"could not delete the conversation">>}, Req)
