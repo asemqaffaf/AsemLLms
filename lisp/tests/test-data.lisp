@@ -25,6 +25,7 @@
 (defun tmpdir (name) (format nil "/tmp/asem-lisp-data-~a-~d" name (get-universal-time)))
 (defun build-in (dir docs &rest cfg) (apply #'build (feed docs) dir (append cfg *cfg*)))
 (defun stat (m key) (or (json-get (json-get m "stats") key) 0))
+(defun count-substring (needle hay) (loop with n = 0 with i = 0 for j = (search needle hay :start2 i) while j do (incf n) (setf i (1+ j)) finally (return n)))
 (defun rm-rf (dir) (sb-ext:run-program "/bin/rm" (list "-rf" dir)))
 
 (deftest sha256-standard-vectors
@@ -171,6 +172,18 @@
   ;; without :test-permille the manifest has no test split, as before
   (let* ((dir (tmpdir "u")) (m (build-in dir (make-docs 300 :seed 4))))
     (check (null (json-get (json-get m "splits") "test")))
+    (rm-rf dir)))
+
+(deftest manifest-config-lists-each-setting-once-with-the-effective-value
+  (let* ((dir (tmpdir "k")) (m (build-in dir (make-docs 200 :seed 8) :min-edu-score 3.5d0 :val-permille 90))
+         (keys (mapcar #'car (cdr (json-get m "config")))))
+    (check-equal (length keys) (length (remove-duplicates keys :test #'string=)))        ; no duplicate keys
+    (check-equal (json-get (json-get m "config") "min_edu_score") 3.5d0)                  ; the override, not the default
+    (check-equal (json-get (json-get m "config") "val_permille") 90)
+    ;; and what is on disk reads the same with a last-wins JSON reader
+    (let ((text (read-file (format nil "~a/manifest.json" dir))))
+      (check (= 1 (count-substring "\"min_edu_score\"" text)) "the key is written once"))
+    (check (stringp (verify dir)))
     (rm-rf dir)))
 
 (deftest empty-input-is-an-error

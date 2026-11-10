@@ -1,0 +1,105 @@
+{
+  "accuracy": {
+    "bare_prior_no_input": 0.2777777777777778,
+    "calibrated_sum_logprob_minus_no_input": 0.3,
+    "mismatched_question": 0.27037037037037037,
+    "no_question_context_kept": 0.2777777777777778,
+    "with_question_mean_logprob": 0.28888888888888886,
+    "with_question_sum_logprob": 0.25555555555555554
+  },
+  "by_category": {
+    "fact": {
+      "accuracy_bare_prior": 0.3333333333333333,
+      "accuracy_calibrated": 0.3333333333333333,
+      "accuracy_mean_logprob": 0.3,
+      "accuracy_mismatched_question": 0.28888888888888886,
+      "accuracy_no_question": 0.3333333333333333,
+      "accuracy_sum_logprob": 0.3333333333333333,
+      "margin_gain_sum_mean": 0.2085693473617235,
+      "margin_gain_sum_z": 1.0830973950152485,
+      "margin_mean": -0.9193320983813869,
+      "n": 30,
+      "pmi_sum_mean": 0.8975744015640681,
+      "pmi_sum_z": 3.3946165673732067
+    },
+    "reading": {
+      "accuracy_bare_prior": 0.2,
+      "accuracy_calibrated": 0.13333333333333333,
+      "accuracy_mean_logprob": 0.23333333333333334,
+      "accuracy_mismatched_question": 0.2222222222222222,
+      "accuracy_no_question": 0.2,
+      "accuracy_sum_logprob": 0.23333333333333334,
+      "margin_gain_sum_mean": -0.20651074955239893,
+      "margin_gain_sum_z": -1.4355754859699965,
+      "margin_mean": -0.8699783612860159,
+      "n": 30,
+      "pmi_sum_mean": 0.67817285147806,
+      "pmi_sum_z": 4.652321730789642
+    },
+    "reasoning": {
+      "accuracy_bare_prior": 0.3,
+      "accuracy_calibrated": 0.43333333333333335,
+      "accuracy_mean_logprob": 0.3333333333333333,
+      "accuracy_mismatched_question": 0.3,
+      "accuracy_no_question": 0.3,
+      "accuracy_sum_logprob": 0.2,
+      "margin_gain_sum_mean": 0.07841792653004327,
+      "margin_gain_sum_z": 0.45780131596746415,
+      "margin_mean": -0.34884506546788746,
+      "n": 30,
+      "pmi_sum_mean": 0.6079078439209198,
+      "pmi_sum_z": 3.5923052356298992
+    }
+  },
+  "chance_95_upper": 0.33946135105917713,
+  "checkpoint": "data/runs/final/3m/best.ckpt",
+  "conditions_on_the_question": {
+    "accuracy_above_chance_band": false,
+    "accuracy_exceeds_no_question_by_5_points": false,
+    "answer_pmi_z_above_3_weak_question_type_effect_possible": true,
+    "margin_gain_z_above_3_sum_and_mean": false
+  },
+  "deterministic": true,
+  "eval_file": "/Users/asemqaffaf/AsemLLMs/lisp/bin/../eval/asem_eval.jsonl",
+  "frequency_bias": {
+    "accuracy_of_always_picking_the_most_frequent_option": 0.2111111111111111,
+    "corr_option_token_frequency_vs_prior_score": 0.617322802276025,
+    "corr_option_token_frequency_vs_score": 0.6271722276469128,
+    "model_picks_the_most_frequent_option": 0.5333333333333333
+  },
+  "length_bias": {
+    "corr_length_vs_mean_logprob": 0.5233308148703866,
+    "corr_length_vs_sum_logprob": -0.8712227642101987,
+    "expected_if_unbiased": 0.25,
+    "items_with_unique_longest_option": 38,
+    "items_with_unique_shortest_option": 22,
+    "mean_option_tokens_correct": 2.111111111111111,
+    "mean_option_tokens_wrong": 2.1777777777777776,
+    "sum_logprob_picks_the_unique_longest": 0.0,
+    "sum_logprob_picks_the_unique_shortest": 0.8181818181818182
+  },
+  "margin": {
+    "mean_logprob_fraction_positive": 0.28888888888888886,
+    "mean_logprob_mean": -0.7127185083784301,
+    "mean_logprob_median": -0.5867210142314434,
+    "prior_only_mean": -0.7549836532481845,
+    "sum_logprob_mean": -1.429647408777641
+  },
+  "question_sensitivity": {
+    "margin_calibrated_mean": -0.3955906132029163,
+    "margin_gain_mean_logprob_mean": 0.06168908415442722,
+    "margin_gain_mean_logprob_z": 1.260972600036921,
+    "margin_gain_sum_mean": 0.026825508113122634,
+    "margin_gain_sum_z": 0.27098235176327756,
+    "mean_total_variation_of_option_distribution": 0.1216808752208086,
+    "mismatched_questions_per_item": 3,
+    "pmi_mean_logprob_mean": 0.43411398819429287,
+    "pmi_sum_fraction_positive": 0.8444444444444444,
+    "pmi_sum_mean_nats": 0.7278850323210159,
+    "pmi_sum_standard_error": 0.11481699907260211,
+    "pmi_sum_z": 6.339523225657144,
+    "top_option_unchanged_by_other_question": 0.8444444444444444
+  },
+  "questions": 90,
+  "random_baseline": 0.25
+}

@@ -1,0 +1,105 @@
+{
+  "accuracy": {
+    "bare_prior_no_input": 0.25555555555555554,
+    "calibrated_sum_logprob_minus_no_input": 0.34444444444444444,
+    "mismatched_question": 0.24074074074074073,
+    "no_question_context_kept": 0.2111111111111111,
+    "with_question_mean_logprob": 0.25555555555555554,
+    "with_question_sum_logprob": 0.23333333333333334
+  },
+  "by_category": {
+    "fact": {
+      "accuracy_bare_prior": 0.26666666666666666,
+      "accuracy_calibrated": 0.4,
+      "accuracy_mean_logprob": 0.26666666666666666,
+      "accuracy_mismatched_question": 0.2222222222222222,
+      "accuracy_no_question": 0.26666666666666666,
+      "accuracy_sum_logprob": 0.2,
+      "margin_gain_sum_mean": 0.22724298073185822,
+      "margin_gain_sum_z": 1.1888561362297152,
+      "margin_mean": -1.110663411890467,
+      "n": 30,
+      "pmi_sum_mean": 0.9069024794631535,
+      "pmi_sum_z": 3.5680906606264684
+    },
+    "reading": {
+      "accuracy_bare_prior": 0.3,
+      "accuracy_calibrated": 0.2,
+      "accuracy_mean_logprob": 0.2,
+      "accuracy_mismatched_question": 0.23333333333333334,
+      "accuracy_no_question": 0.16666666666666666,
+      "accuracy_sum_logprob": 0.3,
+      "margin_gain_sum_mean": -0.4243974853513969,
+      "margin_gain_sum_z": -1.932546943389941,
+      "margin_mean": -0.9426992573113078,
+      "n": 30,
+      "pmi_sum_mean": 0.6567484268297752,
+      "pmi_sum_z": 3.1019258125872327
+    },
+    "reasoning": {
+      "accuracy_bare_prior": 0.2,
+      "accuracy_calibrated": 0.43333333333333335,
+      "accuracy_mean_logprob": 0.3,
+      "accuracy_mismatched_question": 0.26666666666666666,
+      "accuracy_no_question": 0.2,
+      "accuracy_sum_logprob": 0.2,
+      "margin_gain_sum_mean": 7.979296147823463e-4,
+      "margin_gain_sum_z": 0.007077342467048588,
+      "margin_mean": -0.4556914572505694,
+      "n": 30,
+      "pmi_sum_mean": 0.7931407763726183,
+      "pmi_sum_z": 3.8390203711538278
+    }
+  },
+  "chance_95_upper": 0.33946135105917713,
+  "checkpoint": "data/runs/final/10m/best.ckpt",
+  "conditions_on_the_question": {
+    "accuracy_above_chance_band": false,
+    "accuracy_exceeds_no_question_by_5_points": false,
+    "answer_pmi_z_above_3_weak_question_type_effect_possible": true,
+    "margin_gain_z_above_3_sum_and_mean": false
+  },
+  "deterministic": true,
+  "eval_file": "/Users/asemqaffaf/AsemLLMs/lisp/bin/../eval/asem_eval.jsonl",
+  "frequency_bias": {
+    "accuracy_of_always_picking_the_most_frequent_option": 0.2111111111111111,
+    "corr_option_token_frequency_vs_prior_score": 0.6833330172705075,
+    "corr_option_token_frequency_vs_score": 0.6728117974831674,
+    "model_picks_the_most_frequent_option": 0.5444444444444444
+  },
+  "length_bias": {
+    "corr_length_vs_mean_logprob": 0.479984318108292,
+    "corr_length_vs_sum_logprob": -0.8576644530948939,
+    "expected_if_unbiased": 0.25,
+    "items_with_unique_longest_option": 38,
+    "items_with_unique_shortest_option": 22,
+    "mean_option_tokens_correct": 2.111111111111111,
+    "mean_option_tokens_wrong": 2.1777777777777776,
+    "sum_logprob_picks_the_unique_longest": 0.0,
+    "sum_logprob_picks_the_unique_shortest": 0.8636363636363636
+  },
+  "margin": {
+    "mean_logprob_fraction_positive": 0.25555555555555554,
+    "mean_logprob_mean": -0.8363513754841149,
+    "mean_logprob_median": -0.5652839646985135,
+    "prior_only_mean": -0.8536030729563423,
+    "sum_logprob_mean": -1.4758728658366533
+  },
+  "question_sensitivity": {
+    "margin_calibrated_mean": -0.4485096691797177,
+    "margin_gain_mean_logprob_mean": 0.01235024737953037,
+    "margin_gain_mean_logprob_z": 0.25402549307204847,
+    "margin_gain_sum_mean": -0.06545219166825211,
+    "margin_gain_sum_z": -0.6128303986962076,
+    "mean_total_variation_of_option_distribution": 0.13926236414086005,
+    "mismatched_questions_per_item": 3,
+    "pmi_mean_logprob_mean": 0.48179640823998193,
+    "pmi_sum_fraction_positive": 0.7666666666666667,
+    "pmi_sum_mean_nats": 0.7855972275551819,
+    "pmi_sum_standard_error": 0.12899260936621226,
+    "pmi_sum_z": 6.090249909782488,
+    "top_option_unchanged_by_other_question": 0.7962962962962963
+  },
+  "questions": 90,
+  "random_baseline": 0.25
+}

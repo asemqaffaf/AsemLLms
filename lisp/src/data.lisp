@@ -162,9 +162,14 @@
 
 ;;; ------------------------------------------------------------------ build
 (defun config-json (c)
-  (cons :obj (loop for (k v) on c by #'cddr
-                   collect (cons (substitute #\_ #\- (string-downcase (symbol-name k)))
-                                 (cond ((eq v t) :true) ((null v) :false) (t v))))))
+  "The effective settings, each key once. C is overrides followed by defaults, so the first occurrence of a key wins;
+listing the shadowed defaults too would make the manifest ambiguous (a reader that takes the last duplicate sees the wrong value)."
+  (let ((seen nil))
+    (cons :obj (loop for (k v) on c by #'cddr
+                     unless (member k seen)
+                       collect (progn (push k seen)
+                                      (cons (substitute #\_ #\- (string-downcase (symbol-name k)))
+                                            (cond ((eq v t) :true) ((null v) :false) (t v))))))))
 
 (defun utf8-bytes (s) (length (sb-ext:string-to-octets s :external-format :utf-8)))
 

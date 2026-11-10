@@ -1,0 +1,164 @@
+{"event":"start","size":"1m","params":1155392,"ctx":128,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":8192,"steps":7300,"batch":32,"workers":8,"lr":0.010000,"seed":1,"train_tokens":11088164,"val_tokens":125724,"data_version":"e8c6745b968d9efc","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":9.166477,"val_ppl":9570.849363,"tokens_per_sec":0.000000,"rss_mb":702.093750,"peak_rss_mb":702.093750,"answer_accuracy":0.177778,"answer_accuracy_sum":0.277778,"answer_margin":-0.387121,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.133333,"acc_reasoning":0.133333,"sample":" statesutch perceived unc facinglow\u0011 opp measures agents|| Irish bonerop Fred Greenland completely Mughwrit ch expla32 contextful"}
+{"event":"train","step":50,"tokens":204800,"train_loss":8.236210,"grad_norm":0.253778,"lr":0.002500}
+{"event":"train","step":100,"tokens":409600,"train_loss":7.139484,"grad_norm":0.222192,"lr":0.005000}
+{"event":"train","step":150,"tokens":614400,"train_loss":6.604112,"grad_norm":0.244767,"lr":0.007500}
+{"event":"train","step":200,"tokens":819200,"train_loss":6.347680,"grad_norm":0.222577,"lr":0.010000}
+{"event":"train","step":250,"tokens":1024000,"train_loss":6.204340,"grad_norm":0.238528,"lr":0.009999}
+{"event":"train","step":300,"tokens":1228800,"train_loss":6.057330,"grad_norm":0.216224,"lr":0.009996}
+{"event":"train","step":350,"tokens":1433600,"train_loss":5.964936,"grad_norm":0.197994,"lr":0.009990}
+{"event":"train","step":400,"tokens":1638400,"train_loss":5.883774,"grad_norm":0.205486,"lr":0.009983}
+{"event":"train","step":450,"tokens":1843200,"train_loss":5.807267,"grad_norm":0.220502,"lr":0.009973}
+{"event":"train","step":500,"tokens":2048000,"train_loss":5.754591,"grad_norm":0.220116,"lr":0.009961}
+{"event":"eval","step":500,"tokens":2048000,"train_loss":6.399972,"val_loss":5.910794,"val_ppl":368.998842,"tokens_per_sec":33846.747283,"rss_mb":669.843750,"peak_rss_mb":702.093750,"answer_accuracy":0.255556,"answer_accuracy_sum":0.255556,"answer_margin":-0.837562,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.266667,"acc_reasoning":0.300000,"sample":" new knowledge are able to the:\nCPS: The Monlie Reunicle must be in central were the"}
+{"event":"train","step":550,"tokens":2252800,"train_loss":5.689372,"grad_norm":0.243457,"lr":0.009946}
+{"event":"train","step":600,"tokens":2457600,"train_loss":5.642867,"grad_norm":0.212469,"lr":0.009930}
+{"event":"train","step":650,"tokens":2662400,"train_loss":5.591427,"grad_norm":0.214573,"lr":0.009911}
+{"event":"train","step":700,"tokens":2867200,"train_loss":5.557012,"grad_norm":0.200869,"lr":0.009891}
+{"event":"train","step":750,"tokens":3072000,"train_loss":5.507305,"grad_norm":0.247430,"lr":0.009868}
+{"event":"train","step":800,"tokens":3276800,"train_loss":5.473744,"grad_norm":0.198176,"lr":0.009843}
+{"event":"train","step":850,"tokens":3481600,"train_loss":5.427078,"grad_norm":0.189840,"lr":0.009816}
+{"event":"train","step":900,"tokens":3686400,"train_loss":5.405841,"grad_norm":0.217305,"lr":0.009786}
+{"event":"train","step":950,"tokens":3891200,"train_loss":5.379235,"grad_norm":0.230813,"lr":0.009755}
+{"event":"train","step":1000,"tokens":4096000,"train_loss":5.370984,"grad_norm":0.203996,"lr":0.009722}
+{"event":"eval","step":1000,"tokens":4096000,"train_loss":5.504486,"val_loss":5.547371,"val_ppl":256.562254,"tokens_per_sec":34932.645833,"rss_mb":541.843750,"peak_rss_mb":702.093750,"answer_accuracy":0.255556,"answer_accuracy_sum":0.244444,"answer_margin":-0.968826,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.266667,"acc_reasoning":0.300000,"sample":" “ch society” although the) of the nominal law was a best threat of political identity, and greater than a"}
+{"event":"train","step":1050,"tokens":4300800,"train_loss":5.331268,"grad_norm":0.193019,"lr":0.009686}
+{"event":"train","step":1100,"tokens":4505600,"train_loss":5.311521,"grad_norm":0.219324,"lr":0.009649}
+{"event":"train","step":1150,"tokens":4710400,"train_loss":5.272388,"grad_norm":0.205676,"lr":0.009609}
+{"event":"train","step":1200,"tokens":4915200,"train_loss":5.263624,"grad_norm":0.207315,"lr":0.009567}
+{"event":"train","step":1250,"tokens":5120000,"train_loss":5.239234,"grad_norm":0.219830,"lr":0.009524}
+{"event":"train","step":1300,"tokens":5324800,"train_loss":5.223444,"grad_norm":0.210283,"lr":0.009478}
+{"event":"train","step":1350,"tokens":5529600,"train_loss":5.203325,"grad_norm":0.209510,"lr":0.009431}
+{"event":"train","step":1400,"tokens":5734400,"train_loss":5.174337,"grad_norm":0.220645,"lr":0.009381}
+{"event":"train","step":1450,"tokens":5939200,"train_loss":5.168176,"grad_norm":0.276104,"lr":0.009330}
+{"event":"train","step":1500,"tokens":6144000,"train_loss":5.161393,"grad_norm":0.224826,"lr":0.009277}
+{"event":"eval","step":1500,"tokens":6144000,"train_loss":5.234871,"val_loss":5.324209,"val_ppl":205.246023,"tokens_per_sec":34650.525342,"rss_mb":662.953125,"peak_rss_mb":702.093750,"answer_accuracy":0.200000,"answer_accuracy_sum":0.233333,"answer_margin":-0.789219,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.266667,"acc_reasoning":0.166667,"sample":" Dead Act of 1964,\nMestletonmacrizic England. While herreen fairly,"}
+{"event":"train","step":1550,"tokens":6348800,"train_loss":5.134557,"grad_norm":0.257091,"lr":0.009222}
+{"event":"train","step":1600,"tokens":6553600,"train_loss":5.121819,"grad_norm":0.264693,"lr":0.009165}
+{"event":"train","step":1650,"tokens":6758400,"train_loss":5.119852,"grad_norm":0.200221,"lr":0.009106}
+{"event":"train","step":1700,"tokens":6963200,"train_loss":5.109578,"grad_norm":0.259266,"lr":0.009046}
+{"event":"train","step":1750,"tokens":7168000,"train_loss":5.079758,"grad_norm":0.208159,"lr":0.008984}
+{"event":"train","step":1800,"tokens":7372800,"train_loss":5.080549,"grad_norm":0.249381,"lr":0.008920}
+{"event":"train","step":1850,"tokens":7577600,"train_loss":5.068958,"grad_norm":0.222537,"lr":0.008854}
+{"event":"train","step":1900,"tokens":7782400,"train_loss":5.056152,"grad_norm":0.230770,"lr":0.008787}
+{"event":"train","step":1950,"tokens":7987200,"train_loss":5.027339,"grad_norm":0.211908,"lr":0.008718}
+{"event":"train","step":2000,"tokens":8192000,"train_loss":5.030034,"grad_norm":0.227254,"lr":0.008648}
+{"event":"eval","step":2000,"tokens":8192000,"train_loss":5.082860,"val_loss":5.221857,"val_ppl":185.278010,"tokens_per_sec":33734.630483,"rss_mb":660.859375,"peak_rss_mb":702.093750,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.811430,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.133333,"acc_reasoning":0.333333,"sample":" Fertificic poet,\nCons representing the squaken a larger image of unequal. Zasi"}
+{"event":"train","step":2050,"tokens":8396800,"train_loss":5.029809,"grad_norm":0.255391,"lr":0.008576}
+{"event":"train","step":2100,"tokens":8601600,"train_loss":5.030213,"grad_norm":0.231253,"lr":0.008503}
+{"event":"train","step":2150,"tokens":8806400,"train_loss":5.003311,"grad_norm":0.208464,"lr":0.008428}
+{"event":"train","step":2200,"tokens":9011200,"train_loss":4.984803,"grad_norm":0.208688,"lr":0.008351}
+{"event":"train","step":2250,"tokens":9216000,"train_loss":4.996433,"grad_norm":0.260282,"lr":0.008274}
+{"event":"train","step":2300,"tokens":9420800,"train_loss":4.980538,"grad_norm":0.211021,"lr":0.008195}
+{"event":"train","step":2350,"tokens":9625600,"train_loss":4.971835,"grad_norm":0.222117,"lr":0.008114}
+{"event":"train","step":2400,"tokens":9830400,"train_loss":4.974959,"grad_norm":0.240504,"lr":0.008033}
+{"event":"train","step":2450,"tokens":10035200,"train_loss":4.954014,"grad_norm":0.250797,"lr":0.007950}
+{"event":"train","step":2500,"tokens":10240000,"train_loss":4.951218,"grad_norm":0.309140,"lr":0.007866}
+{"event":"eval","step":2500,"tokens":10240000,"train_loss":4.987713,"val_loss":5.128316,"val_ppl":168.732709,"tokens_per_sec":34158.429532,"rss_mb":659.250000,"peak_rss_mb":702.093750,"answer_accuracy":0.233333,"answer_accuracy_sum":0.233333,"answer_margin":-0.754515,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.300000,"acc_reasoning":0.200000,"sample":" Methys that ritual\nEla Murange (the horntle of England), the Jean Ser"}
+{"event":"train","step":2550,"tokens":10444800,"train_loss":4.936433,"grad_norm":0.314514,"lr":0.007780}
+{"event":"train","step":2600,"tokens":10649600,"train_loss":4.938511,"grad_norm":0.323435,"lr":0.007694}
+{"event":"train","step":2650,"tokens":10854400,"train_loss":4.929612,"grad_norm":0.232411,"lr":0.007607}
+{"event":"train","step":2700,"tokens":11059200,"train_loss":4.922781,"grad_norm":0.232263,"lr":0.007518}
+{"event":"train","step":2750,"tokens":11264000,"train_loss":4.926725,"grad_norm":0.239911,"lr":0.007429}
+{"event":"train","step":2800,"tokens":11468800,"train_loss":4.909066,"grad_norm":0.222624,"lr":0.007338}
+{"event":"train","step":2850,"tokens":11673600,"train_loss":4.875130,"grad_norm":0.245190,"lr":0.007247}
+{"event":"train","step":2900,"tokens":11878400,"train_loss":4.907441,"grad_norm":0.267037,"lr":0.007155}
+{"event":"train","step":2950,"tokens":12083200,"train_loss":4.879496,"grad_norm":0.215195,"lr":0.007062}
+{"event":"train","step":3000,"tokens":12288000,"train_loss":4.865756,"grad_norm":0.228637,"lr":0.006968}
+{"event":"eval","step":3000,"tokens":12288000,"train_loss":4.909095,"val_loss":5.083205,"val_ppl":161.290175,"tokens_per_sec":34025.313737,"rss_mb":665.781250,"peak_rss_mb":702.093750,"answer_accuracy":0.200000,"answer_accuracy_sum":0.222222,"answer_margin":-0.991488,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.200000,"acc_reasoning":0.166667,"sample":"odore comes from Empire, a land to Warsaw a star as a young influence of German senate the Germans in the"}
+{"event":"train","step":3050,"tokens":12492800,"train_loss":4.878837,"grad_norm":0.253919,"lr":0.006874}
+{"event":"train","step":3100,"tokens":12697600,"train_loss":4.874930,"grad_norm":0.296851,"lr":0.006778}
+{"event":"train","step":3150,"tokens":12902400,"train_loss":4.860669,"grad_norm":0.266755,"lr":0.006683}
+{"event":"train","step":3200,"tokens":13107200,"train_loss":4.844140,"grad_norm":0.299457,"lr":0.006586}
+{"event":"train","step":3250,"tokens":13312000,"train_loss":4.845244,"grad_norm":0.226087,"lr":0.006489}
+{"event":"train","step":3300,"tokens":13516800,"train_loss":4.842824,"grad_norm":0.287313,"lr":0.006392}
+{"event":"train","step":3350,"tokens":13721600,"train_loss":4.841065,"grad_norm":0.307227,"lr":0.006294}
+{"event":"train","step":3400,"tokens":13926400,"train_loss":4.839648,"grad_norm":0.244616,"lr":0.006196}
+{"event":"train","step":3450,"tokens":14131200,"train_loss":4.836992,"grad_norm":0.234160,"lr":0.006098}
+{"event":"train","step":3500,"tokens":14336000,"train_loss":4.833267,"grad_norm":0.256862,"lr":0.005999}
+{"event":"eval","step":3500,"tokens":14336000,"train_loss":4.849762,"val_loss":5.032561,"val_ppl":153.325144,"tokens_per_sec":34783.954447,"rss_mb":665.046875,"peak_rss_mb":702.093750,"answer_accuracy":0.311111,"answer_accuracy_sum":0.311111,"answer_margin":-0.753210,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.233333,"acc_reasoning":0.366667,"sample":" Ethama was Emperor, `srepreneoms, Novlungry, and instead of the"}
+{"event":"train","step":3550,"tokens":14540800,"train_loss":4.826647,"grad_norm":0.253649,"lr":0.005900}
+{"event":"train","step":3600,"tokens":14745600,"train_loss":4.818986,"grad_norm":0.252991,"lr":0.005800}
+{"event":"train","step":3650,"tokens":14950400,"train_loss":4.812750,"grad_norm":0.228448,"lr":0.005701}
+{"event":"train","step":3700,"tokens":15155200,"train_loss":4.791829,"grad_norm":0.274049,"lr":0.005602}
+{"event":"train","step":3750,"tokens":15360000,"train_loss":4.812777,"grad_norm":0.236563,"lr":0.005502}
+{"event":"train","step":3800,"tokens":15564800,"train_loss":4.826120,"grad_norm":0.239928,"lr":0.005402}
+{"event":"train","step":3850,"tokens":15769600,"train_loss":4.796853,"grad_norm":0.246129,"lr":0.005303}
+{"event":"train","step":3900,"tokens":15974400,"train_loss":4.793730,"grad_norm":0.251448,"lr":0.005204}
+{"event":"train","step":3950,"tokens":16179200,"train_loss":4.790663,"grad_norm":0.245415,"lr":0.005104}
+{"event":"train","step":4000,"tokens":16384000,"train_loss":4.798298,"grad_norm":0.273341,"lr":0.005005}
+{"event":"eval","step":4000,"tokens":16384000,"train_loss":4.806865,"val_loss":4.984389,"val_ppl":146.114204,"tokens_per_sec":34621.498189,"rss_mb":672.671875,"peak_rss_mb":702.093750,"answer_accuracy":0.288889,"answer_accuracy_sum":0.288889,"answer_margin":-0.841564,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.233333,"acc_reasoning":0.366667,"sample":" Nishder biblical/-aural anger. The baseinso known as human figures, in centralization,"}
+{"event":"train","step":4050,"tokens":16588800,"train_loss":4.769941,"grad_norm":0.278430,"lr":0.004906}
+{"event":"train","step":4100,"tokens":16793600,"train_loss":4.771921,"grad_norm":0.282422,"lr":0.004808}
+{"event":"train","step":4150,"tokens":16998400,"train_loss":4.761493,"grad_norm":0.283060,"lr":0.004710}
+{"event":"train","step":4200,"tokens":17203200,"train_loss":4.777572,"grad_norm":0.256941,"lr":0.004612}
+{"event":"train","step":4250,"tokens":17408000,"train_loss":4.757888,"grad_norm":0.254365,"lr":0.004514}
+{"event":"train","step":4300,"tokens":17612800,"train_loss":4.764668,"grad_norm":0.285040,"lr":0.004418}
+{"event":"train","step":4350,"tokens":17817600,"train_loss":4.763621,"grad_norm":0.312922,"lr":0.004321}
+{"event":"train","step":4400,"tokens":18022400,"train_loss":4.739637,"grad_norm":0.280051,"lr":0.004225}
+{"event":"train","step":4450,"tokens":18227200,"train_loss":4.734851,"grad_norm":0.312816,"lr":0.004130}
+{"event":"train","step":4500,"tokens":18432000,"train_loss":4.748139,"grad_norm":0.247312,"lr":0.004036}
+{"event":"eval","step":4500,"tokens":18432000,"train_loss":4.758973,"val_loss":4.947898,"val_ppl":140.878553,"tokens_per_sec":34011.516552,"rss_mb":674.500000,"peak_rss_mb":702.093750,"answer_accuracy":0.288889,"answer_accuracy_sum":0.322222,"answer_margin":-0.766731,"random_baseline":0.250000,"acc_fact":0.366667,"acc_reading":0.166667,"acc_reasoning":0.333333,"sample":" Pendens was indeed anin in Warsaw. Hipponus later, using Gazcano,"}
+{"event":"train","step":4550,"tokens":18636800,"train_loss":4.739959,"grad_norm":0.241979,"lr":0.003942}
+{"event":"train","step":4600,"tokens":18841600,"train_loss":4.729226,"grad_norm":0.269832,"lr":0.003849}
+{"event":"train","step":4650,"tokens":19046400,"train_loss":4.716438,"grad_norm":0.262359,"lr":0.003757}
+{"event":"train","step":4700,"tokens":19251200,"train_loss":4.723125,"grad_norm":0.267781,"lr":0.003665}
+{"event":"train","step":4750,"tokens":19456000,"train_loss":4.738379,"grad_norm":0.263568,"lr":0.003575}
+{"event":"train","step":4800,"tokens":19660800,"train_loss":4.725687,"grad_norm":0.305606,"lr":0.003485}
+{"event":"train","step":4850,"tokens":19865600,"train_loss":4.720398,"grad_norm":0.259083,"lr":0.003397}
+{"event":"train","step":4900,"tokens":20070400,"train_loss":4.719424,"grad_norm":0.357522,"lr":0.003309}
+{"event":"train","step":4950,"tokens":20275200,"train_loss":4.710134,"grad_norm":0.269224,"lr":0.003223}
+{"event":"train","step":5000,"tokens":20480000,"train_loss":4.708949,"grad_norm":0.265133,"lr":0.003138}
+{"event":"eval","step":5000,"tokens":20480000,"train_loss":4.723172,"val_loss":4.906184,"val_ppl":135.122738,"tokens_per_sec":34015.143748,"rss_mb":663.562500,"peak_rss_mb":702.093750,"answer_accuracy":0.200000,"answer_accuracy_sum":0.211111,"answer_margin":-0.881433,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.100000,"acc_reasoning":0.300000,"sample":" Paumerg State,\nCountewey of the father, they believed that such exples the ideal and the"}
+{"event":"train","step":5050,"tokens":20684800,"train_loss":4.703653,"grad_norm":0.274489,"lr":0.003054}
+{"event":"train","step":5100,"tokens":20889600,"train_loss":4.692805,"grad_norm":0.274629,"lr":0.002971}
+{"event":"train","step":5150,"tokens":21094400,"train_loss":4.697187,"grad_norm":0.298886,"lr":0.002889}
+{"event":"train","step":5200,"tokens":21299200,"train_loss":4.690005,"grad_norm":0.302313,"lr":0.002808}
+{"event":"train","step":5250,"tokens":21504000,"train_loss":4.689767,"grad_norm":0.270991,"lr":0.002729}
+{"event":"train","step":5300,"tokens":21708800,"train_loss":4.687189,"grad_norm":0.304779,"lr":0.002652}
+{"event":"train","step":5350,"tokens":21913600,"train_loss":4.683198,"grad_norm":0.259742,"lr":0.002575}
+{"event":"train","step":5400,"tokens":22118400,"train_loss":4.679735,"grad_norm":0.428354,"lr":0.002500}
+{"event":"train","step":5450,"tokens":22323200,"train_loss":4.670743,"grad_norm":0.333479,"lr":0.002427}
+{"event":"train","step":5500,"tokens":22528000,"train_loss":4.684431,"grad_norm":0.310205,"lr":0.002355}
+{"event":"eval","step":5500,"tokens":22528000,"train_loss":4.687871,"val_loss":4.869470,"val_ppl":130.251916,"tokens_per_sec":34573.979275,"rss_mb":670.437500,"peak_rss_mb":702.093750,"answer_accuracy":0.233333,"answer_accuracy_sum":0.255556,"answer_margin":-0.818200,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.233333,"acc_reasoning":0.200000,"sample":" Pile groupan semi-card Expressment (Every threats), most of the benefits of the"}
+{"event":"train","step":5550,"tokens":22732800,"train_loss":4.678957,"grad_norm":0.277587,"lr":0.002284}
+{"event":"train","step":5600,"tokens":22937600,"train_loss":4.668283,"grad_norm":0.402538,"lr":0.002216}
+{"event":"train","step":5650,"tokens":23142400,"train_loss":4.688401,"grad_norm":0.275226,"lr":0.002148}
+{"event":"train","step":5700,"tokens":23347200,"train_loss":4.654436,"grad_norm":0.284882,"lr":0.002083}
+{"event":"train","step":5750,"tokens":23552000,"train_loss":4.658015,"grad_norm":0.278530,"lr":0.002019}
+{"event":"train","step":5800,"tokens":23756800,"train_loss":4.661795,"grad_norm":0.297186,"lr":0.001957}
+{"event":"train","step":5850,"tokens":23961600,"train_loss":4.653906,"grad_norm":0.279043,"lr":0.001896}
+{"event":"train","step":5900,"tokens":24166400,"train_loss":4.662445,"grad_norm":0.293888,"lr":0.001837}
+{"event":"train","step":5950,"tokens":24371200,"train_loss":4.650984,"grad_norm":0.278675,"lr":0.001780}
+{"event":"train","step":6000,"tokens":24576000,"train_loss":4.661691,"grad_norm":0.282581,"lr":0.001725}
+{"event":"eval","step":6000,"tokens":24576000,"train_loss":4.663891,"val_loss":4.848780,"val_ppl":127.584619,"tokens_per_sec":34212.020982,"rss_mb":662.750000,"peak_rss_mb":702.093750,"answer_accuracy":0.288889,"answer_accuracy_sum":0.266667,"answer_margin":-0.743135,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.333333,"acc_reasoning":0.233333,"sample":" Hepeller industry, a new name medium of the effective infrastructure of German governments, and Japanese economic ("}
+{"event":"train","step":6050,"tokens":24780800,"train_loss":4.653130,"grad_norm":0.306242,"lr":0.001672}
+{"event":"train","step":6100,"tokens":24985600,"train_loss":4.646645,"grad_norm":0.293110,"lr":0.001621}
+{"event":"train","step":6150,"tokens":25190400,"train_loss":4.636129,"grad_norm":0.332584,"lr":0.001571}
+{"event":"train","step":6200,"tokens":25395200,"train_loss":4.652966,"grad_norm":0.302750,"lr":0.001524}
+{"event":"train","step":6250,"tokens":25600000,"train_loss":4.641129,"grad_norm":0.285050,"lr":0.001478}
+{"event":"train","step":6300,"tokens":25804800,"train_loss":4.624002,"grad_norm":0.285671,"lr":0.001434}
+{"event":"train","step":6350,"tokens":26009600,"train_loss":4.642661,"grad_norm":0.309948,"lr":0.001393}
+{"event":"train","step":6400,"tokens":26214400,"train_loss":4.646117,"grad_norm":0.303495,"lr":0.001353}
+{"event":"train","step":6450,"tokens":26419200,"train_loss":4.638632,"grad_norm":0.318479,"lr":0.001315}
+{"event":"train","step":6500,"tokens":26624000,"train_loss":4.636104,"grad_norm":0.297803,"lr":0.001280}
+{"event":"eval","step":6500,"tokens":26624000,"train_loss":4.641751,"val_loss":4.822674,"val_ppl":124.297078,"tokens_per_sec":35153.050081,"rss_mb":588.656250,"peak_rss_mb":702.093750,"answer_accuracy":0.266667,"answer_accuracy_sum":0.233333,"answer_margin":-0.786032,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.266667,"acc_reasoning":0.233333,"sample":" Pauces in 1791\nEach Affairs for his people in France. During this time, Americans also had"}
+{"event":"train","step":6550,"tokens":26828800,"train_loss":4.653592,"grad_norm":0.275891,"lr":0.001246}
+{"event":"train","step":6600,"tokens":27033600,"train_loss":4.633351,"grad_norm":0.312315,"lr":0.001215}
+{"event":"train","step":6650,"tokens":27238400,"train_loss":4.634989,"grad_norm":0.300133,"lr":0.001185}
+{"event":"train","step":6700,"tokens":27443200,"train_loss":4.622287,"grad_norm":0.313111,"lr":0.001158}
+{"event":"train","step":6750,"tokens":27648000,"train_loss":4.607090,"grad_norm":0.351116,"lr":0.001133}
+{"event":"train","step":6800,"tokens":27852800,"train_loss":4.622091,"grad_norm":0.319353,"lr":0.001110}
+{"event":"train","step":6850,"tokens":28057600,"train_loss":4.627330,"grad_norm":0.305679,"lr":0.001089}
+{"event":"train","step":6900,"tokens":28262400,"train_loss":4.609851,"grad_norm":0.338372,"lr":0.001071}
+{"event":"train","step":6950,"tokens":28467200,"train_loss":4.617113,"grad_norm":0.294215,"lr":0.001054}
+{"event":"train","step":7000,"tokens":28672000,"train_loss":4.614545,"grad_norm":0.306292,"lr":0.001040}
+{"event":"eval","step":7000,"tokens":28672000,"train_loss":4.624224,"val_loss":4.813055,"val_ppl":123.107092,"tokens_per_sec":34990.350232,"rss_mb":682.046875,"peak_rss_mb":702.093750,"answer_accuracy":0.288889,"answer_accuracy_sum":0.244444,"answer_margin":-0.784943,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" Hairman of Samuel\nElba in Yockeas (Owema) the Committee of the"}
+{"event":"train","step":7050,"tokens":28876800,"train_loss":4.619878,"grad_norm":0.334801,"lr":0.001028}
+{"event":"train","step":7100,"tokens":29081600,"train_loss":4.608713,"grad_norm":0.298542,"lr":0.001018}
+{"event":"train","step":7150,"tokens":29286400,"train_loss":4.633359,"grad_norm":0.327620,"lr":0.001010}
+{"event":"train","step":7200,"tokens":29491200,"train_loss":4.618101,"grad_norm":0.335292,"lr":0.001004}
+{"event":"train","step":7250,"tokens":29696000,"train_loss":4.599145,"grad_norm":0.321618,"lr":0.001001}
+{"event":"train","step":7300,"tokens":29900800,"train_loss":4.604290,"grad_norm":0.346647,"lr":0.001000}
+{"event":"eval","step":7300,"tokens":29900800,"train_loss":4.613915,"val_loss":4.816490,"val_ppl":123.530793,"tokens_per_sec":32827.032634,"rss_mb":675.796875,"peak_rss_mb":702.093750,"answer_accuracy":0.277778,"answer_accuracy_sum":0.277778,"answer_margin":-0.771331,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" E’s political enacting, the House index of Representatives was a bill on March 27.\nCitizens of"}
+{"event":"done","params":1155392,"best_val_loss":4.813055,"seconds":873.679925,"tokens_seen":29900800,"tokens_per_sec":34223.975102,"peak_rss_mb":702.093750,"checkpoint_sha256":"1da8993128849094b8c020e4069db25fb8957947353eb0ec02e06a88dd355c24","data_version":"e8c6745b968d9efc"}

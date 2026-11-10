@@ -1,0 +1,164 @@
+{"event":"start","size":"10m","params":10522880,"ctx":128,"dim":256,"layers":8,"heads":8,"ff":1024,"vocab":8192,"steps":7300,"batch":32,"workers":8,"lr":0.003000,"seed":1,"train_tokens":11088164,"val_tokens":125724,"data_version":"e8c6745b968d9efc","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":9.134021,"val_ppl":9265.204954,"tokens_per_sec":0.000000,"rss_mb":766.046875,"peak_rss_mb":766.046875,"answer_accuracy":0.322222,"answer_accuracy_sum":0.277778,"answer_margin":-0.249251,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.266667,"acc_reasoning":0.366667,"sample":"ainedutch negotiations Tex larvade\u0010 study 22 interview Army credit marchss Mount calculate Western nom dru were arr informedroke land"}
+{"event":"train","step":50,"tokens":204800,"train_loss":7.919677,"grad_norm":0.414246,"lr":0.000750}
+{"event":"train","step":100,"tokens":409600,"train_loss":7.127512,"grad_norm":0.382146,"lr":0.001500}
+{"event":"train","step":150,"tokens":614400,"train_loss":6.666633,"grad_norm":0.454460,"lr":0.002250}
+{"event":"train","step":200,"tokens":819200,"train_loss":6.416716,"grad_norm":0.398873,"lr":0.003000}
+{"event":"train","step":250,"tokens":1024000,"train_loss":6.286759,"grad_norm":0.391735,"lr":0.003000}
+{"event":"train","step":300,"tokens":1228800,"train_loss":6.156538,"grad_norm":0.339938,"lr":0.002999}
+{"event":"train","step":350,"tokens":1433600,"train_loss":6.085005,"grad_norm":0.323430,"lr":0.002997}
+{"event":"train","step":400,"tokens":1638400,"train_loss":6.009876,"grad_norm":0.302794,"lr":0.002995}
+{"event":"train","step":450,"tokens":1843200,"train_loss":5.938917,"grad_norm":0.311038,"lr":0.002992}
+{"event":"train","step":500,"tokens":2048000,"train_loss":5.894436,"grad_norm":0.289914,"lr":0.002988}
+{"event":"eval","step":500,"tokens":2048000,"train_loss":6.450207,"val_loss":6.044705,"val_ppl":421.873235,"tokens_per_sec":6365.682051,"rss_mb":616.437500,"peak_rss_mb":766.046875,"answer_accuracy":0.233333,"answer_accuracy_sum":0.266667,"answer_margin":-0.811886,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.300000,"acc_reasoning":0.233333,"sample":" trensts of 300,, the measure Theory. Mops, or central language remik, the Committee of the"}
+{"event":"train","step":550,"tokens":2252800,"train_loss":5.841323,"grad_norm":0.301541,"lr":0.002984}
+{"event":"train","step":600,"tokens":2457600,"train_loss":5.787896,"grad_norm":0.299596,"lr":0.002979}
+{"event":"train","step":650,"tokens":2662400,"train_loss":5.734929,"grad_norm":0.282046,"lr":0.002973}
+{"event":"train","step":700,"tokens":2867200,"train_loss":5.691269,"grad_norm":0.294275,"lr":0.002967}
+{"event":"train","step":750,"tokens":3072000,"train_loss":5.631732,"grad_norm":0.298388,"lr":0.002960}
+{"event":"train","step":800,"tokens":3276800,"train_loss":5.596677,"grad_norm":0.280785,"lr":0.002953}
+{"event":"train","step":850,"tokens":3481600,"train_loss":5.544054,"grad_norm":0.288964,"lr":0.002945}
+{"event":"train","step":900,"tokens":3686400,"train_loss":5.513192,"grad_norm":0.273906,"lr":0.002936}
+{"event":"train","step":950,"tokens":3891200,"train_loss":5.481821,"grad_norm":0.283351,"lr":0.002927}
+{"event":"train","step":1000,"tokens":4096000,"train_loss":5.465576,"grad_norm":0.269119,"lr":0.002917}
+{"event":"eval","step":1000,"tokens":4096000,"train_loss":5.628847,"val_loss":5.634490,"val_ppl":279.915989,"tokens_per_sec":6679.927170,"rss_mb":570.609375,"peak_rss_mb":766.046875,"answer_accuracy":0.300000,"answer_accuracy_sum":0.277778,"answer_margin":-0.770732,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.233333,"acc_reasoning":0.333333,"sample":" first light down the Universe,, the German seat of the glacier in New World War Movement, the volume of the"}
+{"event":"train","step":1050,"tokens":4300800,"train_loss":5.421280,"grad_norm":0.276149,"lr":0.002906}
+{"event":"train","step":1100,"tokens":4505600,"train_loss":5.398897,"grad_norm":0.306959,"lr":0.002895}
+{"event":"train","step":1150,"tokens":4710400,"train_loss":5.355316,"grad_norm":0.308456,"lr":0.002883}
+{"event":"train","step":1200,"tokens":4915200,"train_loss":5.345685,"grad_norm":0.282485,"lr":0.002870}
+{"event":"train","step":1250,"tokens":5120000,"train_loss":5.314854,"grad_norm":0.287269,"lr":0.002857}
+{"event":"train","step":1300,"tokens":5324800,"train_loss":5.292544,"grad_norm":0.298347,"lr":0.002844}
+{"event":"train","step":1350,"tokens":5529600,"train_loss":5.266778,"grad_norm":0.292112,"lr":0.002829}
+{"event":"train","step":1400,"tokens":5734400,"train_loss":5.234163,"grad_norm":0.289830,"lr":0.002814}
+{"event":"train","step":1450,"tokens":5939200,"train_loss":5.228046,"grad_norm":0.295847,"lr":0.002799}
+{"event":"train","step":1500,"tokens":6144000,"train_loss":5.215849,"grad_norm":0.300250,"lr":0.002783}
+{"event":"eval","step":1500,"tokens":6144000,"train_loss":5.307341,"val_loss":5.365787,"val_ppl":213.959591,"tokens_per_sec":6652.590763,"rss_mb":923.671875,"peak_rss_mb":923.671875,"answer_accuracy":0.288889,"answer_accuracy_sum":0.288889,"answer_margin":-0.767675,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.300000,"acc_reasoning":0.266667,"sample":" state of Virginia. Desit's relative divine mean that this is an average way for both the same medical federal system"}
+{"event":"train","step":1550,"tokens":6348800,"train_loss":5.179973,"grad_norm":0.304042,"lr":0.002767}
+{"event":"train","step":1600,"tokens":6553600,"train_loss":5.164680,"grad_norm":0.300080,"lr":0.002749}
+{"event":"train","step":1650,"tokens":6758400,"train_loss":5.154015,"grad_norm":0.291196,"lr":0.002732}
+{"event":"train","step":1700,"tokens":6963200,"train_loss":5.139465,"grad_norm":0.290754,"lr":0.002714}
+{"event":"train","step":1750,"tokens":7168000,"train_loss":5.104277,"grad_norm":0.298339,"lr":0.002695}
+{"event":"train","step":1800,"tokens":7372800,"train_loss":5.100372,"grad_norm":0.293856,"lr":0.002676}
+{"event":"train","step":1850,"tokens":7577600,"train_loss":5.081027,"grad_norm":0.311185,"lr":0.002656}
+{"event":"train","step":1900,"tokens":7782400,"train_loss":5.063870,"grad_norm":0.320880,"lr":0.002636}
+{"event":"train","step":1950,"tokens":7987200,"train_loss":5.022904,"grad_norm":0.293846,"lr":0.002616}
+{"event":"train","step":2000,"tokens":8192000,"train_loss":5.020857,"grad_norm":0.301554,"lr":0.002594}
+{"event":"eval","step":2000,"tokens":8192000,"train_loss":5.103144,"val_loss":5.220864,"val_ppl":185.094093,"tokens_per_sec":6646.046205,"rss_mb":960.453125,"peak_rss_mb":960.453125,"answer_accuracy":0.266667,"answer_accuracy_sum":0.288889,"answer_margin":-0.796698,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.233333,"acc_reasoning":0.333333,"sample":" first forces since the Interd.\nThe nomination of re-style and stimulated.\nDuring the first"}
+{"event":"train","step":2050,"tokens":8396800,"train_loss":5.012288,"grad_norm":0.301694,"lr":0.002573}
+{"event":"train","step":2100,"tokens":8601600,"train_loss":5.005324,"grad_norm":0.295846,"lr":0.002551}
+{"event":"train","step":2150,"tokens":8806400,"train_loss":4.977721,"grad_norm":0.301388,"lr":0.002528}
+{"event":"train","step":2200,"tokens":9011200,"train_loss":4.954552,"grad_norm":0.282444,"lr":0.002505}
+{"event":"train","step":2250,"tokens":9216000,"train_loss":4.949091,"grad_norm":0.297576,"lr":0.002482}
+{"event":"train","step":2300,"tokens":9420800,"train_loss":4.931051,"grad_norm":0.295487,"lr":0.002458}
+{"event":"train","step":2350,"tokens":9625600,"train_loss":4.920408,"grad_norm":0.287891,"lr":0.002434}
+{"event":"train","step":2400,"tokens":9830400,"train_loss":4.911267,"grad_norm":0.291747,"lr":0.002410}
+{"event":"train","step":2450,"tokens":10035200,"train_loss":4.884689,"grad_norm":0.300755,"lr":0.002385}
+{"event":"train","step":2500,"tokens":10240000,"train_loss":4.878240,"grad_norm":0.301373,"lr":0.002360}
+{"event":"eval","step":2500,"tokens":10240000,"train_loss":4.942463,"val_loss":5.047228,"val_ppl":155.590526,"tokens_per_sec":6749.645828,"rss_mb":1299.890625,"peak_rss_mb":1299.890625,"answer_accuracy":0.277778,"answer_accuracy_sum":0.311111,"answer_margin":-0.742805,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.233333,"acc_reasoning":0.266667,"sample":"odus must have composed a torch representing the entire face. This directorane worked the enhanced the"}
+{"event":"train","step":2550,"tokens":10444800,"train_loss":4.858264,"grad_norm":0.310162,"lr":0.002334}
+{"event":"train","step":2600,"tokens":10649600,"train_loss":4.857044,"grad_norm":0.321582,"lr":0.002308}
+{"event":"train","step":2650,"tokens":10854400,"train_loss":4.842228,"grad_norm":0.295299,"lr":0.002282}
+{"event":"train","step":2700,"tokens":11059200,"train_loss":4.823074,"grad_norm":0.290194,"lr":0.002255}
+{"event":"train","step":2750,"tokens":11264000,"train_loss":4.821442,"grad_norm":0.304605,"lr":0.002229}
+{"event":"train","step":2800,"tokens":11468800,"train_loss":4.800849,"grad_norm":0.302132,"lr":0.002201}
+{"event":"train","step":2850,"tokens":11673600,"train_loss":4.759897,"grad_norm":0.335084,"lr":0.002174}
+{"event":"train","step":2900,"tokens":11878400,"train_loss":4.783244,"grad_norm":0.314714,"lr":0.002146}
+{"event":"train","step":2950,"tokens":12083200,"train_loss":4.747555,"grad_norm":0.295650,"lr":0.002119}
+{"event":"train","step":3000,"tokens":12288000,"train_loss":4.728456,"grad_norm":0.318821,"lr":0.002090}
+{"event":"eval","step":3000,"tokens":12288000,"train_loss":4.802205,"val_loss":4.931176,"val_ppl":138.542374,"tokens_per_sec":6579.347080,"rss_mb":837.968750,"peak_rss_mb":1299.890625,"answer_accuracy":0.222222,"answer_accuracy_sum":0.266667,"answer_margin":-0.820205,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.266667,"acc_reasoning":0.233333,"sample":" Lie Party in Greenland, a new Spanish militia in British Columbia, was born in Palesty. President William T"}
+{"event":"train","step":3050,"tokens":12492800,"train_loss":4.740688,"grad_norm":0.309113,"lr":0.002062}
+{"event":"train","step":3100,"tokens":12697600,"train_loss":4.726428,"grad_norm":0.325044,"lr":0.002034}
+{"event":"train","step":3150,"tokens":12902400,"train_loss":4.708084,"grad_norm":0.310317,"lr":0.002005}
+{"event":"train","step":3200,"tokens":13107200,"train_loss":4.689599,"grad_norm":0.321836,"lr":0.001976}
+{"event":"train","step":3250,"tokens":13312000,"train_loss":4.681324,"grad_norm":0.312694,"lr":0.001947}
+{"event":"train","step":3300,"tokens":13516800,"train_loss":4.672223,"grad_norm":0.322941,"lr":0.001918}
+{"event":"train","step":3350,"tokens":13721600,"train_loss":4.667599,"grad_norm":0.320429,"lr":0.001888}
+{"event":"train","step":3400,"tokens":13926400,"train_loss":4.662406,"grad_norm":0.334814,"lr":0.001859}
+{"event":"train","step":3450,"tokens":14131200,"train_loss":4.652370,"grad_norm":0.337435,"lr":0.001829}
+{"event":"train","step":3500,"tokens":14336000,"train_loss":4.640823,"grad_norm":0.338661,"lr":0.001800}
+{"event":"eval","step":3500,"tokens":14336000,"train_loss":4.684155,"val_loss":4.824901,"val_ppl":124.574154,"tokens_per_sec":6430.697881,"rss_mb":922.906250,"peak_rss_mb":1299.890625,"answer_accuracy":0.322222,"answer_accuracy_sum":0.355556,"answer_margin":-0.689240,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.266667,"acc_reasoning":0.366667,"sample":" Ford Act of 1965\n\"I had dropped to use an all of the British escapeness, and still all the"}
+{"event":"train","step":3550,"tokens":14540800,"train_loss":4.627065,"grad_norm":0.327089,"lr":0.001770}
+{"event":"train","step":3600,"tokens":14745600,"train_loss":4.615517,"grad_norm":0.335634,"lr":0.001740}
+{"event":"train","step":3650,"tokens":14950400,"train_loss":4.602562,"grad_norm":0.316506,"lr":0.001710}
+{"event":"train","step":3700,"tokens":15155200,"train_loss":4.576848,"grad_norm":0.335476,"lr":0.001680}
+{"event":"train","step":3750,"tokens":15360000,"train_loss":4.594863,"grad_norm":0.333457,"lr":0.001651}
+{"event":"train","step":3800,"tokens":15564800,"train_loss":4.606821,"grad_norm":0.348171,"lr":0.001621}
+{"event":"train","step":3850,"tokens":15769600,"train_loss":4.573405,"grad_norm":0.331796,"lr":0.001591}
+{"event":"train","step":3900,"tokens":15974400,"train_loss":4.562073,"grad_norm":0.343066,"lr":0.001561}
+{"event":"train","step":3950,"tokens":16179200,"train_loss":4.554943,"grad_norm":0.340557,"lr":0.001531}
+{"event":"train","step":4000,"tokens":16384000,"train_loss":4.554370,"grad_norm":0.347003,"lr":0.001502}
+{"event":"eval","step":4000,"tokens":16384000,"train_loss":4.586846,"val_loss":4.745612,"val_ppl":115.078183,"tokens_per_sec":6446.291626,"rss_mb":709.656250,"peak_rss_mb":1299.890625,"answer_accuracy":0.377778,"answer_accuracy_sum":0.344444,"answer_margin":-0.756646,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.333333,"acc_reasoning":0.466667,"sample":" \"narrative abundance\" of the Affairs in The Bills are also primarily defined.\nAt the time"}
+{"event":"train","step":4050,"tokens":16588800,"train_loss":4.521272,"grad_norm":0.331100,"lr":0.001472}
+{"event":"train","step":4100,"tokens":16793600,"train_loss":4.523468,"grad_norm":0.352256,"lr":0.001442}
+{"event":"train","step":4150,"tokens":16998400,"train_loss":4.501058,"grad_norm":0.331646,"lr":0.001413}
+{"event":"train","step":4200,"tokens":17203200,"train_loss":4.525944,"grad_norm":0.354212,"lr":0.001384}
+{"event":"train","step":4250,"tokens":17408000,"train_loss":4.493069,"grad_norm":0.352627,"lr":0.001354}
+{"event":"train","step":4300,"tokens":17612800,"train_loss":4.500180,"grad_norm":0.347281,"lr":0.001325}
+{"event":"train","step":4350,"tokens":17817600,"train_loss":4.492457,"grad_norm":0.368569,"lr":0.001296}
+{"event":"train","step":4400,"tokens":18022400,"train_loss":4.460739,"grad_norm":0.355802,"lr":0.001268}
+{"event":"train","step":4450,"tokens":18227200,"train_loss":4.455073,"grad_norm":0.379249,"lr":0.001239}
+{"event":"train","step":4500,"tokens":18432000,"train_loss":4.466851,"grad_norm":0.340323,"lr":0.001211}
+{"event":"eval","step":4500,"tokens":18432000,"train_loss":4.494011,"val_loss":4.664765,"val_ppl":106.140674,"tokens_per_sec":6465.311465,"rss_mb":1235.937500,"peak_rss_mb":1299.890625,"answer_accuracy":0.266667,"answer_accuracy_sum":0.277778,"answer_margin":-0.805556,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.200000,"acc_reasoning":0.300000,"sample":" Lower Plan Tears\n\"Mult Nile's largest-way stage of rock cut-tips to the"}
+{"event":"train","step":4550,"tokens":18636800,"train_loss":4.455972,"grad_norm":0.348829,"lr":0.001183}
+{"event":"train","step":4600,"tokens":18841600,"train_loss":4.440007,"grad_norm":0.375305,"lr":0.001155}
+{"event":"train","step":4650,"tokens":19046400,"train_loss":4.423680,"grad_norm":0.357619,"lr":0.001127}
+{"event":"train","step":4700,"tokens":19251200,"train_loss":4.427423,"grad_norm":0.362807,"lr":0.001100}
+{"event":"train","step":4750,"tokens":19456000,"train_loss":4.437051,"grad_norm":0.371994,"lr":0.001072}
+{"event":"train","step":4800,"tokens":19660800,"train_loss":4.415882,"grad_norm":0.358488,"lr":0.001046}
+{"event":"train","step":4850,"tokens":19865600,"train_loss":4.411075,"grad_norm":0.375031,"lr":0.001019}
+{"event":"train","step":4900,"tokens":20070400,"train_loss":4.412077,"grad_norm":0.393113,"lr":0.000993}
+{"event":"train","step":4950,"tokens":20275200,"train_loss":4.399965,"grad_norm":0.375288,"lr":0.000967}
+{"event":"train","step":5000,"tokens":20480000,"train_loss":4.389881,"grad_norm":0.373146,"lr":0.000941}
+{"event":"eval","step":5000,"tokens":20480000,"train_loss":4.421301,"val_loss":4.611164,"val_ppl":100.601166,"tokens_per_sec":6495.016469,"rss_mb":1335.812500,"peak_rss_mb":1335.812500,"answer_accuracy":0.266667,"answer_accuracy_sum":0.200000,"answer_margin":-0.829343,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.200000,"acc_reasoning":0.266667,"sample":" Hell country with independence, a desperarian system is created. The treaty is referred as a surprise of a"}
+{"event":"train","step":5050,"tokens":20684800,"train_loss":4.382876,"grad_norm":0.388127,"lr":0.000916}
+{"event":"train","step":5100,"tokens":20889600,"train_loss":4.364196,"grad_norm":0.375682,"lr":0.000891}
+{"event":"train","step":5150,"tokens":21094400,"train_loss":4.375454,"grad_norm":0.379285,"lr":0.000867}
+{"event":"train","step":5200,"tokens":21299200,"train_loss":4.365411,"grad_norm":0.399135,"lr":0.000843}
+{"event":"train","step":5250,"tokens":21504000,"train_loss":4.356929,"grad_norm":0.383514,"lr":0.000819}
+{"event":"train","step":5300,"tokens":21708800,"train_loss":4.348522,"grad_norm":0.394356,"lr":0.000795}
+{"event":"train","step":5350,"tokens":21913600,"train_loss":4.341281,"grad_norm":0.378462,"lr":0.000773}
+{"event":"train","step":5400,"tokens":22118400,"train_loss":4.335841,"grad_norm":0.446195,"lr":0.000750}
+{"event":"train","step":5450,"tokens":22323200,"train_loss":4.323989,"grad_norm":0.393170,"lr":0.000728}
+{"event":"train","step":5500,"tokens":22528000,"train_loss":4.337266,"grad_norm":0.387305,"lr":0.000706}
+{"event":"eval","step":5500,"tokens":22528000,"train_loss":4.353177,"val_loss":4.562778,"val_ppl":95.849379,"tokens_per_sec":6713.028740,"rss_mb":920.140625,"peak_rss_mb":1335.812500,"answer_accuracy":0.266667,"answer_accuracy_sum":0.255556,"answer_margin":-0.757794,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.200000,"acc_reasoning":0.300000,"sample":" Games called the Arabic's L suiteuraca in both of these represented a new regime of the"}
+{"event":"train","step":5550,"tokens":22732800,"train_loss":4.333681,"grad_norm":0.424882,"lr":0.000685}
+{"event":"train","step":5600,"tokens":22937600,"train_loss":4.313924,"grad_norm":0.422750,"lr":0.000665}
+{"event":"train","step":5650,"tokens":23142400,"train_loss":4.336845,"grad_norm":0.386193,"lr":0.000644}
+{"event":"train","step":5700,"tokens":23347200,"train_loss":4.295005,"grad_norm":0.426564,"lr":0.000625}
+{"event":"train","step":5750,"tokens":23552000,"train_loss":4.300279,"grad_norm":0.389069,"lr":0.000606}
+{"event":"train","step":5800,"tokens":23756800,"train_loss":4.301893,"grad_norm":0.403718,"lr":0.000587}
+{"event":"train","step":5850,"tokens":23961600,"train_loss":4.294464,"grad_norm":0.400243,"lr":0.000569}
+{"event":"train","step":5900,"tokens":24166400,"train_loss":4.294969,"grad_norm":0.398104,"lr":0.000551}
+{"event":"train","step":5950,"tokens":24371200,"train_loss":4.283874,"grad_norm":0.406778,"lr":0.000534}
+{"event":"train","step":6000,"tokens":24576000,"train_loss":4.290040,"grad_norm":0.404680,"lr":0.000518}
+{"event":"eval","step":6000,"tokens":24576000,"train_loss":4.304497,"val_loss":4.520984,"val_ppl":91.925988,"tokens_per_sec":6475.188943,"rss_mb":740.921875,"peak_rss_mb":1335.812500,"answer_accuracy":0.311111,"answer_accuracy_sum":0.311111,"answer_margin":-0.727391,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.266667,"acc_reasoning":0.366667,"sample":" Gott Phillips\n\"Look ahead of the formation of the Red Rivercle,\" the Oregon,"}
+{"event":"train","step":6050,"tokens":24780800,"train_loss":4.282350,"grad_norm":0.416501,"lr":0.000502}
+{"event":"train","step":6100,"tokens":24985600,"train_loss":4.273733,"grad_norm":0.412575,"lr":0.000486}
+{"event":"train","step":6150,"tokens":25190400,"train_loss":4.259915,"grad_norm":0.420215,"lr":0.000471}
+{"event":"train","step":6200,"tokens":25395200,"train_loss":4.271195,"grad_norm":0.427587,"lr":0.000457}
+{"event":"train","step":6250,"tokens":25600000,"train_loss":4.265284,"grad_norm":0.412792,"lr":0.000443}
+{"event":"train","step":6300,"tokens":25804800,"train_loss":4.240871,"grad_norm":0.410780,"lr":0.000430}
+{"event":"train","step":6350,"tokens":26009600,"train_loss":4.263006,"grad_norm":0.412948,"lr":0.000418}
+{"event":"train","step":6400,"tokens":26214400,"train_loss":4.261094,"grad_norm":0.409829,"lr":0.000406}
+{"event":"train","step":6450,"tokens":26419200,"train_loss":4.254529,"grad_norm":0.410264,"lr":0.000395}
+{"event":"train","step":6500,"tokens":26624000,"train_loss":4.254747,"grad_norm":0.422768,"lr":0.000384}
+{"event":"eval","step":6500,"tokens":26624000,"train_loss":4.262673,"val_loss":4.482977,"val_ppl":88.497778,"tokens_per_sec":6542.545443,"rss_mb":1040.593750,"peak_rss_mb":1335.812500,"answer_accuracy":0.222222,"answer_accuracy_sum":0.233333,"answer_margin":-0.820399,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.233333,"acc_reasoning":0.233333,"sample":" Lactrian language includes a taning procedure in which it is called an intervalral.\nTo support the"}
+{"event":"train","step":6550,"tokens":26828800,"train_loss":4.269372,"grad_norm":0.420459,"lr":0.000374}
+{"event":"train","step":6600,"tokens":27033600,"train_loss":4.251709,"grad_norm":0.424314,"lr":0.000364}
+{"event":"train","step":6650,"tokens":27238400,"train_loss":4.245639,"grad_norm":0.419548,"lr":0.000356}
+{"event":"train","step":6700,"tokens":27443200,"train_loss":4.231301,"grad_norm":0.429001,"lr":0.000347}
+{"event":"train","step":6750,"tokens":27648000,"train_loss":4.210356,"grad_norm":0.442369,"lr":0.000340}
+{"event":"train","step":6800,"tokens":27852800,"train_loss":4.227670,"grad_norm":0.429457,"lr":0.000333}
+{"event":"train","step":6850,"tokens":28057600,"train_loss":4.231330,"grad_norm":0.427184,"lr":0.000327}
+{"event":"train","step":6900,"tokens":28262400,"train_loss":4.214279,"grad_norm":0.431409,"lr":0.000321}
+{"event":"train","step":6950,"tokens":28467200,"train_loss":4.218507,"grad_norm":0.418726,"lr":0.000316}
+{"event":"train","step":7000,"tokens":28672000,"train_loss":4.214626,"grad_norm":0.437354,"lr":0.000312}
+{"event":"eval","step":7000,"tokens":28672000,"train_loss":4.231479,"val_loss":4.469949,"val_ppl":87.352265,"tokens_per_sec":6449.359630,"rss_mb":1096.390625,"peak_rss_mb":1335.812500,"answer_accuracy":0.255556,"answer_accuracy_sum":0.233333,"answer_margin":-0.836351,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.200000,"acc_reasoning":0.300000,"sample":" Olympics shows a tentric script of the rocks a lowered by rock screactile to a"}
+{"event":"train","step":7050,"tokens":28876800,"train_loss":4.223051,"grad_norm":0.434689,"lr":0.000308}
+{"event":"train","step":7100,"tokens":29081600,"train_loss":4.210813,"grad_norm":0.419984,"lr":0.000305}
+{"event":"train","step":7150,"tokens":29286400,"train_loss":4.236036,"grad_norm":0.429789,"lr":0.000303}
+{"event":"train","step":7200,"tokens":29491200,"train_loss":4.213730,"grad_norm":0.459259,"lr":0.000301}
+{"event":"train","step":7250,"tokens":29696000,"train_loss":4.200027,"grad_norm":0.440130,"lr":0.000300}
+{"event":"train","step":7300,"tokens":29900800,"train_loss":4.196480,"grad_norm":0.429165,"lr":0.000300}
+{"event":"eval","step":7300,"tokens":29900800,"train_loss":4.213356,"val_loss":4.472217,"val_ppl":87.550626,"tokens_per_sec":6397.883600,"rss_mb":1282.000000,"peak_rss_mb":1335.812500,"answer_accuracy":0.255556,"answer_accuracy_sum":0.300000,"answer_margin":-0.802355,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" Dueblograp of a Sear sections:\nThe Cold War is seen as a \"by-f"}
+{"event":"done","params":10522880,"best_val_loss":4.469949,"seconds":4578.579066,"tokens_seen":29900800,"tokens_per_sec":6530.585050,"peak_rss_mb":1335.812500,"checkpoint_sha256":"1b9889126ba540cadcb03804d3f9ce4c4a127e19435b300e5c008304e0a7c6b3","data_version":"e8c6745b968d9efc"}
