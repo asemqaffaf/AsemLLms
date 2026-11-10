@@ -1,4 +1,4 @@
-;;; sbcl --script lisp/bin/build-data.lisp build IN.jsonl OUT-DIR [vocab-size] [max-docs] [min-edu-score] [test-permille]
+;;; sbcl --script lisp/bin/build-data.lisp build IN.jsonl OUT-DIR [vocab-size] [max-docs] [min-edu-score] [test-permille] [val-permille]
 ;;; sbcl --script lisp/bin/build-data.lisp verify OUT-DIR
 (let ((here (directory-namestring *load-truename*)))
   (dolist (f '("util" "sha256" "json" "bpe" "data")) (load (merge-pathnames (format nil "../src/~a.lisp" f) here))))
@@ -8,7 +8,8 @@
          (let* ((opts (append (when (fourth args) (list :vocab-size (parse-integer (fourth args))))
                               (when (fifth args) (list :max-docs (parse-integer (fifth args))))
                               (when (sixth args) (list :min-edu-score (float (read-from-string (sixth args)) 1d0)))
-                              (when (seventh args) (list :test-permille (parse-integer (seventh args))))))
+                              (when (seventh args) (list :test-permille (parse-integer (seventh args))))
+                              (when (eighth args) (list :val-permille (parse-integer (eighth args))))))
                 (m (apply #'build (lambda (cb) (read-jsonl (second args) cb)) (third args) opts)))
            (verify (third args))
            (format t "version ~a~%stats ~s~%" (json-get m "version") (cdr (json-get m "stats")))

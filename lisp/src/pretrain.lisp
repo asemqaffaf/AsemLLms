@@ -6,7 +6,7 @@
 (defpackage :asem-pretrain
   (:use :cl :asem-tf :asem-util)
   (:export #:pretrain #:load-checkpoint #:save-checkpoint #:read-eval-set #:score-eval #:sample-text #:load-split-tokens
-           #:preset-config #:rss-mb))
+           #:preset-config #:rss-mb #:evaluate-checkpoint))
 (in-package :asem-pretrain)
 
 ;;; ------------------------------------------------------------------ tokens
@@ -286,3 +286,29 @@
              (log-event log (append (list :event "done") result))))
       (close log))
     result))
+
+;;; ------------------------------------------------------------------ final evaluation of a checkpoint
+(defun split-loss (model tokens)
+  "Mean cross-entropy over the whole split: consecutive windows of CTX tokens that do not overlap."
+  (let* ((ctx (config-ctx (model-config model))) (starts (loop for s from 0 to (- (length tokens) ctx 1) by ctx collect s)))
+    (values (window-loss-mean model tokens starts) (* ctx (length starts)))))
+
+(defun evaluate-checkpoint (data-dir ckpt-path &key eval-file)
+  "Loss on the full validation and test splits plus the multiple-choice scores. The test split is only ever used here."
+  (let* ((model (load-checkpoint ckpt-path))
+         (manifest (asem-data:load-manifest data-dir))
+         (bpe (asem-bpe:load-bpe (format nil "~a/~a" data-dir (asem-json:json-get (asem-json:json-get manifest "tokenizer") "file"))))
+         (val (load-split-tokens data-dir "val")) (test (load-split-tokens data-dir "test"))
+         (items (and eval-file (read-eval-set eval-file))) (n (length items))
+         (ans (and items (score-eval model bpe items))))
+    (multiple-value-bind (vl vn) (split-loss model val)
+      (multiple-value-bind (tl tn) (split-loss model test)
+        (append (list :checkpoint ckpt-path :params (param-count model) :val-loss vl :val-ppl (exp vl) :val-tokens vn
+                      :test-loss tl :test-ppl (exp tl) :test-tokens tn)
+                (when ans
+                  (list :answer-accuracy (getf ans :accuracy) :answer-accuracy-sum (getf ans :accuracy-sum) :answer-margin (getf ans :margin)
+                        :questions n :random-baseline 0.25l0
+                        :chance-95-upper (+ 0.25l0 (* 1.96l0 (sqrt (/ (* 0.25l0 0.75l0) n))))
+                        :acc-fact (or (cdr (assoc "fact" (getf ans :by-category) :test #'equal)) 0)
+                        :acc-reading (or (cdr (assoc "reading" (getf ans :by-category) :test #'equal)) 0)
+                        :acc-reasoning (or (cdr (assoc "reasoning" (getf ans :by-category) :test #'equal)) 0))))))))
