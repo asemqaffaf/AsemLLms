@@ -6,11 +6,13 @@ A tiny neural language model (character- or word-level), written and trained in 
 ## Try it in the browser
 
     cd tinyllm
+    rebar3 compile && escript scripts/train.escript 3000 chat_word.bin ../dataset/chat_clean.txt word   # first run only: no model is committed
     scripts/run.sh        # starts the app + web UI (fixed node name tinyllm@127.0.0.1)
     # open http://localhost:8080
 
 The page is rendered by Erlang (plain HTML form, no JavaScript). It listens on
-127.0.0.1 only and loads `model.bin` (train one with the script below).
+127.0.0.1 only (requests with a non-local `Host` or `Origin` get 403) and loads the `model_file` from
+`config/sys.config` (`chat_word.bin`; trained weights are not committed, so train one as above).
 
 ## Train
 

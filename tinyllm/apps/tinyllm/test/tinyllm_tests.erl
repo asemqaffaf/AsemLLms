@@ -11,7 +11,7 @@ all_test_() ->
      {timeout, 300,
       [fun gradient_check/0, fun softmax_sums_to_one/0, fun learns_a_cycle/0,
        fun uses_context_beyond_bigram/0, fun survives_worker_crash/0,
-       fun save_load_roundtrip/0, fun generate_stays_in_vocab/0, fun progress_logging/0, fun load_in_fresh_vm/0, fun web_ui_and_api/0, fun chat_function/0, {timeout, 300, fun tf_gradient_check/0}, {timeout, 300, fun tf_learns_a_cycle/0}, {timeout, 300, fun tf_uses_long_range_context/0}, {timeout, 300, fun tf_save_load_generate/0}, {timeout, 300, fun tf_web_info/0}, fun search_parsers/0, fun search_client/0, fun search_in_web_ui/0, fun qwen_answers_from_search/0, fun tokenizer_roundtrip/0, fun word_vocab/0, fun word_model_learns/0, fun legacy_model_loads/0, fun chat_page_and_openai_api/0, fun conversation_memory/0, fun chat_remembers_conversations/0, fun shards_cover_batch/0]}}.
+       fun save_load_roundtrip/0, fun generate_stays_in_vocab/0, fun progress_logging/0, fun load_in_fresh_vm/0, fun web_ui_and_api/0, fun web_rejects_foreign_host_and_origin/0, fun chat_function/0, {timeout, 300, fun tf_gradient_check/0}, {timeout, 300, fun tf_learns_a_cycle/0}, {timeout, 300, fun tf_uses_long_range_context/0}, {timeout, 300, fun tf_save_load_generate/0}, {timeout, 300, fun tf_web_info/0}, fun search_parsers/0, fun search_client/0, fun search_in_web_ui/0, fun qwen_answers_from_search/0, fun tokenizer_roundtrip/0, fun word_vocab/0, fun word_model_learns/0, fun legacy_model_loads/0, fun chat_page_and_openai_api/0, fun conversation_memory/0, fun chat_remembers_conversations/0, fun shards_cover_batch/0]}}.
 
 %% ---- backprop is correct: analytic gradient == numeric gradient --------------
 
@@ -147,6 +147,24 @@ http(Method, Path, Body, Type) ->
     {ok, {{_, Status, _}, _, RespBody}} =
         httpc:request(Method, Req, [], [{body_format, binary}]),
     {Status, RespBody}.
+
+web_rejects_foreign_host_and_origin() ->
+    {ok, _} = application:ensure_all_started(inets),
+    ok = tinyllm_web:start(18765),
+    try
+        Url = "http://127.0.0.1:18765/api/info",
+        Status = fun(Headers, HttpOpts) ->
+                     {ok, {{_, S, _}, _, _}} = httpc:request(get, {Url, Headers}, HttpOpts, []),
+                     S
+                 end,
+        ?assertNotEqual(403, Status([], [])),
+        ?assertEqual(403, Status([{"origin", "https://evil.example"}], [])),
+        ?assertNotEqual(403, Status([{"origin", "http://localhost:8080"}], [])),
+        %% DNS rebinding: a foreign Host header
+        ?assertEqual(403, Status([{"host", "evil.example"}], []))
+    after
+        tinyllm_web:stop()
+    end.
 
 web_ui_and_api() ->
     {ok, _} = application:ensure_all_started(inets),

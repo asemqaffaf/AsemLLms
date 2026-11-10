@@ -11,7 +11,7 @@
 %%                       (and the `agents` workers) can use AsemLLM as an LLM
 -module(tinyllm_web).
 -behaviour(cowboy_handler).
--export([start/0, start/1, stop/0, init/2]).
+-export([start/0, start/1, stop/0, init/2, execute/2]).
 
 -define(MAX_PROMPT, 1000).
 -define(MAX_LEN, 2000).
@@ -32,13 +32,34 @@ start(Port) ->
         {"/v1/models", ?MODULE, models},
         {"/v1/chat/completions", ?MODULE, completions}]}]),
     {ok, _} = cowboy:start_clear(tinyllm_http, [{port, Port}, {ip, {127, 0, 0, 1}}],
-                                 #{env => #{dispatch => Dispatch}}),
+                                 #{env => #{dispatch => Dispatch},
+                                   middlewares => [?MODULE, cowboy_router, cowboy_handler]}),
     logger:notice("AsemLLM UI on http://localhost:~p", [Port]),
     ok.
 
 stop() ->
     _ = (catch cowboy:stop_listener(tinyllm_http)),
     ok.
+
+%% Cowboy middleware: refuse requests whose Host (DNS rebinding) or Origin (cross-site form/fetch)
+%% is not this machine. The listener is bound to 127.0.0.1, but browsers can still be tricked into
+%% reaching it.
+execute(Req, Env) ->
+    Local = [<<"localhost">>, <<"127.0.0.1">>],
+    HostOk = lists:member(cowboy_req:host(Req), Local),
+    OriginOk = case cowboy_req:header(<<"origin">>, Req) of
+                   undefined -> true;
+                   Origin ->
+                       case uri_string:parse(Origin) of
+                           #{host := H} -> lists:member(H, Local);
+                           _ -> false
+                       end
+               end,
+    case HostOk andalso OriginOk of
+        true -> {ok, Req, Env};
+        false -> {stop, cowboy_req:reply(403, #{<<"content-type">> => <<"text/plain">>},
+                                         <<"forbidden: localhost only">>, Req)}
+    end.
 
 load_model() ->
     Path = application:get_env(tinyllm, model_file, "model.bin"),
