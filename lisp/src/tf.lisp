@@ -6,7 +6,8 @@
   (:export #:make-config #:config-vocab #:config-ctx #:config-dim #:config-heads #:config-layers #:config-ff
            #:model #:model-config #:model-params #:init-model #:param-count #:make-acts #:forward #:backward
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
-           #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config
+           #:param-names #:flops-per-token #:acts-probs #:acts-logits #:gen-kernel #:tuned-config
+           #:forward-rows #:backward-rows #:forward-trunk #:backward-trunk #:gather-rows
            #:native-init #:native-active-p #:native-min-work
            #:blas-init #:blas-active-p #:blas-min-work #:host-float #:elt-bytes))
 (in-package :asem-tf)
@@ -341,7 +342,8 @@ using the Lisp kernels) if the library cannot be loaded."
 (defstruct (acts (:constructor %make-acts))
   tlen hs hmid r1 n1 q k v att a r2 n2 rr tmp rf nf logits probs dlog dh dhmid dn dq dk dv da dnorm drr dp)
 
-(defun make-acts (cfg tlen)
+(defun make-acts (cfg tlen &optional (out-rows tlen))
+  "OUT-ROWS (default TLEN) sizes the logits, probabilities and their gradient: FORWARD-ROWS needs only as many as it has rows."
   (let* ((d (config-dim cfg)) (f (config-ff cfg)) (l (config-layers cfg)) (h (config-heads cfg))
          (v (config-vocab cfg)))
     (flet ((td () (new-dvec (* tlen d))) (per-layer (fn) (coerce (loop repeat l collect (funcall fn)) 'simple-vector)))
@@ -352,8 +354,8 @@ using the Lisp kernels) if the library cannot be loaded."
                  :att (per-layer (lambda () (new-dvec (* h tlen tlen)))) :a (per-layer #'td)
                  :r2 (per-layer (lambda () (new-dvec tlen))) :n2 (per-layer #'td)
                  :rr (per-layer (lambda () (new-dvec (* tlen f))))
-                 :tmp (td) :rf (new-dvec tlen) :nf (td) :logits (new-dvec (* tlen v)) :probs (new-dvec (* tlen v))
-                 :dlog (new-dvec (* tlen v)) :dh (td) :dhmid (td) :dn (td) :dq (td) :dk (td) :dv (td) :da (td)
+                 :tmp (td) :rf (new-dvec tlen) :nf (td) :logits (new-dvec (* out-rows v)) :probs (new-dvec (* out-rows v))
+                 :dlog (new-dvec (* out-rows v)) :dh (td) :dhmid (td) :dn (td) :dq (td) :dk (td) :dv (td) :da (td)
                  :dnorm (td) :drr (new-dvec (* tlen f)) :dp (new-dvec (* tlen tlen))))))
 
 (defun softmax-row (src so dst do n temp)
@@ -482,11 +484,37 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
 (defun forward (m x acts)
   "X: ivec of token ids (length = tlen of ACTS). Fills ACTS, returns nothing; call LOSS-OF-ACTS."
   (declare (type ivec x))
+  (forward-trunk m x acts)
+  (let* ((cfg (model-config m)) (tl (acts-tlen acts)) (v (config-vocab cfg)))
+    (mm-nn (acts-nf acts) (svref (model-params m) (head-index cfg)) (acts-logits acts) tl (config-dim cfg) v nil)
+    (dotimes (i tl) (softmax-row (acts-logits acts) (* i v) (acts-probs acts) (* i v) v 1d0)))
+  nil)
+
+(defun gather-rows (src dst rows d)
+  "dst[k] = src[rows[k]] for rows of width D."
+  (declare (type dvec src dst) (type ivec rows) (type fixnum d))
+  (dotimes (k (length rows)) (replace dst src :start1 (* k d) :start2 (* (aref rows k) d) :end2 (* (1+ (aref rows k)) d))))
+
+(defun forward-rows (m x acts rows)
+  "Like FORWARD, but the output head and softmax are computed only at the positions in ROWS (an ivec, any order):
+row k of (acts-logits acts) / (acts-probs acts) is position (aref rows k). Everything before the head is identical to FORWARD.
+Causal attention means a position never sees later tokens, so tokens after the last row (padding) cannot change the result."
+  (declare (type ivec x rows))
+  (forward-trunk m x acts)
+  (let* ((cfg (model-config m)) (v (config-vocab cfg)) (d (config-dim cfg)) (r (length rows)) (g (acts-tmp acts)))
+    (gather-rows (acts-nf acts) g rows d)
+    (mm-nn g (svref (model-params m) (head-index cfg)) (acts-logits acts) r d v nil)
+    (dotimes (k r) (softmax-row (acts-logits acts) (* k v) (acts-probs acts) (* k v) v 1d0)))
+  nil)
+
+(defun forward-trunk (m x acts)
+  "Embeddings, all layers and the final norm (into acts-nf); no output head."
+  (declare (type ivec x))
   (let* ((cfg (model-config m)) (ps (model-params m))
-         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg)) (v (config-vocab cfg))
+         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg))
          (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
          (tok (svref ps 0)) (pos (svref ps 1)) (h0 (svref (acts-hs acts) 0)))
-    (declare (type fixnum d f nh v hd tl) (type double-float scale) (type dvec tok pos h0))
+    (declare (type fixnum d f nh hd tl) (type double-float scale) (type dvec tok pos h0))
     (dotimes (i tl)
       (dotimes (j d)
         (setf (aref h0 (+ (* i d) j)) (+ (aref tok (+ (* (aref x i) d) j)) (aref pos (+ (* i d) j))))))
@@ -512,9 +540,7 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (mm-nn rr w2 tmp tl f d nil)
         (with-fast (dotimes (i (* tl d)) (setf (aref hout i) (+ (aref hmid i) (aref tmp i)))))))
     (let ((hl (svref (acts-hs acts) (config-layers cfg))))
-      (rmsnorm-fwd hl (svref ps (gf-index cfg)) (acts-nf acts) (acts-rf acts) tl d)
-      (mm-nn (acts-nf acts) (svref ps (head-index cfg)) (acts-logits acts) tl d v nil)
-      (dotimes (i tl) (softmax-row (acts-logits acts) (* i v) (acts-probs acts) (* i v) v 1d0)))
+      (rmsnorm-fwd hl (svref ps (gf-index cfg)) (acts-nf acts) (acts-rf acts) tl d))
     nil))
 
 (defun loss-of-acts (acts y)
@@ -539,21 +565,54 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
 (defun backward (m x y acts grads)
   "Accumulate d(mean loss)/d(params) into GRADS. Call FORWARD first. Returns the loss."
   (declare (type ivec x y))
-  (let* ((cfg (model-config m)) (ps (model-params m)) (nl (config-layers cfg))
-         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg)) (v (config-vocab cfg))
-         (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
+  (let* ((cfg (model-config m)) (ps (model-params m))
+         (d (config-dim cfg)) (v (config-vocab cfg)) (tl (acts-tlen acts))
          (loss (loss-of-acts acts y))
-         (dlog (acts-dlog acts)) (dh (acts-dh acts)) (dhmid (acts-dhmid acts)) (dn (acts-dn acts))
-         (dq (acts-dq acts)) (dk (acts-dk acts)) (dv (acts-dv acts)) (da (acts-da acts)) (drr (acts-drr acts))
-         (dsc (acts-dnorm acts)))
-    (declare (type fixnum d f nh v hd tl nl) (type double-float scale)
-             (type dvec dlog dh dhmid dn dq dk dv da drr dsc))
+         (dlog (acts-dlog acts)) (dn (acts-dn acts)))
+    (declare (type fixnum d v tl) (type dvec dlog dn))
     ;; softmax cross-entropy
     (replace dlog (the dvec (acts-probs acts)))
     (dotimes (i tl) (decf (aref dlog (+ (* i v) (aref y i))) 1d0))
     (let ((inv (/ 1d0 tl))) (dotimes (i (* tl v)) (setf (aref dlog i) (* (aref dlog i) inv))))
     (mm-tn (acts-nf acts) dlog (svref grads (head-index cfg)) tl d v t)
     (mm-nt dlog (svref ps (head-index cfg)) dn tl v d nil)
+    (backward-trunk m x acts grads)
+    loss))
+
+(defun backward-rows (m x rows targets acts grads)
+  "After FORWARD-ROWS: accumulate into GRADS the gradient of the SUM over k of -log p(targets[k] | position rows[k]).
+Positions not in ROWS contribute no loss (answer-only masking). Returns that sum (a long-float)."
+  (declare (type ivec x rows targets))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg))
+         (r (length rows)) (dlog (acts-dlog acts)) (probs (acts-probs acts)) (g (acts-tmp acts)) (dr (acts-da acts))
+         (dn (acts-dn acts)) (loss 0l0))
+    (declare (type fixnum d v r) (type dvec dlog probs g dr dn))
+    (dotimes (k r)
+      (let ((pr (aref probs (+ (* k v) (aref targets k)))))
+        (decf loss (log (if (< pr 1d-300) 1d-300 pr)))))
+    (replace dlog probs :end1 (* r v))
+    (dotimes (k r) (decf (aref dlog (+ (* k v) (aref targets k))) 1d0))
+    (gather-rows (acts-nf acts) g rows d)
+    (mm-tn g dlog (svref grads (head-index cfg)) r d v t)
+    (mm-nt dlog (svref ps (head-index cfg)) dr r v d nil)
+    (fill dn 0d0)
+    (dotimes (k r)
+      (let ((o (* (aref rows k) d)))
+        (dotimes (j d) (incf (aref dn (+ o j)) (aref dr (+ (* k d) j))))))
+    (backward-trunk m x acts grads)
+    loss))
+
+(defun backward-trunk (m x acts grads)
+  "Backpropagate from acts-dn = d(loss)/d(final-norm output) through the final norm, all layers and the embeddings."
+  (declare (type ivec x))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (nl (config-layers cfg))
+         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg))
+         (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
+         (dh (acts-dh acts)) (dhmid (acts-dhmid acts)) (dn (acts-dn acts))
+         (dq (acts-dq acts)) (dk (acts-dk acts)) (dv (acts-dv acts)) (da (acts-da acts)) (drr (acts-drr acts))
+         (dsc (acts-dnorm acts)))
+    (declare (type fixnum d f nh hd tl nl) (type double-float scale)
+             (type dvec dh dhmid dn dq dk dv da drr dsc))
     (rmsnorm-bwd (svref (acts-hs acts) nl) (svref ps (gf-index cfg)) (acts-rf acts) dn dh
                  (svref grads (gf-index cfg)) tl d nil)
     (loop for l from (1- nl) downto 0
@@ -594,4 +653,4 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (dotimes (j d)
           (incf (aref gt (+ (* (aref x i) d) j)) (aref dh (+ (* i d) j)))
           (incf (aref gp (+ (* i d) j)) (aref dh (+ (* i d) j))))))
-    loss))
+    nil))

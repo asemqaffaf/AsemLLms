@@ -66,4 +66,57 @@
       (let ((l (loss-at m (ivec 1 2 3 4 5 6 7 8) (ivec 2 3 4 5 6 7 8 9))))
         (check (/= l l) "a NaN weight must give a NaN loss, not a clamped finite one")))))
 
+
+;;; ---- answer-only (row-selective) head and loss, used by supervised fine-tuning (src/sft.lisp)
+(defun masked-loss-full (m x rows targets)
+  "Reference: full FORWARD, then the summed cross-entropy at ROWS only."
+  (let ((acts (make-acts (model-config m) (length x))) (v (config-vocab (model-config m))) (s 0d0))
+    (forward m x acts)
+    (loop for r across rows for tg across targets do (decf s (log (aref (acts-probs acts) (+ (* r v) tg)))))
+    s))
+
+(deftest forward-rows-matches-forward-at-those-rows
+  (let* ((cfg (make-config :vocab 13 :ctx 7 :dim 8 :heads 2 :layers 2 :ff 16)) (m (init-model cfg 4))
+         (x (ivec 3 1 4 1 5 9 2)) (rows (ivec 6 2)) (full (make-acts cfg 7)) (part (make-acts cfg 7 2)))
+    (forward m x full) (forward-rows m x part rows)
+    (check (equalp (subseq (acts-probs part) 0 13) (subseq (acts-probs full) (* 6 13) (* 7 13))) "row 6")
+    (check (equalp (subseq (acts-probs part) 13 26) (subseq (acts-probs full) (* 2 13) (* 3 13))) "row 2")))
+
+(deftest padding-after-the-answer-row-changes-nothing
+  (let* ((cfg (make-config :vocab 13 :ctx 9 :dim 8 :heads 2 :layers 2 :ff 16)) (m (init-model cfg 4))
+         (a (make-acts cfg 9 1)) (b (make-acts cfg 9 1)) (c (make-acts cfg 5 1)) (rows (ivec 4)))
+    (forward-rows m (ivec 3 1 4 1 5 0 0 0 0) a rows)
+    (forward-rows m (ivec 3 1 4 1 5 12 7 7 2) b rows)
+    (forward-rows m (ivec 3 1 4 1 5) c rows)
+    (check (equalp (subseq (acts-probs a) 0 13) (subseq (acts-probs b) 0 13)) "different padding tokens")
+    (check (equalp (subseq (acts-probs a) 0 13) (subseq (acts-probs c) 0 13)) "padded vs unpadded")))
+
+(deftest masked-gradients-match-numerical-differentiation
+  (let* ((cfg (make-config :vocab 11 :ctx 6 :dim 8 :heads 2 :layers 2 :ff 16)) (m (init-model cfg 3))
+         (x (ivec 1 4 2 9 0 3)) (rows (ivec 3 5)) (tg (ivec 7 2)) (acts (make-acts cfg 6 2)) (grads (make-grads cfg))
+         (state (sb-ext:seed-random-state 5)) (worst 0d0) (eps 1d-6))
+    (forward-rows m x acts rows)
+    (let ((l (backward-rows m x rows tg acts grads)))
+      (check-close l (masked-loss-full m x rows tg) 1d-12))
+    (loop for p across (model-params m) for g across grads
+          do (dotimes (s 6)
+               (let* ((i (random (length p) state)) (old (aref p i)))
+                 (setf (aref p i) (+ old eps))
+                 (let ((up (masked-loss-full m x rows tg)))
+                   (setf (aref p i) (- old eps))
+                   (let* ((dn (masked-loss-full m x rows tg)) (num (/ (- up dn) (* 2 eps))) (ana (aref g i)))
+                     (setf (aref p i) old)
+                     (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana))))))))))
+    (check (< worst 1d-5) (format nil "worst relative gradient error ~e" worst))))
+
+(deftest masked-rows-get-no-gradient-from-other-positions
+  ;; the token at the last position is never a prediction source for row 2: its embedding gradient must be zero
+  (let* ((cfg (make-config :vocab 11 :ctx 5 :dim 8 :heads 2 :layers 1 :ff 16)) (m (init-model cfg 3))
+         (x (ivec 1 2 3 4 10)) (acts (make-acts cfg 5 1)) (grads (make-grads cfg)))
+    (forward-rows m x acts (ivec 2))
+    (backward-rows m x (ivec 2) (ivec 5) acts grads)
+    (check (every #'zerop (subseq (svref grads 0) (* 10 8) (* 11 8))) "token after the row: zero embedding gradient")
+    (check (every #'zerop (subseq (svref grads 1) (* 3 8))) "positions after the row: zero position gradient")
+    (check (notevery #'zerop (subseq (svref grads 0) (* 3 8) (* 4 8))) "token at the row has a gradient")))
+
 (run-all)
