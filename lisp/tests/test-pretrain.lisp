@@ -103,4 +103,101 @@
     (dolist (c '("fact" "reading" "reasoning"))
       (check-equal (count c items :key (lambda (x) (getf x :category)) :test #'string=) 30))))
 
+;;; ---------------------------------------------------------------- diagnostics
+(deftest diagnostic-statistics
+  (let ((pearson (symbol-function (find-symbol "PEARSON" "ASEM-PRETRAIN"))) (tv (symbol-function (find-symbol "TV-DISTANCE" "ASEM-PRETRAIN")))
+        (sm (symbol-function (find-symbol "SOFTMAX-OF" "ASEM-PRETRAIN"))) (med (symbol-function (find-symbol "MEDIAN-OF" "ASEM-PRETRAIN"))))
+    (check (< (abs (- (funcall pearson '(1d0 2d0 3d0 4d0) '(2d0 4d0 6d0 8d0)) 1d0)) 1d-12))
+    (check (< (abs (+ (funcall pearson '(1d0 2d0 3d0) '(3d0 2d0 1d0)) 1d0)) 1d-12))
+    (check-equal (funcall pearson '(1d0 1d0 1d0) '(1d0 2d0 3d0)) 0d0)                      ; a constant series has no correlation, not NaN
+    (check (< (abs (- (reduce #'+ (funcall sm '(0d0 1d0 2d0))) 1d0)) 1d-12))
+    (check-equal (funcall tv '(0.5d0 0.5d0) '(0.5d0 0.5d0)) 0d0)
+    (check (< (abs (- (funcall tv '(1d0 0d0) '(0d0 1d0)) 1d0)) 1d-12))
+    (check-equal (funcall med '(3d0 1d0 2d0)) 2d0)
+    (check-equal (funcall med '(4d0 1d0 2d0 3d0)) 2.5d0)))
+
+(defparameter *names* #("zorb" "plim" "quax" "vend" "trol" "gnab" "fwip" "dreb" "kast" "yolm" "snev" "braw" "uxen" "hilp" "cogg" "wazz" "pren" "jisk" "lorp" "mand" "feks" "tuv" "ogle" "nirk"))
+(defparameter *colors* #("red" "blue" "green" "black" "white" "pink"))
+(defun fact-color (k) (aref *colors* (mod (* 5 k) 6)))
+
+(defun make-fact-data (dir)
+  "A corpus whose every line states one fact: the color of one of 24 made-up objects. Answering needs the question."
+  (let ((state (sb-ext:seed-random-state 11)))
+    (asem-data:build (lambda (cb) (dotimes (i 200)
+                                    (funcall cb (list :text (with-output-to-string (o)
+                                                              (dotimes (j 40) (let ((k (random 24 state)))
+                                                                                (format o "Question: What is the color of ~a?~%Answer: ~a~%" (aref *names* k) (fact-color k)))))
+                                                      :score 4d0 :language-score 0.99d0))))
+                     dir :min-chars 100 :vocab-size 300 :tokenizer-docs 100 :shard-tokens 60000 :val-permille 100 :test-permille 50 :near-dedup nil
+                     :max-dup-line-ratio 1.1d0 :min-mean-word-len 1d0 :max-mean-word-len 30d0 :min-alpha-ratio 0d0 :max-symbol-ratio 1d0)))
+
+(defun write-fact-eval (path)
+  (with-open-file (o path :direction :output :if-exists :supersede :external-format :utf-8)
+    (dotimes (k 24)
+      (let* ((right (fact-color k)) (wrong (remove right (coerce *colors* 'list) :test #'string=))
+             (pos (mod k 4)) (others (subseq (append (subseq wrong (mod k 5)) (subseq wrong 0 (mod k 5))) 0 3))
+             (opts (append (subseq others 0 pos) (list right) (subseq others pos))))
+        (format o "{\"id\":\"fact-~2,'0d\",\"category\":\"fact\",\"q\":\"What is the color of ~a?\",\"options\":[~{\"~a\"~^,~}],\"answer\":~d}~%"
+                k (aref *names* k) opts pos)))))
+
+(defun diagnose-in (pkg data ckpt eval-file)
+  (let* ((fn (lambda (name) (symbol-function (find-symbol name pkg))))
+         (manifest (asem-data:load-manifest data))
+         (bpe (asem-bpe:load-bpe (format nil "~a/tokenizer.bpe" data)))
+         (model (funcall (funcall fn "LOAD-CHECKPOINT") ckpt))
+         (logf (funcall (funcall fn "TOKEN-LOGFREQ") (funcall (funcall fn "LOAD-SPLIT-TOKENS") data "train")
+                        (asem-json:json-get (asem-json:json-get manifest "tokenizer") "vocab_size"))))
+    (funcall (funcall fn "DIAGNOSE-MODEL") model bpe (funcall (funcall fn "READ-EVAL-SET") eval-file) logf)))
+
+(defun jget (obj &rest keys) (let ((o obj)) (dolist (k keys o) (setf o (asem-json:json-get o k)))))
+
+(deftest diagnose-detects-a-model-that-uses-the-question-and-not-one-that-does-not
+  (let* ((data (tmpdir "f")) (evalf (format nil "~a.jsonl" (tmpdir "fe"))) (pkg "ASEM-PRETRAIN32"))
+    (make-fact-data data) (write-fact-eval evalf)
+    (let* ((fn (lambda (name) (symbol-function (find-symbol name pkg))))
+           (cfg (funcall (funcall fn "PRESET-CONFIG") :1m 300 40))
+           (untrained (tmpdir "u")) (trained (tmpdir "t")))
+      (funcall (funcall fn "PRETRAIN") data untrained :ctx 40 :steps 0 :batch 4 :eval-every 1000 :config cfg :seed 1)
+      (funcall (funcall fn "PRETRAIN") data trained :ctx 40 :steps 700 :batch 16 :workers 2 :lr 0.01 :warmup 20 :eval-every 700 :val-windows 8 :config cfg :seed 1)
+      (let ((u (diagnose-in pkg data (format nil "~a/last.ckpt" untrained) evalf))
+            (tr (diagnose-in pkg data (format nil "~a/last.ckpt" trained) evalf)))
+        ;; positive control: the trained model answers from the question, and the diagnostic says so
+        (check (>= (jget tr "accuracy" "with_question_mean_logprob") 0.85) (format nil "trained accuracy ~a" (jget tr "accuracy" "with_question_mean_logprob")))
+        (check (<= (jget tr "accuracy" "no_question_context_kept") 0.5) "without the question it cannot know which object is meant")
+        (check (<= (jget tr "accuracy" "mismatched_question") 0.5) "with another question's prompt it cannot answer either")
+        (check (> (jget tr "question_sensitivity" "margin_gain_sum_z") 3) (format nil "margin gain z ~a" (jget tr "question_sensitivity" "margin_gain_sum_z")))
+        (check (> (jget tr "question_sensitivity" "margin_gain_mean_logprob_z") 3) "margin gain (mean) is significant")
+        (check (eq (jget tr "conditions_on_the_question" "margin_gain_z_above_3_sum_and_mean") :true) "flag must be true for a model that uses the question")
+        (check (eq (jget tr "conditions_on_the_question" "accuracy_above_chance_band") :true) "accuracy flag")
+        (check (> (jget tr "accuracy" "calibrated_sum_logprob_minus_no_input") 0.7) "calibrated scoring also finds the answers")
+        (check (< (jget tr "question_sensitivity" "top_option_unchanged_by_other_question") 0.6) "another question must change the top option")
+        ;; negative control: an untrained model does not
+        (check (< (jget u "accuracy" "with_question_mean_logprob") 0.5) "untrained accuracy is near chance")
+        (check (< (abs (jget u "question_sensitivity" "margin_gain_sum_z")) 3) (format nil "untrained margin gain z ~a" (jget u "question_sensitivity" "margin_gain_sum_z")))
+        (check (eq (jget u "conditions_on_the_question" "margin_gain_z_above_3_sum_and_mean") :false) "flag must be false for an untrained model")
+        ;; the report is deterministic and complete
+        (let ((again (diagnose-in pkg data (format nil "~a/last.ckpt" trained) evalf)))
+          (check-equal (with-output-to-string (o) (asem-json:write-json tr o)) (with-output-to-string (o) (asem-json:write-json again o))))
+        (dolist (section '("accuracy" "length_bias" "frequency_bias" "margin" "question_sensitivity" "by_category" "conditions_on_the_question"))
+          (check (asem-json:json-get tr section) (format nil "section ~a is missing" section))))
+      (rm-rf untrained) (rm-rf trained))
+    (rm-rf data) (ignore-errors (delete-file evalf))))
+
+(deftest diagnose-output-is-valid-json-in-both-precisions
+  (let ((data (tmpdir "j")) (evalf (format nil "~a.jsonl" (tmpdir "je"))))
+    (make-fact-data data) (write-fact-eval evalf)
+    (with-precisions (pkg fn)
+      (let ((out (tmpdir (format nil "j-~a" pkg))))
+        (funcall (fn "PRETRAIN") data out :ctx 40 :steps 2 :batch 2 :eval-every 2 :val-windows 2 :seed 2
+                                          :config (funcall (fn "PRESET-CONFIG") :1m 300 40))
+        (let* ((r (diagnose-in pkg data (format nil "~a/last.ckpt" out) evalf))
+               (text (with-output-to-string (o) (asem-json:write-json r o)))
+               (back (asem-json:parse-json text)))
+          (check-equal (jget back "questions") 24)
+          (check (realp (jget back "accuracy" "with_question_mean_logprob")) "numbers survive a JSON round trip")
+          (check (not (search "f0" text)) "no single-float exponent markers in the JSON")
+          (check-equal text (with-output-to-string (o) (asem-json:write-json (diagnose-in pkg data (format nil "~a/last.ckpt" out) evalf) o))))
+        (rm-rf out)))
+    (rm-rf data) (ignore-errors (delete-file evalf))))
+
 (run-all)

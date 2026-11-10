@@ -98,6 +98,19 @@ balanced over the four positions. Each option is scored by the mean log-probabil
 still produces a continuous score (`answer_margin`: correct minus best wrong); chance is 25%. The log also records validation loss and perplexity, tokens/s, peak RSS and
 the SHA-256 of the checkpoint (same seed and data give identical bytes with one worker; `tests/test-pretrain.lisp` checks it for both precisions).
 
+### Is the model using the question? `bin/diagnose.lisp`
+
+    sbcl --dynamic-space-size 4GB --script bin/diagnose.lisp data=../data/fineweb/stage1 ckpt=../data/runs/1m/best.ckpt text=1 > diagnosis.json
+
+Deterministic (forward passes only), one JSON object. Accuracy is reported four ways (with the question, without it with the passage kept, with no input at all, and with
+another item's prompt), plus a calibrated score, log P(option | prompt) minus log P(option | "Answer:"), which cancels length and frequency priors. `length_bias` and
+`frequency_bias` show whether scores follow answer length or token frequency (summed log-probability on this set picks the unique shortest option ~86% of the time,
+mean-per-token correlates +0.45 with length: neither raw rule is length-neutral). `question_sensitivity` scores each item's fixed options under mismatched questions:
+`pmi_*` is how much the correct answer's probability changes, which can be positive from question type alone (names vs numbers); `margin_gain_*` is whether the correct answer
+gains on the wrong ones when its own question is present, which is the evidence of conditioning on the answer-relevant content. `by_category` repeats it for facts,
+reading comprehension and reasoning. `tests/test-pretrain.lisp` has a positive control (a model trained on learnable facts must be flagged as using the question, an untrained
+one must not). 1M model on the 1.7M-token snapshot: accuracy 24% (chance), calibrated 22%, margin gain z +0.4 (summed) and +2.1 (mean): it reacts to question type, not content.
+
 ## What was measured
 
 - Data pipeline: on 20,000 FineWeb-Edu documents it kept 7,479 (11,282 low edu score; 979 low language score; 257 too short;

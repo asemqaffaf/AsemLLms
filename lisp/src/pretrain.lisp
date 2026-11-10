@@ -6,7 +6,7 @@
 (defpackage :asem-pretrain
   (:use :cl :asem-tf :asem-util)
   (:export #:pretrain #:load-checkpoint #:save-checkpoint #:read-eval-set #:score-eval #:sample-text #:load-split-tokens
-           #:preset-config #:rss-mb #:evaluate-checkpoint))
+           #:preset-config #:rss-mb #:evaluate-checkpoint #:diagnose-model #:token-logfreq))
 (in-package :asem-pretrain)
 
 ;;; ------------------------------------------------------------------ tokens
@@ -312,3 +312,136 @@
                         :acc-fact (or (cdr (assoc "fact" (getf ans :by-category) :test #'equal)) 0)
                         :acc-reading (or (cdr (assoc "reading" (getf ans :by-category) :test #'equal)) 0)
                         :acc-reasoning (or (cdr (assoc "reasoning" (getf ans :by-category) :test #'equal)) 0))))))))
+;;; ------------------------------------------------------------------ diagnostics: is the model using the question?
+;;; Everything here is deterministic (no sampling): forward passes only. Numbers in the result are long-floats (doubles) so the
+;;; JSON is identical whichever precision the model runs in. See bin/diagnose.lisp.
+(defun prompt-of (it &key (question t) (context t))
+  "The prompt SCORE-EVAL uses (question and context), or an ablation of it."
+  (format nil "~@[~a~%~]~@[Question: ~a~%~]Answer:" (and context (getf it :context)) (and question (getf it :q))))
+
+(defun option-scores (model bpe prompt options)
+  "List of (total-logprob . token-count), one per option."
+  (loop for o in options
+        collect (multiple-value-bind (lp n) (option-logprob model bpe prompt (format nil " ~a" o)) (cons (float lp 1l0) n))))
+
+(defun token-logfreq (tokens vocab)
+  "Vector of smoothed unigram log-frequencies of each token id in TOKENS (add-one), as long-floats."
+  (let ((counts (make-array vocab :initial-element 0)) (out (make-array vocab)))
+    (loop for tk across tokens do (incf (aref counts tk)))
+    (dotimes (i vocab out) (setf (aref out i) (log (/ (+ 1l0 (aref counts i)) (+ (length tokens) vocab)))))))
+
+(defun mean-of (xs) (if xs (/ (reduce #'+ xs) (length xs)) 0l0))
+(defun sd-of (xs) (if (< (length xs) 2) 0l0 (let ((m (mean-of xs))) (sqrt (/ (reduce #'+ (mapcar (lambda (x) (expt (- x m) 2)) xs)) (1- (length xs)))))))
+(defun median-of (xs) (let* ((v (sort (copy-list xs) #'<)) (n (length v))) (if (zerop n) 0l0 (if (oddp n) (nth (floor n 2) v) (/ (+ (nth (1- (floor n 2)) v) (nth (floor n 2) v)) 2)))))
+(defun pearson (xs ys)
+  (let* ((mx (mean-of xs)) (my (mean-of ys))
+         (sxy (reduce #'+ (mapcar (lambda (x y) (* (- x mx) (- y my))) xs ys)))
+         (sxx (reduce #'+ (mapcar (lambda (x) (expt (- x mx) 2)) xs))) (syy (reduce #'+ (mapcar (lambda (y) (expt (- y my) 2)) ys))))
+    (if (or (zerop sxx) (zerop syy)) 0l0 (/ sxy (sqrt (* sxx syy))))))
+(defun argmax-of (xs) (position (reduce #'max xs) xs))
+(defun softmax-of (xs) (let* ((m (reduce #'max xs)) (es (mapcar (lambda (x) (exp (- x m))) xs)) (z (reduce #'+ es))) (mapcar (lambda (e) (/ e z)) es)))
+(defun tv-distance (p q) (* 0.5l0 (reduce #'+ (mapcar (lambda (a b) (abs (- a b))) p q))))
+(defun frac (pred xs) (if xs (/ (count-if pred xs) (length xs) 1l0) 0l0))
+
+(defun mismatched-items (items it idx k)
+  "K other items of the same category, chosen deterministically (cyclically from a position that depends on IDX)."
+  (let* ((same (remove-if (lambda (o) (eq o it)) (remove-if-not (lambda (o) (equal (getf o :category) (getf it :category))) items)))
+         (len (length same)))
+    (when (zerop len) (setf same (remove it items) len (length same)))
+    (loop for j below (min k len) collect (nth (mod (+ (* idx 5) j) len) same))))
+
+(defun jobj (&rest plist) (cons :obj (loop for (k v) on plist by #'cddr collect (cons k v))))
+
+(defun diagnose-model (model bpe items logfreq &key (mismatches 3))
+  "A JSON-ready object (asem-json :obj) describing whether MODEL's answers depend on the question; see bin/diagnose.lisp."
+  (let* ((n (length items)) (recs nil))
+    (loop for it in items for idx from 0
+          do (let ((opts (getf it :options)))
+               (push (list :it it :ans (getf it :answer)
+                           :real (option-scores model bpe (prompt-of it) opts)
+                           :noq (option-scores model bpe (prompt-of it :question nil) opts)
+                           :bare (option-scores model bpe (prompt-of it :question nil :context nil) opts)
+                           :mism (mapcar (lambda (o) (option-scores model bpe (prompt-of o) opts)) (mismatched-items items it idx mismatches))
+                           :toks (mapcar (lambda (o) (asem-bpe:bpe-encode bpe (format nil " ~a" o))) opts))
+                     recs)))
+    (setf recs (nreverse recs))
+    (labels ((sums (sc) (mapcar #'car sc)) (means (sc) (mapcar (lambda (c) (/ (car c) (max 1 (cdr c)))) sc))
+             (r (rec k) (getf rec k))
+             (hit (rec key fn) (= (argmax-of (funcall fn (r rec key))) (r rec :ans)))
+             (acc (recs key fn) (frac (lambda (rec) (hit rec key fn)) recs))
+             (margin (rec fn) (let ((v (funcall fn (r rec :real)))) (- (nth (r rec :ans) v) (loop for x in v for i from 0 unless (= i (r rec :ans)) maximize x))))
+             (margin-of (rec key fn) (let ((v (funcall fn (r rec key)))) (- (nth (r rec :ans) v) (loop for x in v for i from 0 unless (= i (r rec :ans)) maximize x))))
+             (m-of (v ans) (- (nth ans v) (loop for x in v for i from 0 unless (= i ans) maximize x)))
+             (cal (rec) (mapcar #'- (sums (r rec :real)) (sums (r rec :bare))))     ; calibrated: log P(option | prompt) - log P(option | "Answer:")
+             (gain (rec fn) (let ((ans (r rec :ans)))                                 ; does the right answer gain on the wrong ones with its own question?
+                              (- (m-of (funcall fn (r rec :real)) ans) (mean-of (mapcar (lambda (m) (m-of (funcall fn m) ans)) (r rec :mism))))))
+             (z-of (xs) (let ((se (/ (sd-of xs) (sqrt (max 1 (length xs)))))) (if (zerop se) 0l0 (/ (mean-of xs) se))))
+             (lens (rec) (mapcar #'length (r rec :toks)))
+             (logf (rec) (mapcar (lambda (ts) (mean-of (mapcar (lambda (tk) (aref logfreq tk)) ts))) (r rec :toks)))
+             (pmi (rec fn) (let ((ans (r rec :ans))) (- (nth ans (funcall fn (r rec :real))) (mean-of (mapcar (lambda (m) (nth ans (funcall fn m))) (r rec :mism))))))
+             (acc-mism (recs fn) (let ((hits 0) (tot 0))
+                                   (dolist (rec recs (if (zerop tot) 0l0 (/ hits tot 1l0)))
+                                     (dolist (m (r rec :mism)) (incf tot) (when (= (argmax-of (funcall fn m)) (r rec :ans)) (incf hits))))))
+             (strict-pick (recs fn extreme) ; among items with a unique shortest/longest option: how often the model picks it
+               (let ((hits 0) (tot 0))
+                 (dolist (rec recs)
+                   (let* ((ls (lens rec)) (target (if (eq extreme :shortest) (reduce #'min ls) (reduce #'max ls))))
+                     (when (= 1 (count target ls))
+                       (incf tot) (when (= (argmax-of (funcall fn (r rec :real))) (position target ls)) (incf hits)))))
+                 (values (if (zerop tot) 0l0 (/ hits tot 1l0)) tot)))
+             (section (recs)
+               (let* ((pmis (mapcar (lambda (rec) (pmi rec #'sums)) recs)) (se (/ (sd-of pmis) (sqrt (max 1 (length recs))))))
+                 (jobj "n" (length recs)
+                       "accuracy_mean_logprob" (acc recs :real #'means) "accuracy_sum_logprob" (acc recs :real #'sums)
+                       "accuracy_no_question" (acc recs :noq #'means) "accuracy_bare_prior" (acc recs :bare #'means)
+                       "accuracy_mismatched_question" (acc-mism recs #'means)
+                       "margin_mean" (mean-of (mapcar (lambda (rec) (margin rec #'means)) recs))
+                       "accuracy_calibrated" (frac (lambda (rec) (= (argmax-of (cal rec)) (r rec :ans))) recs)
+                       "pmi_sum_mean" (mean-of pmis) "pmi_sum_z" (if (zerop se) 0l0 (/ (mean-of pmis) se))
+                       "margin_gain_sum_mean" (mean-of (mapcar (lambda (rec) (gain rec #'sums)) recs))
+                       "margin_gain_sum_z" (z-of (mapcar (lambda (rec) (gain rec #'sums)) recs)))))
+             (cats () (remove-duplicates (mapcar (lambda (rec) (getf (r rec :it) :category)) recs) :test #'equal :from-end t)))
+      (let* ((all-len (loop for rec in recs append (mapcar #'float (lens rec)))) (all-len (mapcar (lambda (x) (float x 1l0)) all-len))
+             (all-sum (loop for rec in recs append (sums (r rec :real)))) (all-mean (loop for rec in recs append (means (r rec :real))))
+             (all-prior (loop for rec in recs append (means (r rec :bare)))) (all-logf (loop for rec in recs append (logf rec)))
+             (margins (mapcar (lambda (rec) (margin rec #'means)) recs)) (margins-sum (mapcar (lambda (rec) (margin rec #'sums)) recs))
+             (prior-margins (mapcar (lambda (rec) (margin-of rec :bare #'means)) recs))
+             (pmis-sum (mapcar (lambda (rec) (pmi rec #'sums)) recs)) (pmis-mean (mapcar (lambda (rec) (pmi rec #'means)) recs))
+             (gains-sum (mapcar (lambda (rec) (gain rec #'sums)) recs)) (gains-mean (mapcar (lambda (rec) (gain rec #'means)) recs))
+             (se-sum (/ (sd-of pmis-sum) (sqrt (max 1 n)))) (z-sum (if (zerop se-sum) 0l0 (/ (mean-of pmis-sum) se-sum)))
+             (tvs (loop for rec in recs append (let ((p (softmax-of (sums (r rec :real))))) (mapcar (lambda (m) (tv-distance p (softmax-of (sums m)))) (r rec :mism)))))
+             (stable (loop for rec in recs append (let ((top (argmax-of (sums (r rec :real))))) (mapcar (lambda (m) (if (= top (argmax-of (sums m))) 1l0 0l0)) (r rec :mism)))))
+             (acc-real (acc recs :real #'means)) (chance-hi (+ 0.25l0 (* 1.96l0 (sqrt (/ (* 0.25l0 0.75l0) (max 1 n))))))
+             (freq-pick (frac (lambda (rec) (= (argmax-of (logf rec)) (r rec :ans))) recs)))
+        (multiple-value-bind (short-sum n-short) (strict-pick recs #'sums :shortest)
+          (multiple-value-bind (long-sum n-long) (strict-pick recs #'sums :longest)
+            (jobj "questions" n "deterministic" :true "random_baseline" 0.25l0 "chance_95_upper" chance-hi
+                  "accuracy" (jobj "with_question_mean_logprob" acc-real "with_question_sum_logprob" (acc recs :real #'sums)
+                                   "no_question_context_kept" (acc recs :noq #'means) "bare_prior_no_input" (acc recs :bare #'means)
+                                   "mismatched_question" (acc-mism recs #'means)
+                                   "calibrated_sum_logprob_minus_no_input" (frac (lambda (rec) (= (argmax-of (cal rec)) (r rec :ans))) recs))
+                  "length_bias" (jobj "corr_length_vs_sum_logprob" (pearson all-len all-sum) "corr_length_vs_mean_logprob" (pearson all-len all-mean)
+                                      "mean_option_tokens_correct" (mean-of (mapcar (lambda (rec) (float (nth (r rec :ans) (lens rec)) 1l0)) recs))
+                                      "mean_option_tokens_wrong" (mean-of (mapcar (lambda (rec) (mean-of (loop for l in (lens rec) for i from 0 unless (= i (r rec :ans)) collect (float l 1l0)))) recs))
+                                      "items_with_unique_shortest_option" n-short "sum_logprob_picks_the_unique_shortest" short-sum
+                                      "items_with_unique_longest_option" n-long "sum_logprob_picks_the_unique_longest" long-sum
+                                      "expected_if_unbiased" 0.25l0)
+                  "frequency_bias" (jobj "corr_option_token_frequency_vs_score" (pearson all-logf all-mean)
+                                         "corr_option_token_frequency_vs_prior_score" (pearson all-logf all-prior)
+                                         "accuracy_of_always_picking_the_most_frequent_option" freq-pick
+                                         "model_picks_the_most_frequent_option" (frac (lambda (rec) (= (argmax-of (means (r rec :real))) (argmax-of (logf rec)))) recs))
+                  "margin" (jobj "mean_logprob_mean" (mean-of margins) "mean_logprob_median" (median-of margins) "mean_logprob_fraction_positive" (frac #'plusp margins)
+                                 "sum_logprob_mean" (mean-of margins-sum) "prior_only_mean" (mean-of prior-margins))
+                  "question_sensitivity" (jobj "mismatched_questions_per_item" mismatches
+                                               "pmi_sum_mean_nats" (mean-of pmis-sum) "pmi_sum_standard_error" se-sum "pmi_sum_z" z-sum
+                                               "pmi_sum_fraction_positive" (frac #'plusp pmis-sum) "pmi_mean_logprob_mean" (mean-of pmis-mean)
+                                               "mean_total_variation_of_option_distribution" (mean-of tvs)
+                                               "top_option_unchanged_by_other_question" (mean-of stable)
+                                               "margin_gain_sum_mean" (mean-of gains-sum) "margin_gain_sum_z" (z-of gains-sum)
+                                               "margin_gain_mean_logprob_mean" (mean-of gains-mean) "margin_gain_mean_logprob_z" (z-of gains-mean)
+                                               "margin_calibrated_mean" (mean-of (mapcar (lambda (rec) (m-of (cal rec) (r rec :ans))) recs)))
+                  "by_category" (cons :obj (loop for c in (cats) collect (cons c (section (remove-if-not (lambda (rec) (equal (getf (r rec :it) :category) c)) recs)))))
+                  "conditions_on_the_question" (jobj "answer_pmi_z_above_3_weak_question_type_effect_possible" (if (> z-sum 3) :true :false)
+                                                     "margin_gain_z_above_3_sum_and_mean" (if (and (> (z-of gains-sum) 3) (> (z-of gains-mean) 3)) :true :false)
+                                                     "accuracy_above_chance_band" (if (> acc-real chance-hi) :true :false)
+                                                     "accuracy_exceeds_no_question_by_5_points" (if (> acc-real (+ 0.05l0 (acc recs :noq #'means))) :true :false)))))))))
