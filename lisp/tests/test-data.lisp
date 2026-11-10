@@ -156,6 +156,23 @@
     (check-equal a b)
     (check (< 0 (count :val a) 100))))
 
+(deftest test-split-is-disjoint-verified-and-off-by-default
+  (let* ((dir (tmpdir "t")) (m (build-in dir (make-docs 500 :seed 3) :test-permille 100)))
+    (check (stringp (verify dir)))
+    (dolist (sp '("train" "val" "test"))
+      (check (plusp (json-get (json-get (json-get m "splits") sp) "tokens")) (format nil "~a split is empty" sp)))
+    ;; the same text never lands in two splits, and the split of a document is a pure function of its content
+    (let ((texts (loop for d in (make-docs 500 :seed 3) collect (getf d :text))))
+      (dolist (x texts)
+        (check-equal (split-of x 100 100) (split-of x 100 100))
+        (check (eq (split-of x 100) (if (eq (split-of x 100 100) :val) :val :train)) "val buckets must not move when a test split is added"))
+      (check (< 0 (count :test (mapcar (lambda (x) (split-of x 100 100)) texts)) 200)))
+    (rm-rf dir))
+  ;; without :test-permille the manifest has no test split, as before
+  (let* ((dir (tmpdir "u")) (m (build-in dir (make-docs 300 :seed 4))))
+    (check (null (json-get (json-get m "splits") "test")))
+    (rm-rf dir)))
+
 (deftest empty-input-is-an-error
   (let ((dir (tmpdir "e")))
     (check (handler-case (progn (build-in dir (list (list :text "tiny"))) nil) (error () t)))
