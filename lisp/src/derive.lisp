@@ -1,6 +1,6 @@
 ;;;; Derives the single-float (FP32) version of a double-float source file at load time, so FP32 can never drift from
 ;;;; the FP64 reference it is derived from. Text rules, applied in this order to the file's text:
-;;;;   package names   asem-tf -> asem-tf32, asem-train -> asem-train32, asem-pretrain -> asem-pretrain32 (own packages)
+;;;;   package names   asem-tf -> asem-tf32, asem-train -> asem-train32, asem-pretrain -> asem-pretrain32, asem-sft -> asem-sft32
 ;;;;   types           every "double-float" -> "single-float" (also in most-positive-double-float and friends)
 ;;;;   literals        1.5d0 -> 1.5f0 (a double below 1e-37 becomes 1f-37); 1l0 / long-float are host doubles and stay
 ;;;;   foreign calls   cblas_dgemm -> cblas_sgemm, sb-alien:double -> sb-alien:float
@@ -76,6 +76,7 @@
   (let* ((s (rename-package-words text "asem-tf" "asem-tf32"))
          (s (rename-package-words s "asem-train" "asem-train32"))
          (s (rename-package-words s "asem-pretrain" "asem-pretrain32"))
+         (s (rename-package-words s "asem-sft" "asem-sft32"))
          (s (replace-all s "double-float" "single-float"))
          (s (replace-all s "cblas_dgemm" "cblas_sgemm"))
          (s (replace-all s "sb-alien:double" "sb-alien:float"))

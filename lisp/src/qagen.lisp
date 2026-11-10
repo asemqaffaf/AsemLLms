@@ -491,13 +491,20 @@
 ;;; ------------------------------------------------------------------ items
 (defun item-get (it k) (getf it k))
 
-(defun format-prompt (passage question options &key (passage-p t) (question-p t))
-  "The one prompt format used for training and evaluation. The target is a single letter token after \"Answer:\"."
-  (format nil "~@[Passage: ~a~%~]~@[Question: ~a~%~]A. ~a~%B. ~a~%C. ~a~%D. ~a~%Answer:"
+(defparameter *prompt-style* :compact
+  "Prompt rendering. :COMPACT (used for all training and evaluation) is \"Text: ...\\nQ: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nThe answer is\"
+followed by the target (\" B\" in letter mode, \" <answer>\" in text mode). :ORIGINAL (\"Passage:\" / \"Question:\" / \"Answer:\") is 4 tokens longer;
+it is kept only because data/qa/v1 was generated with its length check, so bin/qa-build.lisp reproduces v1 exactly.")
+
+(defun format-prompt (passage question options &key (passage-p t) (question-p t) (style *prompt-style*))
+  "The prompt for an item; see *PROMPT-STYLE*."
+  (format nil (ecase style
+                (:compact "~@[Text: ~a~%~]~@[Q: ~a~%~]A. ~a~%B. ~a~%C. ~a~%D. ~a~%The answer is")
+                (:original "~@[Passage: ~a~%~]~@[Question: ~a~%~]A. ~a~%B. ~a~%C. ~a~%D. ~a~%Answer:"))
           (and passage-p passage) (and question-p question) (first options) (second options) (third options) (fourth options)))
 
-(defun item-prompt (it &key (passage t) (question t) (question-text nil))
-  (format-prompt (getf it :passage) (or question-text (getf it :question)) (getf it :options) :passage-p passage :question-p question))
+(defun item-prompt (it &key (passage t) (question t) (question-text nil) (style *prompt-style*))
+  (format-prompt (getf it :passage) (or question-text (getf it :question)) (getf it :options) :passage-p passage :question-p question :style style))
 
 (defun validate-item (it)
   "List of problems (strings); NIL when the item is sound."
@@ -549,10 +556,10 @@ Returns (values items rejected-count rejection-reasons)."
                                     :cf-answer (position (getf w :cf-answer-text) opts :test #'string=)
                                     :qframe (getf w :qframe) :query (getf w :query) :cf-query (getf w :cf-query) :facts (getf w :facts)))
                           (problems (validate-item it))
-                          (key (string-downcase (item-prompt it))))
+                          (key (string-downcase (item-prompt it :style :original))))
                      (cond (problems (incf rejected) (incf (gethash (first problems) reasons 0)))
                            ((gethash key exclude) (incf rejected) (incf (gethash "duplicate prompt" reasons 0)))
-                           ((not (and (funcall fits (item-prompt it)) (funcall fits (item-prompt it :question-text (getf it :cf-question)))))
+                           ((not (and (funcall fits (item-prompt it :style :original)) (funcall fits (item-prompt it :question-text (getf it :cf-question) :style :original))))
                             (incf rejected) (incf (gethash "too long for the context window" reasons 0)))
                            (t (setf (gethash key exclude) t) (push it items) (return))))))))
     (values (shuffle (nreverse items) rng) rejected

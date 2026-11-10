@@ -102,6 +102,10 @@
         (let* ((p (item-prompt it)) (ids (asem-bpe:bpe-encode bpe p)))
           (push (1+ (length ids)) (gethash (intern (string-upcase (item-get it :split)) :keyword) lens))
           (unless (<= (1+ (length ids)) ctx) (error "item ~a is ~d tokens: does not fit" (item-get it :id) (1+ (length ids))))
+          ;; text mode feeds the prompt plus all but the last token of each option
+          (dolist (o (item-get it :options))
+            (let ((need (+ (length ids) (length (asem-bpe:bpe-encode bpe (format nil " ~a" o))))))
+              (unless (<= need ctx) (error "item ~a with option ~s needs ~d positions: does not fit" (item-get it :id) o need))))
           (loop for l in +letters+ for lid in letter-ids
                 do (unless (equal (asem-bpe:bpe-encode bpe (format nil "~a ~a" p l)) (append ids lid)) (incf letter-bad)))))
       (format t "answer-letter tokenization mismatches in context: ~d~%" letter-bad)
@@ -134,7 +138,7 @@
       (write-items (format nil "~a/train.jsonl" out) train)
       (let ((m (jobj "format" "asem-qa-1" "ctx" ctx "tokenizer_sha256" (asem-sha256:sha256-file-hex tok-file)
                      "answer_letter_token_ids" (coerce (mapcar #'first letter-ids) 'vector)
-                     "prompt_format" "Passage: ...\\nQuestion: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nAnswer:  -> target \" X\" (one token)"
+                     "prompt_format" "Text: ...\\nQ: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nThe answer is  -> target \" X\" (letter mode, one token) or \" <option>\" (text mode); lengths above are for this format. Items were selected with the 4-token-longer original format (Passage:/Question:/Answer:), see qagen *prompt-style*"
                      "files" (jobj "test" (jobj "sha256" (asem-sha256:sha256-file-hex (format nil "~a/test.jsonl" out)) "stats" (stats test (gethash :test lens)))
                                    "dev" (jobj "sha256" (asem-sha256:sha256-file-hex (format nil "~a/dev.jsonl" out)) "stats" (stats dev (gethash :dev lens)))
                                    "train" (jobj "sha256" (asem-sha256:sha256-file-hex (format nil "~a/train.jsonl" out)) "stats" (stats train (gethash :train lens))))

@@ -183,9 +183,9 @@
           "temporal/C": 25,
           "temporal/D": 25
         },
-        "max_input_tokens": 128,
-        "mean_input_tokens": 87.586,
-        "min_input_tokens": 55,
+        "max_input_tokens": 124,
+        "mean_input_tokens": 83.586,
+        "min_input_tokens": 51,
         "n": 500
       }
     },
@@ -227,9 +227,9 @@
           "temporal/C": 50,
           "temporal/D": 50
         },
-        "max_input_tokens": 127,
-        "mean_input_tokens": 94.672,
-        "min_input_tokens": 55,
+        "max_input_tokens": 123,
+        "mean_input_tokens": 90.672,
+        "min_input_tokens": 51,
         "n": 1000
       }
     },
@@ -271,15 +271,15 @@
           "temporal/C": 800,
           "temporal/D": 800
         },
-        "max_input_tokens": 128,
-        "mean_input_tokens": 85.6095625,
-        "min_input_tokens": 49,
+        "max_input_tokens": 124,
+        "mean_input_tokens": 81.6095625,
+        "min_input_tokens": 45,
         "n": 16000
       }
     }
   },
   "format": "asem-qa-1",
-  "prompt_format": "Passage: ...\\nQuestion: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nAnswer:  -> target \" X\" (one token)",
+  "prompt_format": "Text: ...\\nQ: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nThe answer is  -> target \" X\" (letter mode, one token) or \" <option>\" (text mode); lengths above are for this format. Items were selected with the 4-token-longer original format (Passage:/Question:/Answer:), see qagen *prompt-style*",
   "shortcut_baselines": {
     "dev": {
       "always_A": 0.25,
