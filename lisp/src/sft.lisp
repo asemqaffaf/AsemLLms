@@ -14,7 +14,7 @@
 (defpackage :asem-sft
   (:use :cl :asem-tf :asem-util)
   (:export #:sft #:encode-items #:qa-predict #:qa-summary #:letter-token-ids #:ex-ids #:ex-target #:ex-answer #:ex-category #:ex-id
-           #:make-ex #:shuffle-label-targets #:load-ex-model))
+           #:make-ex #:shuffle-label-targets #:load-ex-model #:make-copy-examples))
 (in-package :asem-sft)
 
 (defstruct ex id category subtype qframe ids target answer mode tgt opts)
@@ -66,6 +66,17 @@ does not tokenize as the same tokens after the prompt as on its own."
                                c))
          exs)))
 
+(defun make-copy-examples (n seed &key (min-len 8) (max-len 30) (lo 300) (hi 8000))
+  "N induction-training examples: a random token sequence S, then S again; the target is the second copy after its first token,
+so only copying from the context can predict it. Mode :copy; each example's loss is the mean over its targets (it counts as one
+answer in the step normalisation). Token ids are drawn from [LO, HI)."
+  (let ((rng (sb-ext:seed-random-state seed)))
+    (coerce (loop for i below n
+                  collect (let* ((len (+ min-len (random (1+ (- max-len min-len)) rng))) (s (loop repeat len collect (+ lo (random (- hi lo) rng)))))
+                            (make-ex :id (format nil "copy-~d" i) :category "copy" :subtype "copy" :qframe "" :mode :copy :answer 0 :target 0
+                                     :ids (ivec-of (append (list 0) s (list (first s)))) :tgt (ivec-of (rest s)) :opts nil)))
+            'vector)))
+
 ;;; ------------------------------------------------------------------ per-worker buffers
 (defun bucket-len (n ctx) (min ctx (* 16 (ceiling n 16))))
 
@@ -104,13 +115,14 @@ Letter mode: prediction = argmax of the four letter logits, scores = those logit
 key when every target token is the argmax (greedy exact match), else -1; at evaluation use SCORE-OPTIONS.
 AUX > 0 (training only) adds next-token losses on every prompt position, weighted AUX / (prompt positions), to the answer loss
 (weight 1); the answer rows come first, so the returned loss and prediction are the answer's alone."
-  (let* ((cfg (model-config model)) (tail (ex-tgt e)) (n (length (ex-ids e))) (auxp (and grads (plusp aux)))
-         (acts (acts-for cache cfg (+ n (length tail) -1) auxp))
+  (let* ((cfg (model-config model)) (tail (ex-tgt e)) (n (length (ex-ids e))) (auxp (and grads (plusp aux) (not (eq (ex-mode e) :copy)))) (copyp (eq (ex-mode e) :copy))
+         (acts (acts-for cache cfg (+ n (length tail) -1) (or auxp copyp)))
          (x (padded-x (ex-ids e) (asem-tf::acts-tlen acts) tail)) (arows (continuation-rows e tail)) (v (config-vocab cfg))
          (rows (if auxp (concatenate '(simple-array fixnum (*)) arows (ivec-of (loop for i from 0 below (1- n) collect i))) arows))
          (targets (if auxp (concatenate '(simple-array fixnum (*)) tail (subseq (ex-ids e) 1)) tail))
-         (weights (when auxp (let ((w (new-dvec (length rows))) (wa (host-float (/ (float aux 1l0) (max 1 (1- n))))))
-                               (dotimes (k (length rows) w) (setf (aref w k) (if (< k (length tail)) (host-float 1l0) wa)))))))
+         (weights (when copyp (let ((w (new-dvec (length rows)))) (fill w (host-float (/ 1l0 (length tail)))) w)))
+         (weights (or weights (when auxp (let ((w (new-dvec (length rows))) (wa (host-float (/ (float aux 1l0) (max 1 (1- n))))))
+                               (dotimes (k (length rows) w) (setf (aref w k) (if (< k (length tail)) (host-float 1l0) wa))))))))
     (forward-rows model x acts rows)
     (let* ((ll (when (eq (ex-mode e) :letter) (letter-logits acts letters)))
            (pred (if ll
@@ -122,15 +134,17 @@ AUX > 0 (training only) adds next-token losses on every prompt position, weighte
                          (ex-answer e) -1)))
            (answer-loss (- (rows-logprob acts tail v))))
       (when grads (backward-rows model x rows targets acts grads weights))
-      (values (float answer-loss 1l0) pred ll (length tail)))))
+      (values (float (if copyp (/ answer-loss (length tail)) answer-loss) 1l0) pred ll (if copyp 1 (length tail))))))
 
 (defun score-options (model e cache letters)
   "(values pred loss scores) for evaluation. Letter mode: one forward. Text mode: the four options' summed log-probabilities."
-  (if (eq (ex-mode e) :letter)
-      (multiple-value-bind (loss pred ll) (run-example model e cache letters) (values pred loss ll))
+  (case (ex-mode e)
+    (:letter (multiple-value-bind (loss pred ll) (run-example model e cache letters) (values pred loss ll)))
+    (:copy (multiple-value-bind (loss pred) (run-example model e cache letters) (values (if (eql pred 0) 0 1) loss (list 0l0 0l0 0l0 0l0))))
+    (t
       (let* ((scores (mapcar (lambda (o) (score-continuation model e o cache)) (ex-opts e)))
              (pred (position (reduce #'max scores) scores)))
-        (values pred (/ (- (nth (ex-answer e) scores)) (length (nth (ex-answer e) (ex-opts e)))) scores))))
+        (values pred (/ (- (nth (ex-answer e) scores)) (length (nth (ex-answer e) (ex-opts e)))) scores)))))
 
 ;;; ------------------------------------------------------------------ evaluation
 (defun qa-predict (model exs letters &key (workers 1) caches)

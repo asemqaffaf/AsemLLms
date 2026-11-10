@@ -116,6 +116,21 @@
       (multiple-value-bind (l2) (asem-sft::run-example m e cache *letters* :grads (asem-tf:make-grads (asem-tf:model-config m)) :aux 0.5d0)
         (check-close l2 l1 1d-9)))))
 
+(deftest copy-examples-teach-copying
+  ;; a tiny model trained only on repeated random sequences must predict the second copy far better than chance
+  (let* ((exs (asem-sft:make-copy-examples 400 3 :min-len 6 :max-len 10 :lo 300 :hi 360))
+         (dev (asem-sft:make-copy-examples 50 4 :min-len 6 :max-len 10 :lo 300 :hi 360))
+         (e (aref exs 0)))
+    (check (equalp (subseq (asem-sft::ex-ids e) 2) (concatenate 'vector (subseq (asem-sft::ex-tgt e) 0 (- (length (asem-sft::ex-ids e)) 3)) (list (aref (asem-sft::ex-ids e) 1))))
+           "ids = eot, S, first token of S; target = rest of S")
+    (let* ((m (tiny-model 4)) (cache (make-hash-table))
+           (loss-of (lambda (m) (/ (loop for d across dev sum (asem-sft::run-example m d cache *letters*)) (length dev)))))
+      (let ((before (funcall loss-of m)))
+        (asem-sft:sft (format nil "~acopy" *tmp*) exs (subseq exs 0 4) *letters* :init-model m :steps 300 :batch 16 :workers 2 :lr 3d-3
+                      :warmup 20 :eval-every 300 :log-every 0 :train-probe 4)
+        (let ((after (funcall loss-of (asem-pretrain:load-checkpoint (format nil "~acopy/last.ckpt" *tmp*)))))
+          (check (< after (* 0.5 before)) (format nil "copy loss per token before ~,3f after ~,3f (ln 60 = 4.09)" before after)))))))
+
 (deftest wilson-interval
   (destructuring-bind (lo hi) (asem-sft:wilson 900 1000)
     (check-close lo 0.8798d0 2d-4) (check-close hi 0.9171d0 2d-4))
