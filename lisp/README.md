@@ -77,6 +77,27 @@ Full training steps, tokens/s (this M1 Pro, 10 workers unless noted):
 | dim 256, 4 layers, ctx 128 | 916 | 7,501 | 13,423 (219 GFLOP/s) |
 | dim 512, 8 layers, ctx 256 (18.4M params) | n/a | 1,256 (148 GFLOP/s) | 3,144 (370 GFLOP/s) |
 
+## Corpus, pretraining and evaluation
+
+    # 1. FineWeb-Edu straight from the official Parquet shards, no Python (HTTP range requests, one 3 MB row group at a time)
+    sbcl --script bin/fetch-fineweb.lisp ../data/fineweb/stage1.jsonl max-tokens=10000000 \
+         shards=sample/10BT/000_00000.parquet,sample/10BT/000_00001.parquet      # score >= 4.0, language_score >= 0.95; resume=1 continues
+    # 2. filter, dedup, document-level train/val/test split, 8k BPE trained on the training split only, uint16 shards + manifest
+    sbcl --dynamic-space-size 8GB --script bin/build-data.lisp build ../data/fineweb/stage1.jsonl ../data/fineweb/stage1 8192 100000 4.0 5
+    # 3. is the evaluation set clean?
+    sbcl --dynamic-space-size 4GB --script bin/check-contamination.lisp eval/asem_eval.jsonl ../data/fineweb/stage1.jsonl
+    # 4. train from scratch (FP32 by default; TLM_BLAS=1 for Accelerate), log to OUT/log.jsonl, checkpoints OUT/best.ckpt, OUT/last.ckpt
+    TLM_BLAS=1 sbcl --dynamic-space-size 12GB --script bin/pretrain.lisp data=../data/fineweb/stage1 out=../data/runs/1m size=1m steps=3000
+
+`src/parquet.lisp` is a small Parquet reader (Thrift compact footer, Snappy, PLAIN and dictionary encodings, RLE/bit-packed hybrid, data pages v1 and v2)
+checked against a real FineWeb-Edu row: same id, scores and text as the dataset server returns. The `/filter` endpoint of the dataset server was tried first and
+abandoned (it returns HTTP 500 authentication errors under load and only indexes part of each shard). About 0.8% of rows pass score >= 4 and language_score >= 0.95.
+
+`eval/asem_eval.jsonl` is 90 four-option questions (30 simple facts, 30 reading comprehension with the passage in the prompt, 30 basic reasoning), correct answers
+balanced over the four positions. Each option is scored by the mean log-probability of its tokens after `Question: ... Answer:`, so a model that cannot answer
+still produces a continuous score (`answer_margin`: correct minus best wrong); chance is 25%. The log also records validation loss and perplexity, tokens/s, peak RSS and
+the SHA-256 of the checkpoint (same seed and data give identical bytes with one worker; `tests/test-pretrain.lisp` checks it for both precisions).
+
 ## What was measured
 
 - Data pipeline: on 20,000 FineWeb-Edu documents it kept 7,479 (11,282 low edu score; 979 low language score; 257 too short;
