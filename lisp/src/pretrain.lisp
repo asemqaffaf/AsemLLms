@@ -293,18 +293,19 @@
   (let* ((ctx (config-ctx (model-config model))) (starts (loop for s from 0 to (- (length tokens) ctx 1) by ctx collect s)))
     (values (window-loss-mean model tokens starts) (* ctx (length starts)))))
 
-(defun evaluate-checkpoint (data-dir ckpt-path &key eval-file)
-  "Loss on the full validation and test splits plus the multiple-choice scores. The test split is only ever used here."
+(defun evaluate-checkpoint (data-dir ckpt-path &key eval-file (use-test t))
+  "Loss on the full validation and test splits plus the multiple-choice scores. The test split is only ever used here,
+and with USE-TEST NIL it is not even read (hyperparameter searches select on validation loss only)."
   (let* ((model (load-checkpoint ckpt-path))
          (manifest (asem-data:load-manifest data-dir))
          (bpe (asem-bpe:load-bpe (format nil "~a/~a" data-dir (asem-json:json-get (asem-json:json-get manifest "tokenizer") "file"))))
-         (val (load-split-tokens data-dir "val")) (test (load-split-tokens data-dir "test"))
+         (val (load-split-tokens data-dir "val")) (test (and use-test (load-split-tokens data-dir "test")))
          (items (and eval-file (read-eval-set eval-file))) (n (length items))
          (ans (and items (score-eval model bpe items))))
     (multiple-value-bind (vl vn) (split-loss model val)
-      (multiple-value-bind (tl tn) (split-loss model test)
-        (append (list :checkpoint ckpt-path :params (param-count model) :val-loss vl :val-ppl (exp vl) :val-tokens vn
-                      :test-loss tl :test-ppl (exp tl) :test-tokens tn)
+      (multiple-value-bind (tl tn) (if use-test (split-loss model test) (values nil nil))
+        (append (list :checkpoint ckpt-path :params (param-count model) :val-loss vl :val-ppl (exp vl) :val-tokens vn)
+                (when use-test (list :test-loss tl :test-ppl (exp tl) :test-tokens tn))
                 (when ans
                   (list :answer-accuracy (getf ans :accuracy) :answer-accuracy-sum (getf ans :accuracy-sum) :answer-margin (getf ans :margin)
                         :questions n :random-baseline 0.25l0

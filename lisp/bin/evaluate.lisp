@@ -1,5 +1,5 @@
 ;;; Final evaluation of a checkpoint: loss on the full validation and test splits and the 90 multiple-choice questions.
-;;;   sbcl --dynamic-space-size 4GB --script lisp/bin/evaluate.lisp data=DIR ckpt=OUT/best.ckpt [eval=lisp/eval/asem_eval.jsonl] [precision=32|64]
+;;;   sbcl --dynamic-space-size 4GB --script lisp/bin/evaluate.lisp data=DIR ckpt=OUT/best.ckpt [eval=lisp/eval/asem_eval.jsonl] [precision=32|64] [test=0]
 ;;; Prints one JSON line. The test split is used here and nowhere else (checkpoints are chosen on validation loss).
 (let ((here (directory-namestring *load-truename*)))
   (require :sb-posix)
@@ -15,6 +15,6 @@
          (eval-file (opt-arg "eval" (namestring (merge-pathnames "../eval/asem_eval.jsonl" here))))
          (r (funcall (symbol-function (find-symbol "EVALUATE-CHECKPOINT" pkg))
                      (or (opt-arg "data" nil) (error "data=DIR is required")) (or (opt-arg "ckpt" nil) (error "ckpt=PATH is required"))
-                     :eval-file (and (probe-file eval-file) eval-file)))
+                     :eval-file (and (probe-file eval-file) eval-file) :use-test (not (equal (opt-arg "test" "1") "0"))))
          (header (funcall (symbol-function (find-symbol "HEADER-JSON" pkg)) r)))
     (write-line header)))
