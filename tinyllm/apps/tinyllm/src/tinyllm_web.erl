@@ -4,7 +4,9 @@
 %%   POST /              form submit -> page with the generated text
 %%   GET  /api/info      model facts (JSON)
 %%   POST /api/generate  {prompt, length, temperature, seed?} -> {text, ms} (JSON)
-%%   GET  /chat          chat page (form posts the transcript back; no JavaScript)
+%%   GET  /chat          chat page (no JavaScript); /chat?c=<id> reopens a saved conversation
+%%   POST /chat/delete   delete a saved conversation
+%%   GET  /api/conversations, GET|DELETE /api/conversations/<id>   saved chats (JSON, Mnesia)
 %%   GET  /v1/models, POST /v1/chat/completions   OpenAI-compatible, so other tools
 %%                       (and the `agents` workers) can use AsemLLM as an LLM
 -module(tinyllm_web).
@@ -24,6 +26,8 @@ start(Port) ->
         {"/api/info", ?MODULE, info},
         {"/api/generate", ?MODULE, generate},
         {"/chat", ?MODULE, chat},
+        {"/chat/delete", ?MODULE, chat_delete},
+        {"/api/conversations/[:id]", ?MODULE, conversations},
         {"/api/search", ?MODULE, search},
         {"/v1/models", ?MODULE, models},
         {"/v1/chat/completions", ?MODULE, completions}]}]),
@@ -78,10 +82,26 @@ init(Req, search) ->
     end;
 init(Req, chat) ->
     case cowboy_req:method(Req) of
-        <<"GET">> -> {ok, html(200, render_chat(<<>>, <<>>, undefined, false, undefined), Req), chat};
+        <<"GET">> ->
+            #{c := C} = cowboy_req:match_qs([{c, [], <<>>}], Req),
+            {Cid, T} = case tinyllm_memory:transcript(C) of
+                           {ok, Saved} -> {C, Saved};
+                           _ -> {<<>>, <<>>}
+                       end,
+            {ok, html(200, render_chat(T, <<>>, undefined, false, undefined, Cid), Req), chat};
         <<"POST">> -> {ok, chat_submit(Req), chat};
-        _ -> {ok, html(405, render_chat(<<>>, <<>>, <<"method not allowed">>, false, undefined), Req), chat}
+        _ -> {ok, html(405, render_chat(<<>>, <<>>, <<"method not allowed">>, false, undefined, <<>>), Req), chat}
     end;
+init(Req, chat_delete) ->
+    case cowboy_req:method(Req) of
+        <<"POST">> ->
+            {ok, Form, Req1} = cowboy_req:read_urlencoded_body(Req, #{length => 1024}),
+            _ = tinyllm_memory:delete(proplists:get_value(<<"cid">>, Form, <<>>)),
+            {ok, cowboy_req:reply(303, #{<<"location">> => <<"/chat">>}, Req1), chat_delete};
+        _ -> {ok, html(405, <<"POST only">>, Req), chat_delete}
+    end;
+init(Req, conversations) ->
+    {ok, conversations_api(cowboy_req:method(Req), cowboy_req:binding(id, Req), Req), conversations};
 init(Req, generate) ->
     case cowboy_req:method(Req) of
         <<"POST">> -> {ok, api_generate(Req), generate};
@@ -214,13 +234,19 @@ chat_submit(Req0) ->
               {_, <<"1">>} -> search;
               _ -> false
           end,
-    Transcript = trim_transcript(maps:get(<<"transcript">>, F, <<>>)),
+    %% a saved conversation (Mnesia) is the source of truth; the hidden field is the fallback when memory is off
+    Cid0 = maps:get(<<"cid">>, F, <<>>),
+    {Cid, Stored} = case tinyllm_memory:transcript(Cid0) of
+                        {ok, Saved} -> {Cid0, Saved};
+                        _ -> {tinyllm_memory:new_id(), maps:get(<<"transcript">>, F, <<>>)}
+                    end,
+    Transcript = trim_transcript(Stored),
     Msg = string:trim(maps:get(<<"message">>, F, <<>>)),
     case {model(), Msg} of
-        {undefined, _} -> html(503, render_chat(Transcript, <<>>, ?NO_MODEL, Web, undefined), Req);
-        {_, <<>>} -> html(200, render_chat(Transcript, <<>>, undefined, Web, undefined), Req);
+        {undefined, _} -> html(503, render_chat(Transcript, <<>>, ?NO_MODEL, Web, undefined, keep(Cid, Stored)), Req);
+        {_, <<>>} -> html(200, render_chat(Transcript, <<>>, undefined, Web, undefined, keep(Cid, Stored)), Req);
         {_, _} when byte_size(Msg) > 500 ->
-            html(400, render_chat(Transcript, Msg, <<"message too long (max 500 bytes)">>, Web, undefined), Req);
+            html(400, render_chat(Transcript, Msg, <<"message too long (max 500 bytes)">>, Web, undefined, keep(Cid, Stored)), Req);
         {M, _} ->
             Clean = binary:replace(Msg, <<"\n">>, <<" ">>, [global]),
             Found = case Web of
@@ -249,7 +275,8 @@ chat_submit(Req0) ->
                         {<<"Assistant">>, tinyllm_reply(M, Transcript, Clean), undefined}
                 end,
             New = <<Transcript/binary, "User: ", Clean/binary, "\n", Label/binary, ": ", Reply/binary, "\n">>,
-            html(200, render_chat(trim_transcript(New), <<>>, Err, Web, Found), Req)
+            {Shown, Err2} = save_turns(Cid, [{<<"User">>, Clean}, {Label, Reply}], trim_transcript(New), Err),
+            html(200, render_chat(Shown, <<>>, Err2, Web, Found, Cid), Req)
     end.
 
 tinyllm_reply(M, Transcript, Clean) ->
@@ -288,7 +315,7 @@ parse_transcript(T) ->
                       _ -> []
                   end || Line <- binary:split(T, <<"\n">>, [global])]).
 
-render_chat(Transcript, Draft, Error, Web, Found) ->
+render_chat(Transcript, Draft, Error, Web, Found, Cid) ->
     Bubbles = [case Line of
                    <<"User: ", C/binary>> -> ["<div class=\"m u\"><b>You</b> ", esc(C), "</div>"];
                    <<"Assistant: ", C/binary>> -> ["<div class=\"m a\"><b>AsemLLM</b> ", esc(C), "</div>"];
@@ -302,9 +329,12 @@ render_chat(Transcript, Draft, Error, Web, Found) ->
      ".u{background:#4f46e51a}.m b{display:inline-block;min-width:4.5rem;color:var(--a)}"
      "nav a{margin-right:1rem;color:var(--a)}"
      ".web{border-top:1px solid var(--b);margin-top:1rem}.web a{color:var(--a)}"
-     ".chk{display:flex;gap:.5rem;align-items:center}.chk input{width:auto}", "</style></head><body>",
+     ".chk{display:flex;gap:.5rem;align-items:center}.chk input{width:auto}"
+     ".hist{font-size:.9rem;margin:0 0 1rem}.hist a{margin-right:.8rem;color:var(--a)}.hist form{display:inline}"
+     ".hist button{width:auto;padding:0 .4rem;margin:0}", "</style></head><body>",
      "<nav><a href=\"/\">Generate</a><a href=\"/chat\">Chat</a></nav>",
      "<h1>AsemLLM chat</h1>",
+     render_history(Cid),
      "<p class=sub>A toy model: it sees only the last few characters, so replies sound like the training data ",
      "but may not answer you.</p>",
      info_box(model()),
@@ -312,7 +342,8 @@ render_chat(Transcript, Draft, Error, Web, Found) ->
      render_results(Found),
      case Error of undefined -> ""; E -> ["<p class=err>", esc(E), "</p>"] end,
      "<form method=post action=\"/chat\">",
-     "<input type=hidden name=transcript value=\"", esc(Transcript), "\">",
+     "<input type=hidden name=cid value=\"", esc(Cid), "\">",
+     "<input type=hidden name=transcript value=\"", esc(trim_transcript(Transcript)), "\">",
      "<label for=message>Message</label>",
      "<input id=message name=message maxlength=500 autofocus autocomplete=off value=\"", esc(Draft), "\">",
      "<label class=chk><input type=checkbox name=web value=1", case Web of false -> ""; _ -> " checked" end,
@@ -320,6 +351,66 @@ render_chat(Transcript, Draft, Error, Web, Found) ->
      "<label class=chk><input type=checkbox name=qwen value=1", case Web of qwen -> " checked"; _ -> "" end,
      "> Let Qwen (LM Studio, local) answer from the search results</label>",
      "<button>Send</button></form></body></html>"].
+
+%% ---- saved conversations (Mnesia) ---------------------------------------------
+
+%% The conversation id the form should carry: only ids that are really saved, else none.
+keep(Cid, Stored) -> case {tinyllm_memory:valid_id(Cid), Stored} of {true, <<_, _/binary>>} -> Cid; _ -> <<>> end.
+
+%% Persist a question/answer pair. On success show the saved conversation (what a reload will show);
+%% on failure keep chatting from the trimmed transcript and say so.
+save_turns(Cid, Turns, Fallback, Err) ->
+    case tinyllm_memory:enabled() of
+        false -> {Fallback, Err};
+        true ->
+            case tinyllm_memory:append(Cid, Turns) of
+                ok -> {ok, T} = tinyllm_memory:transcript(Cid), {T, Err};
+                {error, Why} ->
+                    logger:warning("tinyllm: could not save conversation ~s: ~p", [Cid, Why]),
+                    {Fallback, <<"This conversation could not be saved.">>}
+            end
+    end.
+
+render_history(Cid) ->
+    case tinyllm_memory:list(15) of
+        {ok, []} -> "";
+        {ok, L} ->
+            ["<p class=hist><a href=\"/chat\"><b>+ New chat</b></a>",
+             [["<span><a href=\"/chat?c=", Id, "\">", esc(history_title(T)), "</a>",
+               case Id =:= Cid of
+                   true -> ["<form method=post action=\"/chat/delete\"><input type=hidden name=cid value=\"", Id,
+                            "\"><button title=\"delete this conversation\">x</button></form>"];
+                   false -> ""
+               end, "</span> "] || #{id := Id, title := T} <- L],
+             "</p>"];
+        _ -> ""
+    end.
+
+history_title(<<>>) -> <<"(empty)">>;
+history_title(T) -> T.
+
+conversations_api(<<"GET">>, undefined, Req) ->
+    case tinyllm_memory:list(100) of
+        {ok, L} -> json(200, #{conversations => L}, Req);
+        {error, disabled} -> json(503, #{error => <<"conversation memory is disabled">>}, Req);
+        {error, _} -> json(500, #{error => <<"could not read conversations">>}, Req)
+    end;
+conversations_api(<<"GET">>, Id, Req) ->
+    case tinyllm_memory:get(Id) of
+        {ok, C} -> json(200, C, Req);
+        not_found -> json(404, #{error => <<"no such conversation">>}, Req);
+        {error, bad_id} -> json(400, #{error => <<"bad conversation id">>}, Req);
+        {error, disabled} -> json(503, #{error => <<"conversation memory is disabled">>}, Req);
+        {error, _} -> json(500, #{error => <<"could not read the conversation">>}, Req)
+    end;
+conversations_api(<<"DELETE">>, Id, Req) when Id =/= undefined ->
+    case tinyllm_memory:delete(Id) of
+        ok -> json(200, #{deleted => Id}, Req);
+        {error, bad_id} -> json(400, #{error => <<"bad conversation id">>}, Req);
+        {error, disabled} -> json(503, #{error => <<"conversation memory is disabled">>}, Req);
+        {error, _} -> json(500, #{error => <<"could not delete the conversation">>}, Req)
+    end;
+conversations_api(_, _, Req) -> json(405, #{error => <<"method not allowed">>}, Req).
 
 run(M, Prompt, Len, Temp, Opts) ->
     T0 = erlang:monotonic_time(millisecond),

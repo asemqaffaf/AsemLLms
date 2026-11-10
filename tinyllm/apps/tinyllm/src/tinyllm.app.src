@@ -4,6 +4,8 @@
     {registered, [tinyllm_sup, tinyllm_worker_sup]},
     {mod, {tinyllm_app, []}},
     {applications, [kernel, stdlib, cowboy]},
+    %% mnesia is started by tinyllm_memory (it must pick its directory first), so it is only included
+    {included_applications, [mnesia]},
     {env, []},
     {modules, []},
     {licenses, ["Apache-2.0"]},

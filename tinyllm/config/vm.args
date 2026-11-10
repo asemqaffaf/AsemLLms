@@ -1,4 +1,4 @@
--sname tinyllm
+-name tinyllm@127.0.0.1
 
 -setcookie tinyllm_cookie
 

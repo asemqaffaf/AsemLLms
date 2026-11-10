@@ -6,7 +6,7 @@ A tiny neural language model (character- or word-level), written and trained in 
 ## Try it in the browser
 
     cd tinyllm
-    rebar3 shell          # starts the app + web UI
+    scripts/run.sh        # starts the app + web UI (fixed node name tinyllm@127.0.0.1)
     # open http://localhost:8080
 
 The page is rendered by Erlang (plain HTML form, no JavaScript). It listens on
@@ -73,6 +73,20 @@ numerical gradients for every tensor. Same parallel workers, same `tinyllm:train
 
 On a task that needs a 7-token lookback, the transformer scores 0.25 against 0.41 for the 4-token-window MLP
 (`tf_uses_long_range_context` in the tests). On the 138 KB chat dataset both models mostly memorize.
+
+## Conversation memory (Mnesia)
+
+Chats are saved in Mnesia, Erlang's built-in transactional database (`tinyllm_memory.erl`, table `tinyllm_conv`),
+and survive restarts. Each question + answer is written in one transaction and synced to the log before the page returns.
+
+- Chat page: `/chat` starts a conversation, `/chat?c=<id>` reopens one; recent conversations are listed at the top, with a delete button.
+- JSON: `GET /api/conversations`, `GET|DELETE /api/conversations/<id>`.
+- Erlang: `tinyllm_memory:append/2`, `get/1`, `list/0`, `transcript/1`, `delete/1`.
+- Config (`config/sys.config`): `memory` (true/false) and `memory_dir` (default `data/mnesia`, git-ignored). If Mnesia cannot start,
+  the chat still works from the transcript in the page, without saving.
+- The disc schema belongs to the node name, so launch with `scripts/run.sh` (node `tinyllm@127.0.0.1`, same as `config/vm.args`).
+  A plain `rebar3 shell` is `nonode@nohost` and would not see the saved chats.
+- The OpenAI-compatible `/v1/chat/completions` endpoint is stateless and does not save anything.
 
 ## Publishing to Hugging Face
 

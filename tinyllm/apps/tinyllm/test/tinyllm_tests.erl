@@ -1,7 +1,9 @@
 -module(tinyllm_tests).
 -include_lib("eunit/include/eunit.hrl").
 
-setup() -> {ok, _} = application:ensure_all_started(tinyllm), ok.
+setup() ->
+    application:set_env(tinyllm, memory_storage, ram),   %% tests must not touch data/mnesia
+    {ok, _} = application:ensure_all_started(tinyllm), ok.
 cleanup(_) -> application:stop(tinyllm).
 
 all_test_() ->
@@ -9,7 +11,7 @@ all_test_() ->
      {timeout, 300,
       [fun gradient_check/0, fun softmax_sums_to_one/0, fun learns_a_cycle/0,
        fun uses_context_beyond_bigram/0, fun survives_worker_crash/0,
-       fun save_load_roundtrip/0, fun generate_stays_in_vocab/0, fun progress_logging/0, fun load_in_fresh_vm/0, fun web_ui_and_api/0, fun chat_function/0, {timeout, 300, fun tf_gradient_check/0}, {timeout, 300, fun tf_learns_a_cycle/0}, {timeout, 300, fun tf_uses_long_range_context/0}, {timeout, 300, fun tf_save_load_generate/0}, {timeout, 300, fun tf_web_info/0}, fun search_parsers/0, fun search_client/0, fun search_in_web_ui/0, fun qwen_answers_from_search/0, fun tokenizer_roundtrip/0, fun word_vocab/0, fun word_model_learns/0, fun legacy_model_loads/0, fun chat_page_and_openai_api/0, fun shards_cover_batch/0]}}.
+       fun save_load_roundtrip/0, fun generate_stays_in_vocab/0, fun progress_logging/0, fun load_in_fresh_vm/0, fun web_ui_and_api/0, fun chat_function/0, {timeout, 300, fun tf_gradient_check/0}, {timeout, 300, fun tf_learns_a_cycle/0}, {timeout, 300, fun tf_uses_long_range_context/0}, {timeout, 300, fun tf_save_load_generate/0}, {timeout, 300, fun tf_web_info/0}, fun search_parsers/0, fun search_client/0, fun search_in_web_ui/0, fun qwen_answers_from_search/0, fun tokenizer_roundtrip/0, fun word_vocab/0, fun word_model_learns/0, fun legacy_model_loads/0, fun chat_page_and_openai_api/0, fun conversation_memory/0, fun chat_remembers_conversations/0, fun shards_cover_batch/0]}}.
 
 %% ---- backprop is correct: analytic gradient == numeric gradient --------------
 
@@ -237,6 +239,82 @@ chat_page_and_openai_api() ->
         tinyllm_web:stop(),
         persistent_term:erase(tinyllm_model),
         file:delete(Path)
+    end.
+
+%% ---- conversation memory (Mnesia) ------------------------------------------------
+
+clear_conversations() ->
+    {ok, All} = tinyllm_memory:list(1000),
+    [ok = tinyllm_memory:delete(Id) || #{id := Id} <- All],
+    ok.
+
+conversation_memory() ->
+    ?assert(tinyllm_memory:enabled()),
+    clear_conversations(),
+    Id = tinyllm_memory:new_id(),
+    ?assert(tinyllm_memory:valid_id(Id)),
+    ?assertEqual(not_found, tinyllm_memory:get(Id)),
+    ok = tinyllm_memory:append(Id, [{<<"User">>, <<"hello there">>}, {<<"Assistant">>, <<"hi">>}]),
+    ok = tinyllm_memory:append(Id, [{<<"User">>, <<"second">>}, {<<"Qwen">>, <<"answer">>}]),
+    {ok, #{title := <<"hello there">>, turns := Turns}} = tinyllm_memory:get(Id),
+    ?assertEqual([<<"User">>, <<"Assistant">>, <<"User">>, <<"Qwen">>], [R || #{role := R} <- Turns]),
+    ?assertEqual({ok, <<"User: hello there\nAssistant: hi\nUser: second\nQwen: answer\n">>}, tinyllm_memory:transcript(Id)),
+    {ok, [#{id := Id, turns := 4}]} = tinyllm_memory:list(),
+    %% bad ids never reach the database; unknown ones are simply absent
+    ?assertEqual({error, bad_id}, tinyllm_memory:get(<<"../etc/passwd">>)),
+    ?assertEqual({error, bad_id}, tinyllm_memory:append(<<"x">>, [{<<"User">>, <<"a">>}])),
+    %% concurrent writers do not lose turns (transactions)
+    Self = self(),
+    [spawn(fun() -> ok = tinyllm_memory:append(Id, [{<<"User">>, integer_to_binary(N)}]), Self ! done end) || N <- lists:seq(1, 20)],
+    [receive done -> ok after 5000 -> error(timeout) end || _ <- lists:seq(1, 20)],
+    {ok, #{turns := All}} = tinyllm_memory:get(Id),
+    ?assertEqual(24, length(All)),
+    ok = tinyllm_memory:delete(Id),
+    ?assertEqual(not_found, tinyllm_memory:get(Id)),
+    {ok, []} = tinyllm_memory:list().
+
+chat_remembers_conversations() ->
+    clear_conversations(),
+    {ok, _} = application:ensure_all_started(inets),
+    Path = filename:join(os:getenv("TMPDIR", "/tmp"), "tinyllm_memory_test_model.bin"),
+    ok = tinyllm:save(dialogue_model(), Path),
+    application:set_env(tinyllm, model_file, Path),
+    ok = tinyllm_web:start(18765),
+    Form = "application/x-www-form-urlencoded",
+    CidOf = fun(Page) ->
+                {match, [Cid]} = re:run(Page, <<"name=cid value=\"([0-9a-f]{16})\"">>, [{capture, all_but_first, binary}]),
+                Cid
+            end,
+    try
+        {200, P1} = http(post, "/chat", <<"cid=&message=hi">>, Form),
+        Cid = CidOf(P1),
+        %% the second turn only carries the id: the history comes from the database
+        {200, P2} = http(post, "/chat", <<"cid=", Cid/binary, "&transcript=&message=%3Cb%3Ex">>, Form),
+        ?assertEqual(Cid, CidOf(P2)),
+        ?assertMatch({_, _}, binary:match(P2, <<"<b>You</b> hi">>)),
+        ?assertEqual(nomatch, binary:match(P2, <<"<b>x">>)),
+        %% reopening it later, as after a restart, shows both turns
+        {200, P3} = http(get, "/chat?c=" ++ binary_to_list(Cid), <<>>, ""),
+        ?assertMatch({_, _}, binary:match(P3, <<"<b>You</b> hi">>)),
+        ?assertMatch({_, _}, binary:match(P3, <<"&lt;b&gt;x">>)),
+        {200, L} = http(get, "/api/conversations", <<>>, ""),
+        ?assertMatch(#{<<"conversations">> := [#{<<"id">> := Cid, <<"turns">> := 4, <<"title">> := <<"hi">>}]}, json:decode(L)),
+        {200, One} = http(get, "/api/conversations/" ++ binary_to_list(Cid), <<>>, ""),
+        ?assertMatch(#{<<"turns">> := [#{<<"role">> := <<"User">>, <<"content">> := <<"hi">>} | _]}, json:decode(One)),
+        {404, _} = http(get, "/api/conversations/0123456789abcdef", <<>>, ""),
+        {400, _} = http(get, "/api/conversations/nope", <<>>, ""),
+        %% an unknown id in the form starts a fresh conversation instead of failing
+        {200, P4} = http(post, "/chat", <<"cid=0123456789abcdef&message=yo">>, Form),
+        ?assertNotEqual(Cid, CidOf(P4)),
+        %% delete (303 back to /chat; httpc follows it)
+        {200, _} = http(post, "/chat/delete", <<"cid=", Cid/binary>>, Form),
+        {404, _} = http(get, "/api/conversations/" ++ binary_to_list(Cid), <<>>, "")
+    after
+        tinyllm_web:stop(),
+        persistent_term:erase(tinyllm_model),
+        file:delete(Path),
+        {ok, Rest} = tinyllm_memory:list(),
+        [tinyllm_memory:delete(Id) || #{id := Id} <- Rest]
     end.
 
 %% ---- word-level tokenizer and model ---------------------------------------------
