@@ -131,6 +131,18 @@
         (let ((after (funcall loss-of (asem-pretrain:load-checkpoint (format nil "~acopy/last.ckpt" *tmp*)))))
           (check (< after (* 0.5 before)) (format nil "copy loss per token before ~,3f after ~,3f (ln 60 = 4.09)" before after)))))))
 
+(deftest recall-examples-restate-the-facts
+  (let* ((exs (asem-sft:make-recall-examples 30 2 *bpe* 256)))
+    (check (= 30 (length exs)))
+    (check (every (lambda (e) (and (eq (asem-sft::ex-mode e) :copy) (plusp (length (asem-sft::ex-tgt e))) (<= (+ (length (asem-sft:ex-ids e)) (length (asem-sft::ex-tgt e))) 257))) exs))
+    ;; every restated sentence names a person from the statements: the restatement adds no new entity
+    (let* ((e (aref exs 0)) (head (asem-bpe:bpe-decode *bpe* (coerce (subseq (asem-sft:ex-ids e) 1) 'list)))
+           (tail (asem-bpe:bpe-decode *bpe* (coerce (asem-sft::ex-tgt e) 'list))))
+      (check (every (lambda (w) (search w (remove #\' head)))
+                    (remove-if-not (lambda (w) (and (>= (length w) 4) (upper-case-p (char w 0))))
+                                   (rest (asem-util:split-on (substitute #\Space #\. (substitute #\Space #\, (remove #\' tail))) #\Space))))
+             "capitalised names and places in the restatement all occur in the statements"))))
+
 (deftest wilson-interval
   (destructuring-bind (lo hi) (asem-sft:wilson 900 1000)
     (check-close lo 0.8798d0 2d-4) (check-close hi 0.9171d0 2d-4))

@@ -14,7 +14,7 @@
 (defpackage :asem-sft
   (:use :cl :asem-tf :asem-util)
   (:export #:sft #:encode-items #:qa-predict #:qa-summary #:letter-token-ids #:ex-ids #:ex-target #:ex-answer #:ex-category #:ex-id
-           #:make-ex #:shuffle-label-targets #:load-ex-model #:make-copy-examples))
+           #:make-ex #:shuffle-label-targets #:load-ex-model #:make-copy-examples #:make-recall-examples))
 (in-package :asem-sft)
 
 (defstruct ex id category subtype qframe ids target answer mode tgt opts)
@@ -76,6 +76,30 @@ answer in the step normalisation). Token ids are drawn from [LO, HI)."
                             (make-ex :id (format nil "copy-~d" i) :category "copy" :subtype "copy" :qframe "" :mode :copy :answer 0 :target 0
                                      :ids (ivec-of (append (list 0) s (list (first s)))) :tgt (ivec-of (rest s)) :opts nil)))
             'vector)))
+
+(defun make-recall-examples (n seed bpe ctx &key (facts 5))
+  "N associative-recall examples built only from TRAINING pools and frames: FACTS statements about different people (one attribute
+type per sequence, each sentence a random training frame), a newline, then the same facts restated with independently drawn
+training frames in shuffled order. The target is the restatement, so predicting each value requires binding the person to it across
+a paraphrase. Mode :copy (mean loss over the restatement, counted as one answer). Sequences longer than CTX are skipped."
+  (let ((rng (sb-ext:seed-random-state seed)) (out nil) (tries 0)
+        (asem-qagen:*synthetic-train* t))
+    (loop while (and (< (length out) n) (< (incf tries) (* 4 n)))
+          do (let* ((ty (nth (random (length asem-qagen::*attr-types*) rng) asem-qagen::*attr-types*))
+                    (frames (getf (getf (cdr ty) :frames) :train))
+                    (people (asem-qagen::sample-n (asem-qagen::entity-pool 'asem-qagen:*names* :train) facts rng))
+                    (vals (asem-qagen::sample-n (asem-qagen::entity-pool (getf (cdr ty) :pool) :train) facts rng))
+                    (say (lambda (p v) (asem-qagen::fill-frame (nth (random (length frames) rng) frames) :p p :v v)))
+                    (head (format nil "~{~a~^ ~}~%" (mapcar say people vals)))
+                    (order (asem-qagen::shuffle (loop for i below facts collect i) rng))
+                    (body (format nil "~{~a~^ ~}" (mapcar (lambda (i) (funcall say (nth i people) (nth i vals))) order)))
+                    (h (asem-bpe:bpe-encode bpe head)) (all (asem-bpe:bpe-encode bpe (concatenate 'string head body))))
+               (when (and (<= (+ 1 (length all)) ctx) (equal h (subseq all 0 (min (length all) (length h)))) (> (length all) (1+ (length h))))
+                 (push (make-ex :id (format nil "recall-~d" (length out)) :category "recall" :subtype (string-downcase (symbol-name (car ty)))
+                                :qframe "" :mode :copy :answer 0 :target 0
+                                :ids (ivec-of (cons 0 (subseq all 0 (1+ (length h))))) :tgt (ivec-of (subseq all (1+ (length h)))) :opts nil)
+                       out))))
+    (coerce (nreverse out) 'vector)))
 
 ;;; ------------------------------------------------------------------ per-worker buffers
 (defun bucket-len (n ctx) (min ctx (* 16 (ceiling n 16))))
