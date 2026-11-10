@@ -180,4 +180,64 @@
                        (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
     (check (< worst 1d-5) (format nil "row head, worst relative error ~e" worst))))
 
+
+;;; ---- relative-position attention biases (config-relpos)
+(deftest relpos-starts-as-a-no-op-and-converts-in-any-order
+  (let* ((cfg (make-config :vocab 13 :ctx 7 :dim 8 :heads 2 :layers 2 :ff 16)) (m (init-model cfg 4))
+         (r (add-relpos m 3)) (rt (add-tie-gate r)) (x (ivec 3 1 4 1 5 9 2)))
+    (dolist (mm (list r rt))
+      (let ((a (make-acts cfg 7)) (b (make-acts (model-config mm) 7)))
+        (forward m x a) (forward mm x b)
+        (check (equalp (acts-probs a) (acts-probs b)) (format nil "zero biases: identical outputs (max diff ~a, ~a)" (loop for u across (acts-probs a) for w across (acts-probs b) maximize (abs (- u w))) (model-config mm)))))
+    (check-equal (length (aref (model-params rt) (relbias-index (model-config rt)))) (* 2 2 3))
+    (check-equal (length (aref (model-params rt) (tie-index (model-config rt)))) 1)))
+
+(deftest relpos-gradients-match-numerical-differentiation
+  (let* ((cfg (make-config :vocab 11 :ctx 6 :dim 8 :heads 2 :layers 2 :ff 16)) (m (add-tie-gate (add-relpos (init-model cfg 3) 4)))
+         (tcfg (model-config m)) (x (ivec 1 4 2 9 0 3)) (y (ivec 4 2 9 0 3 7)) (state (sb-ext:seed-random-state 8)) (worst 0d0) (eps 1d-6)
+         (rb (svref (model-params m) (relbias-index tcfg))))
+    (dotimes (i (length rb)) (setf (aref rb i) (- (random 2d0 state) 1d0)))
+    (setf (aref (svref (model-params m) (tie-index tcfg)) 0) 0.3d0)
+    (let ((acts (make-acts tcfg 6)) (grads (make-grads tcfg)))
+      (forward m x acts) (backward m x y acts grads)
+      (loop for p across (model-params m) for g across grads for pidx from 0
+            do (dotimes (s (if (= pidx (relbias-index tcfg)) 16 4))
+                 (let* ((i (if (= pidx (relbias-index tcfg)) s (random (length p) state))) (old (aref p i)))
+                   (setf (aref p i) (+ old eps))
+                   (let ((up (loss-at m x y)))
+                     (setf (aref p i) (- old eps))
+                     (let* ((dn (loss-at m x y)) (num (/ (- up dn) (* 2 eps))) (ana (aref g i)))
+                       (setf (aref p i) old)
+                       (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
+    (check (< worst 1d-5) (format nil "worst relative error ~e" worst))))
+
+(deftest relpos-blas-matches-lisp
+  ;; the strided-BLAS attention path must add (and differentiate) the biases exactly like the Lisp path
+  (when (blas-init)
+    (let* ((tl 40) (d 16) (nh 2) (hd 8) (kmax 5) (state (sb-ext:seed-random-state 2))
+           (rnd (lambda (n) (let ((v (new-dvec n))) (dotimes (i n v) (setf (aref v i) (- (random 2d0 state) 1d0))))))
+           (q (funcall rnd (* tl d))) (k (funcall rnd (* tl d))) (vv (funcall rnd (* tl d))) (rb (funcall rnd (* 3 nh kmax)))
+           (p1 (new-dvec (* nh tl tl))) (p2 (new-dvec (* nh tl tl))) (a1 (new-dvec (* tl d))) (a2 (new-dvec (* tl d)))
+           (da (funcall rnd (* tl d))) (g1 (new-dvec (* 3 nh kmax))) (g2 (new-dvec (* 3 nh kmax))) (scale (/ 1d0 (sqrt 8d0))))
+      (asem-tf::attn-fwd-lisp q k vv p1 a1 tl d nh hd scale rb (* nh kmax) kmax)
+      (asem-tf::attn-fwd-blas q k vv p2 a2 tl d nh hd scale rb (* nh kmax) kmax)
+      (check (every (lambda (x y) (< (abs (- x y)) 1d-10)) a1 a2) "forward")
+      (let ((dq1 (new-dvec (* tl d))) (dk1 (new-dvec (* tl d))) (dv1 (new-dvec (* tl d))) (dq2 (new-dvec (* tl d))) (dk2 (new-dvec (* tl d))) (dv2 (new-dvec (* tl d))))
+        (asem-tf::attn-bwd-lisp p1 q k vv da dq1 dk1 dv1 (new-dvec tl) tl d nh hd scale g1 (* nh kmax) kmax)
+        (asem-tf::attn-bwd-blas p1 q k vv da dq2 dk2 dv2 (new-dvec (* tl tl)) tl d nh hd scale g2 (* nh kmax) kmax)
+        (check (every (lambda (x y) (< (abs (- x y)) 1d-10)) g1 g2) "bias gradients")
+        (check (every (lambda (x y) (< (abs (- x y)) 1d-10)) dq1 dq2) "dq")))))
+
+
+(deftest converted-models-own-their-new-parameters
+  ;; regression: the new gate / bias vectors used to be stack-allocated by SBCL (dangling, shared between models)
+  (let* ((cfg (make-config :vocab 13 :ctx 7 :dim 8 :heads 2 :layers 2 :ff 16))
+         (a (add-relpos (add-tie-gate (init-model cfg 3)) 2)) (b (add-relpos (add-tie-gate (init-model cfg 4)) 2)))
+    (setf (aref (svref (model-params a) (tie-index (model-config a))) 0) 0.7d0)
+    (fill (svref (model-params a) (relbias-index (model-config a))) 0.5d0)
+    (sb-ext:gc :full t)
+    (check (= 0d0 (aref (svref (model-params b) (tie-index (model-config b))) 0)) "fresh gate untouched")
+    (check (every #'zerop (svref (model-params b) (relbias-index (model-config b)))) "fresh biases untouched")
+    (check (= 0.7d0 (aref (svref (model-params a) (tie-index (model-config a))) 0)) "gate survives a full GC")))
+
 (run-all)
