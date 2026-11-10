@@ -40,3 +40,19 @@ turn it off with `llm_opts => #{fallbacks => off}`.
 ## Test
 
 `rebar3 eunit` (offline; uses the mock backend and a local fake HTTP server).
+
+## Memory benchmark baselines
+
+`agents_membench` runs the benchmark written by `lisp/bin/membench-gen.lisp` against LM Studio and scores
+each answer against the generator's ground truth. Setups: `none`, `truncated` (most recent `window` tokens),
+`retrieval` (top `k` exchanges by BM25, or embeddings from an LM Studio embedding model).
+
+```sh
+sbcl --script ../lisp/bin/membench-gen.lisp --out cases.jsonl --cases 10 --lengths 50,200,800
+rebar3 compile && escript scripts/membench.escript cases.jsonl window=2048 k=6 out=rows.jsonl
+escript scripts/membench.escript cases.jsonl retriever=embedding embed_model=<embedding model id>
+```
+
+Outcomes per question: `correct`, `stale` (answered with the replaced value), `distractor` (a third party's value),
+`unknown`, `hallucinated` (answered a never-mentioned fact), `wrong`. Hedging between two values counts as wrong.
+Needs LM Studio with a chat model loaded; the tests (`rebar3 eunit`) use the mock backend.

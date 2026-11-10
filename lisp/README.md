@@ -4,7 +4,7 @@ SBCL code written without third-party libraries (no Quicklisp): a small transfor
 a trainer, the chat-data cleaner and a corpus pipeline.
 
     brew install sbcl            # tested with SBCL 2.6.10
-    ./run-tests.sh               # 5 test files: cleaner, transformer, trainer, data pipeline, tuner (~1 min)
+    ./run-tests.sh               # 6 test files: cleaner, transformer, trainer, data pipeline, tuner, memory benchmark (~1 min)
 
 | File | What it is | Erlang counterpart |
 |---|---|---|
@@ -13,6 +13,7 @@ a trainer, the chat-data cleaner and a corpus pipeline.
 | `src/train.lisp`, `bin/train.lisp`, `bin/generate.lisp` | Word tokenizer, thread-parallel (SBCL threads) trainer with Adam, clipping, validation, unigram/bigram baselines, sampling, text save/load. | `tinyllm_train.erl`, `tinyllm_tok.erl` |
 | `src/sha256.lisp`, `json.lisp`, `bpe.lisp`, `data.lisp`, `bin/build-data.lisp` | JSONL → filters → exact + MinHash dedup → hash split → byte-level BPE → uint16 shards + `manifest.json` (SHA-256, dataset version, `verify`). | none |
 | `src/tune.lisp`, `bin/tune.lisp`, `tune/kernel_bench.escript` | **Autotuner (code that writes code).** See below. | none |
+| `src/membench.lisp`, `bin/membench-gen.lisp` | Long-conversation **memory benchmark generator**: seeded, deterministic cases with facts planted early, later updates, third-party distractors and never-mentioned (absent) questions, with exact ground truth. `sbcl --script bin/membench-gen.lisp --out cases.jsonl --cases 20 --lengths 50,200,800` | none |
 | `bin/bench.lisp` | Throughput benchmark, same JSON as the Erlang one. | `bench.escript` |
 
 ## Use
