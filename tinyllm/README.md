@@ -88,6 +88,15 @@ and survive restarts. Each question + answer is written in one transaction and s
   A plain `rebar3 shell` is `nonode@nohost` and would not see the saved chats.
 - The OpenAI-compatible `/v1/chat/completions` endpoint is stateless and does not save anything.
 
+## Benchmark and limits
+
+    rebar3 compile && escript scripts/bench.escript 64 2 4 32 8 30    # dim layers heads ctx batch steps
+
+Prints tokens/s and achieved FLOP/s as JSON. On a 10-core laptop the transformer trains at a few hundred tokens/s
+(~0.4 GFLOP/s); the Lisp port in `../lisp` runs the same shape ~8× faster on one thread (~33× with 10 threads). Both stay small-scale:
+no GPU, no BLAS.
+The cleaned chat set for training is `../dataset/chat_clean.txt` (`sbcl --script ../lisp/bin/clean-chat.lisp chat.txt chat_clean.txt`).
+
 ## Publishing to Hugging Face
 
     escript scripts/export.escript chat_word.bin export/        # per model

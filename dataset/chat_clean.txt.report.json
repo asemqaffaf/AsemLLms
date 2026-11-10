@@ -1,0 +1,17 @@
+{
+  "bytes_in": 137804,
+  "bytes_out": 94881,
+  "dialogues_in": 743,
+  "dialogues_out": 543,
+  "max_exchange_repeats": 2,
+  "removed": {
+    "boilerplate": 54,
+    "duplicate": 108,
+    "malformed": 25,
+    "no_context": 6,
+    "non_ascii": 3,
+    "too_long": 4
+  },
+  "unique_user_turns_out": 973,
+  "user_turns_out": 1041
+}

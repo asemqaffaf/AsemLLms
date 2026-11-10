@@ -51,8 +51,9 @@ logits(P, Ctx) -> {_, _, L} = forward(P, Ctx), L.
 matvec([R | Rs], [B | Bs], X) -> [dot(R, X, B) | matvec(Rs, Bs, X)];
 matvec([], [], _) -> [].
 
-dot([A | As], [B | Bs], Acc) -> dot(As, Bs, Acc + A * B);
-dot([], [], Acc) -> Acc.
+%% dot/3 and axpy/3 live in a generated file: lisp/bin/tune.lisp writes them (unrolled by whatever is
+%% fastest on this machine, checked bit-for-bit against the plain loops) and keeps them only if eunit passes.
+-include("tinyllm_kernels.hrl").
 
 softmax(L, Temp) ->
     M = lists:max(L),
@@ -114,9 +115,6 @@ lincomb_acc([], [], Acc) -> Acc.
 acc_rows([Row | Rows], [C | Cs], X) -> [axpy(Row, C, X) | acc_rows(Rows, Cs, X)];
 acc_rows([], [], _) -> [].
 
-%% y + a*x
-axpy([Y | Ys], A, [X | Xs]) -> [Y + A * X | axpy(Ys, A, Xs)];
-axpy([], _, []) -> [].
 
 vadd([A | As], [B | Bs]) -> [A + B | vadd(As, Bs)];
 vadd([], []) -> [].

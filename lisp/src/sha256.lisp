@@ -1,0 +1,110 @@
+;;;; SHA-256 (FIPS 180-4), incremental. Constants are derived from the primes with exact integer
+;;;; arithmetic instead of being typed in, and checked against the standard test vectors in tests.
+(defpackage :asem-sha256
+  (:use :cl)
+  (:export #:sha256-hex #:sha256-octets-hex #:sha256-file-hex #:make-sha256 #:sha256-update #:sha256-final-hex
+           #:string-octets))
+(in-package :asem-sha256)
+
+(deftype u32 () '(unsigned-byte 32))
+(deftype octets () '(simple-array (unsigned-byte 8) (*)))
+
+(defun icbrt (n)
+  "Floor of the cube root of N (integer)."
+  (let ((lo 0) (hi (ash 1 (1+ (ceiling (integer-length n) 3)))))
+    (loop while (< lo hi)
+          do (let ((mid (ash (+ lo hi 1) -1)))
+               (if (<= (* mid mid mid) n) (setf lo mid) (setf hi (1- mid)))))
+    lo))
+
+(defun first-primes (n)
+  (loop with out = nil for c from 2 while (< (length out) n)
+        when (loop for p in out never (zerop (mod c p))) do (setf out (append out (list c)))
+        finally (return out)))
+
+(defparameter *k*
+  (coerce (mapcar (lambda (p) (ldb (byte 32 0) (icbrt (ash p 96)))) (first-primes 64))
+          '(simple-array (unsigned-byte 32) (64))))
+(defparameter *h0*
+  (mapcar (lambda (p) (ldb (byte 32 0) (isqrt (ash p 64)))) (first-primes 8)))
+
+(defstruct (sha256 (:constructor %make-sha256))
+  (h (make-array 8 :element-type 'u32) :type (simple-array u32 (8)))
+  (buf (make-array 64 :element-type '(unsigned-byte 8)) :type octets)
+  (fill 0 :type fixnum)
+  (length 0 :type (unsigned-byte 62)))
+
+(defun make-sha256 ()
+  (let ((s (%make-sha256)))
+    (loop for x in *h0* for i from 0 do (setf (aref (sha256-h s) i) x))
+    s))
+
+(declaim (inline rotr))
+(defun rotr (x n) (declare (type u32 x) (type (integer 1 31) n))
+  (logior (ldb (byte 32 0) (ash x (- n))) (ldb (byte 32 0) (ash x (- 32 n)))))
+
+(defun compress (h block)
+  (declare (type (simple-array u32 (8)) h) (type octets block) (optimize (speed 3) (safety 0)))
+  (let ((w (make-array 64 :element-type 'u32)) (k *k*))
+    (declare (type (simple-array u32 (64)) w k))
+    (dotimes (i 16)
+      (setf (aref w i) (logior (ash (aref block (* 4 i)) 24) (ash (aref block (+ (* 4 i) 1)) 16)
+                               (ash (aref block (+ (* 4 i) 2)) 8) (aref block (+ (* 4 i) 3)))))
+    (loop for i from 16 below 64
+          do (let* ((w15 (aref w (- i 15))) (w2 (aref w (- i 2)))
+                    (s0 (logxor (rotr w15 7) (rotr w15 18) (ash w15 -3)))
+                    (s1 (logxor (rotr w2 17) (rotr w2 19) (ash w2 -10))))
+               (declare (type u32 w15 w2 s0 s1))
+               (setf (aref w i) (ldb (byte 32 0) (+ (aref w (- i 16)) s0 (aref w (- i 7)) s1)))))
+    (let ((a (aref h 0)) (b (aref h 1)) (c (aref h 2)) (d (aref h 3))
+          (e (aref h 4)) (f (aref h 5)) (g (aref h 6)) (hh (aref h 7)))
+      (declare (type u32 a b c d e f g hh))
+      (dotimes (i 64)
+        (let* ((s1 (logxor (rotr e 6) (rotr e 11) (rotr e 25)))
+               (ch (logxor (logand e f) (logand (ldb (byte 32 0) (lognot e)) g)))
+               (t1 (ldb (byte 32 0) (+ hh s1 ch (aref k i) (aref w i))))
+               (s0 (logxor (rotr a 2) (rotr a 13) (rotr a 22)))
+               (maj (logxor (logand a b) (logand a c) (logand b c)))
+               (t2 (ldb (byte 32 0) (+ s0 maj))))
+          (declare (type u32 s1 ch t1 s0 maj t2))
+          (setf hh g g f f e e (ldb (byte 32 0) (+ d t1)) d c c b b a a (ldb (byte 32 0) (+ t1 t2)))))
+      (setf (aref h 0) (ldb (byte 32 0) (+ (aref h 0) a)) (aref h 1) (ldb (byte 32 0) (+ (aref h 1) b))
+            (aref h 2) (ldb (byte 32 0) (+ (aref h 2) c)) (aref h 3) (ldb (byte 32 0) (+ (aref h 3) d))
+            (aref h 4) (ldb (byte 32 0) (+ (aref h 4) e)) (aref h 5) (ldb (byte 32 0) (+ (aref h 5) f))
+            (aref h 6) (ldb (byte 32 0) (+ (aref h 6) g)) (aref h 7) (ldb (byte 32 0) (+ (aref h 7) hh))))))
+
+(defun sha256-update (s octets &optional (start 0) (end (length octets)))
+  (declare (type octets octets) (type fixnum start end))
+  (incf (sha256-length s) (- end start))
+  (loop while (< start end)
+        do (let ((n (min (- 64 (sha256-fill s)) (- end start))))
+             (replace (sha256-buf s) octets :start1 (sha256-fill s) :start2 start :end2 (+ start n))
+             (incf (sha256-fill s) n) (incf start n)
+             (when (= (sha256-fill s) 64)
+               (compress (sha256-h s) (sha256-buf s))
+               (setf (sha256-fill s) 0))))
+  s)
+
+(defun sha256-final-hex (s)
+  (let* ((bits (* 8 (sha256-length s)))
+         (padlen (let ((r (mod (1+ (sha256-length s)) 64))) (if (<= r 56) (- 56 r) (- 120 r))))
+         (pad (make-array (+ 1 padlen 8) :element-type '(unsigned-byte 8) :initial-element 0)))
+    (setf (aref pad 0) #x80)
+    (dotimes (i 8) (setf (aref pad (+ 1 padlen i)) (ldb (byte 8 (* 8 (- 7 i))) bits)))
+    (let ((len (sha256-length s)))
+      (sha256-update s pad)
+      (setf (sha256-length s) len))
+    (with-output-to-string (o)
+      (loop for x across (sha256-h s) do (format o "~(~8,'0x~)" x)))))
+
+(defun string-octets (string)
+  (coerce (sb-ext:string-to-octets string :external-format :utf-8) 'octets))
+
+(defun sha256-octets-hex (octets) (sha256-final-hex (sha256-update (make-sha256) octets)))
+(defun sha256-hex (string) (sha256-octets-hex (string-octets string)))
+
+(defun sha256-file-hex (path)
+  (with-open-file (in path :element-type '(unsigned-byte 8))
+    (let ((s (make-sha256)) (buf (make-array (ash 1 20) :element-type '(unsigned-byte 8))))
+      (loop for n = (read-sequence buf in) while (plusp n) do (sha256-update s buf 0 n))
+      (sha256-final-hex s))))

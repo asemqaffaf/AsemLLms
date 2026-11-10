@@ -30,3 +30,12 @@ jobs:
         run: rebar3 compile
       - name: Tests
         run: rebar3 eunit
+
+  lisp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install SBCL
+        run: sudo apt-get update && sudo apt-get install -y sbcl
+      - name: Lisp tests (cleaner, transformer gradients, trainer, data pipeline)
+        run: sh lisp/run-tests.sh
