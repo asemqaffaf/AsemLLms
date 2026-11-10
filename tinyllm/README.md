@@ -40,6 +40,8 @@ Point the UI at it with `{model_file, "mine.bin"}` in `config/sys.config`.
 | `tinyllm_worker`, `tinyllm_worker_sup` | gradient workers; crashed workers restart and their shard is retried |
 | `tinyllm_web` | Cowboy handler: server-rendered page + JSON API |
 | `tinyllm_session`, `tinyllm_session_sup` | one supervised process per conversation holding the transformer's KV-cache |
+| `tinyllm_tuner` | propose, score, gate, commit or roll back: supervises any training engine (see "Tuner") |
+| `tinyllm_engine`, `_fake`, `_port` | the engine behaviour; a deterministic test engine; a driver for an external worker (MLX, llama.cpp) |
 | `tinyllm` | public API: train, generate, save, load |
 
 `rebar3 eunit` runs the tests (gradient check, learning, worker-crash recovery, web UI).
@@ -142,6 +144,33 @@ absolute positions. Exact mode is still ~1.5x faster than the stateless path the
 projection and, in the last layer, everything except their keys and values (`tinyllm_tf:advance/4`), which nothing later
 can see. Beyond that, speed needs `evict` (or a longer context). The first version of the cache was 2x *slower* when full
 because every prefill token also computed the vocabulary projection.
+
+## Tuner (supervised fine-tuning of any engine)
+
+`tinyllm_tuner` decides what to learn and whether to keep it; a `tinyllm_engine` does the numerical work.
+One `learn/2` round trains one candidate per learning rate (in parallel), then scores each on a held-out set and
+a probe set (a reference set that must not get worse), and measures its drift from version 0. A candidate is
+kept only if heldout loss improves by more than `min_gain`, probe loss stays within `probe_tolerance`, and drift
+is within `drift_cap`; the best passing one becomes the new current version, otherwise nothing changes and the
+reason comes back. The last `retain` (5) versions plus version 0 are kept, and `rollback/1,2` steps back.
+Candidates run in their own processes with a per-candidate `timeout`, so an engine crash or hang costs one
+candidate, not the tuner. Only one round runs at a time; `current/1`, `versions/1` and `log/1` answer meanwhile.
+
+    {ok, T} = tinyllm_tuner:start_link(#{
+        engine => {tinyllm_engine_port, #{cmd => "python3", args => ["scripts/mlx_worker.py"],
+                                          root => "/tmp/tuner", base_model => "Qwen/Qwen2.5-0.5B-Instruct",
+                                          heldout_file => "heldout.txt", probe_file => "probe.txt"}},
+        candidates => [1.0e-5, 5.0e-5, 1.0e-4], steps => 50, rank => 8, probe_tolerance => 0.02, drift_cap => 5.0}),
+    {committed, 1, _Info} = tinyllm_tuner:learn(T, [<<"a training sample">>, <<"another">>]),
+    {ok, 0} = tinyllm_tuner:rollback(T).
+
+`tinyllm_engine_fake` (a 1-D quadratic) and a shell stand-in worker behind `tinyllm_engine_port` are what
+`tinyllm_tuner_tests` run on, so the commit, reject, drift, retention, rollback, timeout and crash logic is
+tested without a GPU or a model. The worker protocol (command line in, one `RESULT k=v` line out) is documented
+at the top of `src/tinyllm_engine_port.erl`.
+
+`scripts/mlx_worker.py` is the MLX LoRA worker for a Mac. **It has not been run against MLX yet**: only its
+syntax is checked. Run it once by hand (`python3 scripts/mlx_worker.py eval ...`) before trusting a tuner run.
 
 ## Benchmark and limits
 
