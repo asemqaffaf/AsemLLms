@@ -8,12 +8,18 @@
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
            #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config
            #:native-init #:native-active-p #:native-min-work
-           #:blas-init #:blas-active-p #:blas-min-work))
+           #:blas-init #:blas-active-p #:blas-min-work #:host-float #:elt-bytes))
 (in-package :asem-tf)
 
 (deftype dvec () '(simple-array double-float (*)))
 (deftype ivec () '(simple-array fixnum (*)))
 (deftype idx () '(integer 0 #.(ash 1 40)))
+
+;;; Host-side scalars (accumulators, optimizer bias terms) are written with LONG-FLOAT / 0l0 literals, which SBCL
+;;; treats as double-float and src/derive.lisp leaves alone when it derives the single-float version of this file.
+;;; HOST-FLOAT brings such a value back to the element type; ELT-BYTES is the element size for pointer arithmetic.
+(defmacro host-float (x) x)
+(defmacro elt-bytes () 8)
 
 (declaim (inline new-dvec))
 (defun new-dvec (n) (make-array n :element-type 'double-float :initial-element 0d0))
@@ -380,8 +386,8 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
                            (function sb-alien:void sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int
                                      sb-alien:double sb-sys:system-area-pointer sb-alien:int sb-sys:system-area-pointer sb-alien:int
                                      sb-alien:double sb-sys:system-area-pointer sb-alien:int))
-       101 ta tb m n k alpha (sb-sys:sap+ (sb-sys:vector-sap a) (* 8 aoff)) lda
-       (sb-sys:sap+ (sb-sys:vector-sap b) (* 8 boff)) ldb beta (sb-sys:sap+ (sb-sys:vector-sap c) (* 8 coff)) ldc))))
+       101 ta tb m n k alpha (sb-sys:sap+ (sb-sys:vector-sap a) (* (elt-bytes) aoff)) lda
+       (sb-sys:sap+ (sb-sys:vector-sap b) (* (elt-bytes) boff)) ldb beta (sb-sys:sap+ (sb-sys:vector-sap c) (* (elt-bytes) coff)) ldc))))
 
 (declaim (inline attn-blas-p))
 (defun attn-blas-p (tl hd)
@@ -515,7 +521,8 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
   (declare (type ivec y))
   (let ((v (floor (length (the dvec (acts-probs acts))) (acts-tlen acts))) (s 0d0))
     (dotimes (i (acts-tlen acts))
-      (decf s (log (max 1d-300 (aref (the dvec (acts-probs acts)) (+ (* i v) (aref y i)))))))
+      (let ((pr (aref (the dvec (acts-probs acts)) (+ (* i v) (aref y i)))))
+        (decf s (log (if (< pr 1d-300) 1d-300 pr)))))   ; clamp tiny values, but let a NaN through (MAX would hide it)
     (/ s (acts-tlen acts))))
 
 (export 'loss-of-acts)

@@ -53,6 +53,30 @@ with `m*k*n >= 4096` (env `TLM_MIN_WORK`) to C. Results are bit-identical to the
 `bin/bench-native.lisp` compares the two; on an x86 Linux box the C kernels took 0.33 to 0.46 of the Lisp time for every shape from 8x16x16 to 512x512x512.
 `src/tlm.lisp` (`save-tlm`) writes a model as a TLM1 file (see `native/FORMAT.md`) that the C library and the Erlang NIF mmap.
 
+## Accelerate (BLAS) and single precision
+
+Off by default; turn on with `TLM_BLAS=1` (or call `(blas-init)`). Products with `m*k*n >= TLM_BLAS_MIN_WORK` (16384) go to
+`cblas_dgemm` from Apple's Accelerate through `sb-alien`, and so does per-head causal attention (forward and backward, strided
+`dgemm`, no transposed copies, zeros above the diagonal). The pure-Lisp kernels remain the reference and the fallback. BLAS adds in a
+different order, so results are close (rtol 1e-10, atol 1e-12 in double), not bit-identical; `tests/test-blas.lisp` checks that.
+
+`src/tf32.lisp` and `src/train32.lisp` give the same API in the packages `asem-tf32` / `asem-train32` with `single-float` tensors,
+`sgemm`, and FP32 weights, gradients and Adam state. They are not copies: `src/derive.lisp` rewrites `tf.lisp` / `train.lisp` at load time
+(double to single, `cblas_dgemm` to `cblas_sgemm`, package names), so FP32 follows the FP64 reference automatically. Host-side scalars (gradient
+norm, Adam bias terms, baselines) are written as `long-float` / `0l0`, which stay double. `tests/test-fp32.lisp` compares FP32 with FP64
+(loss within 1e-5 relative, gradients within 1e-4 relative L2, sgemm products rtol 1e-4 / atol 1e-5), runs a finite-difference check, NaN
+propagation, convergence of both precisions to the same loss, and checkpoint round trips. FP64 and FP32 text checkpoints load into either.
+`bin/bench.lisp` / `bin/bench32.lisp` measure full training steps (`TLM_BLAS=1`). Use `sbcl --dynamic-space-size 12GB` for large
+configurations: the default 1 GiB heap is exhausted by 10 workers at dim 512.
+
+Full training steps, tokens/s (this M1 Pro, 10 workers unless noted):
+
+| Config | Pure Lisp | BLAS FP64 | BLAS FP32 |
+|---|---|---|---|
+| dim 64, 2 layers, 1 worker | 2,847 | 14,126 | 18,500 |
+| dim 256, 4 layers, ctx 128 | 916 | 7,501 | 13,423 (219 GFLOP/s) |
+| dim 512, 8 layers, ctx 256 (18.4M params) | n/a | 1,256 (148 GFLOP/s) | 3,144 (370 GFLOP/s) |
+
 ## What was measured
 
 - Data pipeline: on 20,000 FineWeb-Edu documents it kept 7,479 (11,282 low edu score; 979 low language score; 257 too short;

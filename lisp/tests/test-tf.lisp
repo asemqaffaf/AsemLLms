@@ -59,4 +59,11 @@
     (check (every #'equalp (model-params a) (model-params b)))
     (check (notevery #'equalp (model-params a) (model-params c)))))
 
+(deftest nan-weight-shows-up-in-the-loss
+  (let* ((cfg (make-config :vocab 11 :ctx 8 :dim 16 :heads 2 :layers 1 :ff 32)) (m (init-model cfg 3)))
+    (sb-int:with-float-traps-masked (:invalid :divide-by-zero :overflow :inexact)
+      (setf (aref (svref (model-params m) 0) 16) (- sb-ext:double-float-positive-infinity sb-ext:double-float-positive-infinity))
+      (let ((l (loss-at m (ivec 1 2 3 4 5 6 7 8) (ivec 2 3 4 5 6 7 8 9))))
+        (check (/= l l) "a NaN weight must give a NaN loss, not a clamped finite one")))))
+
 (run-all)
