@@ -14,7 +14,7 @@
 (defpackage :asem-qagen
   (:use :cl)
   (:export #:generate-split #:format-prompt #:item-prompt #:validate-item #:+letters+ #:+categories+
-           #:item-json-line #:read-items #:all-frames #:frame-ngram-overlap #:split-pool #:*names* #:item-get))
+           #:item-json-line #:read-items #:all-frames #:frame-ngram-overlap #:split-pool #:*names* #:item-get #:*synthetic-train* #:synthetic-pool))
 (in-package :asem-qagen)
 
 (defparameter +letters+ '("A" "B" "C" "D"))
@@ -337,6 +337,42 @@
 
 (defun join-sentences (ss) (format nil "~{~a~^ ~}" (remove "" ss :test #'string=)))
 
+;;; ------------------------------------------------------------------ high-entropy training entities (optional)
+;;; With *SYNTHETIC-TRAIN* true, training items draw people and towns from thousands of procedurally generated names instead of
+;;; the 108 / 144 real training names and towns, so memorising which strings tend to be answers cannot lower the loss and the
+;;; model has to copy from the passage. Every generated string that equals (case-insensitively) any dev or test entity of any
+;;; type is removed, so dev/test entities stay unseen. Dev and test items are unaffected.
+(defvar *synthetic-train* nil)
+(defvar *synthetic-cache* (make-hash-table))
+
+(defun heldout-entities ()
+  (let ((h (make-hash-table :test 'equalp)))
+    (dolist (pool (list *names* *towns* *jobs* *pets* *colors* *instruments* *places*) h)
+      (dolist (split '(:dev :test)) (dolist (x (split-pool pool split)) (setf (gethash x h) t))))))
+
+(defun synthetic-pool (sym)
+  (or (gethash sym *synthetic-cache*)
+      (setf (gethash sym *synthetic-cache*)
+            (let* ((held (heldout-entities)) (rng (sb-ext:seed-random-state 4242))
+                   (cands (ecase sym
+                            (*names* (loop for o in '("B" "D" "F" "G" "H" "J" "K" "L" "M" "N" "P" "R" "S" "T" "V" "Z" "Br" "Dr" "Kr" "St" "Tr" "Sh" "Ch" "El" "Am" "Or")
+                                           append (loop for v in '("a" "e" "i" "o" "u" "ai" "ey")
+                                                        append (loop for m in '("l" "n" "r" "m" "s" "v" "d" "k" "th" "")
+                                                                     append (loop for e in '("a" "o" "i" "en" "ar" "is" "el" "")
+                                                                                  collect (concatenate 'string o v m e))))))
+                            (*towns* (loop for o in '("Ash" "Bram" "Cor" "Dal" "Elm" "Fal" "Gil" "Hol" "Ist" "Jor" "Kel" "Lor" "Mal" "Nor" "Orm" "Pry" "Quin" "Ros" "Sar" "Tev" "Ur" "Vos" "Wil" "Yar" "Zel"
+                                                          "Bar" "Tor" "Vel" "Kas" "Mir" "Dun" "Hal" "Fen" "Gor" "Lin" "Ost" "Pel" "Rav" "Sel" "Tam" "Ulm" "Var" "Wen" "Yor" "Zan")
+                                           append (loop for s in '("wold" "haven" "brook" "mouth" "field" "crest" "port" "burg" "thorpe" "shaw" "wyn" "dell"
+                                                                   "vik" "ford" "by" "mere" "holm" "dale" "wick" "stad" "ton" "gard" "ley" "more")
+                                                        collect (concatenate 'string o s))))))
+                   (ok (remove-if (lambda (c) (or (< (length c) 3) (gethash c held))) (remove-duplicates cands :test #'string-equal))))
+              (subseq (shuffle ok rng) 0 (min 4000 (length ok)))))))
+
+(defun entity-pool (sym split)
+  (if (and *synthetic-train* (eq split :train) (member sym '(*names* *towns*)))
+      (synthetic-pool sym)
+      (split-pool (symbol-value sym) split)))
+
 ;;; ------------------------------------------------------------------ worlds -> items
 ;;; Each builder returns a plist: :category :subtype :passage :question :answer-text :options-pool (four strings) :query
 ;;; :cf-question :cf-answer-text :qframe :facts. The caller places the answer at the requested option position.
@@ -359,12 +395,12 @@
 (defun build-extract (split rng)
   (let* ((numeric (< (random 8 rng) 3))
          (type-a (if numeric (pick *num-types* rng) (pick *attr-types* rng)))
-         (people (sample-n (split-pool *names* split) 4 rng))
+         (people (sample-n (entity-pool '*names* split) 4 rng))
          (vals (if numeric
                    (destructuring-bind (lo hi) (getf (cdr type-a) :range) (distinct-numbers lo hi 4 rng))
-                   (sample-n (split-pool (symbol-value (getf (cdr type-a) :pool)) split) 4 rng)))
+                   (sample-n (entity-pool (getf (cdr type-a) :pool) split) 4 rng)))
          (type-b (when (and (not numeric) (< (random 10 rng) 4)) (pick (remove type-a *attr-types*) rng)))
-         (vals-b (when type-b (sample-n (split-pool (symbol-value (getf (cdr type-b) :pool)) split) 4 rng)))
+         (vals-b (when type-b (sample-n (entity-pool (getf (cdr type-b) :pool) split) 4 rng)))
          (sents (people-passage split rng people type-a vals type-b vals-b))
          (ti (random 4 rng)) (ci (mod (+ ti 1 (random 3 rng)) 4))
          (qf (pick (getf (getf (cdr type-a) :q-extract) split) rng)))
@@ -378,10 +414,10 @@
 
 (defun build-reverse (split rng)
   (let* ((type-a (pick *attr-types* rng))
-         (people (sample-n (split-pool *names* split) 4 rng))
-         (vals (sample-n (split-pool (symbol-value (getf (cdr type-a) :pool)) split) 4 rng))
+         (people (sample-n (entity-pool '*names* split) 4 rng))
+         (vals (sample-n (entity-pool (getf (cdr type-a) :pool) split) 4 rng))
          (type-b (when (< (random 10 rng) 4) (pick (remove type-a *attr-types*) rng)))
-         (vals-b (when type-b (sample-n (split-pool (symbol-value (getf (cdr type-b) :pool)) split) 4 rng)))
+         (vals-b (when type-b (sample-n (entity-pool (getf (cdr type-b) :pool) split) 4 rng)))
          (sents (people-passage split rng people type-a vals type-b vals-b))
          (ti (random 4 rng)) (ci (mod (+ ti 1 (random 3 rng)) 4))
          (qf (pick (getf (getf (cdr type-a) :q-reverse) split) rng)))
@@ -395,7 +431,7 @@
 
 (defun build-relation (split rng)
   (let* ((rel (pick *relations* rng))
-         (people (sample-n (split-pool *names* split) 4 rng))
+         (people (sample-n (entity-pool '*names* split) 4 rng))
          (chain (zerop (random 2 rng)))
          (facts (if chain
                     (list (list (first people) (second people)) (list (second people) (third people)) (list (third people) (fourth people)))
@@ -418,7 +454,7 @@
 
 (defun build-compare (split rng)
   (let* ((ty (pick *num-types* rng))
-         (people (sample-n (split-pool *names* split) 4 rng))
+         (people (sample-n (entity-pool '*names* split) 4 rng))
          (vals (destructuring-bind (lo hi) (getf (cdr ty) :range) (distinct-numbers lo hi 4 rng)))
          (sents (people-passage split rng people ty vals))
          (mx (zerop (random 2 rng)))
@@ -443,8 +479,8 @@
       (:before (let ((i (1+ (random 3 rng)))) (values (fill-frame qf :p p :x (nth i places)) qf (nth (1- i) places) (list :before (nth i places))))))))
 
 (defun build-temporal (split rng)
-  (let* ((p (pick (split-pool *names* split) rng))
-         (places (sample-n (split-pool *places* split) 4 rng))
+  (let* ((p (pick (entity-pool '*names* split) rng))
+         (places (sample-n (entity-pool '*places* split) 4 rng))
          (sents (list (fill-frame (pick (getf (getf *temporal* :first) split) rng) :p p :x (first places))
                       (fill-frame (pick (getf (getf *temporal* :middle) split) rng) :p p :x (second places))
                       (fill-frame (pick (getf (getf *temporal* :middle) split) rng) :p p :x (third places))

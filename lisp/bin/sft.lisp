@@ -2,7 +2,7 @@
 ;;;   TLM_BLAS=1 sbcl --dynamic-space-size 12GB --script lisp/bin/sft.lisp data=data/fineweb/stage1 qa=data/qa/v1 out=data/runs/sft/NAME
 ;;;        [init=data/runs/final/10m/best.ckpt | init=scratch size=10m] [steps=2000] [batch=32] [accum=1] [workers=8] [lr=3e-4]
 ;;;        [warmup=50] [min-lr-frac=0.1] [clip=1.0] [wd=0] [seed=1] [eval-every=100] [log-every=10] [train-n=all]
-;;;        [mode=letter|text] [shuffle-labels=0] [resume=0] [stop-at=N] [save-every=0] [precision=32|64]
+;;;        [mode=letter|text] [aux-lm=0] [shuffle-labels=0] [resume=0] [stop-at=N] [save-every=0] [precision=32|64]
 ;;; Reads only QA/train.jsonl and QA/dev.jsonl: the locked test set is never opened here.
 ;;; shuffle-labels=1 is the control: every training answer letter is replaced by a seeded random letter.
 (let ((here (directory-namestring *load-truename*)))
@@ -45,7 +45,7 @@
              :workers (funcall num "workers" "8") :lr (funcall flt "lr" "3e-4") :warmup (funcall num "warmup" "50")
              :min-lr-frac (funcall flt "min-lr-frac" "0.1") :clip (funcall flt "clip" "1.0") :wd (funcall flt "wd" "0")
              :seed (funcall num "seed" "1") :eval-every (funcall num "eval-every" "100") :log-every (funcall num "log-every" "10")
-             :resume (equal (opt-arg "resume" "0") "1") :stop-at (let ((s (opt-arg "stop-at" nil))) (and s (parse-integer s))) :save-every (funcall num "save-every" "0")
+             :resume (equal (opt-arg "resume" "0") "1") :stop-at (let ((s (opt-arg "stop-at" nil))) (and s (parse-integer s))) :aux-lm (funcall flt "aux-lm" "0") :save-every (funcall num "save-every" "0")
              :header (list :init init :init-sha256 (if (equal init "scratch") "scratch" (asem-sha256:sha256-file-hex init))
                            :size (opt-arg "size" "") :train-file train-file :train-sha256 (asem-sha256:sha256-file-hex train-file)
                            :dev-file dev-file :dev-sha256 (asem-sha256:sha256-file-hex dev-file) :tokenizer-sha256 (asem-sha256:sha256-file-hex tok-file)

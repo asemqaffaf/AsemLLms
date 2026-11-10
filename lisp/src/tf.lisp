@@ -579,9 +579,10 @@ Causal attention means a position never sees later tokens, so tokens after the l
     (backward-trunk m x acts grads)
     loss))
 
-(defun backward-rows (m x rows targets acts grads)
-  "After FORWARD-ROWS: accumulate into GRADS the gradient of the SUM over k of -log p(targets[k] | position rows[k]).
-Positions not in ROWS contribute no loss (answer-only masking). Returns that sum (a long-float)."
+(defun backward-rows (m x rows targets acts grads &optional weights)
+  "After FORWARD-ROWS: accumulate into GRADS the gradient of the SUM over k of -log p(targets[k] | position rows[k]),
+each term multiplied by WEIGHTS[k] when WEIGHTS (a dvec) is given. Positions not in ROWS contribute no loss (answer-only
+masking). Returns that (weighted) sum (a long-float)."
   (declare (type ivec x rows targets))
   (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg))
          (r (length rows)) (dlog (acts-dlog acts)) (probs (acts-probs acts)) (g (acts-tmp acts)) (dr (acts-da acts))
@@ -589,9 +590,11 @@ Positions not in ROWS contribute no loss (answer-only masking). Returns that sum
     (declare (type fixnum d v r) (type dvec dlog probs g dr dn))
     (dotimes (k r)
       (let ((pr (aref probs (+ (* k v) (aref targets k)))))
-        (decf loss (log (if (< pr 1d-300) 1d-300 pr)))))
+        (decf loss (* (if weights (aref (the dvec weights) k) 1d0) (log (if (< pr 1d-300) 1d-300 pr))))))
     (replace dlog probs :end1 (* r v))
     (dotimes (k r) (decf (aref dlog (+ (* k v) (aref targets k))) 1d0))
+    (when weights
+      (dotimes (k r) (let ((w (aref (the dvec weights) k))) (dotimes (j v) (setf (aref dlog (+ (* k v) j)) (* w (aref dlog (+ (* k v) j))))))))
     (gather-rows (acts-nf acts) g rows d)
     (mm-tn g dlog (svref grads (head-index cfg)) r d v t)
     (mm-nt dlog (svref ps (head-index cfg)) dr r v d nil)

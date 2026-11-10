@@ -119,4 +119,24 @@
     (check (every #'zerop (subseq (svref grads 1) (* 3 8))) "positions after the row: zero position gradient")
     (check (notevery #'zerop (subseq (svref grads 0) (* 3 8) (* 4 8))) "token at the row has a gradient")))
 
+
+(deftest weighted-masked-gradients-match-numerical-differentiation
+  (let* ((cfg (make-config :vocab 11 :ctx 6 :dim 8 :heads 2 :layers 1 :ff 16)) (m (init-model cfg 3))
+         (x (ivec 1 4 2 9 0 3)) (rows (ivec 1 3 5)) (tg (ivec 7 2 4)) (w (let ((v (new-dvec 3))) (setf (aref v 0) 0.25d0 (aref v 1) 1d0 (aref v 2) 0.5d0) v))
+         (acts (make-acts cfg 6 3)) (grads (make-grads cfg)) (state (sb-ext:seed-random-state 6)) (worst 0d0) (eps 1d-6))
+    (flet ((ref () (let ((a (make-acts cfg 6)) (s 0d0)) (forward m x a)
+                     (loop for r across rows for t0 across tg for k from 0 do (decf s (* (aref w k) (log (aref (acts-probs a) (+ (* r 11) t0)))))) s)))
+      (forward-rows m x acts rows)
+      (check-close (backward-rows m x rows tg acts grads w) (ref) 1d-12)
+      (loop for p across (model-params m) for g across grads
+            do (dotimes (s 5)
+                 (let* ((i (random (length p) state)) (old (aref p i)))
+                   (setf (aref p i) (+ old eps))
+                   (let ((up (ref)))
+                     (setf (aref p i) (- old eps))
+                     (let* ((dn (ref)) (num (/ (- up dn) (* 2 eps))) (ana (aref g i)))
+                       (setf (aref p i) old)
+                       (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
+    (check (< worst 1d-5) (format nil "worst relative error ~e" worst))))
+
 (run-all)

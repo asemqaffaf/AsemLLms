@@ -69,10 +69,10 @@ does not tokenize as the same tokens after the prompt as on its own."
 ;;; ------------------------------------------------------------------ per-worker buffers
 (defun bucket-len (n ctx) (min ctx (* 16 (ceiling n 16))))
 
-(defun acts-for (cache cfg n)
-  "Activation buffers for a padded length (up to +MAX-TARGET+ output rows), created on first use."
-  (let ((len (bucket-len n (config-ctx cfg))))
-    (or (gethash len cache) (setf (gethash len cache) (make-acts cfg len +max-target+)))))
+(defun acts-for (cache cfg n &optional aux)
+  "Activation buffers for a padded length (up to +MAX-TARGET+ output rows, or a whole context with AUX), created on first use."
+  (let* ((len (bucket-len n (config-ctx cfg))) (key (if aux (- len) len)))
+    (or (gethash key cache) (setf (gethash key cache) (make-acts cfg len (if aux (+ len +max-target+) +max-target+))))))
 
 (defun padded-x (ids len &optional tail)
   "IDS followed by TAIL (a continuation, all but its last token are inputs), zero-padded to LEN."
@@ -86,9 +86,9 @@ does not tokenize as the same tokens after the prompt as on its own."
 (defun letter-logits (acts letters)
   (mapcar (lambda (id) (float (aref (acts-logits acts) id) 1l0)) letters))
 
-(defun rows-logprob (acts tail)
-  "Summed log-probability of TAIL at the forward-rows positions."
-  (let ((v (floor (length (acts-logits acts)) +max-target+)) (s 0l0))
+(defun rows-logprob (acts tail &optional (v (floor (length (acts-logits acts)) +max-target+)))
+  "Summed log-probability of TAIL at the first forward-rows positions."
+  (let ((s 0l0))
     (loop for k below (length tail) do (incf s (log (max (float (aref (acts-probs acts) (+ (* k v) (aref tail k))) 1l0) 1l-300))))
     s))
 
@@ -96,14 +96,21 @@ does not tokenize as the same tokens after the prompt as on its own."
   (let* ((cfg (model-config model)) (acts (acts-for cache cfg (+ (length (ex-ids e)) (length tail) -1)))
          (x (padded-x (ex-ids e) (asem-tf::acts-tlen acts) tail)))
     (forward-rows model x acts (continuation-rows e tail))
-    (rows-logprob acts tail)))
+    (rows-logprob acts tail (config-vocab cfg))))
 
-(defun run-example (model e cache letters &key grads)
-  "Forward (and backward when GRADS) one example on its training target. Returns (values loss-sum predicted-index scores ntarget).
+(defun run-example (model e cache letters &key grads (aux 0))
+  "Forward (and backward when GRADS) one example on its training target. Returns (values answer-loss-sum predicted-index scores ntarget).
 Letter mode: prediction = argmax of the four letter logits, scores = those logits. Text mode during training: the prediction is the
-key when every target token is the argmax (greedy exact match), else -1; at evaluation use SCORE-OPTIONS."
-  (let* ((cfg (model-config model)) (tail (ex-tgt e)) (acts (acts-for cache cfg (+ (length (ex-ids e)) (length tail) -1)))
-         (x (padded-x (ex-ids e) (asem-tf::acts-tlen acts) tail)) (rows (continuation-rows e tail)) (v (config-vocab cfg)))
+key when every target token is the argmax (greedy exact match), else -1; at evaluation use SCORE-OPTIONS.
+AUX > 0 (training only) adds next-token losses on every prompt position, weighted AUX / (prompt positions), to the answer loss
+(weight 1); the answer rows come first, so the returned loss and prediction are the answer's alone."
+  (let* ((cfg (model-config model)) (tail (ex-tgt e)) (n (length (ex-ids e))) (auxp (and grads (plusp aux)))
+         (acts (acts-for cache cfg (+ n (length tail) -1) auxp))
+         (x (padded-x (ex-ids e) (asem-tf::acts-tlen acts) tail)) (arows (continuation-rows e tail)) (v (config-vocab cfg))
+         (rows (if auxp (concatenate '(simple-array fixnum (*)) arows (ivec-of (loop for i from 0 below (1- n) collect i))) arows))
+         (targets (if auxp (concatenate '(simple-array fixnum (*)) tail (subseq (ex-ids e) 1)) tail))
+         (weights (when auxp (let ((w (new-dvec (length rows))) (wa (host-float (/ (float aux 1l0) (max 1 (1- n))))))
+                               (dotimes (k (length rows) w) (setf (aref w k) (if (< k (length tail)) (host-float 1l0) wa)))))))
     (forward-rows model x acts rows)
     (let* ((ll (when (eq (ex-mode e) :letter) (letter-logits acts letters)))
            (pred (if ll
@@ -113,8 +120,9 @@ key when every target token is the argmax (greedy exact match), else -1; at eval
                                         (dotimes (j v) (when (> (aref (acts-logits acts) (+ o j)) bv) (setf bv (aref (acts-logits acts) (+ o j)) best j)))
                                         (= best (aref tail k))))
                          (ex-answer e) -1)))
-           (loss (if grads (backward-rows model x rows tail acts grads) (- (rows-logprob acts tail)))))
-      (values (float loss 1l0) pred ll (length tail)))))
+           (answer-loss (- (rows-logprob acts tail v))))
+      (when grads (backward-rows model x rows targets acts grads weights))
+      (values (float answer-loss 1l0) pred ll (length tail)))))
 
 (defun score-options (model e cache letters)
   "(values pred loss scores) for evaluation. Letter mode: one forward. Text mode: the four options' summed log-probabilities."
@@ -184,7 +192,7 @@ key when every target token is the argmax (greedy exact match), else -1; at eval
 
 (defun sft (out-dir train-exs dev-exs letters &key init-model (steps 1000) (batch 32) (accum 1) (workers 8) (lr 3d-4) (min-lr-frac 0.1d0)
                                                 (warmup 50) (clip 1d0) (wd 0d0) (seed 1) (eval-every 100) (log-every 10) (resume nil)
-                                                (train-probe 500) (save-every 0) (header nil) (stop-at nil))
+                                                (train-probe 500) (save-every 0) (header nil) (stop-at nil) (aux-lm 0))
   "Fine-tune INIT-MODEL on TRAIN-EXS. Writes OUT-DIR/log.jsonl, best.ckpt (best development accuracy), last.ckpt, last-m1.ckpt,
 last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the start event. STOP-AT N ends the run after step N
 (saving everything needed to resume) as if it had been interrupted; the schedule still runs to STEPS. Returns the final state plist."
@@ -233,7 +241,7 @@ last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the star
                       (setf (getf st :step) step (getf st :seconds) (elapsed))
                       (write-state state-path st)))
              (ev (append (list :event (if resuming "resume" "start") :from-step (getf st :step) :steps steps :batch batch :accum accum
-                               :workers workers :lr lr :min-lr-frac min-lr-frac :warmup warmup :clip clip :wd wd :seed seed
+                               :workers workers :aux-lm aux-lm :lr lr :min-lr-frac min-lr-frac :warmup warmup :clip clip :wd wd :seed seed
                                :train-n n :dev-n (length dev-exs) :params (param-count model)
                                :precision (if (= (elt-bytes) 8) "f64" "f32"))
                          header))
@@ -252,7 +260,7 @@ last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the star
                                         (let ((ls 0l0) (hits 0) (toks 0) (ntg 0))
                                           (dolist (i is)
                                             (let ((e (aref train-exs i)))
-                                              (multiple-value-bind (loss pred ll nt) (run-example model e cache letters :grads grads)
+                                              (multiple-value-bind (loss pred ll nt) (run-example model e cache letters :grads grads :aux aux-lm)
                                                 (declare (ignore ll))
                                                 (incf ls loss) (incf toks (length (ex-ids e))) (incf ntg nt)
                                                 (when (= pred (ex-answer e)) (incf hits)))))

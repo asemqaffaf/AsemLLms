@@ -105,6 +105,17 @@
                              :warmup 10 :eval-every 40 :log-every 0 :train-probe 8)))
       (check (= (getf st :best-acc) 1l0) (format nil "option-scoring accuracy on 8 memorised examples: ~a" (getf st :best-acc))))))
 
+(deftest auxiliary-prompt-loss-trains-and-keeps-answer-metrics
+  (let* ((exs (subseq (asem-sft:encode-items *items* *bpe* 256) 0 8))
+         (st (asem-sft:sft (format nil "~aaux" *tmp*) exs exs *letters* :init-model (tiny-model 3) :steps 150 :batch 8 :workers 2 :lr 3d-3
+                           :warmup 10 :eval-every 50 :log-every 0 :train-probe 8 :aux-lm 0.5d0))
+         (cache (make-hash-table)) (e (aref exs 0)) (m (asem-pretrain:load-checkpoint (format nil "~aaux/last.ckpt" *tmp*))))
+    (check (= (getf st :best-acc) 1l0) (format nil "letter accuracy with the auxiliary loss: ~a" (getf st :best-acc)))
+    ;; the answer loss reported during training equals the evaluation loss on the same weights
+    (multiple-value-bind (l1) (asem-sft::run-example m e cache *letters*)
+      (multiple-value-bind (l2) (asem-sft::run-example m e cache *letters* :grads (asem-tf:make-grads (asem-tf:model-config m)) :aux 0.5d0)
+        (check-close l2 l1 1d-9)))))
+
 (deftest wilson-interval
   (destructuring-bind (lo hi) (asem-sft:wilson 900 1000)
     (check-close lo 0.8798d0 2d-4) (check-close hi 0.9171d0 2d-4))

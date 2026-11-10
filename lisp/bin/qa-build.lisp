@@ -1,6 +1,7 @@
 ;;; Build the Stage 2 QA data: locked test set, development set and training set, plus an audit (manifest.json).
 ;;;   sbcl --dynamic-space-size 4GB --script lisp/bin/qa-build.lisp data=data/fineweb/stage1 out=data/qa/v1
 ;;;        [train=16000] [dev=500] [test=1000] [ctx=128] [seed-train=1001] [seed-dev=2002] [seed-test=3003]
+;;;        [train-entities=real|synthetic]   (synthetic: training people and towns from ~4,000 generated names each, see qagen)
 ;;; Order: the test set is generated first, then dev, then train, sharing one exclusion table (no exact duplicate prompt across
 ;;; splits). Then: every prompt is tokenized with the Stage 1 tokenizer and must fit the context window with the end-of-text token
 ;;; in front (nothing is ever truncated); each answer letter must encode to exactly one fixed token when appended to its prompt;
@@ -95,7 +96,7 @@
              items)))
     (let* ((test (gen :test (num "test" "1000") (num "seed-test" "3003")))
            (dev (gen :dev (num "dev" "500") (num "seed-dev" "2002")))
-           (train (gen :train (num "train" "16000") (num "seed-train" "1001")))
+           (train (let ((asem-qagen:*synthetic-train* (equal (opt-arg "train-entities" "real") "synthetic"))) (gen :train (num "train" "16000") (num "seed-train" "1001"))))
            (letter-bad 0) (lens (make-hash-table)))
       ;; tokenization audit: lengths, and the answer letter is one fixed token in its real context
       (dolist (it (append test dev train))
@@ -136,7 +137,7 @@
       (write-items (format nil "~a/test.jsonl" out) test)
       (write-items (format nil "~a/dev.jsonl" out) dev)
       (write-items (format nil "~a/train.jsonl" out) train)
-      (let ((m (jobj "format" "asem-qa-1" "ctx" ctx "tokenizer_sha256" (asem-sha256:sha256-file-hex tok-file)
+      (let ((m (jobj "format" "asem-qa-1" "ctx" ctx "train_entities" (opt-arg "train-entities" "real") "tokenizer_sha256" (asem-sha256:sha256-file-hex tok-file)
                      "answer_letter_token_ids" (coerce (mapcar #'first letter-ids) 'vector)
                      "prompt_format" "Text: ...\\nQ: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nThe answer is  -> target \" X\" (letter mode, one token) or \" <option>\" (text mode); lengths above are for this format. Items were selected with the 4-token-longer original format (Passage:/Question:/Answer:), see qagen *prompt-style*"
                      "files" (jobj "test" (jobj "sha256" (asem-sha256:sha256-file-hex (format nil "~a/test.jsonl" out)) "stats" (stats test (gethash :test lens)))
