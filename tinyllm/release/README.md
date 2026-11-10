@@ -50,6 +50,46 @@ print(m.chat([{"role": "user", "content": "Hello!"}], temperature=0.5, seed=1))
 They use custom architectures, so they do **not** load in `transformers`, llama.cpp, Ollama or LM Studio.
 Weights are float32 safetensors; `asemllm.py` is the reference implementation (verified against the Erlang code to ~1e-7 in logits).
 
+## Source and other runtimes
+
+The [GitHub repository](https://github.com/asemqaffaf/AsemLLms) has everything around these weights:
+
+- the Erlang trainer and server (parallel gradient workers, web UI, JSON API) that produced them;
+- KV-cache chat sessions, one supervised process per conversation, with logits identical to the stateless path;
+- a Common Lisp (SBCL) port with a thread-parallel trainer, and a native C backend under the Erlang and Lisp runtimes;
+- `tinyllm_tuner`, which proposes, scores and commits or rolls back fine-tuning rounds around any engine (for example MLX LoRA).
+
+The weights here come from the Erlang trainer only. The tuner works on other engines' models, not on these.
+
+### Tuner check on a real model
+
+A tuning round is committed only if held-out loss improves, a general probe set does not get worse, and the candidate beats a
+control trained on a word-shuffled copy of the same data (`control => shuffle`). The control matters: part of any loss drop is
+generic adaptation, so "loss fell" alone also passes garbage. In an earlier run without it, real data lowered held-out loss by
+1.16 and garbage by 0.24, and the garbage round was committed.
+
+Checked on Qwen3.5-4B (MLX 4-bit, LoRA) with 40 train and 60 held-out dialogues (no user question appears in both) and 51 probe
+lines (facts, code, maths, other languages, instructions, prose). Losses are cross-entropy on those sets, not on AsemLLM data.
+
+| Step | Result |
+|---|---|
+| baseline | held-out 2.971, probe 2.409 |
+| garbage offered to the base model | rejected, `no_better_than_control` (it had lowered held-out loss to 2.73) |
+| real data | committed, held-out 1.808, probe 1.789 |
+| garbage after real data | rejected, weights unchanged |
+| rollback to base | baseline scores reproduced exactly |
+
+| Capability | Status |
+|---|---|
+| Real MLX training, commit, rollback to base | passed |
+| Rejecting garbage training data | passed (this model, one run) |
+| EUnit suite | passed (74 tests) |
+| Rollback to an intermediate version on a real model | not tested |
+| Better answers, not just lower loss | not shown |
+
+The probe still falls with training (2.41 to 1.79) because it picks up the same generic effect, so it catches regressions, not
+forgetting of knowledge. A gain on this chat data does not prove better answers.
+
 ## Training data
 
 About 34,904 tokens (138 KB) of short, synthetic `User:` / `Assistant:` conversations on everyday topics
