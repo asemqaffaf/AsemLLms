@@ -1,6 +1,8 @@
 #!/bin/sh
 # The controlled three-model comparison: same corpus, tokenizer, splits, seed, schedule shape and token budget; only size and the
 # validation-selected learning rate differ. For each SIZE:LR pair, in order:
+#   0. stability probe: 600 steps at this rate (warmup 200, so it covers the peak-rate phase), loss and gradient norm every 10 steps,
+#      then check-stability.lisp; an unstable rate stops the script for that size instead of spending hours on it
 #   1. train OUT/SIZE/ (log every 50 steps, validation every 500, a checkpoint every 1000 steps, best.ckpt chosen on validation loss)
 #   2. evaluate.lisp on best.ckpt: loss over the ENTIRE validation split, the test split (read once, here), the 90 questions
 #   3. diagnose.lisp on best.ckpt: is the model using the question?
@@ -14,6 +16,13 @@ for pair in $PAIRS; do
   size=${pair%%:*}; lr=${pair##*:}; run="$OUT/$size"
   [ -f "$run/diagnosis.json" ] && continue
   rm -rf "$run"
+  probe="$OUT/$size-probe"; rm -rf "$probe"
+  TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script "$HERE/pretrain.lisp" data="$DATA" out="$probe" size=$size steps=600 batch=$BATCH \
+      workers=$WORKERS lr=$lr warmup=200 eval-every=600 val-windows=16 seed=1 log-every=10 eval=/nonexistent > "$probe.log" 2>&1
+  if ! sbcl --script "$HERE/check-stability.lisp" "$probe/log.jsonl" > "$probe/stability.json"; then
+    echo "$size lr=$lr is NOT stable: $(cat "$probe/stability.json" | tr -d '\n ') -- stopping"; exit 3
+  fi
+  echo "$size lr=$lr stable"
   TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script "$HERE/pretrain.lisp" data="$DATA" out="$run" size=$size steps=$STEPS batch=$BATCH \
       workers=$WORKERS lr=$lr warmup=200 eval-every=500 val-windows=128 seed=1 log-every=50 save-every=1000 > "$run.log" 2>&1
   TLM_BLAS=1 sbcl --dynamic-space-size 4GB --script "$HERE/evaluate.lisp" data="$DATA" ckpt="$run/best.ckpt" | tail -1 > "$run/eval.json"

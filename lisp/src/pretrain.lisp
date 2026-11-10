@@ -6,7 +6,7 @@
 (defpackage :asem-pretrain
   (:use :cl :asem-tf :asem-util)
   (:export #:pretrain #:load-checkpoint #:save-checkpoint #:read-eval-set #:score-eval #:sample-text #:load-split-tokens
-           #:preset-config #:rss-mb #:evaluate-checkpoint #:diagnose-model #:token-logfreq))
+           #:preset-config #:rss-mb #:evaluate-checkpoint #:diagnose-model #:token-logfreq #:stability-verdict))
 (in-package :asem-pretrain)
 
 ;;; ------------------------------------------------------------------ tokens
@@ -457,3 +457,23 @@ and with USE-TEST NIL it is not even read (hyperparameter searches select on val
                                                      "margin_gain_z_above_3_sum_and_mean" (if (and (> (z-of gains-sum) 3) (> (z-of gains-mean) 3)) :true :false)
                                                      "accuracy_above_chance_band" (if (> acc-real chance-hi) :true :false)
                                                      "accuracy_exceeds_no_question_by_5_points" (if (> acc-real (+ 0.05l0 (acc recs :noq #'means))) :true :false)))))))))
+
+;;; ------------------------------------------------------------------ stability gate for a learning rate
+(defun stability-verdict (events &key (min-drop 1.0l0) (max-rise 0.5l0) (max-grad-ratio 10l0) (settle-step 100))
+  "EVENTS: list of (step train-loss grad-norm) from the log's \"train\" events of a short probe run at the candidate learning rate.
+Stable means: enough points, everything finite, the loss fell by at least MIN-DROP, it never rose more than MAX-RISE above its
+running minimum, and after SETTLE-STEP the largest gradient norm is within MAX-GRAD-RATIO of the median. Returns a JSON-ready :obj."
+  (let* ((n (length events)) (losses (mapcar #'second events)) (gn (mapcar #'third events))
+         (finite (every (lambda (x) (and (realp x) (= x x) (< (abs x) 1l30))) (append losses gn)))
+         (drop (if (>= n 2) (- (first losses) (car (last losses))) 0l0))
+         (rise (let ((m most-positive-double-float) (worst 0l0))
+                 (dolist (l losses worst) (when (< l m) (setf m l)) (setf worst (max worst (- l m))))))
+         (late (loop for e in events when (>= (first e) settle-step) collect (third e)))
+         (ratio (if late (let ((med (median-of late))) (if (plusp med) (/ (reduce #'max late) med) 0l0)) 0l0))
+         (clipped (if gn (/ (count-if (lambda (g) (> g 1l0)) gn) (length gn) 1l0) 0l0))
+         (checks (list (cons "enough_points" (>= n 10)) (cons "all_finite" finite) (cons "loss_fell" (>= drop min-drop))
+                       (cons "no_loss_spike" (<= rise max-rise)) (cons "gradient_norm_bounded" (<= ratio max-grad-ratio)))))
+    (jobj "stable" (if (every #'cdr checks) :true :false)
+          "points" n "loss_drop" drop "largest_rise_above_running_min" rise "grad_norm_max_over_median" ratio
+          "fraction_of_steps_clipped" clipped "first_loss" (if losses (first losses) 0l0) "last_loss" (if losses (car (last losses)) 0l0)
+          "checks" (cons :obj (mapcar (lambda (c) (cons (car c) (if (cdr c) :true :false))) checks)))))

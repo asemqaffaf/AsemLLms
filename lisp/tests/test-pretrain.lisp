@@ -224,4 +224,20 @@
         (rm-rf plain) (rm-rf rich)))
     (rm-rf data)))
 
+(deftest stability-gate-accepts-a-healthy-curve-and-rejects-bad-ones
+  (let ((verdict (symbol-function (find-symbol "STABILITY-VERDICT" "ASEM-PRETRAIN"))))
+    (flet ((curve (fn) (loop for i from 1 to 60 collect (list (* i 10) (funcall fn i) (+ 1d0 (/ 2d0 i))))))
+      (let ((ok (funcall verdict (curve (lambda (i) (+ 4d0 (/ 5d0 i)))))))
+        (check (eq (asem-json:json-get ok "stable") :true) "a smoothly falling loss with a decaying gradient norm is stable"))
+      (let ((spike (funcall verdict (curve (lambda (i) (if (= i 40) 7d0 (+ 4d0 (/ 5d0 i))))))))
+        (check (eq (asem-json:json-get spike "stable") :false) "a late loss spike is caught")
+        (check (eq (asem-json:json-get (asem-json:json-get spike "checks") "no_loss_spike") :false) "...by the spike rule"))
+      (let ((flat (funcall verdict (curve (lambda (i) (declare (ignore i)) 6d0)))))
+        (check (eq (asem-json:json-get (asem-json:json-get flat "checks") "loss_fell") :false) "a loss that does not fall is not stable"))
+      (let ((nan (funcall verdict (loop for i from 1 to 60 collect (list (* i 10) 5d0 (if (= i 30) sb-ext:double-float-positive-infinity 1d0))))))
+        (check (eq (asem-json:json-get (asem-json:json-get nan "checks") "all_finite") :false) "an infinite gradient norm is caught"))
+      (let ((boom (funcall verdict (loop for i from 1 to 60 collect (list (* i 10) (+ 4d0 (/ 5d0 i)) (if (= i 50) 500d0 1d0))))))
+        (check (eq (asem-json:json-get (asem-json:json-get boom "checks") "gradient_norm_bounded") :false) "a gradient-norm explosion is caught"))
+      (check (eq (asem-json:json-get (funcall verdict (list (list 10 5d0 1d0))) "stable") :false) "too few points is not stable"))))
+
 (run-all)
