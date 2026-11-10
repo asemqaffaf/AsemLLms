@@ -2,7 +2,7 @@
 ;;;   TLM_BLAS=1 sbcl --dynamic-space-size 12GB --script lisp/bin/sft.lisp data=data/fineweb/stage1 qa=data/qa/v1 out=data/runs/sft/NAME
 ;;;        [init=data/runs/final/10m/best.ckpt | init=scratch size=10m] [steps=2000] [batch=32] [accum=1] [workers=8] [lr=3e-4]
 ;;;        [warmup=50] [min-lr-frac=0.1] [clip=1.0] [wd=0] [seed=1] [eval-every=100] [log-every=10] [train-n=all]
-;;;        [mode=letter|text] [aux-lm=0] [copy-mix=0] [shuffle-labels=0] [resume=0] [stop-at=N] [save-every=0] [precision=32|64]
+;;;        [mode=letter|text] [aux-lm=0] [copy-mix=0] [copy-hi=8000] [copy-min-len=8] [copy-max-len=30] [tie=0] [shuffle-labels=0] [resume=0] [stop-at=N] [save-every=0] [precision=32|64]
 ;;; Reads only QA/train.jsonl and QA/dev.jsonl: the locked test set is never opened here.
 ;;; shuffle-labels=1 is the control: every training answer letter is replaced by a seeded random letter.
 (let ((here (directory-namestring *load-truename*)))
@@ -29,6 +29,8 @@
                     (funcall (find-symbol "INIT-MODEL" (if p32 "ASEM-TF32" "ASEM-TF"))
                              (funcall (funcall fn "PRESET-CONFIG" ppkg) (intern (string-upcase (opt-arg "size" "10m")) :keyword) 8192 128) (funcall num "seed" "1"))
                     (funcall (funcall fn "LOAD-CHECKPOINT" ppkg) init)))
+         (model (if (and (equal (opt-arg "tie" "0") "1") (not (funcall (find-symbol "CONFIG-TIE" (if p32 "ASEM-TF32" "ASEM-TF")) (funcall (find-symbol "MODEL-CONFIG" (if p32 "ASEM-TF32" "ASEM-TF")) model))))
+                    (funcall (find-symbol "ADD-TIE-GATE" (if p32 "ASEM-TF32" "ASEM-TF")) model) model))
          (ctx (funcall (find-symbol "CONFIG-CTX" (if p32 "ASEM-TF32" "ASEM-TF")) (funcall (find-symbol "MODEL-CONFIG" (if p32 "ASEM-TF32" "ASEM-TF")) model)))
          (train-file (format nil "~a/train.jsonl" qa)) (dev-file (format nil "~a/dev.jsonl" qa))
          (train-items (asem-qagen:read-items train-file))
@@ -39,7 +41,8 @@
          (train-exs (funcall (funcall fn "ENCODE-ITEMS") train-items bpe ctx :mode mode))
          (train-exs (if (equal (opt-arg "shuffle-labels" "0") "1") (funcall (funcall fn "SHUFFLE-LABEL-TARGETS") train-exs letters 777) train-exs))
          (train-exs (let ((k (funcall num "copy-mix" "0")))
-                      (if (plusp k) (concatenate 'vector train-exs (funcall (funcall fn "MAKE-COPY-EXAMPLES") k 99)) train-exs)))
+                      (if (plusp k) (concatenate 'vector train-exs (funcall (funcall fn "MAKE-COPY-EXAMPLES") k 99 :hi (funcall num "copy-hi" "8000")
+                                                                                 :max-len (funcall num "copy-max-len" "30") :min-len (funcall num "copy-min-len" "8"))) train-exs)))
          (dev-exs (funcall (funcall fn "ENCODE-ITEMS") (asem-qagen:read-items dev-file) bpe ctx :mode mode)))
     (format t "train ~d examples, dev ~d, letters ~a, init ~a~%" (length train-exs) (length dev-exs) letters init)
     (funcall (funcall fn "SFT") out train-exs dev-exs letters :init-model model
@@ -51,5 +54,5 @@
              :header (list :init init :init-sha256 (if (equal init "scratch") "scratch" (asem-sha256:sha256-file-hex init))
                            :size (opt-arg "size" "") :train-file train-file :train-sha256 (asem-sha256:sha256-file-hex train-file)
                            :dev-file dev-file :dev-sha256 (asem-sha256:sha256-file-hex dev-file) :tokenizer-sha256 (asem-sha256:sha256-file-hex tok-file)
-                           :mode (opt-arg "mode" "letter") :copy-mix (opt-arg "copy-mix" "0") :shuffle-labels (opt-arg "shuffle-labels" "0") :train-n-used (length train-exs)
+                           :mode (opt-arg "mode" "letter") :copy-mix (opt-arg "copy-mix" "0") :tie (opt-arg "tie" "0") :shuffle-labels (opt-arg "shuffle-labels" "0") :train-n-used (length train-exs)
                            :argv (format nil "~{~a~^ ~}" (cdr sb-ext:*posix-argv*))))))

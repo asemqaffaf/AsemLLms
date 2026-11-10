@@ -7,7 +7,7 @@
            #:model #:model-config #:model-params #:init-model #:param-count #:make-acts #:forward #:backward
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
            #:param-names #:flops-per-token #:acts-probs #:acts-logits #:gen-kernel #:tuned-config
-           #:forward-rows #:backward-rows #:forward-trunk #:backward-trunk #:gather-rows
+           #:forward-rows #:backward-rows #:forward-trunk #:backward-trunk #:gather-rows #:add-tie-gate #:config-tie #:tie-index
            #:native-init #:native-active-p #:native-min-work
            #:blas-init #:blas-active-p #:blas-min-work #:host-float #:elt-bytes))
 (in-package :asem-tf)
@@ -25,7 +25,7 @@
 (declaim (inline new-dvec))
 (defun new-dvec (n) (make-array n :element-type 'double-float :initial-element 0d0))
 
-(defstruct config vocab ctx dim heads layers ff)
+(defstruct config vocab ctx dim heads layers ff tie)   ; TIE: add the tied copy path, see HEAD-FWD
 
 (defstruct model config params)       ; params: simple-vector of dvec, see PARAM-NAMES
 
@@ -43,7 +43,10 @@
                                (list (format nil "l~d.wk" l) (* d d)) (list (format nil "l~d.wv" l) (* d d))
                                (list (format nil "l~d.wo" l) (* d d)) (list (format nil "l~d.g2" l) d)
                                (list (format nil "l~d.w1" l) (* d f)) (list (format nil "l~d.w2" l) (* f d))))
-            (list (list "gf" d) (list "head" (* d v))))))
+            (list (list "gf" d) (list "head" (* d v)))
+            (when (config-tie cfg) (list (list "tiegate" 1))))))
+
+(defun tie-index (cfg) (+ 4 (* 8 (config-layers cfg))))
 
 (defun param-names (cfg) (mapcar #'first (param-shapes cfg)))
 
@@ -73,9 +76,9 @@
                                              ((string= name "head") (/ 0.5d0 (sqrt d)))
                                              ((search ".w2" name) (/ 1d0 (sqrt f)))
                                              (t (/ 1d0 (sqrt d))))))
-                            (if (or (search ".g" name) (string= name "gf"))
-                                (fill v 1d0)
-                                (dotimes (i n) (setf (aref v i) (* scale (normal state)))))
+                            (cond ((or (search ".g" name) (string= name "gf")) (fill v 1d0))
+                                      ((string= name "tiegate") (fill v 0d0))
+                                (t (dotimes (i n) (setf (aref v i) (* scale (normal state))))))
                             v))
             'simple-vector)))
     (make-model :config cfg :params params)))
@@ -480,13 +483,50 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
       (blas-gemm-strided :nn tl hd tl 1d0 dp 0 tl k ho d 0d0 dq ho d)
       (blas-gemm-strided :tn tl hd tl 1d0 dp 0 tl q ho d 0d0 dk ho d))))
 
+;;; ---------------------------------------------------------------- output head (optionally with a tied copy path)
+;;; logits = src head  [+ g src tok^T]. The second term exists only when (config-tie cfg): it scores every token by the dot product
+;;; of the final state with that token's INPUT embedding, scaled by a learned scalar g (initialised to 0, so a converted checkpoint
+;;; starts out unchanged). With untied embeddings alone, copying an arbitrary token from the context needs a separate learned
+;;; association from its input to its output vector for every token; the tied path lets one generic attention circuit copy any
+;;; token. ACTS-DNORM is free during the head computations and serves as the r x d scratch buffer.
+(defun head-fwd (m src logits r acts)
+  (declare (type dvec src logits) (type fixnum r))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg)))
+    (mm-nn src (svref ps (head-index cfg)) logits r d v nil)
+    (when (config-tie cfg)
+      (let ((g (aref (the dvec (svref ps (tie-index cfg))) 0)) (s (acts-dnorm acts)))
+        (declare (type dvec s))
+        (dotimes (i (* r d)) (setf (aref s i) (* g (aref src i))))
+        (mm-nt s (svref ps 0) logits r d v t)))))
+
+(defun head-bwd (m src dlog dsrc r acts grads)
+  "Given DLOG (r x v) = d(loss)/d(logits): accumulate the head (and tok, gate) gradients and set DSRC = d(loss)/d(src)."
+  (declare (type dvec src dlog dsrc) (type fixnum r))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg)))
+    (mm-tn src dlog (svref grads (head-index cfg)) r d v t)
+    (mm-nt dlog (svref ps (head-index cfg)) dsrc r v d nil)
+    (when (config-tie cfg)
+      (let ((g (aref (the dvec (svref ps (tie-index cfg))) 0)) (s (acts-dnorm acts)) (gg 0d0))
+        (declare (type dvec s) (type double-float g gg))
+        (mm-nn dlog (svref ps 0) s r v d nil)                         ; D = dlog tok  (r x d)
+        (dotimes (i (* r d)) (incf gg (* (aref s i) (aref src i))) (incf (aref dsrc i) (* g (aref s i))))
+        (incf (aref (the dvec (svref grads (tie-index cfg))) 0) gg)
+        (dotimes (i (* r d)) (setf (aref s i) (* g (aref src i))))
+        (mm-tn dlog s (svref grads 0) r v d t)))))                     ; tok += g dlog^T src
+
+(defun add-tie-gate (m)
+  "A copy of model M with the tied copy path switched on (gate 0, so its outputs are unchanged)."
+  (let ((cfg (copy-config (model-config m))))
+    (setf (config-tie cfg) t)
+    (make-model :config cfg :params (concatenate 'simple-vector (copy-model-params m) (vector (new-dvec 1))))))
+
 ;;; ---------------------------------------------------------------- forward
 (defun forward (m x acts)
   "X: ivec of token ids (length = tlen of ACTS). Fills ACTS, returns nothing; call LOSS-OF-ACTS."
   (declare (type ivec x))
   (forward-trunk m x acts)
   (let* ((cfg (model-config m)) (tl (acts-tlen acts)) (v (config-vocab cfg)))
-    (mm-nn (acts-nf acts) (svref (model-params m) (head-index cfg)) (acts-logits acts) tl (config-dim cfg) v nil)
+    (head-fwd m (acts-nf acts) (acts-logits acts) tl acts)
     (dotimes (i tl) (softmax-row (acts-logits acts) (* i v) (acts-probs acts) (* i v) v 1d0)))
   nil)
 
@@ -503,7 +543,7 @@ Causal attention means a position never sees later tokens, so tokens after the l
   (forward-trunk m x acts)
   (let* ((cfg (model-config m)) (v (config-vocab cfg)) (d (config-dim cfg)) (r (length rows)) (g (acts-tmp acts)))
     (gather-rows (acts-nf acts) g rows d)
-    (mm-nn g (svref (model-params m) (head-index cfg)) (acts-logits acts) r d v nil)
+    (head-fwd m g (acts-logits acts) r acts)
     (dotimes (k r) (softmax-row (acts-logits acts) (* k v) (acts-probs acts) (* k v) v 1d0)))
   nil)
 
@@ -574,8 +614,7 @@ Causal attention means a position never sees later tokens, so tokens after the l
     (replace dlog (the dvec (acts-probs acts)))
     (dotimes (i tl) (decf (aref dlog (+ (* i v) (aref y i))) 1d0))
     (let ((inv (/ 1d0 tl))) (dotimes (i (* tl v)) (setf (aref dlog i) (* (aref dlog i) inv))))
-    (mm-tn (acts-nf acts) dlog (svref grads (head-index cfg)) tl d v t)
-    (mm-nt dlog (svref ps (head-index cfg)) dn tl v d nil)
+    (head-bwd m (acts-nf acts) dlog dn tl acts grads)
     (backward-trunk m x acts grads)
     loss))
 
@@ -596,8 +635,7 @@ masking). Returns that (weighted) sum (a long-float)."
     (when weights
       (dotimes (k r) (let ((w (aref (the dvec weights) k))) (dotimes (j v) (setf (aref dlog (+ (* k v) j)) (* w (aref dlog (+ (* k v) j))))))))
     (gather-rows (acts-nf acts) g rows d)
-    (mm-tn g dlog (svref grads (head-index cfg)) r d v t)
-    (mm-nt dlog (svref ps (head-index cfg)) dr r v d nil)
+    (head-bwd m g dlog dr r acts grads)
     (fill dn 0d0)
     (dotimes (k r)
       (let ((o (* (aref rows k) d)))

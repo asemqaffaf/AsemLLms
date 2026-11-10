@@ -139,4 +139,45 @@
                        (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
     (check (< worst 1d-5) (format nil "worst relative error ~e" worst))))
 
+
+;;; ---- tied copy path (config-tie)
+(deftest tied-path-starts-as-a-no-op
+  (let* ((cfg (make-config :vocab 13 :ctx 7 :dim 8 :heads 2 :layers 2 :ff 16)) (m (init-model cfg 4)) (tm (add-tie-gate m))
+         (x (ivec 3 1 4 1 5 9 2)) (a (make-acts cfg 7)) (b (make-acts (model-config tm) 7)))
+    (forward m x a) (forward tm x b)
+    (check (equalp (acts-probs a) (acts-probs b)) "gate 0: identical outputs")
+    (check-equal (param-count tm) (1+ (param-count m)))))
+
+(deftest tied-gradients-match-numerical-differentiation
+  (let* ((cfg (make-config :vocab 11 :ctx 6 :dim 8 :heads 2 :layers 2 :ff 16)) (m (add-tie-gate (init-model cfg 3)))
+         (tcfg (model-config m)) (x (ivec 1 4 2 9 0 3)) (y (ivec 4 2 9 0 3 7)) (state (sb-ext:seed-random-state 8)) (worst 0d0) (eps 1d-6))
+    (setf (aref (svref (model-params m) (tie-index tcfg)) 0) 0.7d0)
+    ;; full head
+    (let ((acts (make-acts tcfg 6)) (grads (make-grads tcfg)))
+      (forward m x acts) (backward m x y acts grads)
+      (loop for p across (model-params m) for g across grads
+            do (dotimes (s 5)
+                 (let* ((i (random (length p) state)) (old (aref p i)))
+                   (setf (aref p i) (+ old eps))
+                   (let ((up (loss-at m x y)))
+                     (setf (aref p i) (- old eps))
+                     (let* ((dn (loss-at m x y)) (num (/ (- up dn) (* 2 eps))) (ana (aref g i)))
+                       (setf (aref p i) old)
+                       (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
+    (check (< worst 1d-5) (format nil "full head, worst relative error ~e" worst))
+    ;; row head
+    (setf worst 0d0)
+    (let ((acts (make-acts tcfg 6 2)) (grads (make-grads tcfg)) (rows (ivec 3 5)) (tg (ivec 7 2)))
+      (forward-rows m x acts rows) (backward-rows m x rows tg acts grads)
+      (loop for p across (model-params m) for g across grads
+            do (dotimes (s 5)
+                 (let* ((i (random (length p) state)) (old (aref p i)))
+                   (setf (aref p i) (+ old eps))
+                   (let ((up (masked-loss-full m x rows tg)))
+                     (setf (aref p i) (- old eps))
+                     (let* ((dn (masked-loss-full m x rows tg)) (num (/ (- up dn) (* 2 eps))) (ana (aref g i)))
+                       (setf (aref p i) old)
+                       (setf worst (max worst (/ (abs (- num ana)) (max 1d-4 (abs num) (abs ana)))))))))))
+    (check (< worst 1d-5) (format nil "row head, worst relative error ~e" worst))))
+
 (run-all)
