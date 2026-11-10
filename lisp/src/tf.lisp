@@ -6,7 +6,8 @@
   (:export #:make-config #:config-vocab #:config-ctx #:config-dim #:config-heads #:config-layers #:config-ff
            #:model #:model-config #:model-params #:init-model #:param-count #:make-acts #:forward #:backward
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
-           #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config))
+           #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config
+           #:native-init #:native-active-p #:native-min-work))
 (in-package :asem-tf)
 
 (deftype dvec () '(simple-array double-float (*)))
@@ -187,11 +188,73 @@
 
 (defmacro def-kernels ()
   (let ((cfg (tuned-config)))
-    `(progn ,(gen-kernel :mm-nn 'mm-nn (getf cfg :mm-nn))
-            ,(gen-kernel :mm-nt 'mm-nt (getf cfg :mm-nt))
-            ,(gen-kernel :mm-tn 'mm-tn (getf cfg :mm-tn)))))
+    `(progn ,(gen-kernel :mm-nn 'mm-nn-lisp (getf cfg :mm-nn))
+            ,(gen-kernel :mm-nt 'mm-nt-lisp (getf cfg :mm-nt))
+            ,(gen-kernel :mm-tn 'mm-tn-lisp (getf cfg :mm-tn)))))
 
 (def-kernels)
+
+;;; ---------------------------------------------------------------- optional C kernels (sb-alien)
+;;; native/libtlm.so (built with `make -C native`) holds the same three products in C. When it can be loaded,
+;;; MM-NN / MM-NT / MM-TN call it for products with m*k*n >= *native-min-work*, and run the Lisp kernels above
+;;; otherwise (and whenever the library is missing). No Quicklisp, no CFFI: sb-alien is part of SBCL.
+;;; The C code adds in the same order as the Lisp kernels, so the results are bit-identical; the tests check
+;;; that. (If libtlm was built with BLAS, big products are faster but not bit-identical.)
+;;; The vectors are pinned only for the duration of a call, so the GC can still move them in between.
+(sb-ext:defglobal **native-nn** 0)
+(sb-ext:defglobal **native-nt** 0)
+(sb-ext:defglobal **native-tn** 0)
+(sb-ext:defglobal **native-min-work** 4096)
+(declaim (type (unsigned-byte 62) **native-nn** **native-nt** **native-tn**)
+         (type (unsigned-byte 40) **native-min-work**))
+
+(defun native-min-work () **native-min-work**)
+(defun (setf native-min-work) (n) (setf **native-min-work** n))
+(defun native-active-p () (/= **native-nn** 0))
+
+(defun native-library-path ()
+  (or (sb-ext:posix-getenv "TLM_LIB")
+      (namestring (merge-pathnames "../../native/build/libtlm.so"
+                                   (or *load-truename* *compile-file-truename* *default-pathname-defaults*)))))
+
+(defun native-init (&optional path)
+  "Load libtlm and switch the matrix kernels over to it for big products. Returns T on success, NIL (and keeps
+using the Lisp kernels) if the library cannot be loaded."
+  (handler-case
+      (progn
+        (sb-alien:load-shared-object (or path (native-library-path)) :dont-save t)
+        (let ((nn (sb-sys:find-foreign-symbol-address "tlm_mm_nn"))
+              (nt (sb-sys:find-foreign-symbol-address "tlm_mm_nt"))
+              (tn (sb-sys:find-foreign-symbol-address "tlm_mm_tn")))
+          (when (and nn nt tn)
+            (let ((w (sb-ext:posix-getenv "TLM_MIN_WORK")))
+              (when w (setf **native-min-work** (or (parse-integer w :junk-allowed t) **native-min-work**))))
+            (setf **native-nn** nn **native-nt** nt **native-tn** tn)
+            t)))
+    (error () nil)))
+
+(defmacro %native-mm (addr a b c m k n acc)
+  `(sb-sys:with-pinned-objects (,a ,b ,c)
+     (sb-alien:alien-funcall
+      (sb-alien:sap-alien (sb-sys:int-sap ,addr)
+                          (function sb-alien:void sb-sys:system-area-pointer sb-sys:system-area-pointer
+                                    sb-sys:system-area-pointer sb-alien:long sb-alien:long sb-alien:long sb-alien:int))
+      (sb-sys:vector-sap ,a) (sb-sys:vector-sap ,b) (sb-sys:vector-sap ,c) ,m ,k ,n (if ,acc 1 0))))
+
+(defmacro def-mm-dispatch (name lisp-name global)
+  `(progn
+     (declaim (inline ,name))
+     (defun ,name (a b c m k n acc)
+       (declare (type dvec a b c) (type idx m k n))
+       (if (and (/= ,global 0) (>= (* m k n) **native-min-work**))
+           (%native-mm ,global a b c m k n acc)
+           (,lisp-name a b c m k n acc)))))
+
+(def-mm-dispatch mm-nn mm-nn-lisp **native-nn**)
+(def-mm-dispatch mm-nt mm-nt-lisp **native-nt**)
+(def-mm-dispatch mm-tn mm-tn-lisp **native-tn**)
+
+(native-init)
 
 (defun rmsnorm-fwd (h g out r rows d)
   (declare (type dvec h g out r) (type fixnum rows d))

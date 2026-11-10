@@ -19,3 +19,6 @@ logs
 rebar3.crashdump
 *~
 searxng/settings.yml
+
+# built by `make -C native install`
+apps/tinyllm/priv/*.so

@@ -26,6 +26,10 @@ jobs:
         with:
           otp-version: "28"
           rebar3-version: "3"
+      - name: Native backend (C library and NIF; the native tests skip themselves without it)
+        if: matrix.project == 'tinyllm'
+        working-directory: .
+        run: make -C native install
       - name: Compile
         run: rebar3 compile
       - name: Tests
@@ -37,5 +41,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Install SBCL
         run: sudo apt-get update && sudo apt-get install -y sbcl
+      - name: Build the C kernels (the native tests skip themselves without them)
+        run: make -C native
       - name: Lisp tests (cleaner, transformer gradients, trainer, data pipeline)
         run: sh lisp/run-tests.sh

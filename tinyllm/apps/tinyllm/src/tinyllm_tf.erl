@@ -7,6 +7,10 @@
 -module(tinyllm_tf).
 -export([init/2, prepare/1, sequences/3, loss_grad/3, loss_only/3, last_logits/3, param_count/1,
          cache_new/1, cache_len/1, cache_truncate/2, advance/4, step/4]).
+%% The pure Erlang implementations. The public functions above dispatch through tinyllm_backend: params of
+%% the form #{nif := Resource} and caches of the form #{res := Resource} go to tinyllm_backend_nif,
+%% everything else to tinyllm_backend_erl, which calls these.
+-export([last_logits_erl/3, cache_truncate_erl/2, advance_erl/4, step_erl/4]).
 
 -import(tinyllm_nn, [dot/3, axpy/3, vadd/2, lincomb/3, acc_rows/3, zeros/1, matrix/4,
                      softmax/2, sub_at/2, matvec/3, zeros_like/1]).
@@ -39,8 +43,10 @@ layer_init(I, D, F, L, S0) ->
 
 ones(N) -> lists:duplicate(N, 1.0).
 
+prepare(#{nif := _} = P) -> P;
 prepare(#{e := E} = P) -> P#{et => list_to_tuple(E)}.
 
+param_count(#{nif := _, info := #{params := N}}) -> N;
 param_count(Params) -> maps:fold(fun(_, V, A) -> A + count(V) end, 0, maps:without([et], Params)).
 count([A | As]) when is_list(A) -> count(A) + count(As);
 count([_ | As]) -> 1 + count(As);
@@ -256,7 +262,9 @@ loss_only(P0, Cfg, Seqs) ->
                end || {Ids, Tgts} <- Seqs]).
 
 %% Logits for the token after the last of Ids (at most `context` of them).
-last_logits(P0, Cfg, Ids) ->
+last_logits(P, Cfg, Ids) -> (tinyllm_backend:for_params(P)):last_logits(P, Cfg, Ids).
+
+last_logits_erl(P0, Cfg, Ids) ->
     P = with_heads(P0, Cfg),
     {Xf, _} = forward(P, Cfg, Ids),
     matvec(maps:get(wout, P), maps:get(bout, P), lists:last(Xf)).
@@ -275,12 +283,16 @@ cache_new(#{layers := L, heads := H}) ->
 cache_len(#{n := N}) -> N.
 
 %% Keep only the first N positions (causal attention: they do not depend on later tokens).
-cache_truncate(#{n := M} = C, N) when N >= M -> C;
-cache_truncate(#{layers := Ls}, N) ->
+cache_truncate(Cache, N) -> (tinyllm_backend:for_cache(Cache)):cache_truncate(Cache, N).
+
+cache_truncate_erl(#{n := M} = C, N) when N >= M -> C;
+cache_truncate_erl(#{layers := Ls}, N) ->
     #{n => N, layers => [{[lists:sublist(K, N) || K <- Ks], [lists:sublist(V, N) || V <- Vs]} || {Ks, Vs} <- Ls]}.
 
 %% Feed one token id at position n+1. P must be prepare/1'd. -> {Logits for the next token, Cache1}.
-step(P, Cfg, Cache, Id) ->
+step(P, Cfg, Cache, Id) -> (tinyllm_backend:for_params(P)):step(P, Cfg, Cache, Id).
+
+step_erl(P, Cfg, Cache, Id) ->
     {XL, Cache1} = run_token(P, Cfg, Cache, Id, full),
     {Xf, _} = ln_row(XL, maps:get(lnfg, P), maps:get(lnfb, P)),
     {matvec(maps:get(wout, P), maps:get(bout, P), Xf), Cache1}.
@@ -289,7 +301,9 @@ step(P, Cfg, Cache, Id) ->
 %% token can see: the final LayerNorm and vocabulary projection (the most expensive single matrix
 %% product) and, in the LAST layer, everything except that position's keys and values (its queries,
 %% attention output and MLP only feed this position's own output, which is not used).
-advance(P, Cfg, Cache, Id) -> element(2, run_token(P, Cfg, Cache, Id, kv_only)).
+advance(P, Cfg, Cache, Id) -> (tinyllm_backend:for_params(P)):advance(P, Cfg, Cache, Id).
+
+advance_erl(P, Cfg, Cache, Id) -> element(2, run_token(P, Cfg, Cache, Id, kv_only)).
 
 run_token(P, #{heads := H}, #{n := N, layers := Ls} = Cache, Id, Mode) ->
     Pos = N + 1,

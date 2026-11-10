@@ -46,6 +46,13 @@ factor separately, and **keeps the file only if `rebar3 eunit` still passes**; o
 (~6%: about 420 to 445 tokens/s). The tuner stops at 16: a 32-wide unroll crashes the BEAM JIT here (and a crashing candidate is rejected anyway).
 `tuned.sexp` and the `.hrl` are machine-specific results; re-run the tuner on another machine.
 
+## Optional C kernels and the shared weight file
+
+`make -C ../native` builds `libtlm.so`; `tf.lisp` loads it at start-up through `sb-alien` (no Quicklisp, no CFFI) and sends products
+with `m*k*n >= 4096` (env `TLM_MIN_WORK`) to C. Results are bit-identical to the Lisp kernels (tested), and without the library nothing changes.
+`bin/bench-native.lisp` compares the two; on an x86 Linux box the C kernels took 0.33 to 0.46 of the Lisp time for every shape from 8x16x16 to 512x512x512.
+`src/tlm.lisp` (`save-tlm`) writes a model as a TLM1 file (see `native/FORMAT.md`) that the C library and the Erlang NIF mmap.
+
 ## What was measured
 
 - Data pipeline: on 20,000 FineWeb-Edu documents it kept 7,479 (11,282 low edu score; 979 low language score; 257 too short;
