@@ -8,7 +8,7 @@
 %% ---------------------------------------------------------------- helpers
 
 start(Eng, Opts) ->
-    released(),
+    released(), trained_from(),
     {ok, T} = tinyllm_tuner:start_link(Opts#{engine => {?FAKE, Eng#{notify => self()}}}),
     T.
 
@@ -20,6 +20,7 @@ weight(T) -> {ok, #{handle := H}} = tinyllm_tuner:current(T), ?FAKE:weight(H).
 cur_id(T) -> {ok, #{id := Id}} = tinyllm_tuner:current(T), Id.
 
 released() -> receive {released, H} -> [H | released()] after 0 -> [] end.
+trained_from() -> receive {trained_from, F, Lr} -> [{F, Lr} | trained_from()] after 0 -> [] end.
 
 %% ---------------------------------------------------------------- baseline and commit
 
@@ -90,6 +91,25 @@ best_candidate(Mode) ->
     ?assertEqual(2, length(released())),
     close(T).
 
+every_candidate_starts_from_the_same_checkpoint_test_() ->
+    [{atom_to_list(P), fun() -> same_start(P) end} || P <- [parallel, sequential]].
+
+same_start(Mode) ->
+    %% learning rates are only comparable if every candidate of a round starts from the same weights
+    T = start(#{probe_target => 1.0}, #{candidates => [0.01, 0.1, 0.3], steps => 2, parallel => Mode =:= parallel}),
+    {ok, #{handle := Base}} = tinyllm_tuner:current(T),
+    {committed, 1, _} = tinyllm_tuner:learn(T, [1.0]),
+    Round1 = trained_from(),
+    {ok, #{handle := H1}} = tinyllm_tuner:current(T),
+    {committed, 2, _} = tinyllm_tuner:learn(T, [1.0]),
+    Round2 = trained_from(),
+    ?assertNotEqual(Base, H1),
+    ?assertEqual([0.01, 0.1, 0.3], lists:sort([Lr || {_, Lr} <- Round1])),
+    ?assertEqual([Base], lists:usort([F || {F, _} <- Round1])),
+    ?assertEqual([0.01, 0.1, 0.3], lists:sort([Lr || {_, Lr} <- Round2])),
+    ?assertEqual([H1], lists:usort([F || {F, _} <- Round2])),
+    close(T).
+
 a_candidate_that_breaks_a_gate_is_skipped_test() ->
     %% lr 0.4 gets closest to the target but drifts 0.99968 > 0.1; lr 0.01 drifts 0.096 and passes
     T = start(#{probe_target => 1.0}, #{candidates => [0.4, 0.01], steps => 5, drift_cap => 0.1}),
@@ -97,6 +117,17 @@ a_candidate_that_breaks_a_gate_is_skipped_test() ->
     {ok, #{lr := Lr}} = tinyllm_tuner:current(T),
     ?assertEqual(0.01, Lr),
     close(T).
+
+candidates_run_one_at_a_time_by_default_test() ->
+    %% delay 150 ms x 3 candidates: sequential takes >= 450 ms, parallel would take ~150 ms
+    T = start(#{probe_target => 1.0, delay => 150}, #{candidates => [0.01, 0.1, 0.3], steps => 1}),
+    {Us, {committed, 1, _}} = timer:tc(fun() -> tinyllm_tuner:learn(T, [1.0]) end),
+    ?assert(Us >= 440000),
+    close(T),
+    T2 = start(#{probe_target => 1.0, delay => 150}, #{candidates => [0.01, 0.1, 0.3], steps => 1, parallel => true}),
+    {Us2, {committed, 1, _}} = timer:tc(fun() -> tinyllm_tuner:learn(T2, [1.0]) end),
+    ?assert(Us2 < 400000),
+    close(T2).
 
 %% ---------------------------------------------------------------- engine failures
 

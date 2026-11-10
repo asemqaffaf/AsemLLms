@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """MLX LoRA worker for tinyllm_engine_port (protocol: see src/tinyllm_engine_port.erl).
 
-UNTESTED against MLX. Only the Python syntax and the argument handling are checked; the `mlx_lm.lora` flags,
-its output lines ("Train loss", "Test loss") and the adapter file names below come from memory of mlx-lm and
-may differ in your installed version. Check each operation by hand on a tiny model before trusting a tuner run:
-
-  python3 scripts/mlx_worker.py eval --base-model Qwen/Qwen2.5-0.5B-Instruct --adapter none --data heldout.txt
-
-Needs: pip install mlx-lm. An adapter is a directory holding adapters.safetensors and adapter_config.json.
+Checked against mlx-lm 0.32.2 / mlx 0.32.4 on Linux CPU with a tiny local model (scripts/tiny_mlx_model.py).
+NOT yet run on Apple silicon or on a real downloaded model. Facts it relies on, read from the installed source:
+  - `python -m mlx_lm lora` takes --model --train --test --data DIR(train/valid/test.jsonl) --iters
+    --learning-rate --batch-size --adapter-path --resume-adapter-file --num-layers -c config.yaml;
+  - training progress goes to a rich terminal UI, NOT to a parseable "Train loss" line, so this worker never
+    scrapes it: train_loss is measured by evaluating the new adapter on the training samples (same code as eval);
+  - `--test` without `--train` loads the adapter in --adapter-path unless it is "" (then it scores the base);
+  - the final summary line "Test loss X, Test ppl Y." is plain text and is what eval parses;
+  - an adapter is a directory with adapters.safetensors and adapter_config.json.
+Env: TLM_MLX_NUM_LAYERS (LoRA layers; unset = mlx-lm default 16, which errors on models with fewer layers).
+Needs: pip install mlx-lm (on Linux: "mlx[cpu]" too).
 """
 import argparse
 import json
 import math
 import os
 import re
-import shutil
 import subprocess
 import sys
 import tempfile
@@ -32,19 +35,37 @@ def write_jsonl(path, lines):
 
 
 def run_lora(args):
-    cmd = [sys.executable, "-m", "mlx_lm.lora"] + args
+    cmd = [sys.executable, "-m", "mlx_lm", "lora"] + args
     p = subprocess.run(cmd, capture_output=True, text=True)
     out = p.stdout + p.stderr
-    sys.stdout.write(out[-4000:] + "\n")
+    sys.stdout.write(out[-3000:] + "\n")
     if p.returncode != 0:
         sys.exit(p.returncode)
     return out
 
 
-def last_float(pattern, text):
-    found = re.findall(pattern, text)
+def exact_batch(n, cap=8):
+    """Largest batch size <= cap that divides n, so a test pass sees every sample (mlx-lm drops the remainder)."""
+    return max(d for d in range(1, min(n, cap) + 1) if n % d == 0)
+
+
+def layers_args():
+    n = os.environ.get("TLM_MLX_NUM_LAYERS")
+    return ["--num-layers", n] if n else []
+
+
+def loss_on(model, adapter, samples):
+    """Mean token loss of base+adapter on the samples (adapter 'none' = the base model)."""
+    with tempfile.TemporaryDirectory() as d:
+        for name in ("train", "valid", "test"):
+            write_jsonl(os.path.join(d, name + ".jsonl"), samples)
+        args = ["--model", model, "--data", d, "--test", "--test-batches", "-1",
+                "--batch-size", str(exact_batch(len(samples))),
+                "--adapter-path", "" if adapter == "none" else adapter]
+        out = run_lora(args)
+    found = re.findall(r"Test loss ([0-9.eE+-]+)", out)
     if not found:
-        sys.stderr.write("no match for %r in worker output\n" % pattern)
+        sys.stderr.write("no 'Test loss' line in mlx_lm output\n")
         sys.exit(4)
     return float(found[-1])
 
@@ -52,6 +73,9 @@ def last_float(pattern, text):
 def op_train(a):
     os.makedirs(a.adapter_out, exist_ok=True)
     samples = lines_of(a.data)
+    if not samples:
+        sys.stderr.write("no training samples\n")
+        sys.exit(5)
     data_dir = os.path.join(a.adapter_out, "data")
     os.makedirs(data_dir, exist_ok=True)
     for name in ("train", "valid", "test"):
@@ -59,28 +83,19 @@ def op_train(a):
     cfg = os.path.join(a.adapter_out, "lora.yaml")
     with open(cfg, "w") as f:
         f.write("lora_parameters:\n  rank: %d\n  scale: 20.0\n  dropout: 0.0\n" % a.rank)
+    batch = min(4, len(samples))
     args = ["--model", a.base_model, "--train", "--data", data_dir, "--iters", str(a.steps),
-            "--learning-rate", repr(a.lr), "--batch-size", str(min(4, len(samples))),
-            "--steps-per-report", "1", "--steps-per-eval", str(a.steps + 1), "--adapter-path", a.adapter_out,
-            "-c", cfg]
+            "--learning-rate", repr(a.lr), "--batch-size", str(batch), "--val-batches", "1",
+            "--steps-per-report", "1", "--steps-per-eval", str(a.steps + 1), "--save-every", str(a.steps + 1),
+            "--adapter-path", a.adapter_out, "-c", cfg] + layers_args()
     if a.adapter_in != "none":
-        for name in ("adapters.safetensors", "adapter_config.json"):
-            shutil.copy(os.path.join(a.adapter_in, name), os.path.join(a.adapter_out, name))
-        args += ["--resume-adapter-file", os.path.join(a.adapter_out, "adapters.safetensors")]
-    out = run_lora(args)
-    print("RESULT train_loss=%.8g" % last_float(r"Train loss ([0-9.eE+-]+)", out))
+        args += ["--resume-adapter-file", os.path.join(a.adapter_in, "adapters.safetensors")]
+    run_lora(args)
+    print("RESULT train_loss=%.8g" % loss_on(a.base_model, a.adapter_out, samples))
 
 
 def op_eval(a):
-    samples = lines_of(a.data)
-    with tempfile.TemporaryDirectory() as d:
-        for name in ("train", "valid", "test"):
-            write_jsonl(os.path.join(d, name + ".jsonl"), samples)
-        args = ["--model", a.base_model, "--data", d, "--test", "--batch-size", str(min(4, len(samples)))]
-        if a.adapter != "none":
-            args += ["--adapter-path", a.adapter]
-        out = run_lora(args)
-    print("RESULT loss=%.8g" % last_float(r"Test loss ([0-9.eE+-]+)", out))
+    print("RESULT loss=%.8g" % loss_on(a.base_model, a.adapter, lines_of(a.data)))
 
 
 def op_distance(a):
@@ -92,11 +107,8 @@ def op_distance(a):
     x, y = load(a.a), load(a.b)
     total = 0.0
     for k in set(x) | set(y):
-        zero = None
-        u = x.get(k)
-        v = y.get(k)
-        ref = u if u is not None else v
-        zero = mx.zeros_like(ref)
+        u, v = x.get(k), y.get(k)
+        zero = mx.zeros_like(u if u is not None else v)
         d = (v if v is not None else zero) - (u if u is not None else zero)
         total += float(mx.sum(d * d).item())
     print("RESULT dist=%.8g" % math.sqrt(total))

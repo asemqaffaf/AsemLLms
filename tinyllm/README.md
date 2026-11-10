@@ -148,7 +148,8 @@ because every prefill token also computed the vocabulary projection.
 ## Tuner (supervised fine-tuning of any engine)
 
 `tinyllm_tuner` decides what to learn and whether to keep it; a `tinyllm_engine` does the numerical work.
-One `learn/2` round trains one candidate per learning rate (in parallel), then scores each on a held-out set and
+One `learn/2` round trains one candidate per learning rate, one at a time by default (`parallel => true` runs them
+concurrently and needs memory for all of them), every candidate starting from the same current version, then scores each on a held-out set and
 a probe set (a reference set that must not get worse), and measures its drift from version 0. A candidate is
 kept only if heldout loss improves by more than `min_gain`, probe loss stays within `probe_tolerance`, and drift
 is within `drift_cap`; the best passing one becomes the new current version, otherwise nothing changes and the
@@ -169,8 +170,18 @@ candidate, not the tuner. Only one round runs at a time; `current/1`, `versions/
 tested without a GPU or a model. The worker protocol (command line in, one `RESULT k=v` line out) is documented
 at the top of `src/tinyllm_engine_port.erl`.
 
-`scripts/mlx_worker.py` is the MLX LoRA worker for a Mac. **It has not been run against MLX yet**: only its
-syntax is checked. Run it once by hand (`python3 scripts/mlx_worker.py eval ...`) before trusting a tuner run.
+`scripts/mlx_worker.py` is the MLX LoRA worker for a Mac. It was checked against mlx-lm 0.32.2 and mlx 0.32.4 on
+Linux CPU with a tiny random model, not on Apple silicon and not on a real downloaded model. That check found and
+fixed four bugs (no parseable "Train loss" line, `--adapter-path ""` needed to score the base, the default
+`--num-layers 16` failing on small models, a deprecated entry point). To repeat it with no download:
+
+    pip install mlx-lm                    # on Linux also: pip install "mlx[cpu]"
+    rebar3 compile
+    python3 scripts/tiny_mlx_model.py /tmp/tiny
+    TLM_MLX_NUM_LAYERS=2 escript scripts/tuner_smoke.escript $(which python3) scripts/mlx_worker.py /tmp/tuner_root /tmp/tiny
+
+mlx-lm prints losses with 3 decimals, so use `min_gain` of at least 0.002. Set `TLM_MLX_NUM_LAYERS` for models
+with fewer than 16 layers. Candidates run one at a time by default, so one MLX job holds the GPU at once.
 
 ## Benchmark and limits
 

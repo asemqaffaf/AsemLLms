@@ -11,7 +11,7 @@
 %% `crash` raises; a batch that contains `bad` returns {error, bad_batch}.
 %%
 %% Opts: start (0.0), heldout_target (1.0), probe_target (0.0), delay (ms slept in train, 0),
-%%       notify (pid that gets {released, Handle} from release/2).
+%%       notify (pid that gets {released, Handle} from release/2 and {trained_from, FromHandle, Lr} from train/3).
 -module(tinyllm_engine_fake).
 -behaviour(tinyllm_engine).
 -export([init/1, train/3, eval/3, drift/3, release/2, weight/1]).
@@ -20,7 +20,8 @@ init(Opts) ->
     W0 = float(maps:get(start, Opts, 0.0)),
     {ok, Opts#{start => W0}, {fake, W0}}.
 
-train(St, {fake, W0}, #{lr := Lr, steps := Steps, batch := Batch}) ->
+train(St, {fake, W0} = From, #{lr := Lr, steps := Steps, batch := Batch}) ->
+    notify(St, {trained_from, From, Lr}),
     case maps:get(delay, St, 0) of 0 -> ok; D -> timer:sleep(D) end,
     case {Lr, lists:member(crash, Batch), lists:member(bad, Batch)} of
         {99.0, _, _} -> error(boom);
@@ -38,12 +39,13 @@ eval(St, {fake, W}, probe) -> {ok, sq(W - float(maps:get(probe_target, St, 0.0))
 
 drift(_St, {fake, A}, {fake, B}) -> {ok, abs(B - A)}.
 
-release(St, Handle) ->
+release(St, Handle) -> notify(St, {released, Handle}), ok.
+
+notify(St, Msg) ->
     case maps:get(notify, St, undefined) of
-        Pid when is_pid(Pid) -> Pid ! {released, Handle};
+        Pid when is_pid(Pid) -> Pid ! Msg, ok;
         _ -> ok
-    end,
-    ok.
+    end.
 
 weight({fake, W}) -> W.
 

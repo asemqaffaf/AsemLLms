@@ -1,8 +1,8 @@
 %% Propose, score, commit or roll back: the supervisor around any tinyllm_engine.
 %%
 %% learn(Tuner, Batch) runs one round:
-%%   1. propose  train one candidate per learning rate in `candidates` from the CURRENT version, in parallel
-%%               OS/BEAM processes (parallel => false trains them one after another);
+%%   1. propose  train one candidate per learning rate in `candidates`, each starting from the SAME handle (the
+%%               current version), one after another by default (parallel => true runs them concurrently);
 %%   2. score    each candidate gets a heldout loss, a probe loss and its drift from version 0;
 %%   3. gate     a candidate is kept only if  heldout < current_heldout - min_gain
 %%                                      and   probe   =< current_probe + probe_tolerance
@@ -32,7 +32,8 @@
 %% Opts: engine := {Module, EngineOpts}
 %%       candidates (learning rates, [1.0e-4, 3.0e-4, 1.0e-3]), steps (20), rank (8),
 %%       retain (5), min_gain (0.0), probe_tolerance (0.0), drift_cap (infinity),
-%%       parallel (true), timeout (per candidate, 600000 ms)
+%%       parallel (false: one candidate at a time, so one GPU/MLX job runs at once; true trains all candidates
+%%       concurrently and needs memory for all of them), timeout (per candidate, 600000 ms)
 start_link(Opts) -> gen_server:start_link(?MODULE, Opts, []).
 start_link(Name, Opts) when is_atom(Name) -> gen_server:start_link({local, Name}, ?MODULE, Opts, []).
 stop(T) -> gen_server:stop(T).
@@ -236,7 +237,7 @@ collect({Ref, Pid, MRef}, Deadline) ->
 
 defaults() ->
     #{candidates => [1.0e-4, 3.0e-4, 1.0e-3], steps => 20, rank => 8, retain => 5, min_gain => 0.0,
-      probe_tolerance => 0.0, drift_cap => infinity, parallel => true, timeout => 600000}.
+      probe_tolerance => 0.0, drift_cap => infinity, parallel => false, timeout => 600000}.
 
 validate(#{candidates := [_ | _] = Lrs, retain := R, steps := St, rank := Rk, timeout := T})
   when is_integer(R), R >= 1, is_integer(St), St >= 1, is_integer(Rk), Rk >= 1, is_integer(T), T >= 1 ->
