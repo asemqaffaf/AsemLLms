@@ -164,12 +164,13 @@ held in memory (256k items). Dev evaluation: about 5 s (letter) or 20 s (text: f
 ## Recommendation for the next milestone
 
 1. **Make copying a gated prerequisite.** Every QA fine-tuning run should start from a checkpoint whose induction probe shows a
-   second-copy loss far below the first (C1: 0.018 vs 36). The C1 recipe does this in minutes for 1.16M; C2 applies it to 10.52M.
+   second-copy loss far below the first (C1: 0.018 vs 36). The C1 recipe does this in about 10 minutes for 1.16M and about 50 minutes for 10.52M (C2).
    Ablate the recipe (batch size, relative biases, tied path) on 1.16M first: each point costs about 10 minutes.
-2. **Then teach binding, not just copying.** Q1 shows a copying model still fails the QA task. The intermediate skill is
-   associative recall: "key value ... key ?" with keys and values being multi-token names, which is exactly the extract/reverse
-   structure. A synthetic multi-query associative-recall stage between the copy stage and QA SFT, again with dense supervision
-   (many queries per sequence), is the most direct next experiment; measure it with its own held-out probe before any QA run.
+2. **Then teach binding as its own stage, with its own probe.** Copying models still fail the QA task (Q1, Q2), and mixing
+   paraphrased associative-recall examples into QA fine-tuning did not help within 1,500–4,000 steps (Q2, Q3). Next: train recall
+   alone (dense: many queries per sequence, loss only on the recalled values) until a held-out recall probe with unseen names is
+   solved, exactly as the copy stage was gated on the induction probe, and only then run QA fine-tuning. The below-chance temporal
+   score in Q2 (it picks the place named in the question) is a concrete failure mode to watch for: copying without binding.
 3. **Keep the QA fine-tuning setup that is now clean:** text targets with option-likelihood scoring, never-repeated high-entropy
    training items, auxiliary prompt loss, dev-selected checkpoints, shuffled-label control, full control evaluation. Attempt the
    letter format only after text scoring works.
