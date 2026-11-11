@@ -80,4 +80,20 @@
                  "a reverse lookup offers people as options"))))
     (check (< (* 0.2 n) persons) (format nil "person answers ~d of ~d" persons n))))
 
+(deftest comparison-and-temporal-answers-are-correct
+  (let ((asem-retrieval:*reasoning* t) (cmp 0) (tmp 0))
+    (dolist (it (asem-retrieval:probe-items 3 :dev-real :seen 300 31 :options t))
+      (let ((p (getf it :passage)) (q (getf it :question)) (a (getf it :answer)))
+        (check (member a (getf it :options) :test #'string=))
+        (cond ((equal (getf it :kind) "cmp")
+               (incf cmp)
+               ;; the answer's number is the max (or min) of all numbers in the passage
+               (let* ((nums (loop for w in (asem-util:split-on (substitute #\Space #\. p) #\Space) when (and (plusp (length w)) (every #'digit-char-p w)) collect (parse-integer w)))
+                      (s (search a p)) (mine (loop for w in (asem-util:split-on (substitute #\Space #\. (subseq p s (position #\. p :start s))) #\Space)
+                                                   when (and (plusp (length w)) (every #'digit-char-p w)) return (parse-integer w)))
+                      (maxq (some (lambda (k) (search k q)) '("oldest" "highest" "most" "biggest" "tallest" "greatest"))))
+                 (check (and mine (= mine (if maxq (reduce #'max nums) (reduce #'min nums)))) (format nil "comparison: ~a / ~a -> ~a" p q a))))
+              ((equal (getf it :kind) "tmp") (incf tmp) (check (search a p))))))
+    (check (and (> cmp 20) (> tmp 20)) (format nil "kinds present: cmp ~d tmp ~d" cmp tmp))))
+
 (run-all)

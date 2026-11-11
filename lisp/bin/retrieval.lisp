@@ -1,7 +1,7 @@
 ;;; Entity-retrieval curriculum: train on dense retrieval sequences, select on a held-out probe, evaluate on the full probe suite.
 ;;;   train: TLM_BLAS=1 sbcl --dynamic-space-size 10GB --script lisp/bin/retrieval.lisp train data=DIR init=CKPT out=DIR levels=1[,2,...]
 ;;;            [train-n=60000] [steps=1500] [batch=32] [workers=8] [lr=5e-4] [warmup=50] [eval-every=100] [target-acc=0.9] [seed=1]
-;;;            [probe-n=300] [broad=0|1] [augment=0|1] [options=0|1] [reverse=0|1] [copy-mix=0]
+;;;            [probe-n=300] [broad=0|1] [augment=0|1] [options=0|1] [reverse=0|1] [reasoning=0|1] [copy-mix=0]
 ;;;   eval:  TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script lisp/bin/retrieval.lisp eval data=DIR ckpt=CKPT [n=200] [options=0|1] [out=FILE.json]
 ;;; Training uses only generated names/towns, training attribute pools and training wording. The selection probe (dev during
 ;;; training) uses newly generated names (never in training) at the highest level being trained, training wording, seed 7001.
@@ -79,6 +79,7 @@
             (levels (mapcar #'parse-integer (asem-util:split-on (opt-arg "levels" "1") #\,)))
             (seqs (progn (when (equal (opt-arg "augment" "0") "1") (setf asem-retrieval:*augment* t))
                          (when (equal (opt-arg "reverse" "0") "1") (setf asem-retrieval:*reverse* t))
+                         (when (equal (opt-arg "reasoning" "0") "1") (setf asem-retrieval:*reasoning* t))
                          (when (equal (opt-arg "broad" "0") "1")
                            (setf asem-retrieval:*broad-train* t asem-retrieval:*vocab-words* (asem-retrieval:vocab-words-of bpe)))
                          (asem-retrieval:train-sequences (num "train-n" "60000") levels (num "seed" "1") bpe ctx :options (equal (opt-arg "options" "0") "1"))))
@@ -95,13 +96,14 @@
                        :warmup (num "warmup" "50") :eval-every (num "eval-every" "100") :log-every (num "log-every" "20")
                        :train-probe 300 :seed (num "seed" "1")
                        :target-acc (let ((s (opt-arg "target-acc" nil))) (and s (flt "target-acc" s)))
-                       :header (list :init init :init-sha256 (asem-sha256:sha256-file-hex init) :levels (opt-arg "levels" "1") :broad (opt-arg "broad" "0") :augment (opt-arg "augment" "0") :options (opt-arg "options" "0") :reverse (opt-arg "reverse" "0") :copy-mix (opt-arg "copy-mix" "0")
+                       :header (list :init init :init-sha256 (asem-sha256:sha256-file-hex init) :levels (opt-arg "levels" "1") :broad (opt-arg "broad" "0") :augment (opt-arg "augment" "0") :options (opt-arg "options" "0") :reverse (opt-arg "reverse" "0") :reasoning (opt-arg "reasoning" "0") :copy-mix (opt-arg "copy-mix" "0")
                                      :train-n (length train) :argv (format nil "~{~a~^ ~}" (cdr sb-ext:*posix-argv*))))))
     ((equal cmd "eval")
      (let* ((bpe (bpe-of data)) (ckpt (or (opt-arg "ckpt" nil) (error "ckpt=CKPT is required")))
             (model (asem-pretrain32:load-checkpoint ckpt)) (ctx (asem-tf32:config-ctx (asem-tf32:model-config model)))
             (n (num "n" "200")) (results nil))
        (when (equal (opt-arg "reverse" "0") "1") (setf asem-retrieval:*reverse* t))
+       (when (equal (opt-arg "reasoning" "0") "1") (setf asem-retrieval:*reasoning* t))
        (dolist (level asem-retrieval:+levels+)
          (dolist (ent '(:dev-real :new))
            (dolist (w '(:seen :unseen))

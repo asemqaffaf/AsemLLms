@@ -16,7 +16,7 @@
 ;;;; are never used.
 (defpackage :asem-retrieval
   (:use :cl)
-  (:export #:*reverse* #:*augment* #:*broad-train* #:*vocab-words* #:vocab-words-of #:make-fact-set #:probe-items #:train-sequences #:retrieval-prompt #:+levels+))
+  (:export #:*reasoning* #:*reverse* #:*augment* #:*broad-train* #:*vocab-words* #:vocab-words-of #:make-fact-set #:probe-items #:train-sequences #:retrieval-prompt #:+levels+))
 (in-package :asem-retrieval)
 
 (defparameter +levels+ '(1 2 3 4))
@@ -196,6 +196,40 @@
                      pairs)))
     (augmented sents qa nil nil people rng people rel)))
 
+;;; ------------------------------------------------------------------ comparison and temporal-order kinds (*REASONING*)
+(defvar *reasoning* nil "When true, fact sets also include numeric comparisons and temporal orders (QA compare / temporal skills).")
+
+(defun cmp-facts (level entities wording rng)
+  "2 / 3 / 4 people with distinct numbers of one type; questions: who has the largest and who the smallest."
+  (let* ((ty (qg pick (symbol-value (q '*num-types*)) rng)) (spec (cdr ty))
+         (n (ecase level (1 2) (2 3) ((3 4) 4)))
+         (people (qg sample-n (pool entities '*names*) n rng))
+         (vals (destructuring-bind (lo hi) (getf spec :range) (qg distinct-numbers lo hi n rng)))
+         (frames (frames-of spec :frames wording))
+         (sents (loop for p in people for v in vals collect (qg fill-frame (qg pick frames rng) :p p :n v :v v)))
+         (best (lambda (fn) (nth (position (reduce fn vals) vals) people)))
+         (qa (list (cons (qg fill-frame (qg pick (frames-of spec :q-max wording) rng)) (funcall best #'max))
+                   (cons (qg fill-frame (qg pick (frames-of spec :q-min wording) rng)) (funcall best #'min)))))
+    (multiple-value-bind (s qq p ty2) (augmented sents qa nil nil (append people (mapcar #'princ-to-string vals)) rng people ty)
+      (values s qq p ty2 nil))))
+
+(defun tmp-facts (level entities wording rng)
+  "One person's day with 2 / 3 / 4 stops in narrative order; questions: first, last, right after X, right before X."
+  (let* ((tm (symbol-value (q '*temporal*))) (k (ecase level (1 2) (2 3) ((3 4) 4)))
+         (p (qg pick (pool entities '*names*) rng))
+         (places (qg sample-n (pool entities '*places*) k rng))
+         (sents (loop for x in places for i from 0
+                      collect (qg fill-frame (qg pick (frames-of tm (cond ((= i 0) :first) ((= i (1- k)) :last) (t :middle)) wording) rng) :p p :x x)))
+         (qa (append (list (cons (qg fill-frame (qg pick (frames-of tm :q-first wording) rng) :p p) (first places))
+                           (cons (qg fill-frame (qg pick (frames-of tm :q-last wording) rng) :p p) (car (last places))))
+                     (loop for i from 0 below (1- k)
+                           collect (if (zerop (random 2 rng))
+                                       (cons (qg fill-frame (qg pick (frames-of tm :q-after wording) rng) :p p :x (nth i places)) (nth (1+ i) places))
+                                       (cons (qg fill-frame (qg pick (frames-of tm :q-before wording) rng) :p p :x (nth (1+ i) places)) (nth i places)))))))
+    ;; narrative order is the fact here, so the sentences are NOT shuffled by make-fact-set (see :keep-order)
+    (multiple-value-bind (s qq pp ty2) (augmented sents qa nil nil (cons p places) rng (list p) :temporal)
+      (values s qq pp ty2 places))))
+
 (defun distractors (people entities wording exclude-ty rng k)
   "K sentences giving OTHER attributes of the same people (never asked about)."
   (loop repeat k
@@ -206,18 +240,21 @@
 (defun make-fact-set (level entities wording rng)
   "(values passage qa-pairs kind candidates padder): CANDIDATES are the passage's values of the asked type (the natural options),
 PADDER returns one more value of that type (for padding the options to four)."
-  (let ((kind (qg pick '(:attr :attr :num :rel) rng)))
+  (let ((kind (qg pick (if *reasoning* '(:attr :attr :num :rel :cmp :tmp) '(:attr :attr :num :rel)) rng)))
     (multiple-value-bind (sents qa people ty vals)
-        (ecase kind (:attr (attr-facts level entities wording rng)) (:num (num-facts level entities wording rng)) (:rel (rel-facts level entities wording rng)))
-      (let* ((all (append sents (when (= level 4) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng))))))
+        (ecase kind (:attr (attr-facts level entities wording rng)) (:num (num-facts level entities wording rng)) (:rel (rel-facts level entities wording rng))
+          (:cmp (cmp-facts level entities wording rng)) (:tmp (tmp-facts level entities wording rng)))
+      (let* ((all (append sents (when (and (= level 4) (not (eq kind :tmp))) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng))))))
             (values-of (or vals (remove-duplicates (mapcar #'cdr qa) :test #'string=)))
-            (cands (lambda (ans) (if (or (eq kind :rel) (member ans people :test #'string=)) people values-of)))
+            (cands (lambda (ans) (if (or (member kind '(:rel :cmp)) (member ans people :test #'string=)) people values-of)))
             (names (pool entities '*names*))
             (padder (ecase kind
                       (:attr (let ((p (pool entities (getf (cdr ty) :pool)))) (lambda (ans) (if (member ans people :test #'string=) (lambda () (qg pick names rng)) (lambda () (qg pick p rng))))))
                       (:num (destructuring-bind (lo hi) (getf (cdr ty) :range) (lambda (ans) (declare (ignore ans)) (lambda () (princ-to-string (+ lo (random (1+ (- hi lo)) rng)))))))
-                      (:rel (lambda (ans) (declare (ignore ans)) (lambda () (qg pick names rng)))))))
-        (values (format nil "~{~a~^ ~}" (qg shuffle all rng)) qa kind cands padder)))))
+                      (:rel (lambda (ans) (declare (ignore ans)) (lambda () (qg pick names rng))))
+                      (:cmp (lambda (ans) (declare (ignore ans)) (lambda () (qg pick names rng))))
+                      (:tmp (let ((pl (pool entities '*places*))) (lambda (ans) (declare (ignore ans)) (lambda () (qg pick pl rng))))))))
+        (values (format nil "~{~a~^ ~}" (if (eq kind :tmp) all (qg shuffle all rng))) qa kind cands padder)))))
 
 (defun options-for (answer cands padder rng)
   "Four distinct options containing ANSWER: other passage values first, then padding; shuffled. None is a substring of another."
