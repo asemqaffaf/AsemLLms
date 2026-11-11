@@ -61,7 +61,8 @@
             (train (concatenate 'vector
                                (loop for (ids rows targets) in seqs for i from 0 collect (asem-sft32:multi-ex (format nil "r~d" i) ids rows targets))
                                (if (plusp (num "copy-mix" "0")) (asem-sft32:make-copy-examples (num "copy-mix" "0") 77 :lo 1 :hi 8192 :min-len 10 :max-len 40) #())))
-            (probe (asem-retrieval:probe-items (reduce #'max levels) :new :seen (num "probe-n" "300") 7001 :fits (fits-fn bpe ctx)))
+            (probe (let ((asem-retrieval:*augment* nil))          ; probes are never augmented
+                     (asem-retrieval:probe-items (reduce #'max levels) :new :seen (num "probe-n" "300") 7001 :fits (fits-fn bpe ctx))))
             (dev (probe-exs probe bpe ctx)))
        (format t "~d training sequences (~,1f answers each), ~d probe items at level ~d~%" (length train)
                (/ (reduce #'+ (map 'list (lambda (e) (length (asem-sft32::ex-tgt e))) train)) (length train) 1.0) (length dev) (reduce #'max levels))

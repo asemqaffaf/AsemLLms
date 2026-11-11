@@ -214,7 +214,7 @@
   (and (search (cdr qa) passage) t))
 
 ;;; ------------------------------------------------------------------ probes
-(defun probe-items (level entities wording n seed &key (fits (constantly t)))
+(defun probe-items (level entities wording n seed &key (fits (constantly t)) &aux (*augment* nil))
   "N single-question items (plists :id :level :kind :passage :question :answer :cf-question :cf-answer). The counterfactual
 question asks about another fact of the same passage (levels >= 2) and must change the answer. FITS is called with
 (prompt answer) for the real and counterfactual question; items it rejects (too long for the context) are redrawn, never truncated."
