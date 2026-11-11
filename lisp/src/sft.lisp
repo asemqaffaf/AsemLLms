@@ -17,7 +17,7 @@
            #:make-ex #:shuffle-label-targets #:load-ex-model #:make-copy-examples #:make-recall-examples))
 (in-package :asem-sft)
 
-(defstruct ex id category subtype qframe ids target answer mode tgt opts)
+(defstruct ex id category subtype qframe ids target answer mode tgt opts rows)   ; ROWS: explicit loss rows (mode :multi)
 ;;; ids: ivec [eot prompt...]; answer: 0-3; target: the answer letter's token id.
 ;;; MODE :letter -> TGT = #(letter token): the model must name the letter (prediction: argmax over the four letter logits).
 ;;; MODE :text   -> TGT = tokens of " <answer text>": the model must copy the answer (prediction: the option whose tokens have
@@ -139,6 +139,7 @@ Letter mode: prediction = argmax of the four letter logits, scores = those logit
 key when every target token is the argmax (greedy exact match), else -1; at evaluation use SCORE-OPTIONS.
 AUX > 0 (training only) adds next-token losses on every prompt position, weighted AUX / (prompt positions), to the answer loss
 (weight 1); the answer rows come first, so the returned loss and prediction are the answer's alone."
+  (when (eq (ex-mode e) :multi) (return-from run-example (run-multi model e cache grads)))
   (let* ((cfg (model-config model)) (tail (ex-tgt e)) (n (length (ex-ids e))) (auxp (and grads (plusp aux) (not (eq (ex-mode e) :copy)))) (copyp (eq (ex-mode e) :copy))
          (acts (acts-for cache cfg (+ n (length tail) -1) (or auxp copyp)))
          (x (padded-x (ex-ids e) (asem-tf::acts-tlen acts) tail)) (arows (continuation-rows e tail)) (v (config-vocab cfg))
@@ -164,7 +165,7 @@ AUX > 0 (training only) adds next-token losses on every prompt position, weighte
   "(values pred loss scores) for evaluation. Letter mode: one forward. Text mode: the four options' summed log-probabilities."
   (case (ex-mode e)
     (:letter (multiple-value-bind (loss pred ll) (run-example model e cache letters) (values pred loss ll)))
-    (:copy (multiple-value-bind (loss pred) (run-example model e cache letters) (values (if (eql pred 0) 0 1) loss (list 0l0 0l0 0l0 0l0))))
+    ((:copy :multi) (multiple-value-bind (loss pred) (run-example model e cache letters) (values (if (eql pred 0) 0 1) loss (list 0l0 0l0 0l0 0l0))))
     (t
       (let* ((scores (mapcar (lambda (o) (score-continuation model e o cache)) (ex-opts e)))
              (pred (position (reduce #'max scores) scores)))
@@ -230,7 +231,7 @@ AUX > 0 (training only) adds next-token losses on every prompt position, weighte
 
 (defun sft (out-dir train-exs dev-exs letters &key init-model (steps 1000) (batch 32) (accum 1) (workers 8) (lr 3d-4) (min-lr-frac 0.1d0)
                                                 (warmup 50) (clip 1d0) (wd 0d0) (seed 1) (eval-every 100) (log-every 10) (resume nil)
-                                                (train-probe 500) (save-every 0) (header nil) (stop-at nil) (aux-lm 0))
+                                                (train-probe 500) (save-every 0) (header nil) (stop-at nil) (aux-lm 0) (target-acc nil))
   "Fine-tune INIT-MODEL on TRAIN-EXS. Writes OUT-DIR/log.jsonl, best.ckpt (best development accuracy), last.ckpt, last-m1.ckpt,
 last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the start event. STOP-AT N ends the run after step N
 (saving everything needed to resume) as if it had been interrupted; the schedule still runs to STEPS. Returns the final state plist."
@@ -332,8 +333,11 @@ last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the star
                       (when (and (plusp save-every) (zerop (mod step save-every)))
                         (asem-pretrain:save-checkpoint (format nil "~a/step-~5,'0d.ckpt" out-dir step) model :step step))
                       (when (or (zerop (mod step eval-every)) (= step steps) (eql step stop-at))
-                        (evaluate step)
-                        (save-last step)))
+                        (let ((dev (evaluate step)))
+                          (save-last step)
+                          (when (and target-acc (>= (getf dev :accuracy) target-acc))
+                            (ev (list :event "target-reached" :step step :dev-acc (getf dev :accuracy)))
+                            (loop-finish)))))
              (setf (getf st :seconds) (elapsed))
              (write-state state-path st)
              (ev (list :event "done" :steps steps :best-dev-acc (getf st :best-acc) :best-step (getf st :best-step)
@@ -416,3 +420,30 @@ last-m2.ckpt and state.sexp (for RESUME). HEADER: extra plist logged in the star
         (cons :obj (nreverse results))))))
 
 (export '(qa-evaluate-conditions wilson))
+
+(defun run-multi (model e cache grads)
+  "Mode :multi: IDS is a whole sequence; the loss is on TGT at the explicit ROWS (e.g. every answer token of several questions).
+Returns (values loss-sum pred nil ntargets), pred 0 when every target is the argmax, else 1."
+  (let* ((cfg (model-config model)) (ids (ex-ids e)) (rows (ex-rows e)) (tg (ex-tgt e)) (v (config-vocab cfg))
+         (acts (acts-for cache cfg (length ids) t)) (x (padded-x ids (asem-tf::acts-tlen acts))))
+    (forward-rows model x acts rows)
+    (let ((loss (- (rows-logprob acts tg v)))
+          (exact (loop for k below (length tg)
+                       always (let ((o (* k v)) (best 0) (bv most-negative-double-float))
+                                (dotimes (j v) (when (> (aref (acts-logits acts) (+ o j)) bv) (setf bv (aref (acts-logits acts) (+ o j)) best j)))
+                                (= best (aref tg k))))))
+      (when grads (backward-rows model x rows tg acts grads))
+      (values (float loss 1l0) (if exact 0 1) nil (length tg)))))
+
+(defun multi-ex (id ids rows targets)
+  (make-ex :id id :category "retrieval-train" :subtype "" :qframe "" :mode :multi :answer 0 :target 0
+           :ids (ivec-of ids) :rows (ivec-of rows) :tgt (ivec-of targets) :opts nil))
+
+(defun generation-ex (id category subtype prompt answer bpe ctx)
+  "An evaluation example scored by greedy exact match of ANSWER after PROMPT (mode :copy). Errors instead of truncating."
+  (let* ((p (asem-bpe:bpe-encode bpe prompt)) (a (asem-bpe:bpe-encode bpe (format nil " ~a" answer))))
+    (when (> (+ 1 (length p) (length a) -1) ctx) (error "~a: prompt and answer need ~d positions: refusing to truncate" id (+ (length p) (length a))))
+    (make-ex :id id :category category :subtype subtype :qframe "" :mode :copy :answer 0 :target 0
+             :ids (ivec-of (cons 0 p)) :tgt (ivec-of a) :opts nil)))
+
+(export '(run-multi multi-ex generation-ex))
