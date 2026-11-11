@@ -1,0 +1,195 @@
+{
+  "all_preexisting_work_preserved": true,
+  "files": {
+    "docs/results/stage2/phase2-paraphrase-pilot/README.md": {
+      "preserved_at": "lisp/experimental/phase2/historical/phase2-results-README.md",
+      "sha256": "9b54f994fc3586dacf31c646d5f1704c0d1869ecb6b4588c8529757a221dfa93",
+      "unchanged_in_place": false
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/audit-pilot-control.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/audit-pilot-control.json",
+      "sha256": "0d0abae5241aed43e22a22e07a164cf70418760ae9e2102bbee7dc21aea899f2",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/audit-pilot-treatment.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/audit-pilot-treatment.json",
+      "sha256": "d56ba0ee338b7230c6855472c74440566ea06e6a9a9b73b96ffdd02307063444",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/audit-r7-baseline-repro.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/audit-r7-baseline-repro.json",
+      "sha256": "7155cb7f99572e1bddeb6e51767261c44600745219992ae882017ec850c02701",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-control-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-control-vs-treatment-step300.json",
+      "sha256": "113904991c358d61895b2c7862b9577d27b5a07c255b3930be929615a25b2e53",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-r7-vs-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-r7-vs-control-step300.json",
+      "sha256": "a5fac865d05556b5d0415488bf6b37933145b9f4e097d16df992767f993050eb",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-r7-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-l3-new-r7-vs-treatment-step300.json",
+      "sha256": "74d685cc535e930166c64b4c4e9508c83042947a87033c2d5c25f59383fd7227",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-control-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-control-vs-treatment-step300.json",
+      "sha256": "55787b4c2e353f0423d9f2199d543ff7ea489a46bd518e2eb5b52c464d4221c4",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-r7-vs-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-r7-vs-control-step300.json",
+      "sha256": "df16bba30d25f58e343152cf524cc2c24e865bd3754311285b9fabe8628cecd5",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-r7-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-qa-dev-r7-vs-treatment-step300.json",
+      "sha256": "88fd9817fc52849d8f691c80473c2d95cc24cc3606aaa2fca44964f9bc08a7ca",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-control-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-control-vs-treatment-step300.json",
+      "sha256": "854f7e039a27140c98c24dfad7d00ebbc34a6882c6939969001923821094490e",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-r7-vs-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-r7-vs-control-step300.json",
+      "sha256": "85332f879dacc1c4bc9a81316b254a2ddf8bd79a979748dd2e3374c2e37874eb",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-r7-vs-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/compare-selection-r7-vs-treatment-step300.json",
+      "sha256": "68f1adb01abe23a5c6e89cd57f2e5844475a6b3ff7d43c41cfe94d30975f5517",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/consumed-supervision.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/consumed-supervision.json",
+      "sha256": "452e51f852cd2eae4d8fd3e5e8cfb82456f4a7cf1ef9a5033e6820a2a5b0f2f8",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/consumed-supervision.lisp": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/consumed-supervision.lisp",
+      "sha256": "159eab76650a3d817796c1ea46a83875ec247c9cf71f3b7450d591d95859cd40",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/retrieval-tests.log": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/retrieval-tests.log",
+      "sha256": "0e7e26e94845380afc68ec751800575d9b0d008b6f78bab248b351a00659943c",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/saved-statistics.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/saved-statistics.json",
+      "sha256": "49c18f6c88e2a54dfbddc8ea48145e425279f5b2da4aa0a6d54efc1ee75fa719",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/verify_saved.py": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/legacy/verify_saved.py",
+      "sha256": "4090370e3cc09b98050428904a9e0c94e2086e78b3171722d082e0ff96462683",
+      "unchanged_in_place": false
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/wording-tests.log": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/independent-review-20261111/wording-tests.log",
+      "sha256": "de3a0d8e09a985d6aa45a105fbf54b9a8728ac2248c45f7d523febcfe97532ae",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/step1-paired-audit.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/step1-paired-audit.json",
+      "sha256": "badb57bd3673569e4acb756b392ffa1d0a82ec04162ac741de5ec68933c9a5ba",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-l3-new-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-l3-new-control-step300.json",
+      "sha256": "a41d7fd5cbc22830293d036a572a25e389a7c1ed7bbec458c0fa8d5d66e7fb7f",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-l3-new-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-l3-new-treatment-step300.json",
+      "sha256": "3ab838450262fd27de893c16e296122613d6993a55e5da2738decddcc4e0bd6b",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-qa-dev-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-qa-dev-control-step300.json",
+      "sha256": "d8df787bd83ce5b3d92525e3db814ce9fd046dfc31a7ef720e7e97bee097d520",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-qa-dev-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-qa-dev-treatment-step300.json",
+      "sha256": "f328f896c152a3be2e867764bd26587551866d439615a6cc52f2af6dff691eed",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-control-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-control-step300.json",
+      "sha256": "3913872f619a8345e759b990858b00268280d95a761958dc889a0542c831a9fe",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-r7-last.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-r7-last.json",
+      "sha256": "04fce57cfdc9f19d0293752c6f6b6ffb447d12a2f3c987cc83dfef362a718c2d",
+      "unchanged_in_place": true
+    },
+    "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-treatment-step300.json": {
+      "preserved_at": "docs/results/stage2/phase2-paraphrase-pilot/wording-2x2-selection-treatment-step300.json",
+      "sha256": "5d623ca62b3d40c29f12fe660d10c3ca54446280340d13be7694f8e07ae35c03",
+      "unchanged_in_place": true
+    },
+    "lisp/bin/retrieval-audit.lisp": {
+      "preserved_at": "lisp/experimental/phase2/historical/retrieval-audit.lisp",
+      "sha256": "e99792fdf157422b55368b2968279c244bbf012465fb2c1e09119aec52cb2f6a",
+      "unchanged_in_place": false
+    },
+    "lisp/bin/retrieval-paraphrase-pilot.lisp": {
+      "preserved_at": "lisp/experimental/phase2/historical/retrieval-paraphrase-pilot.lisp",
+      "sha256": "3f63d9a5bc46ea6f6994a5e178d11cc86b8945a6e546160357381f2c3867ce39",
+      "unchanged_in_place": false
+    },
+    "lisp/bin/retrieval.lisp": {
+      "preserved_at": "lisp/experimental/phase2/historical/retrieval-bin.lisp",
+      "sha256": "e285903b53c26e17bc1edecd46a1019810fa0f6203807f8c33434d02e0e616d8",
+      "unchanged_in_place": false
+    },
+    "lisp/bin/wording-compare.lisp": {
+      "preserved_at": "lisp/bin/wording-compare.lisp",
+      "sha256": "97e364ac2fe3a56cf3836b97c6d4e1d30cfd2d3c1107a9ac6436af6fe3dfaf55",
+      "unchanged_in_place": true
+    },
+    "lisp/src/retrieval.lisp": {
+      "preserved_at": "lisp/experimental/phase2/historical/retrieval.lisp",
+      "sha256": "8e47f3b1f2280f10f6e9416349f85f0e255f6d3a063571022521f3d6b717c0b6",
+      "unchanged_in_place": false
+    },
+    "lisp/tests/test-retrieval.lisp": {
+      "preserved_at": "lisp/experimental/phase2/historical/test-retrieval.lisp",
+      "sha256": "82e6d29c3fd4c217ce81f4447ca601133203b42515e40863c47a043253452c6c",
+      "unchanged_in_place": false
+    },
+    "tinyllm/apps/tinyllm/src/tinyllm_memory.erl": {
+      "preserved_at": "tinyllm/apps/tinyllm/src/tinyllm_memory.erl",
+      "sha256": "12b22dbe201bb726141efe9cdcf6412edf333216f966c434a98b1ca4512c082e",
+      "unchanged_in_place": true
+    },
+    "tinyllm/apps/tinyllm/test/tinyllm_tests.erl": {
+      "preserved_at": "tinyllm/apps/tinyllm/test/tinyllm_tests.erl",
+      "sha256": "561566b6768009b76931c58211eac764e85b70a4aaf72d96a5fcc377ebcc012b",
+      "unchanged_in_place": true
+    },
+    "tinyllm/eval/knowledge_mc.jsonl": {
+      "preserved_at": "tinyllm/eval/knowledge_mc.jsonl",
+      "sha256": "6e0c29fca13331a062dc354e8dde9c877b4086710cf65b5df2d8c986a72d6029",
+      "unchanged_in_place": true
+    },
+    "tinyllm/scripts/capability_eval.py": {
+      "preserved_at": "tinyllm/scripts/capability_eval.py",
+      "sha256": "ede362f9ee7f729bb222c6194c07acfc9997567cfb4ab1f3045fc440ccf30267",
+      "unchanged_in_place": true
+    },
+    "tinyllm/scripts/tuner_quality.escript": {
+      "preserved_at": "tinyllm/scripts/tuner_quality.escript",
+      "sha256": "28aa1436482f780581446b44628d228e40f1ae1c8b3e7f787cee572f7a047d8a",
+      "unchanged_in_place": true
+    }
+  }
+}

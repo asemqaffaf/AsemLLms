@@ -1,0 +1,20 @@
+{
+  "bootstrap_resamples": 10000,
+  "bootstrap_seed": 11011,
+  "eligibility": "Largest equal-answer-token-length pools; both prompts equal length; all four options fit ctx=128; symmetric rejection before inference.",
+  "exclude_material_deficit": "conservative one-sided paired lower bound and family-bootstrap one-sided lower bound > -0.10",
+  "fixture_seed": 1101101,
+  "hypothesis": "Phase 2 loses at least 10 percentage points of joint relationship prefix correctness under fresh unfamiliar language.",
+  "limitations": "One training seed; authored template families, not an untouched benchmark; prefix exact excludes termination. No claim of complete generative reasoning.",
+  "otherwise": "inconclusive",
+  "pair_count": 400,
+  "primary": "relationship both-world gold-length greedy prefix exact; Treatment minus Control",
+  "promotion": "none",
+  "reference": "r7",
+  "relationship_families": 20,
+  "relationship_pairs": 200,
+  "schema": "asem-binding-protocol-1",
+  "secondary_pairs_per_category": 50,
+  "support": "delta <= -0.10; exact two-sided McNemar p < .05; paired and family-bootstrap 95% upper bounds < 0",
+  "training_updates": 0
+}

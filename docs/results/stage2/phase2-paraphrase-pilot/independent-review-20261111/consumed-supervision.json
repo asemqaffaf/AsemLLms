@@ -1,0 +1,15 @@
+{
+  "batch": 32,
+  "batches_with_different_denominator": 209,
+  "changed_retrieval_sequences": 4066,
+  "control_questions": 13157,
+  "control_retrieval_answer_tokens": 26875,
+  "copy_sequences": 1594,
+  "excess_control_answer_tokens_by_sequence": 540,
+  "excess_treatment_answer_tokens_by_sequence": 270,
+  "retrieval_sequences": 8006,
+  "steps": 300,
+  "treatment_questions": 12992,
+  "treatment_retrieval_answer_tokens": 26605,
+  "unique_consumed_sequences": 9600
+}

@@ -1,0 +1,141 @@
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN32::HEADER-JSON ASEM-PRETRAIN32::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN32::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT32::RUN-MULTI ASEM-TF32:MODEL ASEM-SFT32::E ASEM-SFT32::CACHE
+;      ASEM-SFT32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT32::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT32::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+EVERY-DEVELOPMENT-SENTENCE-PARSES-LOSSLESSLY-TO-ONE-MEANING
+ALL-FOUR-CELLS-PRESERVE-MEANING-AND-ANSWERS-UNDER-BOTH-POLICIES
+ALL-FOUR-CELLS-FIT-CONTEXT-WINDOW-WITHOUT-TRUNCATION
+UNFAMILIAR-CELL-IS-THE-ORIGINAL-ITEM-VERBATIM
+FAMILIAR-WORDING-IS-TRAINING-WORDING-AND-DIFFERS-IN-EVERY-CATEGORY
+FIRST-POLICY-QUESTION-EQUALS-THE-HISTORICAL-FAMILIAR-QUESTION
+FRAME-CHOICE-IS-DETERMINISTIC-VARIED-AND-INDEPENDENT-OF-THE-ANSWER
+THE-CHECKER-DETECTS-MEANING-CHANGES
+REFUSES-NON-DEVELOPMENT-ITEMS
+PAIRED-STATISTICS-AND-FACTORIAL-CONTRASTS-MATCH-EXACT-FORMULAS
+
+10 tests, 31844 checks, 0 failures

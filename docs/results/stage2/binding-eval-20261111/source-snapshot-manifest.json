@@ -1,0 +1,19 @@
+{
+  "lisp/bin/binding-eval.lisp": "de9b76eac5c790908cc50e6d7ac8c725d731bbad53ad921553d637c2f8d8ba92",
+  "lisp/bin/verify-saved.lisp": "6d31b9d4a759d8397bdf4c93c3e2bea1292132860c53cfb1b4fd46344e982fdd",
+  "lisp/experimental/phase2/frames.lisp": "a0b736596efeb287cb6db846f880967015bc7b0f19324dd7fe110623077c8acc",
+  "lisp/src/binding.lisp": "0e1f8218b30e7ee7e6f287774427fba4f8bf4cf4b1a6fc765d2bcdf8fb6b8e96",
+  "lisp/src/bpe.lisp": "25523805c53ef53d36ed71625a41140c3a5ee3246bbc96555a48997b0cfbb65f",
+  "lisp/src/derive.lisp": "bc0012de8151ed27f1b3753459bb4330cbccb134d87539cc5b5ac7a5d2ff1acc",
+  "lisp/src/json.lisp": "3d987ad729de2ad82aa4f6589e6bd955bc08219b8645d78b728909ec10afbf86",
+  "lisp/src/qa-analysis.lisp": "c2de69d1d8a93667976909812ea7949aa1e584bf3706d2537abe3572e79136fb",
+  "lisp/src/qagen.lisp": "97b123a54a2c3e5ca5f036939ce5625af4f2d214e7e8e901544081d13a0fb0f7",
+  "lisp/src/retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+  "lisp/src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d",
+  "lisp/src/sft32.lisp": "a2b13bdc0902a665a2b620a55fb378d874ef88501067367462f42f7c25be60dd",
+  "lisp/src/sha256.lisp": "709818a8a523f3faa208df0285a2098cb7ce18fa9ec83f0462b7f5b1eec87cac",
+  "lisp/src/tf.lisp": "cd901a019673b4db534158fc3a263d8ed881f3f51af63ef455c183357972b27e",
+  "lisp/src/tf32.lisp": "e9222606c4890bbae6a11501e0af8763916ba4a3333b2ffd16a5c13ef4e68a7b",
+  "lisp/src/util.lisp": "727d0e6c19203ba0cac26c61e326a3431e86f5bc8c1dec708f3b0f704346a0cc",
+  "lisp/src/verify-saved.lisp": "c697b1d1cf638786978893f71a22f907708a7b4586c3a1bb24fd9c3a3a6c9f05"
+}

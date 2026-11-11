@@ -1,0 +1,54 @@
+{
+  "ctx": 128,
+  "eligible_pool_sizes": {
+    "names": 515,
+    "places": 7,
+    "towns": 74
+  },
+  "files_sha256": {
+    "families.json": "12da1389c91859f1250684780ed87a67dcf423fbd5bfa7e44e44749374c13396",
+    "pairs.json": "a907847b494dc90bb84e8ad0c00a136876f141c1fc63618b9f6ac934a2d061c4",
+    "pairs.sexp": "00a76da858092c0bfd4e0cb2bc092a07db65bc9c9b406470e1257c9e836610aa",
+    "protocol.json": "26eb43fdec8854ffd08f21c5722f4a17b69431ff6205d861372288ec99d209a7"
+  },
+  "locked_test_accessed": false,
+  "models": {
+    "control": {
+      "path": "data/runs/retrieval/p2-paraphrase-pilot/control/last.ckpt",
+      "sha256": "435b5d7c2eb1d8afecd67e0c9eb86709aecb966b60fbe76bbc40aee5ae959a84"
+    },
+    "r7": {
+      "path": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+      "sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1"
+    },
+    "treatment": {
+      "path": "data/runs/retrieval/p2-paraphrase-pilot/treatment/last.ckpt",
+      "sha256": "bce9f94765e4503bedf2674a40e066c13780709425441e9c7a7de2d7e9d8833c"
+    }
+  },
+  "pair_count": 400,
+  "rejection_count": 0,
+  "rejections": [],
+  "sbcl_version": "2.6.10",
+  "schema": "asem-binding-bundle-1",
+  "seed": 1101101,
+  "sources_sha256": {
+    "lisp/bin/binding-eval.lisp": "de9b76eac5c790908cc50e6d7ac8c725d731bbad53ad921553d637c2f8d8ba92",
+    "lisp/bin/verify-saved.lisp": "6d31b9d4a759d8397bdf4c93c3e2bea1292132860c53cfb1b4fd46344e982fdd",
+    "lisp/experimental/phase2/frames.lisp": "a0b736596efeb287cb6db846f880967015bc7b0f19324dd7fe110623077c8acc",
+    "lisp/src/binding.lisp": "0e1f8218b30e7ee7e6f287774427fba4f8bf4cf4b1a6fc765d2bcdf8fb6b8e96",
+    "lisp/src/bpe.lisp": "25523805c53ef53d36ed71625a41140c3a5ee3246bbc96555a48997b0cfbb65f",
+    "lisp/src/derive.lisp": "bc0012de8151ed27f1b3753459bb4330cbccb134d87539cc5b5ac7a5d2ff1acc",
+    "lisp/src/qa-analysis.lisp": "c2de69d1d8a93667976909812ea7949aa1e584bf3706d2537abe3572e79136fb",
+    "lisp/src/qagen.lisp": "97b123a54a2c3e5ca5f036939ce5625af4f2d214e7e8e901544081d13a0fb0f7",
+    "lisp/src/retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+    "lisp/src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d",
+    "lisp/src/sft32.lisp": "a2b13bdc0902a665a2b620a55fb378d874ef88501067367462f42f7c25be60dd",
+    "lisp/src/tf.lisp": "cd901a019673b4db534158fc3a263d8ed881f3f51af63ef455c183357972b27e",
+    "lisp/src/tf32.lisp": "e9222606c4890bbae6a11501e0af8763916ba4a3333b2ffd16a5c13ef4e68a7b",
+    "lisp/src/verify-saved.lisp": "c697b1d1cf638786978893f71a22f907708a7b4586c3a1bb24fd9c3a3a6c9f05"
+  },
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "training_updates": 0
+}

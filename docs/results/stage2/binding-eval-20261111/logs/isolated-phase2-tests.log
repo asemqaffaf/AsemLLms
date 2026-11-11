@@ -1,0 +1,178 @@
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT::RUN-MULTI ASEM-TF:MODEL ASEM-SFT::E ASEM-SFT::CACHE
+;      ASEM-SFT::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (DEFUN ASEM-SFT::MISMATCHED-QUESTION
+;            (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (LET* ((ASEM-SFT::SAME (REMOVE-IF-NOT # ASEM-SFT::ITEMS))
+;              (ASEM-SFT::LEN (LENGTH ASEM-SFT::SAME))
+;              (ASEM-SFT::K (POSITION ASEM-SFT::IT ASEM-SFT::SAME)))
+;         (DECLARE (IGNORE ASEM-SFT::IDX))
+;         (GETF (NTH (MOD # ASEM-SFT::LEN) ASEM-SFT::SAME) :QUESTION)))
+; --> SB-INT:NAMED-LAMBDA SB-INT:NAMED-LAMBDA 
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT::MISMATCHED-QUESTION
+;         (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT::SAME #) (ASEM-SFT::LEN #) (ASEM-SFT::K #))
+;           (DECLARE (IGNORE ASEM-SFT::IDX))
+;           (GETF (NTH # ASEM-SFT::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+WARNING: redefining ASEM-RETRIEVAL::Q in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::QG in DEFMACRO
+WARNING: redefining ASEM-RETRIEVAL::NEW-POOL in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::HELDOUT-STRINGS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::BROAD-POOL in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::BROAD-VALUES in DEFUN
+WARNING: redefining ASEM-RETRIEVAL:VOCAB-WORDS-OF in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::POOL in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::INSERT-MODIFIER in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::AUGMENT-SENTENCE in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::AUGMENT-QUESTION in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::FRAMES-OF in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::AUGMENTED in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::ATTR-FACTS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::NUM-FACTS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::REL-FACTS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::CMP-FACTS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::TMP-FACTS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::DISTRACTORS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL:MAKE-FACT-SET in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::OPTIONS-FOR in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::OPTIONS-BLOCK in DEFUN
+WARNING: redefining ASEM-RETRIEVAL:RETRIEVAL-PROMPT in DEFUN
+WARNING: redefining ASEM-RETRIEVAL::ANSWER-OCCURS-ONCE-P in DEFUN
+WARNING: redefining ASEM-RETRIEVAL:PROBE-ITEMS in DEFUN
+WARNING: redefining ASEM-RETRIEVAL:TRAIN-SEQUENCES in DEFUN
+PREDICATE-PARAPHRASE-FRAMES-AVOID-DEV-OVERLAP-AND-DUPLICATES
+PREDICATE-PARAPHRASE-PRESERVES-ATTR-NUM-REVERSE-AND-PROBES
+PREDICATE-PARAPHRASE-SEMANTICS-AND-TARGETS-HOLD
+
+3 tests, 4269 checks, 0 failures
