@@ -1,0 +1,26 @@
+{
+  "lisp/src/retrieval.lisp": {
+    "archived_at": "lisp/experimental/phase2/historical/retrieval.lisp",
+    "sha256": "8e47f3b1f2280f10f6e9416349f85f0e255f6d3a063571022521f3d6b717c0b6"
+  },
+  "lisp/bin/retrieval.lisp": {
+    "archived_at": "lisp/experimental/phase2/historical/retrieval-bin.lisp",
+    "sha256": "e285903b53c26e17bc1edecd46a1019810fa0f6203807f8c33434d02e0e616d8"
+  },
+  "lisp/bin/retrieval-audit.lisp": {
+    "archived_at": "lisp/experimental/phase2/historical/retrieval-audit.lisp",
+    "sha256": "e99792fdf157422b55368b2968279c244bbf012465fb2c1e09119aec52cb2f6a"
+  },
+  "lisp/tests/test-retrieval.lisp": {
+    "archived_at": "lisp/experimental/phase2/historical/test-retrieval.lisp",
+    "sha256": "82e6d29c3fd4c217ce81f4447ca601133203b42515e40863c47a043253452c6c"
+  },
+  "lisp/bin/retrieval-paraphrase-pilot.lisp": {
+    "archived_at": "lisp/experimental/phase2/historical/retrieval-paraphrase-pilot.lisp",
+    "sha256": "3f63d9a5bc46ea6f6994a5e178d11cc86b8945a6e546160357381f2c3867ce39"
+  },
+  "docs/results/stage2/phase2-paraphrase-pilot/README.md": {
+    "archived_at": "lisp/experimental/phase2/historical/phase2-results-README.md",
+    "sha256": "9b54f994fc3586dacf31c646d5f1704c0d1869ecb6b4588c8529757a221dfa93"
+  }
+}

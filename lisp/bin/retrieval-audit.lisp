@@ -23,6 +23,9 @@
   (let ((value (parse-integer (opt name default))))
     (unless (>= value minimum) (error "~a must be >= ~d" name minimum)) value))
 
+(when (equal (opt "predicate-paraphrase" "0") "1")
+  (error "Phase 2 is isolated; use experimental-phase2-audit.lisp explicitly."))
+
 (defun flag (name default)
   (let ((s (opt name default)))
     (unless (member s '("0" "1") :test #'string=) (error "~a must be 0 or 1" name))

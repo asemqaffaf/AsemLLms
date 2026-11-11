@@ -19,6 +19,8 @@
                     (cdr sb-ext:*posix-argv*))))
     (if p (subseq p (1+ (length name))) default)))
 (defun num (name default) (parse-integer (opt-arg name default)))
+(when (equal (opt-arg "predicate-paraphrase" "0") "1")
+  (error "Phase 2 is isolated; use retrieval-paraphrase-pilot.lisp in a separate process. It is not a promoted training recipe."))
 (defun flt (name default) (float (let ((*read-default-float-format* 'double-float)) (read-from-string (opt-arg name default))) 1f0))
 (defun jobj (&rest plist) (cons :obj (loop for (k v) on plist by #'cddr collect (cons k v))))
 
