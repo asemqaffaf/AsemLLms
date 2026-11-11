@@ -68,3 +68,5 @@ The historical Phase 2 implementation and modified scripts/tests are preserved b
 ## Post-hoc error decomposition
 
 The [saved-prediction analysis](posthoc-20261111/README.md) examines all 2,400 existing predictions, without new inference or training. It separates one-world successes from correct switches, graph-derived wrong directions from other errors, and candidate-ranking success from unlisted generated prefixes. Its descriptive family tables do not establish causal wording effects: graphs/entities differ between families, and each family contains only ten pairs.
+
+The subsequent [77-case generation audit](generation-audit-20261111/README.md) checks BPE/boundaries and independently reproduces greedy outputs, then tests a separate candidate-trie decoder with frozen R7 weights. The latter rescues 67/77 selected cases; it is not a general accuracy gain. The 104 opposite-direction cases are inspected separately as paired role reversals.
