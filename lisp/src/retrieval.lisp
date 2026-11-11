@@ -199,53 +199,75 @@
                       :v (qg pick (pool entities (intern (symbol-name (getf spec :pool)) :asem-retrieval)) rng)))))
 
 (defun make-fact-set (level entities wording rng)
-  "(values passage qa-pairs kind) for one passage of LEVEL."
+  "(values passage qa-pairs kind candidates padder): CANDIDATES are the passage's values of the asked type (the natural options),
+PADDER returns one more value of that type (for padding the options to four)."
   (let ((kind (qg pick '(:attr :attr :num :rel) rng)))
     (multiple-value-bind (sents qa people ty)
         (ecase kind (:attr (attr-facts level entities wording rng)) (:num (num-facts level entities wording rng)) (:rel (rel-facts level entities wording rng)))
-      (let ((all (append sents (when (= level 4) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng)))))))
-        (values (format nil "~{~a~^ ~}" (qg shuffle all rng)) qa kind)))))
+      (let ((all (append sents (when (= level 4) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng))))))
+            (cands (if (eq kind :rel) (copy-list people) (remove-duplicates (mapcar #'cdr qa) :test #'string=)))
+            (padder (ecase kind
+                      (:attr (let ((p (pool entities (getf (cdr ty) :pool)))) (lambda () (qg pick p rng))))
+                      (:num (destructuring-bind (lo hi) (getf (cdr ty) :range) (lambda () (princ-to-string (+ lo (random (1+ (- hi lo)) rng))))))
+                      (:rel (let ((p (pool entities '*names*))) (lambda () (qg pick p rng)))))))
+        (values (format nil "~{~a~^ ~}" (qg shuffle all rng)) qa kind cands padder)))))
 
-(defun retrieval-prompt (passage question &key (passage-p t) (question-p t))
-  (format nil "~@[Text: ~a~%~]~@[Q: ~a~%~]The answer is" (and passage-p passage) (and question-p question)))
+(defun options-for (answer cands padder rng)
+  "Four distinct options containing ANSWER: other passage values first, then padding; shuffled. None is a substring of another."
+  (let ((opts (list answer)))
+    (dolist (c (qg shuffle cands rng)) (when (and (< (length opts) 4) (notany (lambda (o) (or (search c o) (search o c))) opts)) (push c opts)))
+    (loop repeat 50 while (< (length opts) 4)
+          do (let ((c (funcall padder))) (when (notany (lambda (o) (or (search c o) (search o c))) opts) (push c opts))))
+    (and (= 4 (length opts)) (qg shuffle opts rng))))
+
+(defun options-block (opts) (format nil "A. ~a~%B. ~a~%C. ~a~%D. ~a~%" (first opts) (second opts) (third opts) (fourth opts)))
+
+(defun retrieval-prompt (passage question &key (passage-p t) (question-p t) options)
+  "OPTIONS (four strings) adds the QA option lines between the question and \"The answer is\"."
+  (format nil "~@[Text: ~a~%~]~@[Q: ~a~%~]~@[~a~]The answer is" (and passage-p passage) (and question-p question) (and options (options-block options))))
 
 (defun answer-occurs-once-p (passage qa)
   "The answer must be present and must not be a substring of another answer in the set (so exact match is unambiguous)."
   (and (search (cdr qa) passage) t))
 
 ;;; ------------------------------------------------------------------ probes
-(defun probe-items (level entities wording n seed &key (fits (constantly t)) &aux (*augment* nil))
+(defun probe-items (level entities wording n seed &key (fits (constantly t)) options &aux (*augment* nil))
   "N single-question items (plists :id :level :kind :passage :question :answer :cf-question :cf-answer). The counterfactual
 question asks about another fact of the same passage (levels >= 2) and must change the answer. FITS is called with
 (prompt answer) for the real and counterfactual question; items it rejects (too long for the context) are redrawn, never truncated."
   (let ((rng (sb-ext:seed-random-state seed)) (out nil))
     (loop while (< (length out) n)
-          do (multiple-value-bind (passage qa kind) (make-fact-set level entities wording rng)
+          do (multiple-value-bind (passage qa kind cands padder) (make-fact-set level entities wording rng)
                (let* ((i (random (length qa) rng)) (main (nth i qa))
                       (others (remove-if (lambda (x) (string= (cdr x) (cdr main))) (remove main qa)))
-                      (cf (and others (qg pick others rng))))
+                      (cf (and others (qg pick others rng)))
+                      (opts (and options (options-for (cdr main) cands padder rng))))
                  (when (and (every (lambda (x) (answer-occurs-once-p passage x)) qa)
-                            (funcall fits (retrieval-prompt passage (car main)) (cdr main))
-                            (or (null cf) (funcall fits (retrieval-prompt passage (car cf)) (cdr cf))))
+                            (or (not options) (and opts (or (null cf) (member (cdr cf) opts :test #'string=))))
+                            (funcall fits (retrieval-prompt passage (car main) :options opts) (cdr main))
+                            (or (null cf) (funcall fits (retrieval-prompt passage (car cf) :options opts) (cdr cf))))
                    (push (list :id (format nil "L~d-~(~a-~a~)-~d" level entities wording (length out)) :level level :kind (string-downcase (symbol-name kind))
-                               :passage passage :question (car main) :answer (cdr main)
+                               :passage passage :question (car main) :answer (cdr main) :options opts
                                :cf-question (and cf (car cf)) :cf-answer (and cf (cdr cf)))
                          out)))))
     (nreverse out)))
 
 ;;; ------------------------------------------------------------------ dense training sequences
-(defun train-sequences (n levels seed bpe ctx)
+(defun train-sequences (n levels seed bpe ctx &key options)
   "N training sequences (training entities and wording) as lists (ids rows targets): a passage of a random level from LEVELS,
-then as many of its questions (shuffled) as fit in CTX, each followed by \"The answer is <value>.\". ROWS are the positions whose
+then as many of its questions (shuffled) as fit in CTX, each followed by \"The answer is <value>.\" (with OPTIONS, each question is
+followed by four option lines first, as in the QA prompt). ROWS are the positions whose
 next token is an answer token, TARGETS those tokens: loss only on answers."
   (let ((rng (sb-ext:seed-random-state seed)) (out nil) (tries 0))
     (loop while (and (< (length out) n) (< (incf tries) (* 3 n)))
-          do (multiple-value-bind (passage qa) (make-fact-set (qg pick levels rng) :train :seen rng)
+          do (multiple-value-bind (passage qa kind cands padder) (make-fact-set (qg pick levels rng) :train :seen rng)
+               (declare (ignore kind))
                (let* ((ids (list 0)) (rows nil) (targets nil))
                  (flet ((add (text) (setf ids (append ids (asem-bpe:bpe-encode bpe text)))))
                    (add (format nil "Text: ~a~%" passage))
                    (dolist (x (qg shuffle qa rng))
-                     (let* ((qtoks (asem-bpe:bpe-encode bpe (format nil "Q: ~a~%The answer is" (car x))))
+                     (let* ((opts (and options (options-for (cdr x) cands padder rng)))
+                            (qtoks (asem-bpe:bpe-encode bpe (format nil "Q: ~a~%~@[~a~]The answer is" (car x) (and opts (options-block opts)))))
                             (atoks (asem-bpe:bpe-encode bpe (format nil " ~a" (cdr x))))
                             (tail (asem-bpe:bpe-encode bpe (format nil ".~%"))))
                        (when (> (+ (length ids) (length qtoks) (length atoks) (length tail)) ctx) (return))
