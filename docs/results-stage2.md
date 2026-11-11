@@ -16,11 +16,10 @@ The useful outcome of this stage is a diagnosis plus the infrastructure to act o
   and the tied path, trained on batches of 128 sequences of 40–63 random tokens repeated twice, went through a sharp transition
   between steps 400 and 600 and now predicts the second copy almost perfectly (0.018 nats, run C1).
 - **Copying alone did not make that 1.16M model answer questions** (Q1: chance after 3,250 QA steps). The QA task also needs the
-  question's entity bound to the right passage sentence. The same copy stage on the 10.52M model (C2) is the run in progress at the
-  time of writing; see "Status at the end of the session".
+  question's entity bound to the right passage sentence. The same copy stage works on the 10.52M model (C2: 0.019 nats after 1,000 steps), but QA fine-tuning of that copying model,
+  with associative-recall examples mixed in, also stayed at chance (Q2, 1,500 steps; Q3 for 1.16M, 4,000 steps).
 - The benchmark, the answer-only SFT pipeline, the controls and the probes are built, tested and committed on `stage2-qa`.
 
-<!-- S1E10 -->
 
 ## What was built
 
@@ -79,6 +78,8 @@ with Accelerate, Adam(0.9, 0.95), clipping 1.0, dev evaluation every 100–500 s
 | E10 | text + aux 0.5 on 256k never-repeated items, lr 5e-4 | 5,750 | 27.6 / 22.8 | 31.8 | flat for 5,750 steps; stopped |
 | S1 | 3M model **from scratch** + relative biases (K=8) + tied path + aux 1.0, fresh items, lr 1e-3 | 6,000 | 28.0 / 25.8 | 24.4 | opened the tied gate (-0.94), copy gap 3.4 nats, dev at chance; best checkpoint has no question conditioning (28.4% without the question) |
 | Q1 | 1.16M model **after C1 copy training** (copies perfectly), text + aux 0.5 + copy examples, fresh items, lr 1e-3 | 3,250 | 28.2 / 25.6 | 23.0 | copying alone is not sufficient; stopped |
+| Q3 | Q1 + 150k associative-recall examples mixed in | 4,000 | 26.6 / 25.0 | 26.0 | recall examples did not help the 1.16M model |
+| Q2 | **10.52M after C2 copy training** + recall + copy examples, text + aux 0.5, fresh items, lr 5e-4 | 1,500 | 25.2 / 22.2 | 26.4 | at chance; temporal 14–19% (below chance: it appears to favour the place named in the question); stopped |
 
 Runs were stopped early when they had shown no movement for several evaluations; their logs are complete up to that point
 (`docs/results/stage2/runs/*.jsonl`, each with its exact arguments in the start event). The ones planned at 8,000 steps (E7, E8)
@@ -101,6 +102,7 @@ were stopped for the reasons in the table, not for time.
 | R1, 1.16M + relative biases, 600 copy steps | 9.45 | 8.95 |
 | S1, 3M from scratch, 6,000 QA steps | 16.10 | 12.75 |
 | **C1, 1.16M after 1,000 copy steps** | 36.17 | **0.018** |
+| **C2, 10.52M after 1,000 copy steps** | 24.00 | **0.019** |
 
 Direct copy training (loss on the second copy; chance 8.95 nats over the 7,700 token ids used, copying would approach 0):
 
@@ -113,6 +115,7 @@ Direct copy training (loss on the second copy; chance 8.95 nats over the 7,700 t
 | D4 1.16M pretrained, frequent tokens only (chance 7.09) | 600 | 9.64 → 6.83 |
 | D5 10.52M, 40–63-token copies, batch 64, untied / tied | ~440 | 11.87 → 8.70 / 8.74 |
 | **C1 1.16M pretrained + relative biases + tied path, 40–63-token copies, batch 128, lr 3e-3** | 1,000 | **11.0 → 0.016** (8.96 at step 200, 7.00 at 400, 0.08 at 600) |
+| **C2 10.52M, same recipe, lr 1e-3** | 1,000 | **11.9 → 0.013** (8.49 at 400, 5.12 at 500, 0.65 at 600, 0.09 at 700) |
 
 ![Copy-task loss in the diagnostics](results/stage2/copy-loss-diagnostics.svg)
 
