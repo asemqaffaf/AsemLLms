@@ -58,4 +58,14 @@
     (check (>= (getf st :best-acc) 0.99l0) (format nil "8 memorised retrieval sequences, exact-match accuracy ~a" (getf st :best-acc)))
     (sb-ext:delete-directory dir :recursive t)))
 
+(deftest augmentation-keeps-answers-and-entities-intact
+  (let ((asem-retrieval:*augment* t) (rng (sb-ext:seed-random-state 3)))
+    (dotimes (k 200)
+      (multiple-value-bind (passage qa) (asem-retrieval:make-fact-set (1+ (mod k 4)) :train :seen rng)
+        (dolist (x qa)
+          (check (search (cdr x) passage) "answer still in the passage"))))
+    ;; probes are never augmented
+    (let ((asem-retrieval:*augment* nil))
+      (check (equal (asem-retrieval:probe-items 2 :new :seen 20 5) (asem-retrieval:probe-items 2 :new :seen 20 5))))))
+
 (run-all)
