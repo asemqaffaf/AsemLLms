@@ -1,7 +1,7 @@
 ;;; Entity-retrieval curriculum: train on dense retrieval sequences, select on a held-out probe, evaluate on the full probe suite.
 ;;;   train: TLM_BLAS=1 sbcl --dynamic-space-size 10GB --script lisp/bin/retrieval.lisp train data=DIR init=CKPT out=DIR levels=1[,2,...]
 ;;;            [train-n=60000] [steps=1500] [batch=32] [workers=8] [lr=5e-4] [warmup=50] [eval-every=100] [target-acc=0.9] [seed=1]
-;;;            [probe-n=300] [broad=0|1] [augment=0|1] [options=0|1] [reverse=0|1] [reasoning=0|1] [copy-mix=0]
+;;;            [probe-n=300] [broad=0|1] [augment=0|1] [options=0|1] [reverse=0|1] [reasoning=0|1] [copy-mix=0] [multi-normalization=token|sequence]
 ;;;   eval:  TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script lisp/bin/retrieval.lisp eval data=DIR ckpt=CKPT [n=200] [options=0|1] [out=FILE.json]
 ;;; Training uses only generated names/towns, training attribute pools and training wording. The selection probe (dev during
 ;;; training) uses newly generated names (never in training) at the highest level being trained, training wording, seed 7001.
@@ -84,7 +84,9 @@
                            (setf asem-retrieval:*broad-train* t asem-retrieval:*vocab-words* (asem-retrieval:vocab-words-of bpe)))
                          (asem-retrieval:train-sequences (num "train-n" "60000") levels (num "seed" "1") bpe ctx :options (equal (opt-arg "options" "0") "1"))))
             (train (concatenate 'vector
-                               (loop for (ids rows targets) in seqs for i from 0 collect (asem-sft32:multi-ex (format nil "r~d" i) ids rows targets))
+                               (loop for (ids rows targets) in seqs for i from 0
+                                     collect (asem-sft32:multi-ex (format nil "r~d" i) ids rows targets
+                                                                :normalization (intern (string-upcase (opt-arg "multi-normalization" "token")) :keyword)))
                                (if (plusp (num "copy-mix" "0")) (asem-sft32:make-copy-examples (num "copy-mix" "0") 77 :lo 1 :hi 8192 :min-len 10 :max-len 40) #())))
             (probe (let ((asem-retrieval:*augment* nil))          ; probes are never augmented
                      (asem-retrieval:probe-items (reduce #'max levels) :new :seen (num "probe-n" "300") 7001 :fits (fits-fn bpe ctx) :options (equal (opt-arg "options" "0") "1"))))
@@ -97,7 +99,8 @@
                        :train-probe 300 :seed (num "seed" "1")
                        :target-acc (let ((s (opt-arg "target-acc" nil))) (and s (flt "target-acc" s)))
                        :header (list :init init :init-sha256 (asem-sha256:sha256-file-hex init) :levels (opt-arg "levels" "1") :broad (opt-arg "broad" "0") :augment (opt-arg "augment" "0") :options (opt-arg "options" "0") :reverse (opt-arg "reverse" "0") :reasoning (opt-arg "reasoning" "0") :copy-mix (opt-arg "copy-mix" "0")
-                                     :train-n (length train) :argv (format nil "~{~a~^ ~}" (cdr sb-ext:*posix-argv*))))))
+                                     :retrieval-train-n (length seqs) :multi-normalization (opt-arg "multi-normalization" "token")
+                                     :argv (format nil "~{~a~^ ~}" (cdr sb-ext:*posix-argv*))))))
     ((equal cmd "eval")
      (let* ((bpe (bpe-of data)) (ckpt (or (opt-arg "ckpt" nil) (error "ckpt=CKPT is required")))
             (model (asem-pretrain32:load-checkpoint ckpt)) (ctx (asem-tf32:config-ctx (asem-tf32:model-config model)))

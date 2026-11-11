@@ -1,10 +1,11 @@
 # AsemLLM Stage 2: supervised fine-tuning for passage QA (Common Lisp, CPU only)
 
-**Result: the target was not reached, and no fine-tuned model has yet beaten chance.** Best development accuracy of any run
-is 28.4% (142/500) against a 95% chance band that reaches 28.8%; the pretrained model itself scores 27.6% with the same scoring.
-The locked 1,000-question test set was therefore **not** evaluated and remains unused.
+**Current result: R7 reaches 45.8% development accuracy (229/500) with summed option likelihood; the 90% target remains unmet.**
+R5 and R6 reached 42.8% and 44.0%. The initial QA fine-tuning experiments below peaked at 28.4%, before the retrieval curriculum.
+The locked 1,000-question test remains unused. The [R7 analysis](results-stage2-r7.md) distinguishes choice scoring, generated
+answers, familiar versus unfamiliar question wording, checkpoint selection and training interference.
 
-The useful outcome of this stage is a diagnosis plus the infrastructure to act on it:
+The initial experiments produced a diagnosis and the infrastructure for the later retrieval curriculum:
 
 - **The Stage 1 models cannot copy anything from their context.** On a sequence of random tokens repeated twice, the 10.52M model's
   loss on the second copy equals its loss on the first (13.06 vs 13.09 nats). Every formulation of passage QA needs in-context
@@ -220,12 +221,12 @@ the question and "The answer is" break the retrieval pattern. R5 trains retrieva
 regenerated training data: 94,656 questions, 100% with four option lines, correct option A/B/C/D = 23,559 / 23,749 / 23,916 /
 23,432, loss on the answer text in 59,999/60,000 sequences).
 
-Option-mode suite (QA-dev names; seen / unseen wording; n = 200 per cell). Three separate measurements: free generation of the
-answer text (exact match), option likelihood (argmax of the **summed** log-probability of each option's tokens; per-token-mean
+Option-mode suite (QA-dev names; seen / unseen wording; n = 200 per cell). Three separate measurements: greedy exact agreement
+over the gold answer's token count (a prefix diagnostic, without termination scoring), option likelihood (argmax of the **summed** log-probability of each option's tokens; per-token-mean
 scoring agrees within ~7 points, and on items with a unique shortest option the summed score picks it 18–45% of the time, so
 length bias is small), and A–D letter selection (argmax of the four letter logits):
 
-| Level | Free generation R4b → R5 | Option likelihood R4b → R5 | Letter, R5 |
+| Level | Gold-length exact prefix R4b → R5 | Option likelihood R4b → R5 | Letter, R5 |
 |---|---|---|---|
 | 1 | 45.0/35.5 → **93.5/77.5** | 66.5/65.0 → **99.0/93.5** | 30.0/26.0 |
 | 2 | 21.0/15.0 → **84.0/58.0** | 32.5/36.5 → **92.5/78.5** | 22.5/19.5 |
@@ -263,15 +264,16 @@ R7 adds comparison and temporal-order questions (`reasoning=1`), the two QA cate
 
 Not evaluated. `bin/qa-eval.lisp` refuses `lisp/eval/qa/test.jsonl` unless `locked-test=1` is passed and the file's SHA-256 matches
 `test.lock`, and appends every such run to `docs/results/stage2/locked-test-runs.jsonl`. That file does not exist: the test set has
-never been scored. Spending it on a model at chance on dev would add no information.
+never been scored. Development improvements do not authorize a locked evaluation; final evaluation requires explicit user authorization.
 
 ## Corpus for additional pretraining (Phase 8)
 
 The existing reproducible pipeline is fetching FineWeb-Edu `sample/10BT` shards `000`–`013` (same filters as Stage 1: edu score >= 4.0,
 language score >= 0.95) into `data/fineweb/stage2.jsonl` at the lowest CPU priority, with a 45M FineWeb-token target (about 50M tokens
 with the 8,192 BPE, from the Stage 1 ratio). It is network-bound (about 2,000 tokens/s) and resumable (`resume=1`, progress file
-`stage2.jsonl.progress`). At the time of writing: **20.4M FineWeb tokens, 18,855 documents, 102 MB, shards 000–003 read** (about
-45% of the target). Not yet built into shards: `bin/build-data.lisp` (dedup, split, BPE, manifest with SHA-256) needs 8 GB and all
+`stage2.jsonl.progress`). At takeover verification on 2026-11-11 JST: **41.78M FineWeb tokens, 39,891 documents, about 200 MiB,
+shard 007 in progress** (about 93% of the target). The original download process was preserved. Not yet built into shards:
+`bin/build-data.lisp` (dedup, split, BPE, manifest with SHA-256) needs 8 GB and all
 cores and was deferred so it would not compete with QA training. Whether more pretraining improves QA was not tested, as
 planned; the copy results above suggest it would mainly matter through in-context abilities, which the probe can measure first.
 
@@ -285,7 +287,7 @@ Answer-only SFT of the 10.52M model on 8 threads: about 5,500 prompt tokens/s (m
 which computes the full output head. Peak RSS 0.56–1.9 GB depending on how many padding buckets are live and on the training set
 held in memory (256k items). Dev evaluation: about 5 s (letter) or 20 s (text: four forward passes per item).
 
-## Recommendation for the next milestone
+## Historical recommendation after the initial QA experiments
 
 1. **Make copying a gated prerequisite.** Every QA fine-tuning run should start from a checkpoint whose induction probe shows a
    second-copy loss far below the first (C1: 0.018 vs 36). The C1 recipe does this in about 10 minutes for 1.16M and about 50 minutes for 10.52M (C2).
@@ -300,8 +302,7 @@ held in memory (256k items). Dev evaluation: about 5 s (letter) or 20 s (text: f
    letter format only after text scoring works.
 4. **Do not scale the model or the QA data yet.** Neither addresses the missing mechanisms: 256k never-repeated items and a 3M
    model from scratch both stayed at chance.
-5. **Keep the locked test set locked** until a checkpoint is clearly above the dev chance band (more than 30% on 500 items) and
-   passes the question and passage controls.
+5. **Keep the locked test set locked.** A checkpoint passing development controls still requires explicit authorization for final evaluation.
 
 ## Reproduce
 

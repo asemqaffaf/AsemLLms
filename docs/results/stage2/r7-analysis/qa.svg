@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="590" viewBox="0 0 1000 590" role="img">
+<title>AsemLLM QA development accuracy and Wilson intervals</title>
+<rect width="100%" height="100%" fill="#fcfcfb"/>
+<g font-family="system-ui,sans-serif" fill="#202124">
+<text x="40" y="33" font-size="21">AsemLLM: identical QA development items</text>
+<text x="40" y="59" font-size="13">Summed option likelihood; n=100 per category; error bars: 95% Wilson intervals</text>
+<line x1="75" y1="450.0" x2="935" y2="450.0" stroke="#deded9"/>
+<text x="63" y="454.0" text-anchor="end" font-size="12">0%</text>
+<line x1="75" y1="379.0" x2="935" y2="379.0" stroke="#deded9"/>
+<text x="63" y="383.0" text-anchor="end" font-size="12">20%</text>
+<line x1="75" y1="308.0" x2="935" y2="308.0" stroke="#deded9"/>
+<text x="63" y="312.0" text-anchor="end" font-size="12">40%</text>
+<line x1="75" y1="237.0" x2="935" y2="237.0" stroke="#deded9"/>
+<text x="63" y="241.0" text-anchor="end" font-size="12">60%</text>
+<line x1="75" y1="166.0" x2="935" y2="166.0" stroke="#deded9"/>
+<text x="63" y="170.0" text-anchor="end" font-size="12">80%</text>
+<line x1="75" y1="95.0" x2="935" y2="95.0" stroke="#deded9"/>
+<text x="63" y="99.0" text-anchor="end" font-size="12">100%</text>
+<line x1="75" y1="361.25" x2="935" y2="361.25" stroke="#888" stroke-dasharray="5 4"/>
+<rect x="107.5" y="190.85000000000002" width="23" height="259.15" fill="#4263eb"/>
+<path d="M119.0,163.4065862577101V224.33466580312103 M115.0,163.4065862577101H123.0 M115.0,224.33466580312103H123.0" stroke="#333" fill="none"/>
+<rect x="135.5" y="183.75" width="23" height="266.25" fill="#099268"/>
+<path d="M147.0,157.28508371322116V216.7814946137692 M143.0,157.28508371322116H151.0 M143.0,216.7814946137692H151.0" stroke="#333" fill="none"/>
+<rect x="163.5" y="208.59999999999997" width="23" height="241.40000000000003" fill="#f08c00"/>
+<path d="M175.0,179.0249883948719V242.9029480005611 M171.0,179.0249883948719H179.0 M171.0,242.9029480005611H179.0" stroke="#333" fill="none"/>
+<rect x="191.5" y="205.05" width="23" height="244.95" fill="#ae3ec9"/>
+<path d="M203.0,175.86744938176994V239.22315014674277 M199.0,175.86744938176994H207.0 M199.0,239.22315014674277H207.0" stroke="#333" fill="none"/>
+<text x="161.0" y="474" text-anchor="middle" font-size="13">extract</text>
+<rect x="279.5" y="222.8" width="23" height="227.2" fill="#4263eb"/>
+<path d="M291.0,191.81231479624V257.4649690668746 M287.0,191.81231479624H295.0 M287.0,257.4649690668746H295.0" stroke="#333" fill="none"/>
+<rect x="307.5" y="219.25" width="23" height="230.75" fill="#099268"/>
+<path d="M319.0,188.592571519847V253.84737547634722 M315.0,188.592571519847H323.0 M315.0,253.84737547634722H323.0" stroke="#333" fill="none"/>
+<rect x="335.5" y="205.05" width="23" height="244.95" fill="#f08c00"/>
+<path d="M347.0,175.86744938176994V239.22315014674277 M343.0,175.86744938176994H351.0 M343.0,239.22315014674277H351.0" stroke="#333" fill="none"/>
+<rect x="363.5" y="219.25" width="23" height="230.75" fill="#ae3ec9"/>
+<path d="M375.0,188.592571519847V253.84737547634722 M371.0,188.592571519847H379.0 M371.0,253.84737547634722H379.0" stroke="#333" fill="none"/>
+<text x="333.0" y="474" text-anchor="middle" font-size="13">relation</text>
+<rect x="451.5" y="350.6" width="23" height="99.39999999999998" fill="#4263eb"/>
+<path d="M463.0,316.9168461172227V378.5045649550258 M459.0,316.9168461172227H467.0 M459.0,378.5045649550258H467.0" stroke="#333" fill="none"/>
+<rect x="479.5" y="325.75" width="23" height="124.25" fill="#099268"/>
+<path d="M491.0,291.1526245236528V356.407428480153 M487.0,291.1526245236528H495.0 M487.0,356.407428480153H495.0" stroke="#333" fill="none"/>
+<rect x="507.5" y="329.29999999999995" width="23" height="120.70000000000005" fill="#f08c00"/>
+<path d="M519.0,294.7852870870038V359.6121027837223 M515.0,294.7852870870038H523.0 M515.0,359.6121027837223H523.0" stroke="#333" fill="none"/>
+<rect x="535.5" y="315.1" width="23" height="134.89999999999998" fill="#ae3ec9"/>
+<path d="M547.0,280.3439870635217V346.70405533952294 M543.0,280.3439870635217H551.0 M543.0,346.70405533952294H551.0" stroke="#333" fill="none"/>
+<text x="505.0" y="474" text-anchor="middle" font-size="13">reverse</text>
+<rect x="623.5" y="357.7" width="23" height="92.30000000000001" fill="#4263eb"/>
+<path d="M635.0,324.4323371568912V384.66374764919806 M631.0,324.4323371568912H639.0 M631.0,384.66374764919806H639.0" stroke="#333" fill="none"/>
+<rect x="651.5" y="354.15" width="23" height="95.85000000000002" fill="#099268"/>
+<path d="M663.0,320.665334196879V381.5934137422899 M659.0,320.665334196879H667.0 M659.0,381.5934137422899H667.0" stroke="#333" fill="none"/>
+<rect x="679.5" y="332.84999999999997" width="23" height="117.15000000000003" fill="#f08c00"/>
+<path d="M691.0,298.4333192059754V362.80140753167115 M687.0,298.4333192059754H695.0 M687.0,362.80140753167115H695.0" stroke="#333" fill="none"/>
+<rect x="707.5" y="339.95" width="23" height="110.05000000000001" fill="#ae3ec9"/>
+<path d="M719.0,305.7768498532573V369.13255061823 M715.0,305.7768498532573H723.0 M715.0,369.13255061823H723.0" stroke="#333" fill="none"/>
+<text x="677.0" y="474" text-anchor="middle" font-size="13">compare</text>
+<rect x="795.5" y="368.35" width="23" height="81.64999999999998" fill="#4263eb"/>
+<path d="M807.0,335.8512947582617V393.75680064858875 M803.0,335.8512947582617H811.0 M803.0,393.75680064858875H811.0" stroke="#333" fill="none"/>
+<rect x="823.5" y="386.1" width="23" height="63.89999999999998" fill="#099268"/>
+<path d="M835.0,355.3302471140436V408.46453262740886 M831.0,355.3302471140436H839.0 M831.0,408.46453262740886H839.0" stroke="#333" fill="none"/>
+<rect x="851.5" y="379.0" width="23" height="71.0" fill="#f08c00"/>
+<path d="M863.0,347.46500851609164V402.6550974915199 M859.0,347.46500851609164H867.0 M859.0,402.6550974915199H867.0" stroke="#333" fill="none"/>
+<rect x="879.5" y="357.7" width="23" height="92.30000000000001" fill="#ae3ec9"/>
+<path d="M891.0,324.4323371568912V384.66374764919806 M887.0,324.4323371568912H895.0 M887.0,384.66374764919806H895.0" stroke="#333" fill="none"/>
+<text x="849.0" y="474" text-anchor="middle" font-size="13">temporal</text>
+<rect x="65.0" y="502" width="13" height="13" fill="#4263eb"/>
+<text x="85.0" y="513" font-size="13">R5 best</text>
+<rect x="285.0" y="502" width="13" height="13" fill="#099268"/>
+<text x="305.0" y="513" font-size="13">R6 last</text>
+<rect x="505.0" y="502" width="13" height="13" fill="#f08c00"/>
+<text x="525.0" y="513" font-size="13">R7 best</text>
+<rect x="725.0" y="502" width="13" height="13" fill="#ae3ec9"/>
+<text x="745.0" y="513" font-size="13">R7 last</text>
+<text x="40" y="554" font-size="12">Exploratory: repeated use of this development set and checkpoint selection are not covered by these intervals.</text>
+<text x="40" y="575" font-size="12">Dashed line: four-choice guessing accuracy (25%). Locked test remains unused.</text>
+</g></svg>

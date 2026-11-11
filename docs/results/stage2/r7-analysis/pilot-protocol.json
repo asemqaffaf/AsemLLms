@@ -1,0 +1,31 @@
+{
+  "experiment": "R8 normalization pilot",
+  "hypothesis": "Giving dense retrieval sequences equal total objective weight may improve temporal transfer and reduce task interference; this is not an established root cause.",
+  "initial_checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "initial_checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "arms": ["historical token normalization", "sequence normalization"],
+  "fixed_steps_per_arm": 300,
+  "train_sequences": 15000,
+  "copy_replay_sequences": 3000,
+  "training_seed": 801,
+  "selection_seed": 18001,
+  "selection_n": 300,
+  "selection_entities": "new generated pool, disjoint from training",
+  "selection_wording": "unseen development frames; previously inspected template family",
+  "primary_endpoint": "fixed final checkpoint exact answer prefix on fresh selection items",
+  "secondary_endpoint": "fixed final checkpoint summed option likelihood on the existing 500 QA dev items",
+  "full_run_gate": {
+    "selection_treatment_minus_control_minimum_percentage_points": 5,
+    "selection_temporal_must_not_decline": true,
+    "qa_treatment_overall_minimum_accuracy": 0.458,
+    "qa_extract_relation_reverse_maximum_drop_vs_R7_final_percentage_points": 3,
+    "interpretation": "Practical exploratory gate, not a confirmatory statistical test. If not met, retain R7 and do not launch a full run for this hypothesis."
+  },
+  "controls": "Same initial tensors, serialized training examples, data permutation, selection examples, optimizer, learning rate 1e-4, warmup 30, batch 32, workers 4. Only dense retrieval normalization differs.",
+  "caveats": [
+    "Sequence normalization also increases the relative objective weight of copy replay; it does not isolate temporal weighting alone.",
+    "One seed and short continuation; a failed pilot does not rule out all weighted curricula.",
+    "The 500-item dev set has been reused; improvements remain exploratory development evidence.",
+    "No locked test data or answers are used."
+  ]
+}
