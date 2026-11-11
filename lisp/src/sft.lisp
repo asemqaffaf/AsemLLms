@@ -447,3 +447,19 @@ Returns (values loss-sum pred nil ntargets), pred 0 when every target is the arg
              :ids (ivec-of (cons 0 p)) :tgt (ivec-of a) :opts nil)))
 
 (export '(run-multi multi-ex generation-ex))
+
+(defun choice-exs (id category subtype prompt options answer bpe ctx)
+  "For a prompt that lists OPTIONS (four strings, ANSWER is one of them): (values text-ex letter-ex). TEXT-EX scores the four
+option texts by summed log-probability after the prompt; LETTER-EX takes the argmax of the A-D letter logits. Errors instead of
+truncating."
+  (let* ((p (asem-bpe:bpe-encode bpe prompt)) (ai (position answer options :test #'string=))
+         (opts (mapcar (lambda (o) (asem-bpe:bpe-encode bpe (format nil " ~a" o))) options))
+         (letters (letter-token-ids bpe)))
+    (unless ai (error "~a: answer ~s is not among the options" id answer))
+    (when (> (+ (length p) (reduce #'max (mapcar #'length opts))) ctx) (error "~a: prompt and options exceed the context: refusing to truncate" id))
+    (values (make-ex :id id :category category :subtype subtype :qframe "" :mode :text :answer ai :target (nth ai letters)
+                     :ids (ivec-of (cons 0 p)) :opts (mapcar #'ivec-of opts) :tgt (ivec-of (nth ai opts)))
+            (make-ex :id id :category category :subtype subtype :qframe "" :mode :letter :answer ai :target (nth ai letters)
+                     :ids (ivec-of (cons 0 p)) :opts nil :tgt (ivec-of (list (nth ai letters)))))))
+
+(export 'choice-exs)

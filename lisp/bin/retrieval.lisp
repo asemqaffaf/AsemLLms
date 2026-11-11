@@ -43,6 +43,19 @@
            collect (asem-sft32:generation-ex (getf it :id) (format nil "L~d" (getf it :level)) (getf it :kind) prompt answer bpe ctx))
    'vector))
 
+(defun choice-accuracies (model items bpe ctx)
+  "Option-likelihood and A-D letter accuracy on option-mode probe ITEMS (real question)."
+  (let ((txt nil) (let nil))
+    (dolist (it items)
+      (multiple-value-bind (a b) (asem-sft32:choice-exs (getf it :id) "c" "" (asem-retrieval:retrieval-prompt (getf it :passage) (getf it :question) :options (getf it :options))
+                                                        (getf it :options) (getf it :answer) bpe ctx)
+        (push a txt) (push b let)))
+    (flet ((acc (exs) (let* ((v (coerce (nreverse exs) 'vector)) (s (asem-sft32:qa-summary v (asem-sft32:qa-predict model v '(316 367 338 443) :workers (num "workers" "8")))))
+                        (destructuring-bind (lo hi) (asem-sft32:wilson (getf s :correct) (getf s :n))
+                          (jobj "correct" (getf s :correct) "n" (getf s :n) "accuracy" (float (getf s :accuracy) 1d0) "ci95_low" lo "ci95_high" hi
+                                "predicted_letter_counts" (format nil "~a" (getf s :pred-dist)))))))
+      (list "option_likelihood" (acc txt) "letter_A_to_D" (acc let)))))
+
 (defun accuracy (model exs)
   (let ((preds (asem-sft32:qa-predict model exs '(316 367 338 443) :workers (num "workers" "8"))))
     (let ((k (count 0 preds :key #'first)) (n (length exs)))
@@ -83,6 +96,7 @@
              (let* ((items (asem-retrieval:probe-items level ent w n (+ 9000 (* 100 level) (if (eq ent :new) 10 0) (if (eq w :unseen) 1 0)) :fits (fits-fn bpe ctx) :options (equal (opt-arg "options" "0") "1")))
                     (key (format nil "L~d/~(~a/~a~)" level ent w))
                     (row (list "real" (accuracy model (probe-exs items bpe ctx)))))
+               (when (equal (opt-arg "options" "0") "1") (setf row (append row (choice-accuracies model items bpe ctx))))
                (when (and (eq ent :dev-real) (eq w :unseen))
                  (setf row (append row (list "no_question" (accuracy model (probe-exs items bpe ctx :variant :no-question))
                                              "no_passage" (accuracy model (probe-exs items bpe ctx :variant :no-passage))))

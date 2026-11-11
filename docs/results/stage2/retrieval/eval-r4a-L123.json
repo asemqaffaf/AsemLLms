@@ -1,0 +1,225 @@
+{
+  "L1/dev-real/seen": {
+    "real": {
+      "accuracy": 0.945,
+      "ci95_high": 0.9690149791986299,
+      "ci95_low": 0.9042120755340645,
+      "correct": 189,
+      "n": 200
+    }
+  },
+  "L1/dev-real/unseen": {
+    "no_passage": {
+      "accuracy": 0.0,
+      "ci95_high": 0.018846005918320894,
+      "ci95_low": 0.0,
+      "correct": 0,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.17,
+      "ci95_high": 0.22816001039503528,
+      "ci95_low": 0.12427835351105657,
+      "correct": 34,
+      "n": 200
+    },
+    "real": {
+      "accuracy": 0.705,
+      "ci95_high": 0.7638615572809827,
+      "ci95_low": 0.6384115802925058,
+      "correct": 141,
+      "n": 200
+    }
+  },
+  "L1/new/seen": {
+    "real": {
+      "accuracy": 0.94,
+      "ci95_high": 0.9653481500987285,
+      "ci95_low": 0.8980673646931491,
+      "correct": 188,
+      "n": 200
+    }
+  },
+  "L1/new/unseen": {
+    "real": {
+      "accuracy": 0.69,
+      "ci95_high": 0.75001157266366,
+      "ci95_low": 0.622826945087378,
+      "correct": 138,
+      "n": 200
+    }
+  },
+  "L2/dev-real/seen": {
+    "real": {
+      "accuracy": 0.84,
+      "ci95_high": 0.8843265779145542,
+      "ci95_low": 0.7828581380609876,
+      "correct": 168,
+      "n": 200
+    }
+  },
+  "L2/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.615,
+      "ci95_high": 0.6796680308208618,
+      "ci95_low": 0.5459973878179245,
+      "correct": 123,
+      "n": 200
+    },
+    "no_passage": {
+      "accuracy": 0.0,
+      "ci95_high": 0.018846005918320894,
+      "ci95_low": 0.0,
+      "correct": 0,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.1,
+      "ci95_high": 0.14940686356308552,
+      "ci95_low": 0.06566994117157123,
+      "correct": 20,
+      "n": 200
+    },
+    "real": {
+      "accuracy": 0.605,
+      "ci95_high": 0.6701601300121683,
+      "ci95_low": 0.5358822087449843,
+      "correct": 121,
+      "n": 200
+    }
+  },
+  "L2/new/seen": {
+    "real": {
+      "accuracy": 0.86,
+      "ci95_high": 0.9013308137472852,
+      "ci95_low": 0.8051000619915237,
+      "correct": 172,
+      "n": 200
+    }
+  },
+  "L2/new/unseen": {
+    "real": {
+      "accuracy": 0.6,
+      "ci95_high": 0.6653953603162106,
+      "ci95_low": 0.5308354385001253,
+      "correct": 120,
+      "n": 200
+    }
+  },
+  "L3/dev-real/seen": {
+    "real": {
+      "accuracy": 0.8,
+      "ci95_high": 0.8495487925607118,
+      "ci95_low": 0.7391436038882958,
+      "correct": 160,
+      "n": 200
+    }
+  },
+  "L3/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.52,
+      "ci95_high": 0.5882095592051018,
+      "ci95_low": 0.4510366005581654,
+      "correct": 104,
+      "n": 200
+    },
+    "no_passage": {
+      "accuracy": 0.0,
+      "ci95_high": 0.018846005918320894,
+      "ci95_low": 0.0,
+      "correct": 0,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.1,
+      "ci95_high": 0.14940686356308552,
+      "ci95_low": 0.06566994117157123,
+      "correct": 20,
+      "n": 200
+    },
+    "real": {
+      "accuracy": 0.53,
+      "ci95_high": 0.5979536662912893,
+      "ci95_low": 0.46091557335361155,
+      "correct": 106,
+      "n": 200
+    }
+  },
+  "L3/new/seen": {
+    "real": {
+      "accuracy": 0.72,
+      "ci95_high": 0.7776320715736488,
+      "ci95_low": 0.6540756858222899,
+      "correct": 144,
+      "n": 200
+    }
+  },
+  "L3/new/unseen": {
+    "real": {
+      "accuracy": 0.465,
+      "ci95_high": 0.5341347897100506,
+      "ci95_low": 0.39718443070423204,
+      "correct": 93,
+      "n": 200
+    }
+  },
+  "L4/dev-real/seen": {
+    "real": {
+      "accuracy": 0.505,
+      "ci95_high": 0.5735427804584151,
+      "ci95_low": 0.4362687594824017,
+      "correct": 101,
+      "n": 200
+    }
+  },
+  "L4/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.285,
+      "ci95_high": 0.3511547308121051,
+      "ci95_low": 0.22694905173277297,
+      "correct": 57,
+      "n": 200
+    },
+    "no_passage": {
+      "accuracy": 0.0,
+      "ci95_high": 0.018846005918320894,
+      "ci95_low": 0.0,
+      "correct": 0,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.03,
+      "ci95_high": 0.06389511973247333,
+      "ci95_low": 0.013820125830748327,
+      "correct": 6,
+      "n": 200
+    },
+    "real": {
+      "accuracy": 0.355,
+      "ci95_high": 0.4234801551839203,
+      "ci95_low": 0.29198518653239286,
+      "correct": 71,
+      "n": 200
+    }
+  },
+  "L4/new/seen": {
+    "real": {
+      "accuracy": 0.44,
+      "ci95_high": 0.509284516504375,
+      "ci95_low": 0.3729770042058236,
+      "correct": 88,
+      "n": 200
+    }
+  },
+  "L4/new/unseen": {
+    "real": {
+      "accuracy": 0.23,
+      "ci95_high": 0.2930842807819702,
+      "ci95_low": 0.1770925624139232,
+      "correct": 46,
+      "n": 200
+    }
+  },
+  "checkpoint": "data/runs/retrieval/r4a-L123/best.ckpt",
+  "checkpoint_sha256": "2cd739ffae5fde4bd89586344f903e083e533b59e33b06433cbb49ca59e50e23"
+}
