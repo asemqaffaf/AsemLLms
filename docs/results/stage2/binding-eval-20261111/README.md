@@ -35,13 +35,13 @@ Primary contrast, Treatment minus Control relationship joint prefix:
 - **+1.5 percentage points**, 9 gains / 6 losses, exact two-sided McNemar **p=.60724**.
 - Paired 95% interval **[-2.30, +5.30] points**; 20-family bootstrap interval **[-3.0, +7.0]**.
 - Conservative one-sided 95% lower bound **-4.34 points**; family-bootstrap one-sided lower bound **-2.5 points**.
-- The registered decision is `material_deficit_excluded_on_this_population`: a ten-point joint-prefix deficit is excluded on this specific diagnostic. This is **floor-limited**: Control succeeds on only 5.5% of these pairs. It is not broad noninferiority, preserved reasoning, equivalence or a promotion result.
+- The frozen classifier returns `material_deficit_excluded_on_this_population`. **This is not useful reassurance.** At the observed Control score of 5.5%, the lowest possible empirical Treatment-minus-Control difference is -5.5 points; an observed ten-point loss cannot occur. The prespecified margin is therefore uninformative at this floor. The historical protocol and machine output are preserved, while the substantive noninferiority interpretation is withdrawn. It establishes neither preserved reasoning nor a promotion case.
 
 The secondary relationship joint-ranking contrast is +2.5 points, p=.44207; it does not demonstrate improvement. R7 changes its ranked answer on 84/200 relationship pairs, but answers both worlds correctly on only 28. Thus switching by itself is not successful role tracking. Treatment has 122 wrong-role choices over 400 relationship worlds, compared with 97 for Control and 104 for R7; these are exploratory counts, not a prespecified significant mechanism test.
 
 ## Interpretation
 
-The familiar-L3 Treatment regression does **not** replicate as a large additional joint-prefix deficit under these newly authored forms. Its original evidence remains intact; this assay does not explain its cause or approve the intervention.
+This assay cannot usefully test a ten-point empirical deficit at its observed Control floor. The familiar-L3 regression remains valid evidence; these results neither explain its cause nor approve the intervention. The small positive contrast is inconclusive evidence of improvement.
 
 All three checkpoints show weak both-world consistency. R7 does not reliably answer both factual assignments under these language families. That establishes a behavioral limitation in this controlled setting. It does not establish whether the cause is lexical interpretation, role binding, answer realization, model capacity or pretraining, and it does not prove that every success is a familiar-pattern heuristic. Positive margins and some correct switches indicate that the model sometimes responds to changed facts, without robust joint correctness.
 
@@ -63,4 +63,8 @@ sbcl --script lisp/bin/verify-saved.lisp mode=binding bundle=NEW-DIR out=NEW-DIR
 
 Checks passed: binding **9 tests / 2,442 checks**, independent verifier **4 / 8**, stable retrieval **7 / 1,299**, explicitly isolated Phase 2 **3 / 4,269**, stable wording **10 / 31,844**; total **33 tests / 39,862 checks**, zero failures. Existing toy-model unit tests are separate from the frozen-checkpoint experiment. Full development verification was not run because its wrapper hashes the locked test. The model-free 75,000-sequence stable R7 generator audit also reproduces the original serialization digest exactly.
 
-The historical Phase 2 implementation and modified scripts/tests are preserved byte for byte under `lisp/experimental/phase2/historical/`. Stable training no longer imports them. Existing Erlang work was not changed, and no commit or merge was made.
+The historical Phase 2 implementation and modified scripts/tests are preserved byte for byte under `lisp/experimental/phase2/historical/`. Stable training no longer imports them. Infrastructure and original results are now committed on `stage2-qa` in isolated commits; unrelated Erlang work is excluded. No merge or push was performed.
+
+## Post-hoc error decomposition
+
+The [saved-prediction analysis](posthoc-20261111/README.md) examines all 2,400 existing predictions, without new inference or training. It separates one-world successes from correct switches, graph-derived wrong directions from other errors, and candidate-ranking success from unlisted generated prefixes. Its descriptive family tables do not establish causal wording effects: graphs/entities differ between families, and each family contains only ten pairs.
