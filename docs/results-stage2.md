@@ -164,7 +164,10 @@ dev answer options have ids below 300. C3 continued C2's copy stage over ids 1�
 | R1 | level 1, answers from the small training pools | 500 | 11.3% → **58.7% (step 100)** → 41.3%: collapses |
 | R2 | level 1, high-entropy answers (22k names, 760 towns, 3.5k vocabulary words) + 15k copy examples | 900 | 11.3% → **90.7%**: gate passed |
 | R3 | levels 1–2 (same data recipe), from R2 | 2,000 | level-2 probe 39.0% → **84.0%** |
-<!-- R4ROWS -->
+| R4a | levels 1–3, from R3 | 2,000 | level-3 probe 56.0% → 77.3% |
+| R4b | levels 1–3 + training-only wording augmentation, from R3 | 2,000 | level-3 probe 56.0% → 77.3% |
+| R5 | R4b recipe + **QA-style option lines** in every training question (answer still text), from R4b | 2,000 | level-3 option-mode probe 17.3% → 79.3% |
+<!-- R6ROWS -->
 
 R1 failure analysis (level 1, new names): numbers 28/29 correct, but attribute values were garbled ("saow atathy" for *cow*)
 and relations mixed names ("Vytan" for Vylox/Gytan). The training answers came from 12–25-word pools, so the model learned an
@@ -177,7 +180,11 @@ answer prior instead of copying; giving the training answers high entropy (R2) f
 | C2 (copying, no retrieval training) | 4.5 / 2.0 | 6.0 / 0.5 | 4.5 / 4.0 | 1.5 / 0.5 |
 | R2 (trained on L1) | **90.0** / 56.5 | 46.0 / 31.5 | 18.5 / 12.5 | 8.0 / 1.0 |
 | R3 (trained on L1–2) | **98.5** / 73.5 | **84.0** / 64.5 | 68.5 / 48.0 | 34.0 / 27.5 |
-<!-- R4SUITE -->
+| R4a (L1–3) | 94.5 / 70.5 | 84.0 / 60.5 | 80.0 / 53.0 | 50.5 / 35.5 |
+| R4b (L1–3 + augmentation) | 92.5 / 71.0 | 84.5 / 68.5 | 78.0 / 57.5 | 52.0 / 39.0 |
+
+Pooled over all eight cells per wording (1,600 items each): R4a 75.6% seen / 52.3% unseen, R4b 75.1% / **56.2%**. Augmentation
+leaves seen wording unchanged and adds about 4 points on unseen wording; R4b was carried forward.
 
 (QA-dev-pool names; the `new`-name cells are within a few points, see `docs/results/stage2/retrieval/eval-*.json`.)
 
@@ -193,7 +200,8 @@ answer prior instead of copying; giving the training answers high entropy (R2) f
 Removing the question cuts accuracy to roughly what picking one of the passage's values at random would give (1/2, 1/4), removing
 the passage gives 0%, and a different question about the same passage retrieves the other fact as often as the original question
 retrieves its own: the model now **selects the fact by the question**.
-<!-- R4CONTROLS -->
+R4a and R4b show the same pattern (level 2, unseen wording: R4b 68.5% real, 12.5% without the question, 0% without the passage,
+63% counterfactual).
 
 ![Held-out probe during training](results/stage2/retrieval/selection-probe.svg)
 ![Probe suite by level](results/stage2/retrieval/suite-by-level.svg)
@@ -202,6 +210,38 @@ retrieves its own: the model now **selects the fact by the question**.
 question and passage ("aged 89", "visit to Neil", "in height") instead of the value: the model learned where to start copying for
 each training frame. R4b tests training-only wording augmentation (modifiers at random word gaps, leading clauses, generic
 type-cued questions; no 4-gram shared with any QA dev or test frame).
+
+### Option lines and the transfer to four-choice QA
+
+The R3 checkpoint retrieves well but scores 24.0% on QA dev. Scoring the same dev items with the option lines removed from the
+prompt (still choosing among the four options by likelihood) gives 38.8% (extract 65%, relation 54%): the `A.`–`D.` lines between
+the question and "The answer is" break the retrieval pattern. R5 trains retrieval with those lines present (audited on the
+regenerated training data: 94,656 questions, 100% with four option lines, correct option A/B/C/D = 23,559 / 23,749 / 23,916 /
+23,432, loss on the answer text in 59,999/60,000 sequences).
+
+Option-mode suite (QA-dev names; seen / unseen wording; n = 200 per cell). Three separate measurements: free generation of the
+answer text (exact match), option likelihood (argmax of the **summed** log-probability of each option's tokens; per-token-mean
+scoring agrees within ~7 points, and on items with a unique shortest option the summed score picks it 18–45% of the time, so
+length bias is small), and A–D letter selection (argmax of the four letter logits):
+
+| Level | Free generation R4b → R5 | Option likelihood R4b → R5 | Letter, R5 |
+|---|---|---|---|
+| 1 | 45.0/35.5 → **93.5/77.5** | 66.5/65.0 → **99.0/93.5** | 30.0/26.0 |
+| 2 | 21.0/15.0 → **84.0/58.0** | 32.5/36.5 → **92.5/78.5** | 22.5/19.5 |
+| 3 | 14.0/9.5 → **77.5/50.0** | 25.0/27.0 → **88.5/73.0** | 26.5/27.0 |
+| 4 | 11.0/5.5 → **54.5/31.0** | 30.0/31.5 → **80.0/62.0** | 28.0/27.0 |
+
+**Four-choice QA dev (500 items, the Stage 2 benchmark; locked test untouched), R5:**
+
+| Scoring | Real prompt | No question | No passage | Another item's question | Counterfactual question | Options reversed |
+|---|---|---|---|---|---|---|
+| Text (option likelihood) | **42.8% (214/500) [38.5, 47.2]** | 21.2% | 24.4% | 23.4% | 39.0% | 43.2% |
+| Letter (A–D) | 25.6% [22.0, 29.6] | 25.4% | 24.0% | 24.4% | 24.4% | 26.6% |
+
+By category (text): extract 73%, relation 64%, reverse 28%, compare 26%, temporal 23%. This is the first fine-tuned model above the
+dev chance band (28.8%), and the controls show it uses the question and the passage. The gains are exactly in the categories the
+retrieval curriculum trains; reverse lookup ("Who lives in X?") was not in the curriculum, and comparison and temporal order are
+different skills. Letter selection has never been trained and stays at chance. R6 adds reverse-lookup questions to the curriculum.
 
 ## Locked test set
 
