@@ -105,7 +105,9 @@
           ((eq value :null) (write-string "null" stream))
           ((stringp value) (write-string (json-string value) stream))
           ((integerp value) (format stream "~d" value))
-          ((floatp value) (let ((*read-default-float-format* 'double-float)) (format stream "~a" value)))
+          ;; With a DOUBLE default, printing a SINGLE directly emits CL's F exponent.
+          ;; Promote exactly before printing so every exponent uses JSON's E syntax.
+          ((floatp value) (let ((*read-default-float-format* 'double-float)) (format stream "~a" (coerce value 'double-float))))
           ((and (consp value) (eq (car value) :obj))
            (let ((pairs (sort (copy-list (cdr value)) #'string< :key #'car)))
              (if (null pairs) (write-string "{}" stream)
