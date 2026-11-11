@@ -244,8 +244,8 @@ question asks about another fact of the same passage (levels >= 2) and must chan
                       (opts (and options (options-for (cdr main) cands padder rng))))
                  (when (and (every (lambda (x) (answer-occurs-once-p passage x)) qa)
                             (or (not options) (and opts (or (null cf) (member (cdr cf) opts :test #'string=))))
-                            (funcall fits (retrieval-prompt passage (car main) :options opts) (cdr main))
-                            (or (null cf) (funcall fits (retrieval-prompt passage (car cf) :options opts) (cdr cf))))
+                            (every (lambda (o) (funcall fits (retrieval-prompt passage (car main) :options opts) o)) (or opts (list (cdr main))))
+                            (or (null cf) (every (lambda (o) (funcall fits (retrieval-prompt passage (car cf) :options opts) o)) (or opts (list (cdr cf))))))
                    (push (list :id (format nil "L~d-~(~a-~a~)-~d" level entities wording (length out)) :level level :kind (string-downcase (symbol-name kind))
                                :passage passage :question (car main) :answer (cdr main) :options opts
                                :cf-question (and cf (car cf)) :cf-answer (and cf (cdr cf)))

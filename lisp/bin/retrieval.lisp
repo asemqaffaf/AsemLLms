@@ -54,7 +54,17 @@
                         (destructuring-bind (lo hi) (asem-sft32:wilson (getf s :correct) (getf s :n))
                           (jobj "correct" (getf s :correct) "n" (getf s :n) "accuracy" (float (getf s :accuracy) 1d0) "ci95_low" lo "ci95_high" hi
                                 "predicted_letter_counts" (format nil "~a" (getf s :pred-dist)))))))
-      (list "option_likelihood" (acc txt) "letter_A_to_D" (acc let)))))
+      (let* ((v (coerce (reverse txt) 'vector)) (preds (asem-sft32:qa-predict model v '(316 367 338 443) :workers (num "workers" "8")))
+             (mean-hits 0) (short-picks 0) (short-n 0))
+        (loop for e across v for (nil nil scores) in preds
+              do (let* ((lens (mapcar #'length (asem-sft32::ex-opts e))) (means (mapcar (lambda (s l) (/ s (max 1 l))) scores lens))
+                        (pm (position (reduce #'max means) means)) (ps (position (reduce #'max scores) scores)) (mn (reduce #'min lens)))
+                   (when (= pm (asem-sft32:ex-answer e)) (incf mean-hits))
+                   (when (= 1 (count mn lens)) (incf short-n) (when (= ps (position mn lens)) (incf short-picks)))))
+        (list "option_likelihood" (acc txt) "option_likelihood_scoring" "argmax of summed token log-probability of ' <option>' after the prompt"
+              "option_likelihood_mean_per_token" (jobj "correct" mean-hits "n" (length v) "accuracy" (/ mean-hits (max 1 (length v)) 1d0))
+              "summed_score_picks_unique_shortest_option" (jobj "items" short-n "fraction" (/ short-picks (max 1 short-n) 1d0))
+              "letter_A_to_D" (acc let))))))
 
 (defun accuracy (model exs)
   (let ((preds (asem-sft32:qa-predict model exs '(316 367 338 443) :workers (num "workers" "8"))))
