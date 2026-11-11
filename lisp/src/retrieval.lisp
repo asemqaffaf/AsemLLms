@@ -16,7 +16,7 @@
 ;;;; are never used.
 (defpackage :asem-retrieval
   (:use :cl)
-  (:export #:*augment* #:*broad-train* #:*vocab-words* #:vocab-words-of #:make-fact-set #:probe-items #:train-sequences #:retrieval-prompt #:+levels+))
+  (:export #:*reverse* #:*augment* #:*broad-train* #:*vocab-words* #:vocab-words-of #:make-fact-set #:probe-items #:train-sequences #:retrieval-prompt #:+levels+))
 (in-package :asem-retrieval)
 
 (defparameter +levels+ '(1 2 3 4))
@@ -114,6 +114,7 @@
 ;;; questions are replaced by generic type-cued templates, so the start of the answer span is not tied to a few frames. None of these
 ;;; strings is a QA dev or test frame (bin/retrieval.lisp audit checks 4-gram overlap).
 (defvar *augment* nil)
+(defvar *reverse* nil "When true, about half of the attribute questions are reverse lookups (value -> person, QA dev/train :q-reverse frames).")
 (defparameter *modifiers* '("now" "still" "also" "today" "really" "already" "usually" "these days" "for now" "at the moment"
                              "as it happens" "by all accounts" "it seems" "we hear" "once again" "as usual"))
 (defparameter *leads* '("According to the note, " "As far as anyone knows, " "Everyone agrees that " "Rumor says that " "For the record, "))
@@ -152,7 +153,7 @@
   (if (not *augment*) (values sents qa ret ty)
       (values (mapcar (lambda (s) (augment-sentence s protect rng)) sents)
               (loop for x in qa for i from 0
-                    collect (cons (augment-question (car x) (and people (nth i people)) type-key protect rng) (cdr x)))
+                    collect (cons (augment-question (car x) (and people (not (member (cdr x) people :test #'string=)) (nth i people)) type-key protect rng) (cdr x)))
               ret ty)))
 
 (defun attr-facts (level entities wording rng)
@@ -160,10 +161,13 @@
          (n (ecase level (1 1) (2 2) ((3 4) 4)))
          (people (qg sample-n (pool entities '*names*) n rng))
          (vals (qg sample-n (pool entities (intern (symbol-name (getf spec :pool)) :asem-retrieval)) n rng))
-         (frames (frames-of spec :frames wording)) (qframes (frames-of spec :q-extract wording))
+         (frames (frames-of spec :frames wording)) (qframes (frames-of spec :q-extract wording)) (rframes (frames-of spec :q-reverse wording))
          (sents (loop for p in people for v in vals collect (qg fill-frame (qg pick frames rng) :p p :v v)))
-         (qa (loop for p in people for v in vals collect (cons (qg fill-frame (qg pick qframes rng) :p p) v))))
-    (augmented sents qa people (car ty) (append people vals) rng people ty)))
+         (qa (loop for p in people for v in vals
+                   collect (if (and *reverse* (zerop (random 2 rng)))
+                               (cons (qg fill-frame (qg pick rframes rng) :v v) p)
+                               (cons (qg fill-frame (qg pick qframes rng) :p p) v)))))
+    (multiple-value-bind (s qq p ty2) (augmented sents qa people (car ty) (append people vals) rng people ty) (values s qq p ty2 vals))))
 
 (defun num-facts (level entities wording rng)
   (let* ((ty (qg pick (symbol-value (q '*num-types*)) rng)) (spec (cdr ty))
@@ -173,7 +177,8 @@
          (frames (frames-of spec :frames wording)) (qframes (frames-of spec :q-extract wording))
          (sents (loop for p in people for v in vals collect (qg fill-frame (qg pick frames rng) :p p :n v :v v)))
          (qa (loop for p in people for v in vals collect (cons (qg fill-frame (qg pick qframes rng) :p p) (princ-to-string v)))))
-    (augmented sents qa people (car ty) (append people (mapcar (function princ-to-string) vals)) rng people ty)))
+    (multiple-value-bind (s qq p ty2) (augmented sents qa people (car ty) (append people (mapcar (function princ-to-string) vals)) rng people ty)
+      (values s qq p ty2 (mapcar (function princ-to-string) vals)))))
 
 (defun rel-facts (level entities wording rng)
   "Level 1: one pair; 2: two pairs; 3-4: a chain of three links (four people). Questions by subject or by object, each with a unique answer."
@@ -202,14 +207,16 @@
   "(values passage qa-pairs kind candidates padder): CANDIDATES are the passage's values of the asked type (the natural options),
 PADDER returns one more value of that type (for padding the options to four)."
   (let ((kind (qg pick '(:attr :attr :num :rel) rng)))
-    (multiple-value-bind (sents qa people ty)
+    (multiple-value-bind (sents qa people ty vals)
         (ecase kind (:attr (attr-facts level entities wording rng)) (:num (num-facts level entities wording rng)) (:rel (rel-facts level entities wording rng)))
-      (let ((all (append sents (when (= level 4) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng))))))
-            (cands (if (eq kind :rel) (copy-list people) (remove-duplicates (mapcar #'cdr qa) :test #'string=)))
+      (let* ((all (append sents (when (= level 4) (distractors people entities wording (and (eq kind :attr) ty) rng (+ 2 (random 3 rng))))))
+            (values-of (or vals (remove-duplicates (mapcar #'cdr qa) :test #'string=)))
+            (cands (lambda (ans) (if (or (eq kind :rel) (member ans people :test #'string=)) people values-of)))
+            (names (pool entities '*names*))
             (padder (ecase kind
-                      (:attr (let ((p (pool entities (getf (cdr ty) :pool)))) (lambda () (qg pick p rng))))
-                      (:num (destructuring-bind (lo hi) (getf (cdr ty) :range) (lambda () (princ-to-string (+ lo (random (1+ (- hi lo)) rng))))))
-                      (:rel (let ((p (pool entities '*names*))) (lambda () (qg pick p rng)))))))
+                      (:attr (let ((p (pool entities (getf (cdr ty) :pool)))) (lambda (ans) (if (member ans people :test #'string=) (lambda () (qg pick names rng)) (lambda () (qg pick p rng))))))
+                      (:num (destructuring-bind (lo hi) (getf (cdr ty) :range) (lambda (ans) (declare (ignore ans)) (lambda () (princ-to-string (+ lo (random (1+ (- hi lo)) rng)))))))
+                      (:rel (lambda (ans) (declare (ignore ans)) (lambda () (qg pick names rng)))))))
         (values (format nil "~{~a~^ ~}" (qg shuffle all rng)) qa kind cands padder)))))
 
 (defun options-for (answer cands padder rng)
@@ -241,7 +248,7 @@ question asks about another fact of the same passage (levels >= 2) and must chan
                (let* ((i (random (length qa) rng)) (main (nth i qa))
                       (others (remove-if (lambda (x) (string= (cdr x) (cdr main))) (remove main qa)))
                       (cf (and others (qg pick others rng)))
-                      (opts (and options (options-for (cdr main) cands padder rng))))
+                      (opts (and options (options-for (cdr main) (funcall cands (cdr main)) (funcall padder (cdr main)) rng))))
                  (when (and (every (lambda (x) (answer-occurs-once-p passage x)) qa)
                             (or (not options) (and opts (or (null cf) (member (cdr cf) opts :test #'string=))))
                             (every (lambda (o) (funcall fits (retrieval-prompt passage (car main) :options opts) o)) (or opts (list (cdr main))))
@@ -266,7 +273,7 @@ next token is an answer token, TARGETS those tokens: loss only on answers."
                  (flet ((add (text) (setf ids (append ids (asem-bpe:bpe-encode bpe text)))))
                    (add (format nil "Text: ~a~%" passage))
                    (dolist (x (qg shuffle qa rng))
-                     (let* ((opts (and options (options-for (cdr x) cands padder rng)))
+                     (let* ((opts (and options (options-for (cdr x) (funcall cands (cdr x)) (funcall padder (cdr x)) rng)))
                             (qtoks (asem-bpe:bpe-encode bpe (format nil "Q: ~a~%~@[~a~]The answer is" (car x) (and opts (options-block opts)))))
                             (atoks (asem-bpe:bpe-encode bpe (format nil " ~a" (cdr x))))
                             (tail (asem-bpe:bpe-encode bpe (format nil ".~%"))))

@@ -68,4 +68,16 @@
     (let ((asem-retrieval:*augment* nil))
       (check (equal (asem-retrieval:probe-items 2 :new :seen 20 5) (asem-retrieval:probe-items 2 :new :seen 20 5))))))
 
+(deftest reverse-lookups-ask-for-the-person
+  (let ((asem-retrieval:*reverse* t) (persons 0) (n 0))
+    (dolist (it (asem-retrieval:probe-items 3 :dev-real :seen 200 21 :options t))
+      (incf n)
+      (check (member (getf it :answer) (getf it :options) :test #'string=) "answer among the options")
+      (when (find (getf it :answer) (asem-qagen:split-pool asem-qagen:*names* :dev) :test #'string=)
+        (incf persons)
+        (when (equal (getf it :kind) "attr")
+          (check (every (lambda (o) (find o (asem-qagen:split-pool asem-qagen:*names* :dev) :test #'string=)) (getf it :options))
+                 "a reverse lookup offers people as options"))))
+    (check (< (* 0.2 n) persons) (format nil "person answers ~d of ~d" persons n))))
+
 (run-all)
