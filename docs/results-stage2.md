@@ -135,6 +135,74 @@ process. A test caught it (two converted models shared their gate); the converte
 and a regression test checks that converted models own their vectors across a full GC. Runs E8 and E9 used the broken converter and are
 excluded.
 
+## Stage 2b: question-to-passage retrieval (entity-retrieval curriculum)
+
+Goal of this phase: show that the 10.52M model retrieves the fact the *question* asks for, on entities it has never seen, before
+any further four-choice QA fine-tuning. Code: `lisp/src/retrieval.lisp`, `lisp/bin/retrieval.lisp`, tests in
+`lisp/tests/test-retrieval.lisp`.
+
+**Task.** `Text: <passage>\nQ: <question>\nThe answer is` → the value, scored by **greedy exact match** (no options, so no
+guessing floor). Level 1: one fact; 2: two facts about different people; 3: four facts; 4: four facts plus 2–4 distracting
+sentences about the same people. Facts are attributes, numbers or directed relations (asked by subject or object).
+
+**Held-out probes.** Entities never used in training: QA-dev-pool names and values (`dev-real`), or names/towns generated here
+from a separate inventory (`new`). Wording: training frames (`seen`) or the QA dev frames (`unseen`). The QA test pools and test
+wording are never used. Controls: question removed, passage removed, counterfactual question (another fact of the same passage;
+the answer must move to that fact's value). Probe seeds differ from the selection probe used for stopping.
+
+### Copying across the whole vocabulary (prerequisite check)
+
+C2's copying generalizes to fresh random sequences of every length tried (second-copy loss 0.008–0.09 for lengths 10–60), but
+only for token ids it was trained on: ids 1–256 (bytes) 19.5 nats, 257–299 17.6, 7300–8191 3.96. 27.7% of the tokens in QA
+dev answer options have ids below 300. C3 continued C2's copy stage over ids 1–8191 for 400 steps: bytes 0.30, 257–299 0.59,
+7300–8191 0.075, mixed short sequences 0.03.
+
+### Curriculum runs (all from C3, lr 5e-4, batch 32, dense supervision: every fact of a passage asked, loss only on answer tokens)
+
+| Run | Training | Steps | Selection probe (new names, training wording) |
+|---|---|---|---|
+| R1 | level 1, answers from the small training pools | 500 | 11.3% → **58.7% (step 100)** → 41.3%: collapses |
+| R2 | level 1, high-entropy answers (22k names, 760 towns, 3.5k vocabulary words) + 15k copy examples | 900 | 11.3% → **90.7%**: gate passed |
+| R3 | levels 1–2 (same data recipe), from R2 | 2,000 | level-2 probe 39.0% → **84.0%** |
+<!-- R4ROWS -->
+
+R1 failure analysis (level 1, new names): numbers 28/29 correct, but attribute values were garbled ("saow atathy" for *cow*)
+and relations mixed names ("Vytan" for Vylox/Gytan). The training answers came from 12–25-word pools, so the model learned an
+answer prior instead of copying; giving the training answers high entropy (R2) fixed the collapse.
+
+### Independent probe suite (n = 200 per cell, fresh seeds; exact match)
+
+| Checkpoint | L1 seen / unseen | L2 seen / unseen | L3 seen / unseen | L4 seen / unseen |
+|---|---|---|---|---|
+| C2 (copying, no retrieval training) | 4.5 / 2.0 | 6.0 / 0.5 | 4.5 / 4.0 | 1.5 / 0.5 |
+| R2 (trained on L1) | **90.0** / 56.5 | 46.0 / 31.5 | 18.5 / 12.5 | 8.0 / 1.0 |
+| R3 (trained on L1–2) | **98.5** / 73.5 | **84.0** / 64.5 | 68.5 / 48.0 | 34.0 / 27.5 |
+<!-- R4SUITE -->
+
+(QA-dev-pool names; the `new`-name cells are within a few points, see `docs/results/stage2/retrieval/eval-*.json`.)
+
+**Controls, R3, QA-dev names, unseen wording:**
+
+| Level | Real question | Question removed | Passage removed | Counterfactual question → its own answer |
+|---|---|---|---|---|
+| 1 | 73.5% | 25.0% | 0.0% | n/a |
+| 2 | 64.5% | 18.0% | 0.0% | 65.0% |
+| 3 | 48.0% | 12.0% | 0.0% | 50.0% |
+| 4 | 27.5% | 4.0% | 0.0% | 23.0% |
+
+Removing the question cuts accuracy to roughly what picking one of the passage's values at random would give (1/2, 1/4), removing
+the passage gives 0%, and a different question about the same passage retrieves the other fact as often as the original question
+retrieves its own: the model now **selects the fact by the question**.
+<!-- R4CONTROLS -->
+
+![Held-out probe during training](results/stage2/retrieval/selection-probe.svg)
+![Probe suite by level](results/stage2/retrieval/suite-by-level.svg)
+
+**Unseen wording** is the remaining gap (R3: 98.5 → 73.5 at level 1). The failures copy the words that follow a phrase shared by
+question and passage ("aged 89", "visit to Neil", "in height") instead of the value: the model learned where to start copying for
+each training frame. R4b tests training-only wording augmentation (modifiers at random word gaps, leading clauses, generic
+type-cued questions; no 4-gram shared with any QA dev or test frame).
+
 ## Locked test set
 
 Not evaluated. `bin/qa-eval.lisp` refuses `lisp/eval/qa/test.jsonl` unless `locked-test=1` is passed and the file's SHA-256 matches
