@@ -167,7 +167,8 @@ dev answer options have ids below 300. C3 continued C2's copy stage over ids 1�
 | R4a | levels 1–3, from R3 | 2,000 | level-3 probe 56.0% → 77.3% |
 | R4b | levels 1–3 + training-only wording augmentation, from R3 | 2,000 | level-3 probe 56.0% → 77.3% |
 | R5 | R4b recipe + **QA-style option lines** in every training question (answer still text), from R4b | 2,000 | level-3 option-mode probe 17.3% → 79.3% |
-<!-- R6ROWS -->
+| R6 | R5 recipe + **reverse lookups** (value → person), from R5 | 2,000 | option-mode probe incl. reverse 62.0% → 52.0% (step 400) → 62.3% |
+<!-- R7ROWS -->
 
 R1 failure analysis (level 1, new names): numbers 28/29 correct, but attribute values were garbled ("saow atathy" for *cow*)
 and relations mixed names ("Vytan" for Vylox/Gytan). The training answers came from 12–25-word pools, so the model learned an
@@ -242,6 +243,21 @@ By category (text): extract 73%, relation 64%, reverse 28%, compare 26%, tempora
 dev chance band (28.8%), and the controls show it uses the question and the passage. The gains are exactly in the categories the
 retrieval curriculum trains; reverse lookup ("Who lives in X?") was not in the curriculum, and comparison and temporal order are
 different skills. Letter selection has never been trained and stays at chance. R6 adds reverse-lookup questions to the curriculum.
+
+**R6 (reverse lookups).** Mid-run (step 800) R6 had *lost* ground: level-1 attribute questions fell from 63/67 to 47/67 while
+reverse lookups rose from 44/75 to 56/75 (new names, exact match), and QA dev was 40.6%. The model had to learn to use the question
+word ("Who …?" vs "What/Which …?") to decide between the person and the value. By the end (step 2,000, decayed learning rate) the
+interference was gone: reverse 62/75, attributes 61/67, relations 61/75. Reverse failures that remain are mostly copy-fidelity
+errors on unfamiliar names ("Hutman" for *Hutax*), not binding errors.
+
+| QA dev, text scoring | R5 | R6 |
+|---|---|---|
+| Overall | 42.8% [38.5, 47.2] | **44.0% (220/500) [39.7, 48.4]** |
+| extract / relation / reverse | 73 / 64 / 28 | 75 / 65 / 35 |
+| compare / temporal | 26 / 23 | 27 / 18 |
+| no question / no passage / counterfactual | 21.2 / 24.4 / 39.0 | 18.8 / 22.6 / 46.2 |
+
+R7 adds comparison and temporal-order questions (`reasoning=1`), the two QA categories still at chance.
 
 ## Locked test set
 
