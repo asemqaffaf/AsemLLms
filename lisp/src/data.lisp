@@ -117,9 +117,12 @@
       (loop for k in keys for band from 0 do (setf (gethash k (svref (deduper-bands d) band)) t))
       nil)))
 
-(defun split-of (text val-permille)
+(defun split-of (text val-permille &optional (test-permille 0))
+  "Document-level split by content hash: buckets [0, val) are :val, [val, val+test) are :test, the rest :train."
   (let* ((hex (hash-key (normalize text))) (bucket (mod (parse-integer hex :end 8 :radix 16) 1000)))
-    (if (< bucket val-permille) :val :train)))
+    (cond ((< bucket val-permille) :val)
+          ((< bucket (+ val-permille test-permille)) :test)
+          (t :train))))
 
 ;;; ------------------------------------------------------------------ IO
 (defun read-jsonl (path fn)
@@ -159,9 +162,14 @@
 
 ;;; ------------------------------------------------------------------ build
 (defun config-json (c)
-  (cons :obj (loop for (k v) on c by #'cddr
-                   collect (cons (substitute #\_ #\- (string-downcase (symbol-name k)))
-                                 (cond ((eq v t) :true) ((null v) :false) (t v))))))
+  "The effective settings, each key once. C is overrides followed by defaults, so the first occurrence of a key wins;
+listing the shadowed defaults too would make the manifest ambiguous (a reader that takes the last duplicate sees the wrong value)."
+  (let ((seen nil))
+    (cons :obj (loop for (k v) on c by #'cddr
+                     unless (member k seen)
+                       collect (progn (push k seen)
+                                      (cons (substitute #\_ #\- (string-downcase (symbol-name k)))
+                                            (cond ((eq v t) :true) ((null v) :false) (t v))))))))
 
 (defun utf8-bytes (s) (length (sb-ext:string-to-octets s :external-format :utf-8)))
 
@@ -170,14 +178,18 @@
 Returns the manifest (an :obj)."
   (let* ((c (append overrides (default-config))) (t0 (get-internal-real-time))
          (dedup (make-deduper :near (cfg c :near-dedup))) (stats (make-hash-table))
-         (pending-train nil) (pending-val nil) (bpe nil) (writers nil)
-         (bytes (list :train 0 :val 0)) (docs (list :train 0 :val 0)) (seen 0))
+         (pending-train nil) (pending-val nil) (pending-test nil) (bpe nil) (writers nil)
+         (test-pm (or (cfg c :test-permille) 0))          ; absent from the config unless asked for: old manifests are unchanged
+         (split-names (if (plusp test-pm) '(:train :val :test) '(:train :val)))
+         (bytes (list :train 0 :val 0 :test 0)) (docs (list :train 0 :val 0 :test 0)) (seen 0))
     (ensure-directories-exist (concatenate 'string out-dir "/"))
     (labels ((count! (k) (incf (gethash k stats 0)))
              (start! ()
                (unless bpe (setf bpe (train-bpe (reverse pending-train) (cfg c :vocab-size))))
-               (setf writers (list :train (make-shard-writer out-dir :train (cfg c :shard-tokens))
-                                   :val (make-shard-writer out-dir :val (cfg c :shard-tokens)))))
+               (setf writers (loop for sp in split-names append (list sp (make-shard-writer out-dir sp (cfg c :shard-tokens))))))
+             (flush! ()
+               (start!) (emit :train (reverse pending-train)) (emit :val (reverse pending-val)) (emit :test (reverse pending-test))
+               (setf pending-train nil pending-val nil pending-test nil))
              (emit (split texts)
                (dolist (tx texts)
                  (shard-add (getf writers split) (append (bpe-encode bpe tx) (list (bpe-eos bpe))))
@@ -190,22 +202,23 @@ Returns the manifest (an :obj)."
                (let ((dup (duplicate-p dedup (getf doc :text))))
                  (when dup (count! (intern (format nil "DROPPED-~a-DUPLICATE" dup) :keyword)) (return-from on-doc)))
                (count! :kept)
-               (let ((split (split-of (getf doc :text) (cfg c :val-permille))) (text (getf doc :text)))
+               (let ((split (split-of (getf doc :text) (cfg c :val-permille) test-pm)) (text (getf doc :text)))
                  (cond ((null writers)
-                        (if (eq split :train) (push text pending-train) (push text pending-val))
+                        (ecase split (:train (push text pending-train)) (:val (push text pending-val)) (:test (push text pending-test)))
                         (when (>= (length pending-train) (cfg c :tokenizer-docs))
-                          (start!) (emit :train (reverse pending-train)) (emit :val (reverse pending-val))
-                          (setf pending-train nil pending-val nil)))
+                          (flush!)))
                        (t (emit split (list text)))))))
       (funcall read-docs #'on-doc)
       (unless writers
         (unless pending-train (error "no training documents survived filtering; relax the filters or read more documents"))
-        (start!) (emit :train (reverse pending-train)) (emit :val (reverse pending-val)))
-      (shard-close (getf writers :train)) (shard-close (getf writers :val))
-      (when (zerop (shard-writer-total (getf writers :val))) (error "validation split is empty; read more documents or raise val-permille")))
+        (flush!))
+      (dolist (sp split-names) (shard-close (getf writers sp)))
+      (when (zerop (shard-writer-total (getf writers :val))) (error "validation split is empty; read more documents or raise val-permille"))
+      (when (and (plusp test-pm) (zerop (shard-writer-total (getf writers :test))))
+        (error "test split is empty; read more documents or raise test-permille")))
     (let* ((tok-path (concatenate 'string out-dir "/tokenizer.bpe"))
            (tok-sha (progn (save-bpe bpe tok-path) (sha256-file-hex tok-path)))
-           (splits (loop for s in '(:train :val)
+           (splits (loop for s in split-names
                          collect (let ((w (getf writers s)))
                                    (cons (string-downcase (symbol-name s))
                                          (list :obj (cons "documents" (getf docs s)) (cons "tokens" (shard-writer-total w))
@@ -231,11 +244,13 @@ Returns the manifest (an :obj)."
   (flet ((shas (split) (map 'list (lambda (s) (json-get s "sha256"))
                             (json-get (json-get (json-get m "splits") split) "shards"))))
     (subseq (sha256-hex (with-output-to-string (o)
-                          (write-json (list :obj (cons "config" (json-get m "config"))
-                                            (cons "tokenizer" (json-get (json-get m "tokenizer") "sha256"))
-                                            (cons "train" (coerce (shas "train") 'simple-vector))
-                                            (cons "val" (coerce (shas "val") 'simple-vector))
-                                            (cons "format" (json-get m "format")))
+                          (write-json (list* :obj (cons "config" (json-get m "config"))
+                                             (cons "tokenizer" (json-get (json-get m "tokenizer") "sha256"))
+                                             (cons "train" (coerce (shas "train") 'simple-vector))
+                                             (cons "val" (coerce (shas "val") 'simple-vector))
+                                             (cons "format" (json-get m "format"))
+                                             (when (json-get (json-get m "splits") "test")      ; only when there is a test split
+                                               (list (cons "test" (coerce (shas "test") 'simple-vector)))))
                                       o)))
             0 16)))
 
@@ -248,7 +263,7 @@ Returns the manifest (an :obj)."
     (unless (string= (sha256-file-hex (concatenate 'string dir "/" (json-get (json-get m "tokenizer") "file")))
                      (json-get (json-get m "tokenizer") "sha256"))
       (error "tokenizer does not match manifest"))
-    (dolist (split '("train" "val"))
+    (dolist (split (remove-if-not (lambda (sp) (json-get (json-get m "splits") sp)) '("train" "val" "test")))
       (loop for sh across (json-get (json-get (json-get m "splits") split) "shards")
             do (unless (string= (sha256-file-hex (concatenate 'string dir "/" (json-get sh "file"))) (json-get sh "sha256"))
                  (error "~a does not match manifest" (json-get sh "file")))))

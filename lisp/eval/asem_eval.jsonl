@@ -1,0 +1,90 @@
+{"id": "fact-01", "category": "fact", "q": "What is the capital of France?", "options": ["Paris", "Madrid", "Berlin", "Rome"], "answer": 0}
+{"id": "fact-02", "category": "fact", "q": "How many days are there in a week?", "options": ["Six", "Five", "Seven", "Eight"], "answer": 2}
+{"id": "fact-03", "category": "fact", "q": "At what temperature in degrees Celsius does water freeze at sea level?", "options": ["0", "10", "32", "100"], "answer": 0}
+{"id": "fact-04", "category": "fact", "q": "Which is the largest ocean on Earth?", "options": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 3}
+{"id": "fact-05", "category": "fact", "q": "Which gas do humans need to breathe in order to live?", "options": ["Nitrogen", "Hydrogen", "Oxygen", "Helium"], "answer": 2}
+{"id": "fact-06", "category": "fact", "q": "On which planet do we live?", "options": ["Earth", "Venus", "Mars", "Jupiter"], "answer": 0}
+{"id": "fact-07", "category": "fact", "q": "In which direction does the Sun rise?", "options": ["North", "East", "South", "West"], "answer": 1}
+{"id": "fact-08", "category": "fact", "q": "Which animal gives us milk and says moo?", "options": ["Cow", "Cat", "Hen", "Dog"], "answer": 0}
+{"id": "fact-09", "category": "fact", "q": "What color is the sky on a clear day?", "options": ["Blue", "Brown", "Red", "Green"], "answer": 0}
+{"id": "fact-10", "category": "fact", "q": "How many continents are there?", "options": ["Six", "Seven", "Nine", "Five"], "answer": 1}
+{"id": "fact-11", "category": "fact", "q": "Which of these animals is a mammal?", "options": ["Lizard", "Shark", "Salmon", "Whale"], "answer": 3}
+{"id": "fact-12", "category": "fact", "q": "Which is the largest planet in our solar system?", "options": ["Earth", "Mercury", "Jupiter", "Mars"], "answer": 2}
+{"id": "fact-13", "category": "fact", "q": "Who wrote the play Romeo and Juliet?", "options": ["Jane Austen", "Mark Twain", "Charles Dickens", "William Shakespeare"], "answer": 3}
+{"id": "fact-14", "category": "fact", "q": "What do bees make?", "options": ["Honey", "Milk", "Silk", "Butter"], "answer": 0}
+{"id": "fact-15", "category": "fact", "q": "At what temperature in degrees Celsius does water boil at sea level?", "options": ["50", "90", "150", "100"], "answer": 3}
+{"id": "fact-16", "category": "fact", "q": "Which organ pumps blood around the body?", "options": ["Lung", "Heart", "Liver", "Kidney"], "answer": 1}
+{"id": "fact-17", "category": "fact", "q": "How many days are there in a leap year?", "options": ["364", "367", "366", "365"], "answer": 2}
+{"id": "fact-18", "category": "fact", "q": "What is the capital of Japan?", "options": ["Bangkok", "Tokyo", "Seoul", "Beijing"], "answer": 1}
+{"id": "fact-19", "category": "fact", "q": "Which of these is a fruit?", "options": ["Apple", "Onion", "Potato", "Carrot"], "answer": 0}
+{"id": "fact-20", "category": "fact", "q": "What is the chemical name of H2O?", "options": ["Sugar", "Salt", "Water", "Air"], "answer": 2}
+{"id": "fact-21", "category": "fact", "q": "What is the name of Earth's natural satellite?", "options": ["The Moon", "Mars", "Venus", "The Sun"], "answer": 0}
+{"id": "fact-22", "category": "fact", "q": "How many legs does a spider have?", "options": ["Ten", "Eight", "Six", "Four"], "answer": 1}
+{"id": "fact-23", "category": "fact", "q": "Which is the largest land animal?", "options": ["Horse", "Lion", "Bear", "Elephant"], "answer": 3}
+{"id": "fact-24", "category": "fact", "q": "Which season comes after winter?", "options": ["Winter", "Autumn", "Spring", "Summer"], "answer": 2}
+{"id": "fact-25", "category": "fact", "q": "Which metal is liquid at room temperature?", "options": ["Mercury", "Gold", "Copper", "Iron"], "answer": 0}
+{"id": "fact-26", "category": "fact", "q": "Who was the first president of the United States?", "options": ["Thomas Jefferson", "George Washington", "Abraham Lincoln", "John Adams"], "answer": 1}
+{"id": "fact-27", "category": "fact", "q": "Which language is mainly spoken in Brazil?", "options": ["French", "Portuguese", "Spanish", "English"], "answer": 1}
+{"id": "fact-28", "category": "fact", "q": "Which sense do we use our ears for?", "options": ["Smell", "Hearing", "Taste", "Sight"], "answer": 1}
+{"id": "fact-29", "category": "fact", "q": "Plants make their food using energy from which source?", "options": ["The ocean", "The wind", "The Moon", "The Sun"], "answer": 3}
+{"id": "fact-30", "category": "fact", "q": "What is the smallest prime number?", "options": ["1", "3", "2", "0"], "answer": 2}
+{"id": "read-01", "category": "reading", "context": "Tom has a red ball and a blue kite. He flies the kite in the park.", "q": "What does Tom fly in the park?", "options": ["A bird", "A ball", "A plane", "A kite"], "answer": 3}
+{"id": "read-02", "category": "reading", "context": "Anna woke up late. She missed the bus and walked to school.", "q": "How did Anna get to school?", "options": ["By car", "On foot", "By bike", "By bus"], "answer": 1}
+{"id": "read-03", "category": "reading", "context": "The cat sat on the warm roof all afternoon and watched the birds.", "q": "Where did the cat sit?", "options": ["On a chair", "In the garden", "On the roof", "In a tree"], "answer": 2}
+{"id": "read-04", "category": "reading", "context": "Mia bought three apples and two pears at the market.", "q": "How many pears did Mia buy?", "options": ["Two", "Three", "One", "Five"], "answer": 0}
+{"id": "read-05", "category": "reading", "context": "It rained all morning, so the children stayed inside and played a board game.", "q": "Why did the children stay inside?", "options": ["They were sick", "It was cold and snowy", "It rained", "It was night"], "answer": 2}
+{"id": "read-06", "category": "reading", "context": "Sam's birthday is in June. His sister's birthday is in December.", "q": "Whose birthday is in June?", "options": ["Sam's", "His sister's", "His father's", "His mother's"], "answer": 0}
+{"id": "read-07", "category": "reading", "context": "A farmer has twelve hens. Each morning the hens lay eggs, and the farmer sells them in town.", "q": "What does the farmer sell?", "options": ["Eggs", "Wool", "Corn", "Milk"], "answer": 0}
+{"id": "read-08", "category": "reading", "context": "Leo put on his coat and hat because the wind was cold, then he went outside.", "q": "Why did Leo put on his coat?", "options": ["He was tired", "He was hungry", "The wind was cold", "It was his birthday"], "answer": 2}
+{"id": "read-09", "category": "reading", "context": "The library opens at nine in the morning and closes at five in the evening.", "q": "When does the library close?", "options": ["At five", "At midnight", "At noon", "At nine"], "answer": 0}
+{"id": "read-10", "category": "reading", "context": "Nora planted a seed in a pot. She watered it every day, and after two weeks a small green plant appeared.", "q": "What grew in the pot?", "options": ["A stone", "A small green plant", "A tall tree", "A fish"], "answer": 1}
+{"id": "read-11", "category": "reading", "context": "Dan is taller than Ben. Ben is taller than Carl.", "q": "Who is the shortest?", "options": ["Carl", "They are equal", "Dan", "Ben"], "answer": 0}
+{"id": "read-12", "category": "reading", "context": "The train to the city leaves at seven. Paul arrived at the station at six and waited for an hour.", "q": "What did Paul do at the station?", "options": ["He sold tickets", "He bought a car", "He slept all night", "He waited"], "answer": 3}
+{"id": "read-13", "category": "reading", "context": "Lena has a dog named Max. Max loves to chase sticks and swim in the lake.", "q": "What name does Lena's dog have?", "options": ["Sam", "Rex", "Leo", "Max"], "answer": 3}
+{"id": "read-14", "category": "reading", "context": "In winter the lake froze, and the villagers skated on the ice.", "q": "What did the villagers do on the ice?", "options": ["Skated", "Swam", "Planted crops", "Fished from boats"], "answer": 0}
+{"id": "read-15", "category": "reading", "context": "Ben packed a sandwich, an apple and a bottle of water for the long hike.", "q": "What did Ben drink on the hike?", "options": ["Milk", "Water", "Tea", "Juice"], "answer": 1}
+{"id": "read-16", "category": "reading", "context": "The red house is next to the green house. The blue house is across the street.", "q": "Which house is across the street?", "options": ["The green house", "The red house", "The white house", "The blue house"], "answer": 3}
+{"id": "read-17", "category": "reading", "context": "Maya practises the piano for one hour every evening after dinner.", "q": "When does Maya practise?", "options": ["After dinner", "At midnight", "At lunch", "Before breakfast"], "answer": 0}
+{"id": "read-18", "category": "reading", "context": "Two birds sat on a branch. One flew away.", "q": "How many birds stayed on the branch?", "options": ["Two", "Three", "None", "One"], "answer": 3}
+{"id": "read-19", "category": "reading", "context": "Kim's grandmother lives in a small village by the sea, and Kim visits her every summer.", "q": "When does Kim visit her grandmother?", "options": ["Every night", "Every summer", "Every winter", "Every spring"], "answer": 1}
+{"id": "read-20", "category": "reading", "context": "The baker gets up at four in the morning to make fresh bread before the shop opens.", "q": "What does the baker make?", "options": ["Cheese", "Bread", "Soup", "Candy"], "answer": 1}
+{"id": "read-21", "category": "reading", "context": "Jack was thirsty after the race, so he drank a big glass of water.", "q": "Why did Jack drink water?", "options": ["He was cold", "He was sleepy", "He was lost", "He was thirsty"], "answer": 3}
+{"id": "read-22", "category": "reading", "context": "Rita has a sister called Eva and a brother called Tim.", "q": "Who is Eva?", "options": ["Rita's teacher", "Rita's brother", "Rita's sister", "Rita's mother"], "answer": 2}
+{"id": "read-23", "category": "reading", "context": "The museum is closed on Mondays but open every other day of the week.", "q": "On which day is the museum closed?", "options": ["Sunday", "Monday", "Saturday", "Friday"], "answer": 1}
+{"id": "read-24", "category": "reading", "context": "Ali walked to the shop to buy milk, but the shop was closed, so he went home without it.", "q": "Did Ali buy milk?", "options": ["Yes", "No", "He bought bread instead", "He bought two bottles"], "answer": 1}
+{"id": "read-25", "category": "reading", "context": "The ship sailed from the harbor at dawn and reached the island by evening.", "q": "When did the ship leave the harbor?", "options": ["At dawn", "In the evening", "At night", "At noon"], "answer": 0}
+{"id": "read-26", "category": "reading", "context": "Zoe's pencil case holds four pens, three pencils and one ruler.", "q": "How many pencils are in the case?", "options": ["Four", "One", "Three", "Eight"], "answer": 2}
+{"id": "read-27", "category": "reading", "context": "Every autumn the leaves on the oak tree turn brown and fall to the ground.", "q": "What happens to the leaves in autumn?", "options": ["They grow bigger", "They turn brown and fall", "They fly south", "They turn blue"], "answer": 1}
+{"id": "read-28", "category": "reading", "context": "Omar is learning to swim. His coach teaches him every Saturday at the pool.", "q": "Where does Omar learn to swim?", "options": ["At school", "At the pool", "At the beach", "At the lake"], "answer": 1}
+{"id": "read-29", "category": "reading", "context": "The recipe says to mix two cups of flour with one cup of sugar.", "q": "How much sugar does the recipe need?", "options": ["Half a cup", "Three cups", "Two cups", "One cup"], "answer": 3}
+{"id": "read-30", "category": "reading", "context": "Ellen's flight was delayed by two hours because of heavy fog.", "q": "Why was the flight delayed?", "options": ["A strike", "A broken seat", "Lost luggage", "Heavy fog"], "answer": 3}
+{"id": "reason-01", "category": "reasoning", "q": "What is 7 plus 5?", "options": ["13", "11", "10", "12"], "answer": 3}
+{"id": "reason-02", "category": "reasoning", "q": "You have 3 apples and eat 1. How many apples are left?", "options": ["3", "4", "2", "1"], "answer": 2}
+{"id": "reason-03", "category": "reasoning", "q": "Which number is the largest: 12, 9, 21 or 17?", "options": ["12", "17", "21", "9"], "answer": 2}
+{"id": "reason-04", "category": "reasoning", "q": "What number comes next: 2, 4, 6, 8, ?", "options": ["10", "12", "14", "9"], "answer": 0}
+{"id": "reason-05", "category": "reasoning", "q": "All cats are animals. Tom is a cat. Is Tom an animal?", "options": ["Nobody knows", "No", "Yes", "Only at night"], "answer": 2}
+{"id": "reason-06", "category": "reasoning", "q": "Which day comes right after Monday?", "options": ["Sunday", "Tuesday", "Friday", "Wednesday"], "answer": 1}
+{"id": "reason-07", "category": "reasoning", "q": "Hot is to cold as up is to what?", "options": ["High", "Warm", "Left", "Down"], "answer": 3}
+{"id": "reason-08", "category": "reasoning", "q": "What is 10 minus 4?", "options": ["4", "6", "7", "5"], "answer": 1}
+{"id": "reason-09", "category": "reasoning", "q": "If today is Friday, what day will it be tomorrow?", "options": ["Thursday", "Saturday", "Monday", "Sunday"], "answer": 1}
+{"id": "reason-10", "category": "reasoning", "q": "What is double 8?", "options": ["14", "18", "16", "12"], "answer": 2}
+{"id": "reason-11", "category": "reasoning", "q": "Which is heavier: a feather or a rock?", "options": ["The rock", "The feather", "Neither has weight", "They weigh the same"], "answer": 0}
+{"id": "reason-12", "category": "reasoning", "q": "Four children share 8 sweets equally. How many does each get?", "options": ["1", "4", "2", "3"], "answer": 2}
+{"id": "reason-13", "category": "reasoning", "q": "What number comes next: 5, 10, 15, 20, ?", "options": ["25", "22", "30", "35"], "answer": 0}
+{"id": "reason-14", "category": "reasoning", "q": "Which is the odd one out: dog, cat, horse, carrot?", "options": ["Carrot", "Horse", "Dog", "Cat"], "answer": 0}
+{"id": "reason-15", "category": "reasoning", "q": "A box holds 6 eggs. How many eggs are in 2 boxes?", "options": ["8", "14", "10", "12"], "answer": 3}
+{"id": "reason-16", "category": "reasoning", "q": "If all birds can fly and a sparrow is a bird, can a sparrow fly?", "options": ["No", "It depends on the color", "Yes", "Only in winter"], "answer": 2}
+{"id": "reason-17", "category": "reasoning", "q": "Which is the smallest number: 14, 3, 9 or 11?", "options": ["11", "14", "9", "3"], "answer": 3}
+{"id": "reason-18", "category": "reasoning", "q": "Half of 20 is what?", "options": ["15", "8", "5", "10"], "answer": 3}
+{"id": "reason-19", "category": "reasoning", "q": "Sara is older than Tim. Tim is older than Jo. Who is the youngest?", "options": ["Sara", "Tim", "They are the same age", "Jo"], "answer": 3}
+{"id": "reason-20", "category": "reasoning", "q": "What is 3 times 4?", "options": ["15", "7", "12", "10"], "answer": 2}
+{"id": "reason-21", "category": "reasoning", "q": "Day is to night as summer is to what?", "options": ["Spring", "Sun", "Winter", "Heat"], "answer": 2}
+{"id": "reason-22", "category": "reasoning", "q": "If you add 0 to any number, what do you get?", "options": ["Double the number", "Zero", "The same number", "One"], "answer": 2}
+{"id": "reason-23", "category": "reasoning", "q": "A week has 7 days. How many days are there in 2 weeks?", "options": ["12", "21", "9", "14"], "answer": 3}
+{"id": "reason-24", "category": "reasoning", "q": "Which of these is a shape with three sides?", "options": ["Square", "Triangle", "Oval", "Circle"], "answer": 1}
+{"id": "reason-25", "category": "reasoning", "q": "What is 20 divided by 5?", "options": ["4", "5", "2", "3"], "answer": 0}
+{"id": "reason-26", "category": "reasoning", "q": "If a car goes faster than a bike and a bike goes faster than a walker, which is the slowest?", "options": ["They are equal", "The walker", "The bike", "The car"], "answer": 1}
+{"id": "reason-27", "category": "reasoning", "q": "Which number is even: 7, 11, 14 or 19?", "options": ["7", "14", "19", "11"], "answer": 1}
+{"id": "reason-28", "category": "reasoning", "q": "What is 9 plus 9?", "options": ["17", "19", "16", "18"], "answer": 3}
+{"id": "reason-29", "category": "reasoning", "q": "What is 100 minus 1?", "options": ["98", "89", "99", "101"], "answer": 2}
+{"id": "reason-30", "category": "reasoning", "q": "Which word is the opposite of big?", "options": ["Small", "Large", "Wide", "Tall"], "answer": 0}

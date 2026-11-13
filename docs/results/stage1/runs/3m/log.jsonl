@@ -1,0 +1,164 @@
+{"event":"start","size":"3m","params":2901120,"ctx":128,"dim":128,"layers":4,"heads":4,"ff":512,"vocab":8192,"steps":7300,"batch":32,"workers":8,"lr":0.003000,"seed":1,"train_tokens":11088164,"val_tokens":125724,"data_version":"e8c6745b968d9efc","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":9.113038,"val_ppl":9072.814690,"tokens_per_sec":0.000000,"rss_mb":420.140625,"peak_rss_mb":420.140625,"answer_accuracy":0.211111,"answer_accuracy_sum":0.277778,"answer_margin":-0.302743,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.233333,"acc_reasoning":0.200000,"sample":" valview holds ValAP how\u0010 vot Instead agents factorscipation wings.” secret marriageacters excellent potentiallyant20anna expansionever"}
+{"event":"train","step":50,"tokens":204800,"train_loss":8.297315,"grad_norm":0.623475,"lr":0.000750}
+{"event":"train","step":100,"tokens":409600,"train_loss":7.197076,"grad_norm":0.264341,"lr":0.001500}
+{"event":"train","step":150,"tokens":614400,"train_loss":6.841259,"grad_norm":0.306436,"lr":0.002250}
+{"event":"train","step":200,"tokens":819200,"train_loss":6.494959,"grad_norm":0.317880,"lr":0.003000}
+{"event":"train","step":250,"tokens":1024000,"train_loss":6.318664,"grad_norm":0.339259,"lr":0.003000}
+{"event":"train","step":300,"tokens":1228800,"train_loss":6.167703,"grad_norm":0.307894,"lr":0.002999}
+{"event":"train","step":350,"tokens":1433600,"train_loss":6.068721,"grad_norm":0.299883,"lr":0.002997}
+{"event":"train","step":400,"tokens":1638400,"train_loss":5.980464,"grad_norm":0.307190,"lr":0.002995}
+{"event":"train","step":450,"tokens":1843200,"train_loss":5.894659,"grad_norm":0.309012,"lr":0.002992}
+{"event":"train","step":500,"tokens":2048000,"train_loss":5.832893,"grad_norm":0.305785,"lr":0.002988}
+{"event":"eval","step":500,"tokens":2048000,"train_loss":6.509371,"val_loss":5.978943,"val_ppl":395.022611,"tokens_per_sec":20072.645334,"rss_mb":803.593750,"peak_rss_mb":803.593750,"answer_accuracy":0.255556,"answer_accuracy_sum":0.266667,"answer_margin":-0.747517,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.266667,"acc_reasoning":0.266667,"sample":" part of each other foods,, in the STMour period, it had this goal on a supporders.\n"}
+{"event":"train","step":550,"tokens":2252800,"train_loss":5.763041,"grad_norm":0.330198,"lr":0.002984}
+{"event":"train","step":600,"tokens":2457600,"train_loss":5.703423,"grad_norm":0.322220,"lr":0.002979}
+{"event":"train","step":650,"tokens":2662400,"train_loss":5.641955,"grad_norm":0.355749,"lr":0.002973}
+{"event":"train","step":700,"tokens":2867200,"train_loss":5.593038,"grad_norm":0.337359,"lr":0.002967}
+{"event":"train","step":750,"tokens":3072000,"train_loss":5.528938,"grad_norm":0.362590,"lr":0.002960}
+{"event":"train","step":800,"tokens":3276800,"train_loss":5.482480,"grad_norm":0.349649,"lr":0.002953}
+{"event":"train","step":850,"tokens":3481600,"train_loss":5.429607,"grad_norm":0.348522,"lr":0.002945}
+{"event":"train","step":900,"tokens":3686400,"train_loss":5.392857,"grad_norm":0.346299,"lr":0.002936}
+{"event":"train","step":950,"tokens":3891200,"train_loss":5.361828,"grad_norm":0.359957,"lr":0.002927}
+{"event":"train","step":1000,"tokens":4096000,"train_loss":5.340008,"grad_norm":0.351908,"lr":0.002917}
+{"event":"eval","step":1000,"tokens":4096000,"train_loss":5.523717,"val_loss":5.501936,"val_ppl":245.166178,"tokens_per_sec":20260.716042,"rss_mb":809.421875,"peak_rss_mb":809.421875,"answer_accuracy":0.244444,"answer_accuracy_sum":0.233333,"answer_margin":-0.871116,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.300000,"acc_reasoning":0.266667,"sample":" Gohtten Society\n\"- In Warsaw in American Archied by African American Abraham Lincoln, the supposedly a"}
+{"event":"train","step":1050,"tokens":4300800,"train_loss":5.297909,"grad_norm":0.355495,"lr":0.002906}
+{"event":"train","step":1100,"tokens":4505600,"train_loss":5.269881,"grad_norm":0.380081,"lr":0.002895}
+{"event":"train","step":1150,"tokens":4710400,"train_loss":5.228385,"grad_norm":0.378191,"lr":0.002883}
+{"event":"train","step":1200,"tokens":4915200,"train_loss":5.211537,"grad_norm":0.349584,"lr":0.002870}
+{"event":"train","step":1250,"tokens":5120000,"train_loss":5.184319,"grad_norm":0.358624,"lr":0.002857}
+{"event":"train","step":1300,"tokens":5324800,"train_loss":5.159610,"grad_norm":0.386274,"lr":0.002844}
+{"event":"train","step":1350,"tokens":5529600,"train_loss":5.139004,"grad_norm":0.402717,"lr":0.002829}
+{"event":"train","step":1400,"tokens":5734400,"train_loss":5.102131,"grad_norm":0.379844,"lr":0.002814}
+{"event":"train","step":1450,"tokens":5939200,"train_loss":5.092967,"grad_norm":0.408407,"lr":0.002799}
+{"event":"train","step":1500,"tokens":6144000,"train_loss":5.088581,"grad_norm":0.381556,"lr":0.002783}
+{"event":"eval","step":1500,"tokens":6144000,"train_loss":5.177432,"val_loss":5.222641,"val_ppl":185.423276,"tokens_per_sec":20274.557503,"rss_mb":787.437500,"peak_rss_mb":809.421875,"answer_accuracy":0.255556,"answer_accuracy_sum":0.255556,"answer_margin":-0.786569,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.333333,"acc_reasoning":0.266667,"sample":" Fublinat Scha\nDemsen of Gites\nThe colleagues have shown that the smallitis CB"}
+{"event":"train","step":1550,"tokens":6348800,"train_loss":5.051375,"grad_norm":0.393459,"lr":0.002767}
+{"event":"train","step":1600,"tokens":6553600,"train_loss":5.038834,"grad_norm":0.401817,"lr":0.002749}
+{"event":"train","step":1650,"tokens":6758400,"train_loss":5.027459,"grad_norm":0.398082,"lr":0.002732}
+{"event":"train","step":1700,"tokens":6963200,"train_loss":5.013164,"grad_norm":0.420221,"lr":0.002714}
+{"event":"train","step":1750,"tokens":7168000,"train_loss":4.983705,"grad_norm":0.386879,"lr":0.002695}
+{"event":"train","step":1800,"tokens":7372800,"train_loss":4.977140,"grad_norm":0.405277,"lr":0.002676}
+{"event":"train","step":1850,"tokens":7577600,"train_loss":4.964043,"grad_norm":0.405001,"lr":0.002656}
+{"event":"train","step":1900,"tokens":7782400,"train_loss":4.945878,"grad_norm":0.409834,"lr":0.002636}
+{"event":"train","step":1950,"tokens":7987200,"train_loss":4.910240,"grad_norm":0.398094,"lr":0.002616}
+{"event":"train","step":2000,"tokens":8192000,"train_loss":4.911489,"grad_norm":0.442782,"lr":0.002594}
+{"event":"eval","step":2000,"tokens":8192000,"train_loss":4.982333,"val_loss":5.085234,"val_ppl":161.617720,"tokens_per_sec":19996.438915,"rss_mb":594.765625,"peak_rss_mb":809.421875,"answer_accuracy":0.277778,"answer_accuracy_sum":0.300000,"answer_margin":-0.831927,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" contestocking aid,:\nC revolts and highly dearers. Germany under a very abundant,"}
+{"event":"train","step":2050,"tokens":8396800,"train_loss":4.906127,"grad_norm":0.419920,"lr":0.002573}
+{"event":"train","step":2100,"tokens":8601600,"train_loss":4.903574,"grad_norm":0.412484,"lr":0.002551}
+{"event":"train","step":2150,"tokens":8806400,"train_loss":4.873037,"grad_norm":0.413529,"lr":0.002528}
+{"event":"train","step":2200,"tokens":9011200,"train_loss":4.847662,"grad_norm":0.386517,"lr":0.002505}
+{"event":"train","step":2250,"tokens":9216000,"train_loss":4.853091,"grad_norm":0.393952,"lr":0.002482}
+{"event":"train","step":2300,"tokens":9420800,"train_loss":4.840123,"grad_norm":0.400411,"lr":0.002458}
+{"event":"train","step":2350,"tokens":9625600,"train_loss":4.825649,"grad_norm":0.399283,"lr":0.002434}
+{"event":"train","step":2400,"tokens":9830400,"train_loss":4.823927,"grad_norm":0.413654,"lr":0.002410}
+{"event":"train","step":2450,"tokens":10035200,"train_loss":4.799363,"grad_norm":0.440525,"lr":0.002385}
+{"event":"train","step":2500,"tokens":10240000,"train_loss":4.800139,"grad_norm":0.430821,"lr":0.002360}
+{"event":"eval","step":2500,"tokens":10240000,"train_loss":4.847269,"val_loss":4.985184,"val_ppl":146.230447,"tokens_per_sec":19866.702189,"rss_mb":799.171875,"peak_rss_mb":809.421875,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.749391,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.300000,"acc_reasoning":0.300000,"sample":" Rissney (1991)\nO dwarfstormary: How does the preciseios, the difficulty of the"}
+{"event":"train","step":2550,"tokens":10444800,"train_loss":4.776718,"grad_norm":0.451004,"lr":0.002334}
+{"event":"train","step":2600,"tokens":10649600,"train_loss":4.780204,"grad_norm":0.415718,"lr":0.002308}
+{"event":"train","step":2650,"tokens":10854400,"train_loss":4.767221,"grad_norm":0.432467,"lr":0.002282}
+{"event":"train","step":2700,"tokens":11059200,"train_loss":4.753692,"grad_norm":0.416447,"lr":0.002255}
+{"event":"train","step":2750,"tokens":11264000,"train_loss":4.751816,"grad_norm":0.418030,"lr":0.002229}
+{"event":"train","step":2800,"tokens":11468800,"train_loss":4.740074,"grad_norm":0.416802,"lr":0.002201}
+{"event":"train","step":2850,"tokens":11673600,"train_loss":4.699899,"grad_norm":0.427101,"lr":0.002174}
+{"event":"train","step":2900,"tokens":11878400,"train_loss":4.730887,"grad_norm":0.424087,"lr":0.002146}
+{"event":"train","step":2950,"tokens":12083200,"train_loss":4.695778,"grad_norm":0.416093,"lr":0.002119}
+{"event":"train","step":3000,"tokens":12288000,"train_loss":4.682202,"grad_norm":0.424839,"lr":0.002090}
+{"event":"eval","step":3000,"tokens":12288000,"train_loss":4.737849,"val_loss":4.888814,"val_ppl":132.795948,"tokens_per_sec":19937.662872,"rss_mb":803.562500,"peak_rss_mb":809.421875,"answer_accuracy":0.233333,"answer_accuracy_sum":0.255556,"answer_margin":-0.842733,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.233333,"acc_reasoning":0.233333,"sample":" Near System and Space TNFRPS is more short-language and cognitive tests, and preventing a"}
+{"event":"train","step":3050,"tokens":12492800,"train_loss":4.697646,"grad_norm":0.407533,"lr":0.002062}
+{"event":"train","step":3100,"tokens":12697600,"train_loss":4.682770,"grad_norm":0.424368,"lr":0.002034}
+{"event":"train","step":3150,"tokens":12902400,"train_loss":4.669580,"grad_norm":0.425973,"lr":0.002005}
+{"event":"train","step":3200,"tokens":13107200,"train_loss":4.651938,"grad_norm":0.448096,"lr":0.001976}
+{"event":"train","step":3250,"tokens":13312000,"train_loss":4.650417,"grad_norm":0.412866,"lr":0.001947}
+{"event":"train","step":3300,"tokens":13516800,"train_loss":4.646324,"grad_norm":0.446785,"lr":0.001918}
+{"event":"train","step":3350,"tokens":13721600,"train_loss":4.644819,"grad_norm":0.431906,"lr":0.001888}
+{"event":"train","step":3400,"tokens":13926400,"train_loss":4.638123,"grad_norm":0.459704,"lr":0.001859}
+{"event":"train","step":3450,"tokens":14131200,"train_loss":4.637032,"grad_norm":0.436214,"lr":0.001829}
+{"event":"train","step":3500,"tokens":14336000,"train_loss":4.625535,"grad_norm":0.462936,"lr":0.001800}
+{"event":"eval","step":3500,"tokens":14336000,"train_loss":4.654418,"val_loss":4.811870,"val_ppl":122.961397,"tokens_per_sec":19841.123367,"rss_mb":796.843750,"peak_rss_mb":809.421875,"answer_accuracy":0.222222,"answer_accuracy_sum":0.255556,"answer_margin":-0.781262,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.200000,"acc_reasoning":0.266667,"sample":" Fossils was constructed.Docijing University of Bundeeo did have a long place in the"}
+{"event":"train","step":3550,"tokens":14540800,"train_loss":4.612901,"grad_norm":0.441134,"lr":0.001770}
+{"event":"train","step":3600,"tokens":14745600,"train_loss":4.607246,"grad_norm":0.425127,"lr":0.001740}
+{"event":"train","step":3650,"tokens":14950400,"train_loss":4.598331,"grad_norm":0.455228,"lr":0.001710}
+{"event":"train","step":3700,"tokens":15155200,"train_loss":4.572625,"grad_norm":0.442552,"lr":0.001680}
+{"event":"train","step":3750,"tokens":15360000,"train_loss":4.596015,"grad_norm":0.440218,"lr":0.001651}
+{"event":"train","step":3800,"tokens":15564800,"train_loss":4.605080,"grad_norm":0.428502,"lr":0.001621}
+{"event":"train","step":3850,"tokens":15769600,"train_loss":4.579723,"grad_norm":0.466293,"lr":0.001591}
+{"event":"train","step":3900,"tokens":15974400,"train_loss":4.568979,"grad_norm":0.439080,"lr":0.001561}
+{"event":"train","step":3950,"tokens":16179200,"train_loss":4.566123,"grad_norm":0.459056,"lr":0.001531}
+{"event":"train","step":4000,"tokens":16384000,"train_loss":4.570078,"grad_norm":0.447036,"lr":0.001502}
+{"event":"eval","step":4000,"tokens":16384000,"train_loss":4.587710,"val_loss":4.749818,"val_ppl":115.563285,"tokens_per_sec":20078.635899,"rss_mb":788.281250,"peak_rss_mb":809.421875,"answer_accuracy":0.266667,"answer_accuracy_sum":0.288889,"answer_margin":-0.714340,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" “gene” condition, a child about twelve years and does not change when it comes from a child’s time"}
+{"event":"train","step":4050,"tokens":16588800,"train_loss":4.537872,"grad_norm":0.500763,"lr":0.001472}
+{"event":"train","step":4100,"tokens":16793600,"train_loss":4.537192,"grad_norm":0.475639,"lr":0.001442}
+{"event":"train","step":4150,"tokens":16998400,"train_loss":4.526744,"grad_norm":0.445014,"lr":0.001413}
+{"event":"train","step":4200,"tokens":17203200,"train_loss":4.546432,"grad_norm":0.463948,"lr":0.001384}
+{"event":"train","step":4250,"tokens":17408000,"train_loss":4.521070,"grad_norm":0.466955,"lr":0.001354}
+{"event":"train","step":4300,"tokens":17612800,"train_loss":4.530086,"grad_norm":0.456048,"lr":0.001325}
+{"event":"train","step":4350,"tokens":17817600,"train_loss":4.521549,"grad_norm":0.512690,"lr":0.001296}
+{"event":"train","step":4400,"tokens":18022400,"train_loss":4.495465,"grad_norm":0.462252,"lr":0.001268}
+{"event":"train","step":4450,"tokens":18227200,"train_loss":4.487820,"grad_norm":0.479228,"lr":0.001239}
+{"event":"train","step":4500,"tokens":18432000,"train_loss":4.505204,"grad_norm":0.459657,"lr":0.001211}
+{"event":"eval","step":4500,"tokens":18432000,"train_loss":4.520943,"val_loss":4.696966,"val_ppl":109.614133,"tokens_per_sec":19923.678109,"rss_mb":794.968750,"peak_rss_mb":809.421875,"answer_accuracy":0.277778,"answer_accuracy_sum":0.255556,"answer_margin":-0.684537,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.266667,"acc_reasoning":0.333333,"sample":" Line Protection shall be\n- What charges are up with a previous discussion?\n- The people often want to"}
+{"event":"train","step":4550,"tokens":18636800,"train_loss":4.495591,"grad_norm":0.469253,"lr":0.001183}
+{"event":"train","step":4600,"tokens":18841600,"train_loss":4.482560,"grad_norm":0.491604,"lr":0.001155}
+{"event":"train","step":4650,"tokens":19046400,"train_loss":4.470300,"grad_norm":0.476296,"lr":0.001127}
+{"event":"train","step":4700,"tokens":19251200,"train_loss":4.474792,"grad_norm":0.477601,"lr":0.001100}
+{"event":"train","step":4750,"tokens":19456000,"train_loss":4.484998,"grad_norm":0.499319,"lr":0.001072}
+{"event":"train","step":4800,"tokens":19660800,"train_loss":4.474543,"grad_norm":0.467193,"lr":0.001046}
+{"event":"train","step":4850,"tokens":19865600,"train_loss":4.465658,"grad_norm":0.506673,"lr":0.001019}
+{"event":"train","step":4900,"tokens":20070400,"train_loss":4.468429,"grad_norm":0.530577,"lr":0.000993}
+{"event":"train","step":4950,"tokens":20275200,"train_loss":4.452879,"grad_norm":0.465697,"lr":0.000967}
+{"event":"train","step":5000,"tokens":20480000,"train_loss":4.449431,"grad_norm":0.490182,"lr":0.000941}
+{"event":"eval","step":5000,"tokens":20480000,"train_loss":4.471918,"val_loss":4.665632,"val_ppl":106.232747,"tokens_per_sec":20439.083816,"rss_mb":775.796875,"peak_rss_mb":809.421875,"answer_accuracy":0.277778,"answer_accuracy_sum":0.255556,"answer_margin":-0.739124,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.233333,"acc_reasoning":0.333333,"sample":" Hermans (ST)\n- NPSCOUCS used to send access to the weapon\n"}
+{"event":"train","step":5050,"tokens":20684800,"train_loss":4.446678,"grad_norm":0.496929,"lr":0.000916}
+{"event":"train","step":5100,"tokens":20889600,"train_loss":4.435084,"grad_norm":0.490209,"lr":0.000891}
+{"event":"train","step":5150,"tokens":21094400,"train_loss":4.439338,"grad_norm":0.481295,"lr":0.000867}
+{"event":"train","step":5200,"tokens":21299200,"train_loss":4.432656,"grad_norm":0.493112,"lr":0.000843}
+{"event":"train","step":5250,"tokens":21504000,"train_loss":4.426088,"grad_norm":0.502376,"lr":0.000819}
+{"event":"train","step":5300,"tokens":21708800,"train_loss":4.423032,"grad_norm":0.501596,"lr":0.000795}
+{"event":"train","step":5350,"tokens":21913600,"train_loss":4.414789,"grad_norm":0.484333,"lr":0.000773}
+{"event":"train","step":5400,"tokens":22118400,"train_loss":4.412060,"grad_norm":0.546460,"lr":0.000750}
+{"event":"train","step":5450,"tokens":22323200,"train_loss":4.404199,"grad_norm":0.518999,"lr":0.000728}
+{"event":"train","step":5500,"tokens":22528000,"train_loss":4.416365,"grad_norm":0.514271,"lr":0.000706}
+{"event":"eval","step":5500,"tokens":22528000,"train_loss":4.425029,"val_loss":4.622860,"val_ppl":101.784679,"tokens_per_sec":20009.023796,"rss_mb":512.765625,"peak_rss_mb":809.421875,"answer_accuracy":0.244444,"answer_accuracy_sum":0.255556,"answer_margin":-0.693813,"random_baseline":0.250000,"acc_fact":0.233333,"acc_reading":0.200000,"acc_reasoning":0.300000,"sample":" Fink system is mentioned.Engsters are one of the most successful groups but far-floor."}
+{"event":"train","step":5550,"tokens":22732800,"train_loss":4.411032,"grad_norm":0.518579,"lr":0.000685}
+{"event":"train","step":5600,"tokens":22937600,"train_loss":4.396676,"grad_norm":0.568744,"lr":0.000665}
+{"event":"train","step":5650,"tokens":23142400,"train_loss":4.418411,"grad_norm":0.498268,"lr":0.000644}
+{"event":"train","step":5700,"tokens":23347200,"train_loss":4.384816,"grad_norm":0.535577,"lr":0.000625}
+{"event":"train","step":5750,"tokens":23552000,"train_loss":4.387647,"grad_norm":0.509297,"lr":0.000606}
+{"event":"train","step":5800,"tokens":23756800,"train_loss":4.390768,"grad_norm":0.512258,"lr":0.000587}
+{"event":"train","step":5850,"tokens":23961600,"train_loss":4.382965,"grad_norm":0.512257,"lr":0.000569}
+{"event":"train","step":5900,"tokens":24166400,"train_loss":4.390415,"grad_norm":0.498913,"lr":0.000551}
+{"event":"train","step":5950,"tokens":24371200,"train_loss":4.373598,"grad_norm":0.508335,"lr":0.000534}
+{"event":"train","step":6000,"tokens":24576000,"train_loss":4.386178,"grad_norm":0.525703,"lr":0.000518}
+{"event":"eval","step":6000,"tokens":24576000,"train_loss":4.392251,"val_loss":4.598456,"val_ppl":99.330824,"tokens_per_sec":20021.458350,"rss_mb":694.125000,"peak_rss_mb":809.421875,"answer_accuracy":0.266667,"answer_accuracy_sum":0.277778,"answer_margin":-0.669280,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.200000,"acc_reasoning":0.333333,"sample":" Rubretus agreement, tidered suddenly to more than 1,000 indication than the time into the L"}
+{"event":"train","step":6050,"tokens":24780800,"train_loss":4.374563,"grad_norm":0.527833,"lr":0.000502}
+{"event":"train","step":6100,"tokens":24985600,"train_loss":4.370558,"grad_norm":0.524446,"lr":0.000486}
+{"event":"train","step":6150,"tokens":25190400,"train_loss":4.356400,"grad_norm":0.532446,"lr":0.000471}
+{"event":"train","step":6200,"tokens":25395200,"train_loss":4.372339,"grad_norm":0.534090,"lr":0.000457}
+{"event":"train","step":6250,"tokens":25600000,"train_loss":4.364873,"grad_norm":0.501551,"lr":0.000443}
+{"event":"train","step":6300,"tokens":25804800,"train_loss":4.342232,"grad_norm":0.526005,"lr":0.000430}
+{"event":"train","step":6350,"tokens":26009600,"train_loss":4.359617,"grad_norm":0.522230,"lr":0.000418}
+{"event":"train","step":6400,"tokens":26214400,"train_loss":4.365856,"grad_norm":0.523903,"lr":0.000406}
+{"event":"train","step":6450,"tokens":26419200,"train_loss":4.358540,"grad_norm":0.534525,"lr":0.000395}
+{"event":"train","step":6500,"tokens":26624000,"train_loss":4.358354,"grad_norm":0.522469,"lr":0.000384}
+{"event":"eval","step":6500,"tokens":26624000,"train_loss":4.362333,"val_loss":4.558726,"val_ppl":95.461809,"tokens_per_sec":19550.303312,"rss_mb":715.375000,"peak_rss_mb":809.421875,"answer_accuracy":0.233333,"answer_accuracy_sum":0.266667,"answer_margin":-0.740008,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.166667,"acc_reasoning":0.266667,"sample":" nearest to either a, and the seat of the eight-v 130 syndrome can beer"}
+{"event":"train","step":6550,"tokens":26828800,"train_loss":4.373945,"grad_norm":0.525997,"lr":0.000374}
+{"event":"train","step":6600,"tokens":27033600,"train_loss":4.354815,"grad_norm":0.532419,"lr":0.000364}
+{"event":"train","step":6650,"tokens":27238400,"train_loss":4.349338,"grad_norm":0.530430,"lr":0.000356}
+{"event":"train","step":6700,"tokens":27443200,"train_loss":4.340634,"grad_norm":0.532865,"lr":0.000347}
+{"event":"train","step":6750,"tokens":27648000,"train_loss":4.321813,"grad_norm":0.552561,"lr":0.000340}
+{"event":"train","step":6800,"tokens":27852800,"train_loss":4.338095,"grad_norm":0.538082,"lr":0.000333}
+{"event":"train","step":6850,"tokens":28057600,"train_loss":4.339643,"grad_norm":0.525071,"lr":0.000327}
+{"event":"train","step":6900,"tokens":28262400,"train_loss":4.326213,"grad_norm":0.545051,"lr":0.000321}
+{"event":"train","step":6950,"tokens":28467200,"train_loss":4.331804,"grad_norm":0.533419,"lr":0.000316}
+{"event":"train","step":7000,"tokens":28672000,"train_loss":4.332653,"grad_norm":0.544526,"lr":0.000312}
+{"event":"eval","step":7000,"tokens":28672000,"train_loss":4.340895,"val_loss":4.547029,"val_ppl":94.351704,"tokens_per_sec":19790.222673,"rss_mb":778.406250,"peak_rss_mb":809.421875,"answer_accuracy":0.288889,"answer_accuracy_sum":0.255556,"answer_margin":-0.712719,"random_baseline":0.250000,"acc_fact":0.300000,"acc_reading":0.233333,"acc_reasoning":0.333333,"sample":" Oraise is generally a?dumeless to be care for his condition. With most of the benefits of the"}
+{"event":"train","step":7050,"tokens":28876800,"train_loss":4.337974,"grad_norm":0.547713,"lr":0.000308}
+{"event":"train","step":7100,"tokens":29081600,"train_loss":4.326748,"grad_norm":0.519738,"lr":0.000305}
+{"event":"train","step":7150,"tokens":29286400,"train_loss":4.349414,"grad_norm":0.541253,"lr":0.000303}
+{"event":"train","step":7200,"tokens":29491200,"train_loss":4.330061,"grad_norm":0.548980,"lr":0.000301}
+{"event":"train","step":7250,"tokens":29696000,"train_loss":4.317167,"grad_norm":0.544983,"lr":0.000300}
+{"event":"train","step":7300,"tokens":29900800,"train_loss":4.313104,"grad_norm":0.519821,"lr":0.000300}
+{"event":"eval","step":7300,"tokens":29900800,"train_loss":4.329078,"val_loss":4.549736,"val_ppl":94.607383,"tokens_per_sec":19034.309017,"rss_mb":803.953125,"peak_rss_mb":809.421875,"answer_accuracy":0.277778,"answer_accuracy_sum":0.311111,"answer_margin":-0.703264,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.200000,"acc_reasoning":0.366667,"sample":" Fauke was successfully inIMS guns. The Medal Paleo returned to the Netherlands,"}
+{"event":"done","params":2901120,"best_val_loss":4.547029,"seconds":1501.432496,"tokens_seen":29900800,"tokens_per_sec":19914.848040,"peak_rss_mb":809.421875,"checkpoint_sha256":"7b41eb0a1cef5ec34ed779e56a9396852c1687b5e47a34706c21b47a9feaad12","data_version":"e8c6745b968d9efc"}

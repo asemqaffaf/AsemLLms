@@ -25,6 +25,7 @@
 (defun tmpdir (name) (format nil "/tmp/asem-lisp-data-~a-~d" name (get-universal-time)))
 (defun build-in (dir docs &rest cfg) (apply #'build (feed docs) dir (append cfg *cfg*)))
 (defun stat (m key) (or (json-get (json-get m "stats") key) 0))
+(defun count-substring (needle hay) (loop with n = 0 with i = 0 for j = (search needle hay :start2 i) while j do (incf n) (setf i (1+ j)) finally (return n)))
 (defun rm-rf (dir) (sb-ext:run-program "/bin/rm" (list "-rf" dir)))
 
 (deftest sha256-standard-vectors
@@ -155,6 +156,35 @@
          (a (mapcar (lambda (x) (split-of x 100)) docs)) (b (reverse (mapcar (lambda (x) (split-of x 100)) (reverse docs)))))
     (check-equal a b)
     (check (< 0 (count :val a) 100))))
+
+(deftest test-split-is-disjoint-verified-and-off-by-default
+  (let* ((dir (tmpdir "t")) (m (build-in dir (make-docs 500 :seed 3) :test-permille 100)))
+    (check (stringp (verify dir)))
+    (dolist (sp '("train" "val" "test"))
+      (check (plusp (json-get (json-get (json-get m "splits") sp) "tokens")) (format nil "~a split is empty" sp)))
+    ;; the same text never lands in two splits, and the split of a document is a pure function of its content
+    (let ((texts (loop for d in (make-docs 500 :seed 3) collect (getf d :text))))
+      (dolist (x texts)
+        (check-equal (split-of x 100 100) (split-of x 100 100))
+        (check (eq (split-of x 100) (if (eq (split-of x 100 100) :val) :val :train)) "val buckets must not move when a test split is added"))
+      (check (< 0 (count :test (mapcar (lambda (x) (split-of x 100 100)) texts)) 200)))
+    (rm-rf dir))
+  ;; without :test-permille the manifest has no test split, as before
+  (let* ((dir (tmpdir "u")) (m (build-in dir (make-docs 300 :seed 4))))
+    (check (null (json-get (json-get m "splits") "test")))
+    (rm-rf dir)))
+
+(deftest manifest-config-lists-each-setting-once-with-the-effective-value
+  (let* ((dir (tmpdir "k")) (m (build-in dir (make-docs 200 :seed 8) :min-edu-score 3.5d0 :val-permille 90))
+         (keys (mapcar #'car (cdr (json-get m "config")))))
+    (check-equal (length keys) (length (remove-duplicates keys :test #'string=)))        ; no duplicate keys
+    (check-equal (json-get (json-get m "config") "min_edu_score") 3.5d0)                  ; the override, not the default
+    (check-equal (json-get (json-get m "config") "val_permille") 90)
+    ;; and what is on disk reads the same with a last-wins JSON reader
+    (let ((text (read-file (format nil "~a/manifest.json" dir))))
+      (check (= 1 (count-substring "\"min_edu_score\"" text)) "the key is written once"))
+    (check (stringp (verify dir)))
+    (rm-rf dir)))
 
 (deftest empty-input-is-an-error
   (let ((dir (tmpdir "e")))

@@ -7,12 +7,19 @@
            #:model #:model-config #:model-params #:init-model #:param-count #:make-acts #:forward #:backward
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
            #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config
-           #:native-init #:native-active-p #:native-min-work))
+           #:native-init #:native-active-p #:native-min-work
+           #:blas-init #:blas-active-p #:blas-min-work #:host-float #:elt-bytes))
 (in-package :asem-tf)
 
 (deftype dvec () '(simple-array double-float (*)))
 (deftype ivec () '(simple-array fixnum (*)))
 (deftype idx () '(integer 0 #.(ash 1 40)))
+
+;;; Host-side scalars (accumulators, optimizer bias terms) are written with LONG-FLOAT / 0l0 literals, which SBCL
+;;; treats as double-float and src/derive.lisp leaves alone when it derives the single-float version of this file.
+;;; HOST-FLOAT brings such a value back to the element type; ELT-BYTES is the element size for pointer arithmetic.
+(defmacro host-float (x) x)
+(defmacro elt-bytes () 8)
 
 (declaim (inline new-dvec))
 (defun new-dvec (n) (make-array n :element-type 'double-float :initial-element 0d0))
@@ -241,20 +248,67 @@ using the Lisp kernels) if the library cannot be loaded."
                                     sb-sys:system-area-pointer sb-alien:long sb-alien:long sb-alien:long sb-alien:int))
       (sb-sys:vector-sap ,a) (sb-sys:vector-sap ,b) (sb-sys:vector-sap ,c) ,m ,k ,n (if ,acc 1 0))))
 
-(defmacro def-mm-dispatch (name lisp-name global)
+;;; ---------------------------------------------------------------- optional BLAS (Apple Accelerate)
+;;; BLAS-INIT loads a CBLAS library (Accelerate on macOS, or the file named by TLM_BLAS_LIB) and sends products with
+;;; m*k*n >= *blas-min-work* to cblas_dgemm. It takes precedence over the C kernels above. BLAS adds in a different
+;;; order, so the results are close (about 1e-12 relative), not bit-identical; it is therefore off unless asked for:
+;;; call (blas-init) or start with TLM_BLAS=1. Same style as the C kernels: sb-alien only, vectors pinned per call.
+(sb-ext:defglobal **blas-gemm** 0)
+(sb-ext:defglobal **blas-min-work** 16384)
+(declaim (type (unsigned-byte 62) **blas-gemm**) (type (unsigned-byte 40) **blas-min-work**))
+
+(defun blas-min-work () **blas-min-work**)
+(defun (setf blas-min-work) (n) (setf **blas-min-work** n))
+(defun blas-active-p () (/= **blas-gemm** 0))
+
+(defun blas-init (&optional path)
+  "Switch big products to cblas_dgemm. Returns T on success, NIL (and keeps the other kernels) if no CBLAS can be loaded."
+  (handler-case
+      (progn
+        (sb-alien:load-shared-object
+         (or path (sb-ext:posix-getenv "TLM_BLAS_LIB") "/System/Library/Frameworks/Accelerate.framework/Accelerate")
+         :dont-save t)
+        (let ((f (sb-sys:find-foreign-symbol-address "cblas_dgemm"))
+              (w (sb-ext:posix-getenv "TLM_BLAS_MIN_WORK")))
+          (when f
+            (when w (setf **blas-min-work** (or (parse-integer w :junk-allowed t) **blas-min-work**)))
+            (setf **blas-gemm** f)
+            t)))
+    (error () nil)))
+
+(defmacro %blas-mm (kind a b c m k n acc)
+  "Row-major C (+)= op(A) op(B). CBLAS order 101 = row major, 111 = no transpose, 112 = transpose."
+  (multiple-value-bind (ta tb bm bn bk lda ldb)
+      (ecase kind                                    ; A is m x k throughout; B is k x n (nn), n x k (nt), m x n (tn)
+        (:nn (values 111 111 m n k k n))
+        (:nt (values 111 112 m n k k k))
+        (:tn (values 112 111 k n m k n)))
+    `(sb-sys:with-pinned-objects (,a ,b ,c)
+       (sb-alien:alien-funcall
+        (sb-alien:sap-alien (sb-sys:int-sap **blas-gemm**)
+                            (function sb-alien:void sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int
+                                      sb-alien:double sb-sys:system-area-pointer sb-alien:int sb-sys:system-area-pointer sb-alien:int
+                                      sb-alien:double sb-sys:system-area-pointer sb-alien:int))
+        101 ,ta ,tb ,bm ,bn ,bk 1d0 (sb-sys:vector-sap ,a) ,lda (sb-sys:vector-sap ,b) ,ldb
+        (if ,acc 1d0 0d0) (sb-sys:vector-sap ,c) ,n))))
+
+(defmacro def-mm-dispatch (name kind lisp-name global)
   `(progn
      (declaim (inline ,name))
      (defun ,name (a b c m k n acc)
        (declare (type dvec a b c) (type idx m k n))
-       (if (and (/= ,global 0) (>= (* m k n) **native-min-work**))
-           (%native-mm ,global a b c m k n acc)
-           (,lisp-name a b c m k n acc)))))
+       (cond ((and (/= **blas-gemm** 0) (>= (* m k n) **blas-min-work**))
+              (%blas-mm ,kind a b c m k n acc))
+             ((and (/= ,global 0) (>= (* m k n) **native-min-work**))
+              (%native-mm ,global a b c m k n acc))
+             (t (,lisp-name a b c m k n acc))))))
 
-(def-mm-dispatch mm-nn mm-nn-lisp **native-nn**)
-(def-mm-dispatch mm-nt mm-nt-lisp **native-nt**)
-(def-mm-dispatch mm-tn mm-tn-lisp **native-tn**)
+(def-mm-dispatch mm-nn :nn mm-nn-lisp **native-nn**)
+(def-mm-dispatch mm-nt :nt mm-nt-lisp **native-nt**)
+(def-mm-dispatch mm-tn :tn mm-tn-lisp **native-tn**)
 
 (native-init)
+(when (equal (sb-ext:posix-getenv "TLM_BLAS") "1") (blas-init))
 
 (defun rmsnorm-fwd (h g out r rows d)
   (declare (type dvec h g out r) (type fixnum rows d))
@@ -285,7 +339,7 @@ using the Lisp kernels) if the library cannot be loaded."
 
 ;;; ---------------------------------------------------------------- activations
 (defstruct (acts (:constructor %make-acts))
-  tlen hs hmid r1 n1 q k v att a r2 n2 rr tmp rf nf logits probs dlog dh dhmid dn dq dk dv da dnorm drr)
+  tlen hs hmid r1 n1 q k v att a r2 n2 rr tmp rf nf logits probs dlog dh dhmid dn dq dk dv da dnorm drr dp)
 
 (defun make-acts (cfg tlen)
   (let* ((d (config-dim cfg)) (f (config-ff cfg)) (l (config-layers cfg)) (h (config-heads cfg))
@@ -300,7 +354,7 @@ using the Lisp kernels) if the library cannot be loaded."
                  :rr (per-layer (lambda () (new-dvec (* tlen f))))
                  :tmp (td) :rf (new-dvec tlen) :nf (td) :logits (new-dvec (* tlen v)) :probs (new-dvec (* tlen v))
                  :dlog (new-dvec (* tlen v)) :dh (td) :dhmid (td) :dn (td) :dq (td) :dk (td) :dv (td) :da (td)
-                 :dnorm (td) :drr (new-dvec (* tlen f))))))
+                 :dnorm (td) :drr (new-dvec (* tlen f)) :dp (new-dvec (* tlen tlen))))))
 
 (defun softmax-row (src so dst do n temp)
   "dst[do..do+n) = softmax(src[so..so+n) / temp)"
@@ -313,6 +367,116 @@ using the Lisp kernels) if the library cannot be loaded."
         (let ((e (exp (/ (- (aref src (+ so j)) mx) temp))))
           (setf (aref dst (+ do j)) e) (incf s e)))
       (dotimes (j n) (setf (aref dst (+ do j)) (/ (aref dst (+ do j)) s))))))
+
+;;; ---------------------------------------------------------------- attention kernels
+;;; Per head, Q_h, K_h, V_h are tl x hd blocks of the tl x d matrices (row stride d, column offset h*hd) and the
+;;; probabilities P_h are a tl x tl block of P (row stride tl). The Lisp versions are the reference and the fallback.
+;;; The BLAS versions compute the same numbers with strided cblas_dgemm calls and no transposed copies:
+;;;   S = scale Q K^T, masked softmax over j <= i, A = P V        dV = P^T dA, dP = dA V^T,
+;;;   dS = scale P (dP - sum_j P dP), dQ = dS K, dK = dS^T Q
+;;; They compute whole tl x tl products and write zeros above the diagonal, so the causal mask stays exact.
+(defun blas-gemm-strided (kind m n k alpha a aoff lda b boff ldb beta c coff ldc)
+  "C[coff..] = alpha op(A) op(B) + beta C, row-major, explicit leading dimensions and element offsets.
+KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimension is K."
+  (declare (type dvec a b c) (type fixnum m n k aoff lda boff ldb coff ldc) (type double-float alpha beta))
+  (let ((ta (if (eq kind :tn) 112 111)) (tb (if (eq kind :nt) 112 111)))
+    (sb-sys:with-pinned-objects (a b c)
+      (sb-alien:alien-funcall
+       (sb-alien:sap-alien (sb-sys:int-sap **blas-gemm**)
+                           (function sb-alien:void sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int sb-alien:int
+                                     sb-alien:double sb-sys:system-area-pointer sb-alien:int sb-sys:system-area-pointer sb-alien:int
+                                     sb-alien:double sb-sys:system-area-pointer sb-alien:int))
+       101 ta tb m n k alpha (sb-sys:sap+ (sb-sys:vector-sap a) (* (elt-bytes) aoff)) lda
+       (sb-sys:sap+ (sb-sys:vector-sap b) (* (elt-bytes) boff)) ldb beta (sb-sys:sap+ (sb-sys:vector-sap c) (* (elt-bytes) coff)) ldc))))
+
+(declaim (inline attn-blas-p))
+(defun attn-blas-p (tl hd)
+  (declare (type fixnum tl hd))
+  (and (/= **blas-gemm** 0) (>= (* tl tl hd) **blas-min-work**)))
+
+(defun attn-fwd-lisp (q k vv p a tl d nh hd scale)
+  (declare (type dvec q k vv p a) (type fixnum tl d nh hd) (type double-float scale))
+        (with-fast
+          (fill a 0d0)
+          (dotimes (h nh)
+            (dotimes (i tl)
+              (let ((po (* (+ (* h tl) i) tl)) (mx most-negative-double-float) (s 0d0))
+                (declare (type fixnum po) (type double-float mx s))
+                (dotimes (j (1+ i))
+                  (let ((sc 0d0))
+                    (declare (type double-float sc))
+                    (dotimes (e hd) (incf sc (* (aref q (+ (* i d) (* h hd) e)) (aref k (+ (* j d) (* h hd) e)))))
+                    (setf sc (* sc scale))
+                    (setf (aref p (+ po j)) sc)
+                    (setf mx (max mx sc))))
+                (dotimes (j (1+ i))
+                  (let ((ex (exp (- (aref p (+ po j)) mx)))) (setf (aref p (+ po j)) ex) (incf s ex)))
+                (dotimes (j (1+ i))
+                  (let ((pj (/ (aref p (+ po j)) s)))
+                    (declare (type double-float pj))
+                    (setf (aref p (+ po j)) pj)
+                    (dotimes (e hd)
+                      (incf (aref a (+ (* i d) (* h hd) e)) (* pj (aref vv (+ (* j d) (* h hd) e))))))))))))
+
+(defun attn-fwd-blas (q k vv p a tl d nh hd scale)
+  (declare (type dvec q k vv p a) (type fixnum tl d nh hd) (type double-float scale))
+  (dotimes (h nh)
+    (let ((ho (* h hd)) (po (* h tl tl)))
+      (declare (type fixnum ho po))
+      (blas-gemm-strided :nt tl tl hd scale q ho d k ho d 0d0 p po tl)
+      (with-fast
+        (dotimes (i tl)
+          (let ((row (+ po (* i tl))) (mx most-negative-double-float) (s 0d0))
+            (declare (type fixnum row) (type double-float mx s))
+            (dotimes (j (1+ i)) (setf mx (max mx (aref p (+ row j)))))
+            (dotimes (j (1+ i))
+              (let ((ex (exp (- (aref p (+ row j)) mx)))) (setf (aref p (+ row j)) ex) (incf s ex)))
+            (dotimes (j (1+ i)) (setf (aref p (+ row j)) (/ (aref p (+ row j)) s)))
+            (loop for j of-type fixnum from (1+ i) below tl do (setf (aref p (+ row j)) 0d0)))))
+      (blas-gemm-strided :nn tl hd tl 1d0 p po tl vv ho d 0d0 a ho d))))
+
+(defun attn-bwd-lisp (p q k vv da dq dk dv dsc tl d nh hd scale)
+  (declare (type dvec p q k vv da dq dk dv dsc) (type fixnum tl d nh hd) (type double-float scale))
+               (fill dq 0d0) (fill dk 0d0) (fill dv 0d0)
+               (with-fast
+                 (dotimes (h nh)
+                   (dotimes (i tl)
+                     (let ((po (* (+ (* h tl) i) tl)) (sum 0d0))
+                       (declare (type fixnum po) (type double-float sum))
+                       ;; dp_j = da_i . v_j ; dv_j += p_ij da_i ; sum = sum_j p_ij dp_j
+                       (dotimes (j (1+ i))
+                         (let ((dp 0d0) (pij (aref p (+ po j))))
+                           (declare (type double-float dp pij))
+                           (dotimes (e hd)
+                             (incf dp (* (aref da (+ (* i d) (* h hd) e)) (aref vv (+ (* j d) (* h hd) e))))
+                             (incf (aref dv (+ (* j d) (* h hd) e)) (* pij (aref da (+ (* i d) (* h hd) e)))))
+                           (incf sum (* pij dp))
+                           (setf (aref dsc j) dp)))
+                       (dotimes (j (1+ i))
+                         (let ((ds (* scale (aref p (+ po j)) (- (aref dsc j) sum))))
+                           (declare (type double-float ds))
+                           (dotimes (e hd)
+                             (incf (aref dq (+ (* i d) (* h hd) e)) (* ds (aref k (+ (* j d) (* h hd) e))))
+                             (incf (aref dk (+ (* j d) (* h hd) e)) (* ds (aref q (+ (* i d) (* h hd) e))))))))))))
+
+(defun attn-bwd-blas (p q k vv da dq dk dv dp tl d nh hd scale)
+  "DP is a tl x tl scratch matrix (dP, then dS in place)."
+  (declare (type dvec p q k vv da dq dk dv dp) (type fixnum tl d nh hd) (type double-float scale))
+  (dotimes (h nh)
+    (let ((ho (* h hd)) (po (* h tl tl)))
+      (declare (type fixnum ho po))
+      (blas-gemm-strided :tn tl hd tl 1d0 p po tl da ho d 0d0 dv ho d)
+      (blas-gemm-strided :nt tl tl hd 1d0 da ho d vv ho d 0d0 dp 0 tl)
+      (with-fast
+        (dotimes (i tl)
+          (let ((row (* i tl)) (prow (+ po (* i tl))) (sum 0d0))
+            (declare (type fixnum row prow) (type double-float sum))
+            (dotimes (j (1+ i)) (incf sum (* (aref p (+ prow j)) (aref dp (+ row j)))))
+            (dotimes (j (1+ i))
+              (setf (aref dp (+ row j)) (* scale (aref p (+ prow j)) (- (aref dp (+ row j)) sum))))
+            (loop for j of-type fixnum from (1+ i) below tl do (setf (aref dp (+ row j)) 0d0)))))
+      (blas-gemm-strided :nn tl hd tl 1d0 dp 0 tl k ho d 0d0 dq ho d)
+      (blas-gemm-strided :tn tl hd tl 1d0 dp 0 tl q ho d 0d0 dk ho d))))
 
 ;;; ---------------------------------------------------------------- forward
 (defun forward (m x acts)
@@ -337,27 +501,9 @@ using the Lisp kernels) if the library cannot be loaded."
         (declare (type dvec hin hout g1 wq wk wv wo g2 w1 w2 n1 q k vv p a hmid n2 rr tmp) (type fixnum b))
         (rmsnorm-fwd hin g1 n1 (svref (acts-r1 acts) l) tl d)
         (mm-nn n1 wq q tl d d nil) (mm-nn n1 wk k tl d d nil) (mm-nn n1 wv vv tl d d nil)
-        (with-fast
-          (fill a 0d0)
-          (dotimes (h nh)
-            (dotimes (i tl)
-              (let ((po (* (+ (* h tl) i) tl)) (mx most-negative-double-float) (s 0d0))
-                (declare (type fixnum po) (type double-float mx s))
-                (dotimes (j (1+ i))
-                  (let ((sc 0d0))
-                    (declare (type double-float sc))
-                    (dotimes (e hd) (incf sc (* (aref q (+ (* i d) (* h hd) e)) (aref k (+ (* j d) (* h hd) e)))))
-                    (setf sc (* sc scale))
-                    (setf (aref p (+ po j)) sc)
-                    (setf mx (max mx sc))))
-                (dotimes (j (1+ i))
-                  (let ((ex (exp (- (aref p (+ po j)) mx)))) (setf (aref p (+ po j)) ex) (incf s ex)))
-                (dotimes (j (1+ i))
-                  (let ((pj (/ (aref p (+ po j)) s)))
-                    (declare (type double-float pj))
-                    (setf (aref p (+ po j)) pj)
-                    (dotimes (e hd)
-                      (incf (aref a (+ (* i d) (* h hd) e)) (* pj (aref vv (+ (* j d) (* h hd) e)))))))))))
+        (if (attn-blas-p tl hd)
+            (attn-fwd-blas q k vv p a tl d nh hd scale)
+            (attn-fwd-lisp q k vv p a tl d nh hd scale))
         (mm-nn a wo tmp tl d d nil)
         (with-fast (dotimes (i (* tl d)) (setf (aref hmid i) (+ (aref hin i) (aref tmp i)))))
         (rmsnorm-fwd hmid g2 n2 (svref (acts-r2 acts) l) tl d)
@@ -375,7 +521,8 @@ using the Lisp kernels) if the library cannot be loaded."
   (declare (type ivec y))
   (let ((v (floor (length (the dvec (acts-probs acts))) (acts-tlen acts))) (s 0d0))
     (dotimes (i (acts-tlen acts))
-      (decf s (log (max 1d-300 (aref (the dvec (acts-probs acts)) (+ (* i v) (aref y i)))))))
+      (let ((pr (aref (the dvec (acts-probs acts)) (+ (* i v) (aref y i)))))
+        (decf s (log (if (< pr 1d-300) 1d-300 pr)))))   ; clamp tiny values, but let a NaN through (MAX would hide it)
     (/ s (acts-tlen acts))))
 
 (export 'loss-of-acts)
@@ -428,27 +575,9 @@ using the Lisp kernels) if the library cannot be loaded."
                ;; attention: hmid = hin + a Wo
                (mm-tn a dhmid (svref grads (+ b 4)) tl d d t)
                (mm-nt dhmid wo da tl d d nil)
-               (fill dq 0d0) (fill dk 0d0) (fill dv 0d0)
-               (with-fast
-                 (dotimes (h nh)
-                   (dotimes (i tl)
-                     (let ((po (* (+ (* h tl) i) tl)) (sum 0d0))
-                       (declare (type fixnum po) (type double-float sum))
-                       ;; dp_j = da_i . v_j ; dv_j += p_ij da_i ; sum = sum_j p_ij dp_j
-                       (dotimes (j (1+ i))
-                         (let ((dp 0d0) (pij (aref p (+ po j))))
-                           (declare (type double-float dp pij))
-                           (dotimes (e hd)
-                             (incf dp (* (aref da (+ (* i d) (* h hd) e)) (aref vv (+ (* j d) (* h hd) e))))
-                             (incf (aref dv (+ (* j d) (* h hd) e)) (* pij (aref da (+ (* i d) (* h hd) e)))))
-                           (incf sum (* pij dp))
-                           (setf (aref dsc j) dp)))
-                       (dotimes (j (1+ i))
-                         (let ((ds (* scale (aref p (+ po j)) (- (aref dsc j) sum))))
-                           (declare (type double-float ds))
-                           (dotimes (e hd)
-                             (incf (aref dq (+ (* i d) (* h hd) e)) (* ds (aref k (+ (* j d) (* h hd) e))))
-                             (incf (aref dk (+ (* j d) (* h hd) e)) (* ds (aref q (+ (* i d) (* h hd) e))))))))))
+               (if (attn-blas-p tl hd)
+                   (attn-bwd-blas p q k vv da dq dk dv (acts-dp acts) tl d nh hd scale)
+                   (attn-bwd-lisp p q k vv da dq dk dv dsc tl d nh hd scale))
                (mm-tn n1 dq (svref grads (+ b 1)) tl d d t)
                (mm-tn n1 dk (svref grads (+ b 2)) tl d d t)
                (mm-tn n1 dv (svref grads (+ b 3)) tl d d t)
@@ -457,7 +586,7 @@ using the Lisp kernels) if the library cannot be loaded."
                (mm-nt dv wv dn tl d d t)
                ;; dh for the layer below = dhmid (residual) + path through norm1
                (rmsnorm-bwd hin g1 (svref (acts-r1 acts) l) dn dh (svref grads b) tl d nil)
-               (with-fast (dotimes (i (* tl d)) (incf (aref dh i) (aref dhmid i)))))))
+               (with-fast (dotimes (i (* tl d)) (incf (aref dh i) (aref dhmid i))))))
     ;; embeddings
     (let ((gt (svref grads 0)) (gp (svref grads 1)))
       (declare (type dvec gt gp))

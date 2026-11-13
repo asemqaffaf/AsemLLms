@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>AsemLLM: validation loss by model size</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.viz-root { color-scheme: light; --surface:#fcfcfb; --ink:#0b0b0b; --ink2:#52514e; --rule:#d9d8d2;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a; font:15px/1.5 system-ui,sans-serif; background:var(--surface); color:var(--ink); max-width:960px; margin:24px auto; padding:16px; }
+@media (prefers-color-scheme: dark) { :root:where(:not([data-theme="light"])) .viz-root { color-scheme: dark; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --rule:#33332f; --s1:#3987e5; --s2:#d95926; --s3:#199e70; } }
+:root[data-theme="dark"] .viz-root { color-scheme: dark; --surface:#1a1a19; --ink:#f0efec; --ink2:#c3c2b7; --rule:#33332f; --s1:#3987e5; --s2:#d95926; --s3:#199e70; }
+body { background:#8882; margin:0 } h1 { font-size:20px; margin:0 0 4px } .sub { color:var(--ink2); margin:0 0 12px }
+.legend { display:flex; gap:18px; margin:8px 0; color:var(--ink2); font-size:13px } .legend i { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; vertical-align:-1px }
+.wrap { position:relative } #tip { position:absolute; pointer-events:none; background:var(--surface); border:1px solid var(--rule); border-radius:6px; padding:8px 10px; font-size:13px; display:none; box-shadow:0 2px 8px #0003 }
+#tip b { display:block; margin-bottom:4px } #tip span.sw { display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px }
+button { font:inherit; background:none; color:var(--ink); border:1px solid var(--rule); border-radius:6px; padding:4px 10px; cursor:pointer } table { border-collapse:collapse; margin-top:12px; font-size:13px; display:none } td,th { padding:4px 12px; border-bottom:1px solid var(--rule); text-align:right }
+.note { color:var(--ink2); font-size:13px; margin-top:10px }
+</style></head><body><div class="viz-root">
+<h1>AsemLLM: validation loss by model size</h1>
+<p class="sub">Same corpus, tokenizer, seed and token budget (29.9M tokens). Loss on 128 fixed validation windows, every 500 steps. Steps 0 and 500 are in the table.</p>
+<div class="legend"><span><i style="background:var(--s1)"></i>1.16M parameters (lr 0.01)</span><span><i style="background:var(--s2)"></i>2.90M (lr 0.003)</span><span><i style="background:var(--s3)"></i>10.52M (lr 0.003)</span>
+<button id="tb" aria-expanded="false">Table view</button></div>
+<div class="wrap" id="wrap"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" role="img" aria-labelledby="t d" width="100%" style="max-width:920px" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif">
+<title id="t">Sampled validation loss versus training step for three AsemLLM sizes</title>
+<desc id="d">Loss falls for all three models. The 10.52M model passes the 2.90M model near step 4000 and ends lowest at about 4.47; the 1.16M model ends highest at about 4.82.</desc>
+<rect width="920" height="460" fill="var(--surface)"/>
+<line x1="64" x2="770" y1="406.0" y2="406.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="410.0" text-anchor="end" font-size="12" fill="var(--ink2)">4.4</text>
+<line x1="64" x2="770" y1="352.0" y2="352.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="356.0" text-anchor="end" font-size="12" fill="var(--ink2)">4.6</text>
+<line x1="64" x2="770" y1="298.0" y2="298.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="302.0" text-anchor="end" font-size="12" fill="var(--ink2)">4.8</text>
+<line x1="64" x2="770" y1="244.0" y2="244.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="248.0" text-anchor="end" font-size="12" fill="var(--ink2)">5.0</text>
+<line x1="64" x2="770" y1="190.0" y2="190.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="194.0" text-anchor="end" font-size="12" fill="var(--ink2)">5.2</text>
+<line x1="64" x2="770" y1="136.0" y2="136.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="140.0" text-anchor="end" font-size="12" fill="var(--ink2)">5.4</text>
+<line x1="64" x2="770" y1="82.0" y2="82.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="86.0" text-anchor="end" font-size="12" fill="var(--ink2)">5.6</text>
+<line x1="64" x2="770" y1="28.0" y2="28.0" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+<text x="54" y="32.0" text-anchor="end" font-size="12" fill="var(--ink2)">5.8</text>
+<text x="64.0" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">1,000</text>
+<text x="176.1" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">2,000</text>
+<text x="288.1" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">3,000</text>
+<text x="400.2" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">4,000</text>
+<text x="512.3" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">5,000</text>
+<text x="624.3" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">6,000</text>
+<text x="770.0" y="428" text-anchor="middle" font-size="12" fill="var(--ink2)">7,300</text>
+<text x="417.0" y="452" text-anchor="middle" font-size="12" fill="var(--ink2)">training step (4,096 tokens per step; 7,300 steps = 29.9M tokens)</text>
+<text transform="translate(16 217.0) rotate(-90)" text-anchor="middle" font-size="12" fill="var(--ink2)">validation loss (lower is better)</text>
+<line x1="64" x2="770" y1="406" y2="406" stroke="var(--ink2)" stroke-width="1"/>
+<path d="M64.0 96.2 L120.0 156.5 L176.1 184.1 L232.1 209.4 L288.1 221.5 L344.2 235.2 L400.2 248.2 L456.2 258.1 L512.3 269.3 L568.3 279.2 L624.3 284.8 L680.3 291.9 L736.4 294.5 L770.0 293.5" fill="none" stroke="var(--s1)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="64.0" cy="96.2" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="120.0" cy="156.5" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="176.1" cy="184.1" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="232.1" cy="209.4" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="288.1" cy="221.5" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="344.2" cy="235.2" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="400.2" cy="248.2" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="456.2" cy="258.1" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="512.3" cy="269.3" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="568.3" cy="279.2" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="624.3" cy="284.8" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="680.3" cy="291.9" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="736.4" cy="294.5" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="770.0" cy="293.5" r="4" fill="var(--s1)" stroke="var(--surface)" stroke-width="2"/>
+<path d="M64.0 108.5 L120.0 183.9 L176.1 221.0 L232.1 248.0 L288.1 274.0 L344.2 294.8 L400.2 311.5 L456.2 325.8 L512.3 334.3 L568.3 345.8 L624.3 352.4 L680.3 363.1 L736.4 366.3 L770.0 365.6" fill="none" stroke="var(--s2)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="64.0" cy="108.5" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="120.0" cy="183.9" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="176.1" cy="221.0" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="232.1" cy="248.0" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="288.1" cy="274.0" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="344.2" cy="294.8" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="400.2" cy="311.5" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="456.2" cy="325.8" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="512.3" cy="334.3" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="568.3" cy="345.8" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="624.3" cy="352.4" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="680.3" cy="363.1" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="736.4" cy="366.3" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="770.0" cy="365.6" r="4" fill="var(--s2)" stroke="var(--surface)" stroke-width="2"/>
+<path d="M64.0 72.7 L120.0 145.2 L176.1 184.4 L232.1 231.2 L288.1 262.6 L344.2 291.3 L400.2 312.7 L456.2 334.5 L512.3 349.0 L568.3 362.0 L624.3 373.3 L680.3 383.6 L736.4 387.1 L770.0 386.5" fill="none" stroke="var(--s3)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="64.0" cy="72.7" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="120.0" cy="145.2" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="176.1" cy="184.4" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="232.1" cy="231.2" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="288.1" cy="262.6" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="344.2" cy="291.3" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="400.2" cy="312.7" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="456.2" cy="334.5" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="512.3" cy="349.0" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="568.3" cy="362.0" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="624.3" cy="373.3" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="680.3" cy="383.6" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="736.4" cy="387.1" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="770.0" cy="386.5" r="4" fill="var(--s3)" stroke="var(--surface)" stroke-width="2"/>
+<circle cx="786" cy="293.5" r="4" fill="var(--s1)"/>
+<text x="796" y="297.5" font-size="12" fill="var(--ink)">1.16M <tspan fill="var(--ink2)">4.816</tspan></text>
+<circle cx="786" cy="365.6" r="4" fill="var(--s2)"/>
+<text x="796" y="369.6" font-size="12" fill="var(--ink)">2.90M <tspan fill="var(--ink2)">4.550</tspan></text>
+<circle cx="786" cy="386.5" r="4" fill="var(--s3)"/>
+<text x="796" y="390.5" font-size="12" fill="var(--ink)">10.52M <tspan fill="var(--ink2)">4.472</tspan></text>
+<line id="cross" x1="0" x2="0" y1="28" y2="406" stroke="var(--ink2)" stroke-width="1" visibility="hidden"/>
+<rect id="hit" x="64" y="28" width="706" height="378" fill="transparent"/>
+</svg><div id="tip"></div></div>
+<table id="tbl"><thead><tr><th>step</th><th>tokens</th><th>1.16M</th><th>2.90M</th><th>10.52M</th></tr></thead><tbody><tr><td>0</td><td>0.0M</td><td>9.166</td><td>9.113</td><td>9.134</td></tr><tr><td>500</td><td>2.0M</td><td>5.911</td><td>5.979</td><td>6.045</td></tr><tr><td>1,000</td><td>4.1M</td><td>5.547</td><td>5.502</td><td>5.634</td></tr><tr><td>1,500</td><td>6.1M</td><td>5.324</td><td>5.223</td><td>5.366</td></tr><tr><td>2,000</td><td>8.2M</td><td>5.222</td><td>5.085</td><td>5.221</td></tr><tr><td>2,500</td><td>10.2M</td><td>5.128</td><td>4.985</td><td>5.047</td></tr><tr><td>3,000</td><td>12.3M</td><td>5.083</td><td>4.889</td><td>4.931</td></tr><tr><td>3,500</td><td>14.3M</td><td>5.033</td><td>4.812</td><td>4.825</td></tr><tr><td>4,000</td><td>16.4M</td><td>4.984</td><td>4.750</td><td>4.746</td></tr><tr><td>4,500</td><td>18.4M</td><td>4.948</td><td>4.697</td><td>4.665</td></tr><tr><td>5,000</td><td>20.5M</td><td>4.906</td><td>4.666</td><td>4.611</td></tr><tr><td>5,500</td><td>22.5M</td><td>4.869</td><td>4.623</td><td>4.563</td></tr><tr><td>6,000</td><td>24.6M</td><td>4.849</td><td>4.598</td><td>4.521</td></tr><tr><td>6,500</td><td>26.6M</td><td>4.823</td><td>4.559</td><td>4.483</td></tr><tr><td>7,000</td><td>28.7M</td><td>4.813</td><td>4.547</td><td>4.470</td></tr><tr><td>7,300</td><td>29.9M</td><td>4.816</td><td>4.550</td><td>4.472</td></tr></tbody></table>
+<p class="note">Sampled validation loss, not the full-split number. Final full-validation loss: 4.820 (1.16M), 4.554 (2.90M), 4.469 (10.52M). The 10.52M model first drops below the 2.90M model at step 4,000.</p>
+</div>
+<script>
+const D={"steps": [1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7300], "series": [{"name": "1.16M parameters", "values": [5.547371, 5.324209, 5.221857, 5.128316, 5.083205, 5.032561, 4.984389, 4.947898, 4.906184, 4.86947, 4.84878, 4.822674, 4.813055, 4.81649]}, {"name": "2.90M parameters", "values": [5.501936, 5.222641, 5.085234, 4.985184, 4.888814, 4.81187, 4.749818, 4.696966, 4.665632, 4.62286, 4.598456, 4.558726, 4.547029, 4.549736]}, {"name": "10.52M parameters", "values": [5.63449, 5.365787, 5.220864, 5.047228, 4.931176, 4.824901, 4.745612, 4.664765, 4.611164, 4.562778, 4.520984, 4.482977, 4.469949, 4.472217]}]}, ML=64, PW=706, W=920, X0=D.steps[0], X1=D.steps[D.steps.length-1];
+const svg=document.querySelector("svg"), cross=document.getElementById("cross"), hit=document.getElementById("hit"), tip=document.getElementById("tip"), wrap=document.getElementById("wrap");
+const cols=["var(--s1)","var(--s2)","var(--s3)"];
+hit.addEventListener("pointermove", e=>{
+  const r=svg.getBoundingClientRect(), k=W/r.width, x=(e.clientX-r.left)*k, s=X0+(x-ML)/PW*(X1-X0);
+  let i=0,b=1e9; D.steps.forEach((t,j)=>{const d=Math.abs(t-s); if(d<b){b=d;i=j}});
+  const cx=ML+(D.steps[i]-X0)/(X1-X0)*PW; cross.setAttribute("x1",cx); cross.setAttribute("x2",cx); cross.setAttribute("visibility","visible");
+  tip.innerHTML="<b>step "+D.steps[i].toLocaleString()+" ("+(D.steps[i]*4096/1e6).toFixed(1)+"M tokens)</b>"+D.series.map((s,j)=>"<div><span class=sw style='background:"+cols[j]+"'></span>"+s.name+": "+s.values[i].toFixed(3)+"</div>").join("");
+  tip.style.display="block"; const left=(cx/k)+12; tip.style.left=Math.min(left, r.width-210)+"px"; tip.style.top="24px";
+});
+hit.addEventListener("pointerleave",()=>{cross.setAttribute("visibility","hidden"); tip.style.display="none";});
+document.getElementById("tb").onclick=function(){const t=document.getElementById("tbl"), on=t.style.display!=="table"; t.style.display=on?"table":"none"; this.setAttribute("aria-expanded",on); this.textContent=on?"Hide table":"Table view";};
+</script></body></html>
