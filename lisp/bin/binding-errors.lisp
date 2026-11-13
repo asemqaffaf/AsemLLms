@@ -1,0 +1,16 @@
+;;;; Analyze saved artifacts only; independent verifier is rerun without model inference.
+;;;; sbcl --script lisp/bin/binding-errors.lisp bundle=DIR out=NEW.json
+(let ((here (directory-namestring *load-truename*)))
+  (dolist (f '("util" "sha256" "json" "verify-saved" "binding-errors"))
+    (load (merge-pathnames (format nil "../src/~a.lisp" f) here))))
+(defun opt (name)
+  (let ((prefix (concatenate 'string name "=")))
+    (let ((arg (find-if (lambda (s) (and (>= (length s) (length prefix)) (string= prefix s :end2 (length prefix)))) (cdr sb-ext:*posix-argv*))))
+      (and arg (subseq arg (length prefix))))))
+(let ((bundle (or (opt "bundle") (error "bundle=DIR required")))
+      (out (or (opt "out") (error "out=NEW.json required"))))
+  (when (probe-file out) (error "Refusing to overwrite ~a" out))
+  (let ((report (asem-binding-errors:analyze-bundle bundle)))
+    (ensure-directories-exist out)
+    (asem-verify-saved:write-new-json out report)
+    (format t "Analyzed 2,400 saved predictions; no model inference or training.~%")))

@@ -1,0 +1,497 @@
+[
+  {
+    "category": "relation",
+    "id": "relation-00",
+    "passage_frames": [
+      "{A} provided {B} with lessons."
+    ],
+    "predicate": "teach",
+    "question_frames": {
+      "rel-obj": "Who received lessons from {A}?",
+      "rel-subj": "Which individual provided lessons for {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-01",
+    "passage_frames": [
+      "The person teaching {B} was {A}."
+    ],
+    "predicate": "teach",
+    "question_frames": {
+      "rel-obj": "Who was the pupil of {A}?",
+      "rel-subj": "Whose pupil was {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-02",
+    "passage_frames": [
+      "{B} received instruction from {A}."
+    ],
+    "predicate": "teach",
+    "question_frames": {
+      "rel-obj": "To which person did {A} give instruction?",
+      "rel-subj": "From which person did {B} receive instruction?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-03",
+    "passage_frames": [
+      "Lessons for {B} were given by {A}."
+    ],
+    "predicate": "teach",
+    "question_frames": {
+      "rel-obj": "Identify the person to whom {A} gave lessons.",
+      "rel-subj": "Identify the person giving {B} lessons."
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-04",
+    "passage_frames": [
+      "{A} signed {B} on as an employee."
+    ],
+    "predicate": "hire",
+    "question_frames": {
+      "rel-obj": "Which individual did {A} sign on as an employee?",
+      "rel-subj": "Who signed {B} on as an employee?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-05",
+    "passage_frames": [
+      "The person who hired {B} was {A}."
+    ],
+    "predicate": "hire",
+    "question_frames": {
+      "rel-obj": "Identify the individual whom {A} hired.",
+      "rel-subj": "Identify the individual responsible for hiring {B}."
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-06",
+    "passage_frames": [
+      "{B} was taken on as an employee by {A}."
+    ],
+    "predicate": "hire",
+    "question_frames": {
+      "rel-obj": "Which employee was taken on by {A}?",
+      "rel-subj": "By which individual was {B} taken on as an employee?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-07",
+    "passage_frames": [
+      "{A} took {B} on as a new worker."
+    ],
+    "predicate": "hire",
+    "question_frames": {
+      "rel-obj": "Which new worker did {A} take on?",
+      "rel-subj": "Who took {B} on as a new worker?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-08",
+    "passage_frames": [
+      "{A} placed a phone call to {B}."
+    ],
+    "predicate": "call",
+    "question_frames": {
+      "rel-obj": "To whom did {A} place a phone call?",
+      "rel-subj": "Who placed the phone call to {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-09",
+    "passage_frames": [
+      "{B} received a telephone call placed by {A}."
+    ],
+    "predicate": "call",
+    "question_frames": {
+      "rel-obj": "Who received the telephone call placed by {A}?",
+      "rel-subj": "Who placed the telephone call that {B} received?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-10",
+    "passage_frames": [
+      "The person telephoning {B} was {A}."
+    ],
+    "predicate": "call",
+    "question_frames": {
+      "rel-obj": "Identify the individual whom {A} telephoned.",
+      "rel-subj": "Identify the individual who telephoned {B}."
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-11",
+    "passage_frames": [
+      "{A} conveyed thanks to {B}."
+    ],
+    "predicate": "thank",
+    "question_frames": {
+      "rel-obj": "To whom did {A} convey thanks?",
+      "rel-subj": "Who conveyed thanks to {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-12",
+    "passage_frames": [
+      "It was {B} whom {A} thanked."
+    ],
+    "predicate": "thank",
+    "question_frames": {
+      "rel-obj": "Identify the individual receiving thanks from {A}.",
+      "rel-subj": "Identify the individual thanking {B}."
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-13",
+    "passage_frames": [
+      "{B} was the person receiving {A}'s thanks."
+    ],
+    "predicate": "thank",
+    "question_frames": {
+      "rel-obj": "Who was the recipient of {A}'s thanks?",
+      "rel-subj": "Whose thanks did {B} receive?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-14",
+    "passage_frames": [
+      "{A} made a visit to {B}."
+    ],
+    "predicate": "visit",
+    "question_frames": {
+      "rel-obj": "To whom did {A} make a visit?",
+      "rel-subj": "Who made the visit to {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-15",
+    "passage_frames": [
+      "{B} received a visit made by {A}."
+    ],
+    "predicate": "visit",
+    "question_frames": {
+      "rel-obj": "Who received the visit made by {A}?",
+      "rel-subj": "Whose visit did {B} receive?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-16",
+    "passage_frames": [
+      "The visitor who went to see {B} was {A}."
+    ],
+    "predicate": "visit",
+    "question_frames": {
+      "rel-obj": "Identify the individual visited by {A}.",
+      "rel-subj": "Identify the visitor who went to see {B}."
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-17",
+    "passage_frames": [
+      "{A} provided assistance to {B}."
+    ],
+    "predicate": "help",
+    "question_frames": {
+      "rel-obj": "To whom did {A} provide assistance?",
+      "rel-subj": "Who provided assistance to {B}?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-18",
+    "passage_frames": [
+      "Assistance for {B} came from {A}."
+    ],
+    "predicate": "help",
+    "question_frames": {
+      "rel-obj": "For whom did assistance come from {A}?",
+      "rel-subj": "From which individual did assistance for {B} come?"
+    }
+  },
+  {
+    "category": "relation",
+    "id": "relation-19",
+    "passage_frames": [
+      "It was {B} whom {A} assisted."
+    ],
+    "predicate": "help",
+    "question_frames": {
+      "rel-obj": "Identify the individual whom {A} assisted.",
+      "rel-subj": "Identify the individual assisting {B}."
+    }
+  },
+  {
+    "category": "extract",
+    "id": "extract-0",
+    "passage_frames": [
+      "The town where {P} resides is {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "extract": "Name the town in which {P} resides."
+    }
+  },
+  {
+    "category": "extract",
+    "id": "extract-1",
+    "passage_frames": [
+      "{V} is where {P} makes a home."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "extract": "What town serves as {P}'s place of residence?"
+    }
+  },
+  {
+    "category": "extract",
+    "id": "extract-2",
+    "passage_frames": [
+      "{P} has a home in {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "extract": "Which town does {P} make a home in?"
+    }
+  },
+  {
+    "category": "extract",
+    "id": "extract-3",
+    "passage_frames": [
+      "{P} is a resident of {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "extract": "Give the home town associated with {P}."
+    }
+  },
+  {
+    "category": "extract",
+    "id": "extract-4",
+    "passage_frames": [
+      "{V} is the town of residence for {P}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "extract": "Identify the town that is home to {P}."
+    }
+  },
+  {
+    "category": "reverse",
+    "id": "reverse-0",
+    "passage_frames": [
+      "The town where {P} resides is {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "reverse": "Identify the person whose town of residence is {V}."
+    }
+  },
+  {
+    "category": "reverse",
+    "id": "reverse-1",
+    "passage_frames": [
+      "{V} is where {P} makes a home."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "reverse": "Which individual makes a home in {V}?"
+    }
+  },
+  {
+    "category": "reverse",
+    "id": "reverse-2",
+    "passage_frames": [
+      "{P} has a home in {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "reverse": "Name the individual who has a home in {V}."
+    }
+  },
+  {
+    "category": "reverse",
+    "id": "reverse-3",
+    "passage_frames": [
+      "{P} is a resident of {V}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "reverse": "Which individual is a resident of {V}?"
+    }
+  },
+  {
+    "category": "reverse",
+    "id": "reverse-4",
+    "passage_frames": [
+      "{V} is the town of residence for {P}."
+    ],
+    "predicate": "town",
+    "question_frames": {
+      "reverse": "For which individual is {V} the town of residence?"
+    }
+  },
+  {
+    "category": "compare",
+    "id": "compare-0",
+    "passage_frames": [
+      "{P} finished with {N} points."
+    ],
+    "predicate": "score",
+    "question_frames": {
+      "max": "Whose point total exceeds everyone else's?",
+      "min": "Whose point total is below everyone else's?"
+    }
+  },
+  {
+    "category": "compare",
+    "id": "compare-1",
+    "passage_frames": [
+      "The point total for {P} was {N}."
+    ],
+    "predicate": "score",
+    "question_frames": {
+      "max": "Which individual accumulated more points than all the others?",
+      "min": "Which individual accumulated fewer points than all the others?"
+    }
+  },
+  {
+    "category": "compare",
+    "id": "compare-2",
+    "passage_frames": [
+      "{N} points were recorded for {P}."
+    ],
+    "predicate": "score",
+    "question_frames": {
+      "max": "Identify the individual with the greatest point total.",
+      "min": "Identify the individual with the smallest point total."
+    }
+  },
+  {
+    "category": "compare",
+    "id": "compare-3",
+    "passage_frames": [
+      "{P}'s final point tally was {N}."
+    ],
+    "predicate": "score",
+    "question_frames": {
+      "max": "Whose final point tally ranks above the others?",
+      "min": "Whose final point tally ranks below the others?"
+    }
+  },
+  {
+    "category": "compare",
+    "id": "compare-4",
+    "passage_frames": [
+      "{P} ended with a total of {N} points."
+    ],
+    "predicate": "score",
+    "question_frames": {
+      "max": "Who ended with more points than anyone else?",
+      "min": "Who ended with fewer points than anyone else?"
+    }
+  },
+  {
+    "category": "temporal",
+    "id": "temporal-0",
+    "passage_frames": [
+      "At the outset, {P} visited the {X}.",
+      "The next visit by {P} was to the {X}.",
+      "The next visit by {P} was to the {X}.",
+      "{P}'s final visit was to the {X}."
+    ],
+    "predicate": "temporal",
+    "question_frames": {
+      "after": "What was {P}'s next stop after leaving the {X}?",
+      "before": "What was {P}'s previous stop before reaching the {X}?",
+      "first": "Which location was {P}'s opening visit?",
+      "last": "Which location was {P}'s concluding visit?"
+    }
+  },
+  {
+    "category": "temporal",
+    "id": "temporal-1",
+    "passage_frames": [
+      "{P}'s route began with the {X}.",
+      "{P}'s route continued to the {X}.",
+      "{P}'s route continued to the {X}.",
+      "{P}'s route concluded with the {X}."
+    ],
+    "predicate": "temporal",
+    "question_frames": {
+      "after": "Which location immediately succeeded the {X} on {P}'s route?",
+      "before": "Which location immediately preceded the {X} on {P}'s route?",
+      "first": "Which location began {P}'s route?",
+      "last": "Which location concluded {P}'s route?"
+    }
+  },
+  {
+    "category": "temporal",
+    "id": "temporal-2",
+    "passage_frames": [
+      "The opening stop for {P} was the {X}.",
+      "The subsequent stop for {P} was the {X}.",
+      "The subsequent stop for {P} was the {X}.",
+      "The concluding stop for {P} was the {X}."
+    ],
+    "predicate": "temporal",
+    "question_frames": {
+      "after": "Name the stop {P} made immediately after the {X}.",
+      "before": "Name the stop {P} made immediately before the {X}.",
+      "first": "Name the opening stop made by {P}.",
+      "last": "Name the concluding stop made by {P}."
+    }
+  },
+  {
+    "category": "temporal",
+    "id": "temporal-3",
+    "passage_frames": [
+      "To open the trip, {P} visited the {X}.",
+      "Continuing the trip, {P} visited the {X}.",
+      "Continuing the trip, {P} visited the {X}.",
+      "To close the trip, {P} visited the {X}."
+    ],
+    "predicate": "temporal",
+    "question_frames": {
+      "after": "Where did {P} stop directly after departing the {X}?",
+      "before": "Where did {P} stop directly before arriving at the {X}?",
+      "first": "Where did {P} open the trip?",
+      "last": "Where did {P} close the trip?"
+    }
+  },
+  {
+    "category": "temporal",
+    "id": "temporal-4",
+    "passage_frames": [
+      "{P} started the outing with the {X}.",
+      "{P} continued the outing with the {X}.",
+      "{P} continued the outing with the {X}.",
+      "{P} finished the outing with the {X}."
+    ],
+    "predicate": "temporal",
+    "question_frames": {
+      "after": "Which stop followed the {X} without an intervening stop for {P}?",
+      "before": "Which stop preceded the {X} without an intervening stop for {P}?",
+      "first": "What was the starting location of {P}'s outing?",
+      "last": "What was the finishing location of {P}'s outing?"
+    }
+  }
+]

@@ -1,0 +1,641 @@
+{
+  "L1/dev-real/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.3,
+      "ci95_high": 0.3667919599332645,
+      "ci95_low": 0.24074644243406385,
+      "correct": 60,
+      "n": 200,
+      "predicted_letter_counts": "(28 64 58 50)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.99,
+      "ci95_high": 0.9972533993962251,
+      "ci95_low": 0.9642775148038205,
+      "correct": 198,
+      "n": 200,
+      "predicted_letter_counts": "(54 51 58 37)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.99,
+      "correct": 198,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.935,
+      "ci95_high": 0.9616240123502404,
+      "ci95_low": 0.8919799625008207,
+      "correct": 187,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.28205128205128205,
+      "items": 39
+    }
+  },
+  "L1/dev-real/unseen": {
+    "letter_A_to_D": {
+      "accuracy": 0.26,
+      "ci95_high": 0.32490871391293097,
+      "ci95_low": 0.20413736892786316,
+      "correct": 52,
+      "n": 200,
+      "predicted_letter_counts": "(32 47 59 62)"
+    },
+    "no_passage": {
+      "accuracy": 0.095,
+      "ci95_high": 0.14360265114397636,
+      "ci95_low": 0.06166261364986359,
+      "correct": 19,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.38,
+      "ci95_high": 0.4489341048080049,
+      "ci95_low": 0.3155889366123922,
+      "correct": 76,
+      "n": 200
+    },
+    "option_likelihood": {
+      "accuracy": 0.935,
+      "ci95_high": 0.9616240123502404,
+      "ci95_low": 0.8919799625008207,
+      "correct": 187,
+      "n": 200,
+      "predicted_letter_counts": "(59 43 49 49)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.93,
+      "correct": 186,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.775,
+      "ci95_high": 0.8273771621308439,
+      "ci95_low": 0.7122575346140798,
+      "correct": 155,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.2903225806451613,
+      "items": 31
+    }
+  },
+  "L1/new/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.25,
+      "ci95_high": 0.3143422347961952,
+      "ci95_low": 0.19508076816296532,
+      "correct": 50,
+      "n": 200,
+      "predicted_letter_counts": "(36 61 41 62)"
+    },
+    "option_likelihood": {
+      "accuracy": 1.0,
+      "ci95_high": 1.0,
+      "ci95_low": 0.9811539940816791,
+      "correct": 200,
+      "n": 200,
+      "predicted_letter_counts": "(49 61 49 41)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 1.0,
+      "correct": 200,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.905,
+      "ci95_high": 0.9383373863501365,
+      "ci95_low": 0.8563973488560237,
+      "correct": 181,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.42857142857142855,
+      "items": 42
+    }
+  },
+  "L1/new/unseen": {
+    "letter_A_to_D": {
+      "accuracy": 0.265,
+      "ci95_high": 0.33017702266551113,
+      "ci95_low": 0.20868060011609973,
+      "correct": 53,
+      "n": 200,
+      "predicted_letter_counts": "(35 53 43 69)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.96,
+      "ci95_high": 0.9795946128493436,
+      "ci95_low": 0.9230670617058012,
+      "correct": 192,
+      "n": 200,
+      "predicted_letter_counts": "(62 66 32 40)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.965,
+      "correct": 193,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.695,
+      "ci95_high": 0.7546368564733095,
+      "ci95_low": 0.6280132012185453,
+      "correct": 139,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.24074074074074073,
+      "items": 54
+    }
+  },
+  "L2/dev-real/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.225,
+      "ci95_high": 0.28774246538592035,
+      "ci95_low": 0.17262283786915622,
+      "correct": 45,
+      "n": 200,
+      "predicted_letter_counts": "(32 65 49 54)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.925,
+      "ci95_high": 0.9540254929427476,
+      "ci95_low": 0.8799554020266798,
+      "correct": 185,
+      "n": 200,
+      "predicted_letter_counts": "(43 58 54 45)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.92,
+      "correct": 184,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.84,
+      "ci95_high": 0.8843265779145542,
+      "ci95_low": 0.7828581380609876,
+      "correct": 168,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.2413793103448276,
+      "items": 29
+    }
+  },
+  "L2/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.61,
+      "ci95_high": 0.6749177028050861,
+      "ci95_low": 0.5409361758928832,
+      "correct": 122,
+      "n": 200
+    },
+    "letter_A_to_D": {
+      "accuracy": 0.195,
+      "ci95_high": 0.25544164796511815,
+      "ci95_low": 0.14605441564505764,
+      "correct": 39,
+      "n": 200,
+      "predicted_letter_counts": "(23 80 36 61)"
+    },
+    "no_passage": {
+      "accuracy": 0.045,
+      "ci95_high": 0.08329759366096785,
+      "ci95_low": 0.023852271724704166,
+      "correct": 9,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.19,
+      "ci95_high": 0.250013585744794,
+      "ci95_low": 0.14167093792456506,
+      "correct": 38,
+      "n": 200
+    },
+    "option_likelihood": {
+      "accuracy": 0.785,
+      "ci95_high": 0.836282074363278,
+      "ci95_low": 0.7229757022632792,
+      "correct": 157,
+      "n": 200,
+      "predicted_letter_counts": "(59 56 51 34)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.785,
+      "correct": 157,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.58,
+      "ci95_high": 0.6462651764982825,
+      "ci95_low": 0.5107194625547862,
+      "correct": 116,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.24242424242424243,
+      "items": 33
+    }
+  },
+  "L2/new/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.245,
+      "ci95_high": 0.3090436838714848,
+      "ci95_low": 0.19056777914685893,
+      "correct": 49,
+      "n": 200,
+      "predicted_letter_counts": "(27 69 54 50)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.92,
+      "ci95_high": 0.9501598448237337,
+      "ci95_low": 0.8740095102048769,
+      "correct": 184,
+      "n": 200,
+      "predicted_letter_counts": "(61 48 46 45)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.91,
+      "correct": 182,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.835,
+      "ci95_high": 0.8800321587733603,
+      "ci95_low": 0.7773410172613647,
+      "correct": 167,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.21875,
+      "items": 32
+    }
+  },
+  "L2/new/unseen": {
+    "letter_A_to_D": {
+      "accuracy": 0.27,
+      "ci95_high": 0.3354356154120221,
+      "ci95_low": 0.2132335473104056,
+      "correct": 54,
+      "n": 200,
+      "predicted_letter_counts": "(40 59 33 68)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.785,
+      "ci95_high": 0.836282074363278,
+      "ci95_low": 0.7229757022632792,
+      "correct": 157,
+      "n": 200,
+      "predicted_letter_counts": "(41 51 59 49)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.76,
+      "correct": 152,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.575,
+      "ci95_high": 0.6414650479075696,
+      "ci95_low": 0.5057080512046821,
+      "correct": 115,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.1590909090909091,
+      "items": 44
+    }
+  },
+  "L3/dev-real/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.265,
+      "ci95_high": 0.33017702266551113,
+      "ci95_low": 0.20868060011609973,
+      "correct": 53,
+      "n": 200,
+      "predicted_letter_counts": "(40 65 47 48)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.885,
+      "ci95_high": 0.9221368277817569,
+      "ci95_low": 0.8333517476611362,
+      "correct": 177,
+      "n": 200,
+      "predicted_letter_counts": "(52 47 52 49)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.885,
+      "correct": 177,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.775,
+      "ci95_high": 0.8273771621308439,
+      "ci95_low": 0.7122575346140798,
+      "correct": 155,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.3142857142857143,
+      "items": 35
+    }
+  },
+  "L3/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.51,
+      "ci95_high": 0.5784384471724727,
+      "ci95_low": 0.441184632709161,
+      "correct": 102,
+      "n": 200
+    },
+    "letter_A_to_D": {
+      "accuracy": 0.27,
+      "ci95_high": 0.3354356154120221,
+      "ci95_low": 0.2132335473104056,
+      "correct": 54,
+      "n": 200,
+      "predicted_letter_counts": "(25 69 39 67)"
+    },
+    "no_passage": {
+      "accuracy": 0.085,
+      "ci95_high": 0.13189688544235392,
+      "ci95_low": 0.05374529946985246,
+      "correct": 17,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.14,
+      "ci95_high": 0.19489993800847627,
+      "ci95_low": 0.09866918625271481,
+      "correct": 28,
+      "n": 200
+    },
+    "option_likelihood": {
+      "accuracy": 0.73,
+      "ci95_high": 0.7867664526895944,
+      "ci95_low": 0.664564384587978,
+      "correct": 146,
+      "n": 200,
+      "predicted_letter_counts": "(62 51 42 45)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.75,
+      "correct": 150,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.5,
+      "ci95_high": 0.5686403779096547,
+      "ci95_low": 0.43135962209034523,
+      "correct": 100,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.27450980392156865,
+      "items": 51
+    }
+  },
+  "L3/new/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.225,
+      "ci95_high": 0.28774246538592035,
+      "ci95_low": 0.17262283786915622,
+      "correct": 45,
+      "n": 200,
+      "predicted_letter_counts": "(37 73 38 52)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.86,
+      "ci95_high": 0.9013308137472852,
+      "ci95_low": 0.8051000619915237,
+      "correct": 172,
+      "n": 200,
+      "predicted_letter_counts": "(53 49 46 52)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.855,
+      "correct": 171,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.755,
+      "ci95_high": 0.809432220853141,
+      "ci95_low": 0.6909563161285153,
+      "correct": 151,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.1956521739130435,
+      "items": 46
+    }
+  },
+  "L3/new/unseen": {
+    "letter_A_to_D": {
+      "accuracy": 0.285,
+      "ci95_high": 0.3511547308121051,
+      "ci95_low": 0.22694905173277297,
+      "correct": 57,
+      "n": 200,
+      "predicted_letter_counts": "(25 62 47 66)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.725,
+      "ci95_high": 0.7822039568619022,
+      "ci95_low": 0.6593153404748534,
+      "correct": 145,
+      "n": 200,
+      "predicted_letter_counts": "(55 53 41 51)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.725,
+      "correct": 145,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.495,
+      "ci95_high": 0.5637312405175983,
+      "ci95_low": 0.4264572195415849,
+      "correct": 99,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.2857142857142857,
+      "items": 49
+    }
+  },
+  "L4/dev-real/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.28,
+      "ci95_high": 0.34592431417771,
+      "ci95_low": 0.22236792842635128,
+      "correct": 56,
+      "n": 200,
+      "predicted_letter_counts": "(38 72 47 43)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.8,
+      "ci95_high": 0.8495487925607118,
+      "ci95_low": 0.7391436038882958,
+      "correct": 160,
+      "n": 200,
+      "predicted_letter_counts": "(40 42 57 61)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.735,
+      "correct": 147,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.545,
+      "ci95_high": 0.6125190090977398,
+      "ci95_low": 0.4757848503696115,
+      "correct": 109,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.3448275862068966,
+      "items": 29
+    }
+  },
+  "L4/dev-real/unseen": {
+    "counterfactual_question": {
+      "accuracy": 0.315,
+      "ci95_high": 0.38235084141033604,
+      "ci95_low": 0.25462218077944276,
+      "correct": 63,
+      "n": 200
+    },
+    "letter_A_to_D": {
+      "accuracy": 0.27,
+      "ci95_high": 0.3354356154120221,
+      "ci95_low": 0.2132335473104056,
+      "correct": 54,
+      "n": 200,
+      "predicted_letter_counts": "(29 68 43 60)"
+    },
+    "no_passage": {
+      "accuracy": 0.095,
+      "ci95_high": 0.14360265114397636,
+      "ci95_low": 0.06166261364986359,
+      "correct": 19,
+      "n": 200
+    },
+    "no_question": {
+      "accuracy": 0.055,
+      "ci95_high": 0.0957879244659355,
+      "ci95_low": 0.030985020801370097,
+      "correct": 11,
+      "n": 200
+    },
+    "option_likelihood": {
+      "accuracy": 0.62,
+      "ci95_high": 0.6844110633876079,
+      "ci95_low": 0.5510658951919951,
+      "correct": 124,
+      "n": 200,
+      "predicted_letter_counts": "(47 52 49 52)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.63,
+      "correct": 126,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.31,
+      "ci95_high": 0.377173054912622,
+      "ci95_low": 0.24998842733633997,
+      "correct": 62,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.35135135135135137,
+      "items": 37
+    }
+  },
+  "L4/new/seen": {
+    "letter_A_to_D": {
+      "accuracy": 0.23,
+      "ci95_high": 0.2930842807819702,
+      "ci95_low": 0.1770925624139232,
+      "correct": 46,
+      "n": 200,
+      "predicted_letter_counts": "(49 79 40 32)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.715,
+      "ci95_high": 0.773050948267227,
+      "ci95_low": 0.648845269187895,
+      "correct": 143,
+      "n": 200,
+      "predicted_letter_counts": "(43 49 53 55)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.705,
+      "correct": 141,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.52,
+      "ci95_high": 0.5882095592051018,
+      "ci95_low": 0.4510366005581654,
+      "correct": 104,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.1951219512195122,
+      "items": 41
+    }
+  },
+  "L4/new/unseen": {
+    "letter_A_to_D": {
+      "accuracy": 0.23,
+      "ci95_high": 0.2930842807819702,
+      "ci95_low": 0.1770925624139232,
+      "correct": 46,
+      "n": 200,
+      "predicted_letter_counts": "(43 66 37 54)"
+    },
+    "option_likelihood": {
+      "accuracy": 0.61,
+      "ci95_high": 0.6749177028050861,
+      "ci95_low": 0.5409361758928832,
+      "correct": 122,
+      "n": 200,
+      "predicted_letter_counts": "(46 58 32 64)"
+    },
+    "option_likelihood_mean_per_token": {
+      "accuracy": 0.625,
+      "correct": 125,
+      "n": 200
+    },
+    "option_likelihood_scoring": "argmax of summed token log-probability of ' <option>' after the prompt",
+    "real": {
+      "accuracy": 0.325,
+      "ci95_high": 0.39268143156955027,
+      "ci95_low": 0.2639146705018621,
+      "correct": 65,
+      "n": 200
+    },
+    "summed_score_picks_unique_shortest_option": {
+      "fraction": 0.3958333333333333,
+      "items": 48
+    }
+  },
+  "checkpoint": "data/runs/retrieval/r5-L123-aug-opts/best.ckpt",
+  "checkpoint_sha256": "c7c1eae1526874bee89c81a35a03ccf9ab8ab765f614d4fe1ac5849332ef3f4e"
+}

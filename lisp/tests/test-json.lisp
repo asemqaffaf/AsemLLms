@@ -1,0 +1,15 @@
+(let ((here (directory-namestring *load-truename*)))
+  (load (merge-pathnames "../src/json.lisp" here))
+  (load (merge-pathnames "harness.lisp" here)))
+(in-package :harness)
+(deftest fp32-and-fp64-numbers-use-standard-json-exponents
+  (dolist (x '(1.7166138f-5 1f-30 -1f-30 1f20 0.1f0 0f0 1d-20 -1d20))
+    (let ((s (with-output-to-string (out) (asem-json:write-json x out))))
+      (check (every (lambda (c) (find c "0123456789+-.eE")) s))
+      (check (= (coerce x 'double-float) (asem-json:parse-json s))))))
+(deftest nested-diagnostic-arrays-roundtrip-exact-float-values
+  (let* ((a #(-3.14f0 1f-30 3.5d0)) (j (list :obj (cons "logits" a)))
+         (s (with-output-to-string (out) (asem-json:write-json j out)))
+         (b (asem-json:json-get (asem-json:parse-json s) "logits")))
+    (check (every #'= a b))))
+(run-all)

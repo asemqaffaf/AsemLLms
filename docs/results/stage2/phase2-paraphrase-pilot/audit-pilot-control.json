@@ -1,0 +1,171 @@
+{
+  "format": "asem-retrieval-audit-1",
+  "generator": {
+    "accepted_sequences": 75000,
+    "answer_tokens": 249999,
+    "attempted_fact_sets": 75001,
+    "by_kind": [
+      {
+        "accepted": 24956,
+        "answer_tokens": 78220,
+        "attempted": 24957,
+        "including_copy_loss_weight_share": 0.29517092517330257,
+        "kind": "attr",
+        "questions": 37306,
+        "retrieval_sequence_share": 0.3327466666666667,
+        "retrieval_token_weight_share": 0.3128812515250061
+      },
+      {
+        "accepted": 12563,
+        "answer_tokens": 31841,
+        "attempted": 12563,
+        "including_copy_loss_weight_share": 0.12015517039686942,
+        "kind": "num",
+        "questions": 19867,
+        "retrieval_sequence_share": 0.16750666666666666,
+        "retrieval_token_weight_share": 0.12736450945803784
+      },
+      {
+        "accepted": 12562,
+        "answer_tokens": 56390,
+        "attempted": 12562,
+        "including_copy_loss_weight_share": 0.2127932558236069,
+        "kind": "rel",
+        "questions": 19953,
+        "retrieval_sequence_share": 0.16749333333333333,
+        "retrieval_token_weight_share": 0.22556090224360897
+      },
+      {
+        "accepted": 12507,
+        "answer_tokens": 59133,
+        "attempted": 12507,
+        "including_copy_loss_weight_share": 0.22314423828014446,
+        "kind": "cmp",
+        "questions": 20994,
+        "retrieval_sequence_share": 0.16676,
+        "retrieval_token_weight_share": 0.23653294613178452
+      },
+      {
+        "accepted": 12412,
+        "answer_tokens": 24415,
+        "attempted": 12412,
+        "including_copy_loss_weight_share": 0.0921324231412194,
+        "kind": "tmp",
+        "questions": 24314,
+        "retrieval_sequence_share": 0.16549333333333333,
+        "retrieval_token_weight_share": 0.09766039064156257
+      }
+    ],
+    "copy_replay_loss_weight_share": 0.056603987184857305,
+    "copy_replay_sequence_share": 0.16666666666666666,
+    "copy_replay_sequences": 15000,
+    "loss_weight_interpretation": "Existing :multi retrieval gives each answer token weight 1; :copy averages each sequence to weight 1. Shares describe objective coefficients before model-dependent gradients and clipping.",
+    "questions": 122434,
+    "requested_sequences": 75000,
+    "sequence_digest_serialization": "UTF-8 decimal ids joined by comma, |, rows, |, targets, newline; generated order",
+    "sequence_sha256": "edcd232c8697fa2c959c26010a143031690061af8d9ae72e1436f11d8f78870a"
+  },
+  "provenance": {
+    "manifest_sha256": "607f5a1d01ef01d6d80a44912c971635fc3534326204834cb5c192a90cf10097",
+    "sbcl_version": "2.6.10",
+    "source_sha256": {
+      "bin/retrieval-audit.lisp": "e99792fdf157422b55368b2968279c244bbf012465fb2c1e09119aec52cb2f6a",
+      "src/bpe.lisp": "25523805c53ef53d36ed71625a41140c3a5ee3246bbc96555a48997b0cfbb65f",
+      "src/qagen.lisp": "97b123a54a2c3e5ca5f036939ce5625af4f2d214e7e8e901544081d13a0fb0f7",
+      "src/retrieval.lisp": "6fc9ff7169663a9a59725918307b8f096690fbc7103ea2ae9841877b5984b6a8",
+      "src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d"
+    },
+    "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4"
+  },
+  "recipe": {
+    "augment": true,
+    "broad": true,
+    "copy_mix": 15000,
+    "ctx": 128,
+    "levels": [
+      1,
+      2,
+      3
+    ],
+    "options": true,
+    "predicate_paraphrase": false,
+    "reasoning": true,
+    "reverse": true,
+    "seed": 802,
+    "train_n": 75000
+  },
+  "tokenizer_name_pools": {
+    "dev_real": {
+      "answer_token_length_histogram": [
+        {
+          "strings": 2,
+          "tokens": 1
+        },
+        {
+          "strings": 29,
+          "tokens": 2
+        },
+        {
+          "strings": 4,
+          "tokens": 3
+        },
+        {
+          "strings": 1,
+          "tokens": 4
+        }
+      ],
+      "answer_tokens": 76,
+      "mean_answer_tokens": 2.111111111111111,
+      "roundtrip_errors": 0,
+      "strings": 36
+    },
+    "new_probe": {
+      "answer_token_length_histogram": [
+        {
+          "strings": 2,
+          "tokens": 1
+        },
+        {
+          "strings": 86,
+          "tokens": 2
+        },
+        {
+          "strings": 515,
+          "tokens": 3
+        },
+        {
+          "strings": 72,
+          "tokens": 4
+        }
+      ],
+      "answer_tokens": 2007,
+      "mean_answer_tokens": 2.973333333333333,
+      "roundtrip_errors": 0,
+      "strings": 675
+    },
+    "training": {
+      "answer_token_length_histogram": [
+        {
+          "strings": 188,
+          "tokens": 1
+        },
+        {
+          "strings": 5400,
+          "tokens": 2
+        },
+        {
+          "strings": 14047,
+          "tokens": 3
+        },
+        {
+          "strings": 2262,
+          "tokens": 4
+        }
+      ],
+      "answer_tokens": 62177,
+      "mean_answer_tokens": 2.8395213956249714,
+      "roundtrip_errors": 0,
+      "strings": 21897
+    }
+  }
+}

@@ -1,0 +1,161 @@
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT::RUN-MULTI ASEM-TF:MODEL ASEM-SFT::E ASEM-SFT::CACHE
+;      ASEM-SFT::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (DEFUN ASEM-SFT::MISMATCHED-QUESTION
+;            (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (LET* ((ASEM-SFT::SAME (REMOVE-IF-NOT # ASEM-SFT::ITEMS))
+;              (ASEM-SFT::LEN (LENGTH ASEM-SFT::SAME))
+;              (ASEM-SFT::K (POSITION ASEM-SFT::IT ASEM-SFT::SAME)))
+;         (DECLARE (IGNORE ASEM-SFT::IDX))
+;         (GETF (NTH (MOD # ASEM-SFT::LEN) ASEM-SFT::SAME) :QUESTION)))
+; --> SB-INT:NAMED-LAMBDA SB-INT:NAMED-LAMBDA 
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT::MISMATCHED-QUESTION
+;         (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT::SAME #) (ASEM-SFT::LEN #) (ASEM-SFT::K #))
+;           (DECLARE (IGNORE ASEM-SFT::IDX))
+;           (GETF (NTH # ASEM-SFT::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+PROBE-ANSWERS-COME-FROM-THE-PASSAGE
+PROBE-ENTITIES-NEVER-OCCUR-IN-TRAINING
+TRAINING-TARGETS-ARE-EXACTLY-THE-ANSWERS
+MULTI-EXAMPLES-TRAIN-AND-SCORE
+{"event":"start","from_step":0,"steps":200,"batch":8,"accum":1,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":10,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":8,"dev_n":8,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":8,"dev_loss":17.244725,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":17.244725,"pred_a":0,"pred_b":8,"pred_c":0,"pred_d":0,"rss_mb":110.343750,"peak_rss_mb":110.343750,"seconds":0.059590,"dev_retrieval_train":0.000000}
+{"event":"eval","step":100,"epoch":100.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.075921,"dev_letter_loss":1.386294,"train_probe_acc":1.000000,"train_probe_loss":0.075921,"pred_a":8,"pred_b":0,"pred_c":0,"pred_d":0,"rss_mb":103.484375,"peak_rss_mb":110.343750,"seconds":2.625497,"dev_retrieval_train":1.000000}
+{"event":"target-reached","step":100,"dev_acc":1.000000}
+{"event":"done","steps":200,"best_dev_acc":1.000000,"best_step":100,"best_dev_loss":0.075921,"seconds":2.651786,"peak_rss_mb":110.343750,"best_sha256":"2ec081dd684dbd030e4978bb250eafa67670e4c76c9e53e90eb8050cc2a742a7","last_sha256":"425677d42cd16a4cfdff7c031f48610f58928777fb7841e9192c20e818f7a50a"}
+AUGMENTATION-KEEPS-ANSWERS-AND-ENTITIES-INTACT
+REVERSE-LOOKUPS-ASK-FOR-THE-PERSON
+COMPARISON-AND-TEMPORAL-ANSWERS-ARE-CORRECT
+
+7 tests, 1299 checks, 0 failures

@@ -1,0 +1,38 @@
+{
+  "auxiliary_pairs_consumed": 1005,
+  "base_dense_answer_tokens_consumed": 26548,
+  "copy_seed": 77,
+  "copy_sequences": 3000,
+  "counts": {
+    "eligible/opposite-role": 547,
+    "eligible/other-bound-person": 1326,
+    "excluded/unequal-token-length": 1944,
+    "question/attr": 7484,
+    "question/cmp": 4039,
+    "question/num": 4069,
+    "question/rel": 4045,
+    "question/tmp": 4868,
+    "sequence/attr": 5010,
+    "sequence/cmp": 2406,
+    "sequence/num": 2528,
+    "sequence/rel": 2554,
+    "sequence/tmp": 2502
+  },
+  "dense_sequences": 15000,
+  "exact_stable_data_match": true,
+  "schema": "asem-inverse-data-1",
+  "seed": 111201,
+  "sha256": {
+    "annotations.sexp": "90f8ad08684a2a6a09feee4f3d0d7373f255732e9c44656d0de4543345216851",
+    "consumed-indices.sexp": "4393727e98970447bb8ba2966828ada6aff15c0706ddca1873e07ce6a5202b78",
+    "data.sexp": "71a8226ddb00ea2929359cf4d00e71d43e3f11af7a8acd49a1c42f5bdd2d7a22"
+  },
+  "source_sha256": {
+    "lisp/bin/inverse-prepare.lisp": "87047907ff82644752bb045e031adf9f47be05b7605c68262f46e379c1fdab58",
+    "lisp/experimental/inverse-contrastive/data.lisp": "f5e23e59a51389b87c47825fbae9c6f95ce0efde65d853fd7281b0113b099eb1",
+    "lisp/experimental/inverse-contrastive/objective.lisp": "09dcf3884f5b3b87971d6d26ada35f20cfebfce4758a3d5f0f4577b9c53b7be9",
+    "lisp/src/mission-data.lisp": "d8de4b0b97a20bf6221aa186003dfd5e669dbc794f8ae138484ce7a83f9ed896",
+    "lisp/src/retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+    "lisp/src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d"
+  }
+}

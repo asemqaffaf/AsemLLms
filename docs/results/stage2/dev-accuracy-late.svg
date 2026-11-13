@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 460" role="img" width="100%" style="max-width:920px" font-family="system-ui, -apple-system, Helvetica, Arial, sans-serif">
+<title>Development accuracy, long runs on never-repeated data (chance 0.25)</title>
+<rect width="920" height="460" fill="#fcfcfb"/>
+<text x="64" y="24" font-size="15" fill="#1d1d1b">Development accuracy, long runs on never-repeated data (chance 0.25)</text>
+<line x1="64" x2="770" y1="406.0" y2="406.0" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="410.0" text-anchor="end" font-size="12" fill="#52514e">0.10</text>
+<line x1="64" x2="770" y1="332.8" y2="332.8" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="336.8" text-anchor="end" font-size="12" fill="#52514e">0.17</text>
+<line x1="64" x2="770" y1="259.6" y2="259.6" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="263.6" text-anchor="end" font-size="12" fill="#52514e">0.24</text>
+<line x1="64" x2="770" y1="186.4" y2="186.4" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="190.4" text-anchor="end" font-size="12" fill="#52514e">0.31</text>
+<line x1="64" x2="770" y1="113.2" y2="113.2" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="117.2" text-anchor="end" font-size="12" fill="#52514e">0.38</text>
+<line x1="64" x2="770" y1="40.0" y2="40.0" stroke="#d9d8d2" stroke-dasharray="2 4"/>
+<text x="54" y="44.0" text-anchor="end" font-size="12" fill="#52514e">0.45</text>
+<text x="64.0" y="426" text-anchor="middle" font-size="12" fill="#52514e">0</text>
+<text x="205.2" y="426" text-anchor="middle" font-size="12" fill="#52514e">1200</text>
+<text x="346.4" y="426" text-anchor="middle" font-size="12" fill="#52514e">2400</text>
+<text x="487.6" y="426" text-anchor="middle" font-size="12" fill="#52514e">3600</text>
+<text x="628.8" y="426" text-anchor="middle" font-size="12" fill="#52514e">4800</text>
+<text x="770.0" y="426" text-anchor="middle" font-size="12" fill="#52514e">6000</text>
+<text x="417" y="450" text-anchor="middle" font-size="12" fill="#52514e">step</text>
+<line x1="64" x2="770" y1="249.1" y2="249.1" stroke="#868e96" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="776" y="253.1" font-size="12" fill="#868e96">chance</text>
+<polyline fill="none" stroke="#2a6fdb" stroke-width="2" points="64.0,222.0 93.4,228.2 122.8,230.3 152.3,242.9 181.7,240.8 211.1,245.0 240.5,240.8 269.9,240.8 299.3,249.1 328.8,236.6 358.2,247.1 387.6,226.1 417.0,236.6 446.4,228.2 475.8,238.7 505.3,259.6 534.7,247.1 564.1,253.3 593.5,245.0 622.9,240.8 652.3,230.3 681.8,247.1 711.2,251.2 740.6,272.1"/>
+<text x="776.0" y="54.0" font-size="12" fill="#2a6fdb">E10 10.5M text aux (0.228)</text>
+<polyline fill="none" stroke="#d9480f" stroke-width="2" points="64.0,270.1 122.8,226.1 181.7,222.0 240.5,249.1 299.3,224.0 358.2,217.8 417.0,242.9 475.8,230.3 534.7,242.9 593.5,249.1 652.3,245.0 711.2,230.3 770.0,240.8"/>
+<text x="776.0" y="72.0" font-size="12" fill="#d9480f">S1 3M scratch all aids (0.258)</text>
+<polyline fill="none" stroke="#2b8a3e" stroke-width="2" points="64.0,274.2 93.4,215.7 122.8,232.4 152.3,232.4 181.7,228.2 211.1,249.1 240.5,255.4 269.9,255.4 299.3,228.2 328.8,232.4 358.2,240.8 387.6,242.9 417.0,245.0 446.4,242.9"/>
+<text x="776.0" y="90.0" font-size="12" fill="#2b8a3e">Q1 1.2M with copying (0.256)</text>
+<polyline fill="none" stroke="#862e9c" stroke-width="2" points="64.0,274.2 122.8,238.7 181.7,236.6 240.5,232.4 299.3,232.4 358.2,249.1 417.0,263.8 475.8,242.9 534.7,249.1"/>
+<text x="776.0" y="108.0" font-size="12" fill="#862e9c">Q3 1.2M copying+recall (0.250)</text>
+<polyline fill="none" stroke="#c92a2a" stroke-width="2" points="64.0,249.1 93.4,247.1 122.8,255.4 152.3,270.1 181.7,265.9 211.1,280.5 240.5,278.4"/>
+<text x="776.0" y="126.0" font-size="12" fill="#c92a2a">Q2 10.5M copying+recall (0.222)</text>
+</svg>

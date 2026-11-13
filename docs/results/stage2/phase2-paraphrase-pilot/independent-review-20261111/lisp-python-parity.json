@@ -1,0 +1,65 @@
+{
+  "valid_fixtures": 4,
+  "corrupted_fixtures": 7,
+  "matching_fixture_verdicts": 11,
+  "matching_saved_comparisons": 864,
+  "tolerance": 1e-10,
+  "fixtures": [
+    {
+      "name": "balanced-discordance",
+      "rejected": false,
+      "passed": true
+    },
+    {
+      "name": "zero-discordance",
+      "rejected": false,
+      "passed": true
+    },
+    {
+      "name": "fifteen-unopposed-losses",
+      "rejected": false,
+      "passed": true
+    },
+    {
+      "name": "prefix-boolean",
+      "rejected": false,
+      "passed": true
+    },
+    {
+      "name": "changed-id",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "changed-gold-key",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "changed-gold-text",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "tampered-prediction",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "missing-prediction",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "unequal-count",
+      "rejected": true,
+      "passed": true
+    },
+    {
+      "name": "tampered-prefix",
+      "rejected": true,
+      "passed": true
+    }
+  ],
+  "note": "Python reference functions extracted unchanged via AST; Lisp uses independent logic. Existing saved results unchanged."
+}

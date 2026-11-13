@@ -1,0 +1,40 @@
+;;;; Pure decoding policy. No model, tokenizer, evaluator, verifier or answer key.
+(defpackage :asem-candidate-decode
+  (:use :cl)
+  (:export #:argmax #:allowed-next #:greedy-candidate #:greedy-unrestricted))
+(in-package :asem-candidate-decode)
+(defun argmax (logits &optional allowed)
+  (let ((choices (or allowed (loop for i below (length logits) collect i))))
+    (unless choices (error "Empty allowed set"))
+    (reduce (lambda (a b) (if (or (> (aref logits b) (aref logits a))
+                                  (and (= (aref logits a) (aref logits b)) (< b a))) b a)) choices)))
+(defun starts-with (tail prefix)
+  (and (<= (length prefix) (length tail)) (loop for x in prefix for i from 0 always (= x (elt tail i)))))
+(defun allowed-next (candidates prefix)
+  (sort (remove-duplicates
+          (loop for c in candidates when (and (starts-with c prefix) (< (length prefix) (length c)))
+                  collect (elt c (length prefix)))) #'<))
+(defun greedy-candidate (candidates next-logits)
+  "Token-wise greedy decoding within four equal-length candidate continuations.
+NEXT-LOGITS receives only the generated prefix. No answer key enters the policy.
+Completion is a candidate boundary, not learned EOT/termination."
+  (unless (and (= 4 (length candidates)) (plusp (length (first candidates)))
+               (every (lambda (c) (= (length c) (length (first candidates)))) candidates)
+               (= 4 (length (remove-duplicates candidates :test #'equalp))))
+    (error "Need four distinct nonempty equal-length candidate token sequences"))
+  (let ((prefix nil) (trace nil))
+    (dotimes (i (length (first candidates)))
+      (declare (ignorable i))
+      (let* ((allowed (allowed-next candidates prefix)) (logits (funcall next-logits prefix))
+             (chosen (argmax logits allowed)) (global (argmax logits)))
+        (push (list :prefix (copy-list prefix) :allowed allowed :chosen chosen :global global) trace)
+        (setf prefix (append prefix (list chosen)))))
+    (let ((index (position prefix candidates :test (lambda (a b) (equalp a (coerce b 'list))))))
+      (unless index (error "Trie decoder did not produce a candidate"))
+      (values prefix index (nreverse trace)))))
+(defun greedy-unrestricted (length next-logits)
+  "Fixed-length token trace for comparison with saved gold-length prefixes."
+  (let ((prefix nil))
+    (dotimes (i length prefix)
+      (declare (ignorable i))
+      (setf prefix (append prefix (list (argmax (funcall next-logits prefix))))))))

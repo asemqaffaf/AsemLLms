@@ -1,0 +1,54 @@
+{
+  "schema": "asem-pilot4-evidence-freeze-1",
+  "pilot3_manifest_verified": true,
+  "pilot3_manifest_mismatches": [],
+  "pilot3_frozen_inputs": {
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+    "data/fineweb/stage1/tokenizer.bpe": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+    "data/runs/retrieval/p3-learnability/data-train.sexp": "bbf1d88431bb4df7e379ce3d03a002c7c125ba65bc871ebfc767d157d6bb685f",
+    "docs/results/stage2/mission-20261111/selection.sexp": "11deeef798a4d5a34d91f450adbdb76801d6a60eda0c30956a442a0173aaeaa0",
+    "lisp/bin/qa-analysis.lisp": "61ac8f17a8809f1e98a98dbd0032db82b230f8a428a37bb36d764f1e73c58e1c",
+    "lisp/bin/mission-eval.lisp": "5fd60a4cb0df9c20fad6e821782db36010fb9ef88e7e914211c712495c67a153",
+    "lisp/src/qagen.lisp": "97b123a54a2c3e5ca5f036939ce5625af4f2d214e7e8e901544081d13a0fb0f7",
+    "lisp/src/retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+    "lisp/src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d"
+  },
+  "pilot3_checkpoints": {
+    "data/runs/retrieval/p3-learnability/arm-5e-4/step-00250.ckpt": "3de019010f8f84eaa20977300cf706aff21065117e6b09d12126f77e844a5044",
+    "data/runs/retrieval/p3-learnability/arm-5e-4/step-00500.ckpt": "6a4fdc5f5fed6bd8d00fa68506fc6479328137d67330fba6aebb39b96219c436",
+    "data/runs/retrieval/p3-learnability/arm-5e-4/last.ckpt": "6a4fdc5f5fed6bd8d00fa68506fc6479328137d67330fba6aebb39b96219c436",
+    "data/runs/retrieval/p3-learnability/arm-5e-4/log.jsonl": "81f5749f87a8660871e1a90357e379e0d70342a61ff285baaf949e255078e328",
+    "data/runs/retrieval/p3-learnability/arm-1e-3/step-00250.ckpt": "1bfd2059fdeb771897198477c75163f4495fb5a5c0001291a250658ebffb985b",
+    "data/runs/retrieval/p3-learnability/arm-1e-3/step-00500.ckpt": "2041eaf1b471f13f3d66edf039d96e3725ef777ae63b405792d5348f3bd21abc",
+    "data/runs/retrieval/p3-learnability/arm-1e-3/last.ckpt": "2041eaf1b471f13f3d66edf039d96e3725ef777ae63b405792d5348f3bd21abc",
+    "data/runs/retrieval/p3-learnability/arm-1e-3/log.jsonl": "71db3f8c2c170e81116a2ad4472164fa3706c76c7a8e7456bbd2620ec3fa56ba"
+  },
+  "pilot3_bundle_count": 63,
+  "pilot3_bundle_sha256_of_manifest": "d5b71c2ba64daaf8cc912077e8885f9252de3acb276cdfc3579b6182888accc5",
+  "additional_frozen_artifacts": {
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/best.ckpt": "8649daa9628f512602d2bfcee9bc7a781ca31b3d9c242c7a566cb60cf637bd33",
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last-m1.ckpt": "3ba69a02e3f8bc3464a88416a54f79115feade4b1932b0aa71dc2bb64f7c2191",
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last-m2.ckpt": "d17c78aef4629d13a9ce4b68458d84d7e1aa4b010bd9174991ac9fc14af98eaf",
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/log.jsonl": "52e7ceb35305a110cd88da2f952bcdd94888d64e8b40f572e9cc278f8080de61",
+    "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/state.sexp": "129a2b1cededdd7e99ff0e2a56527a77d0d8a43058b496a72c103c893624e715",
+    "data/runs/retrieval/p3-learnability/arm-5e-4/best.ckpt": "a53f4c919dd9d68cd6a4036bd8fd6ef2771b7873a21b64c2c5f3044d48c77c74",
+    "data/runs/retrieval/p3-learnability/arm-1e-3/best.ckpt": "8bdb604c42dccd06e528ed4292797c9713b9f86d299b0500135cef66321c15c9",
+    "data/runs/retrieval/p2-answer-before/control/last.ckpt": "b9c85573ff2450caa17814edbb59de884a5062b70cbde1dcc60c5df052d6f10f",
+    "data/runs/retrieval/p2-answer-before/treatment/last.ckpt": "e0ed026cae05566700e44f530d9a841de27477056e0bb33f856011a87557e767",
+    "docs/results/stage2/mission-20261111/manifest.json": "331684ca531ad2bf1f76a85524a41545b53bdb84e811b1d04a0c8462c1703d2d",
+    "docs/results/stage2/mission-20261111/audit-training.sexp": "2cdab2dda3d84d0ea1074e00fbe68f9ad4c92d55b88dc758187220cab8290367",
+    "docs/results/stage2/mission-20261111/r7-selection.json": "bb30e7a2498dcbfc7b8578ac4fc882c8b23f631fb2fe3fb7ec119b0f72195c63",
+    "docs/results/stage2/mission-20261111/r7-qa.json": "c68e81d192b4325e2784a6c27f951bc71a8d5d9343e3d6cadad05b5b02bf70c1",
+    "docs/results/stage2/mission-20261111/pilot2/RESULTS.md": "c0f5aceab50492b62ca3a7aa02c361dd4a7e80b03f60a37a3a5f6a97c867bbd5",
+    "docs/results/stage2/mission-20261111/pilot2/protocol.md": "df4462e0d16b6f9cb0e6bff2682ddcbee1b91d6cc18ae8b6d92c1731f4d9781c",
+    "docs/results/stage2/mission-20261111/pilot2/d1-entities.txt": "39313a1289442629c68de6a4a8edaffa77aa7aa10a1e3f7ddbd09ae563900eac",
+    "lisp/eval/qa/dev.jsonl": "2d92c8825ca3752bd780ecd25023ae5f0a8dcc60677ee6484d46aa95e701032a",
+    "lisp/experimental/pilot3/pilot3.lisp": "fe4f5bf9fa811f9d36eb42d365c8ca4ba4e8ccfe69697736fb91242c58f29c7c",
+    "docs/results/stage2/mission-20261111/pilot3/manifest.json": "d5b71c2ba64daaf8cc912077e8885f9252de3acb276cdfc3579b6182888accc5"
+  },
+  "untouched_quarantined": [
+    "docs/results/stage2/mission-20261111/confirmation.sexp",
+    "lisp/eval/qa/test.jsonl",
+    "lisp/eval/qa/test.lock"
+  ]
+}

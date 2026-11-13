@@ -1,0 +1,2586 @@
+{
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/best.ckpt",
+  "checkpoint_sha256": "8649daa9628f512602d2bfcee9bc7a781ca31b3d9c242c7a566cb60cf637bd33",
+  "counterfactual_consistency": {
+    "both_correct": 102,
+    "fraction_both_correct": 0.204,
+    "note": "same passage and options, the question asks about another entity; the answer moves to cf_answer",
+    "prediction_changed_with_the_question": 0.418
+  },
+  "counterfactual_question_same_passage": {
+    "accuracy": 0.424,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.24,
+        "ci95_high": 0.3323251872329213,
+        "ci95_low": 0.16691211265459965,
+        "correct": 24,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.62,
+        "ci95_high": 0.7090255079986562,
+        "ci95_low": 0.5220957382071033,
+        "correct": 62,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.65,
+        "ci95_high": 0.7363589534652197,
+        "ci95_low": 0.5525426042919797,
+        "correct": 65,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.33,
+        "ci95_high": 0.4269483966028862,
+        "ci95_low": 0.24562983793895452,
+        "correct": 33,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.28,
+        "ci95_high": 0.37488212361345724,
+        "ci95_low": 0.2013955916759837,
+        "correct": 28,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.2608695652173913,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.13333333333333333,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.36363636363636365,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.125,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.2777777777777778,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.5714285714285714,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.4444444444444444,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.5714285714285714,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 1.0,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.7333333333333333,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 1.0,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.7142857142857143,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 0.8,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 0.9166666666666666,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 1.0,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.875,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.8,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.7777777777777778,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.3076923076923077,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.5714285714285714,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.5833333333333334,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.625,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.4444444444444444,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.0,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.2,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.42857142857142855,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.35714285714285715,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.21875,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.36363636363636365,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.2777777777777778,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.125,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.2608695652173913,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.13333333333333333,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.5,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.5555555555555556,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.4444444444444444,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.8181818181818182,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 1.0,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.7333333333333333,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.3333333333333333,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.8333333333333334,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 1.0,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.4,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.3157894736842105,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.2962962962962963,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.23529411764705882,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.47368421052631576,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.42857142857142855,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.21875,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.35714285714285715,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.46773559018907274,
+    "ci95_low": 0.38142335182762455,
+    "correct": 212,
+    "mean_letter_loss": 4.463482478191806,
+    "mean_loss": 4.253024253170345,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 139,
+      "B": 125,
+      "C": 114,
+      "D": 122
+    }
+  },
+  "items": "lisp/eval/qa/dev.jsonl",
+  "items_sha256": "2d92c8825ca3752bd780ecd25023ae5f0a8dcc60677ee6484d46aa95e701032a",
+  "locked_test": false,
+  "mismatched_question_from_another_item": {
+    "accuracy": 0.258,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.35,
+        "ci95_high": 0.4474573957080203,
+        "ci95_low": 0.2636410465347802,
+        "correct": 35,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.26,
+        "ci95_high": 0.35371172631861636,
+        "ci95_low": 0.18404578126986462,
+        "correct": 26,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.32,
+        "ci95_high": 0.4166280225367919,
+        "ci95_low": 0.2366901081545688,
+        "correct": 32,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.25,
+        "ci95_high": 0.3430464637007583,
+        "ci95_low": 0.1754509400372426,
+        "correct": 25,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.11,
+        "ci95_high": 0.18631463027903022,
+        "ci95_low": 0.06254131955225126,
+        "correct": 11,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.30434782608695654,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.4,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.4117647058823529,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.6363636363636364,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.1111111111111111,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.4444444444444444,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.16666666666666666,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.0,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 0.0,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.0,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.1111111111111111,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.5384615384615384,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.625,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.4444444444444444,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.5555555555555556,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.16666666666666666,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.4444444444444444,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.2,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.13333333333333333,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.18181818181818182,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.19047619047619047,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.09375,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.6363636363636364,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.1111111111111111,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.4117647058823529,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.30434782608695654,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.4,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.3,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.4444444444444444,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.18181818181818182,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.1111111111111111,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 0.23076923076923078,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.2,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.16666666666666666,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 1.0,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 0.6666666666666666,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.3684210526315789,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.14814814814814814,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.15789473684210525,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.19047619047619047,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.09375,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.29809474696283045,
+    "ci95_low": 0.22159556840612682,
+    "correct": 129,
+    "mean_letter_loss": 6.45571868566836,
+    "mean_loss": 5.973615007688557,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 125,
+      "B": 125,
+      "C": 109,
+      "D": 141
+    }
+  },
+  "mode": "text",
+  "no_passage": {
+    "accuracy": 0.226,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.28,
+        "ci95_high": 0.37488212361345724,
+        "ci95_low": 0.2013955916759837,
+        "correct": 28,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.28,
+        "ci95_high": 0.37488212361345724,
+        "ci95_low": 0.2013955916759837,
+        "correct": 28,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.22,
+        "ci95_high": 0.3107053471500031,
+        "ci95_low": 0.15001174503655804,
+        "correct": 22,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.21,
+        "ci95_high": 0.2998014930196232,
+        "ci95_low": 0.14165549531645788,
+        "correct": 21,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.14,
+        "ci95_high": 0.22137360383807236,
+        "ci95_low": 0.08526265754464905,
+        "correct": 14,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.17391304347826086,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.35294117647058826,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.2727272727272727,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.2777777777777778,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.0,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 0.16666666666666666,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.2,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.0,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 0.16666666666666666,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.1111111111111111,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.23076923076923078,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.0,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.4444444444444444,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.5555555555555556,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.0,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.0,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.2,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.18181818181818182,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.1111111111111111,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.09523809523809523,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.14285714285714285,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.1875,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.2727272727272727,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.2777777777777778,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.35294117647058826,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.17391304347826086,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.2,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.2727272727272727,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 0.3076923076923077,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.2,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.13333333333333333,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.0,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.4,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 0.6666666666666666,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.2222222222222222,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.23529411764705882,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.15789473684210525,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.09523809523809523,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.10526315789473684,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.1875,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.14285714285714285,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.2646691031144819,
+    "ci95_low": 0.1915091878404532,
+    "correct": 113,
+    "mean_letter_loss": 6.63761941486352,
+    "mean_loss": 7.048065713219632,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 105,
+      "B": 105,
+      "C": 108,
+      "D": 182
+    }
+  },
+  "no_question": {
+    "accuracy": 0.226,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.26,
+        "ci95_high": 0.35371172631861636,
+        "ci95_low": 0.18404578126986462,
+        "correct": 26,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.24,
+        "ci95_high": 0.3323251872329213,
+        "ci95_low": 0.16691211265459965,
+        "correct": 24,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.27,
+        "ci95_high": 0.3643230022623127,
+        "ci95_low": 0.1926946091766482,
+        "correct": 27,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.26,
+        "ci95_high": 0.35371172631861636,
+        "ci95_low": 0.18404578126986462,
+        "correct": 26,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.1,
+        "ci95_high": 0.1743673043676654,
+        "ci95_low": 0.05522854161313613,
+        "correct": 10,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.17391304347826086,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.3333333333333333,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.23529411764705882,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.1875,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.2222222222222222,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.2222222222222222,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 0.0,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 0.0,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.4,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 0.0,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 0.16666666666666666,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.0,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.5384615384615384,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.2857142857142857,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.125,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.3,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.18181818181818182,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.17857142857142858,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.03125,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.05263157894736842,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.2222222222222222,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.23529411764705882,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.1875,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.17391304347826086,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.3333333333333333,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.3,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.2222222222222222,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.18181818181818182,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 0.15384615384615385,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.4,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.2,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.16666666666666666,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 0.25,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.6666666666666666,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 0.0,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.25,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.2222222222222222,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.3157894736842105,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.2962962962962963,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.15789473684210525,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.05263157894736842,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.03125,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.17857142857142858,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.2646691031144819,
+    "ci95_low": 0.1915091878404532,
+    "correct": 113,
+    "mean_letter_loss": 6.5673616811891105,
+    "mean_loss": 7.292504630917217,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 153,
+      "B": 130,
+      "C": 101,
+      "D": 116
+    }
+  },
+  "options_in_reverse_order": {
+    "accuracy": 0.448,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.33,
+        "ci95_high": 0.4269483966028862,
+        "ci95_low": 0.24562983793895452,
+        "correct": 33,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.68,
+        "ci95_high": 0.7633098918454312,
+        "ci95_low": 0.5833719774632081,
+        "correct": 68,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.69,
+        "ci95_high": 0.7722043679386762,
+        "ci95_low": 0.5937376052204429,
+        "correct": 69,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.34,
+        "ci95_high": 0.43722454341689065,
+        "ci95_low": 0.25461379497543,
+        "correct": 34,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.2,
+        "ci95_high": 0.28883096192650237,
+        "ci95_low": 0.1333659225590988,
+        "correct": 20,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.391304347826087,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.16666666666666666,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.8333333333333334,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.8571428571428571,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.6111111111111112,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 0.6666666666666666,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 1.0,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.8,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.625,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 0.8571428571428571,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.5714285714285714,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 1.0,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 1.0,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 1.0,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.875,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.5384615384615384,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.75,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.1,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.7272727272727273,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.3125,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.2631578947368421,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.16666666666666666,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.391304347826087,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.8,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.6111111111111112,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.5555555555555556,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 0.9230769230769231,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.8,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.5333333333333333,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.8333333333333334,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 1.0,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 1.0,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.4,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.15789473684210525,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.2962962962962963,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.35294117647058826,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.5789473684210527,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.2631578947368421,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.3125,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.4918210683681993,
+    "ci95_low": 0.40497189195901473,
+    "correct": 224,
+    "mean_letter_loss": 4.200129150711233,
+    "mean_loss": 4.06382271278088,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 133,
+      "B": 122,
+      "C": 129,
+      "D": 116
+    }
+  },
+  "real_prompt": {
+    "accuracy": 0.448,
+    "by_category": {
+      "compare": {
+        "accuracy": 0.33,
+        "ci95_high": 0.4269483966028862,
+        "ci95_low": 0.24562983793895452,
+        "correct": 33,
+        "n": 100
+      },
+      "extract": {
+        "accuracy": 0.68,
+        "ci95_high": 0.7633098918454312,
+        "ci95_low": 0.5833719774632081,
+        "correct": 68,
+        "n": 100
+      },
+      "relation": {
+        "accuracy": 0.69,
+        "ci95_high": 0.7722043679386762,
+        "ci95_low": 0.5937376052204429,
+        "correct": 69,
+        "n": 100
+      },
+      "reverse": {
+        "accuracy": 0.34,
+        "ci95_high": 0.43722454341689065,
+        "ci95_low": 0.25461379497543,
+        "correct": 34,
+        "n": 100
+      },
+      "temporal": {
+        "accuracy": 0.2,
+        "ci95_high": 0.28883096192650237,
+        "ci95_low": 0.1333659225590988,
+        "correct": 20,
+        "n": 100
+      }
+    },
+    "by_question_frame": {
+      "compare | Who got the biggest total?": {
+        "accuracy": 0.391304347826087,
+        "n": 23
+      },
+      "compare | Who got the smallest total?": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "compare | Who has the greatest height?": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare | Who has the highest age?": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare | Who has the least height?": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare | Who has the lowest age?": {
+        "accuracy": 0.16666666666666666,
+        "n": 18
+      },
+      "extract | At what age is {P} now?": {
+        "accuracy": 0.8333333333333334,
+        "n": 6
+      },
+      "extract | How many years old is {P}?": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "extract | What color is {P} most fond of?": {
+        "accuracy": 0.8571428571428571,
+        "n": 7
+      },
+      "extract | What does {P} measure in height?": {
+        "accuracy": 0.6111111111111112,
+        "n": 18
+      },
+      "extract | What is {P} employed as?": {
+        "accuracy": 0.6666666666666666,
+        "n": 3
+      },
+      "extract | What is {P}'s instrument?": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "extract | What is {P}'s occupation?": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "extract | What is {P}'s place of residence?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "extract | What kind of pet does {P} own?": {
+        "accuracy": 1.0,
+        "n": 6
+      },
+      "extract | What total did {P} get?": {
+        "accuracy": 0.8,
+        "n": 15
+      },
+      "extract | Where does {P} reside?": {
+        "accuracy": 0.625,
+        "n": 8
+      },
+      "extract | Which animal does {P} own?": {
+        "accuracy": 0.8571428571428571,
+        "n": 7
+      },
+      "extract | Which color is the favorite of {P}?": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "extract | Which instrument is associated with {P}?": {
+        "accuracy": 0.5714285714285714,
+        "n": 7
+      },
+      "relation | To whom did {A} express gratitude?": {
+        "accuracy": 1.0,
+        "n": 5
+      },
+      "relation | Who assisted {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation | Who did {A} assist?": {
+        "accuracy": 1.0,
+        "n": 12
+      },
+      "relation | Who did {A} pay a visit to?": {
+        "accuracy": 1.0,
+        "n": 7
+      },
+      "relation | Who did {A} recruit?": {
+        "accuracy": 0.875,
+        "n": 8
+      },
+      "relation | Who did {A} ring?": {
+        "accuracy": 0.2,
+        "n": 5
+      },
+      "relation | Who did {A} tutor?": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "relation | Who expressed gratitude to {B}?": {
+        "accuracy": 0.5384615384615384,
+        "n": 13
+      },
+      "relation | Who paid a visit to {B}?": {
+        "accuracy": 0.42857142857142855,
+        "n": 7
+      },
+      "relation | Who rang {B}?": {
+        "accuracy": 0.6666666666666666,
+        "n": 12
+      },
+      "relation | Who recruited {B}?": {
+        "accuracy": 0.75,
+        "n": 8
+      },
+      "relation | Who tutored {B}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Which person owns {aV}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is associated with the {V}?": {
+        "accuracy": 0.2222222222222222,
+        "n": 9
+      },
+      "reverse | Who is employed as {aV}?": {
+        "accuracy": 0.25,
+        "n": 12
+      },
+      "reverse | Who is most fond of {V}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "reverse | Who is the owner of {aV}?": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "reverse | Who resides in {V}?": {
+        "accuracy": 0.375,
+        "n": 8
+      },
+      "reverse | Whose instrument is the {V}?": {
+        "accuracy": 0.1,
+        "n": 10
+      },
+      "reverse | Whose occupation is {V}?": {
+        "accuracy": 0.3333333333333333,
+        "n": 15
+      },
+      "reverse | Whose place of residence is {V}?": {
+        "accuracy": 0.7272727272727273,
+        "n": 11
+      },
+      "reverse | {V} is the favorite color of which person?": {
+        "accuracy": 0.3333333333333333,
+        "n": 9
+      },
+      "temporal | Where did {P} head once done at the {X}?": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal | Where did {P}'s day finish?": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      },
+      "temporal | Where did {P}'s day start?": {
+        "accuracy": 0.3125,
+        "n": 32
+      },
+      "temporal | Where was {P} prior to the {X}?": {
+        "accuracy": 0.2631578947368421,
+        "n": 19
+      }
+    },
+    "by_subtype": {
+      "compare/age-max": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "compare/age-min": {
+        "accuracy": 0.16666666666666666,
+        "n": 18
+      },
+      "compare/height-max": {
+        "accuracy": 0.29411764705882354,
+        "n": 17
+      },
+      "compare/height-min": {
+        "accuracy": 0.375,
+        "n": 16
+      },
+      "compare/score-max": {
+        "accuracy": 0.391304347826087,
+        "n": 23
+      },
+      "compare/score-min": {
+        "accuracy": 0.26666666666666666,
+        "n": 15
+      },
+      "extract/age": {
+        "accuracy": 0.8,
+        "n": 10
+      },
+      "extract/color": {
+        "accuracy": 0.6666666666666666,
+        "n": 9
+      },
+      "extract/height": {
+        "accuracy": 0.6111111111111112,
+        "n": 18
+      },
+      "extract/instrument": {
+        "accuracy": 0.5454545454545454,
+        "n": 11
+      },
+      "extract/job": {
+        "accuracy": 0.5555555555555556,
+        "n": 9
+      },
+      "extract/pet": {
+        "accuracy": 0.9230769230769231,
+        "n": 13
+      },
+      "extract/score": {
+        "accuracy": 0.8,
+        "n": 15
+      },
+      "extract/town": {
+        "accuracy": 0.5333333333333333,
+        "n": 15
+      },
+      "relation/call-chain-obj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/call-chain-subj": {
+        "accuracy": 0.5,
+        "n": 6
+      },
+      "relation/call-pairs-obj": {
+        "accuracy": 0.0,
+        "n": 2
+      },
+      "relation/call-pairs-subj": {
+        "accuracy": 0.8333333333333334,
+        "n": 6
+      },
+      "relation/help-chain-obj": {
+        "accuracy": 1.0,
+        "n": 8
+      },
+      "relation/help-chain-subj": {
+        "accuracy": 0.5,
+        "n": 2
+      },
+      "relation/help-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/help-pairs-subj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/hire-chain-subj": {
+        "accuracy": 1.0,
+        "n": 2
+      },
+      "relation/hire-pairs-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/hire-pairs-subj": {
+        "accuracy": 0.6666666666666666,
+        "n": 6
+      },
+      "relation/teach-chain-obj": {
+        "accuracy": 0.75,
+        "n": 4
+      },
+      "relation/teach-chain-subj": {
+        "accuracy": 0.4,
+        "n": 5
+      },
+      "relation/teach-pairs-obj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/teach-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "relation/thank-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/thank-chain-subj": {
+        "accuracy": 0.5,
+        "n": 8
+      },
+      "relation/thank-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 1
+      },
+      "relation/thank-pairs-subj": {
+        "accuracy": 0.6,
+        "n": 5
+      },
+      "relation/visit-chain-obj": {
+        "accuracy": 1.0,
+        "n": 4
+      },
+      "relation/visit-chain-subj": {
+        "accuracy": 0.5,
+        "n": 4
+      },
+      "relation/visit-pairs-obj": {
+        "accuracy": 1.0,
+        "n": 3
+      },
+      "relation/visit-pairs-subj": {
+        "accuracy": 0.3333333333333333,
+        "n": 3
+      },
+      "reverse/color": {
+        "accuracy": 0.3333333333333333,
+        "n": 18
+      },
+      "reverse/instrument": {
+        "accuracy": 0.15789473684210525,
+        "n": 19
+      },
+      "reverse/job": {
+        "accuracy": 0.2962962962962963,
+        "n": 27
+      },
+      "reverse/pet": {
+        "accuracy": 0.35294117647058826,
+        "n": 17
+      },
+      "reverse/town": {
+        "accuracy": 0.5789473684210527,
+        "n": 19
+      },
+      "temporal/after": {
+        "accuracy": 0.14285714285714285,
+        "n": 21
+      },
+      "temporal/before": {
+        "accuracy": 0.2631578947368421,
+        "n": 19
+      },
+      "temporal/first": {
+        "accuracy": 0.3125,
+        "n": 32
+      },
+      "temporal/last": {
+        "accuracy": 0.07142857142857142,
+        "n": 28
+      }
+    },
+    "ci95_high": 0.4918210683681993,
+    "ci95_low": 0.40497189195901473,
+    "correct": 224,
+    "mean_letter_loss": 4.198708358606117,
+    "mean_loss": 4.061759581501876,
+    "n": 500,
+    "predicted_letter_counts": {
+      "A": 117,
+      "B": 129,
+      "C": 121,
+      "D": 133
+    }
+  },
+  "reverse_order_consistency": {
+    "same_option_chosen": 0.998
+  },
+  "seconds": 51.359591
+}

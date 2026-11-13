@@ -6,7 +6,8 @@
   (:export #:make-config #:config-vocab #:config-ctx #:config-dim #:config-heads #:config-layers #:config-ff
            #:model #:model-config #:model-params #:init-model #:param-count #:make-acts #:forward #:backward
            #:make-grads #:zero-grads #:copy-model-params #:last-logits #:softmax-row #:dvec #:new-dvec
-           #:param-names #:flops-per-token #:acts-probs #:gen-kernel #:tuned-config
+           #:param-names #:flops-per-token #:acts-probs #:acts-logits #:gen-kernel #:tuned-config
+           #:forward-rows #:backward-rows #:forward-trunk #:backward-trunk #:gather-rows #:add-tie-gate #:config-tie #:tie-index #:add-relpos #:config-relpos #:relbias-index
            #:native-init #:native-active-p #:native-min-work
            #:blas-init #:blas-active-p #:blas-min-work #:host-float #:elt-bytes))
 (in-package :asem-tf)
@@ -24,7 +25,7 @@
 (declaim (inline new-dvec))
 (defun new-dvec (n) (make-array n :element-type 'double-float :initial-element 0d0))
 
-(defstruct config vocab ctx dim heads layers ff)
+(defstruct config vocab ctx dim heads layers ff tie relpos)   ; TIE: tied copy path (HEAD-FWD); RELPOS K: relative-position attention biases
 
 (defstruct model config params)       ; params: simple-vector of dvec, see PARAM-NAMES
 
@@ -42,7 +43,12 @@
                                (list (format nil "l~d.wk" l) (* d d)) (list (format nil "l~d.wv" l) (* d d))
                                (list (format nil "l~d.wo" l) (* d d)) (list (format nil "l~d.g2" l) d)
                                (list (format nil "l~d.w1" l) (* d f)) (list (format nil "l~d.w2" l) (* f d))))
-            (list (list "gf" d) (list "head" (* d v))))))
+            (list (list "gf" d) (list "head" (* d v)))
+            (when (config-tie cfg) (list (list "tiegate" 1)))
+            (when (config-relpos cfg) (list (list "relbias" (* (config-layers cfg) (config-heads cfg) (config-relpos cfg))))))))
+
+(defun tie-index (cfg) (+ 4 (* 8 (config-layers cfg))))
+(defun relbias-index (cfg) (+ 4 (* 8 (config-layers cfg)) (if (config-tie cfg) 1 0)))
 
 (defun param-names (cfg) (mapcar #'first (param-shapes cfg)))
 
@@ -72,9 +78,9 @@
                                              ((string= name "head") (/ 0.5d0 (sqrt d)))
                                              ((search ".w2" name) (/ 1d0 (sqrt f)))
                                              (t (/ 1d0 (sqrt d))))))
-                            (if (or (search ".g" name) (string= name "gf"))
-                                (fill v 1d0)
-                                (dotimes (i n) (setf (aref v i) (* scale (normal state)))))
+                            (cond ((or (search ".g" name) (string= name "gf")) (fill v 1d0))
+                                      ((member name '("tiegate" "relbias") :test #'string=) (fill v 0d0))
+                                (t (dotimes (i n) (setf (aref v i) (* scale (normal state))))))
                             v))
             'simple-vector)))
     (make-model :config cfg :params params)))
@@ -341,7 +347,8 @@ using the Lisp kernels) if the library cannot be loaded."
 (defstruct (acts (:constructor %make-acts))
   tlen hs hmid r1 n1 q k v att a r2 n2 rr tmp rf nf logits probs dlog dh dhmid dn dq dk dv da dnorm drr dp)
 
-(defun make-acts (cfg tlen)
+(defun make-acts (cfg tlen &optional (out-rows tlen))
+  "OUT-ROWS (default TLEN) sizes the logits, probabilities and their gradient: FORWARD-ROWS needs only as many as it has rows."
   (let* ((d (config-dim cfg)) (f (config-ff cfg)) (l (config-layers cfg)) (h (config-heads cfg))
          (v (config-vocab cfg)))
     (flet ((td () (new-dvec (* tlen d))) (per-layer (fn) (coerce (loop repeat l collect (funcall fn)) 'simple-vector)))
@@ -352,8 +359,8 @@ using the Lisp kernels) if the library cannot be loaded."
                  :att (per-layer (lambda () (new-dvec (* h tlen tlen)))) :a (per-layer #'td)
                  :r2 (per-layer (lambda () (new-dvec tlen))) :n2 (per-layer #'td)
                  :rr (per-layer (lambda () (new-dvec (* tlen f))))
-                 :tmp (td) :rf (new-dvec tlen) :nf (td) :logits (new-dvec (* tlen v)) :probs (new-dvec (* tlen v))
-                 :dlog (new-dvec (* tlen v)) :dh (td) :dhmid (td) :dn (td) :dq (td) :dk (td) :dv (td) :da (td)
+                 :tmp (td) :rf (new-dvec tlen) :nf (td) :logits (new-dvec (* out-rows v)) :probs (new-dvec (* out-rows v))
+                 :dlog (new-dvec (* out-rows v)) :dh (td) :dhmid (td) :dn (td) :dq (td) :dk (td) :dv (td) :da (td)
                  :dnorm (td) :drr (new-dvec (* tlen f)) :dp (new-dvec (* tlen tlen))))))
 
 (defun softmax-row (src so dst do n temp)
@@ -394,8 +401,9 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
   (declare (type fixnum tl hd))
   (and (/= **blas-gemm** 0) (>= (* tl tl hd) **blas-min-work**)))
 
-(defun attn-fwd-lisp (q k vv p a tl d nh hd scale)
-  (declare (type dvec q k vv p a) (type fixnum tl d nh hd) (type double-float scale))
+(defun attn-fwd-lisp (q k vv p a tl d nh hd scale &optional rb (rboff 0) (kmax 0))
+  "RB (optional): relative-position biases, RB[RBOFF + h*KMAX + (i-j)] is added to the score of query i on key j when i-j < KMAX."
+  (declare (type dvec q k vv p a) (type fixnum tl d nh hd rboff kmax) (type double-float scale))
         (with-fast
           (fill a 0d0)
           (dotimes (h nh)
@@ -407,6 +415,7 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
                     (declare (type double-float sc))
                     (dotimes (e hd) (incf sc (* (aref q (+ (* i d) (* h hd) e)) (aref k (+ (* j d) (* h hd) e)))))
                     (setf sc (* sc scale))
+                    (when (and rb (< (- i j) kmax)) (incf sc (aref (the dvec rb) (+ rboff (* h kmax) (- i j)))))
                     (setf (aref p (+ po j)) sc)
                     (setf mx (max mx sc))))
                 (dotimes (j (1+ i))
@@ -418,8 +427,8 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
                     (dotimes (e hd)
                       (incf (aref a (+ (* i d) (* h hd) e)) (* pj (aref vv (+ (* j d) (* h hd) e))))))))))))
 
-(defun attn-fwd-blas (q k vv p a tl d nh hd scale)
-  (declare (type dvec q k vv p a) (type fixnum tl d nh hd) (type double-float scale))
+(defun attn-fwd-blas (q k vv p a tl d nh hd scale &optional rb (rboff 0) (kmax 0))
+  (declare (type dvec q k vv p a) (type fixnum tl d nh hd rboff kmax) (type double-float scale))
   (dotimes (h nh)
     (let ((ho (* h hd)) (po (* h tl tl)))
       (declare (type fixnum ho po))
@@ -428,6 +437,8 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (dotimes (i tl)
           (let ((row (+ po (* i tl))) (mx most-negative-double-float) (s 0d0))
             (declare (type fixnum row) (type double-float mx s))
+            (when rb (loop for j of-type fixnum from (max 0 (- i (1- kmax))) to i
+                           do (incf (aref p (+ row j)) (aref (the dvec rb) (+ rboff (* h kmax) (- i j))))))
             (dotimes (j (1+ i)) (setf mx (max mx (aref p (+ row j)))))
             (dotimes (j (1+ i))
               (let ((ex (exp (- (aref p (+ row j)) mx)))) (setf (aref p (+ row j)) ex) (incf s ex)))
@@ -435,8 +446,9 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
             (loop for j of-type fixnum from (1+ i) below tl do (setf (aref p (+ row j)) 0d0)))))
       (blas-gemm-strided :nn tl hd tl 1d0 p po tl vv ho d 0d0 a ho d))))
 
-(defun attn-bwd-lisp (p q k vv da dq dk dv dsc tl d nh hd scale)
-  (declare (type dvec p q k vv da dq dk dv dsc) (type fixnum tl d nh hd) (type double-float scale))
+(defun attn-bwd-lisp (p q k vv da dq dk dv dsc tl d nh hd scale &optional rbg (rboff 0) (kmax 0))
+  "RBG (optional): accumulates the gradient of the relative-position biases (see ATTN-FWD-LISP)."
+  (declare (type dvec p q k vv da dq dk dv dsc) (type fixnum tl d nh hd rboff kmax) (type double-float scale))
                (fill dq 0d0) (fill dk 0d0) (fill dv 0d0)
                (with-fast
                  (dotimes (h nh)
@@ -455,13 +467,15 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
                        (dotimes (j (1+ i))
                          (let ((ds (* scale (aref p (+ po j)) (- (aref dsc j) sum))))
                            (declare (type double-float ds))
+                           (when (and rbg (< (- i j) kmax))
+                             (incf (aref (the dvec rbg) (+ rboff (* h kmax) (- i j))) (* (aref p (+ po j)) (- (aref dsc j) sum))))
                            (dotimes (e hd)
                              (incf (aref dq (+ (* i d) (* h hd) e)) (* ds (aref k (+ (* j d) (* h hd) e))))
                              (incf (aref dk (+ (* j d) (* h hd) e)) (* ds (aref q (+ (* i d) (* h hd) e))))))))))))
 
-(defun attn-bwd-blas (p q k vv da dq dk dv dp tl d nh hd scale)
-  "DP is a tl x tl scratch matrix (dP, then dS in place)."
-  (declare (type dvec p q k vv da dq dk dv dp) (type fixnum tl d nh hd) (type double-float scale))
+(defun attn-bwd-blas (p q k vv da dq dk dv dp tl d nh hd scale &optional rbg (rboff 0) (kmax 0))
+  "DP is a tl x tl scratch matrix (dP, then dS in place). RBG: see ATTN-BWD-LISP."
+  (declare (type dvec p q k vv da dq dk dv dp) (type fixnum tl d nh hd rboff kmax) (type double-float scale))
   (dotimes (h nh)
     (let ((ho (* h hd)) (po (* h tl tl)))
       (declare (type fixnum ho po))
@@ -472,21 +486,101 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
           (let ((row (* i tl)) (prow (+ po (* i tl))) (sum 0d0))
             (declare (type fixnum row prow) (type double-float sum))
             (dotimes (j (1+ i)) (incf sum (* (aref p (+ prow j)) (aref dp (+ row j)))))
+            (when rbg (loop for j of-type fixnum from (max 0 (- i (1- kmax))) to i
+                            do (incf (aref (the dvec rbg) (+ rboff (* h kmax) (- i j))) (* (aref p (+ prow j)) (- (aref dp (+ row j)) sum)))))
             (dotimes (j (1+ i))
               (setf (aref dp (+ row j)) (* scale (aref p (+ prow j)) (- (aref dp (+ row j)) sum))))
             (loop for j of-type fixnum from (1+ i) below tl do (setf (aref dp (+ row j)) 0d0)))))
       (blas-gemm-strided :nn tl hd tl 1d0 dp 0 tl k ho d 0d0 dq ho d)
       (blas-gemm-strided :tn tl hd tl 1d0 dp 0 tl q ho d 0d0 dk ho d))))
 
+;;; ---------------------------------------------------------------- output head (optionally with a tied copy path)
+;;; logits = src head  [+ g src tok^T]. The second term exists only when (config-tie cfg): it scores every token by the dot product
+;;; of the final state with that token's INPUT embedding, scaled by a learned scalar g (initialised to 0, so a converted checkpoint
+;;; starts out unchanged). With untied embeddings alone, copying an arbitrary token from the context needs a separate learned
+;;; association from its input to its output vector for every token; the tied path lets one generic attention circuit copy any
+;;; token. ACTS-DNORM is free during the head computations and serves as the r x d scratch buffer.
+(defun head-fwd (m src logits r acts)
+  (declare (type dvec src logits) (type fixnum r))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg)))
+    (mm-nn src (svref ps (head-index cfg)) logits r d v nil)
+    (when (config-tie cfg)
+      (let ((g (aref (the dvec (svref ps (tie-index cfg))) 0)) (s (acts-dnorm acts)))
+        (declare (type dvec s))
+        (dotimes (i (* r d)) (setf (aref s i) (* g (aref src i))))
+        (mm-nt s (svref ps 0) logits r d v t)))))
+
+(defun head-bwd (m src dlog dsrc r acts grads)
+  "Given DLOG (r x v) = d(loss)/d(logits): accumulate the head (and tok, gate) gradients and set DSRC = d(loss)/d(src)."
+  (declare (type dvec src dlog dsrc) (type fixnum r))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg)))
+    (mm-tn src dlog (svref grads (head-index cfg)) r d v t)
+    (mm-nt dlog (svref ps (head-index cfg)) dsrc r v d nil)
+    (when (config-tie cfg)
+      (let ((g (aref (the dvec (svref ps (tie-index cfg))) 0)) (s (acts-dnorm acts)) (gg 0d0))
+        (declare (type dvec s) (type double-float g gg))
+        (mm-nn dlog (svref ps 0) s r v d nil)                         ; D = dlog tok  (r x d)
+        (dotimes (i (* r d)) (incf gg (* (aref s i) (aref src i))) (incf (aref dsrc i) (* g (aref s i))))
+        (incf (aref (the dvec (svref grads (tie-index cfg))) 0) gg)
+        (dotimes (i (* r d)) (setf (aref s i) (* g (aref src i))))
+        (mm-tn dlog s (svref grads 0) r v d t)))))                     ; tok += g dlog^T src
+
+(defun params-with (ps at v)
+  "A new simple-vector: PS with V inserted at index AT. Built with MAKE-ARRAY + REPLACE on purpose: SBCL 2.6 stack-allocates a fresh
+object passed through (concatenate 'simple-vector ... (vector OBJ)), which left the returned model holding a dangling pointer."
+  (let ((out (make-array (1+ (length ps)))))
+    (replace out ps :end2 at) (setf (svref out at) v) (replace out ps :start1 (1+ at) :start2 at)
+    out))
+
+(defun add-relpos (m k)
+  "A copy of model M with K relative-position attention biases per layer and head (all 0, so its outputs are unchanged)."
+  (when (config-relpos (model-config m)) (error "model already has relative-position biases"))
+  (let ((cfg (copy-config (model-config m))))
+    (setf (config-relpos cfg) k)
+    (let ((ps (copy-model-params m))) (make-model :config cfg :params (params-with ps (length ps) (new-dvec (* (config-layers cfg) (config-heads cfg) k)))))))
+
+(defun add-tie-gate (m)
+  "A copy of model M with the tied copy path switched on (gate 0, so its outputs are unchanged)."
+  (let ((cfg (copy-config (model-config m))))
+    (setf (config-tie cfg) t)
+    (let ((ps (copy-model-params m)) (at (tie-index cfg)))          ; the gate sits right after the head, before any relbias
+      (make-model :config cfg :params (params-with ps at (new-dvec 1))))))
+
 ;;; ---------------------------------------------------------------- forward
 (defun forward (m x acts)
   "X: ivec of token ids (length = tlen of ACTS). Fills ACTS, returns nothing; call LOSS-OF-ACTS."
   (declare (type ivec x))
+  (forward-trunk m x acts)
+  (let* ((cfg (model-config m)) (tl (acts-tlen acts)) (v (config-vocab cfg)))
+    (head-fwd m (acts-nf acts) (acts-logits acts) tl acts)
+    (dotimes (i tl) (softmax-row (acts-logits acts) (* i v) (acts-probs acts) (* i v) v 1d0)))
+  nil)
+
+(defun gather-rows (src dst rows d)
+  "dst[k] = src[rows[k]] for rows of width D."
+  (declare (type dvec src dst) (type ivec rows) (type fixnum d))
+  (dotimes (k (length rows)) (replace dst src :start1 (* k d) :start2 (* (aref rows k) d) :end2 (* (1+ (aref rows k)) d))))
+
+(defun forward-rows (m x acts rows)
+  "Like FORWARD, but the output head and softmax are computed only at the positions in ROWS (an ivec, any order):
+row k of (acts-logits acts) / (acts-probs acts) is position (aref rows k). Everything before the head is identical to FORWARD.
+Causal attention means a position never sees later tokens, so tokens after the last row (padding) cannot change the result."
+  (declare (type ivec x rows))
+  (forward-trunk m x acts)
+  (let* ((cfg (model-config m)) (v (config-vocab cfg)) (d (config-dim cfg)) (r (length rows)) (g (acts-tmp acts)))
+    (gather-rows (acts-nf acts) g rows d)
+    (head-fwd m g (acts-logits acts) r acts)
+    (dotimes (k r) (softmax-row (acts-logits acts) (* k v) (acts-probs acts) (* k v) v 1d0)))
+  nil)
+
+(defun forward-trunk (m x acts)
+  "Embeddings, all layers and the final norm (into acts-nf); no output head."
+  (declare (type ivec x))
   (let* ((cfg (model-config m)) (ps (model-params m))
-         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg)) (v (config-vocab cfg))
+         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg))
          (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
          (tok (svref ps 0)) (pos (svref ps 1)) (h0 (svref (acts-hs acts) 0)))
-    (declare (type fixnum d f nh v hd tl) (type double-float scale) (type dvec tok pos h0))
+    (declare (type fixnum d f nh hd tl) (type double-float scale) (type dvec tok pos h0))
     (dotimes (i tl)
       (dotimes (j d)
         (setf (aref h0 (+ (* i d) j)) (+ (aref tok (+ (* (aref x i) d) j)) (aref pos (+ (* i d) j))))))
@@ -501,9 +595,10 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (declare (type dvec hin hout g1 wq wk wv wo g2 w1 w2 n1 q k vv p a hmid n2 rr tmp) (type fixnum b))
         (rmsnorm-fwd hin g1 n1 (svref (acts-r1 acts) l) tl d)
         (mm-nn n1 wq q tl d d nil) (mm-nn n1 wk k tl d d nil) (mm-nn n1 wv vv tl d d nil)
-        (if (attn-blas-p tl hd)
-            (attn-fwd-blas q k vv p a tl d nh hd scale)
-            (attn-fwd-lisp q k vv p a tl d nh hd scale))
+        (let ((rb (when (config-relpos cfg) (svref ps (relbias-index cfg)))) (rboff (* l nh (or (config-relpos cfg) 0))) (kmax (or (config-relpos cfg) 0)))
+          (if (attn-blas-p tl hd)
+              (attn-fwd-blas q k vv p a tl d nh hd scale rb rboff kmax)
+              (attn-fwd-lisp q k vv p a tl d nh hd scale rb rboff kmax)))
         (mm-nn a wo tmp tl d d nil)
         (with-fast (dotimes (i (* tl d)) (setf (aref hmid i) (+ (aref hin i) (aref tmp i)))))
         (rmsnorm-fwd hmid g2 n2 (svref (acts-r2 acts) l) tl d)
@@ -512,9 +607,7 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (mm-nn rr w2 tmp tl f d nil)
         (with-fast (dotimes (i (* tl d)) (setf (aref hout i) (+ (aref hmid i) (aref tmp i)))))))
     (let ((hl (svref (acts-hs acts) (config-layers cfg))))
-      (rmsnorm-fwd hl (svref ps (gf-index cfg)) (acts-nf acts) (acts-rf acts) tl d)
-      (mm-nn (acts-nf acts) (svref ps (head-index cfg)) (acts-logits acts) tl d v nil)
-      (dotimes (i tl) (softmax-row (acts-logits acts) (* i v) (acts-probs acts) (* i v) v 1d0)))
+      (rmsnorm-fwd hl (svref ps (gf-index cfg)) (acts-nf acts) (acts-rf acts) tl d))
     nil))
 
 (defun loss-of-acts (acts y)
@@ -539,21 +632,55 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
 (defun backward (m x y acts grads)
   "Accumulate d(mean loss)/d(params) into GRADS. Call FORWARD first. Returns the loss."
   (declare (type ivec x y))
-  (let* ((cfg (model-config m)) (ps (model-params m)) (nl (config-layers cfg))
-         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg)) (v (config-vocab cfg))
-         (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
+  (let* ((cfg (model-config m)) (ps (model-params m))
+         (d (config-dim cfg)) (v (config-vocab cfg)) (tl (acts-tlen acts))
          (loss (loss-of-acts acts y))
-         (dlog (acts-dlog acts)) (dh (acts-dh acts)) (dhmid (acts-dhmid acts)) (dn (acts-dn acts))
-         (dq (acts-dq acts)) (dk (acts-dk acts)) (dv (acts-dv acts)) (da (acts-da acts)) (drr (acts-drr acts))
-         (dsc (acts-dnorm acts)))
-    (declare (type fixnum d f nh v hd tl nl) (type double-float scale)
-             (type dvec dlog dh dhmid dn dq dk dv da drr dsc))
+         (dlog (acts-dlog acts)) (dn (acts-dn acts)))
+    (declare (type fixnum d v tl) (type dvec dlog dn))
     ;; softmax cross-entropy
     (replace dlog (the dvec (acts-probs acts)))
     (dotimes (i tl) (decf (aref dlog (+ (* i v) (aref y i))) 1d0))
     (let ((inv (/ 1d0 tl))) (dotimes (i (* tl v)) (setf (aref dlog i) (* (aref dlog i) inv))))
-    (mm-tn (acts-nf acts) dlog (svref grads (head-index cfg)) tl d v t)
-    (mm-nt dlog (svref ps (head-index cfg)) dn tl v d nil)
+    (head-bwd m (acts-nf acts) dlog dn tl acts grads)
+    (backward-trunk m x acts grads)
+    loss))
+
+(defun backward-rows (m x rows targets acts grads &optional weights)
+  "After FORWARD-ROWS: accumulate into GRADS the gradient of the SUM over k of -log p(targets[k] | position rows[k]),
+each term multiplied by WEIGHTS[k] when WEIGHTS (a dvec) is given. Positions not in ROWS contribute no loss (answer-only
+masking). Returns that (weighted) sum (a long-float)."
+  (declare (type ivec x rows targets))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (d (config-dim cfg)) (v (config-vocab cfg))
+         (r (length rows)) (dlog (acts-dlog acts)) (probs (acts-probs acts)) (g (acts-tmp acts)) (dr (acts-da acts))
+         (dn (acts-dn acts)) (loss 0l0))
+    (declare (type fixnum d v r) (type dvec dlog probs g dr dn))
+    (dotimes (k r)
+      (let ((pr (aref probs (+ (* k v) (aref targets k)))))
+        (decf loss (* (if weights (aref (the dvec weights) k) 1d0) (log (if (< pr 1d-300) 1d-300 pr))))))
+    (replace dlog probs :end1 (* r v))
+    (dotimes (k r) (decf (aref dlog (+ (* k v) (aref targets k))) 1d0))
+    (when weights
+      (dotimes (k r) (let ((w (aref (the dvec weights) k))) (dotimes (j v) (setf (aref dlog (+ (* k v) j)) (* w (aref dlog (+ (* k v) j))))))))
+    (gather-rows (acts-nf acts) g rows d)
+    (head-bwd m g dlog dr r acts grads)
+    (fill dn 0d0)
+    (dotimes (k r)
+      (let ((o (* (aref rows k) d)))
+        (dotimes (j d) (incf (aref dn (+ o j)) (aref dr (+ (* k d) j))))))
+    (backward-trunk m x acts grads)
+    loss))
+
+(defun backward-trunk (m x acts grads)
+  "Backpropagate from acts-dn = d(loss)/d(final-norm output) through the final norm, all layers and the embeddings."
+  (declare (type ivec x))
+  (let* ((cfg (model-config m)) (ps (model-params m)) (nl (config-layers cfg))
+         (d (config-dim cfg)) (f (config-ff cfg)) (nh (config-heads cfg))
+         (hd (floor d nh)) (tl (acts-tlen acts)) (scale (/ 1d0 (sqrt (float hd 1d0))))
+         (dh (acts-dh acts)) (dhmid (acts-dhmid acts)) (dn (acts-dn acts))
+         (dq (acts-dq acts)) (dk (acts-dk acts)) (dv (acts-dv acts)) (da (acts-da acts)) (drr (acts-drr acts))
+         (dsc (acts-dnorm acts)))
+    (declare (type fixnum d f nh hd tl nl) (type double-float scale)
+             (type dvec dh dhmid dn dq dk dv da drr dsc))
     (rmsnorm-bwd (svref (acts-hs acts) nl) (svref ps (gf-index cfg)) (acts-rf acts) dn dh
                  (svref grads (gf-index cfg)) tl d nil)
     (loop for l from (1- nl) downto 0
@@ -575,9 +702,10 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
                ;; attention: hmid = hin + a Wo
                (mm-tn a dhmid (svref grads (+ b 4)) tl d d t)
                (mm-nt dhmid wo da tl d d nil)
-               (if (attn-blas-p tl hd)
-                   (attn-bwd-blas p q k vv da dq dk dv (acts-dp acts) tl d nh hd scale)
-                   (attn-bwd-lisp p q k vv da dq dk dv dsc tl d nh hd scale))
+               (let ((rbg (when (config-relpos cfg) (svref grads (relbias-index cfg)))) (rboff (* l nh (or (config-relpos cfg) 0))) (kmax (or (config-relpos cfg) 0)))
+                 (if (attn-blas-p tl hd)
+                     (attn-bwd-blas p q k vv da dq dk dv (acts-dp acts) tl d nh hd scale rbg rboff kmax)
+                     (attn-bwd-lisp p q k vv da dq dk dv dsc tl d nh hd scale rbg rboff kmax)))
                (mm-tn n1 dq (svref grads (+ b 1)) tl d d t)
                (mm-tn n1 dk (svref grads (+ b 2)) tl d d t)
                (mm-tn n1 dv (svref grads (+ b 3)) tl d d t)
@@ -594,4 +722,4 @@ KIND :nn, :nt (B transposed) or :tn (A transposed). C is M x N, the inner dimens
         (dotimes (j d)
           (incf (aref gt (+ (* (aref x i) d) j)) (aref dh (+ (* i d) j)))
           (incf (aref gp (+ (* i d) j)) (aref dh (+ (* i d) j))))))
-    loss))
+    nil))

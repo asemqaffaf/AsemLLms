@@ -1,0 +1,11 @@
+{
+  "files": 16,
+  "registered_tests": 126,
+  "checks": 99671,
+  "failures": 0,
+  "native_tests_skipped": 3,
+  "locked_test_content": "hash-only; existing parsing/balance test omitted",
+  "test_log_sha256": "b2f275cf29fd3a28ad73693684c43bea7f4211f74e1209cefe6ce49bde44dc69",
+  "accelerate_qa_test": "5 tests,2335checks,zero failures; cold12distinct workers4 vs1",
+  "normalization_tests": "6 tests,833checks,zero failures; weighted finite differences, FP32/64, mixed-replay bit-exact resume"
+}

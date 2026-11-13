@@ -289,7 +289,12 @@ conversation_memory() ->
     ?assertEqual(24, length(All)),
     ok = tinyllm_memory:delete(Id),
     ?assertEqual(not_found, tinyllm_memory:get(Id)),
-    {ok, []} = tinyllm_memory:list().
+    {ok, []} = tinyllm_memory:list(),
+    %% Mnesia dying under a running node is revived by the next write instead of failing every save
+    stopped = mnesia:stop(),
+    ok = tinyllm_memory:append(Id, [{<<"User">>, <<"after a crash">>}]),
+    ?assert(tinyllm_memory:enabled()),
+    {ok, #{turns := [_]}} = tinyllm_memory:get(Id).
 
 chat_remembers_conversations() ->
     clear_conversations(),

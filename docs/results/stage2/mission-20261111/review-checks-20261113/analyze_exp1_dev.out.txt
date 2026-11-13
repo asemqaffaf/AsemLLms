@@ -1,0 +1,50 @@
+========== Gold-only exposure swap on frozen R7. K = 4, chance 25%. Exact = greedy prefix, K = 8,192, chance ~0%.
+--- Experiment 1 pairs, TRAINING wording (pipeline check; saved: 15->55/90, 34->10/67)
+zero_to_hi100                      n= 90  K4  15 ->  55 ( 16.7% ->  61.1%, +44.4 pts)  both  12  gain  43  loss   3  neither  32  p=4.62e-10 | Exact   2 ->  25 (+24/-1 p=1.55e-06)
+hi100_to_zero                      n= 67  K4  34 ->  10 ( 50.7% ->  14.9%, -35.8 pts)  both   7  gain   3  loss  27  neither  30  p=8.43e-06 | Exact  21 ->   1 (+0/-20 p=1.91e-06)
+pooled zero-gold -> hi100-gold     n=157  K4  25 ->  89 ( 15.9% ->  56.7%, +40.8 pts)  both  19  gain  70  loss   6  neither  62  p=6.31e-15 | Exact   3 ->  46 (+44/-1 p=2.61e-12)
+  pooled, town                     n= 77  K4  11 ->  43 ( 14.3% ->  55.8%, +41.6 pts)  both   7  gain  36  loss   4  neither  30  p=1.86e-07 | Exact   3 ->  24 (+22/-1 p=5.72e-06)
+  pooled, instrument               n= 80  K4  14 ->  46 ( 17.5% ->  57.5%, +40.0 pts)  both  12  gain  34  loss   2  neither  32  p=1.94e-08 | Exact   0 ->  22 (+22/-0 p=4.77e-07)
+   mean summed log-prob change, zero-gold -> hi100-gold: gold option +4.40, best distractor +0.39
+--- Experiment 1 pairs, DEV wording, person-first (PRIMARY)
+zero_to_hi100                      n= 90  K4  14 ->  37 ( 15.6% ->  41.1%, +25.6 pts)  both   8  gain  29  loss   6  neither  47  p=0.000117 | Exact   0 ->  10 (+10/-0 p=0.00195)
+hi100_to_zero                      n= 67  K4  30 ->  12 ( 44.8% ->  17.9%, -26.9 pts)  both   9  gain   3  loss  21  neither  34  p=0.000277 | Exact  10 ->   1 (+1/-10 p=0.0117)
+pooled zero-gold -> hi100-gold     n=157  K4  26 ->  67 ( 16.6% ->  42.7%, +26.1 pts)  both  17  gain  50  loss   9  neither  81  p=5.26e-08 | Exact   1 ->  20 (+20/-1 p=2.1e-05)
+  pooled, town                     n= 77  K4  13 ->  34 ( 16.9% ->  44.2%, +27.3 pts)  both   9  gain  25  loss   4  neither  39  p=0.000104 | Exact   1 ->  10 (+10/-1 p=0.0117)
+  pooled, instrument               n= 80  K4  13 ->  33 ( 16.2% ->  41.2%, +25.0 pts)  both   8  gain  25  loss   5  neither  42  p=0.000325 | Exact   0 ->  10 (+10/-0 p=0.00195)
+  pooled, prefix=True              n= 74  K4  11 ->  36 ( 14.9% ->  48.6%, +33.8 pts)  both   8  gain  28  loss   3  neither  35  p=4.65e-06 | Exact   0 ->  13 (+13/-0 p=0.000244)
+  pooled, prefix=False             n= 83  K4  15 ->  31 ( 18.1% ->  37.3%, +19.3 pts)  both   9  gain  22  loss   6  neither  46  p=0.00372 | Exact   1 ->   7 (+7/-1 p=0.0703)
+   mean summed log-prob change, zero-gold -> hi100-gold: gold option +3.58, best distractor +0.23
+--- Real dev REVERSE items, dev wording (secondary)
+zero_to_hi100                      n= 45  K4  11 ->  24 ( 24.4% ->  53.3%, +28.9 pts)  both  10  gain  14  loss   1  neither  20  p=0.000977 | Exact   2 ->  10 (+9/-1 p=0.0215)
+hi100_to_zero                      n= 37  K4  18 ->   6 ( 48.6% ->  16.2%, -32.4 pts)  both   5  gain   1  loss  13  neither  18  p=0.00183 | Exact   6 ->   1 (+1/-6 p=0.125)
+pooled zero-gold -> hi100-gold     n= 82  K4  17 ->  42 ( 20.7% ->  51.2%, +30.5 pts)  both  15  gain  27  loss   2  neither  38  p=1.62e-06 | Exact   3 ->  16 (+15/-2 p=0.00235)
+   mean summed log-prob change, zero-gold -> hi100-gold: gold option +3.62, best distractor +0.05
+--- Real dev COMPARE items, dev wording (secondary)
+zero_to_hi100                      n= 35  K4   3 ->  13 (  8.6% ->  37.1%, +28.6 pts)  both   2  gain  11  loss   1  neither  21  p=0.00635 | Exact   0 ->   9 (+9/-0 p=0.00391)
+hi100_to_zero                      n= 48  K4  22 ->   8 ( 45.8% ->  16.7%, -29.2 pts)  both   5  gain   3  loss  17  neither  23  p=0.00258 | Exact   9 ->   0 (+0/-9 p=0.00391)
+pooled zero-gold -> hi100-gold     n= 83  K4  11 ->  35 ( 13.3% ->  42.2%, +28.9 pts)  both   7  gain  28  loss   4  neither  44  p=1.93e-05 | Exact   0 ->  18 (+18/-0 p=7.63e-06)
+   mean summed log-prob change, zero-gold -> hi100-gold: gold option +4.60, best distractor +0.33
+
+========== Wording effect with names held fixed (the 157 Experiment 1 items, original names): training vs dev wording
+gold stratum zero                  n= 90  K4  15 ->  14 ( 16.7% ->  15.6%,  -1.1 pts)  both   9  gain   5  loss   6  neither  70  p=1 | Exact   2 ->   0 (+0/-2 p=0.5)
+gold stratum hi100                 n= 67  K4  34 ->  30 ( 50.7% ->  44.8%,  -6.0 pts)  both  24  gain   6  loss  10  neither  27  p=0.454 | Exact  21 ->  10 (+2/-13 p=0.00739)
+
+========== All-four rename (no new inference; saved diagnostics-20261113 predictions)
+D1 rev-pf: dev-pool -> train-pool  n=200  K4  67 ->  70 ( 33.5% ->  35.0%,  +1.5 pts)  both  26  gain  44  loss  41  neither  89  p=0.828 | Exact  31 ->  60 (+49/-20 p=0.000636)
+D2 reverse: dev-pool -> train-pool n= 94  K4  36 ->  34 ( 38.3% ->  36.2%,  -2.1 pts)  both  14  gain  20  loss  22  neither  38  p=0.878 | Exact  13 ->  26 (+21/-8 p=0.0241)
+D2 compare: dev-pool -> train-pool n=100  K4  31 ->  36 ( 31.0% ->  36.0%,  +5.0 pts)  both  16  gain  20  loss  15  neither  49  p=0.5 | Exact  10 ->  35 (+29/-4 p=1.09e-05)
+
+========== Which option does R7 pick, by exposure stratum of the option name? (saved D1 rev-pf and D2 rot0 predictions)
+--- D1 rev-pf (training wording, n=200) (each cell: picked / option slots)
+   zero   gold slots  15/ 90 =  16.7%   distractor slots  16/264 =   6.1%   all slots  31/354 =   8.8%
+   mid    gold slots  18/ 43 =  41.9%   distractor slots  25/112 =  22.3%   all slots  43/155 =  27.7%
+   hi100  gold slots  34/ 67 =  50.7%   distractor slots  92/224 =  41.1%   all slots 126/291 =  43.3%
+--- dev reverse (dev wording, n=100) (each cell: picked / option slots)
+   zero   gold slots  11/ 45 =  24.4%   distractor slots  13/143 =   9.1%   all slots  24/188 =  12.8%
+   mid    gold slots   9/ 18 =  50.0%   distractor slots  10/ 47 =  21.3%   all slots  19/ 65 =  29.2%
+   hi100  gold slots  18/ 37 =  48.6%   distractor slots  39/110 =  35.5%   all slots  57/147 =  38.8%
+--- dev compare (dev wording, n=100) (each cell: picked / option slots)
+   zero   gold slots   3/ 35 =   8.6%   distractor slots   5/124 =   4.0%   all slots   8/159 =   5.0%
+   mid    gold slots   6/ 17 =  35.3%   distractor slots  19/ 61 =  31.1%   all slots  25/ 78 =  32.1%
+   hi100  gold slots  22/ 48 =  45.8%   distractor slots  45/115 =  39.1%   all slots  67/163 =  41.1%

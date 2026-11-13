@@ -1,0 +1,38 @@
+{
+  "bundle": "docs/results/stage2/binding-eval-20261111",
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "decoding": "Unrestricted argmax and token-wise candidate-trie argmax, lowest-token-ID ties. Trie has no gold input; stops at the equal-length candidate boundary.",
+  "direction_error_worlds": 104,
+  "inputs_sha256": {
+    "pairs.json": "a907847b494dc90bb84e8ad0c00a136876f141c1fc63618b9f6ac934a2d061c4",
+    "r7.json": "6ee9fa067dd5dfca8e9ad2a7ebf56eaab84fc57a9b20388162585438ee776bfd",
+    "verification.json": "79a2def96503dea8df4ebb4d88d27cd4a349e244385d8b56ee78a3343afbf40e"
+  },
+  "interpretation": "Selected subset only. Whole-candidate summed likelihood is correct by selection and is not a new outcome. Constraint rescue is not unconstrained generation, improved weights, or learned termination.",
+  "mechanics_reference": "Independent unpadded last-row logits; full-forward first-step reference; stepwise teacher-forced candidate log probabilities compared with saved summed scores.",
+  "prepared_sha256": {
+    "direction-cases.json": "2255b0489f654ce5f79e72847d9804654948ea41b8b38d3e44c51654e92b32a8",
+    "mechanics.json": "a6266c60197b18eaee5360fccbe05afa181235e7a5dec4da8c8d1dc6f605658b"
+  },
+  "promotion": "none",
+  "reference": "r7",
+  "schema": "asem-generation-audit-plan-1",
+  "score_tolerance": 1.0e-4,
+  "selected_worlds": 77,
+  "selection": "R7 relationship ranking correct and saved greedy gold-length prefix incorrect; fixed before new inference.",
+  "sources_sha256": {
+    "lisp/bin/generation-audit.lisp": "d5fc9fcfbe62403b67d9fee3ccdaf05d62447e074b6014d430d1edc900606ddd",
+    "lisp/src/bpe.lisp": "25523805c53ef53d36ed71625a41140c3a5ee3246bbc96555a48997b0cfbb65f",
+    "lisp/src/candidate-decode.lisp": "1a472b36b4e2d69e1f821607131cb6c5801020df8db0b716bae7edb7f068fb33",
+    "lisp/src/derive.lisp": "bc0012de8151ed27f1b3753459bb4330cbccb134d87539cc5b5ac7a5d2ff1acc",
+    "lisp/src/sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d",
+    "lisp/src/sft32.lisp": "a2b13bdc0902a665a2b620a55fb378d874ef88501067367462f42f7c25be60dd",
+    "lisp/src/tf.lisp": "cd901a019673b4db534158fc3a263d8ed881f3f51af63ef455c183357972b27e",
+    "lisp/src/tf32.lisp": "e9222606c4890bbae6a11501e0af8763916ba4a3333b2ffd16a5c13ef4e68a7b",
+    "lisp/src/verify-saved.lisp": "c697b1d1cf638786978893f71a22f907708a7b4586c3a1bb24fd9c3a3a6c9f05"
+  },
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "training_updates": 0
+}

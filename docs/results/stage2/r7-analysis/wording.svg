@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="495" viewBox="0 0 1100 495" role="img">
+<title>Mixed-task retrieval with familiar and unfamiliar wording</title>
+<rect width="100%" height="100%" fill="#fcfcfb"/>
+<g font-family="system-ui,sans-serif" fill="#202124">
+<text x="30" y="32" font-size="21">Mixed-task retrieval: familiar vs unfamiliar wording</text>
+<text x="30" y="57" font-size="13">Same reverse + reasoning task mixture for every checkpoint; pooled levels and entity pools; 95% Wilson intervals</text>
+<text x="202.5" y="88" text-anchor="middle" font-size="15">Greedy gold-length prefix</text>
+<line x1="60" x2="345" y1="375.0" y2="375.0" stroke="#deded9"/>
+<text x="52" y="379.0" text-anchor="end" font-size="11">0%</text>
+<line x1="60" x2="345" y1="308.25" y2="308.25" stroke="#deded9"/>
+<text x="52" y="312.25" text-anchor="end" font-size="11">25%</text>
+<line x1="60" x2="345" y1="241.5" y2="241.5" stroke="#deded9"/>
+<text x="52" y="245.5" text-anchor="end" font-size="11">50%</text>
+<line x1="60" x2="345" y1="174.75" y2="174.75" stroke="#deded9"/>
+<text x="52" y="178.75" text-anchor="end" font-size="11">75%</text>
+<line x1="60" x2="345" y1="108.0" y2="108.0" stroke="#deded9"/>
+<text x="52" y="112.0" text-anchor="end" font-size="11">100%</text>
+<rect x="75.125" y="247.17374999999998" width="18" height="127.82625000000002" fill="#099268"/>
+<path d="M84.125,240.63238814665004V253.68793176524153 M81.125,240.63238814665004H87.125 M81.125,253.68793176524153H87.125" stroke="#333" fill="none"/>
+<rect x="98.125" y="291.22875" width="18" height="83.77125000000001" fill="#e67700"/>
+<path d="M107.125,285.0450196440299V297.17425487784317 M104.125,285.0450196440299H110.125 M104.125,297.17425487784317H110.125" stroke="#333" fill="none"/>
+<text x="95.625" y="395" text-anchor="middle" font-size="11">R5</text>
+<text x="95.625" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="146.375" y="241.666875" width="18" height="133.333125" fill="#099268"/>
+<path d="M155.375,235.1328193425884V248.20013124305547 M152.375,235.1328193425884H158.375 M152.375,248.20013124305547H158.375" stroke="#333" fill="none"/>
+<rect x="169.375" y="292.73062500000003" width="18" height="82.26937499999997" fill="#e67700"/>
+<path d="M178.375,286.573242653179V298.64258713948885 M175.375,286.573242653179H181.375 M175.375,298.64258713948885H181.375" stroke="#333" fill="none"/>
+<text x="166.875" y="395" text-anchor="middle" font-size="11">R6</text>
+<text x="166.875" y="409" text-anchor="middle" font-size="11">last</text>
+<rect x="217.625" y="235.993125" width="18" height="139.006875" fill="#099268"/>
+<path d="M226.625,229.4782020515545V242.53442862219788 M223.625,229.4782020515545H229.625 M223.625,242.53442862219788H229.625" stroke="#333" fill="none"/>
+<rect x="240.625" y="303.076875" width="18" height="71.92312500000003" fill="#e67700"/>
+<path d="M249.625,297.13038424086636V308.72838186172135 M246.625,297.13038424086636H252.625 M246.625,308.72838186172135H252.625" stroke="#333" fill="none"/>
+<text x="238.125" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="238.125" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="288.875" y="239.99812500000002" width="18" height="135.00187499999998" fill="#099268"/>
+<path d="M297.875,233.46847380309345V246.53497092611173 M294.875,233.46847380309345H300.875 M294.875,246.53497092611173H300.875" stroke="#333" fill="none"/>
+<rect x="311.875" y="304.9125" width="18" height="70.08749999999998" fill="#e67700"/>
+<path d="M320.875,299.00907644587926V310.51214609879094 M317.875,299.00907644587926H323.875 M317.875,310.51214609879094H323.875" stroke="#333" fill="none"/>
+<text x="309.375" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="309.375" y="409" text-anchor="middle" font-size="11">last</text>
+<text x="567.5" y="88" text-anchor="middle" font-size="15">Option likelihood</text>
+<line x1="425" x2="710" y1="375.0" y2="375.0" stroke="#deded9"/>
+<text x="417" y="379.0" text-anchor="end" font-size="11">0%</text>
+<line x1="425" x2="710" y1="308.25" y2="308.25" stroke="#deded9"/>
+<text x="417" y="312.25" text-anchor="end" font-size="11">25%</text>
+<line x1="425" x2="710" y1="241.5" y2="241.5" stroke="#deded9"/>
+<text x="417" y="245.5" text-anchor="end" font-size="11">50%</text>
+<line x1="425" x2="710" y1="174.75" y2="174.75" stroke="#deded9"/>
+<text x="417" y="178.75" text-anchor="end" font-size="11">75%</text>
+<line x1="425" x2="710" y1="108.0" y2="108.0" stroke="#deded9"/>
+<text x="417" y="112.0" text-anchor="end" font-size="11">100%</text>
+<rect x="440.125" y="205.78875" width="18" height="169.21125" fill="#099268"/>
+<path d="M449.125,199.57814581456728V212.17042885764474 M446.125,199.57814581456728H452.125 M446.125,212.17042885764474H452.125" stroke="#333" fill="none"/>
+<rect x="463.125" y="227.315625" width="18" height="147.684375" fill="#e67700"/>
+<path d="M472.125,220.8528343591891V233.84636586108206 M469.125,220.8528343591891H475.125 M469.125,233.84636586108206H475.125" stroke="#333" fill="none"/>
+<text x="460.625" y="395" text-anchor="middle" font-size="11">R5</text>
+<text x="460.625" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="511.375" y="201.28312499999998" width="18" height="173.71687500000002" fill="#099268"/>
+<path d="M520.375,195.14856867146855V207.61034018835898 M517.375,195.14856867146855H523.375 M517.375,207.61034018835898H523.375" stroke="#333" fill="none"/>
+<rect x="534.375" y="226.1475" width="18" height="148.8525" fill="#e67700"/>
+<path d="M543.375,219.6938554724416V232.67469064832247 M540.375,219.6938554724416H546.375 M540.375,232.67469064832247H546.375" stroke="#333" fill="none"/>
+<text x="531.875" y="395" text-anchor="middle" font-size="11">R6</text>
+<text x="531.875" y="409" text-anchor="middle" font-size="11">last</text>
+<rect x="582.625" y="184.929375" width="18" height="190.070625" fill="#099268"/>
+<path d="M591.625,179.14527051918284V190.98448094754553 M588.625,179.14527051918284H594.625 M588.625,190.98448094754553H594.625" stroke="#333" fill="none"/>
+<rect x="605.625" y="228.48375000000001" width="18" height="146.51624999999999" fill="#e67700"/>
+<path d="M614.625,222.0123208420129V235.01753347776534 M611.625,222.0123208420129H617.625 M611.625,235.01753347776534H617.625" stroke="#333" fill="none"/>
+<text x="603.125" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="603.125" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="653.875" y="184.42875" width="18" height="190.57125" fill="#099268"/>
+<path d="M662.875,178.65733832295766V190.47356138683915 M659.875,178.65733832295766H665.875 M659.875,190.47356138683915H665.875" stroke="#333" fill="none"/>
+<rect x="676.875" y="232.82250000000002" width="18" height="142.17749999999998" fill="#e67700"/>
+<path d="M685.875,226.32340756933655V239.36316197718224 M682.875,226.32340756933655H688.875 M682.875,239.36316197718224H688.875" stroke="#333" fill="none"/>
+<text x="674.375" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="674.375" y="409" text-anchor="middle" font-size="11">last</text>
+<text x="932.5" y="88" text-anchor="middle" font-size="15">A–D letter logits</text>
+<line x1="790" x2="1075" y1="375.0" y2="375.0" stroke="#deded9"/>
+<text x="782" y="379.0" text-anchor="end" font-size="11">0%</text>
+<line x1="790" x2="1075" y1="308.25" y2="308.25" stroke="#deded9"/>
+<text x="782" y="312.25" text-anchor="end" font-size="11">25%</text>
+<line x1="790" x2="1075" y1="241.5" y2="241.5" stroke="#deded9"/>
+<text x="782" y="245.5" text-anchor="end" font-size="11">50%</text>
+<line x1="790" x2="1075" y1="174.75" y2="174.75" stroke="#deded9"/>
+<text x="782" y="178.75" text-anchor="end" font-size="11">75%</text>
+<line x1="790" x2="1075" y1="108.0" y2="108.0" stroke="#deded9"/>
+<text x="782" y="112.0" text-anchor="end" font-size="11">100%</text>
+<rect x="805.125" y="310.085625" width="18" height="64.914375" fill="#099268"/>
+<path d="M814.125,304.31344984988436V315.5292408497458 M811.125,304.31344984988436H817.125 M811.125,315.5292408497458H817.125" stroke="#333" fill="none"/>
+<rect x="828.125" y="307.415625" width="18" height="67.58437500000002" fill="#e67700"/>
+<path d="M837.125,301.5738503209503V312.941631008378 M834.125,301.5738503209503H840.125 M834.125,312.941631008378H840.125" stroke="#333" fill="none"/>
+<text x="825.625" y="395" text-anchor="middle" font-size="11">R5</text>
+<text x="825.625" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="876.375" y="307.91625" width="18" height="67.08375000000001" fill="#099268"/>
+<path d="M885.375,302.08721879017V313.42711429608994 M882.375,302.08721879017H888.375 M882.375,313.42711429608994H888.375" stroke="#333" fill="none"/>
+<rect x="899.375" y="304.9125" width="18" height="70.08749999999998" fill="#e67700"/>
+<path d="M908.375,299.00907644587926V310.51214609879094 M905.375,299.00907644587926H911.375 M905.375,310.51214609879094H911.375" stroke="#333" fill="none"/>
+<text x="896.875" y="395" text-anchor="middle" font-size="11">R6</text>
+<text x="896.875" y="409" text-anchor="middle" font-size="11">last</text>
+<rect x="947.625" y="311.420625" width="18" height="63.57937500000003" fill="#099268"/>
+<path d="M956.625,305.6847855234412V316.82150986134 M953.625,305.6847855234412H959.625 M953.625,316.82150986134H959.625" stroke="#333" fill="none"/>
+<rect x="970.625" y="303.91125" width="18" height="71.08875" fill="#e67700"/>
+<path d="M979.625,297.98411414591226V309.5394048848948 M976.625,297.98411414591226H982.625 M976.625,309.5394048848948H982.625" stroke="#333" fill="none"/>
+<text x="968.125" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="968.125" y="409" text-anchor="middle" font-size="11">best</text>
+<rect x="1018.875" y="313.59" width="18" height="61.410000000000025" fill="#099268"/>
+<path d="M1027.875,307.9154622628662V318.91919073528527 M1024.875,307.9154622628662H1030.875 M1024.875,318.91919073528527H1030.875" stroke="#333" fill="none"/>
+<rect x="1041.875" y="305.079375" width="18" height="69.92062499999997" fill="#e67700"/>
+<path d="M1050.875,299.17995555240503V310.6742175779091 M1047.875,299.17995555240503H1053.875 M1047.875,310.6742175779091H1053.875" stroke="#333" fill="none"/>
+<text x="1039.375" y="395" text-anchor="middle" font-size="11">R7</text>
+<text x="1039.375" y="409" text-anchor="middle" font-size="11">last</text>
+<rect x="350" y="433" width="13" height="13" fill="#099268"/><text x="370" y="444" font-size="13">Familiar wording</text>
+<rect x="555" y="433" width="13" height="13" fill="#e67700"/><text x="575" y="444" font-size="13">Unfamiliar wording</text>
+<text x="30" y="475" font-size="12">Unpaired generated facts across wording cells; these results are development diagnostics, not a locked-test result.</text>
+</g></svg>

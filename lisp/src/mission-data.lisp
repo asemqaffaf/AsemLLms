@@ -1,0 +1,92 @@
+;;;; Mission-local training tracing and fresh development construction.
+;;;; Never changes the stable generator or reads the locked QA file.
+(defpackage :asem-mission-data
+  (:use :cl)
+  (:export #:traced-sequences #:question-examples #:fresh-confirmation #:save-data #:read-data #:write-json #:obj))
+(in-package :asem-mission-data)
+(defun obj (&rest x) (apply #'asem-qa-analysis::obj x))
+(defun save-data (path x)
+  (with-open-file (s path :direction :output :if-exists :error :if-does-not-exist :create)
+    (with-standard-io-syntax (write x :stream s :readably t))))
+(defun read-data (path) (with-open-file (s path) (let ((*read-eval* nil)) (read s))))
+(defun write-json (path x)
+  (with-open-file (s path :direction :output :if-exists :error :if-does-not-exist :create :external-format :utf-8)
+    (asem-json:write-json x s) (terpri s)))
+(defun traced-sequences (n seed bpe &optional (ctx 128))
+  "Replay the stable R7 packing algorithm, retaining structured QA boundaries.
+Its (ids rows targets) output must match stable TRAIN-SEQUENCES exactly."
+  (let ((rng (sb-ext:seed-random-state seed)) (out nil))
+    (loop while (< (length out) n) do
+      (multiple-value-bind (passage qa kind cands padder)
+          (asem-retrieval:make-fact-set (asem-qagen::pick '(1 2 3) rng) :train :seen rng)
+        (let ((ids (cons 0 (asem-bpe:bpe-encode bpe (format nil "Text: ~a~%" passage)))) (rows nil) (targets nil) (questions nil))
+          (dolist (x (asem-qagen::shuffle qa rng))
+            (let* ((options (asem-retrieval::options-for (cdr x) (funcall cands (cdr x)) (funcall padder (cdr x)) rng))
+                   (qt (asem-bpe:bpe-encode bpe (format nil "Q: ~a~%~aThe answer is" (car x) (asem-retrieval::options-block options))))
+                   (at (asem-bpe:bpe-encode bpe (format nil " ~a" (cdr x)))) (tail (asem-bpe:bpe-encode bpe (format nil ".~%"))))
+              (when (> (+ (length ids) (length qt) (length at) (length tail)) ctx) (return))
+              (let* ((start (length ids)) (answer-start (+ start (length qt))))
+                (push (list :passage passage :question (car x) :answer (cdr x) :options options
+                            :question-start start :answer-start answer-start :answer-tokens at) questions)
+                (loop for tk in at for k from 0 do (push (+ answer-start k -1) rows) (push tk targets))
+                (setf ids (append ids qt at tail)))))
+          (when rows (push (list :kind kind :ids ids :rows (nreverse rows) :targets (nreverse targets) :questions (nreverse questions)) out)))))
+    (nreverse out)))
+(defun question-examples (records bpe &key (clean nil))
+  "Same supervised answers in both arms; CLEAN removes only prior solved QA context."
+  (loop for r in records for i from 0 append
+    (loop for q in (getf r :questions) for j from 0
+          for targets = (getf q :answer-tokens)
+          for prompt = (asem-retrieval:retrieval-prompt (getf q :passage) (getf q :question) :options (getf q :options))
+          for prefix = (if clean (cons 0 (asem-bpe:bpe-encode bpe prompt)) (subseq (getf r :ids) 0 (getf q :answer-start)))
+          collect (list :id (format nil "train-~d/q~d" i j) :kind (getf r :kind) :ordinal j
+                        :ids (append prefix targets) :rows (loop for k below (length targets) collect (+ (length prefix) k -1))
+                        :targets targets :prompt-ids prefix :question q))))
+
+;; Authored before mission inference/training; only used in the confirmation generator.
+;; These strings are never included in training or checkpoint-selection examples.
+(defparameter *fresh*
+  '((:town :frames ("{P} makes a home in {V}.") :q-extract ("{P} resides in what town?") :q-reverse ("Which person's home is in {V}?"))
+    (:job :frames ("{P}'s occupation is {aV}.") :q-extract ("{P} works in which occupation?") :q-reverse ("Whose occupation is {aV}?"))
+    (:pet :frames ("The pet kept by {P} is {aV}.") :q-extract ("What animal does {P} keep as a pet?") :q-reverse ("Which person keeps {aV} as a pet?"))
+    (:color :frames ("{P} has {V} as a preferred color.") :q-extract ("Name the color preferred by {P}.") :q-reverse ("Name the person whose preferred color is {V}."))
+    (:instrument :frames ("The instrument played by {P} is the {V}.") :q-extract ("Name the instrument played by {P}.") :q-reverse ("Who is the player of the {V}?"))
+    (:age :frames ("{P}'s age in years is {N}.") :q-extract ("State {P}'s age in years.")
+     :q-max ("Whose age in years is greater than all the others?") :q-min ("Whose age in years is less than all the others?"))
+    (:score :frames ("The number of points earned by {P} is {N}.") :q-extract ("State how many points {P} earned.")
+     :q-max ("Which person earned a greater point total than everyone else?") :q-min ("Which person earned a smaller point total than everyone else?"))
+    (:height :frames ("{P} measures {N} centimeters in height.") :q-extract ("State how tall {P} is in centimeters.")
+     :q-max ("Whose measurement in centimeters is greatest?") :q-min ("Whose measurement in centimeters is smallest?"))
+    (:teach :frames ("{A} delivered lessons to {B}." "{B}'s lessons came from {A}.")
+     :q-subj ("Which person delivered lessons to {B}?") :q-obj ("Which person was given lessons by {A}?"))
+    (:hire :frames ("{A} hired {B} to work as an employee.") :q-subj ("Who hired {B} as an employee?") :q-obj ("Which employee was hired by {A}?"))
+    (:call :frames ("{A} made a telephone call to {B}.") :q-subj ("Which person made a telephone call to {B}?") :q-obj ("Which person received a telephone call from {A}?"))
+    (:thank :frames ("Thanks were expressed to {B} by {A}.") :q-subj ("Who expressed thanks to {B}?") :q-obj ("To whom were thanks expressed by {A}?"))
+    (:visit :frames ("{A} went for a visit to {B}.") :q-subj ("Who went for a visit to {B}?") :q-obj ("Who received a visit from {A}?"))
+    (:help :frames ("Help for {B} was provided by {A}.") :q-subj ("Who provided help for {B}?") :q-obj ("Who was provided help by {A}?"))))
+(defparameter *fresh-temporal*
+  '(:first ("{P}'s itinerary opened at the {X}.") :middle ("{P}'s next destination was the {X}.") :last ("{P}'s itinerary closed at the {X}.")
+    :q-first ("Which location opened {P}'s itinerary?") :q-last ("Which location closed {P}'s itinerary?")
+    :q-after ("Which destination followed the {X} immediately for {P}?") :q-before ("Which destination preceded the {X} immediately for {P}?")))
+(defun replace-dev (registry)
+  (let ((copy (copy-tree registry)))
+    (dolist (entry copy)
+      (let ((new (cdr (or (assoc (car entry) *fresh*) (error "Missing fresh type ~a" (car entry))))))
+        (loop for (k frames) on new by #'cddr do (setf (getf (getf (cdr entry) k) :dev) frames))))
+    copy))
+(defun fresh-confirmation (n seed bpe exclude)
+  (let ((known (append (asem-qagen:all-frames :train) (asem-qagen:all-frames :dev))) (frames nil))
+    (dolist (r *fresh*) (loop for (nil fs) on (cdr r) by #'cddr do (setf frames (append frames fs))))
+    (loop for (nil fs) on *fresh-temporal* by #'cddr do (setf frames (append frames fs)))
+    (dolist (f frames) (when (member f known :test #'string-equal) (error "Fresh confirmation frame is not new: ~s" f))))
+  (let* ((asem-qagen::*attr-types* (replace-dev asem-qagen::*attr-types*))
+         (asem-qagen::*num-types* (replace-dev asem-qagen::*num-types*))
+         (asem-qagen::*relations* (replace-dev asem-qagen::*relations*))
+         (asem-qagen::*temporal* (copy-tree asem-qagen::*temporal*))
+         (asem-qagen::*intros* (copy-tree asem-qagen::*intros*))
+         (asem-qagen:*names* (asem-retrieval::new-pool :names))
+         (asem-qagen::*towns* (asem-retrieval::new-pool :towns)))
+    (loop for (k fs) on *fresh-temporal* by #'cddr do (setf (getf (getf asem-qagen::*temporal* k) :dev) fs))
+    (dolist (k '(:people :relation :temporal)) (setf (getf (getf asem-qagen::*intros* k) :dev) '("A record follows.")))
+    (asem-qagen:generate-split :dev n seed :exclude exclude
+      :fits (lambda (p) (<= (+ 1 (length (asem-bpe:bpe-encode bpe p)) 8) 128)))))

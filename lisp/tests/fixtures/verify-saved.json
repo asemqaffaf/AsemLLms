@@ -1,0 +1,1291 @@
+{
+  "cases": [
+    {
+      "name": "balanced-discordance",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": false
+    },
+    {
+      "name": "zero-discordance",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 0,
+        "lost": 0,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": false
+    },
+    {
+      "name": "fifteen-unopposed-losses",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "4",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "5",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "6",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "7",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "8",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "9",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "10",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "11",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "12",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "13",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "14",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "4",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "5",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "6",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "7",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "8",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "9",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "10",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "11",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "12",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "13",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "14",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 15,
+        "first_correct": 15,
+        "second_correct": 0,
+        "gained": 0,
+        "lost": 15,
+        "diff": -1,
+        "mcnemar_exact_two_sided_p": 6.103515625e-05
+      },
+      "reject": false
+    },
+    {
+      "name": "prefix-boolean",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        }
+      ],
+      "field": "gold_length_greedy_prefix_exact",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": false
+    },
+    {
+      "name": "changed-id",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "different",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "changed-gold-key",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 1,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "changed-gold-text",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Bren",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "tampered-prediction",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "missing-prediction",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "unequal-count",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        }
+      ],
+      "field": "summed_option_prediction",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    },
+    {
+      "name": "tampered-prefix",
+      "a": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        }
+      ],
+      "b": [
+        {
+          "id": "0",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": false
+        },
+        {
+          "id": "1",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        },
+        {
+          "id": "2",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 0,
+          "gold_length_greedy_prefix_exact": true
+        },
+        {
+          "id": "3",
+          "category": "relation",
+          "subtype": "teach-chain-subj",
+          "key": 0,
+          "gold_text": "Alba",
+          "question": "Who?",
+          "summed_option_prediction": 1,
+          "gold_length_greedy_prefix_exact": false
+        }
+      ],
+      "field": "gold_length_greedy_prefix_exact",
+      "expected": {
+        "n": 4,
+        "first_correct": 2,
+        "second_correct": 2,
+        "gained": 1,
+        "lost": 1,
+        "diff": 0,
+        "mcnemar_exact_two_sided_p": 1
+      },
+      "reject": true
+    }
+  ]
+}

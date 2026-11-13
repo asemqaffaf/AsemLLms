@@ -159,7 +159,21 @@ guard(Id) ->
     case {enabled(), valid_id(Id)} of
         {false, _} -> {error, disabled};
         {_, false} -> {error, bad_id};
-        _ -> ok
+        _ -> alive()
+    end.
+
+%% Mnesia can die under a running node (a deleted or moved data dir, a failed log rename). Try one restart; if that
+%% fails, switch memory off so the UI stops claiming it saves conversations.
+alive() ->
+    case mnesia:system_info(is_running) of
+        yes -> ok;
+        _ ->
+            try start_mnesia(), ok
+            catch Class:Why ->
+                logger:warning("tinyllm: conversation memory disabled, Mnesia is down (~p:~p)", [Class, Why]),
+                persistent_term:erase(?MODULE),
+                {error, disabled}
+            end
     end.
 
 tx(F) -> tx(F, false).

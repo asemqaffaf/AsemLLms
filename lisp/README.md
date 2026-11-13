@@ -4,7 +4,7 @@ SBCL code written without third-party libraries (no Quicklisp): a small transfor
 a trainer, the chat-data cleaner and a corpus pipeline.
 
     brew install sbcl            # tested with SBCL 2.6.10
-    ./run-tests.sh               # 6 test files: cleaner, transformer, trainer, data pipeline, tuner, memory benchmark (~1 min)
+    ./bin/verify-development.sh  # all 16 test files; locked QA integrity checked by hash without parsing its answer keys
 
 | File | What it is | Erlang counterpart |
 |---|---|---|
@@ -126,3 +126,45 @@ one must not). 1M model on the 1.7M-token snapshot: accuracy 24% (chance), calib
 - The data pipeline's near-duplicate index is in memory.
 - `tokenize` works on characters, the Erlang one on bytes; only non-ASCII text differs.
 - Model files are a text format (readable, slow for large models).
+
+## Stage 2: passage QA benchmark and supervised fine-tuning
+
+Results and the experiment log are in [`../docs/results-stage2.md`](../docs/results-stage2.md); the benchmark is described in
+[`eval/qa/README.md`](eval/qa/README.md).
+
+    # benchmark: locked test (1,000), dev (500), training set (here 256k items with generated training names)
+    sbcl --dynamic-space-size 8GB --script bin/qa-build.lisp data=../data/fineweb/stage1 out=../data/qa/v3 train-entities=synthetic train=256000
+    # fine-tune (reads only train.jsonl and dev.jsonl; best checkpoint chosen on dev accuracy)
+    TLM_BLAS=1 sbcl --dynamic-space-size 10GB --script bin/sft.lisp data=../data/fineweb/stage1 qa=../data/qa/v3 out=../data/runs/sft/x \
+         mode=text aux-lm=0.5 steps=8000 batch=32 workers=8 lr=5e-4 eval-every=250
+    # evaluate with controls (no question / no passage / mismatched / counterfactual question / reversed options)
+    TLM_BLAS=1 sbcl --dynamic-space-size 8GB --script bin/qa-eval.lisp data=../data/fineweb/stage1 ckpt=../data/runs/sft/x/best.ckpt items=eval/qa/dev.jsonl mode=text
+    # does a checkpoint copy from its context at all?
+    sbcl --dynamic-space-size 4GB --script bin/induction-probe.lisp ckpt=../data/runs/final/10m/best.ckpt
+
+| File | What it is |
+|---|---|
+| `src/qagen.lisp`, `bin/qa-build.lisp` | Generator and builder of the QA data (held-out entities and wording, solver-checked keys, audits) |
+| `src/sft.lisp` (`sft32.lisp` derived) | SFT: answer-only loss through `forward-rows` / `backward-rows`, letter or text targets, AdamW, accumulation, exact resume, dev selection, controls |
+| `bin/sft.lisp`, `bin/qa-eval.lisp`, `bin/qa-chart.lisp`, `bin/induction-probe.lisp` | Training, evaluation (refuses the locked test unless `locked-test=1`), SVG charts, copy probe |
+| `src/tf.lisp` options | `config-tie` (gated tied copy path in the output head), `config-relpos` (relative-position attention biases); both start as exact no-ops when added to a checkpoint |
+
+### R7 development diagnostics and weighting experiment
+
+The [R7 analysis](../docs/results-stage2-r7.md) compares R5/R6/R7, familiar versus unfamiliar wording, all QA scoring modes and controls,
+and a controlled loss-weighting pilot. The locked test remains unused.
+
+```sh
+# Paired question wording on identical dev passages/options/keys; retains individual predictions and bounded generated answers.
+TLM_BLAS=1 VECLIB_MAXIMUM_THREADS=1 sbcl --dynamic-space-size 4GB --script bin/qa-analysis.lisp \
+  data=../data/fineweb/stage1 ckpt=CKPT items=eval/qa/dev.jsonl out=NEW.json workers=4
+# Reproduce the actual R7 generator mixture and tokenizer audit; refuses to overwrite an existing output.
+sbcl --dynamic-space-size 4GB --script bin/retrieval-audit.lisp data=../data/fineweb/stage1 out=NEW-AUDIT.json
+# Paired fixed-step pilot with a fresh selection set; saves exact data and checkpoint hashes in a new directory.
+TLM_BLAS=1 VECLIB_MAXIMUM_THREADS=1 sbcl --dynamic-space-size 5GB --script bin/retrieval-weighting-pilot.lisp \
+  data=../data/fineweb/stage1 init=CKPT out=NEW-DIR steps=300 workers=4
+```
+
+`retrieval.lisp train` accepts `multi-normalization=token|sequence`. Token weighting is the historical default; sequence weighting
+is experimental. `tests/test-multi-normalization.lisp` checks weighted numerical gradients, FP32/FP64 agreement and exact resume.
+`qa-analysis.lisp` refuses locked-test content and has no override. Its worker caches are private because BPE encoding memoizes tokens.

@@ -1,0 +1,2067 @@
+== lisp/tests/test-blas.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+BLAS-SMALL-AND-RECTANGULAR-SHAPES
+BLAS-LARGE-SHAPES
+BLAS-VALUES-NEAR-ZERO
+BLAS-NAN-AND-INFINITY-ARE-NOT-HIDDEN
+BLAS-FORWARD-BACKWARD-EQUIVALENCE
+BLAS-ATTENTION-MATCHES-LISP
+
+6 tests, 46854 checks, 0 failures
+== lisp/tests/test-clean.lisp
+GOOD-DIALOGUE-PASSES
+MALFORMED
+TOO-LONG-NON-ASCII-DEGENERATE
+PRONOUN-OPENING
+DUPLICATES-AND-BOILERPLATE
+REAL-DATASET-MATCHES-COMMITTED-OUTPUT
+
+6 tests, 21 checks, 0 failures
+== lisp/tests/test-data.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+SHA256-STANDARD-VECTORS
+JSON-PARSE-AND-WRITE
+FILTERS
+DEDUP
+NORMALIZE-TEXT
+BPE-ROUNDTRIP-AND-DETERMINISM
+PRETOKENIZE-CONCATENATES-BACK
+BUILD-OUTPUTS-AND-VERIFY
+BUILD-STATS-ACCOUNT-FOR-EVERY-DOCUMENT
+BUILD-IS-REPRODUCIBLE-AND-VERSION-TRACKS-THE-RECIPE
+VERIFY-DETECTS-CORRUPTION
+SPLIT-DEPENDS-ON-CONTENT-ONLY
+TEST-SPLIT-IS-DISJOINT-VERIFIED-AND-OFF-BY-DEFAULT
+MANIFEST-CONFIG-LISTS-EACH-SETTING-ONCE-WITH-THE-EFFECTIVE-VALUE
+EMPTY-INPUT-IS-AN-ERROR
+
+15 tests, 1082 checks, 0 failures
+== lisp/tests/test-fp32.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/test-fp32.lisp
+; in: DEFTEST FP32-NAN-AND-INFINITY-ARE-NOT-HIDDEN
+;     (- SINGLE-FLOAT-POSITIVE-INFINITY SINGLE-FLOAT-POSITIVE-INFINITY)
+; 
+; caught STYLE-WARNING:
+;   Lisp error during constant folding:
+;   arithmetic error FLOATING-POINT-INVALID-OPERATION signalled
+; 
+; compilation unit finished
+;   caught 1 STYLE-WARNING condition
+FP32-USES-SINGLE-FLOAT-EVERYWHERE
+FP32-FORWARD-BACKWARD-MATCHES-FP64
+FP32-GRADIENTS-MATCH-FINITE-DIFFERENCES
+FP32-SGEMM-MATCHES-LISP-KERNELS
+FP32-ATTENTION-BLAS-MATCHES-LISP
+FP32-BLAS-TRAINING-STEP-MATCHES-LISP-AND-FP64
+FP32-NAN-AND-INFINITY-ARE-NOT-HIDDEN
+FP32-AND-FP64-CONVERGE-TO-THE-SAME-LOSS
+FP32-BLAS-TRAINING-CONVERGES
+FP32-CHECKPOINT-ROUND-TRIPS
+
+10 tests, 46794 checks, 0 failures
+== lisp/tests/test-membench.lisp
+DETERMINISTIC
+SHAPE
+GROUND-TRUTH-MATCHES-THE-TRANSCRIPT
+UPDATES-AND-DISTRACTORS
+PLACEMENT
+ABSENT-VALUES-NEVER-APPEAR
+OUTPUT-IS-VALID-ONE-LINE-JSON
+
+7 tests, 68 checks, 0 failures
+== lisp/tests/test-multi-normalization.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT::RUN-MULTI ASEM-TF:MODEL ASEM-SFT::E ASEM-SFT::CACHE
+;      ASEM-SFT::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (DEFUN ASEM-SFT::MISMATCHED-QUESTION
+;            (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (LET* ((ASEM-SFT::SAME (REMOVE-IF-NOT # ASEM-SFT::ITEMS))
+;              (ASEM-SFT::LEN (LENGTH ASEM-SFT::SAME))
+;              (ASEM-SFT::K (POSITION ASEM-SFT::IT ASEM-SFT::SAME)))
+;         (DECLARE (IGNORE ASEM-SFT::IDX))
+;         (GETF (NTH (MOD # ASEM-SFT::LEN) ASEM-SFT::SAME) :QUESTION)))
+; --> SB-INT:NAMED-LAMBDA SB-INT:NAMED-LAMBDA 
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT::MISMATCHED-QUESTION
+;         (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT::SAME #) (ASEM-SFT::LEN #) (ASEM-SFT::K #))
+;           (DECLARE (IGNORE ASEM-SFT::IDX))
+;           (GETF (NTH # ASEM-SFT::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN32::HEADER-JSON ASEM-PRETRAIN32::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN32::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT32::RUN-MULTI ASEM-TF32:MODEL ASEM-SFT32::E ASEM-SFT32::CACHE
+;      ASEM-SFT32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT32::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT32::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+HISTORICAL-TOKEN-MODE-REMAINS-THE-DEFAULT
+SEQUENCE-OBJECTIVE-AND-GRADIENT-HAVE-UNIT-TOTAL-WEIGHT
+SEQUENCE-LOSS-MATCHES-FINITE-DIFFERENCES-FOR-EVERY-TENSOR
+DERIVED-FP32-AGREES-WITH-FP64-FOR-SEQUENCE-WEIGHTING
+MALFORMED-OR-UNKNOWN-WEIGHTING-IS-REFUSED
+NORMALIZED-RETRIEVAL-AND-COPY-REPLAY-RESUME-EXACTLY-IN-FP32
+{"event":"start","from_step":0,"steps":9,"batch":3,"accum":2,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":23,"train_n":5,"dev_n":5,"params":876,"precision":"f32"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.749769,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.749769,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.375000,"peak_rss_mb":110.375000,"seconds":0.056403,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":3,"epoch":3.600000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.429864,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.429864,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.406250,"peak_rss_mb":110.406250,"seconds":0.106694,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":6,"epoch":7.200000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.203867,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.203867,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.406250,"peak_rss_mb":110.406250,"seconds":0.154009,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":9,"epoch":10.800000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.130078,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.130078,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.406250,"peak_rss_mb":110.406250,"seconds":0.207873,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"done","steps":9,"best_dev_acc":0.000000,"best_step":9,"best_dev_loss":2.130078,"seconds":0.215712,"peak_rss_mb":110.406250,"best_sha256":"1fbd7f508e6f482ef53a73639f3375023f80c6a4ecb18e4fcc539317187afa54","last_sha256":"06f140513d865a053e3876880640638811ba1535ba5cd926a36c691979918da2"}
+{"event":"start","from_step":0,"steps":9,"batch":3,"accum":2,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":23,"train_n":5,"dev_n":5,"params":876,"precision":"f32"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.749769,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.749769,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.671875,"peak_rss_mb":110.671875,"seconds":0.048441,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":3,"epoch":3.600000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.429864,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.429864,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.671875,"peak_rss_mb":110.671875,"seconds":0.091556,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":4,"epoch":4.800000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.311983,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.311983,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.671875,"peak_rss_mb":110.671875,"seconds":0.140251,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"done","steps":9,"best_dev_acc":0.000000,"best_step":4,"best_dev_loss":2.311983,"seconds":0.143164,"peak_rss_mb":110.671875,"best_sha256":"4a68458bd0c2be9b3e97c202873824883ee9f7c30cfc5a2447bd5ae9620b60ef","last_sha256":"1f10fc8cf49219383ef435772ff4cda8b3f295f4cef02954c34f4f43491e557f"}
+{"event":"resume","from_step":4,"steps":9,"batch":3,"accum":2,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":23,"train_n":5,"dev_n":5,"params":876,"precision":"f32"}
+{"event":"eval","step":6,"epoch":7.200000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.203867,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.203867,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.671875,"peak_rss_mb":110.671875,"seconds":0.191096,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"eval","step":9,"epoch":10.800000,"dev_acc":0.000000,"dev_correct":0,"dev_n":5,"dev_loss":2.130078,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.130078,"pred_a":0,"pred_b":5,"pred_c":0,"pred_d":0,"rss_mb":110.671875,"peak_rss_mb":110.671875,"seconds":0.236099,"dev_copy":0.000000,"dev_retrieval_train":0.000000}
+{"event":"done","steps":9,"best_dev_acc":0.000000,"best_step":9,"best_dev_loss":2.130078,"seconds":0.238165,"peak_rss_mb":110.671875,"best_sha256":"1fbd7f508e6f482ef53a73639f3375023f80c6a4ecb18e4fcc539317187afa54","last_sha256":"06f140513d865a053e3876880640638811ba1535ba5cd926a36c691979918da2"}
+
+6 tests, 833 checks, 0 failures
+== lisp/tests/test-native.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+KERNELS-BIT-IDENTICAL-TO-LISP
+  native library not loaded (make -C native): skipped
+TRAINING-STEP-IDENTICAL-WITH-AND-WITHOUT-NATIVE
+  native library not loaded (make -C native): skipped
+TLM-FILE-LOADS-IN-C-WITH-IDENTICAL-LOGITS
+  native library not loaded (make -C native): skipped
+
+3 tests, 0 checks, 0 failures
+== lisp/tests/test-parquet.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/parquet.lisp
+; in: DEFUN TR-VALUE
+;     (ASEM-PARQUET::TR-STRUCT ASEM-PARQUET::R)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PARQUET::TR-STRUCT
+; 
+; compilation unit finished
+;   Undefined function:
+;     TR-STRUCT
+;   caught 1 STYLE-WARNING condition
+SNAPPY-LITERALS-AND-COPIES
+RLE-HYBRID-RUNS-AND-BIT-PACKING
+THRIFT-COMPACT-STRUCTS
+PLAIN-VALUES-DECODE
+
+4 tests, 18 checks, 0 failures
+== lisp/tests/test-pretrain.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN32::HEADER-JSON ASEM-PRETRAIN32::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN32::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+PRETRAINING-LEARNS-LOGS-A-BASELINE-AND-IS-REPRODUCIBLE
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":60,"batch":8,"workers":1,"lr":0.010000,"seed":3,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.790196,"val_ppl":327.077276,"tokens_per_sec":0.000000,"rss_mb":118.234375,"peak_rss_mb":118.234375,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.128155,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.266667,"acc_reasoning":0.200000,"sample":"'? s?fas\u0011\u0000'?malj??(??~ w?\n5ee?\u0018"}
+{"event":"eval","step":30,"tokens":7680,"train_loss":2.837074,"val_loss":1.820096,"val_ppl":6.172448,"tokens_per_sec":2288.290656,"rss_mb":122.265625,"peak_rss_mb":122.265625,"answer_accuracy":0.255556,"answer_accuracy_sum":0.288889,"answer_margin":-0.529728,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.166667,"acc_reasoning":0.266667,"sample":"ky blue night water sun cat grass \nis small dog slow "}
+{"event":"eval","step":60,"tokens":15360,"train_loss":1.699063,"val_loss":1.719369,"val_ppl":5.581006,"tokens_per_sec":2223.236703,"rss_mb":127.281250,"peak_rss_mb":127.281250,"answer_accuracy":0.233333,"answer_accuracy_sum":0.277778,"answer_margin":-0.528455,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.166667,"acc_reasoning":0.266667,"sample":"leeps slow runs big sun cat water \nfast small dog slow "}
+{"event":"done","params":139072,"best_val_loss":1.719369,"seconds":7.908519,"tokens_seen":15360,"tokens_per_sec":1942.209407,"peak_rss_mb":127.281250,"checkpoint_sha256":"5beec398e47eaa56bdd1fb283a133d12fd41e3dd768ddb812061954058c1fef0","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":60,"batch":8,"workers":1,"lr":0.010000,"seed":3,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.790196,"val_ppl":327.077276,"tokens_per_sec":0.000000,"rss_mb":128.312500,"peak_rss_mb":128.312500,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.128155,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.266667,"acc_reasoning":0.200000,"sample":"'? s?fas\u0011\u0000'?malj??(??~ w?\n5ee?\u0018"}
+{"event":"eval","step":30,"tokens":7680,"train_loss":2.837074,"val_loss":1.820096,"val_ppl":6.172448,"tokens_per_sec":2202.487147,"rss_mb":133.062500,"peak_rss_mb":133.062500,"answer_accuracy":0.255556,"answer_accuracy_sum":0.288889,"answer_margin":-0.529728,"random_baseline":0.250000,"acc_fact":0.333333,"acc_reading":0.166667,"acc_reasoning":0.266667,"sample":"ky blue night water sun cat grass \nis small dog slow "}
+{"event":"eval","step":60,"tokens":15360,"train_loss":1.699063,"val_loss":1.719369,"val_ppl":5.581006,"tokens_per_sec":2206.639110,"rss_mb":137.640625,"peak_rss_mb":137.640625,"answer_accuracy":0.233333,"answer_accuracy_sum":0.277778,"answer_margin":-0.528455,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.166667,"acc_reasoning":0.266667,"sample":"leeps slow runs big sun cat water \nfast small dog slow "}
+{"event":"done","params":139072,"best_val_loss":1.719369,"seconds":8.073257,"tokens_seen":15360,"tokens_per_sec":1902.577857,"peak_rss_mb":137.640625,"checkpoint_sha256":"5beec398e47eaa56bdd1fb283a133d12fd41e3dd768ddb812061954058c1fef0","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":60,"batch":8,"workers":1,"lr":0.010000,"seed":3,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.858164,"val_ppl":350.080726,"tokens_per_sec":0.000000,"rss_mb":110.656250,"peak_rss_mb":110.656250,"answer_accuracy":0.200000,"answer_accuracy_sum":0.255556,"answer_margin":-0.158362,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.200000,"acc_reasoning":0.233333,"sample":"+?ee?dog\u0014%?mali??!??v sl s\u000D6run?\u001A"}
+{"event":"eval","step":30,"tokens":7680,"train_loss":2.914685,"val_loss":1.800058,"val_ppl":6.050001,"tokens_per_sec":2213.278170,"rss_mb":111.750000,"peak_rss_mb":111.750000,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.746783,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.266667,"acc_reasoning":0.266667,"sample":"small blue sl sun cat grass \ncat small dog slow "}
+{"event":"eval","step":60,"tokens":15360,"train_loss":1.690226,"val_loss":1.706416,"val_ppl":5.509180,"tokens_per_sec":2167.393929,"rss_mb":112.843750,"peak_rss_mb":112.843750,"answer_accuracy":0.211111,"answer_accuracy_sum":0.266667,"answer_margin":-0.970498,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.233333,"acc_reasoning":0.200000,"sample":"big slow runs sky sun small the grass slow dog slow "}
+{"event":"done","params":139072,"best_val_loss":1.706416,"seconds":8.131418,"tokens_seen":15360,"tokens_per_sec":1888.969427,"peak_rss_mb":112.843750,"checkpoint_sha256":"ac546b62a9581e48aea2a6828a940ba4d34c730fea7a46bea560e148aaea2222","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":60,"batch":8,"workers":1,"lr":0.010000,"seed":3,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.858164,"val_ppl":350.080726,"tokens_per_sec":0.000000,"rss_mb":123.109375,"peak_rss_mb":123.109375,"answer_accuracy":0.200000,"answer_accuracy_sum":0.255556,"answer_margin":-0.158362,"random_baseline":0.250000,"acc_fact":0.166667,"acc_reading":0.200000,"acc_reasoning":0.233333,"sample":"+?ee?dog\u0014%?mali??!??v sl s\u000D6run?\u001A"}
+{"event":"eval","step":30,"tokens":7680,"train_loss":2.914685,"val_loss":1.800058,"val_ppl":6.050001,"tokens_per_sec":2194.567246,"rss_mb":123.500000,"peak_rss_mb":123.500000,"answer_accuracy":0.266667,"answer_accuracy_sum":0.266667,"answer_margin":-0.746783,"random_baseline":0.250000,"acc_fact":0.266667,"acc_reading":0.266667,"acc_reasoning":0.266667,"sample":"small blue sl sun cat grass \ncat small dog slow "}
+{"event":"eval","step":60,"tokens":15360,"train_loss":1.690226,"val_loss":1.706416,"val_ppl":5.509180,"tokens_per_sec":2263.757856,"rss_mb":122.093750,"peak_rss_mb":123.500000,"answer_accuracy":0.211111,"answer_accuracy_sum":0.266667,"answer_margin":-0.970498,"random_baseline":0.250000,"acc_fact":0.200000,"acc_reading":0.233333,"acc_reasoning":0.200000,"sample":"big slow runs sky sun small the grass slow dog slow "}
+{"event":"done","params":139072,"best_val_loss":1.706416,"seconds":7.949545,"tokens_seen":15360,"tokens_per_sec":1932.186056,"peak_rss_mb":123.500000,"checkpoint_sha256":"ac546b62a9581e48aea2a6828a940ba4d34c730fea7a46bea560e148aaea2222","data_version":"5ae1cd8d826577d6"}
+CHECKPOINT-ROUND-TRIP-GIVES-IDENTICAL-LOGITS
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":10,"batch":4,"workers":1,"lr":0.003000,"seed":2,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.796820,"val_ppl":329.250872,"tokens_per_sec":0.000000,"rss_mb":122.265625,"peak_rss_mb":122.265625,"sample":")?unxeeps\u0016%?mala??&??er?\u000E:ee?\u001A"}
+{"event":"eval","step":10,"tokens":1280,"train_loss":5.666810,"val_loss":5.368866,"val_ppl":214.619328,"tokens_per_sec":2532.577253,"rss_mb":99.406250,"peak_rss_mb":122.265625,"sample":"&?at{he\u0011\"?mal^??#???ater w\u000C0 gr?\u001D"}
+{"event":"done","params":139072,"best_val_loss":5.368866,"seconds":0.610063,"tokens_seen":1280,"tokens_per_sec":2098.143962,"peak_rss_mb":122.265625,"checkpoint_sha256":"194dc2c56e87221de31acc7198690a8e816bea14d9ec6aa6c78f23c9c1a1d46c","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":10,"batch":4,"workers":1,"lr":0.003000,"seed":2,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.774808,"val_ppl":322.082605,"tokens_per_sec":0.000000,"rss_mb":100.781250,"peak_rss_mb":100.781250,"sample":"(? \nvhe\u0015\u0000#?mal\\??\"??l grig\u000C3 w\u0019"}
+{"event":"eval","step":10,"tokens":1280,"train_loss":5.696269,"val_loss":5.348841,"val_ppl":210.364384,"tokens_per_sec":2612.676789,"rss_mb":108.640625,"peak_rss_mb":108.640625,"sample":"+? \n?the\u0013\u0000#?mald??#???atergr\u000F6ater?\u001E"}
+{"event":"done","params":139072,"best_val_loss":5.348841,"seconds":0.589651,"tokens_seen":1280,"tokens_per_sec":2170.775594,"peak_rss_mb":108.640625,"checkpoint_sha256":"4631334bc0f2a58fb0cdb5bd8a2f001b6942bcf16fd93884cbce98e05775532c","data_version":"5ae1cd8d826577d6"}
+EVAL-SCORER-IS-A-PURE-FUNCTION-OF-THE-MODEL
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":2,"batch":2,"workers":1,"lr":0.003000,"seed":4,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.708984,"val_ppl":301.564533,"tokens_per_sec":0.000000,"rss_mb":109.234375,"peak_rss_mb":109.234375,"sample":",?at?fast\u0015&?mall??!??xruns \n\u000D6 sl?\u001A"}
+{"event":"eval","step":2,"tokens":128,"train_loss":5.802993,"val_loss":5.687906,"val_ppl":295.274789,"tokens_per_sec":857.190691,"rss_mb":109.375000,"peak_rss_mb":109.375000,"sample":",?at?fast\u0015&?mall??!??z gr \n\u000D8run?\u001A"}
+{"event":"done","params":139072,"best_val_loss":5.687906,"seconds":0.236392,"tokens_seen":128,"tokens_per_sec":541.473485,"peak_rss_mb":109.375000,"checkpoint_sha256":"51a1379514bba25ee8444d7ec7158c11c40ab8fc087bf8254cc85d67892e82a6","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":2,"batch":2,"workers":1,"lr":0.003000,"seed":4,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.774223,"val_ppl":321.894254,"tokens_per_sec":0.000000,"rss_mb":123.656250,"peak_rss_mb":123.656250,"sample":"+? w?et\u0017,?malq??)??~ass b\u000D: w?\u001E"}
+{"event":"eval","step":2,"tokens":128,"train_loss":5.867829,"val_loss":5.753681,"val_ppl":315.349235,"tokens_per_sec":1007.239534,"rss_mb":123.656250,"peak_rss_mb":123.656250,"sample":"+? w?et\u0017,?mals??\"??aterig\u000C; w?\u001B"}
+{"event":"done","params":139072,"best_val_loss":5.753681,"seconds":0.231886,"tokens_seen":128,"tokens_per_sec":551.995377,"peak_rss_mb":123.656250,"checkpoint_sha256":"e4c5b8c685e66aae6cf209d28f2c8be24d6799e53062c5d3c4bb6e73923c86e4","data_version":"5ae1cd8d826577d6"}
+EVAL-SET-IS-WELL-FORMED-AND-BALANCED
+DIAGNOSTIC-STATISTICS
+DIAGNOSE-DETECTS-A-MODEL-THAT-USES-THE-QUESTION-AND-NOT-ONE-THAT-DOES-NOT
+{"event":"start","size":"1m","params":139584,"ctx":40,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":0,"batch":4,"workers":1,"lr":0.003000,"seed":1,"train_tokens":122982,"val_tokens":18335,"data_version":"e4db2b854098f8b4","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.948317,"val_ppl":383.108113,"tokens_per_sec":0.000000,"rss_mb":123.671875,"peak_rss_mb":123.671875,"sample":"0?ue?Answer\u0015,? pino??'?? is?\u000CAst?\u001E"}
+{"event":"done","params":139584,"best_val_loss":5.948317,"seconds":0.331080,"tokens_seen":0,"tokens_per_sec":0.000000,"peak_rss_mb":123.671875,"checkpoint_sha256":"1e2d67269910ba5dd3735adf6281b6b07278aee1e204196e0e20ceacd1d43804","data_version":"e4db2b854098f8b4"}
+{"event":"start","size":"1m","params":139584,"ctx":40,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":700,"batch":16,"workers":2,"lr":0.010000,"seed":1,"train_tokens":122982,"val_tokens":18335,"data_version":"e4db2b854098f8b4","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.956146,"val_ppl":386.119243,"tokens_per_sec":0.000000,"rss_mb":123.671875,"peak_rss_mb":123.671875,"sample":"0?ue?Answer\u0015,? pino??'?? is?\u000CAst?\u001E"}
+{"event":"eval","step":700,"tokens":448000,"train_loss":0.362985,"val_loss":0.187593,"val_ppl":1.206343,"tokens_per_sec":5311.217172,"rss_mb":30.937500,"peak_rss_mb":123.671875,"sample":"k\nQuestion: What is the color of wazz?\nAnswer: black\nQuestion: What is the"}
+{"event":"done","params":139584,"best_val_loss":0.187593,"seconds":84.478885,"tokens_seen":448000,"tokens_per_sec":5303.100295,"peak_rss_mb":123.671875,"checkpoint_sha256":"d2afdd2a2f54346263eeb375d316dc285d2e6e9586032c5b59cd3321894063d1","data_version":"e4db2b854098f8b4"}
+DIAGNOSE-OUTPUT-IS-VALID-JSON-IN-BOTH-PRECISIONS
+{"event":"start","size":"1m","params":139584,"ctx":40,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":2,"batch":2,"workers":1,"lr":0.003000,"seed":2,"train_tokens":122982,"val_tokens":18335,"data_version":"e4db2b854098f8b4","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.785517,"val_ppl":325.550151,"tokens_per_sec":0.000000,"rss_mb":83.625000,"peak_rss_mb":83.625000,"sample":"/?ol{ p\u001A\u0000)? pinf??%??{io c\u000E@he?\u001C"}
+{"event":"eval","step":2,"tokens":160,"train_loss":5.792374,"val_loss":5.755217,"val_ppl":315.834185,"tokens_per_sec":1046.545093,"rss_mb":44.859375,"peak_rss_mb":83.625000,"sample":"/?orz bl\u0016)? pine??#??xswhe\u000E9io?\u0019"}
+{"event":"done","params":139584,"best_val_loss":5.755217,"seconds":0.239301,"tokens_seen":160,"tokens_per_sec":668.614005,"peak_rss_mb":83.625000,"checkpoint_sha256":"bfa94f823968aa998706c23bb4871ce9d0a309eb4e2be6822ee44486e313c9b5","data_version":"e4db2b854098f8b4"}
+{"event":"start","size":"1m","params":139584,"ctx":40,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":2,"batch":2,"workers":1,"lr":0.003000,"seed":2,"train_tokens":122982,"val_tokens":18335,"data_version":"e4db2b854098f8b4","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.849175,"val_ppl":346.948022,"tokens_per_sec":0.000000,"rss_mb":100.265625,"peak_rss_mb":100.265625,"sample":"-?ol?Answer\u001B\u0000+? pinm??*??at?\u0015EAn?$"}
+{"event":"eval","step":2,"tokens":160,"train_loss":5.864104,"val_loss":5.825584,"val_ppl":338.859028,"tokens_per_sec":894.599415,"rss_mb":100.281250,"peak_rss_mb":100.281250,"sample":"-?ol?Answer\u001B\u0000+? pinm??)???er t\u0017?Que?&"}
+{"event":"done","params":139584,"best_val_loss":5.825584,"seconds":0.304527,"tokens_seen":160,"tokens_per_sec":525.404972,"peak_rss_mb":100.281250,"checkpoint_sha256":"356c991c48ecb680e510059e6ee95fd37ffe83f5968a888c886ab73312292952","data_version":"e4db2b854098f8b4"}
+TRAIN-LOGGING-AND-INTERMEDIATE-CHECKPOINTS-DO-NOT-CHANGE-THE-NUMBERS
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":20,"batch":4,"workers":1,"lr":0.003000,"seed":6,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.862390,"val_ppl":351.563223,"tokens_per_sec":0.000000,"rss_mb":98.234375,"peak_rss_mb":98.234375,"sample":"%? \n?dog\u0016\u0000(?malg??&??x w?\u000E: w?\u001B"}
+{"event":"eval","step":20,"tokens":2560,"train_loss":5.526167,"val_loss":4.985152,"val_ppl":146.225790,"tokens_per_sec":2844.678340,"rss_mb":81.078125,"peak_rss_mb":98.234375,"sample":"/?lu?ow\u001C,?malx??)? gr?dogrun\u0014Fdog? "}
+{"event":"done","params":139072,"best_val_loss":4.985152,"seconds":0.999102,"tokens_seen":2560,"tokens_per_sec":2562.300946,"peak_rss_mb":98.234375,"checkpoint_sha256":"39f95c5615a3a4acb4da9bb626b254621e30d0df3349985c90b46d663f84b7bb","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":20,"batch":4,"workers":1,"lr":0.003000,"seed":6,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f64"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.862390,"val_ppl":351.563223,"tokens_per_sec":0.000000,"rss_mb":82.718750,"peak_rss_mb":82.718750,"sample":"%? \n?dog\u0016\u0000(?malg??&??x w?\u000E: w?\u001B"}
+{"event":"train","step":5,"tokens":640,"train_loss":5.842151,"grad_norm":2.564434,"lr":0.000150}
+{"event":"train","step":10,"tokens":1280,"train_loss":5.691776,"grad_norm":2.211028,"lr":0.000300}
+{"event":"train","step":15,"tokens":1920,"train_loss":5.441779,"grad_norm":1.951934,"lr":0.000450}
+{"event":"train","step":20,"tokens":2560,"train_loss":5.128962,"grad_norm":1.913672,"lr":0.000600}
+{"event":"eval","step":20,"tokens":2560,"train_loss":5.526167,"val_loss":4.985152,"val_ppl":146.225790,"tokens_per_sec":2841.161325,"rss_mb":89.656250,"peak_rss_mb":89.656250,"sample":"/?lu?ow\u001C,?malx??)? gr?dogrun\u0014Fdog? "}
+{"event":"done","params":139072,"best_val_loss":4.985152,"seconds":0.989907,"tokens_seen":2560,"tokens_per_sec":2586.101523,"peak_rss_mb":89.656250,"checkpoint_sha256":"39f95c5615a3a4acb4da9bb626b254621e30d0df3349985c90b46d663f84b7bb","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":20,"batch":4,"workers":1,"lr":0.003000,"seed":6,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.850424,"val_ppl":347.381615,"tokens_per_sec":0.000000,"rss_mb":94.046875,"peak_rss_mb":94.046875,"sample":"0?ee?the\u00140?malj??%??~ wgr\u000B7ht?\u001E"}
+{"event":"eval","step":20,"tokens":2560,"train_loss":5.495787,"val_loss":4.953754,"val_ppl":141.705923,"tokens_per_sec":3067.179621,"rss_mb":103.125000,"peak_rss_mb":103.125000,"sample":"#?mo?ky\u001A ?malh? s ?ight?doger\u000F2dog? "}
+{"event":"done","params":139072,"best_val_loss":4.953754,"seconds":0.912951,"tokens_seen":2560,"tokens_per_sec":2804.093538,"peak_rss_mb":103.125000,"checkpoint_sha256":"ec36a861743295b3391c45c3824d865efe21cf0862d52c5fa250007a447f6189","data_version":"5ae1cd8d826577d6"}
+{"event":"start","size":"1m","params":139072,"ctx":32,"dim":64,"layers":2,"heads":4,"ff":256,"vocab":300,"steps":20,"batch":4,"workers":1,"lr":0.003000,"seed":6,"train_tokens":64598,"val_tokens":6828,"data_version":"5ae1cd8d826577d6","precision":"f32"}
+{"event":"eval","step":0,"tokens":0,"train_loss":0,"val_loss":5.850424,"val_ppl":347.381615,"tokens_per_sec":0.000000,"rss_mb":103.125000,"peak_rss_mb":103.125000,"sample":"0?ee?the\u00140?malj??%??~ wgr\u000B7ht?\u001E"}
+{"event":"train","step":5,"tokens":640,"train_loss":5.830966,"grad_norm":2.378980,"lr":0.000150}
+{"event":"train","step":10,"tokens":1280,"train_loss":5.644036,"grad_norm":2.154571,"lr":0.000300}
+{"event":"train","step":15,"tokens":1920,"train_loss":5.400271,"grad_norm":1.957165,"lr":0.000450}
+{"event":"train","step":20,"tokens":2560,"train_loss":5.107874,"grad_norm":1.885470,"lr":0.000600}
+{"event":"eval","step":20,"tokens":2560,"train_loss":5.495787,"val_loss":4.953754,"val_ppl":141.705923,"tokens_per_sec":2976.893031,"rss_mb":103.125000,"peak_rss_mb":103.125000,"sample":"#?mo?ky\u001A ?malh? s ?ight?doger\u000F2dog? "}
+{"event":"done","params":139072,"best_val_loss":4.953754,"seconds":0.946117,"tokens_seen":2560,"tokens_per_sec":2705.796429,"peak_rss_mb":103.125000,"checkpoint_sha256":"ec36a861743295b3391c45c3824d865efe21cf0862d52c5fa250007a447f6189","data_version":"5ae1cd8d826577d6"}
+STABILITY-GATE-ACCEPTS-A-HEALTHY-CURVE-AND-REJECTS-BAD-ONES
+
+9 tests, 182 checks, 0 failures
+== lisp/tests/test-qa-analysis.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN32::HEADER-JSON ASEM-PRETRAIN32::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN32::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT32::RUN-MULTI ASEM-TF32:MODEL ASEM-SFT32::E ASEM-SFT32::CACHE
+;      ASEM-SFT32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT32::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT32::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+FAMILIAR-QUESTIONS-PRESERVE-ALL-FACTS-AND-ANSWER-KEYS
+COUNTERFACTUAL-AND-REVERSAL-REMAP-THE-KEY
+SUMMED-AND-MEAN-TOKEN-SCORES-ARE-DISTINCT
+DEVELOPMENT-READER-ROUNDTRIPS-STRUCTURED-METADATA-AND-REFUSES-TEST-INPUT
+NUMERICAL-OPTION-SCORES-AND-GREEDY-PREFIX-AGREE-WITH-REFERENCE
+QA analysis real: 12 items complete
+QA analysis real: 12 items complete
+
+5 tests, 2335 checks, 0 failures
+== lisp/tests/test-qagen.lisp
+SAME-SEED-SAME-ITEMS
+ANSWER-POSITIONS-BALANCED-WITHIN-EACH-CATEGORY
+EVERY-ITEM-VALIDATES-AND-THE-COUNTERFACTUAL-MOVES
+THE-VALIDATOR-CATCHES-BROKEN-ITEMS
+ENTITY-POOLS-ARE-DISJOINT
+NO-FRAME-IS-SHARED-BETWEEN-SPLITS
+TEST-ENTITIES-NEVER-APPEAR-IN-TRAINING-ITEMS
+
+7 tests, 64 checks, 0 failures
+== lisp/tests/test-retrieval.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT::RUN-MULTI ASEM-TF:MODEL ASEM-SFT::E ASEM-SFT::CACHE
+;      ASEM-SFT::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (DEFUN ASEM-SFT::MISMATCHED-QUESTION
+;            (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (LET* ((ASEM-SFT::SAME (REMOVE-IF-NOT # ASEM-SFT::ITEMS))
+;              (ASEM-SFT::LEN (LENGTH ASEM-SFT::SAME))
+;              (ASEM-SFT::K (POSITION ASEM-SFT::IT ASEM-SFT::SAME)))
+;         (DECLARE (IGNORE ASEM-SFT::IDX))
+;         (GETF (NTH (MOD # ASEM-SFT::LEN) ASEM-SFT::SAME) :QUESTION)))
+; --> SB-INT:NAMED-LAMBDA SB-INT:NAMED-LAMBDA 
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT::MISMATCHED-QUESTION
+;         (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT::SAME #) (ASEM-SFT::LEN #) (ASEM-SFT::K #))
+;           (DECLARE (IGNORE ASEM-SFT::IDX))
+;           (GETF (NTH # ASEM-SFT::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+PROBE-ANSWERS-COME-FROM-THE-PASSAGE
+PROBE-ENTITIES-NEVER-OCCUR-IN-TRAINING
+TRAINING-TARGETS-ARE-EXACTLY-THE-ANSWERS
+MULTI-EXAMPLES-TRAIN-AND-SCORE
+{"event":"start","from_step":0,"steps":200,"batch":8,"accum":1,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":10,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":8,"dev_n":8,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":8,"dev_loss":17.244725,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":17.244725,"pred_a":0,"pred_b":8,"pred_c":0,"pred_d":0,"rss_mb":111.500000,"peak_rss_mb":111.500000,"seconds":0.068258,"dev_retrieval_train":0.000000}
+{"event":"eval","step":100,"epoch":100.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.075921,"dev_letter_loss":1.386294,"train_probe_acc":1.000000,"train_probe_loss":0.075921,"pred_a":8,"pred_b":0,"pred_c":0,"pred_d":0,"rss_mb":115.828125,"peak_rss_mb":115.828125,"seconds":3.581528,"dev_retrieval_train":1.000000}
+{"event":"target-reached","step":100,"dev_acc":1.000000}
+{"event":"done","steps":200,"best_dev_acc":1.000000,"best_step":100,"best_dev_loss":0.075921,"seconds":3.622871,"peak_rss_mb":115.828125,"best_sha256":"2ec081dd684dbd030e4978bb250eafa67670e4c76c9e53e90eb8050cc2a742a7","last_sha256":"425677d42cd16a4cfdff7c031f48610f58928777fb7841e9192c20e818f7a50a"}
+AUGMENTATION-KEEPS-ANSWERS-AND-ENTITIES-INTACT
+REVERSE-LOOKUPS-ASK-FOR-THE-PERSON
+COMPARISON-AND-TEMPORAL-ANSWERS-ARE-CORRECT
+
+7 tests, 1299 checks, 0 failures
+== lisp/tests/test-sft.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/bpe.lisp
+; in: DEFUN TRAIN-BPE
+;     (ASEM-BPE::LEXLESS (CAR ASEM-BPE::X) (CAR ASEM-BPE::Y))
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-BPE::LEXLESS
+; 
+; compilation unit finished
+;   Undefined function:
+;     LEXLESS
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/data.lisp
+; in: DEFUN BUILD
+;     (ASEM-DATA::VERSION-OF ASEM-DATA::M)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-DATA::VERSION-OF
+; 
+; compilation unit finished
+;   Undefined function:
+;     VERSION-OF
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/pretrain.lisp
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN::HEADER-JSON ASEM-PRETRAIN::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT::RUN-MULTI ASEM-TF:MODEL ASEM-SFT::E ASEM-SFT::CACHE
+;      ASEM-SFT::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/sft.lisp
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (DEFUN ASEM-SFT::MISMATCHED-QUESTION
+;            (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (LET* ((ASEM-SFT::SAME (REMOVE-IF-NOT # ASEM-SFT::ITEMS))
+;              (ASEM-SFT::LEN (LENGTH ASEM-SFT::SAME))
+;              (ASEM-SFT::K (POSITION ASEM-SFT::IT ASEM-SFT::SAME)))
+;         (DECLARE (IGNORE ASEM-SFT::IDX))
+;         (GETF (NTH (MOD # ASEM-SFT::LEN) ASEM-SFT::SAME) :QUESTION)))
+; --> SB-INT:NAMED-LAMBDA SB-INT:NAMED-LAMBDA 
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT::MISMATCHED-QUESTION
+;         (ASEM-SFT::ITEMS ASEM-SFT::IT ASEM-SFT::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT::SAME #) (ASEM-SFT::LEN #) (ASEM-SFT::K #))
+;           (DECLARE (IGNORE ASEM-SFT::IDX))
+;           (GETF (NTH # ASEM-SFT::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN FORWARD
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF32:FORWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN BACKWARD
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF32::D (ASEM-TF32:CONFIG-DIM ASEM-TF32::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+; in: DEFUN BACKWARD
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32::PS (ASEM-TF32:MODEL-PARAMS ASEM-TF32::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF32:BACKWARD-TRUNK ASEM-TF32::M ASEM-TF32::X ASEM-TF32::ACTS
+;      ASEM-TF32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF32:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+; in: DEFUN SAVE-CHECKPOINT
+;     (ASEM-PRETRAIN32::HEADER-JSON ASEM-PRETRAIN32::H)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-PRETRAIN32::HEADER-JSON
+; 
+; compilation unit finished
+;   Undefined function:
+;     HEADER-JSON
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN RUN-EXAMPLE
+;     (ASEM-SFT32::RUN-MULTI ASEM-TF32:MODEL ASEM-SFT32::E ASEM-SFT32::CACHE
+;      ASEM-SFT32::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-SFT32::RUN-MULTI
+; 
+; compilation unit finished
+;   Undefined function:
+;     RUN-MULTI
+;   caught 1 STYLE-WARNING condition
+; in: DEFUN MISMATCHED-QUESTION
+;     (IGNORE ASEM-SFT32::IDX)
+; 
+; caught STYLE-WARNING:
+;   IGNORE declaration for a variable from outer scope: IDX
+
+;     (SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; ==>
+;   #'(SB-INT:NAMED-LAMBDA ASEM-SFT32::MISMATCHED-QUESTION
+;         (ASEM-SFT32::ITEMS ASEM-SFT32::IT ASEM-SFT32::IDX)
+;       "The question of another item of the same category (the next one in file order, cyclically): its entities are not in IT's passage."
+;       (BLOCK ASEM-SFT32::MISMATCHED-QUESTION
+;         (LET* ((ASEM-SFT32::SAME #) (ASEM-SFT32::LEN #) (ASEM-SFT32::K #))
+;           (DECLARE (IGNORE ASEM-SFT32::IDX))
+;           (GETF (NTH # ASEM-SFT32::SAME) :QUESTION))))
+; 
+; caught STYLE-WARNING:
+;   The variable IDX is defined but never used.
+; 
+; compilation unit finished
+;   caught 2 STYLE-WARNING conditions
+LETTERS-ARE-SINGLE-TOKENS-AND-TARGETS-ALIGN
+REFUSES-TO-TRUNCATE
+SHUFFLED-LABELS-ARE-SEEDED-AND-CONTENT-FREE
+A-TINY-MODEL-FITS-A-FEW-EXAMPLES
+{"event":"start","from_step":0,"steps":150,"batch":8,"accum":1,"workers":1,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":10,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":8,"dev_n":8,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.500000,"dev_correct":4,"dev_n":8,"dev_loss":6.903502,"dev_letter_loss":1.363441,"train_probe_acc":0.500000,"train_probe_loss":6.903502,"pred_a":0,"pred_b":1,"pred_c":4,"pred_d":3,"rss_mb":106.343750,"peak_rss_mb":106.343750,"seconds":0.110832,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":0.000000}
+{"event":"eval","step":50,"epoch":50.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.136179,"dev_letter_loss":0.036047,"train_probe_acc":1.000000,"train_probe_loss":0.136179,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":112.203125,"peak_rss_mb":112.203125,"seconds":6.865970,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":100,"epoch":100.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.012500,"dev_letter_loss":0.004575,"train_probe_acc":1.000000,"train_probe_loss":0.012500,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":110.687500,"peak_rss_mb":112.203125,"seconds":13.699535,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":150,"epoch":150.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.007830,"dev_letter_loss":0.002899,"train_probe_acc":1.000000,"train_probe_loss":0.007830,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":111.468750,"peak_rss_mb":112.203125,"seconds":20.421305,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"done","steps":150,"best_dev_acc":1.000000,"best_step":150,"best_dev_loss":0.007830,"seconds":20.451975,"peak_rss_mb":112.203125,"best_sha256":"28c6c15a82b06fa188f799088a2194dcc98df4f5febd7ba0fdb26af80b5b2d2b","last_sha256":"891483e4e4f1538a09accc2322c414b649c211702d0698c94213a2157338c070"}
+RESUME-IS-EXACT-IN-FP32
+{"event":"start","from_step":0,"steps":8,"batch":4,"accum":1,"workers":1,"aux_lm":0,"lr":0.001000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":60,"dev_n":10,"params":89952,"precision":"f32"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":7.243370,"dev_letter_loss":1.338682,"train_probe_acc":0.500000,"train_probe_loss":7.282965,"pred_a":5,"pred_b":0,"pred_c":4,"pred_d":1,"rss_mb":111.812500,"peak_rss_mb":111.812500,"seconds":0.095767,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":0.333333,"dev_temporal":0.000000}
+{"event":"eval","step":4,"epoch":0.266667,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":6.794906,"dev_letter_loss":1.428867,"train_probe_acc":0.000000,"train_probe_loss":6.783775,"pred_a":0,"pred_b":3,"pred_c":1,"pred_d":6,"rss_mb":111.812500,"peak_rss_mb":111.812500,"seconds":0.470369,"dev_compare":1.000000,"dev_extract":0.000000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":8,"epoch":0.533333,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":6.556595,"dev_letter_loss":1.444842,"train_probe_acc":0.000000,"train_probe_loss":6.510410,"pred_a":0,"pred_b":3,"pred_c":1,"pred_d":6,"rss_mb":111.812500,"peak_rss_mb":111.812500,"seconds":0.916036,"dev_compare":1.000000,"dev_extract":0.000000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"done","steps":8,"best_dev_acc":0.300000,"best_step":8,"best_dev_loss":6.556595,"seconds":0.944332,"peak_rss_mb":111.812500,"best_sha256":"29274050d7c40c59db141a7420abdd6bf96a9ffaef663be208692f19c8718f60","last_sha256":"65f40dc3365ee26d76ef799ad62dd9c8b43729a1aaa9cd3960ddb22e16e72aaa"}
+{"event":"start","from_step":0,"steps":8,"batch":4,"accum":1,"workers":1,"aux_lm":0,"lr":0.001000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":60,"dev_n":10,"params":89952,"precision":"f32"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":7.243370,"dev_letter_loss":1.338682,"train_probe_acc":0.500000,"train_probe_loss":7.282965,"pred_a":5,"pred_b":0,"pred_c":4,"pred_d":1,"rss_mb":111.812500,"peak_rss_mb":111.812500,"seconds":0.113887,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":0.333333,"dev_temporal":0.000000}
+{"event":"eval","step":3,"epoch":0.200000,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":6.928577,"dev_letter_loss":1.426143,"train_probe_acc":0.000000,"train_probe_loss":6.933692,"pred_a":0,"pred_b":3,"pred_c":1,"pred_d":6,"rss_mb":111.812500,"peak_rss_mb":111.812500,"seconds":0.457220,"dev_compare":1.000000,"dev_extract":0.000000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"done","steps":8,"best_dev_acc":0.300000,"best_step":3,"best_dev_loss":6.928577,"seconds":0.490558,"peak_rss_mb":111.812500,"best_sha256":"a15b031f2bca8c73428b3c86f39fff041f724ea3cc2f39d1356b0bee864f5eb6","last_sha256":"f15e1e4c88362f7110da31c8544d7de4cf55933beef1ed4022c4be9b87954daa"}
+{"event":"resume","from_step":3,"steps":8,"batch":4,"accum":1,"workers":1,"aux_lm":0,"lr":0.001000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":60,"dev_n":10,"params":89952,"precision":"f32"}
+{"event":"eval","step":4,"epoch":0.266667,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":6.794906,"dev_letter_loss":1.428867,"train_probe_acc":0.000000,"train_probe_loss":6.783775,"pred_a":0,"pred_b":3,"pred_c":1,"pred_d":6,"rss_mb":117.390625,"peak_rss_mb":117.390625,"seconds":0.649415,"dev_compare":1.000000,"dev_extract":0.000000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":8,"epoch":0.533333,"dev_acc":0.300000,"dev_correct":3,"dev_n":10,"dev_loss":6.556595,"dev_letter_loss":1.444842,"train_probe_acc":0.000000,"train_probe_loss":6.510410,"pred_a":0,"pred_b":3,"pred_c":1,"pred_d":6,"rss_mb":117.390625,"peak_rss_mb":117.390625,"seconds":1.104535,"dev_compare":1.000000,"dev_extract":0.000000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"done","steps":8,"best_dev_acc":0.300000,"best_step":8,"best_dev_loss":6.556595,"seconds":1.134879,"peak_rss_mb":117.390625,"best_sha256":"29274050d7c40c59db141a7420abdd6bf96a9ffaef663be208692f19c8718f60","last_sha256":"65f40dc3365ee26d76ef799ad62dd9c8b43729a1aaa9cd3960ddb22e16e72aaa"}
+FP32-AND-FP64-SFT-AGREE
+{"event":"start","from_step":0,"steps":6,"batch":6,"accum":1,"workers":1,"aux_lm":0,"lr":0.001000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":60,"dev_n":12,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.166667,"dev_correct":2,"dev_n":12,"dev_loss":7.026049,"dev_letter_loss":1.445509,"train_probe_acc":0.500000,"train_probe_loss":7.048335,"pred_a":4,"pred_b":1,"pred_c":3,"pred_d":4,"rss_mb":118.828125,"peak_rss_mb":118.828125,"seconds":0.129312,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":0.000000,"dev_reverse":0.000000,"dev_temporal":0.333333}
+{"event":"eval","step":6,"epoch":0.600000,"dev_acc":0.333333,"dev_correct":4,"dev_n":12,"dev_loss":6.306071,"dev_letter_loss":1.380240,"train_probe_acc":0.250000,"train_probe_loss":6.339542,"pred_a":1,"pred_b":3,"pred_c":7,"pred_d":1,"rss_mb":81.281250,"peak_rss_mb":118.828125,"seconds":0.941878,"dev_compare":0.333333,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.333333}
+{"event":"done","steps":6,"best_dev_acc":0.333333,"best_step":6,"best_dev_loss":6.306071,"seconds":0.972933,"peak_rss_mb":118.828125,"best_sha256":"8d9ab81f83746e5baa841fbdd27a689ca67aeca434c2e09140e1c5f09426f356","last_sha256":"2e4ac8ae07e39f4ece5a8c70b4f47534e7085862bcc0a83ab679a0f31eb3252b"}
+{"event":"start","from_step":0,"steps":6,"batch":6,"accum":1,"workers":1,"aux_lm":0,"lr":0.001000,"min_lr_frac":0.100000,"warmup":2,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":60,"dev_n":12,"params":89952,"precision":"f32"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.166667,"dev_correct":2,"dev_n":12,"dev_loss":7.026049,"dev_letter_loss":1.445509,"train_probe_acc":0.500000,"train_probe_loss":7.048335,"pred_a":4,"pred_b":1,"pred_c":3,"pred_d":4,"rss_mb":106.046875,"peak_rss_mb":106.046875,"seconds":0.111469,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":0.000000,"dev_reverse":0.000000,"dev_temporal":0.333333}
+{"event":"eval","step":6,"epoch":0.600000,"dev_acc":0.333333,"dev_correct":4,"dev_n":12,"dev_loss":6.306071,"dev_letter_loss":1.380239,"train_probe_acc":0.250000,"train_probe_loss":6.339542,"pred_a":1,"pred_b":3,"pred_c":7,"pred_d":1,"rss_mb":114.109375,"peak_rss_mb":114.109375,"seconds":0.905153,"dev_compare":0.333333,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":0.000000,"dev_temporal":0.333333}
+{"event":"done","steps":6,"best_dev_acc":0.333333,"best_step":6,"best_dev_loss":6.306071,"seconds":0.949983,"peak_rss_mb":114.109375,"best_sha256":"e9486e3c50e8f877637501e4e5d1181608e5ab72a7fd3a18b4612c1b18bff87e","last_sha256":"a554b6fbb68281b72f9b02a0575d21cf6e0305fce1c6928b69a6662319d2696d"}
+BEST-CHECKPOINT-IS-CHOSEN-ON-DEV-ACCURACY
+{"event":"start","from_step":0,"steps":30,"batch":8,"accum":1,"workers":2,"aux_lm":0,"lr":0.002000,"min_lr_frac":0.100000,"warmup":5,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":40,"dev_n":20,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.300000,"dev_correct":6,"dev_n":20,"dev_loss":6.811661,"dev_letter_loss":1.377003,"train_probe_acc":0.375000,"train_probe_loss":6.885085,"pred_a":12,"pred_b":1,"pred_c":3,"pred_d":4,"rss_mb":120.328125,"peak_rss_mb":120.328125,"seconds":0.148960,"dev_compare":0.250000,"dev_extract":0.000000,"dev_relation":0.571429,"dev_reverse":0.000000,"dev_temporal":0.200000}
+{"event":"eval","step":5,"epoch":1.000000,"dev_acc":0.200000,"dev_correct":4,"dev_n":20,"dev_loss":6.007940,"dev_letter_loss":1.395520,"train_probe_acc":0.500000,"train_probe_loss":5.842399,"pred_a":15,"pred_b":2,"pred_c":3,"pred_d":0,"rss_mb":139.703125,"peak_rss_mb":139.703125,"seconds":0.698452,"dev_compare":0.250000,"dev_extract":0.000000,"dev_relation":0.428571,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":10,"epoch":2.000000,"dev_acc":0.200000,"dev_correct":4,"dev_n":20,"dev_loss":5.318472,"dev_letter_loss":1.460984,"train_probe_acc":0.250000,"train_probe_loss":5.007055,"pred_a":20,"pred_b":0,"pred_c":0,"pred_d":0,"rss_mb":139.953125,"peak_rss_mb":139.953125,"seconds":1.349430,"dev_compare":0.250000,"dev_extract":0.333333,"dev_relation":0.285714,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":15,"epoch":3.000000,"dev_acc":0.250000,"dev_correct":5,"dev_n":20,"dev_loss":4.897728,"dev_letter_loss":1.453884,"train_probe_acc":0.375000,"train_probe_loss":4.551097,"pred_a":19,"pred_b":0,"pred_c":1,"pred_d":0,"rss_mb":129.578125,"peak_rss_mb":139.953125,"seconds":2.025956,"dev_compare":0.250000,"dev_extract":0.333333,"dev_relation":0.428571,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":20,"epoch":4.000000,"dev_acc":0.200000,"dev_correct":4,"dev_n":20,"dev_loss":4.581888,"dev_letter_loss":1.434918,"train_probe_acc":0.500000,"train_probe_loss":4.228033,"pred_a":17,"pred_b":3,"pred_c":0,"pred_d":0,"rss_mb":136.890625,"peak_rss_mb":139.953125,"seconds":2.661493,"dev_compare":0.250000,"dev_extract":0.333333,"dev_relation":0.285714,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":25,"epoch":5.000000,"dev_acc":0.250000,"dev_correct":5,"dev_n":20,"dev_loss":4.426538,"dev_letter_loss":1.435925,"train_probe_acc":0.750000,"train_probe_loss":4.022297,"pred_a":12,"pred_b":7,"pred_c":1,"pred_d":0,"rss_mb":136.953125,"peak_rss_mb":139.953125,"seconds":3.250131,"dev_compare":0.250000,"dev_extract":0.666667,"dev_relation":0.285714,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":30,"epoch":6.000000,"dev_acc":0.200000,"dev_correct":4,"dev_n":20,"dev_loss":4.368257,"dev_letter_loss":1.450133,"train_probe_acc":0.750000,"train_probe_loss":3.923241,"pred_a":12,"pred_b":4,"pred_c":4,"pred_d":0,"rss_mb":137.000000,"peak_rss_mb":139.953125,"seconds":3.813249,"dev_compare":0.250000,"dev_extract":0.333333,"dev_relation":0.285714,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"done","steps":30,"best_dev_acc":0.300000,"best_step":0,"best_dev_loss":6.811661,"seconds":3.835977,"peak_rss_mb":139.953125,"best_sha256":"fec848c936c88aa860677c80ac43769d788a751fd1ed52a2d045d5a13a246351","last_sha256":"98f955e472f835247406ed1140a327819f6d30b6905f1debf01b9e4ae0d0504f"}
+TEXT-MODE-TARGETS-ARE-THE-ANSWER-TOKENS-AND-FIT
+{"event":"start","from_step":0,"steps":120,"batch":8,"accum":1,"workers":1,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":10,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":8,"dev_n":8,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":8,"dev_loss":7.113113,"dev_letter_loss":1.484796,"train_probe_acc":0.000000,"train_probe_loss":7.113113,"pred_a":2,"pred_b":3,"pred_c":3,"pred_d":0,"rss_mb":137.000000,"peak_rss_mb":137.000000,"seconds":0.340937,"dev_compare":0.000000,"dev_extract":0.000000,"dev_relation":0.000000,"dev_reverse":0.000000,"dev_temporal":0.000000}
+{"event":"eval","step":40,"epoch":40.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.726822,"dev_letter_loss":0.020001,"train_probe_acc":1.000000,"train_probe_loss":0.726822,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":123.265625,"peak_rss_mb":137.000000,"seconds":6.059996,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":80,"epoch":80.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.057070,"dev_letter_loss":0.001749,"train_probe_acc":1.000000,"train_probe_loss":0.057070,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":122.875000,"peak_rss_mb":137.000000,"seconds":11.840826,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":120,"epoch":120.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.034404,"dev_letter_loss":0.001028,"train_probe_acc":1.000000,"train_probe_loss":0.034404,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":122.890625,"peak_rss_mb":137.000000,"seconds":17.635529,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"done","steps":120,"best_dev_acc":1.000000,"best_step":120,"best_dev_loss":0.034404,"seconds":17.666700,"peak_rss_mb":137.000000,"best_sha256":"66647ea9a4e7d6b7a1fa701d286775497573dc18b09cf877857b5f487552ad7b","last_sha256":"dac9509febd24a2c6f239c92c5d82722789e38d97011bfacb31110ad91c18ef7"}
+AUXILIARY-PROMPT-LOSS-TRAINS-AND-KEEPS-ANSWER-METRICS
+{"event":"start","from_step":0,"steps":150,"batch":8,"accum":1,"workers":2,"aux_lm":0.500000,"lr":0.003000,"min_lr_frac":0.100000,"warmup":10,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":8,"dev_n":8,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.500000,"dev_correct":4,"dev_n":8,"dev_loss":6.903502,"dev_letter_loss":1.363441,"train_probe_acc":0.500000,"train_probe_loss":6.903502,"pred_a":0,"pred_b":1,"pred_c":4,"pred_d":3,"rss_mb":124.046875,"peak_rss_mb":124.046875,"seconds":0.109075,"dev_compare":0.000000,"dev_extract":0.500000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":0.000000}
+{"event":"eval","step":50,"epoch":50.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.292830,"dev_letter_loss":0.025075,"train_probe_acc":1.000000,"train_probe_loss":0.292830,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":113.937500,"peak_rss_mb":124.046875,"seconds":4.716957,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":100,"epoch":100.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.025373,"dev_letter_loss":0.002509,"train_probe_acc":1.000000,"train_probe_loss":0.025373,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":115.015625,"peak_rss_mb":124.046875,"seconds":9.271036,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"eval","step":150,"epoch":150.000000,"dev_acc":1.000000,"dev_correct":8,"dev_n":8,"dev_loss":0.014847,"dev_letter_loss":0.001526,"train_probe_acc":1.000000,"train_probe_loss":0.014847,"pred_a":2,"pred_b":1,"pred_c":4,"pred_d":1,"rss_mb":115.890625,"peak_rss_mb":124.046875,"seconds":13.923253,"dev_compare":1.000000,"dev_extract":1.000000,"dev_relation":1.000000,"dev_reverse":1.000000,"dev_temporal":1.000000}
+{"event":"done","steps":150,"best_dev_acc":1.000000,"best_step":150,"best_dev_loss":0.014847,"seconds":13.954285,"peak_rss_mb":124.046875,"best_sha256":"398f0a30d929cbd145faf3421b5be3d56a5595507de62bc5ede482986bbc0675","last_sha256":"b68c2ea59476e6dc6a032b573526dfab726340a735a72a69deb2efac2fe974ec"}
+COPY-EXAMPLES-TEACH-COPYING
+{"event":"start","from_step":0,"steps":300,"batch":16,"accum":1,"workers":2,"aux_lm":0,"lr":0.003000,"min_lr_frac":0.100000,"warmup":20,"clip":1.000000,"wd":0.000000,"seed":1,"train_n":400,"dev_n":4,"params":89952,"precision":"f64"}
+{"event":"eval","step":0,"epoch":0.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":4,"dev_loss":7.200605,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":7.200605,"pred_a":0,"pred_b":4,"pred_c":0,"pred_d":0,"rss_mb":119.609375,"peak_rss_mb":119.609375,"seconds":0.045464,"dev_copy":0.000000}
+{"event":"eval","step":300,"epoch":12.000000,"dev_acc":0.000000,"dev_correct":0,"dev_n":4,"dev_loss":2.607665,"dev_letter_loss":1.386294,"train_probe_acc":0.000000,"train_probe_loss":2.607665,"pred_a":0,"pred_b":4,"pred_c":0,"pred_d":0,"rss_mb":101.296875,"peak_rss_mb":119.609375,"seconds":9.194834,"dev_copy":0.000000}
+{"event":"done","steps":300,"best_dev_acc":0.000000,"best_step":300,"best_dev_loss":2.607665,"seconds":9.238041,"peak_rss_mb":119.609375,"best_sha256":"6377b1c45edd597bd2acacaccf6749be57b0e4db37144e79cfcdc761d7f9508b","last_sha256":"d66fcecda6987d4562a2af4faef4f4025aead79d8069c6e4fc58cd2c84b346e6"}
+RECALL-EXAMPLES-RESTATE-THE-FACTS
+WILSON-INTERVAL
+
+12 tests, 29 checks, 0 failures
+== lisp/tests/test-tf.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/test-tf.lisp
+; in: DEFTEST NAN-WEIGHT-SHOWS-UP-IN-THE-LOSS
+;     (- DOUBLE-FLOAT-POSITIVE-INFINITY DOUBLE-FLOAT-POSITIVE-INFINITY)
+; 
+; caught STYLE-WARNING:
+;   Lisp error during constant folding:
+;   arithmetic error FLOATING-POINT-INVALID-OPERATION signalled
+; 
+; compilation unit finished
+;   caught 1 STYLE-WARNING condition
+PARAMETER-COUNT
+GRADIENTS-MATCH-NUMERICAL-DIFFERENTIATION
+INITIAL-LOSS-NEAR-UNIFORM
+MODEL-IS-CAUSAL
+SAME-SEED-SAME-MODEL
+NAN-WEIGHT-SHOWS-UP-IN-THE-LOSS
+FORWARD-ROWS-MATCHES-FORWARD-AT-THOSE-ROWS
+PADDING-AFTER-THE-ANSWER-ROW-CHANGES-NOTHING
+MASKED-GRADIENTS-MATCH-NUMERICAL-DIFFERENTIATION
+MASKED-ROWS-GET-NO-GRADIENT-FROM-OTHER-POSITIONS
+WEIGHTED-MASKED-GRADIENTS-MATCH-NUMERICAL-DIFFERENTIATION
+TIED-PATH-STARTS-AS-A-NO-OP
+TIED-GRADIENTS-MATCH-NUMERICAL-DIFFERENTIATION
+RELPOS-STARTS-AS-A-NO-OP-AND-CONVERTS-IN-ANY-ORDER
+RELPOS-GRADIENTS-MATCH-NUMERICAL-DIFFERENTIATION
+RELPOS-BLAS-MATCHES-LISP
+CONVERTED-MODELS-OWN-THEIR-NEW-PARAMETERS
+
+17 tests, 35 checks, 0 failures
+== lisp/tests/test-train.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+TOKENIZER-SPLITS-LIKE-THE-ERLANG-REGEX
+TOKENIZER-ROUNDTRIPS
+VOCAB-ORDER-AND-LIMITS
+TRAINING-BEATS-THE-UNIGRAM-BASELINE
+TRAINING-IS-DETERMINISTIC-AND-THREAD-COUNT-INDEPENDENT
+SAVE-LOAD-ROUNDTRIP
+GENERATION-PROPERTIES
+
+7 tests, 22 checks, 0 failures
+== lisp/tests/test-tune.lisp
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN FORWARD-ROWS
+;     (ASEM-TF:FORWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:FORWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     FORWARD-TRUNK
+;   caught 1 STYLE-WARNING condition
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+;     (ASEM-TF::D (ASEM-TF:CONFIG-DIM ASEM-TF::CFG))
+; 
+; caught STYLE-WARNING:
+;   The variable D is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 3 STYLE-WARNING conditions
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF::PS (ASEM-TF:MODEL-PARAMS ASEM-TF::M))
+; 
+; caught STYLE-WARNING:
+;   The variable PS is defined but never used.
+
+; file: /Users/asemqaffaf/AsemLLMs/lisp/tests/../src/tf.lisp
+; in: DEFUN BACKWARD-ROWS
+;     (ASEM-TF:BACKWARD-TRUNK ASEM-TF::M ASEM-TF::X ASEM-TF::ACTS ASEM-TF::GRADS)
+; 
+; caught STYLE-WARNING:
+;   undefined function: ASEM-TF:BACKWARD-TRUNK
+; 
+; compilation unit finished
+;   Undefined function:
+;     BACKWARD-TRUNK
+;   caught 2 STYLE-WARNING conditions
+EVERY-GENERATED-KERNEL-MATCHES-THE-REFERENCE-BIT-FOR-BIT
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+; in:
+;      LAMBDA (ASEM-TF::A ASEM-TF::B ASEM-TF::C ASEM-TF::M ASEM-TF::K ASEM-TF::N
+;          ASEM-TF::ACC)
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: forced to do */SIGNED=>S128 (cost 10)
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  FIXNUM
+;                                                                                  &OPTIONAL).
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 3) because:
+;       The result is a (VALUES (MOD 1208925819613529663078401) &OPTIONAL), not a (VALUES
+;                                                                                  (UNSIGNED-BYTE
+;                                                                                   64)
+;                                                                                  &OPTIONAL).
+;       etc.
+
+;     (+ (* ASEM-TF::I ASEM-TF::K) ASEM-TF::P)
+; 
+; note: forced to do full call
+;       unable to do inline fixnum arithmetic (cost 2) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a FIXNUM.
+;       unable to do inline (unsigned-byte 64) arithmetic (cost 5) because:
+;       The first argument is a (MOD 1208925819613529663078401), not a (UNSIGNED-BYTE
+;                                                                       64).
+;       etc.
+
+;     (* ASEM-TF::I ASEM-TF::K)
+; 
+; note: doing signed 128 to integer coercion (cost 30), for:
+;       the first result of */SIGNED=>S128
+; 
+; compilation unit finished
+;   printed 3 notes
+THE-CHECKER-REJECTS-A-WRONG-KERNEL
+GENERATORS-RETURN-CODE-AS-DATA
+ERLANG-SOURCE-IS-UNROLLED-AND-ORDERED
+TUNED-CONFIG-IS-VALID
+
+5 tests, 35 checks, 0 failures
+8f756bcdf3accd79f440faff81091d5b7c1ae3dc336610057b9f6e31a939f060  lisp/eval/qa/test.jsonl
+2d92c8825ca3752bd780ecd25023ae5f0a8dcc60677ee6484d46aa95e701032a  lisp/eval/qa/dev.jsonl

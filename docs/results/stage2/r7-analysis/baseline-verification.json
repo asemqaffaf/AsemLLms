@@ -1,0 +1,20 @@
+{
+  "baseline": {
+    "files": 14,
+    "tests": 115,
+    "checks": 96503,
+    "failures": 0,
+    "native_tests_skipped": 3,
+    "locked_content_policy": "Skipped the existing locked-test parsing/balance test; checked locked bytes against published SHA only. No locked model evaluation."
+  },
+  "git_start": "591c9b6",
+  "branch": "stage2-qa",
+  "preserved_files": {
+    "tinyllm/apps/tinyllm/src/tinyllm_memory.erl": "12b22dbe201bb726141efe9cdcf6412edf333216f966c434a98b1ca4512c082e",
+    "tinyllm/apps/tinyllm/test/tinyllm_tests.erl": "561566b6768009b76931c58211eac764e85b70a4aaf72d96a5fcc377ebcc012b",
+    "tinyllm/eval/knowledge_mc.jsonl": "6e0c29fca13331a062dc354e8dde9c877b4086710cf65b5df2d8c986a72d6029",
+    "tinyllm/scripts/capability_eval.py": "ede362f9ee7f729bb222c6194c07acfc9997567cfb4ab1f3045fc440ccf30267",
+    "tinyllm/scripts/tuner_quality.escript": "28aa1436482f780581446b44628d228e40f1ae1c8b3e7f787cee572f7a047d8a",
+    "docs/results/stage2/retrieval/qa-dev-r7-text.json": "31564da47ae2a73b0889f12dca833f5c0b72735d84f5a869ae5483ea7a3cd75b"
+  }
+}

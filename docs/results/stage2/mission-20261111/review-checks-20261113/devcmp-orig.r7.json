@@ -1,0 +1,4531 @@
+{
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "conditions": {
+    "real": {
+      "items": [
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Saraed 28 4777",
+          "bounded_generated_token_ids": [
+            335,
+            3562,
+            273,
+            4300,
+            976,
+            56,
+            56,
+            56
+          ],
+          "category": "compare",
+          "generated_text": " Sara",
+          "generated_token_ids": [
+            335,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Sara",
+          "id": "dev-compare-0055",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -2.8934739166425874,
+            -0.5450060588301342,
+            -4.257942503899728,
+            -0.492902927069221
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 72,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -5.786947833285175,
+            -1.6350181764904026,
+            -8.515885007799456,
+            -0.985805854138442
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "The A record members follows a four members",
+          "bounded_generated_token_ids": [
+            347,
+            316,
+            1804,
+            1598,
+            6152,
+            259,
+            1398,
+            1598
+          ],
+          "category": "compare",
+          "generated_text": " The A",
+          "generated_token_ids": [
+            347,
+            316
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-compare-0062",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.019209896255135,
+            -4.0283206925598956,
+            -2.505949128750579,
+            -2.486742712597607
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -6.03841979251027,
+            -8.056641385119791,
+            -5.011898257501158,
+            -4.973485425195214
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record 97 Marewro",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1533,
+            56,
+            364,
+            675,
+            120,
+            305
+          ],
+          "category": "compare",
+          "generated_text": " A record 9",
+          "generated_token_ids": [
+            316,
+            1804,
+            1533
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-compare-0005",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.14066497739145,
+            -0.7924577927421387,
+            -1.397000932589447,
+            -7.708258054335239
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -6.2813299547829,
+            -2.377373378226416,
+            -2.794001865178894,
+            -15.416516108670479
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "The Paa was born 18 years ago",
+          "bounded_generated_token_ids": [
+            347,
+            4324,
+            98,
+            348,
+            3001,
+            613,
+            710,
+            1853
+          ],
+          "category": "compare",
+          "generated_text": " The Pa",
+          "generated_token_ids": [
+            347,
+            4324
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-compare-0044",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.021745656961642,
+            -4.033480049967991,
+            -3.385248987599556,
+            -3.7670447161722302
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -10.043491313923283,
+            -4.033480049967991,
+            -6.770497975199112,
+            -7.5340894323444605
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ha measures 190 cm In Ben",
+          "bounded_generated_token_ids": [
+            403,
+            98,
+            4386,
+            3333,
+            270,
+            110,
+            517,
+            6130
+          ],
+          "category": "compare",
+          "generated_text": " Ha",
+          "generated_token_ids": [
+            403,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Adam",
+          "id": "dev-compare-0048",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.455252673379915,
+            -2.0413469952615197,
+            -2.1570339203113136,
+            -1.1637380849846677
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -6.91050534675983,
+            -2.0413469952615197,
+            -4.314067840622627,
+            -3.491214254954003
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia days 167 Mia days",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            1930,
+            1208,
+            56,
+            364,
+            523,
+            1930
+          ],
+          "category": "compare",
+          "generated_text": " Mia days",
+          "generated_token_ids": [
+            364,
+            523,
+            1930
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-compare-0067",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -2.5076864157535304,
+            -0.48116278765813447,
+            -0.7683103564593895,
+            -0.8318588244926635
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -5.015372831507061,
+            -0.9623255753162689,
+            -1.536620712918779,
+            -2.4955764734779904
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Vano was born 73 lives 4",
+          "bounded_generated_token_ids": [
+            670,
+            7931,
+            348,
+            3001,
+            1463,
+            52,
+            2469,
+            976
+          ],
+          "category": "compare",
+          "generated_text": " Vano was",
+          "generated_token_ids": [
+            670,
+            7931,
+            348
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-compare-0027",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -2.024880784047384,
+            -4.483129706206182,
+            -5.03050285118062,
+            -0.5409131468857489
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -4.049761568094768,
+            -8.966259412412365,
+            -10.06100570236124,
+            -1.6227394406572466
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Luedro was born 24 years ago",
+          "bounded_generated_token_ids": [
+            7770,
+            273,
+            305,
+            348,
+            3001,
+            3664,
+            710,
+            1853
+          ],
+          "category": "compare",
+          "generated_text": " Lued",
+          "generated_token_ids": [
+            7770,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Ines",
+          "id": "dev-compare-0024",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.181712482408965,
+            -1.5965873441734653,
+            -6.199994548082995,
+            -5.551316897040891
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -18.36342496481793,
+            -4.789762032520396,
+            -12.39998909616599,
+            -11.102633794081783
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Joud measures 174 cm in",
+          "bounded_generated_token_ids": [
+            468,
+            3393,
+            4386,
+            932,
+            53,
+            270,
+            110,
+            284
+          ],
+          "category": "compare",
+          "generated_text": " Joud measures",
+          "generated_token_ids": [
+            468,
+            3393,
+            4386
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-compare-0034",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.980270322580396,
+            -0.8654556374276283,
+            -0.7601569253687872,
+            -5.127880988731453
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -7.960540645160792,
+            -1.7309112748552566,
+            -2.2804707761063616,
+            -10.255761977462907
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Naraoed 187 years ago",
+          "bounded_generated_token_ids": [
+            429,
+            3562,
+            112,
+            273,
+            613,
+            56,
+            710,
+            1853
+          ],
+          "category": "compare",
+          "generated_text": " Nara",
+          "generated_token_ids": [
+            429,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-compare-0019",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -3.1310101760197626,
+            -1.5911807962565732,
+            -1.6359304330302058,
+            -1.428992157160539
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -3.1310101760197626,
+            -3.1823615925131463,
+            -3.2718608660604116,
+            -2.857984314321078
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Caors 195 cm inest 197",
+          "bounded_generated_token_ids": [
+            7627,
+            646,
+            2866,
+            270,
+            110,
+            284,
+            383,
+            2215
+          ],
+          "category": "compare",
+          "generated_text": " Caors",
+          "generated_token_ids": [
+            7627,
+            646
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Una",
+          "id": "dev-compare-0077",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.659306307182299,
+            -4.508451903570657,
+            -2.570766034280776,
+            -4.149016019029519
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -7.318612614364598,
+            -9.016903807141315,
+            -2.570766034280776,
+            -8.298032038059038
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lena measures 169 cm in",
+          "bounded_generated_token_ids": [
+            455,
+            3712,
+            4386,
+            1208,
+            58,
+            270,
+            110,
+            284
+          ],
+          "category": "compare",
+          "generated_text": " Lena",
+          "generated_token_ids": [
+            455,
+            3712
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Rosa",
+          "id": "dev-compare-0032",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.9471231153519661,
+            -0.29316934171739034,
+            -3.2717364358068193,
+            -7.68397723106324
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -3.8942462307039323,
+            -0.5863386834347807,
+            -6.5434728716136386,
+            -15.36795446212648
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Ro of Asha got The 7",
+          "bounded_generated_token_ids": [
+            431,
+            2117,
+            277,
+            7634,
+            98,
+            3170,
+            347,
+            1463
+          ],
+          "category": "compare",
+          "generated_text": " F Ro",
+          "generated_token_ids": [
+            431,
+            2117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-compare-0031",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -2.1295943543425584,
+            -5.095722895354625,
+            -1.4448485469026964,
+            -4.639535929006506
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -4.259188708685117,
+            -10.19144579070925,
+            -2.8896970938053927,
+            -9.279071858013012
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Train was born 70 lives Pan was",
+          "bounded_generated_token_ids": [
+            4823,
+            260,
+            348,
+            3001,
+            5516,
+            2469,
+            7484,
+            348
+          ],
+          "category": "compare",
+          "generated_text": " Train",
+          "generated_token_ids": [
+            4823,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-compare-0054",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -3.2340115944391123,
+            -2.583950596792898,
+            -5.380199542518333,
+            -6.416209779239373
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 70,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -6.468023188878225,
+            -5.167901193585796,
+            -10.760399085036665,
+            -12.832419558478746
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Soula does Prea is Rea",
+          "bounded_generated_token_ids": [
+            7419,
+            357,
+            1175,
+            4485,
+            98,
+            319,
+            1067,
+            98
+          ],
+          "category": "compare",
+          "generated_text": " Soula",
+          "generated_token_ids": [
+            7419,
+            357
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Andre",
+          "id": "dev-compare-0098",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.268694023295278,
+            -2.3280073600285296,
+            -4.77534236345761,
+            -5.577398610890943
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -10.537388046590555,
+            -4.656014720057059,
+            -9.55068472691522,
+            -11.154797221781886
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia measures 142 cm measures",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            4386,
+            1966,
+            51,
+            270,
+            110,
+            4386
+          ],
+          "category": "compare",
+          "generated_text": " Mia",
+          "generated_token_ids": [
+            364,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Mia",
+          "id": "dev-compare-0033",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.3788088903318965,
+            -0.19005650502055454,
+            -5.624834792978044,
+            -1.7636835554364536
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -10.757617780663793,
+            -0.3801130100411091,
+            -5.624834792978044,
+            -3.527367110872907
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tara has Lou got total of 9",
+          "bounded_generated_token_ids": [
+            310,
+            3562,
+            585,
+            3007,
+            3170,
+            2791,
+            277,
+            1533
+          ],
+          "category": "compare",
+          "generated_text": " Tara",
+          "generated_token_ids": [
+            310,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Emma",
+          "id": "dev-compare-0080",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -4.267679423269754,
+            -4.196537019836115,
+            -1.0735269673114818,
+            -2.1955611813238947
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            3
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -8.535358846539507,
+            -8.39307403967223,
+            -1.0735269673114818,
+            -6.5866835439716835
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kiraaa lived Tis",
+          "bounded_generated_token_ids": [
+            638,
+            326,
+            98,
+            98,
+            98,
+            2482,
+            310,
+            274
+          ],
+          "category": "compare",
+          "generated_text": " Kir",
+          "generated_token_ids": [
+            638,
+            326
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-compare-0070",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.7518501986776291,
+            -11.580380977433618,
+            -4.543263027520533,
+            -0.23462042329016677
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -2.2555505960328874,
+            -23.160761954867237,
+            -9.086526055041066,
+            -0.7038612698705004
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Paa measures 9ouiv measures",
+          "bounded_generated_token_ids": [
+            4324,
+            98,
+            4386,
+            1533,
+            285,
+            106,
+            119,
+            4386
+          ],
+          "category": "compare",
+          "generated_text": " Paa",
+          "generated_token_ids": [
+            4324,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-compare-0021",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.593976057089228,
+            -3.249980240892786,
+            -5.310547184616289,
+            -2.4658970863143046
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -11.187952114178456,
+            -6.499960481785572,
+            -10.621094369232578,
+            -4.931794172628609
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Prea measures 175 cm In 15",
+          "bounded_generated_token_ids": [
+            4485,
+            98,
+            4386,
+            7042,
+            270,
+            110,
+            517,
+            1433
+          ],
+          "category": "compare",
+          "generated_text": " Prea",
+          "generated_token_ids": [
+            4485,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-compare-0022",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.941628848353611,
+            -3.0572368542944925,
+            -7.566083639594625,
+            -1.387174742659398
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -11.883257696707222,
+            -9.171710562883478,
+            -15.13216727918925,
+            -4.1615242279781945
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Toud measures 186 cm In height",
+          "bounded_generated_token_ids": [
+            310,
+            3393,
+            4386,
+            1556,
+            270,
+            110,
+            517,
+            4816
+          ],
+          "category": "compare",
+          "generated_text": " Toud measures",
+          "generated_token_ids": [
+            310,
+            3393,
+            4386
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-compare-0042",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -2.759299097734962,
+            -2.633488146940163,
+            -0.42139979197097105,
+            -4.1286931060808065
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -5.518598195469924,
+            -5.266976293880326,
+            -1.264199375912913,
+            -8.257386212161613
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Thea today Thea than Tib",
+          "bounded_generated_token_ids": [
+            347,
+            98,
+            1465,
+            347,
+            98,
+            612,
+            310,
+            593
+          ],
+          "category": "compare",
+          "generated_text": " Thea",
+          "generated_token_ids": [
+            347,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mia",
+          "id": "dev-compare-0014",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.4614789672925617,
+            -3.541980104578962,
+            -3.8393482265288963,
+            -5.074467829114552
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -6.922957934585123,
+            -7.083960209157924,
+            -7.678696453057793,
+            -10.148935658229105
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Raiuf was born 75 days",
+          "bounded_generated_token_ids": [
+            413,
+            2863,
+            118,
+            103,
+            348,
+            3001,
+            7429,
+            1930
+          ],
+          "category": "compare",
+          "generated_text": " Rai",
+          "generated_token_ids": [
+            413,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Finn",
+          "id": "dev-compare-0099",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.976043720061384,
+            -0.9776040829893156,
+            -5.427766194495075,
+            -3.5004116631372786
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -15.952087440122767,
+            -3.9104163319572622,
+            -10.85553238899015,
+            -7.000823326274557
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ola got The 82 points L",
+          "bounded_generated_token_ids": [
+            491,
+            357,
+            3170,
+            347,
+            1485,
+            51,
+            2657,
+            455
+          ],
+          "category": "compare",
+          "generated_text": " Ola",
+          "generated_token_ids": [
+            491,
+            357
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-compare-0012",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.0616166882024176,
+            -6.8581287834181595,
+            -5.487904054845138,
+            -2.475901721097817
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -6.123233376404835,
+            -13.716257566836319,
+            -10.975808109690275,
+            -4.951803442195634
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Paka does The 90 is The 90",
+          "bounded_generated_token_ids": [
+            6974,
+            98,
+            1175,
+            347,
+            5311,
+            319,
+            347,
+            5311
+          ],
+          "category": "compare",
+          "generated_text": " Paka",
+          "generated_token_ids": [
+            6974,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-compare-0035",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.804299278785522,
+            -3.6278040844296173,
+            -3.896289305006376,
+            -3.1440869602508146
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -7.608598557571044,
+            -7.255608168859235,
+            -7.792578610012752,
+            -6.288173920501629
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ben measures 165 Ma measures 19",
+          "bounded_generated_token_ids": [
+            6130,
+            4386,
+            1208,
+            54,
+            364,
+            98,
+            4386,
+            518
+          ],
+          "category": "compare",
+          "generated_text": " Ben measures",
+          "generated_token_ids": [
+            6130,
+            4386
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-compare-0094",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.8010306032504346,
+            -3.7918752887703913,
+            -2.2375621259142995,
+            -1.7747161223952146
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -3.6020612065008693,
+            -7.5837505775407825,
+            -4.475124251828599,
+            -1.7747161223952146
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Olaed 89a does O",
+          "bounded_generated_token_ids": [
+            491,
+            357,
+            273,
+            1485,
+            58,
+            98,
+            1175,
+            491
+          ],
+          "category": "compare",
+          "generated_text": " Ola",
+          "generated_token_ids": [
+            491,
+            357
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-compare-0052",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.795860344644733,
+            -4.801776911545509,
+            -4.397434700155024,
+            -1.6614359460714903
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 69,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -9.591720689289467,
+            -9.603553823091017,
+            -8.794869400310048,
+            -3.3228718921429805
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ous is Ous is Bed",
+          "bounded_generated_token_ids": [
+            491,
+            384,
+            319,
+            491,
+            384,
+            319,
+            367,
+            273
+          ],
+          "category": "compare",
+          "generated_text": " Ous",
+          "generated_token_ids": [
+            491,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-compare-0020",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.5073956565722013,
+            -2.5482083581374546,
+            -2.885488039083342,
+            -3.1559224399747094
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -5.014791313144403,
+            -5.096416716274909,
+            -5.770976078166684,
+            -6.311844879949419
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "H Pu is Ben is Ben is Tri",
+          "bounded_generated_token_ids": [
+            403,
+            5508,
+            319,
+            6130,
+            319,
+            6130,
+            319,
+            6365
+          ],
+          "category": "compare",
+          "generated_text": " H Pu",
+          "generated_token_ids": [
+            403,
+            5508
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Hugo",
+          "id": "dev-compare-0030",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.363049662236699,
+            -4.814480485856226,
+            -1.825481050861006,
+            -1.7697739516537128
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -8.726099324473399,
+            -4.814480485856226,
+            -3.650962101722012,
+            -3.5395479033074255
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Train measures 146 Mus lead",
+          "bounded_generated_token_ids": [
+            4823,
+            260,
+            4386,
+            1966,
+            55,
+            364,
+            384,
+            979
+          ],
+          "category": "compare",
+          "generated_text": " Train",
+          "generated_token_ids": [
+            4823,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-compare-0091",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.29535075791245,
+            -4.2577470503516786,
+            -1.9738345705698397,
+            -2.9597173520207765
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -4.5907015158249,
+            -8.515494100703357,
+            -3.9476691411396794,
+            -5.919434704041553
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Yusuf got The 49",
+          "bounded_generated_token_ids": [
+            821,
+            384,
+            118,
+            103,
+            3170,
+            347,
+            976,
+            58
+          ],
+          "category": "compare",
+          "generated_text": " Yusu",
+          "generated_token_ids": [
+            821,
+            384,
+            118
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-compare-0046",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.08851242053713973,
+            -8.919447825125298,
+            -1.5846343425917544,
+            -4.908433378668969
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -0.3540496821485589,
+            -17.838895650250596,
+            -4.753903027775263,
+            -9.816866757337937
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto is aged 86",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            319,
+            606,
+            273,
+            1485,
+            55
+          ],
+          "category": "compare",
+          "generated_text": " Otto",
+          "generated_token_ids": [
+            491,
+            117,
+            1376
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Pedro",
+          "id": "dev-compare-0003",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.249611152718703,
+            -0.2858169324220985,
+            -1.100025571986275,
+            -0.354471789020095
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -8.499222305437407,
+            -0.8574507972662955,
+            -2.20005114397255,
+            -1.063415367060285
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto measures 164 cm In",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            4386,
+            6323,
+            270,
+            110,
+            517
+          ],
+          "category": "compare",
+          "generated_text": " Ot",
+          "generated_token_ids": [
+            491,
+            117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Tess",
+          "id": "dev-compare-0061",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -0.29315412889932274,
+            -2.9327269732443275,
+            -3.882609614608465,
+            -3.8486611482953474
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -0.8794623866979682,
+            -5.865453946488655,
+            -7.76521922921693,
+            -7.697322296590695
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pedroba got Tedro",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            7887,
+            3170,
+            310,
+            273,
+            305
+          ],
+          "category": "compare",
+          "generated_text": " Ped",
+          "generated_token_ids": [
+            374,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Raj",
+          "id": "dev-compare-0029",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.1585385510843755,
+            -2.847061198116651,
+            -5.931946688160625,
+            -0.10079477519257894
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -10.317077102168751,
+            -5.694122396233302,
+            -11.86389337632125,
+            -0.3023843255777368
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Carla Sh record then points Pa",
+          "bounded_generated_token_ids": [
+            1604,
+            357,
+            1590,
+            1804,
+            863,
+            2657,
+            374,
+            98
+          ],
+          "category": "compare",
+          "generated_text": " Carla",
+          "generated_token_ids": [
+            1604,
+            357
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-compare-0039",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.9607969898412223,
+            -5.912493183278391,
+            -1.385059666639911,
+            -1.2785683528597738
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 87,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -1.9215939796824446,
+            -11.824986366556782,
+            -5.540238666559644,
+            -2.5571367057195475
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia got The 60 points Kai",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            3170,
+            347,
+            4581,
+            2657,
+            638,
+            2863
+          ],
+          "category": "compare",
+          "generated_text": " Mia",
+          "generated_token_ids": [
+            364,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-compare-0040",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.7165915196090394,
+            -5.9031277821447725,
+            -1.2467426875285852,
+            -0.2500871063942417
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -1.4331830392180789,
+            -11.806255564289545,
+            -3.7402280625857554,
+            -0.5001742127884834
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia is Sara was Led",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            319,
+            335,
+            3562,
+            348,
+            455,
+            273
+          ],
+          "category": "compare",
+          "generated_text": " Mia",
+          "generated_token_ids": [
+            364,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-compare-0076",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.1024514189472447,
+            -4.381666694799852,
+            -0.23917204305431683,
+            -0.6930374556370391
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -2.2049028378944895,
+            -8.763333389599705,
+            -0.47834408610863366,
+            -2.0791123669111173
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ola measures 192 lim in",
+          "bounded_generated_token_ids": [
+            491,
+            357,
+            4386,
+            518,
+            51,
+            614,
+            110,
+            284
+          ],
+          "category": "compare",
+          "generated_text": " Ola measures",
+          "generated_token_ids": [
+            491,
+            357,
+            4386
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-compare-0074",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.7616520698587574,
+            -3.5880183610561804,
+            -2.0821059864987093,
+            -1.6353785498193802
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            3
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -3.523304139717515,
+            -7.176036722112361,
+            -6.246317959496128,
+            -4.9061356494581405
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Dev got Theibla got The",
+          "bounded_generated_token_ids": [
+            1492,
+            119,
+            3170,
+            347,
+            593,
+            357,
+            3170,
+            347
+          ],
+          "category": "compare",
+          "generated_text": " Dev",
+          "generated_token_ids": [
+            1492,
+            119
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Dev",
+          "id": "dev-compare-0047",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.646441363737752,
+            -4.247373068312994,
+            -4.097469118258654,
+            -0.3929166398638175
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -9.292882727475504,
+            -8.494746136625988,
+            -8.194938236517308,
+            -0.785833279727635
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pedro is Asosa is Pre",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            319,
+            806,
+            7344,
+            319,
+            4485
+          ],
+          "category": "compare",
+          "generated_text": " Ped",
+          "generated_token_ids": [
+            374,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-compare-0001",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.22066241068056294,
+            -3.8449535044230485,
+            -0.7840712523029523,
+            -5.639977411436289
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -0.6619872320416889,
+            -7.689907008846097,
+            -1.5681425046059045,
+            -11.279954822872577
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Oam measures 165 cm In",
+          "bounded_generated_token_ids": [
+            491,
+            337,
+            4386,
+            1208,
+            54,
+            270,
+            110,
+            517
+          ],
+          "category": "compare",
+          "generated_text": " Oam",
+          "generated_token_ids": [
+            491,
+            337
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Finn",
+          "id": "dev-compare-0084",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.01710058066113,
+            -3.702992176454853,
+            -4.970593886058004,
+            -5.052631712545968
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -4.03420116132226,
+            -7.405984352909706,
+            -9.941187772116008,
+            -10.105263425091936
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pedro got Mura got Mur",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            3170,
+            8049,
+            98,
+            3170,
+            8049
+          ],
+          "category": "compare",
+          "generated_text": " Ped",
+          "generated_token_ids": [
+            374,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-compare-0057",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.10922052715114272,
+            -3.3698696759307127,
+            -3.2249828023509197,
+            -5.093314985530365
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -0.32766158145342816,
+            -6.7397393518614255,
+            -6.449965604701839,
+            -10.18662997106073
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto measures 151 cm",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            4386,
+            1433,
+            50,
+            270,
+            110
+          ],
+          "category": "compare",
+          "generated_text": " Otto",
+          "generated_token_ids": [
+            491,
+            117,
+            1376
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Otto",
+          "id": "dev-compare-0083",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -5.662499804849388,
+            -3.8281305929921046,
+            -5.289216087730818,
+            -0.44180621276603277
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -11.324999609698777,
+            -7.656261185984209,
+            -10.578432175461636,
+            -1.3254186382980984
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jean was born 83 Dr Cal",
+          "bounded_generated_token_ids": [
+            468,
+            2950,
+            348,
+            3001,
+            1485,
+            52,
+            3475,
+            1596
+          ],
+          "category": "compare",
+          "generated_text": " Jean",
+          "generated_token_ids": [
+            468,
+            2950
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-compare-0010",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.712187837701972,
+            -0.7328822361876298,
+            -5.191844295093097,
+            -0.20857947382080222
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -5.136563513105916,
+            -1.4657644723752596,
+            -10.383688590186194,
+            -0.41715894764160444
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lena measures 163 Mm In",
+          "bounded_generated_token_ids": [
+            455,
+            3712,
+            4386,
+            1208,
+            52,
+            364,
+            110,
+            517
+          ],
+          "category": "compare",
+          "generated_text": " Lena",
+          "generated_token_ids": [
+            455,
+            3712
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Una",
+          "id": "dev-compare-0023",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.9723627242782644,
+            -0.6214512767347276,
+            -4.133197186832017,
+            -6.2982190261461
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -5.944725448556529,
+            -1.242902553469455,
+            -8.266394373664035,
+            -12.5964380522922
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kai lived born 20 years8 B",
+          "bounded_generated_token_ids": [
+            638,
+            2863,
+            2482,
+            3001,
+            999,
+            710,
+            57,
+            367
+          ],
+          "category": "compare",
+          "generated_text": " Kai",
+          "generated_token_ids": [
+            638,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Kai",
+          "id": "dev-compare-0037",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.5710331281569501,
+            -0.6413989540609146,
+            -3.240151785113124,
+            -0.7662406099789659
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 71,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -1.1420662563139001,
+            -1.2827979081218293,
+            -6.480303570226248,
+            -2.298721829936898
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Aam got' 87 points D",
+          "bounded_generated_token_ids": [
+            316,
+            337,
+            3170,
+            40,
+            1485,
+            56,
+            2657,
+            443
+          ],
+          "category": "compare",
+          "generated_text": " Aam",
+          "generated_token_ids": [
+            316,
+            337
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-compare-0073",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.010272395981777,
+            -3.7957135224119227,
+            -2.854134736167844,
+            -2.1816952812599135
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -8.020544791963554,
+            -7.5914270448238454,
+            -5.708269472335688,
+            -6.545085843779741
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows Yai measures 15",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            821,
+            2863,
+            4386,
+            1433
+          ],
+          "category": "compare",
+          "generated_text": " A record",
+          "generated_token_ids": [
+            316,
+            1804
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-compare-0088",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.710772423606845,
+            -3.103786938998519,
+            -4.35911690638339,
+            -2.708609293436121
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -3.42154484721369,
+            -6.207573877997038,
+            -8.71823381276678,
+            -5.417218586872242
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Maen wasw4 where Gus",
+          "bounded_generated_token_ids": [
+            4577,
+            269,
+            348,
+            120,
+            53,
+            828,
+            438,
+            384
+          ],
+          "category": "compare",
+          "generated_text": " Maen",
+          "generated_token_ids": [
+            4577,
+            269
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-compare-0066",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.052942552039465,
+            -1.7958027159782766,
+            -3.2866815441638453,
+            -5.268352172652803
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -8.10588510407893,
+            -3.591605431956553,
+            -6.573363088327691,
+            -10.536704345305607
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ha slaves born 40 lives Ra",
+          "bounded_generated_token_ids": [
+            403,
+            98,
+            1271,
+            3001,
+            3300,
+            2469,
+            413,
+            98
+          ],
+          "category": "compare",
+          "generated_text": " Ha",
+          "generated_token_ids": [
+            403,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-compare-0063",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.084622679758725,
+            -2.2212372225978707,
+            -9.633817677310129,
+            -3.636132643016044
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -12.16924535951745,
+            -4.442474445195741,
+            -19.267635354620257,
+            -7.272265286032088
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lou is Lou is Lou is Rea",
+          "bounded_generated_token_ids": [
+            3007,
+            319,
+            3007,
+            319,
+            3007,
+            319,
+            1067,
+            98
+          ],
+          "category": "compare",
+          "generated_text": " Lou is",
+          "generated_token_ids": [
+            3007,
+            319
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Gus",
+          "id": "dev-compare-0008",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.0835731424527018,
+            -1.4763844248205076,
+            -5.542096114895887,
+            -3.9488055258627845
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -2.1671462849054035,
+            -1.4763844248205076,
+            -11.084192229791775,
+            -7.897611051725569
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Hed four members followsre measures 14",
+          "bounded_generated_token_ids": [
+            403,
+            273,
+            1398,
+            1598,
+            6152,
+            262,
+            4386,
+            1966
+          ],
+          "category": "compare",
+          "generated_text": " H",
+          "generated_token_ids": [
+            403
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lou",
+          "id": "dev-compare-0043",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.8049835124948852,
+            -4.242946955385412,
+            -6.117310389952507,
+            -1.6661173318631746
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -3.6099670249897704,
+            -8.485893910770823,
+            -12.234620779905015,
+            -1.6661173318631746
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Joud measures 152 cm In",
+          "bounded_generated_token_ids": [
+            468,
+            3393,
+            4386,
+            1433,
+            51,
+            270,
+            110,
+            517
+          ],
+          "category": "compare",
+          "generated_text": " Joud",
+          "generated_token_ids": [
+            468,
+            3393
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-compare-0090",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -5.170460896939602,
+            -4.881910522756726,
+            -2.862225592026364,
+            -6.18729352323331
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -10.340921793879204,
+            -4.881910522756726,
+            -5.724451184052728,
+            -12.37458704646662
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tara is Tara was chain is",
+          "bounded_generated_token_ids": [
+            310,
+            3562,
+            319,
+            310,
+            3562,
+            348,
+            6336,
+            319
+          ],
+          "category": "compare",
+          "generated_text": " Tara",
+          "generated_token_ids": [
+            310,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Emma",
+          "id": "dev-compare-0064",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.325008328293506,
+            -20.1115908363252,
+            -6.1697543966057475,
+            -5.623464236114983
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -6.650016656587012,
+            -40.2231816726504,
+            -12.339508793211495,
+            -11.246928472229966
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto got total of 95",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            3170,
+            2791,
+            277,
+            1533,
+            54
+          ],
+          "category": "compare",
+          "generated_text": " Otto",
+          "generated_token_ids": [
+            491,
+            117,
+            1376
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Otto",
+          "id": "dev-compare-0072",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.1858882850499116,
+            -5.17906749853652,
+            -2.7648019801628227,
+            -6.625517837523022
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -0.5576648551497347,
+            -10.35813499707304,
+            -5.5296039603256455,
+            -13.251035675046044
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Yusufm in 152",
+          "bounded_generated_token_ids": [
+            821,
+            384,
+            118,
+            103,
+            110,
+            284,
+            1433,
+            51
+          ],
+          "category": "compare",
+          "generated_text": " Yus",
+          "generated_token_ids": [
+            821,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Raj",
+          "id": "dev-compare-0097",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.22789303499191926,
+            -4.336492423848105,
+            -5.15701013542186,
+            -4.749314841872214
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -0.911572139967677,
+            -8.67298484769621,
+            -5.15701013542186,
+            -9.498629683744428
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Futen got ag 15ba got almost",
+          "bounded_generated_token_ids": [
+            431,
+            7765,
+            3170,
+            606,
+            1433,
+            7887,
+            3170,
+            2190
+          ],
+          "category": "compare",
+          "generated_text": " Futen",
+          "generated_token_ids": [
+            431,
+            7765
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Dev",
+          "id": "dev-compare-0082",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.867871841174759,
+            -2.5141314816461904,
+            -2.4625133334018026,
+            -2.2434764448597537
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -9.735743682349518,
+            -5.028262963292381,
+            -4.925026666803605,
+            -4.4869528897195075
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Joud measures 166 cm in",
+          "bounded_generated_token_ids": [
+            468,
+            3393,
+            4386,
+            1208,
+            55,
+            270,
+            110,
+            284
+          ],
+          "category": "compare",
+          "generated_text": " Joud",
+          "generated_token_ids": [
+            468,
+            3393
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Ines",
+          "id": "dev-compare-0085",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.346680337330348,
+            -10.903713522643264,
+            -1.8196730293643555,
+            -2.7034387720644864
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -8.693360674660696,
+            -21.807427045286527,
+            -3.639346058728711,
+            -5.406877544128973
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Neil got The 97 points Ne",
+          "bounded_generated_token_ids": [
+            1939,
+            301,
+            3170,
+            347,
+            1533,
+            56,
+            2657,
+            1939
+          ],
+          "category": "compare",
+          "generated_text": " Neil",
+          "generated_token_ids": [
+            1939,
+            301
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Neil",
+          "id": "dev-compare-0007",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.7589327628159626,
+            -2.724615297075479,
+            -5.329884276552104,
+            -0.2072737822384909
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -7.517865525631925,
+            -5.449230594150958,
+            -10.659768553104207,
+            -0.4145475644769818
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows also Otto",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            548,
+            491,
+            117,
+            1376
+          ],
+          "category": "compare",
+          "generated_text": " A record members",
+          "generated_token_ids": [
+            316,
+            1804,
+            1598
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-compare-0018",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.5121219716748908,
+            -5.112336511989917,
+            -0.41947784766695073,
+            -5.404684144625858
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -3.0242439433497816,
+            -10.224673023979834,
+            -1.2584335430008522,
+            -10.809368289251717
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Yusuf got The 152",
+          "bounded_generated_token_ids": [
+            821,
+            384,
+            118,
+            103,
+            3170,
+            347,
+            1433,
+            51
+          ],
+          "category": "compare",
+          "generated_text": " Y",
+          "generated_token_ids": [
+            821
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lou",
+          "id": "dev-compare-0058",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -3.0731642765672995,
+            -0.5161353680214265,
+            -1.8562772958470932,
+            -6.762069805320645
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -6.146328553134599,
+            -2.064541472085706,
+            -1.8562772958470932,
+            -13.52413961064129
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Colin got Tou Pria got",
+          "bounded_generated_token_ids": [
+            1312,
+            260,
+            3170,
+            310,
+            285,
+            2357,
+            523,
+            3170
+          ],
+          "category": "compare",
+          "generated_text": " Colin",
+          "generated_token_ids": [
+            1312,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mia",
+          "id": "dev-compare-0015",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.32525053441041346,
+            -4.426622421868332,
+            -4.314845414762599,
+            -4.016078988146891
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -0.6505010688208269,
+            -8.853244843736665,
+            -8.629690829525199,
+            -8.032157976293782
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kai got total on F Sou on",
+          "bounded_generated_token_ids": [
+            638,
+            2863,
+            3170,
+            2791,
+            333,
+            431,
+            7419,
+            333
+          ],
+          "category": "compare",
+          "generated_text": " Kai",
+          "generated_token_ids": [
+            638,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Finn",
+          "id": "dev-compare-0038",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.022390868683259,
+            -5.872124850322443,
+            -2.999006838003437,
+            -0.36578659954974546
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -8.044781737366518,
+            -5.872124850322443,
+            -5.998013676006874,
+            -0.7315731990994909
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Gus got everyail Shus For",
+          "bounded_generated_token_ids": [
+            438,
+            384,
+            3170,
+            1076,
+            736,
+            1590,
+            384,
+            1054
+          ],
+          "category": "compare",
+          "generated_text": " Gus",
+          "generated_token_ids": [
+            438,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Gus",
+          "id": "dev-compare-0060",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.32804308431962576,
+            -5.646479556679524,
+            -1.5059291429227524,
+            -4.6191641203386595
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -0.6560861686392515,
+            -11.292959113359048,
+            -3.0118582858455047,
+            -9.238328240677319
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Iiled 36 always Paia was",
+          "bounded_generated_token_ids": [
+            342,
+            301,
+            273,
+            6201,
+            1920,
+            4324,
+            523,
+            348
+          ],
+          "category": "compare",
+          "generated_text": " Iil",
+          "generated_token_ids": [
+            342,
+            301
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Gus",
+          "id": "dev-compare-0045",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.905315762571207,
+            -2.1396822332599172,
+            -4.278997218242499,
+            -2.5252061140375224
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 71,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -5.715947287713621,
+            -4.2793644665198345,
+            -8.557994436484998,
+            -5.050412228075045
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Rosaa as Oar favorite follows",
+          "bounded_generated_token_ids": [
+            413,
+            7344,
+            98,
+            339,
+            491,
+            283,
+            7848,
+            6152
+          ],
+          "category": "compare",
+          "generated_text": " Rosa",
+          "generated_token_ids": [
+            413,
+            7344
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Rosa",
+          "id": "dev-compare-0009",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.667812168076171,
+            -0.4551764336398118,
+            -2.532306041805882,
+            -6.568193188276435
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -9.335624336152343,
+            -0.9103528672796236,
+            -5.064612083611764,
+            -13.13638637655287
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Colin got everyoulen got every",
+          "bounded_generated_token_ids": [
+            1312,
+            260,
+            3170,
+            1076,
+            5794,
+            269,
+            3170,
+            1076
+          ],
+          "category": "compare",
+          "generated_text": " Colin",
+          "generated_token_ids": [
+            1312,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-compare-0087",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -3.097362508228429,
+            -0.44280035108266197,
+            -6.505593521569308,
+            -3.9774990437789928
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -6.194725016456858,
+            -0.8856007021653239,
+            -13.011187043138616,
+            -7.9549980875579855
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto is 81 anded",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            319,
+            1485,
+            50,
+            289,
+            273
+          ],
+          "category": "compare",
+          "generated_text": " Ot",
+          "generated_token_ids": [
+            491,
+            117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-compare-0075",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.355104460941789,
+            -5.281619667010151,
+            -4.1876052871790534,
+            -1.4930170049276896
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the lowest age?",
+          "subtype": "age-min",
+          "summed_option_logprob": [
+            -1.065313382825367,
+            -10.563239334020302,
+            -8.375210574358107,
+            -2.9860340098553793
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "H seems H seems Hare periods 35",
+          "bounded_generated_token_ids": [
+            403,
+            3543,
+            403,
+            3543,
+            403,
+            675,
+            4252,
+            5848
+          ],
+          "category": "compare",
+          "generated_text": " H",
+          "generated_token_ids": [
+            403
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lou",
+          "id": "dev-compare-0049",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.7427298918041636,
+            -2.5113599195819845,
+            -4.215693214288466,
+            -2.0986010743305425
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -3.485459783608327,
+            -2.5113599195819845,
+            -4.215693214288466,
+            -4.197202148661085
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Maba was born 56 lives 5",
+          "bounded_generated_token_ids": [
+            4577,
+            7887,
+            348,
+            3001,
+            1046,
+            55,
+            2469,
+            1046
+          ],
+          "category": "compare",
+          "generated_text": " Maba",
+          "generated_token_ids": [
+            4577,
+            7887
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Gus",
+          "id": "dev-compare-0069",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.723973208627796,
+            -4.218171802048259,
+            -2.168407457653305,
+            -5.360808864084616
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -7.447946417255592,
+            -8.436343604096518,
+            -4.33681491530661,
+            -10.721617728169232
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kiraa lived Tv got",
+          "bounded_generated_token_ids": [
+            638,
+            326,
+            98,
+            98,
+            2482,
+            310,
+            119,
+            3170
+          ],
+          "category": "compare",
+          "generated_text": " Kira",
+          "generated_token_ids": [
+            638,
+            326,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Pedro",
+          "id": "dev-compare-0065",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.740202635247627,
+            -0.718436303018267,
+            -5.501359111863199,
+            -0.40068854518781877
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            1,
+            3
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -5.480405270495254,
+            -2.155308909054801,
+            -5.501359111863199,
+            -1.2020656355634562
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Yusuf gaveenroba",
+          "bounded_generated_token_ids": [
+            821,
+            384,
+            118,
+            103,
+            2613,
+            269,
+            305,
+            7887
+          ],
+          "category": "compare",
+          "generated_text": " Yus",
+          "generated_token_ids": [
+            821,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-compare-0095",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.686183319409265,
+            -3.694806698065141,
+            -0.5118451567182145,
+            -0.9724351249592096
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -2.058549958227795,
+            -7.389613396130282,
+            -2.047380626872858,
+            -1.9448702499184192
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows 64 was born",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            1242,
+            53,
+            348,
+            3001
+          ],
+          "category": "compare",
+          "generated_text": " A record",
+          "generated_token_ids": [
+            316,
+            1804
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-compare-0096",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.122071462146587,
+            -0.43822735936573637,
+            -2.3735873011116437,
+            -9.552171007087962
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who has the highest age?",
+          "subtype": "age-max",
+          "summed_option_logprob": [
+            -10.244142924293174,
+            -1.314682078097209,
+            -4.7471746022232875,
+            -19.104342014175923
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Stk measures 149 cmbo",
+          "bounded_generated_token_ids": [
+            558,
+            108,
+            4386,
+            1966,
+            58,
+            270,
+            110,
+            3236
+          ],
+          "category": "compare",
+          "generated_text": " Stk",
+          "generated_token_ids": [
+            558,
+            108
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-compare-0041",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.9980904181960493,
+            -3.9352531419424244,
+            -3.4415109280314784,
+            -3.0877038113581587
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -3.9961808363920985,
+            -7.870506283884849,
+            -6.883021856062957,
+            -6.1754076227163175
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jail got total every 62 we",
+          "bounded_generated_token_ids": [
+            468,
+            736,
+            3170,
+            2791,
+            1076,
+            1242,
+            51,
+            473
+          ],
+          "category": "compare",
+          "generated_text": " Jail",
+          "generated_token_ids": [
+            468,
+            736
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-compare-0059",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.6994099694255946,
+            -1.750819262437945,
+            -4.988707617359677,
+            -6.048154101699602
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -2.098229908276784,
+            -3.50163852487589,
+            -9.977415234719354,
+            -12.096308203399204
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ha aloneu measures 177 cm",
+          "bounded_generated_token_ids": [
+            403,
+            98,
+            4014,
+            118,
+            4386,
+            3787,
+            270,
+            110
+          ],
+          "category": "compare",
+          "generated_text": " Ha",
+          "generated_token_ids": [
+            403,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-compare-0000",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.8924769840189577,
+            -3.9542148241714328,
+            -4.4615450115407205,
+            -1.9696630196513518
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -3.7849539680379154,
+            -7.9084296483428655,
+            -8.923090023081441,
+            -3.9393260393027036
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Rre Flam got The 8 points",
+          "bounded_generated_token_ids": [
+            413,
+            262,
+            5402,
+            337,
+            3170,
+            347,
+            1485,
+            2657
+          ],
+          "category": "compare",
+          "generated_text": " Rre",
+          "generated_token_ids": [
+            413,
+            262
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Emma",
+          "id": "dev-compare-0016",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -5.4913308216735475,
+            -3.377038708984363,
+            -7.1162413927476695,
+            -4.3607522575587625
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 72,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -10.982661643347095,
+            -3.377038708984363,
+            -14.232482785495339,
+            -8.721504515117525
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sara measures 193 cmout measures",
+          "bounded_generated_token_ids": [
+            335,
+            3562,
+            4386,
+            2463,
+            270,
+            110,
+            459,
+            4386
+          ],
+          "category": "compare",
+          "generated_text": " Sara",
+          "generated_token_ids": [
+            335,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Raj",
+          "id": "dev-compare-0079",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.9365302409281036,
+            -2.951511722733449,
+            -0.5967564131233294,
+            -3.0846847780802653
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Who has the least height?",
+          "subtype": "height-min",
+          "summed_option_logprob": [
+            -2.9365302409281036,
+            -5.903023445466898,
+            -1.1935128262466588,
+            -6.169369556160531
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tou got The Mil7 as T",
+          "bounded_generated_token_ids": [
+            310,
+            285,
+            3170,
+            347,
+            5134,
+            56,
+            339,
+            310
+          ],
+          "category": "compare",
+          "generated_text": " T",
+          "generated_token_ids": [
+            310
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lou",
+          "id": "dev-compare-0092",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.425450080887232,
+            -8.972150587236662,
+            -2.9600009157215514,
+            -5.507025514307082
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who got the smallest total?",
+          "subtype": "score-min",
+          "summed_option_logprob": [
+            -4.425450080887232,
+            -17.944301174473324,
+            -5.920001831443103,
+            -11.014051028614164
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "H Lu does 168 points Grain",
+          "bounded_generated_token_ids": [
+            403,
+            7770,
+            1175,
+            1208,
+            57,
+            2657,
+            4299,
+            260
+          ],
+          "category": "compare",
+          "generated_text": " H Lu",
+          "generated_token_ids": [
+            403,
+            7770
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Hugo",
+          "id": "dev-compare-0028",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.5211225086988964,
+            -4.762438474101708,
+            -6.2915421525898125,
+            -4.350044989891767
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -5.042245017397793,
+            -9.524876948203415,
+            -12.583084305179625,
+            -4.350044989891767
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Dev measures 184 Mare and I",
+          "bounded_generated_token_ids": [
+            1492,
+            119,
+            4386,
+            2786,
+            364,
+            675,
+            289,
+            342
+          ],
+          "category": "compare",
+          "generated_text": " Dev",
+          "generated_token_ids": [
+            1492,
+            119
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Neil",
+          "id": "dev-compare-0011",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.3086123872984022,
+            -5.136914411045131,
+            -10.423198524469438,
+            -3.1418327095769527
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who has the greatest height?",
+          "subtype": "height-max",
+          "summed_option_logprob": [
+            -0.6172247745968044,
+            -10.273828822090262,
+            -20.846397048938876,
+            -6.283665419153905
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Yusuf lived Tia",
+          "bounded_generated_token_ids": [
+            821,
+            384,
+            118,
+            103,
+            2482,
+            310,
+            523,
+            47
+          ],
+          "category": "compare",
+          "generated_text": " Yus",
+          "generated_token_ids": [
+            821,
+            384
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Edith",
+          "id": "dev-compare-0086",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.36515013251188755,
+            -1.9192152734174122,
+            -6.4986979834384275,
+            -2.795660412457404
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -1.4606005300475502,
+            -3.8384305468348243,
+            -12.997395966876855,
+            -5.591320824914808
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sua For Kai as Pera",
+          "bounded_generated_token_ids": [
+            3134,
+            98,
+            1054,
+            638,
+            2863,
+            339,
+            2925,
+            98
+          ],
+          "category": "compare",
+          "generated_text": " Sua",
+          "generated_token_ids": [
+            3134,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-compare-0051",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.5411670193627636,
+            -4.7434929711698,
+            -1.3933388994264864,
+            -4.238740829176756
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who got the biggest total?",
+          "subtype": "score-max",
+          "summed_option_logprob": [
+            -3.5411670193627636,
+            -9.4869859423396,
+            -2.7866777988529727,
+            -8.477481658353511
+          ],
+          "summed_option_prediction": 2
+        }
+      ],
+      "mismatch_literally_unchanged_n": 0,
+      "summary": {
+        "bounded_free_generation_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 0.04423686343872062,
+              "ci95_low": 3.469446951953614e-18,
+              "correct": 0,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.04423686343872062,
+          "ci95_low": 3.469446951953614e-18,
+          "correct": 0,
+          "n": 83
+        },
+        "bounded_free_generation_terminated_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 0.04423686343872062,
+              "ci95_low": 3.469446951953614e-18,
+              "correct": 0,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.04423686343872062,
+          "ci95_low": 3.469446951953614e-18,
+          "correct": 0,
+          "n": 83
+        },
+        "gold_length_greedy_prefix_exact": {
+          "accuracy": 0.10843373493975904,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.10843373493975904,
+              "ci95_high": 0.1934065390665306,
+              "ci95_low": 0.058104257602346984,
+              "correct": 9,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.1934065390665306,
+          "ci95_low": 0.058104257602346984,
+          "correct": 9,
+          "n": 83
+        },
+        "letter_A_to_D": {
+          "accuracy": 0.25301204819277107,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.25301204819277107,
+              "ci95_high": 0.3560249859694415,
+              "ci95_low": 0.1718510550063121,
+              "correct": 21,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.3560249859694415,
+          "ci95_low": 0.1718510550063121,
+          "correct": 21,
+          "n": 83
+        },
+        "mean_token_option_likelihood": {
+          "accuracy": 0.2891566265060241,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.2891566265060241,
+              "ci95_high": 0.3942942345615342,
+              "ci95_low": 0.20267311749093847,
+              "correct": 24,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.3942942345615342,
+          "ci95_low": 0.20267311749093847,
+          "correct": 24,
+          "n": 83
+        },
+        "summed_option_likelihood": {
+          "accuracy": 0.30120481927710846,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.30120481927710846,
+              "ci95_high": 0.40689229905351704,
+              "ci95_low": 0.21310549002452867,
+              "correct": 25,
+              "n": 83
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.40689229905351704,
+          "ci95_low": 0.21310549002452867,
+          "correct": 25,
+          "n": 83
+        }
+      }
+    }
+  },
+  "generation_note": "Autoregressive greedy generation stops on EOT, first decoded period/newline, context limit, or eight tokens (independent of gold). Exact compares trimmed generated answer to gold; terminated_exact additionally requires EOT or delimiter. Gold-length prefix is a separate diagnostic and does not score termination.",
+  "item_count": 83,
+  "items": "docs/results/stage2/mission-20261111/review-checks-20261113/devcmp-orig.jsonl",
+  "items_sha256": "305aa4f749cab4c140f12585cd46cd3b39e756fa594cc42f94f0504c2fcf3c7e",
+  "limit": 0,
+  "locked_test": false,
+  "mismatch_note": "Historical same-category question replacement is reproduced. Literal unchanged flags count collisions; compare questions may retain the same max/min operation even when text changes. Use opposite-query counterfactual evidence for conditioning.",
+  "paired_wording_note": "First training question frame for each structured query; identical passage/options/keys. Passage wording remains unfamiliar. Counterfactual uses cf_query.",
+  "schema": "asem-qa-dev-analysis-1",
+  "seconds": 3.612889,
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "workers": 4
+}

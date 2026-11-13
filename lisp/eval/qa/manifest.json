@@ -1,0 +1,313 @@
+{
+  "answer_letter_token_ids": [
+    316,
+    367,
+    338,
+    443
+  ],
+  "audit": {
+    "dev": {
+      "rejected_candidates": 63,
+      "rejection_reasons": {
+        "option \"4\" inside \"64\"": 1,
+        "option \"4\" inside \"94\"": 1,
+        "option \"6\" inside \"96\"": 1,
+        "option \"7\" inside \"87\"": 1,
+        "option \"9\" inside \"99\"": 1,
+        "too long for the context window": 58
+      },
+      "seed": 2002
+    },
+    "entity_overlap_non_numeric_options": 0,
+    "near_duplicates": {
+      "dev_passages_matching_test": 0,
+      "method": "normalised exact SHA-256 + word 5-gram MinHash LSH (128 permutations, 16 bands x 8 rows), asem-data",
+      "train_items_removed": 0
+    },
+    "template_overlap": {
+      "dev_vs_train_3gram": {
+        "examples": [
+          "Which animal does {P} own?  [which animal does]",
+          "Who is the owner of {aV}?  [who is the]",
+          "Which color is the favorite of {P}?  [which color is]",
+          "Which instrument is associated with {P}?  [which instrument is]",
+          "At what age is {P} now?  [what age is]"
+        ],
+        "frames": 74,
+        "frames_sharing_an_ngram": 5
+      },
+      "dev_vs_train_4gram": {
+        "examples": [],
+        "frames": 74,
+        "frames_sharing_an_ngram": 0
+      },
+      "test_vs_train_3gram": {
+        "examples": [
+          "Which person is the owner of the pet {V}?  [which person is]",
+          "Which color is {P} fondest of?  [which color is]",
+          "Which person is pleased most by {V}?  [which person is]",
+          "What is the instrument of {P}?  [is the instrument]",
+          "Which instrument does {P} make music with?  [which instrument does]",
+          "Which person is the {V} player?  [which person is]",
+          "The age of {P} is {N}.  [the age of]",
+          "What is the age of {P}?  [the age of]",
+          "Of the four, who was born first?  [of the four]",
+          "Of the four, who was born last?  [of the four]",
+          "How many points did {P} collect in the contest?  [how many points]",
+          "Who won the contest by collecting the most points?  [the most points]"
+        ],
+        "frames": 97,
+        "frames_sharing_an_ngram": 15
+      },
+      "test_vs_train_4gram": {
+        "examples": [
+          "Which person is the owner of the pet {V}?  [which person is the]",
+          "Which person is the {V} player?  [which person is the]",
+          "How many points did {P} collect in the contest?  [how many points did]"
+        ],
+        "frames": 97,
+        "frames_sharing_an_ngram": 3
+      }
+    },
+    "test": {
+      "rejected_candidates": 219,
+      "rejection_reasons": {
+        "option \"4\" inside \"44\"": 1,
+        "option \"4\" inside \"49\"": 1,
+        "option \"6\" inside \"66\"": 1,
+        "option \"8\" inside \"38\"": 1,
+        "option \"8\" inside \"58\"": 1,
+        "option \"Ian\" inside \"Bianca\"": 8,
+        "too long for the context window": 206
+      },
+      "seed": 3003
+    },
+    "train": {
+      "rejected_candidates": 1907,
+      "rejection_reasons": {
+        "option \"3\" inside \"23\"": 1,
+        "option \"3\" inside \"33\"": 1,
+        "option \"3\" inside \"36\"": 3,
+        "option \"3\" inside \"38\"": 1,
+        "option \"3\" inside \"63\"": 1,
+        "option \"3\" inside \"73\"": 1,
+        "option \"3\" inside \"83\"": 1,
+        "option \"4\" inside \"34\"": 1,
+        "option \"4\" inside \"41\"": 1,
+        "option \"4\" inside \"42\"": 1,
+        "option \"4\" inside \"43\"": 1,
+        "option \"4\" inside \"54\"": 1,
+        "option \"5\" inside \"25\"": 1,
+        "option \"5\" inside \"35\"": 1,
+        "option \"5\" inside \"45\"": 1,
+        "option \"5\" inside \"52\"": 3,
+        "option \"5\" inside \"57\"": 1,
+        "option \"5\" inside \"58\"": 1,
+        "option \"5\" inside \"75\"": 1,
+        "option \"6\" inside \"26\"": 1,
+        "option \"6\" inside \"36\"": 1,
+        "option \"6\" inside \"46\"": 1,
+        "option \"6\" inside \"60\"": 2,
+        "option \"6\" inside \"66\"": 1,
+        "option \"6\" inside \"67\"": 1,
+        "option \"6\" inside \"68\"": 4,
+        "option \"6\" inside \"86\"": 1,
+        "option \"7\" inside \"17\"": 1,
+        "option \"7\" inside \"37\"": 2,
+        "option \"7\" inside \"47\"": 1,
+        "option \"7\" inside \"67\"": 1,
+        "option \"7\" inside \"74\"": 1,
+        "option \"7\" inside \"75\"": 1,
+        "option \"7\" inside \"77\"": 1,
+        "option \"7\" inside \"97\"": 1,
+        "option \"8\" inside \"38\"": 1,
+        "option \"8\" inside \"58\"": 3,
+        "option \"8\" inside \"78\"": 1,
+        "option \"8\" inside \"80\"": 2,
+        "option \"8\" inside \"81\"": 2,
+        "option \"8\" inside \"83\"": 2,
+        "option \"8\" inside \"85\"": 2,
+        "option \"8\" inside \"98\"": 1,
+        "option \"9\" inside \"79\"": 1,
+        "option \"9\" inside \"90\"": 1,
+        "option \"9\" inside \"92\"": 1,
+        "option \"9\" inside \"95\"": 1,
+        "option \"9\" inside \"96\"": 1,
+        "option \"Eli\" inside \"Celia\"": 5,
+        "option \"Eli\" inside \"Felix\"": 7,
+        "option \"Ella\" inside \"Bella\"": 5,
+        "option \"Ida\" inside \"Frida\"": 15,
+        "option \"Jan\" inside \"Jane\"": 11,
+        "too long for the context window": 1801
+      },
+      "seed": 1001
+    }
+  },
+  "ctx": 128,
+  "files": {
+    "dev": {
+      "sha256": "2d92c8825ca3752bd780ecd25023ae5f0a8dcc60677ee6484d46aa95e701032a",
+      "stats": {
+        "answer_positions": {
+          "A": 125,
+          "B": 125,
+          "C": 125,
+          "D": 125
+        },
+        "categories": {
+          "compare": 100,
+          "extract": 100,
+          "relation": 100,
+          "reverse": 100,
+          "temporal": 100
+        },
+        "category_by_position": {
+          "compare/A": 25,
+          "compare/B": 25,
+          "compare/C": 25,
+          "compare/D": 25,
+          "extract/A": 25,
+          "extract/B": 25,
+          "extract/C": 25,
+          "extract/D": 25,
+          "relation/A": 25,
+          "relation/B": 25,
+          "relation/C": 25,
+          "relation/D": 25,
+          "reverse/A": 25,
+          "reverse/B": 25,
+          "reverse/C": 25,
+          "reverse/D": 25,
+          "temporal/A": 25,
+          "temporal/B": 25,
+          "temporal/C": 25,
+          "temporal/D": 25
+        },
+        "max_input_tokens": 124,
+        "mean_input_tokens": 83.586,
+        "min_input_tokens": 51,
+        "n": 500
+      }
+    },
+    "test": {
+      "sha256": "8f756bcdf3accd79f440faff81091d5b7c1ae3dc336610057b9f6e31a939f060",
+      "stats": {
+        "answer_positions": {
+          "A": 250,
+          "B": 250,
+          "C": 250,
+          "D": 250
+        },
+        "categories": {
+          "compare": 200,
+          "extract": 200,
+          "relation": 200,
+          "reverse": 200,
+          "temporal": 200
+        },
+        "category_by_position": {
+          "compare/A": 50,
+          "compare/B": 50,
+          "compare/C": 50,
+          "compare/D": 50,
+          "extract/A": 50,
+          "extract/B": 50,
+          "extract/C": 50,
+          "extract/D": 50,
+          "relation/A": 50,
+          "relation/B": 50,
+          "relation/C": 50,
+          "relation/D": 50,
+          "reverse/A": 50,
+          "reverse/B": 50,
+          "reverse/C": 50,
+          "reverse/D": 50,
+          "temporal/A": 50,
+          "temporal/B": 50,
+          "temporal/C": 50,
+          "temporal/D": 50
+        },
+        "max_input_tokens": 123,
+        "mean_input_tokens": 90.672,
+        "min_input_tokens": 51,
+        "n": 1000
+      }
+    },
+    "train": {
+      "sha256": "d4506b6487746b66faaf4f541fc4905422a8de31cc9220946767964cf26f3e0e",
+      "stats": {
+        "answer_positions": {
+          "A": 4000,
+          "B": 4000,
+          "C": 4000,
+          "D": 4000
+        },
+        "categories": {
+          "compare": 3200,
+          "extract": 3200,
+          "relation": 3200,
+          "reverse": 3200,
+          "temporal": 3200
+        },
+        "category_by_position": {
+          "compare/A": 800,
+          "compare/B": 800,
+          "compare/C": 800,
+          "compare/D": 800,
+          "extract/A": 800,
+          "extract/B": 800,
+          "extract/C": 800,
+          "extract/D": 800,
+          "relation/A": 800,
+          "relation/B": 800,
+          "relation/C": 800,
+          "relation/D": 800,
+          "reverse/A": 800,
+          "reverse/B": 800,
+          "reverse/C": 800,
+          "reverse/D": 800,
+          "temporal/A": 800,
+          "temporal/B": 800,
+          "temporal/C": 800,
+          "temporal/D": 800
+        },
+        "max_input_tokens": 124,
+        "mean_input_tokens": 81.6095625,
+        "min_input_tokens": 45,
+        "n": 16000
+      }
+    }
+  },
+  "format": "asem-qa-1",
+  "prompt_format": "Text: ...\\nQ: ...\\nA. ...\\nB. ...\\nC. ...\\nD. ...\\nThe answer is  -> target \" X\" (letter mode, one token) or \" <option>\" (text mode); lengths above are for this format. Items were selected with the 4-token-longer original format (Passage:/Question:/Answer:), see qagen *prompt-style*",
+  "shortcut_baselines": {
+    "dev": {
+      "always_A": 0.25,
+      "always_D": 0.25,
+      "first_mentioned_option": 0.294,
+      "last_mentioned_option": 0.256,
+      "longest_option": 0.26,
+      "option_in_sentence_sharing_most_question_words": 0.62,
+      "shortest_option": 0.24
+    },
+    "test": {
+      "always_A": 0.25,
+      "always_D": 0.25,
+      "first_mentioned_option": 0.253,
+      "last_mentioned_option": 0.266,
+      "longest_option": 0.267,
+      "option_in_sentence_sharing_most_question_words": 0.591,
+      "shortest_option": 0.25
+    },
+    "train": {
+      "always_A": 0.25,
+      "always_D": 0.25,
+      "first_mentioned_option": 0.269625,
+      "last_mentioned_option": 0.271375,
+      "longest_option": 0.2501875,
+      "option_in_sentence_sharing_most_question_words": 0.57775,
+      "shortest_option": 0.2484375
+    }
+  },
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4"
+}

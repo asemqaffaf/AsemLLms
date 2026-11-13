@@ -1,0 +1,126 @@
+{
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "note": "Teacher-forced all-token argmax equals gold-prefix correctness if every decision matches. No candidate restriction. Training trace is canonical R7 distribution; selection has held-out entities. Confirmation predictions remain unopened.",
+  "paired_selection_wording": {
+    "compare": {
+      "familiar": {
+        "first_correct": 8,
+        "mean_first_nll": 5.581301999777239,
+        "mean_later_nll": 1.1749341889661349,
+        "n": 40,
+        "prefix_correct": 3
+      },
+      "unfamiliar": {
+        "first_correct": 6,
+        "mean_first_nll": 5.425401280738621,
+        "mean_later_nll": 1.5546733891080677,
+        "n": 40,
+        "prefix_correct": 4
+      }
+    },
+    "extract": {
+      "familiar": {
+        "first_correct": 31,
+        "mean_first_nll": 1.431396742565823,
+        "mean_later_nll": 0.3421873026075276,
+        "n": 40,
+        "prefix_correct": 28
+      },
+      "unfamiliar": {
+        "first_correct": 15,
+        "mean_first_nll": 7.084963476896846,
+        "mean_later_nll": 1.1374011910051052,
+        "n": 40,
+        "prefix_correct": 13
+      }
+    },
+    "relation": {
+      "familiar": {
+        "first_correct": 27,
+        "mean_first_nll": 1.4533404867153688,
+        "mean_later_nll": 0.979954343141347,
+        "n": 40,
+        "prefix_correct": 21
+      },
+      "unfamiliar": {
+        "first_correct": 24,
+        "mean_first_nll": 2.9261931548900524,
+        "mean_later_nll": 0.817771768956961,
+        "n": 40,
+        "prefix_correct": 17
+      }
+    },
+    "reverse": {
+      "familiar": {
+        "first_correct": 12,
+        "mean_first_nll": 4.3244289690624,
+        "mean_later_nll": 0.7612449816674406,
+        "n": 40,
+        "prefix_correct": 7
+      },
+      "unfamiliar": {
+        "first_correct": 6,
+        "mean_first_nll": 4.98596784916428,
+        "mean_later_nll": 0.5356865595667869,
+        "n": 40,
+        "prefix_correct": 4
+      }
+    },
+    "temporal": {
+      "familiar": {
+        "first_correct": 10,
+        "mean_first_nll": 7.631090427279109,
+        "mean_later_nll": 1.2013268466549287,
+        "n": 40,
+        "prefix_correct": 10
+      },
+      "unfamiliar": {
+        "first_correct": 0,
+        "mean_first_nll": 12.33513456193029,
+        "mean_later_nll": 1.5885777774060568,
+        "n": 40,
+        "prefix_correct": 0
+      }
+    }
+  },
+  "schema": "asem-mission-supervision-audit-1",
+  "training_prompt_contexts": {
+    "first": {
+      "dense": {
+        "first_correct": 212,
+        "mean_first_nll": 0.8373947790087813,
+        "mean_later_nll": 0.014104355986307774,
+        "n": 256,
+        "prefix_correct": 210
+      },
+      "first_token_gained_isolating": 0,
+      "first_token_lost_isolating": 0,
+      "isolated": {
+        "first_correct": 212,
+        "mean_first_nll": 0.8373947790087813,
+        "mean_later_nll": 0.014104355986307774,
+        "n": 256,
+        "prefix_correct": 210
+      }
+    },
+    "later": {
+      "dense": {
+        "first_correct": 145,
+        "mean_first_nll": 0.8044062590927301,
+        "mean_later_nll": 0.06627820422473503,
+        "n": 171,
+        "prefix_correct": 141
+      },
+      "first_token_gained_isolating": 7,
+      "first_token_lost_isolating": 14,
+      "isolated": {
+        "first_correct": 138,
+        "mean_first_nll": 0.8264713605408234,
+        "mean_later_nll": 0.05631081016307805,
+        "n": 171,
+        "prefix_correct": 134
+      }
+    }
+  },
+  "training_updates": 0
+}

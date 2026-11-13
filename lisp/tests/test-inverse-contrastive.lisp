@@ -1,0 +1,58 @@
+;;;; Experimental objective must match finite differences and preserve zero-factor behavior.
+(let ((here (directory-namestring *load-truename*)))
+  (require :sb-posix)
+  (dolist (f '("util" "sha256" "json" "bpe" "data" "qagen" "tf" "train" "pretrain" "sft" "tf32" "train32" "pretrain32" "sft32"))
+    (load (merge-pathnames (format nil "../src/~a.lisp" f) here)))
+  (load (merge-pathnames "../experimental/inverse-contrastive/objective.lisp" here))
+  (funcall (find-symbol "LOAD-DERIVED" :asem-derive) (merge-pathnames "../experimental/inverse-contrastive/objective.lisp" here))
+  (load (merge-pathnames "harness.lisp" here)))
+(in-package :harness)
+(defun model64 () (asem-tf:init-model (asem-tf:make-config :vocab 13 :ctx 8 :dim 8 :heads 2 :layers 1 :ff 16 :relpos 2) 171))
+(defun pair-loss (m &optional grads)
+  (asem-sft::inverse-pair-loss m '(1 3 5) '(7 2) '(9 4) (make-hash-table) grads 1l0))
+(deftest contrastive-loss-has-correct-signed-gradients-for-every-tensor
+  (let* ((m (model64)) (grads (asem-tf:make-grads (asem-tf:model-config m)))
+         (rng (sb-ext:seed-random-state 1701)) (eps 1d-6) (worst 0d0))
+    (pair-loss m grads)
+    (loop for p across (asem-tf:model-params m) for g across grads do
+      (dotimes (trial 4)
+        (let* ((i (random (length p) rng)) (old (aref p i)))
+          (setf (aref p i) (+ old eps))
+          (let ((up (pair-loss m)))
+            (setf (aref p i) (- old eps))
+            (let* ((down (pair-loss m)) (numeric (/ (- up down) (* 2 eps))) (actual (aref g i)))
+              (setf (aref p i) old)
+              (setf worst (max worst (/ (abs (- numeric actual)) (max 1d-4 (abs numeric) (abs actual))))))))))
+    (check (< worst 5d-5) (format nil "worst finite-difference relative error ~e" worst))))
+(deftest derived-fp32-contrastive-loss-and-gradient-match-fp64
+  (let* ((a (model64)) (b (asem-tf32:init-model (asem-tf32:make-config :vocab 13 :ctx 8 :dim 8 :heads 2 :layers 1 :ff 16 :relpos 2) 171))
+         (ga (asem-tf:make-grads (asem-tf:model-config a))) (gb (asem-tf32:make-grads (asem-tf32:model-config b))))
+    (loop for pa across (asem-tf:model-params a) for pb across (asem-tf32:model-params b) do
+      (dotimes (i (length pa)) (setf (aref pb i) (coerce (aref pa i) 'single-float))))
+    (check-close (pair-loss a ga) (asem-sft32::inverse-pair-loss b '(1 3 5) '(7 2) '(9 4) (make-hash-table) gb 1l0) 1d-5)
+    (let ((d 0d0) (s 0d0))
+      (loop for x across ga for y across gb do (dotimes (i (length x)) (incf d (expt (- (aref x i) (aref y i)) 2)) (incf s (expt (aref x i) 2))))
+      (check (< (sqrt (/ d (max s 1d-30))) 1d-4)))))
+(deftest zero-coefficient-restores-exact-historical-function
+  (let ((original asem-sft32::*inverse-original-run-multi*))
+    (asem-sft32::install-inverse-objective 1l0 (make-hash-table :test 'equal))
+    (check (not (eq original (symbol-function 'asem-sft32:run-multi))))
+    (asem-sft32::install-inverse-objective 0l0 (make-hash-table :test 'equal))
+    (check (eq original (symbol-function 'asem-sft32:run-multi)))))
+(deftest duplicate-or-unequal-answer-pairs-are-rejected
+  (dolist (pair '(((7 2) (7 2)) ((7 2) (9))))
+    (check (handler-case (progn (asem-sft::inverse-pair-loss (model64) '(1 3 5) (first pair) (second pair) (make-hash-table) nil 1l0) nil) (error () t)))))
+(deftest worker-thread-uses-lexical-objective-and-retains-original-target-mass
+  (let* ((m (model64)) (e (asem-sft:multi-ex "fixture" '(1 3 5 7 2) '(2 3) '(7 2)))
+         (table (make-hash-table :test 'equal))
+         (base (multiple-value-list (funcall asem-sft::*inverse-original-run-multi* m e (make-hash-table) nil))))
+    (setf (gethash "fixture" table) (list (list :prompt '(1 3 5) :gold '(7 2) :wrong '(9 4))))
+    (unwind-protect
+         (progn
+           (asem-sft::install-inverse-objective 1l0 table)
+           (let ((result (sb-thread:join-thread (sb-thread:make-thread (lambda () (multiple-value-list (asem-sft:run-multi m e (make-hash-table) nil)))))))
+             (check-close (first result) (+ (first base) (pair-loss m)) 1d-12)
+             (check-equal (fourth result) (fourth base))
+             (check-equal (fourth result) 2)))
+      (asem-sft::install-inverse-objective 0l0 table))))
+(run-all)

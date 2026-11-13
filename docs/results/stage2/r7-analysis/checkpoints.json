@@ -1,0 +1,432 @@
+{
+  "checkpoints": [
+    {
+      "path": "data/runs/retrieval/r1-L1/best.ckpt",
+      "file_sha256": "598fed6002acbd1f828757587737c2cdb9c1a1c441b3d045c3ca43c09026b7eb",
+      "tensor_sha256": "47d740ff646fe395db51eb2d9974b2bb927893ce7f79feef4db45463d4f5ea61",
+      "bytes": 42093762,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 100,
+        "dev_acc": 0.586667,
+        "dev_loss": 1.310031
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r1-L1/last.ckpt",
+      "file_sha256": "293a695c889711e6abde302e9bd66876a300344f1d87820caaac7cc009c92176",
+      "tensor_sha256": "61ba6580c4da292e86fb36c6876d339d0fb84d329d4066a5c9166fbd1d67d739",
+      "bytes": 42093723,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 500
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r2-L1-broad/best.ckpt",
+      "file_sha256": "5d5fd1256693f74f08077506ea8f195a0570dac57c502cd0d98bec910506749a",
+      "tensor_sha256": "ec2c7c3345197657b1a33c998f7eca84109869902de9181205dd3e6ee92da8c0",
+      "bytes": 42093762,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 900,
+        "dev_acc": 0.906667,
+        "dev_loss": 0.274153
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r2-L1-broad/last.ckpt",
+      "file_sha256": "f715ba02a47be8117cf1900949b6b732038d4ac7b176c56bb424a453da805f26",
+      "tensor_sha256": "ec2c7c3345197657b1a33c998f7eca84109869902de9181205dd3e6ee92da8c0",
+      "bytes": 42093723,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 900
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r3-L12-broad/best.ckpt",
+      "file_sha256": "d607bf475f6a6776f10477e421efbbc399cee17789d5e44b2aa5d414354b64f9",
+      "tensor_sha256": "ecd91046983cc6c3100a1172e43e3af7d76c956dff4b2686880218437df8e375",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000,
+        "dev_acc": 0.84,
+        "dev_loss": 0.356162
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r3-L12-broad/last.ckpt",
+      "file_sha256": "fb057b2f3d61b86f6f8c3b9fe6c98f42f203b445e3f49660f15d16d6a7b1ad24",
+      "tensor_sha256": "ecd91046983cc6c3100a1172e43e3af7d76c956dff4b2686880218437df8e375",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r4a-L123/best.ckpt",
+      "file_sha256": "2cd739ffae5fde4bd89586344f903e083e533b59e33b06433cbb49ca59e50e23",
+      "tensor_sha256": "a1357988afc3d237402856ae65a34d22546fa3724580a13ed8b90e6959d14dcc",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 1600,
+        "dev_acc": 0.773333,
+        "dev_loss": 0.559137
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r4a-L123/last.ckpt",
+      "file_sha256": "e2ffe849fef3aa5b789ff8a5d4cb23b0437c7c959924f8e7bc1e39890d6c6a4c",
+      "tensor_sha256": "b7fcf2c78dabfce9d737e9d39f175b0afcb823f2fadd4d0f91c2efa843935fc1",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r4b-L123-aug/best.ckpt",
+      "file_sha256": "66afc34eb9594a0eb1e3a919d3136101f477478bb4b7e2b91313f4f20df393a4",
+      "tensor_sha256": "3f84dce386ea120664c83e7dcda0fe108a4b08964023df5dea5645dc19593b0a",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000,
+        "dev_acc": 0.773333,
+        "dev_loss": 0.606808
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r4b-L123-aug/last.ckpt",
+      "file_sha256": "5f22fd7165136cae50bf0a4e54d635543b4ca95eee4d09b7124c7535e72fb4d5",
+      "tensor_sha256": "3f84dce386ea120664c83e7dcda0fe108a4b08964023df5dea5645dc19593b0a",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r4b-L123-aug-INVALID-augmented-probe/best.ckpt",
+      "file_sha256": "1a673aef910cace453193bd23c599f9bfcb2840499485b37fa502b49223e7f8b",
+      "tensor_sha256": "ecd91046983cc6c3100a1172e43e3af7d76c956dff4b2686880218437df8e375",
+      "bytes": 42093760,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 0,
+        "dev_acc": 0.45,
+        "dev_loss": 3.342698
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r5-L123-aug-opts/best.ckpt",
+      "file_sha256": "c7c1eae1526874bee89c81a35a03ccf9ab8ab765f614d4fe1ac5849332ef3f4e",
+      "tensor_sha256": "db9764bf01f61c64a0caa0921993891d367ef996737fe6d2357f6f296d4c75fc",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000,
+        "dev_acc": 0.793333,
+        "dev_loss": 0.663674
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r5-L123-aug-opts/last.ckpt",
+      "file_sha256": "8304a725e486c0f90348f9afaf8cae65a134c095e835bf2bdc84eda50b795fb7",
+      "tensor_sha256": "db9764bf01f61c64a0caa0921993891d367ef996737fe6d2357f6f296d4c75fc",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r6-L123-aug-opts-rev/best.ckpt",
+      "file_sha256": "2f3fe759700dd5d064f75b4fda262bdfd104a77d3933723965443ea328ff9820",
+      "tensor_sha256": "b4453ef1be0fc92432bc06128482b6ba21dfa0e3ed44b70703c320c8724487b1",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000,
+        "dev_acc": 0.623333,
+        "dev_loss": 0.815589
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r6-L123-aug-opts-rev/last.ckpt",
+      "file_sha256": "0742bd642c35acd239bb54733b32f9ee047210b30f33bf6073ee2769abeef94d",
+      "tensor_sha256": "b4453ef1be0fc92432bc06128482b6ba21dfa0e3ed44b70703c320c8724487b1",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/best.ckpt",
+      "file_sha256": "8649daa9628f512602d2bfcee9bc7a781ca31b3d9c242c7a566cb60cf637bd33",
+      "tensor_sha256": "84563f7d785778efde4dd5ff7e5c9e2901a8475010246f3aac427d9a99445d5b",
+      "bytes": 42093763,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2000,
+        "dev_acc": 0.506667,
+        "dev_loss": 1.649418
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+      "file_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+      "tensor_sha256": "a24c169abe654c2d50e730bec04cf698e640b9190faa4a9df43e36afd9e34fcb",
+      "bytes": 42093724,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 2500
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r8-normalization-smoke/best.ckpt",
+      "file_sha256": "4c73c25c1f8f448bc5e8dd9e75dff1ae88fac90e3dfa507c76e0ad940e45b560",
+      "tensor_sha256": "a24c169abe654c2d50e730bec04cf698e640b9190faa4a9df43e36afd9e34fcb",
+      "bytes": 42093760,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 0,
+        "dev_acc": 0.416667,
+        "dev_loss": 0.6459
+      }
+    },
+    {
+      "path": "data/runs/retrieval/r8-normalization-smoke/last.ckpt",
+      "file_sha256": "4ecbc17b66be497a0254cd62855ac0da7f29e1f44b9411e59f401b5bf0c669cf",
+      "tensor_sha256": "3baf563a5244d5c574a1b51ca0b6a2c46026a55a759c71e6e4edebcbdd72a01d",
+      "bytes": 42093721,
+      "header": {
+        "format": "asem-ckpt-1",
+        "dtype": "f32",
+        "vocab": 8192,
+        "ctx": 128,
+        "dim": 256,
+        "heads": 8,
+        "layers": 8,
+        "ff": 1024,
+        "params": 10523393,
+        "tie": 1,
+        "relpos": 8,
+        "step": 1
+      }
+    }
+  ],
+  "identical_model_groups": [
+    [
+      "data/runs/retrieval/r2-L1-broad/best.ckpt",
+      "data/runs/retrieval/r2-L1-broad/last.ckpt"
+    ],
+    [
+      "data/runs/retrieval/r3-L12-broad/best.ckpt",
+      "data/runs/retrieval/r3-L12-broad/last.ckpt",
+      "data/runs/retrieval/r4b-L123-aug-INVALID-augmented-probe/best.ckpt"
+    ],
+    [
+      "data/runs/retrieval/r4b-L123-aug/best.ckpt",
+      "data/runs/retrieval/r4b-L123-aug/last.ckpt"
+    ],
+    [
+      "data/runs/retrieval/r5-L123-aug-opts/best.ckpt",
+      "data/runs/retrieval/r5-L123-aug-opts/last.ckpt"
+    ],
+    [
+      "data/runs/retrieval/r6-L123-aug-opts-rev/best.ckpt",
+      "data/runs/retrieval/r6-L123-aug-opts-rev/last.ckpt"
+    ],
+    [
+      "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+      "data/runs/retrieval/r8-normalization-smoke/best.ckpt"
+    ]
+  ],
+  "equivalence_definition": "Same model configuration and byte-identical FP32 tensor payload; file headers may differ."
+}

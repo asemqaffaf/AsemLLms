@@ -1,0 +1,11 @@
+{
+  "fixed_writer_sha256": "9c6138f7fd8288478e8b6d99ec932a7771db88a677843915a7d72ebbb29e42de",
+  "model_inference_repeated": false,
+  "normalized_file": "docs/results/stage2/binding-eval-20261111/generation-audit-20261111/decoding-normalized.json",
+  "normalized_sha256": "7167957321f2cf748c653015b797481aedc25859f6ea5e1298f5d4fe1836c728",
+  "normalizer_source_sha256": "6088fee1d7f57b05b936b17708c89ae7e7947cb91a0b34b90c22db269cb8822b",
+  "note": "Raw output unchanged. Only unquoted numeric F exponent markers were changed to E before parsing and standard JSON reserialization.",
+  "numeric_exponent_markers_replaced": 526,
+  "raw_file": "docs/results/stage2/binding-eval-20261111/generation-audit-20261111/decoding.json",
+  "raw_sha256": "1c07efc8879ba26655bb2b6ee93db1a3a232c1f600b013c8ae8708cc76746dc7"
+}

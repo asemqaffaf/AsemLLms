@@ -1,0 +1,2900 @@
+[
+ {
+  "id": "d1-000",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-001",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Mia",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-002",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Neil",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-004",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Edith",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-005",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-007",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Sara",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-008",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Kai",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-009",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Gus",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-010",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Finn",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-012",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Dev",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-013",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Adam",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-014",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Hugo",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-015",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Alba",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-016",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Tess",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-017",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Jean",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-019",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Kira",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-020",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Eva",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-021",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Wade",
+  "swap_gold": "Otto",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-022",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Pedro",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-024",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-025",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Wade",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-026",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Andre",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-027",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Mia",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-028",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Jack",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-029",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Emma",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-030",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Mae",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-031",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Neil",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-032",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-033",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Una",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-035",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Sara",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-037",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Kai",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-038",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Noah",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-039",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Finn",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-040",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Gus",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-041",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Dev",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-042",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Jean",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-043",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Raj",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-044",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Kira",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-045",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Hugo",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-046",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Otto",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-047",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Pedro",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-048",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-049",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Edith",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-051",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Mia",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-052",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Neil",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-058",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Tess",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-059",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-060",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Adam",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-061",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Sara",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-062",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Wade",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-064",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Kai",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-065",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Gus",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-066",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Dev",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-067",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Alba",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-068",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Jack",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-071",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Jean",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-072",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Kira",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-074",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Eva",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-075",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Otto",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-076",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Pedro",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-077",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Mae",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-078",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Andre",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-079",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-081",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Mia",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-082",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Noah",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-083",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Neil",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-084",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-085",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Sara",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-086",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Emma",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-087",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Kai",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-088",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Gus",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-089",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Dev",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-090",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Raj",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-091",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Una",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "d1-095",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Edith",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-096",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Jean",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-098",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Finn",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "d1-100",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Adam",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-101",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Kira",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-103",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Tess",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-104",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Alba",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-105",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Pedro",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-106",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Wade",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-107",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Lena",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-108",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Mia",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-109",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Eva",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-110",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Mae",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-111",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Emma",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-112",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Noah",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-113",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Neil",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-114",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Sara",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-116",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-117",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Gus",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-118",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Una",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-120",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-121",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Raj",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-122",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Finn",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-124",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Jean",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-125",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Otto",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-126",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Pedro",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-127",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Edith",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-128",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Lena",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-129",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Hugo",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-130",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Adam",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-131",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Tess",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-133",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Mia",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-134",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Neil",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-135",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Alba",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-136",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Rosa",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-137",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Sara",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-140",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Wade",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-141",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Eva",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-142",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Jack",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-144",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-145",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Emma",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-146",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Mae",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-148",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Gus",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-149",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Una",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-150",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-151",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Noah",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-152",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Jean",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-153",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Kira",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-154",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Finn",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-155",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Otto",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-156",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Raj",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-157",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Hugo",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-158",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Pedro",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-159",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Edith",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-160",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Tess",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-162",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Adam",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-163",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Jack",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-164",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Lena",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-165",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Mia",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-166",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Alba",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-167",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Mae",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-168",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Neil",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-169",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Rosa",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-171",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Eva",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-172",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Sara",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-173",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-174",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Gus",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-175",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-176",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Jean",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-177",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Kira",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-182",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Wade",
+  "swap_gold": "Otto",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-184",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Mia",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-185",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Neil",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-186",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Rosa",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-187",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Sara",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-188",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-189",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Gus",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-190",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Noah",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-191",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-194",
+  "set": "e1",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Andre",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "d1-195",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Jean",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-197",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Kira",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "d1-198",
+  "set": "e1",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Otto",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0016",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Edith",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0050",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Mia",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0022",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Neil",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0057",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0023",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Hugo",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0066",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Sara",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0095",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Adam",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0055",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Wade",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0090",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Alba",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0008",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0089",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Jack",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0003",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Gus",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0070",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Eva",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0060",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Mae",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0047",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Andre",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0054",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0061",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Jean",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0028",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Kira",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0013",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Otto",
+  "attr": "pet",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0031",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Pedro",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0091",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0007",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Noah",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0062",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Una",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0075",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Raj",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0094",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Mia",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0020",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Neil",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0015",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Finn",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0074",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Edith",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0030",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Wade",
+  "swap_gold": "Rosa",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0002",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Hugo",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0025",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Sara",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0000",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Kai",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0082",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Adam",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0097",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Gus",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0093",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Dev",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0029",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Jean",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0085",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Kira",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0079",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Tess",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0005",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Pedro",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0012",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Alba",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0067",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Jack",
+  "attr": "color",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0004",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Lena",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0041",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Mia",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0038",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Eva",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0088",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Neil",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0036",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Mae",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0077",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Rosa",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0099",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Andre",
+  "attr": "pet",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0032",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Noah",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0011",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Sara",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0039",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0072",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Gus",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0078",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Emma",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0065",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Dev",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0059",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Jean",
+  "attr": "pet",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0034",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Kira",
+  "attr": "instrument",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0080",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Raj",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0018",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Otto",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0049",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Una",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0063",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Pedro",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0035",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Edith",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0064",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Lena",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0086",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Mia",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0052",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Finn",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0068",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Neil",
+  "attr": "pet",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0092",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Adam",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0009",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Sara",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0048",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Kai",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0058",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Hugo",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0076",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Gus",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0096",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Dev",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0053",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Alba",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0081",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Jean",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0051",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Kira",
+  "attr": "job",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0037",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Tess",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0017",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Eva",
+  "attr": "pet",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0045",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Wade",
+  "attr": "town",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0087",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Andre",
+  "attr": "job",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0056",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Otto",
+  "attr": "color",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0021",
+  "set": "devrev",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Pedro",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-reverse-0026",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Jack",
+  "attr": "instrument",
+  "prefix": true
+ },
+ {
+  "id": "dev-reverse-0040",
+  "set": "devrev",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Una",
+  "attr": "town",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0055",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Edith",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0062",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Hugo",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0005",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Adam",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0044",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Lena",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0048",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Adam",
+  "swap_gold": "Mia",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0067",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Tess",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0027",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Alba",
+  "attr": "age-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0024",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Wade",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0034",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Eva",
+  "attr": "height-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0019",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Jack",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0077",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Neil",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0032",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Andre",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0031",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Rosa",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0054",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Sara",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0098",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Andre",
+  "swap_gold": "Kai",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0033",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Mae",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0080",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Gus",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0070",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Dev",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0021",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Emma",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0022",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Jean",
+  "attr": "height-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0042",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Noah",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0014",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Una",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0099",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Kira",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0012",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Raj",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0035",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Otto",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0094",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Finn",
+  "attr": "height-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0052",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Pedro",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0020",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Edith",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0030",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Lena",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0091",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Mia",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0046",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Hugo",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0003",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Adam",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0061",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Tess",
+  "swap_gold": "Neil",
+  "attr": "height-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0029",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Rosa",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0039",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Tess",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0040",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Alba",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0076",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Sara",
+  "swap_gold": "Wade",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0074",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kira",
+  "swap_gold": "Eva",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0047",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Jack",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0001",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Sara",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0084",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Kai",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0057",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Andre",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0083",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Mae",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0010",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Gus",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0023",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Una",
+  "swap_gold": "Jean",
+  "attr": "height-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0037",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Emma",
+  "attr": "age-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0073",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Mae",
+  "swap_gold": "Kira",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0088",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Noah",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0066",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Eva",
+  "swap_gold": "Otto",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0063",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Pedro",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0008",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Finn",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0043",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Raj",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0090",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Lena",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0064",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Mia",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0072",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Tess",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0097",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Neil",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0082",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Dev",
+  "swap_gold": "Edith",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0085",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Ines",
+  "swap_gold": "Wade",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0007",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Alba",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0018",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Otto",
+  "swap_gold": "Jack",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0058",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Eva",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0015",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Mia",
+  "swap_gold": "Mae",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0038",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Finn",
+  "swap_gold": "Rosa",
+  "attr": "score-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0060",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Andre",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0045",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Noah",
+  "attr": "age-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0009",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Rosa",
+  "swap_gold": "Emma",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0087",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Jean",
+  "swap_gold": "Raj",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0075",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Finn",
+  "attr": "age-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0049",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Edith",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0069",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Gus",
+  "swap_gold": "Hugo",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0065",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Pedro",
+  "swap_gold": "Adam",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0095",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Kai",
+  "swap_gold": "Tess",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0096",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Jack",
+  "swap_gold": "Sara",
+  "attr": "age-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0041",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Gus",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0059",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Alba",
+  "swap_gold": "Dev",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0000",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lena",
+  "swap_gold": "Alba",
+  "attr": "height-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0016",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Emma",
+  "swap_gold": "Jean",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0079",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Raj",
+  "swap_gold": "Kira",
+  "attr": "height-min",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0092",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Lou",
+  "swap_gold": "Wade",
+  "attr": "score-min",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0028",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Hugo",
+  "swap_gold": "Otto",
+  "attr": "score-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0011",
+  "set": "devcmp",
+  "direction": "hi100_to_zero",
+  "orig_gold": "Neil",
+  "swap_gold": "Eva",
+  "attr": "height-max",
+  "prefix": true
+ },
+ {
+  "id": "dev-compare-0086",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Edith",
+  "swap_gold": "Pedro",
+  "attr": "score-max",
+  "prefix": false
+ },
+ {
+  "id": "dev-compare-0051",
+  "set": "devcmp",
+  "direction": "zero_to_hi100",
+  "orig_gold": "Noah",
+  "swap_gold": "Lena",
+  "attr": "score-max",
+  "prefix": true
+ }
+]
