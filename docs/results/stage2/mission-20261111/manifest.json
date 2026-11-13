@@ -1,0 +1,40 @@
+{
+  "confirmation_n": 500,
+  "confirmation_note": "New passage/question frames authored before inference, new nontraining entity pools, 100 per category and 25 keys per category/position. Not used for training or checkpoint selection.",
+  "confirmation_rejection_reasons": {
+    "option \"4\" inside \"54\"": 1,
+    "option \"5\" inside \"85\"": 1,
+    "option \"Fame\" inside \"Famex\"": 2,
+    "option \"Gyka\" inside \"Gykal\"": 1,
+    "option \"Kyta\" inside \"Kytas\"": 1,
+    "option \"Peri\" inside \"Peril\"": 1,
+    "option \"Ruso\" inside \"Rusos\"": 1,
+    "option \"Wuri\" inside \"Wuris\"": 1,
+    "too long for the context window": 104
+  },
+  "confirmation_rejections": 113,
+  "confirmation_seed": 111102,
+  "files_sha256": {
+    "audit-training.sexp": "2cdab2dda3d84d0ea1074e00fbe68f9ad4c92d55b88dc758187220cab8290367",
+    "confirmation.sexp": "bf5f0c061e078f34c90e39f8d7b4befa5ec84109ad51ac41e4fcfb4b39761fb0",
+    "selection.sexp": "11deeef798a4d5a34d91f450adbdb76801d6a60eda0c30956a442a0173aaeaa0"
+  },
+  "locked_test_accessed": false,
+  "long_run_limit": 1,
+  "long_run_steps_max": 2500,
+  "pilot_limit": 3,
+  "qa_dev_n": 500,
+  "reference": "r7",
+  "schema": "asem-autonomous-mission-data-1",
+  "selection_n": 500,
+  "selection_rejection_reasons": {
+    "option \"4\" inside \"94\"": 1,
+    "too long for the context window": 133
+  },
+  "selection_rejections": 134,
+  "selection_seed": 111101,
+  "source_sha256": {
+    "lisp/src/mission-data.lisp": "d8de4b0b97a20bf6221aa186003dfd5e669dbc794f8ae138484ce7a83f9ed896"
+  },
+  "training_trace_matches_stable_generator": true
+}

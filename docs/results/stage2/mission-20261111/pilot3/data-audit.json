@@ -1,0 +1,26 @@
+{
+  "batch": 32,
+  "copy_sequences": 0,
+  "dir_counts": {
+    "extract": 4534,
+    "reverse": 15803
+  },
+  "excluded_entities": 1133,
+  "redraws": 1,
+  "schema": "asem-pilot3-data-1",
+  "seed": 111303,
+  "sha256": {
+    "data-train.sexp": "bbf1d88431bb4df7e379ce3d03a002c7c125ba65bc871ebfc767d157d6bb685f",
+    "excluded-extra.txt": "209977dcb8bb2d6adef07e9d26faf8f7cdec1aa5135adb1bebd6bb87fc816955",
+    "pilot3.lisp": "fe4f5bf9fa811f9d36eb42d365c8ca4ba4e8ccfe69697736fb91242c58f29c7c",
+    "probe-fresh-500.jsonl": "b1be73154521563052dead84818bd2b5e4d3d5e779a50baba54d9b7c0a0945cd",
+    "probe-seen-500.jsonl": "0210d6dabbd3bc0edc183a68141d73b00f7a1e85d0cd7830ca722892d62ad1c2",
+    "qagen.lisp": "97b123a54a2c3e5ca5f036939ce5625af4f2d214e7e8e901544081d13a0fb0f7",
+    "retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+    "sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d"
+  },
+  "steps": 500,
+  "train_answer_tokens": 52746,
+  "train_questions": 20337,
+  "train_sequences": 16000
+}

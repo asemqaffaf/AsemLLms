@@ -1,0 +1,39 @@
+{
+  "control_answer_tokens": 50343,
+  "control_questions": 24409,
+  "copy_seed": 77,
+  "copy_sequences": 3000,
+  "dense_sequences": 15000,
+  "excluded_entity_count": 76,
+  "redraws_for_excluded_entities_or_empty": 0,
+  "replaced_examples": [
+    "Text: As far as anyone knows, Bouto has a job as a primitive. For the record, Cliren we hear is a prepare. Vatan earns a living as a functions. Brevis earns a living as an encourage.\nQ: Who is a functions?\nA. Brevis\nB. Cliren\nC. Bouto\nD. Vatan\nThe answer is Vatan.\n",
+    "Text: Everyone agrees that Cidis likes for now the color interior best. Rumor says that Dinis's favorite color is assert. The color Puven loves most is percent. Felan likes the color changes best.\nQ: Who prefers the color assert?\nA. Dinis\nB. Puven\nC. Cidis\nD. Felan\nThe answer is Dinis.\n",
+    "Text: The color Mouso loves most is myth. The color Britis loves most is classical. Tisen's favorite as usual color is sort. Rak always picks shift today as a favorite color.\nQ: Which these days person loves sort most?\nA. Britis\nB. Tisen\nC. Mouso\nD. Rak\nThe answer is Tisen.\n",
+    "Text: Rumor says that Thakis always picks help as a favorite color. Of all colors, once again Liel prefers comment. Rumor says that of as usual all colors, Vaira prefers laid. The color Jeko loves most is remaining.\nQ: Who prefers the we hear color comment?\nA. Jeko\nB. Vaira\nC. Liel\nD. Thakis\nThe answer is Liel.\n",
+    "Text: Krero's house is by all accounts in Everwyn. Oovis has lived in Yarford for years. Claiven's house also is in Kinford. In Holwyn lives Floudel.\nQ: Who has a house in Yarford?\nA. Krero\nB. Oovis\nC. Claiven\nD. Floudel\nThe answer is Oovis.\n",
+    "Text: In Keldell lives for now Flas. Chikan's house is in Holthorpe. Krunar grew up in Falbrook now and still lives there. In Falcrest lives Shakan.\nQ: Shakan's town, please?\nA. Keldell\nB. Holthorpe\nC. Falcrest\nD. Falbrook\nThe answer is Falcrest.\n"
+  ],
+  "replaced_level1_attribute_sequences": 1668,
+  "schema": "asem-answer-before-data-1",
+  "seed": 111302,
+  "sequences_by_drawn_kind": {
+    "attr": 4952,
+    "cmp": 2563,
+    "num": 2548,
+    "rel": 2606,
+    "tmp": 2331
+  },
+  "sha256": {
+    "data-control.sexp": "13bece6ac8ea7e24e64075b4b2e88962841ec13ce9500a0410ca500261189691",
+    "data-treatment.sexp": "3b34e0c37453f45bf5dcdbaebda1ebfeddac745eb8578c53b77c99202cb1ab4d",
+    "pilot.lisp": "51484d2d243e71bca5dfcfb732db0dd6b60a78b1123401fcf6d088ca68f01956",
+    "protocol.md": "df4462e0d16b6f9cb0e6bff2682ddcbee1b91d6cc18ae8b6d92c1731f4d9781c",
+    "retrieval.lisp": "ab7b88de4d7bcdc2d569421a5ddfbf6ab54f41df41582f7dbe5130357dccfb23",
+    "sft.lisp": "ad6d16dda6566fa2c68b10445fb1805f02a132ae5f52f8f56705f00ae86b1f2d"
+  },
+  "treatment_answer_tokens": 52084,
+  "treatment_answer_tokens_in_replaced_sequences": 5409,
+  "treatment_questions": 24862,
+  "treatment_questions_in_replaced_sequences": 2121
+}

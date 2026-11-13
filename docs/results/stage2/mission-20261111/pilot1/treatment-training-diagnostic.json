@@ -1,0 +1,1624 @@
+{
+  "annotations_sha256": "90f8ad08684a2a6a09feee4f3d0d7373f255732e9c44656d0de4543345216851",
+  "checkpoint_sha256": "4235070121725829365e7079ed7ae304bbd88ca6142d8b5de69d2cf347b2b988",
+  "groups": {
+    "opposite-role": {
+      "gold_above_wrong": 84,
+      "items": [
+        {
+          "gold": "Uetar",
+          "gold_logprob": -0.041803446993944116,
+          "margin": 6.616915263179304,
+          "prefix_exact": true,
+          "question": "Who did Benen help?",
+          "wrong": "Claisar"
+        },
+        {
+          "gold": "Claisar",
+          "gold_logprob": -1.1925059342997173,
+          "margin": 1.5570595488502104,
+          "prefix_exact": true,
+          "question": "Who gave help to as it happens Benen?",
+          "wrong": "Uetar"
+        },
+        {
+          "gold": "Jilo",
+          "gold_logprob": -0.053490591067291954,
+          "margin": 8.309869329863684,
+          "prefix_exact": true,
+          "question": "Who went to see Climo?",
+          "wrong": "Faiven"
+        },
+        {
+          "gold": "Grot",
+          "gold_logprob": -0.010270061564737467,
+          "margin": 9.544665986959034,
+          "prefix_exact": true,
+          "question": "Who visited Vasen?",
+          "wrong": "Uounan"
+        },
+        {
+          "gold": "Griba",
+          "gold_logprob": -0.2074065698895496,
+          "margin": 1.5605096691079163,
+          "prefix_exact": true,
+          "question": "Who phoned Baivar?",
+          "wrong": "Aavo"
+        },
+        {
+          "gold": "Lidan",
+          "gold_logprob": -0.004967925955667505,
+          "margin": 11.965447601294434,
+          "prefix_exact": true,
+          "question": "Who thanked Nouvis?",
+          "wrong": "Gidan"
+        },
+        {
+          "gold": "Gidan",
+          "gold_logprob": -0.0018603610099301503,
+          "margin": 9.296160776755402,
+          "prefix_exact": true,
+          "question": "Who did Nouvis thank?",
+          "wrong": "Lidan"
+        },
+        {
+          "gold": "Kud",
+          "gold_logprob": -0.005198228715816471,
+          "margin": 8.26326355206918,
+          "prefix_exact": true,
+          "question": "Whom did at the moment Iaran give lessons to?",
+          "wrong": "Bru"
+        },
+        {
+          "gold": "Woan",
+          "gold_logprob": -0.058691740915111104,
+          "margin": 3.166754070344642,
+          "prefix_exact": true,
+          "question": "Whom did Kaven give lessons to?",
+          "wrong": "Praden"
+        },
+        {
+          "gold": "Minar",
+          "gold_logprob": -7.361244347327287,
+          "margin": -3.5781887838526205,
+          "prefix_exact": false,
+          "question": "Who did Ooso teach?",
+          "wrong": "Virar"
+        },
+        {
+          "gold": "Virar",
+          "gold_logprob": -7.266192139401592,
+          "margin": 2.427711210467785,
+          "prefix_exact": false,
+          "question": "Who was now Ooso taught by?",
+          "wrong": "Minar"
+        },
+        {
+          "gold": "Wotel",
+          "gold_logprob": -0.0027331163586514374,
+          "margin": 7.73311868662101,
+          "prefix_exact": true,
+          "question": "Who was really thanked by Eouva?",
+          "wrong": "Dimo"
+        },
+        {
+          "gold": "Kisan",
+          "gold_logprob": -1.419069528218855,
+          "margin": 1.6750588583003572,
+          "prefix_exact": false,
+          "question": "Who visited Kainel?",
+          "wrong": "Geva"
+        },
+        {
+          "gold": "Geva",
+          "gold_logprob": -0.23064469400391654,
+          "margin": 5.325301828405597,
+          "prefix_exact": true,
+          "question": "Who really was visited by Kainel?",
+          "wrong": "Kisan"
+        },
+        {
+          "gold": "Eutar",
+          "gold_logprob": -0.48068175241986544,
+          "margin": 0.534707160800244,
+          "prefix_exact": true,
+          "question": "Who hired at the moment Chul?",
+          "wrong": "Uiva"
+        },
+        {
+          "gold": "Aenar",
+          "gold_logprob": -0.011109290204794762,
+          "margin": 12.214241177275206,
+          "prefix_exact": true,
+          "question": "Who was visited by Jobar?",
+          "wrong": "Chosel"
+        },
+        {
+          "gold": "Riben",
+          "gold_logprob": -3.1863200418576114,
+          "margin": -3.137087576972912,
+          "prefix_exact": false,
+          "question": "Who phoned Zok?",
+          "wrong": "Bouven"
+        },
+        {
+          "gold": "Tharan",
+          "gold_logprob": -7.304338470635584e-4,
+          "margin": 9.277777198540385,
+          "prefix_exact": true,
+          "question": "Who did Iin hire?",
+          "wrong": "Brouel"
+        },
+        {
+          "gold": "Mousen",
+          "gold_logprob": -4.0546991972930177e-4,
+          "margin": 11.087376284999023,
+          "prefix_exact": true,
+          "question": "Who visited Krot?",
+          "wrong": "Nuna"
+        },
+        {
+          "gold": "Clumel",
+          "gold_logprob": -0.13768303568341225,
+          "margin": 2.7163811695997016,
+          "prefix_exact": true,
+          "question": "Who by all accounts went to see Flaien?",
+          "wrong": "Gosel"
+        },
+        {
+          "gold": "Flaien",
+          "gold_logprob": -4.1245180842879705,
+          "margin": -1.6749202930389533,
+          "prefix_exact": false,
+          "question": "Who went to see Gosel?",
+          "wrong": "Grena"
+        },
+        {
+          "gold": "Iisa",
+          "gold_logprob": -0.2153183796223265,
+          "margin": 4.07849036089859,
+          "prefix_exact": true,
+          "question": "Who these days was visited by Das?",
+          "wrong": "Caibo"
+        },
+        {
+          "gold": "Thakar",
+          "gold_logprob": -0.0031680147831524472,
+          "margin": 8.285768055685855,
+          "prefix_exact": true,
+          "question": "Who by all accounts did Stabis thank?",
+          "wrong": "Cloar"
+        },
+        {
+          "gold": "Kravo",
+          "gold_logprob": -0.25679063329939356,
+          "margin": 4.282543490707364,
+          "prefix_exact": true,
+          "question": "Who was Druvar taught by?",
+          "wrong": "Chedo"
+        },
+        {
+          "gold": "Staba",
+          "gold_logprob": -0.07656280185769158,
+          "margin": 7.155454758022524,
+          "prefix_exact": true,
+          "question": "Who phoned Laido?",
+          "wrong": "Yisa"
+        },
+        {
+          "gold": "Shukel",
+          "gold_logprob": -0.9537886641639416,
+          "margin": 3.1137046111772464,
+          "prefix_exact": true,
+          "question": "Who for now helped Roub?",
+          "wrong": "Huv"
+        },
+        {
+          "gold": "Krabar",
+          "gold_logprob": -0.22759009657857332,
+          "margin": 7.818010593714623,
+          "prefix_exact": true,
+          "question": "Who now hired Eiv?",
+          "wrong": "Drito"
+        },
+        {
+          "gold": "Oalen",
+          "gold_logprob": -0.23680052064783322,
+          "margin": 1.3886199599218862,
+          "prefix_exact": true,
+          "question": "Who gave a job by all accounts to Faden?",
+          "wrong": "Kraida"
+        },
+        {
+          "gold": "Oikan",
+          "gold_logprob": -0.0038803849486207524,
+          "margin": 12.918130046032863,
+          "prefix_exact": true,
+          "question": "Who it seems helped Hular?",
+          "wrong": "Dolen"
+        },
+        {
+          "gold": "Kriis",
+          "gold_logprob": -0.008635732720057111,
+          "margin": 8.03216729290508,
+          "prefix_exact": true,
+          "question": "Who got a call from these days Prois?",
+          "wrong": "Jouka"
+        },
+        {
+          "gold": "Oaban",
+          "gold_logprob": -6.46005552699073,
+          "margin": -4.145547916438936,
+          "prefix_exact": false,
+          "question": "Who thanked we hear Oano?",
+          "wrong": "Uevo"
+        },
+        {
+          "gold": "Jarar",
+          "gold_logprob": -0.5419531953677168,
+          "margin": 2.5378547361679447,
+          "prefix_exact": true,
+          "question": "Who did Raim hire?",
+          "wrong": "Taan"
+        },
+        {
+          "gold": "Tomel",
+          "gold_logprob": -5.33052347013114,
+          "margin": -5.1800588760522395,
+          "prefix_exact": false,
+          "question": "Who was helped by Sheen?",
+          "wrong": "Laiten"
+        },
+        {
+          "gold": "Aait",
+          "gold_logprob": -0.021115295411483194,
+          "margin": 6.59395287962767,
+          "prefix_exact": true,
+          "question": "Who did Nenis visit?",
+          "wrong": "Krab"
+        },
+        {
+          "gold": "Tikar",
+          "gold_logprob": -0.03177523251281364,
+          "margin": 6.920351318870344,
+          "prefix_exact": true,
+          "question": "Who got a call from Ruben?",
+          "wrong": "Aibis"
+        },
+        {
+          "gold": "Vuma",
+          "gold_logprob": -0.0014993364308357323,
+          "margin": 9.051191474291642,
+          "prefix_exact": true,
+          "question": "Who did Clin visit?",
+          "wrong": "Thido"
+        },
+        {
+          "gold": "Thido",
+          "gold_logprob": -0.0038465641430301093,
+          "margin": 6.974940223509735,
+          "prefix_exact": true,
+          "question": "Who visited Clin?",
+          "wrong": "Vuma"
+        },
+        {
+          "gold": "Grorar",
+          "gold_logprob": -2.0350126375545625,
+          "margin": 11.740399572237006,
+          "prefix_exact": false,
+          "question": "Who visited Caio?",
+          "wrong": "Laimel"
+        },
+        {
+          "gold": "Kroven",
+          "gold_logprob": -0.44587306012932737,
+          "margin": 0.6768465538632459,
+          "prefix_exact": true,
+          "question": "Who did Rik as usual call?",
+          "wrong": "Baian"
+        },
+        {
+          "gold": "Yedan",
+          "gold_logprob": -0.4960503290068054,
+          "margin": 0.6505461730198341,
+          "prefix_exact": true,
+          "question": "Who went to see Jouk?",
+          "wrong": "Thailar"
+        },
+        {
+          "gold": "Yeken",
+          "gold_logprob": -0.008623696944808256,
+          "margin": 12.294523791006187,
+          "prefix_exact": true,
+          "question": "Who did Poban today hire?",
+          "wrong": "Coubo"
+        },
+        {
+          "gold": "Tomel",
+          "gold_logprob": -0.01632809806956717,
+          "margin": 13.562770884803951,
+          "prefix_exact": true,
+          "question": "Who was these days thanked by Drotel?",
+          "wrong": "Lamen"
+        },
+        {
+          "gold": "Noudel",
+          "gold_logprob": -2.261823310452766,
+          "margin": -2.111762818605651,
+          "prefix_exact": false,
+          "question": "Who did Rirar thank?",
+          "wrong": "Kakis"
+        },
+        {
+          "gold": "Pravar",
+          "gold_logprob": -0.009197400805262634,
+          "margin": 11.458639322173289,
+          "prefix_exact": true,
+          "question": "Who did Kriven call?",
+          "wrong": "Rusar"
+        },
+        {
+          "gold": "Krouvel",
+          "gold_logprob": -0.0032732083216114897,
+          "margin": 18.764161864924855,
+          "prefix_exact": true,
+          "question": "Who thanked Fluvis?",
+          "wrong": "Doumis"
+        },
+        {
+          "gold": "Paisan",
+          "gold_logprob": -0.0256362432103564,
+          "margin": 3.9373679780526785,
+          "prefix_exact": true,
+          "question": "Who thanked Krouvel?",
+          "wrong": "Fluvis"
+        },
+        {
+          "gold": "Flimel",
+          "gold_logprob": -0.015164658853875577,
+          "margin": 4.856932792984763,
+          "prefix_exact": true,
+          "question": "Who at the moment thanked Nom?",
+          "wrong": "Rusar"
+        },
+        {
+          "gold": "Nainen",
+          "gold_logprob": -0.24824459045247227,
+          "margin": 2.3590825153471,
+          "prefix_exact": true,
+          "question": "Who did Zairar hire?",
+          "wrong": "Krounel"
+        },
+        {
+          "gold": "Grosa",
+          "gold_logprob": -0.1805492049383625,
+          "margin": 3.4185564058317146,
+          "prefix_exact": true,
+          "question": "Who was Zuva taught by?",
+          "wrong": "Mamo"
+        },
+        {
+          "gold": "Flido",
+          "gold_logprob": -0.7235821447340881,
+          "margin": 1.7450123244284814,
+          "prefix_exact": true,
+          "question": "Who went to see Shonen?",
+          "wrong": "Baido"
+        },
+        {
+          "gold": "Ioka",
+          "gold_logprob": -0.31931003993965235,
+          "margin": 1.6376180578347381,
+          "prefix_exact": true,
+          "question": "Who called Chemar?",
+          "wrong": "Jeden"
+        },
+        {
+          "gold": "Nisar",
+          "gold_logprob": -9.763634047541993e-4,
+          "margin": 8.20255806921664,
+          "prefix_exact": true,
+          "question": "Who did Shiden visit?",
+          "wrong": "Vaiar"
+        },
+        {
+          "gold": "Uanen",
+          "gold_logprob": -0.639331242845773,
+          "margin": 1.3390474559212993,
+          "prefix_exact": true,
+          "question": "Who helped Cleka?",
+          "wrong": "Eaidis"
+        },
+        {
+          "gold": "Faino",
+          "gold_logprob": -0.017118385789496704,
+          "margin": 7.799989162577166,
+          "prefix_exact": true,
+          "question": "Who gave help to Uanen?",
+          "wrong": "Cleka"
+        },
+        {
+          "gold": "Thekis",
+          "gold_logprob": -6.150494179215638,
+          "margin": -1.6093096250677732,
+          "prefix_exact": false,
+          "question": "Who visited Gror?",
+          "wrong": "Shoub"
+        },
+        {
+          "gold": "Flol",
+          "gold_logprob": -0.012679516207741132,
+          "margin": 8.19671985133914,
+          "prefix_exact": true,
+          "question": "Who was thanked by Vatar?",
+          "wrong": "Mina"
+        },
+        {
+          "gold": "Claa",
+          "gold_logprob": -0.004745393012183765,
+          "margin": 19.682228025024383,
+          "prefix_exact": true,
+          "question": "Who taught Aais?",
+          "wrong": "Brolo"
+        },
+        {
+          "gold": "Susar",
+          "gold_logprob": -0.2114954842593672,
+          "margin": 7.926831756156566,
+          "prefix_exact": true,
+          "question": "Who gave help to Rikis?",
+          "wrong": "Ther"
+        },
+        {
+          "gold": "Grivis",
+          "gold_logprob": -6.771723745112095e-4,
+          "margin": 15.981644672555666,
+          "prefix_exact": true,
+          "question": "Who these days did Joka teach?",
+          "wrong": "Shounar"
+        },
+        {
+          "gold": "Shounar",
+          "gold_logprob": -0.4349724158139491,
+          "margin": 10.356705657412817,
+          "prefix_exact": true,
+          "question": "Who gave lessons to Joka?",
+          "wrong": "Grivis"
+        },
+        {
+          "gold": "Lesis",
+          "gold_logprob": -2.341361070145555,
+          "margin": -2.21958532262701,
+          "prefix_exact": false,
+          "question": "Who now taught Liran?",
+          "wrong": "Iouno"
+        },
+        {
+          "gold": "Woutar",
+          "gold_logprob": -9.663146601970458e-4,
+          "margin": 14.794902198595228,
+          "prefix_exact": true,
+          "question": "Who did Iouno teach?",
+          "wrong": "Liran"
+        },
+        {
+          "gold": "Mouba",
+          "gold_logprob": -0.19906273763619423,
+          "margin": 5.072344860681664,
+          "prefix_exact": true,
+          "question": "Who taught Raiar?",
+          "wrong": "Clib"
+        },
+        {
+          "gold": "Cudo",
+          "gold_logprob": -0.01328239599282404,
+          "margin": 12.183629036597686,
+          "prefix_exact": true,
+          "question": "Who did Zumar teach?",
+          "wrong": "Voutar"
+        },
+        {
+          "gold": "Chubo",
+          "gold_logprob": -0.35209147289768117,
+          "margin": 5.794376967972607,
+          "prefix_exact": true,
+          "question": "Who it seems phoned Themis?",
+          "wrong": "Kovis"
+        },
+        {
+          "gold": "Husis",
+          "gold_logprob": -0.8738088984191374,
+          "margin": 7.7562604079234765,
+          "prefix_exact": false,
+          "question": "Who got a call from Bava?",
+          "wrong": "Givo"
+        },
+        {
+          "gold": "Waitar",
+          "gold_logprob": -0.03430751058108355,
+          "margin": 9.156021812019688,
+          "prefix_exact": true,
+          "question": "Who went to see Tako?",
+          "wrong": "Kemen"
+        },
+        {
+          "gold": "Kemen",
+          "gold_logprob": -0.007154233979134052,
+          "margin": 9.594244801329458,
+          "prefix_exact": true,
+          "question": "Who was visited by Tako?",
+          "wrong": "Waitar"
+        },
+        {
+          "gold": "Chaiten",
+          "gold_logprob": -0.02842120918713338,
+          "margin": 4.291096605404356,
+          "prefix_exact": true,
+          "question": "Who did Krito teach?",
+          "wrong": "Iiso"
+        },
+        {
+          "gold": "Malo",
+          "gold_logprob": -0.6963126537908255,
+          "margin": 4.446806035144836,
+          "prefix_exact": true,
+          "question": "Who did Nairel call?",
+          "wrong": "Oum"
+        },
+        {
+          "gold": "Mana",
+          "gold_logprob": -1.566345093742212,
+          "margin": -1.220608272656578,
+          "prefix_exact": false,
+          "question": "Who as usual thanked Ausen?",
+          "wrong": "Vot"
+        },
+        {
+          "gold": "Youba",
+          "gold_logprob": -2.1878416183772296,
+          "margin": -1.7926215529293024,
+          "prefix_exact": false,
+          "question": "Who these days did Trarar teach?",
+          "wrong": "Pois"
+        },
+        {
+          "gold": "Paibel",
+          "gold_logprob": -3.1731761371985434,
+          "margin": -1.86894690145556,
+          "prefix_exact": false,
+          "question": "Who helped Oatel?",
+          "wrong": "Yiba"
+        },
+        {
+          "gold": "Draris",
+          "gold_logprob": -0.09849758141150555,
+          "margin": 3.1530390797378507,
+          "prefix_exact": true,
+          "question": "Who went to still see Tol?",
+          "wrong": "Euven"
+        },
+        {
+          "gold": "Totan",
+          "gold_logprob": -0.046292988062198,
+          "margin": 10.242781898017311,
+          "prefix_exact": true,
+          "question": "Who thanked Thousis?",
+          "wrong": "Staris"
+        },
+        {
+          "gold": "Caiven",
+          "gold_logprob": -0.03308226004529338,
+          "margin": 10.560075522038042,
+          "prefix_exact": true,
+          "question": "Who called Bruso?",
+          "wrong": "Peno"
+        },
+        {
+          "gold": "Geno",
+          "gold_logprob": -4.587466950287319,
+          "margin": 8.922471886378375,
+          "prefix_exact": false,
+          "question": "Who hired Punis?",
+          "wrong": "Chib"
+        },
+        {
+          "gold": "Chibis",
+          "gold_logprob": -6.032808340308812,
+          "margin": -5.952112065230246,
+          "prefix_exact": false,
+          "question": "Who was Thouban taught by?",
+          "wrong": "Laidel"
+        },
+        {
+          "gold": "Stean",
+          "gold_logprob": -0.12978669696058995,
+          "margin": 9.778649835188745,
+          "prefix_exact": true,
+          "question": "Who did Selel by all accounts thank?",
+          "wrong": "Dros"
+        },
+        {
+          "gold": "Traimen",
+          "gold_logprob": -0.05347817707843283,
+          "margin": 4.568688727356867,
+          "prefix_exact": true,
+          "question": "Who called Laiken?",
+          "wrong": "Baen"
+        },
+        {
+          "gold": "Uelo",
+          "gold_logprob": -0.005535511260116545,
+          "margin": 10.802515495242117,
+          "prefix_exact": true,
+          "question": "Who helped Kem?",
+          "wrong": "Aatan"
+        },
+        {
+          "gold": "Eimis",
+          "gold_logprob": -0.13016950317634077,
+          "margin": 4.61646024926153,
+          "prefix_exact": true,
+          "question": "Who was Corel taught by?",
+          "wrong": "Chenis"
+        },
+        {
+          "gold": "Drusa",
+          "gold_logprob": -0.037745897849495016,
+          "margin": 3.8671541450577336,
+          "prefix_exact": true,
+          "question": "Who gave a job to Piko?",
+          "wrong": "Gaitar"
+        },
+        {
+          "gold": "Gaitar",
+          "gold_logprob": -4.36465261481414,
+          "margin": -3.769342323233032,
+          "prefix_exact": false,
+          "question": "Who was hired by Piko?",
+          "wrong": "Drusa"
+        },
+        {
+          "gold": "Studel",
+          "gold_logprob": -0.17760849123823266,
+          "margin": 8.951107029136386,
+          "prefix_exact": true,
+          "question": "Who did Fasis call?",
+          "wrong": "Hin"
+        },
+        {
+          "gold": "Aobar",
+          "gold_logprob": -0.0016265488619297344,
+          "margin": 12.574364160252765,
+          "prefix_exact": true,
+          "question": "Who was thanked by Rean?",
+          "wrong": "Shilo"
+        },
+        {
+          "gold": "Jeten",
+          "gold_logprob": -0.008262045324615263,
+          "margin": 7.905179845838549,
+          "prefix_exact": true,
+          "question": "Who thanked Bivar?",
+          "wrong": "Kretel"
+        },
+        {
+          "gold": "Zedar",
+          "gold_logprob": -0.8127291735149513,
+          "margin": 14.53771798753496,
+          "prefix_exact": true,
+          "question": "Who thanked Muto?",
+          "wrong": "Zusel"
+        },
+        {
+          "gold": "Euva",
+          "gold_logprob": -0.03635201650273278,
+          "margin": 9.372025831749637,
+          "prefix_exact": true,
+          "question": "Who thanked Zadel?",
+          "wrong": "Ouva"
+        },
+        {
+          "gold": "Vounel",
+          "gold_logprob": -1.3258027882542747,
+          "margin": -0.9447844019001279,
+          "prefix_exact": false,
+          "question": "Who hired Benel?",
+          "wrong": "Tulo"
+        },
+        {
+          "gold": "Iimen",
+          "gold_logprob": -0.06509467154973428,
+          "margin": 3.917179020881999,
+          "prefix_exact": true,
+          "question": "Who did Gaino help?",
+          "wrong": "Eidel"
+        },
+        {
+          "gold": "Gaino",
+          "gold_logprob": -0.02711032909079305,
+          "margin": 7.15789923103817,
+          "prefix_exact": true,
+          "question": "Who was helped by Eidel?",
+          "wrong": "Uousan"
+        },
+        {
+          "gold": "Uula",
+          "gold_logprob": -0.002313370231797811,
+          "margin": 14.597586048896128,
+          "prefix_exact": true,
+          "question": "Who gave help to Chean?",
+          "wrong": "Kevel"
+        },
+        {
+          "gold": "Kevel",
+          "gold_logprob": -5.16313349698541,
+          "margin": 1.4865688428582917,
+          "prefix_exact": false,
+          "question": "Who as it happens was helped by Chean?",
+          "wrong": "Uula"
+        },
+        {
+          "gold": "Kaien",
+          "gold_logprob": -6.18955454258662e-4,
+          "margin": 12.365823504793784,
+          "prefix_exact": true,
+          "question": "Who was once again helped by Sout?",
+          "wrong": "Clabel"
+        },
+        {
+          "gold": "Vuban",
+          "gold_logprob": -0.004679840835169797,
+          "margin": 12.825806601098595,
+          "prefix_exact": true,
+          "question": "Who did Tosis help?",
+          "wrong": "Uoken"
+        },
+        {
+          "gold": "Widan",
+          "gold_logprob": -6.300302139827838,
+          "margin": -6.294844444646865,
+          "prefix_exact": false,
+          "question": "Who thanked Brusa?",
+          "wrong": "Brilo"
+        },
+        {
+          "gold": "Brilo",
+          "gold_logprob": -0.8817836529533205,
+          "margin": -0.1944179743339377,
+          "prefix_exact": false,
+          "question": "Who did Brusa thank?",
+          "wrong": "Widan"
+        },
+        {
+          "gold": "Proubar",
+          "gold_logprob": -0.027837502692184643,
+          "margin": 16.0867451318131,
+          "prefix_exact": true,
+          "question": "Who was hired today by Tilel?",
+          "wrong": "Yedan"
+        },
+        {
+          "gold": "Dukis",
+          "gold_logprob": -0.015368787729387946,
+          "margin": 7.096036531404785,
+          "prefix_exact": true,
+          "question": "Who helped Buna?",
+          "wrong": "Pouman"
+        }
+      ],
+      "mean_margin": 5.91793102243881,
+      "n": 100,
+      "prefix_correct": 78
+    },
+    "other-bound-person": {
+      "gold_above_wrong": 88,
+      "items": [
+        {
+          "gold": "Breen",
+          "gold_logprob": -1.525759842381346,
+          "margin": -0.5405906541316295,
+          "prefix_exact": false,
+          "question": "Which person has a job as a share?",
+          "wrong": "Cum"
+        },
+        {
+          "gold": "Oolan",
+          "gold_logprob": -0.10627581926036016,
+          "margin": 5.251606092176234,
+          "prefix_exact": true,
+          "question": "Which person has a job as it happens as a needs?",
+          "wrong": "Soutar"
+        },
+        {
+          "gold": "Zaien",
+          "gold_logprob": -1.8649771634242926,
+          "margin": -0.6565555504407441,
+          "prefix_exact": false,
+          "question": "Who is learning the imported?",
+          "wrong": "Trinar"
+        },
+        {
+          "gold": "Flean",
+          "gold_logprob": -0.17231842723682209,
+          "margin": 1.7768187358776244,
+          "prefix_exact": true,
+          "question": "Which person plays the fest?",
+          "wrong": "Cibo"
+        },
+        {
+          "gold": "Aevel",
+          "gold_logprob": -0.5831158800446365,
+          "margin": 4.762104153798548,
+          "prefix_exact": true,
+          "question": "Which person plays the remarkable?",
+          "wrong": "Grouis"
+        },
+        {
+          "gold": "Kiten",
+          "gold_logprob": -0.04052510237501321,
+          "margin": 3.359525253989678,
+          "prefix_exact": true,
+          "question": "Who takes care of a succeeded?",
+          "wrong": "Flubel"
+        },
+        {
+          "gold": "Rolen",
+          "gold_logprob": -1.4288230416035437,
+          "margin": 2.7996200962319153,
+          "prefix_exact": false,
+          "question": "Which person as it happens plays the researc?",
+          "wrong": "Daira"
+        },
+        {
+          "gold": "Drouto",
+          "gold_logprob": -4.3618306713777235,
+          "margin": 0.12157998639613865,
+          "prefix_exact": false,
+          "question": "Who has a reader today as a pet?",
+          "wrong": "Yuo"
+        },
+        {
+          "gold": "Gouken",
+          "gold_logprob": -0.413576930980184,
+          "margin": 0.9951298480942945,
+          "prefix_exact": true,
+          "question": "Who owns a source?",
+          "wrong": "Lovo"
+        },
+        {
+          "gold": "Chanis",
+          "gold_logprob": -0.47837140145232326,
+          "margin": 1.0432517537743606,
+          "prefix_exact": true,
+          "question": "Whose favorite color is also location?",
+          "wrong": "Caivis"
+        },
+        {
+          "gold": "Trono",
+          "gold_logprob": -0.8591606087591018,
+          "margin": 1.3037059736448704,
+          "prefix_exact": true,
+          "question": "Who works as a circum?",
+          "wrong": "Zolel"
+        },
+        {
+          "gold": "Jalan",
+          "gold_logprob": -0.014893385562575594,
+          "margin": 10.706674089143075,
+          "prefix_exact": true,
+          "question": "Whose house is in Vosbrook?",
+          "wrong": "Vabar"
+        },
+        {
+          "gold": "Loulen",
+          "gold_logprob": -0.09280256701569445,
+          "margin": 5.952530467962676,
+          "prefix_exact": true,
+          "question": "Whose pet is a lingu?",
+          "wrong": "Ealan"
+        },
+        {
+          "gold": "Ealan",
+          "gold_logprob": -0.035898526396180706,
+          "margin": 6.415982759490065,
+          "prefix_exact": true,
+          "question": "Who owns a selected?",
+          "wrong": "Loulen"
+        },
+        {
+          "gold": "Pito",
+          "gold_logprob": -0.020536274537411543,
+          "margin": 4.0150911126008735,
+          "prefix_exact": true,
+          "question": "Who has a house in Rosstead?",
+          "wrong": "Rovis"
+        },
+        {
+          "gold": "Rovis",
+          "gold_logprob": -0.005262393264950299,
+          "margin": 12.80150383532235,
+          "prefix_exact": true,
+          "question": "Who really lives in Glenfield?",
+          "wrong": "Pito"
+        },
+        {
+          "gold": "Praim",
+          "gold_logprob": -0.2800709394421336,
+          "margin": 2.038939078479595,
+          "prefix_exact": true,
+          "question": "Whose house is in Wilport?",
+          "wrong": "Jelen"
+        },
+        {
+          "gold": "Staisan",
+          "gold_logprob": -0.00417647747751049,
+          "margin": 7.366957537774091,
+          "prefix_exact": true,
+          "question": "Which person loves marched most?",
+          "wrong": "Staikel"
+        },
+        {
+          "gold": "Aumis",
+          "gold_logprob": -0.07318584091521878,
+          "margin": 3.076725433439818,
+          "prefix_exact": true,
+          "question": "Who plays the goal?",
+          "wrong": "Chuko"
+        },
+        {
+          "gold": "Chuko",
+          "gold_logprob": -0.05521515206493626,
+          "margin": 3.631307118909583,
+          "prefix_exact": true,
+          "question": "Which person plays as usual the discussion?",
+          "wrong": "Aumis"
+        },
+        {
+          "gold": "Wira",
+          "gold_logprob": -0.006414302115359385,
+          "margin": 8.62772461695284,
+          "prefix_exact": true,
+          "question": "Which person plays the enough?",
+          "wrong": "Fainar"
+        },
+        {
+          "gold": "Fainar",
+          "gold_logprob": -1.564951227700112,
+          "margin": 3.734565477606366,
+          "prefix_exact": false,
+          "question": "Which person plays the trouble?",
+          "wrong": "Wira"
+        },
+        {
+          "gold": "Jada",
+          "gold_logprob": -3.7659165214826453,
+          "margin": -2.218538522024347,
+          "prefix_exact": false,
+          "question": "Who prefers the by all accounts color wages?",
+          "wrong": "Tit"
+        },
+        {
+          "gold": "Tit",
+          "gold_logprob": -0.33546132839114706,
+          "margin": 8.63798438852589,
+          "prefix_exact": true,
+          "question": "Who prefers the color circ?",
+          "wrong": "Jada"
+        },
+        {
+          "gold": "Hotar",
+          "gold_logprob": -0.09997813582013493,
+          "margin": 2.563394947969998,
+          "prefix_exact": true,
+          "question": "Who works as an occupied?",
+          "wrong": "Yeso"
+        },
+        {
+          "gold": "Domar",
+          "gold_logprob": -0.027627793433585637,
+          "margin": 3.7353206126650624,
+          "prefix_exact": true,
+          "question": "Which person plays the assigned?",
+          "wrong": "Uiden"
+        },
+        {
+          "gold": "Uiden",
+          "gold_logprob": -0.019284280365364455,
+          "margin": 4.264558189888025,
+          "prefix_exact": true,
+          "question": "Who plays the killed?",
+          "wrong": "Domar"
+        },
+        {
+          "gold": "Trorar",
+          "gold_logprob": -0.10097362806211023,
+          "margin": 5.123634511787067,
+          "prefix_exact": true,
+          "question": "Which person plays the interview?",
+          "wrong": "Votar"
+        },
+        {
+          "gold": "Brid",
+          "gold_logprob": -0.030660626743346856,
+          "margin": 6.304470239918694,
+          "prefix_exact": true,
+          "question": "Which person lives in Hartstead?",
+          "wrong": "Pean"
+        },
+        {
+          "gold": "Lera",
+          "gold_logprob": -2.7091687222981715,
+          "margin": 6.667615649804098,
+          "prefix_exact": false,
+          "question": "Who plays the occasion?",
+          "wrong": "Laba"
+        },
+        {
+          "gold": "Vava",
+          "gold_logprob": -1.1693762482852046,
+          "margin": 0.4319539898042557,
+          "prefix_exact": true,
+          "question": "Who owns an today issues?",
+          "wrong": "Iid"
+        },
+        {
+          "gold": "Rairel",
+          "gold_logprob": -0.14574260415489795,
+          "margin": 1.9024969350699914,
+          "prefix_exact": true,
+          "question": "Which person as usual plays the descript?",
+          "wrong": "Baimis"
+        },
+        {
+          "gold": "Baimis",
+          "gold_logprob": -0.04678616334142632,
+          "margin": 3.225574431940341,
+          "prefix_exact": true,
+          "question": "Who is learning the immigrants?",
+          "wrong": "Rairel"
+        },
+        {
+          "gold": "Groar",
+          "gold_logprob": -0.00950321110136375,
+          "margin": 5.924704885762728,
+          "prefix_exact": true,
+          "question": "Who lives in Penshaw?",
+          "wrong": "Cliba"
+        },
+        {
+          "gold": "Roven",
+          "gold_logprob": -0.1503861235923599,
+          "margin": 3.4861194767606825,
+          "prefix_exact": true,
+          "question": "Who usually is learning the separate?",
+          "wrong": "Kia"
+        },
+        {
+          "gold": "Kia",
+          "gold_logprob": -0.06747664809761583,
+          "margin": 6.044058104818191,
+          "prefix_exact": true,
+          "question": "Who is learning as it happens the employ?",
+          "wrong": "Roven"
+        },
+        {
+          "gold": "Joulan",
+          "gold_logprob": -1.804227709207517,
+          "margin": -0.509376449018736,
+          "prefix_exact": false,
+          "question": "Who practices the finished?",
+          "wrong": "Uekar"
+        },
+        {
+          "gold": "Yumo",
+          "gold_logprob": -0.015442338853041344,
+          "margin": 5.41491509284892,
+          "prefix_exact": true,
+          "question": "Who earns a living as a valu?",
+          "wrong": "Fairo"
+        },
+        {
+          "gold": "Puda",
+          "gold_logprob": -0.4796982834073051,
+          "margin": 0.7254312064591111,
+          "prefix_exact": true,
+          "question": "Who has a receiving as a pet?",
+          "wrong": "Juben"
+        },
+        {
+          "gold": "Haba",
+          "gold_logprob": -2.1472263129598494,
+          "margin": 2.3012576147628745,
+          "prefix_exact": false,
+          "question": "Which person has a job as a warm?",
+          "wrong": "Zemo"
+        },
+        {
+          "gold": "Choran",
+          "gold_logprob": -0.019142580249231884,
+          "margin": 8.831954848283578,
+          "prefix_exact": true,
+          "question": "Who has a house in Willey?",
+          "wrong": "Veta"
+        },
+        {
+          "gold": "Ooumen",
+          "gold_logprob": -0.356691842127033,
+          "margin": 7.65443334710104,
+          "prefix_exact": true,
+          "question": "Whose pet is a serve?",
+          "wrong": "Rekan"
+        },
+        {
+          "gold": "Beso",
+          "gold_logprob": -0.06994445001659146,
+          "margin": 4.049529605246857,
+          "prefix_exact": true,
+          "question": "Which person plays the veget?",
+          "wrong": "Bruo"
+        },
+        {
+          "gold": "Flero",
+          "gold_logprob": -0.8515781015324438,
+          "margin": -0.011801147778870869,
+          "prefix_exact": true,
+          "question": "Who is learning the wild?",
+          "wrong": "Trevis"
+        },
+        {
+          "gold": "Pairar",
+          "gold_logprob": -1.4912435371826325,
+          "margin": -0.09445321042646015,
+          "prefix_exact": false,
+          "question": "Who is a symb?",
+          "wrong": "Honel"
+        },
+        {
+          "gold": "Dradan",
+          "gold_logprob": -0.21547822703765518,
+          "margin": 2.9828903685359096,
+          "prefix_exact": true,
+          "question": "Who has a these days house in Dornwyn?",
+          "wrong": "Oedis"
+        },
+        {
+          "gold": "Nivel",
+          "gold_logprob": -0.007021026333133521,
+          "margin": 7.429429264230489,
+          "prefix_exact": true,
+          "question": "Who lives in we hear Bramley?",
+          "wrong": "Zaitan"
+        },
+        {
+          "gold": "Gut",
+          "gold_logprob": -3.1397694217034124,
+          "margin": -3.0902580901196535,
+          "prefix_exact": false,
+          "question": "Who has an instit as a also pet?",
+          "wrong": "Iad"
+        },
+        {
+          "gold": "Wiba",
+          "gold_logprob": -0.030880531013097873,
+          "margin": 4.1878073743876,
+          "prefix_exact": true,
+          "question": "Who works already as a know?",
+          "wrong": "Chouven"
+        },
+        {
+          "gold": "Chouven",
+          "gold_logprob": -0.16433476091979352,
+          "margin": 2.0798526078245616,
+          "prefix_exact": true,
+          "question": "Who is a complete?",
+          "wrong": "Wiba"
+        },
+        {
+          "gold": "Dravel",
+          "gold_logprob": -0.07686534389882771,
+          "margin": 5.006986218594893,
+          "prefix_exact": true,
+          "question": "Who has a house in Istport?",
+          "wrong": "Punel"
+        },
+        {
+          "gold": "Guen",
+          "gold_logprob": -0.14156173674084696,
+          "margin": 6.11823983675678,
+          "prefix_exact": true,
+          "question": "Who is these days learning the else?",
+          "wrong": "Temen"
+        },
+        {
+          "gold": "Diro",
+          "gold_logprob": -1.532321663797923,
+          "margin": 2.706013855590072,
+          "prefix_exact": false,
+          "question": "Which person has a job as a flow?",
+          "wrong": "Yeben"
+        },
+        {
+          "gold": "Rurar",
+          "gold_logprob": -0.012875820183142159,
+          "margin": 7.0522006809859015,
+          "prefix_exact": true,
+          "question": "Who likes recogn best?",
+          "wrong": "Suva"
+        },
+        {
+          "gold": "Leda",
+          "gold_logprob": -0.22959870638149119,
+          "margin": 1.5380063618344846,
+          "prefix_exact": true,
+          "question": "Who earns a living as a now figure?",
+          "wrong": "Audo"
+        },
+        {
+          "gold": "Audo",
+          "gold_logprob": -0.007790237064288349,
+          "margin": 5.578409968201674,
+          "prefix_exact": true,
+          "question": "Which person has a job as a writers?",
+          "wrong": "Leda"
+        },
+        {
+          "gold": "Caisen",
+          "gold_logprob": -0.06836292267807773,
+          "margin": 3.716159481825766,
+          "prefix_exact": true,
+          "question": "Who lives in Elmdale?",
+          "wrong": "Eevar"
+        },
+        {
+          "gold": "Wikel",
+          "gold_logprob": -0.09767312569180547,
+          "margin": 3.9778208111441242,
+          "prefix_exact": true,
+          "question": "Who practices the villa?",
+          "wrong": "Sarel"
+        },
+        {
+          "gold": "Vanan",
+          "gold_logprob": -0.044524101240419486,
+          "margin": 9.04711945152159,
+          "prefix_exact": true,
+          "question": "Which person loves ocean most?",
+          "wrong": "Draro"
+        },
+        {
+          "gold": "Draro",
+          "gold_logprob": -0.003371639720293612,
+          "margin": 9.972175445858285,
+          "prefix_exact": true,
+          "question": "Who prefers the color draw?",
+          "wrong": "Vanan"
+        },
+        {
+          "gold": "Cailel",
+          "gold_logprob": -0.0027047853141681853,
+          "margin": 10.315514323807198,
+          "prefix_exact": true,
+          "question": "Whose favorite color is smooth?",
+          "wrong": "Bresen"
+        },
+        {
+          "gold": "Eaden",
+          "gold_logprob": -0.32275973267927893,
+          "margin": 1.1627556789746123,
+          "prefix_exact": true,
+          "question": "Who prefers the color wall?",
+          "wrong": "Tikar"
+        },
+        {
+          "gold": "Shiman",
+          "gold_logprob": -0.7054993887050793,
+          "margin": 0.4104718364977078,
+          "prefix_exact": true,
+          "question": "Which person has a job as a companies?",
+          "wrong": "Baitis"
+        },
+        {
+          "gold": "Iaim",
+          "gold_logprob": -0.13176374959406664,
+          "margin": 2.1590459971840357,
+          "prefix_exact": true,
+          "question": "Who works as a physic?",
+          "wrong": "Triban"
+        },
+        {
+          "gold": "Triban",
+          "gold_logprob": -0.4878262221198016,
+          "margin": 0.5309419379873936,
+          "prefix_exact": true,
+          "question": "Which person has a job as a poetry?",
+          "wrong": "Iaim"
+        },
+        {
+          "gold": "Vorel",
+          "gold_logprob": -0.051967833975885364,
+          "margin": 3.917759874800411,
+          "prefix_exact": true,
+          "question": "Who likes joined best?",
+          "wrong": "Thumis"
+        },
+        {
+          "gold": "Thumis",
+          "gold_logprob": -0.06069546403390489,
+          "margin": 3.045965679495138,
+          "prefix_exact": true,
+          "question": "Whose favorite color is session?",
+          "wrong": "Vorel"
+        },
+        {
+          "gold": "Gaino",
+          "gold_logprob": -2.009010339594679,
+          "margin": -1.8546658367039626,
+          "prefix_exact": false,
+          "question": "Whose pet is it seems a prove?",
+          "wrong": "Nuba"
+        },
+        {
+          "gold": "Euran",
+          "gold_logprob": -4.252211282327382,
+          "margin": -4.236321296453156,
+          "prefix_exact": false,
+          "question": "Who has a house in Norfield?",
+          "wrong": "Euo"
+        },
+        {
+          "gold": "Iousa",
+          "gold_logprob": -0.016037504428766457,
+          "margin": 4.681710439453796,
+          "prefix_exact": true,
+          "question": "Who earns a really living as a divide?",
+          "wrong": "Pisa"
+        },
+        {
+          "gold": "Taisis",
+          "gold_logprob": -0.020662409738625435,
+          "margin": 6.006124580356044,
+          "prefix_exact": true,
+          "question": "Which person lives in Falthorpe?",
+          "wrong": "Aedel"
+        },
+        {
+          "gold": "Stoel",
+          "gold_logprob": -0.4294796024360882,
+          "margin": 1.0967198643764888,
+          "prefix_exact": true,
+          "question": "Who is learning the bright?",
+          "wrong": "Aeda"
+        },
+        {
+          "gold": "Tainar",
+          "gold_logprob": -1.23563694170452,
+          "margin": -0.5938968769572923,
+          "prefix_exact": false,
+          "question": "Who works as a troops?",
+          "wrong": "Oonar"
+        },
+        {
+          "gold": "Flodel",
+          "gold_logprob": -0.004431670169999511,
+          "margin": 8.255406443247287,
+          "prefix_exact": true,
+          "question": "Who really takes care of a sports?",
+          "wrong": "Uobel"
+        },
+        {
+          "gold": "Dainis",
+          "gold_logprob": -0.24762936353441697,
+          "margin": 8.079988645505374,
+          "prefix_exact": true,
+          "question": "Who lives as usual in Norford?",
+          "wrong": "Eeta"
+        },
+        {
+          "gold": "Pibar",
+          "gold_logprob": -0.47546190692674156,
+          "margin": 0.5655819830133091,
+          "prefix_exact": true,
+          "question": "Whose favorite color is proved?",
+          "wrong": "Uoudis"
+        },
+        {
+          "gold": "Tavel",
+          "gold_logprob": -0.022095494463762702,
+          "margin": 4.417440971847882,
+          "prefix_exact": true,
+          "question": "Who works as a network?",
+          "wrong": "Groo"
+        },
+        {
+          "gold": "Vobo",
+          "gold_logprob": -0.17365494072606424,
+          "margin": 2.0874006171498527,
+          "prefix_exact": true,
+          "question": "Who is learning the advance?",
+          "wrong": "Joulen"
+        },
+        {
+          "gold": "Joulen",
+          "gold_logprob": -0.09124694033703414,
+          "margin": 2.91208026153809,
+          "prefix_exact": true,
+          "question": "Who plays the looks?",
+          "wrong": "Vobo"
+        },
+        {
+          "gold": "Ios",
+          "gold_logprob": -0.003884782442288509,
+          "margin": 21.364191931082726,
+          "prefix_exact": true,
+          "question": "Which person lives in Voswyn?",
+          "wrong": "Caen"
+        },
+        {
+          "gold": "Caen",
+          "gold_logprob": -0.006466697106140011,
+          "margin": 15.566987604654702,
+          "prefix_exact": true,
+          "question": "Whose house is in today Wilhaven?",
+          "wrong": "Ios"
+        },
+        {
+          "gold": "Cloukel",
+          "gold_logprob": -0.07806624341404064,
+          "margin": 3.4355486608532577,
+          "prefix_exact": true,
+          "question": "Who has a house in we hear Rosport?",
+          "wrong": "Oaiben"
+        },
+        {
+          "gold": "Aoma",
+          "gold_logprob": -0.3115694311904425,
+          "margin": 4.24899898214836,
+          "prefix_exact": true,
+          "question": "Who is learning the administ?",
+          "wrong": "Trian"
+        },
+        {
+          "gold": "Faitis",
+          "gold_logprob": -0.9944296885833128,
+          "margin": 0.5903358715931832,
+          "prefix_exact": true,
+          "question": "Who plays the other?",
+          "wrong": "Stotan"
+        },
+        {
+          "gold": "Yobo",
+          "gold_logprob": -1.961132751479337,
+          "margin": -0.7876136620570997,
+          "prefix_exact": false,
+          "question": "Who likes papers best?",
+          "wrong": "Aiten"
+        },
+        {
+          "gold": "Souva",
+          "gold_logprob": -0.01123667474160459,
+          "margin": 9.263138475507423,
+          "prefix_exact": true,
+          "question": "Who has a house in usually Lorton?",
+          "wrong": "Thanis"
+        },
+        {
+          "gold": "Todis",
+          "gold_logprob": -0.05832987349878291,
+          "margin": 3.6908812611317363,
+          "prefix_exact": true,
+          "question": "Who plays the as usual most?",
+          "wrong": "Vabel"
+        },
+        {
+          "gold": "Vabel",
+          "gold_logprob": -1.0070104235101538,
+          "margin": 1.7957559019727278,
+          "prefix_exact": false,
+          "question": "Who plays the simple?",
+          "wrong": "Todis"
+        },
+        {
+          "gold": "Sada",
+          "gold_logprob": -0.34147274843128345,
+          "margin": 2.509018080868058,
+          "prefix_exact": true,
+          "question": "Who earns a living as a statements?",
+          "wrong": "Pakis"
+        },
+        {
+          "gold": "Braten",
+          "gold_logprob": -0.4203283609041352,
+          "margin": 1.152886296091783,
+          "prefix_exact": true,
+          "question": "Who earns a living as a here?",
+          "wrong": "Uesel"
+        },
+        {
+          "gold": "Uesel",
+          "gold_logprob": -0.03763071522782713,
+          "margin": 4.559083155629132,
+          "prefix_exact": true,
+          "question": "Which person has a job as a security?",
+          "wrong": "Braten"
+        },
+        {
+          "gold": "Oudis",
+          "gold_logprob": -0.06261531697564675,
+          "margin": 3.112893786001074,
+          "prefix_exact": true,
+          "question": "Who plays the know?",
+          "wrong": "Fludo"
+        },
+        {
+          "gold": "Thivan",
+          "gold_logprob": -1.798903138948773,
+          "margin": 1.7701672819596785,
+          "prefix_exact": false,
+          "question": "Who works as an alph?",
+          "wrong": "Braso"
+        },
+        {
+          "gold": "Iana",
+          "gold_logprob": -1.3325970461549408,
+          "margin": -0.5171469561277859,
+          "prefix_exact": false,
+          "question": "Who prefers the color target?",
+          "wrong": "Aes"
+        },
+        {
+          "gold": "Mesen",
+          "gold_logprob": -0.0010929073149926042,
+          "margin": 26.580398155822373,
+          "prefix_exact": true,
+          "question": "Which person loves child most?",
+          "wrong": "Wola"
+        },
+        {
+          "gold": "Vinis",
+          "gold_logprob": -0.005671250638174617,
+          "margin": 5.628817765351118,
+          "prefix_exact": true,
+          "question": "Who likes disrupt best?",
+          "wrong": "Drika"
+        },
+        {
+          "gold": "Drika",
+          "gold_logprob": -0.1121175521821776,
+          "margin": 2.2059745514190316,
+          "prefix_exact": true,
+          "question": "Who prefers the already color delegates?",
+          "wrong": "Vinis"
+        },
+        {
+          "gold": "Prula",
+          "gold_logprob": -0.14558936539343964,
+          "margin": 5.1473460652837595,
+          "prefix_exact": true,
+          "question": "Who likes fairly best?",
+          "wrong": "Roul"
+        },
+        {
+          "gold": "Yaran",
+          "gold_logprob": -2.5816060085655064,
+          "margin": 1.2912076833681172,
+          "prefix_exact": false,
+          "question": "Who practices the benefit?",
+          "wrong": "Trivo"
+        },
+        {
+          "gold": "Oaitis",
+          "gold_logprob": -0.3139030581539363,
+          "margin": 4.291993920828025,
+          "prefix_exact": true,
+          "question": "Who is learning the ideas?",
+          "wrong": "Trivo"
+        }
+      ],
+      "mean_margin": 4.112031795429357,
+      "n": 100,
+      "prefix_correct": 80
+    }
+  },
+  "schema": "asem-inverse-training-diagnostic-1",
+  "selection_rule": "First 100 annotations per negative reason, source order; no prediction-dependent sampling. Training distribution only. Posthoc diagnostic, not fresh generalization evidence."
+}

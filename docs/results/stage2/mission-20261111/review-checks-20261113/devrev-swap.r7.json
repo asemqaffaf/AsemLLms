@@ -1,0 +1,4474 @@
+{
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "conditions": {
+    "real": {
+      "items": [
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Shouar prefod prefikQ",
+          "bounded_generated_token_ids": [
+            1590,
+            285,
+            283,
+            5905,
+            411,
+            5905,
+            2158,
+            82
+          ],
+          "category": "reverse",
+          "generated_text": " Shou",
+          "generated_token_ids": [
+            1590,
+            285
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Edith",
+          "id": "dev-reverse-0016",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -2.515399674941561,
+            -4.02970996774632,
+            -6.102986690830702,
+            -4.929965520432166
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Which person owns a donkey?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -5.030799349883122,
+            -8.05941993549264,
+            -12.205973381661405,
+            -9.859931040864332
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia as Maneraneran",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            339,
+            3038,
+            264,
+            278,
+            264,
+            278
+          ],
+          "category": "reverse",
+          "generated_text": " Mia",
+          "generated_token_ids": [
+            364,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Mia",
+          "id": "dev-reverse-0050",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.321610501690296,
+            -1.6622145623310227,
+            -0.5297086828011518,
+            -2.0772337929176725
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Whose occupation is potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -10.643221003380592,
+            -3.3244291246620454,
+            -1.0594173656023036,
+            -4.154467585835345
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows? The band,",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            64,
+            347,
+            6412,
+            45
+          ],
+          "category": "reverse",
+          "generated_text": " A record",
+          "generated_token_ids": [
+            316,
+            1804
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Neil",
+          "id": "dev-reverse-0022",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.9545453182448381,
+            -6.437002134595751,
+            -2.500079348431541,
+            -3.5753628901177397
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Whose instrument is the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -1.9090906364896763,
+            -12.874004269191502,
+            -5.000158696863082,
+            -7.150725780235479
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ostmere rese ev Pre",
+          "bounded_generated_token_ids": [
+            491,
+            306,
+            110,
+            341,
+            519,
+            102,
+            544,
+            4485
+          ],
+          "category": "reverse",
+          "generated_text": " Ost",
+          "generated_token_ids": [
+            491,
+            306
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Rosa",
+          "id": "dev-reverse-0057",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -10.853840535642478,
+            -2.0302005675203794,
+            -4.759940339414952,
+            -1.468600282374973
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Whose place of residence is Wengard?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -21.707681071284956,
+            -4.060401135040759,
+            -9.519880678829905,
+            -2.937200564749946
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Ro'olderististist",
+          "bounded_generated_token_ids": [
+            431,
+            2117,
+            40,
+            795,
+            264,
+            358,
+            358,
+            358
+          ],
+          "category": "reverse",
+          "generated_text": " F Ro",
+          "generated_token_ids": [
+            431,
+            2117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Hugo",
+          "id": "dev-reverse-0023",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.380994431531124,
+            -4.270471315614216,
+            -2.396837624974369,
+            -2.3185160002294136
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Whose occupation is reporter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -2.761988863062248,
+            -8.540942631228432,
+            -4.793675249948738,
+            -4.637032000458827
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "PedrokenD Whores every",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            3930,
+            69,
+            878,
+            3075,
+            1076
+          ],
+          "category": "reverse",
+          "generated_text": " Ped",
+          "generated_token_ids": [
+            374,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-reverse-0066",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.13009050772231978,
+            -6.5922498883713,
+            -1.1255712192825083,
+            -8.53791338022752
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who is most fond of black?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -0.39027152316695934,
+            -13.1844997767426,
+            -2.2511424385650165,
+            -17.07582676045504
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "H Dou alsoun is H Doua",
+          "bounded_generated_token_ids": [
+            403,
+            4285,
+            548,
+            450,
+            319,
+            403,
+            4285,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " H Dou",
+          "generated_token_ids": [
+            403,
+            4285
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Adam",
+          "id": "dev-reverse-0095",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.79071678923026,
+            -3.0876675343127076,
+            -3.4966710878841996,
+            -4.278896150632198
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who is employed as an astronomer?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -9.79071678923026,
+            -6.175335068625415,
+            -6.993342175768399,
+            -8.557792301264396
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Otto resides to rese",
+          "bounded_generated_token_ids": [
+            491,
+            117,
+            1376,
+            519,
+            1304,
+            287,
+            519,
+            102
+          ],
+          "category": "reverse",
+          "generated_text": " Ot",
+          "generated_token_ids": [
+            491,
+            117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Wade",
+          "id": "dev-reverse-0055",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.0258407636541857,
+            -4.581324116375887,
+            -0.34570244497368696,
+            -3.8535104907404967
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Who resides in Mirvik?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -6.0516815273083715,
+            -9.162648232751774,
+            -1.0371073349210609,
+            -7.707020981480993
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Males For Penbyanenale",
+          "bounded_generated_token_ids": [
+            6512,
+            272,
+            1054,
+            3632,
+            1988,
+            278,
+            269,
+            1068
+          ],
+          "category": "reverse",
+          "generated_text": " Males",
+          "generated_token_ids": [
+            6512,
+            272
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-reverse-0090",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.44583800125071,
+            -10.220521286688022,
+            -1.1092974153343123,
+            -6.1511300206988615
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Whose place of residence is Tamdale?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -8.89167600250142,
+            -10.220521286688022,
+            -2.2185948306686245,
+            -12.302260041397723
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Semininiarooo",
+          "bounded_generated_token_ids": [
+            7766,
+            260,
+            260,
+            106,
+            283,
+            112,
+            112,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " Semin",
+          "generated_token_ids": [
+            7766,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-reverse-0008",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -4.8737737939621075,
+            -7.519115475197825,
+            -2.609180948348664,
+            -3.2706779220151345
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Whose instrument is the banjo?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -9.747547587924215,
+            -15.03823095039565,
+            -5.218361896697328,
+            -6.541355844030269
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sara Ful Subrenrain B",
+          "bounded_generated_token_ids": [
+            335,
+            3562,
+            431,
+            344,
+            6793,
+            587,
+            6000,
+            367
+          ],
+          "category": "reverse",
+          "generated_text": " Sara",
+          "generated_token_ids": [
+            335,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-reverse-0089",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.633485911367061,
+            -3.1542950499003535,
+            -0.6116386970303641,
+            -6.003442562354433
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 74,
+          "question": "Gold is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -7.266971822734122,
+            -6.308590099800707,
+            -1.2232773940607282,
+            -12.006885124708866
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Gusan is Gusan is",
+          "bounded_generated_token_ids": [
+            438,
+            384,
+            278,
+            319,
+            438,
+            384,
+            278,
+            319
+          ],
+          "category": "reverse",
+          "generated_text": " Gus",
+          "generated_token_ids": [
+            438,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Gus",
+          "id": "dev-reverse-0003",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -11.990821711079983,
+            -5.548321602361508,
+            -11.033162083830527,
+            -0.006500798367309788
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Yellow is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -11.990821711079983,
+            -11.096643204723016,
+            -11.033162083830527,
+            -0.013001596734619576
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sua ada ada adm",
+          "bounded_generated_token_ids": [
+            3134,
+            98,
+            546,
+            98,
+            546,
+            98,
+            546,
+            110
+          ],
+          "category": "reverse",
+          "generated_text": " Sua",
+          "generated_token_ids": [
+            3134,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-reverse-0070",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.698098832000957,
+            -3.750913708738295,
+            -3.6107874400405895,
+            -9.055795588410724
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Black is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -30.792395328003828,
+            -7.50182741747659,
+            -7.221574880081179,
+            -18.11159117682145
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mae Guis favorite Kira",
+          "bounded_generated_token_ids": [
+            364,
+            1953,
+            2911,
+            274,
+            7848,
+            638,
+            326,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " Mae",
+          "generated_token_ids": [
+            364,
+            1953
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Mae",
+          "id": "dev-reverse-0060",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.167764265447613,
+            -0.6818264269690691,
+            -1.002502210246038,
+            -1.195570514019113
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Whose occupation is florist?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -2.335528530895226,
+            -1.3636528539381383,
+            -3.007506630738114,
+            -2.391141028038226
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ire is Kaire is I",
+          "bounded_generated_token_ids": [
+            342,
+            262,
+            319,
+            638,
+            2863,
+            262,
+            319,
+            342
+          ],
+          "category": "reverse",
+          "generated_text": " Ire",
+          "generated_token_ids": [
+            342,
+            262
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Andre",
+          "id": "dev-reverse-0047",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.8275823056101554,
+            -1.1833689486996466,
+            -4.935013137559969,
+            -6.670848425670857
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Who is associated with the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -11.655164611220311,
+            -2.366737897399293,
+            -9.870026275119939,
+            -13.341696851341714
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Stevookenoo",
+          "bounded_generated_token_ids": [
+            6748,
+            119,
+            112,
+            112,
+            3930,
+            112,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " Stev",
+          "generated_token_ids": [
+            6748,
+            119
+          ],
+          "generation_termination_reason": "context_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Dev",
+          "id": "dev-reverse-0054",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.6018345117549044,
+            -3.684769303926424,
+            -2.5172769309476952,
+            -5.121089738642127
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 121,
+          "question": "Whose instrument is the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -5.203669023509809,
+            -7.369538607852848,
+            -5.0345538618953904,
+            -5.121089738642127
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ben is Ben isaoer from Lu",
+          "bounded_generated_token_ids": [
+            6130,
+            319,
+            6130,
+            319,
+            5446,
+            264,
+            404,
+            7770
+          ],
+          "category": "reverse",
+          "generated_text": " Ben is",
+          "generated_token_ids": [
+            6130,
+            319
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-reverse-0061",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.708532887946313,
+            -1.2008450632300434,
+            -5.052786861374239,
+            -1.7305612366102148
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 119,
+          "question": "Which person owns a rabbit?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -3.417065775892626,
+            -2.4016901264600867,
+            -10.105573722748478,
+            -1.7305612366102148
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Halforda In Kira",
+          "bounded_generated_token_ids": [
+            403,
+            1782,
+            624,
+            98,
+            517,
+            638,
+            326,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " Halford",
+          "generated_token_ids": [
+            403,
+            1782,
+            624
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-reverse-0028",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.670428061096048,
+            -4.119676562786066,
+            -1.6415830189846634,
+            -5.550507987999629
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 120,
+          "question": "Who is most fond of gold?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -2.011284183288144,
+            -8.239353125572132,
+            -4.92474905695399,
+            -11.101015975999259
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Roil every Otto every",
+          "bounded_generated_token_ids": [
+            431,
+            2117,
+            301,
+            1076,
+            491,
+            117,
+            1376,
+            1076
+          ],
+          "category": "reverse",
+          "generated_text": " F Roil",
+          "generated_token_ids": [
+            431,
+            2117,
+            301
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-reverse-0013",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.868786551965026,
+            -0.6689117335927685,
+            -1.6758968847755389,
+            -1.2077190639483995
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Who is the owner of a cow?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -3.475146207860104,
+            -2.0067352007783055,
+            -3.3517937695510778,
+            -2.415438127896799
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows bi followsu,",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            2410,
+            6152,
+            118,
+            45
+          ],
+          "category": "reverse",
+          "generated_text": " A record members",
+          "generated_token_ids": [
+            316,
+            1804,
+            1598
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Pedro",
+          "id": "dev-reverse-0031",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.4854486969562375,
+            -3.286656440152334,
+            -0.5886580469037295,
+            -0.8038782105717935
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            3
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Whose instrument is the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -6.970897393912475,
+            -6.573312880304668,
+            -1.7659741407111884,
+            -2.4116346317153807
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Nadenm In Ravh",
+          "bounded_generated_token_ids": [
+            429,
+            324,
+            269,
+            110,
+            517,
+            413,
+            583,
+            105
+          ],
+          "category": "reverse",
+          "generated_text": " Nad",
+          "generated_token_ids": [
+            429,
+            324
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-reverse-0091",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.8247394205730665,
+            -0.9737495047751391,
+            -7.647096494214833,
+            -7.811631502742802
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Who resides in Wenholm?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -3.649478841146133,
+            -1.9474990095502782,
+            -15.294192988429666,
+            -15.623263005485605
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Aina owno owno owno",
+          "bounded_generated_token_ids": [
+            316,
+            1471,
+            881,
+            112,
+            881,
+            112,
+            881,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " Aina",
+          "generated_token_ids": [
+            316,
+            1471
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-reverse-0007",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.9252400565063379,
+            -9.526790621644437,
+            -2.927584753870653,
+            -1.8443067508686761
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Who is the owner of a donkey?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -1.8504801130126758,
+            -19.053581243288875,
+            -5.855169507741306,
+            -3.6886135017373523
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Paam adm adm adm",
+          "bounded_generated_token_ids": [
+            4324,
+            337,
+            546,
+            110,
+            546,
+            110,
+            546,
+            110
+          ],
+          "category": "reverse",
+          "generated_text": " Paam",
+          "generated_token_ids": [
+            4324,
+            337
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Una",
+          "id": "dev-reverse-0062",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.3827041479748585,
+            -8.567083118652526,
+            -7.218455871841637,
+            -2.9599775686390744
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who is most fond of crimson?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -14.765408295949717,
+            -17.134166237305053,
+            -14.436911743683273,
+            -5.919955137278149
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Toud occupation is Florister",
+          "bounded_generated_token_ids": [
+            310,
+            3393,
+            7393,
+            319,
+            5402,
+            276,
+            358,
+            264
+          ],
+          "category": "reverse",
+          "generated_text": " Toud",
+          "generated_token_ids": [
+            310,
+            3393
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Raj",
+          "id": "dev-reverse-0075",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.2525352238296357,
+            -2.443189765579611,
+            -1.9229018103016,
+            -3.774968779442527
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Whose occupation is jeweler?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -6.505070447659271,
+            -4.886379531159222,
+            -3.8458036206032,
+            -7.549937558885054
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pia at Fle says Fle",
+          "bounded_generated_token_ids": [
+            374,
+            523,
+            396,
+            431,
+            294,
+            1841,
+            431,
+            294
+          ],
+          "category": "reverse",
+          "generated_text": " Pia",
+          "generated_token_ids": [
+            374,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mia",
+          "id": "dev-reverse-0094",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.0143569975980347,
+            -4.158462554550853,
+            -1.1019450917045883,
+            -3.943605359124048
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Which person owns a donkey?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -4.028713995196069,
+            -8.316925109101707,
+            -2.2038901834091766,
+            -7.887210718248096
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Thutenis Theetso The",
+          "bounded_generated_token_ids": [
+            431,
+            504,
+            7765,
+            274,
+            347,
+            330,
+            490,
+            347
+          ],
+          "category": "reverse",
+          "generated_text": " F Th",
+          "generated_token_ids": [
+            431,
+            504
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Neil",
+          "id": "dev-reverse-0020",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.333384923271168,
+            -5.220728673553002,
+            -4.666781452266621,
+            -1.2258365732224428
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Which person owns a cow?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -2.666769846542336,
+            -10.441457347106004,
+            -9.333562904533242,
+            -2.4516731464448855
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Roil rese in place",
+          "bounded_generated_token_ids": [
+            431,
+            2117,
+            301,
+            519,
+            102,
+            284,
+            1252,
+            47
+          ],
+          "category": "reverse",
+          "generated_text": " F Ro",
+          "generated_token_ids": [
+            431,
+            2117
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Finn",
+          "id": "dev-reverse-0015",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.671946814101078,
+            -4.735102837405273,
+            -10.906382649898497,
+            -1.2296639188816019
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Who resides in Ostmere?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -3.343893628202156,
+            -9.470205674810545,
+            -21.812765299796993,
+            -2.4593278377632037
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Oairouer Belerister",
+          "bounded_generated_token_ids": [
+            491,
+            2863,
+            430,
+            264,
+            4457,
+            264,
+            358,
+            264
+          ],
+          "category": "reverse",
+          "generated_text": " Oai",
+          "generated_token_ids": [
+            491,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Edith",
+          "id": "dev-reverse-0074",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.29364761356255,
+            -2.5846008312499498,
+            -4.554134042992964,
+            -2.745773322117209
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Whose occupation is potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -8.5872952271251,
+            -7.753802493749849,
+            -9.108268085985928,
+            -2.745773322117209
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Rosa reseholm res",
+          "bounded_generated_token_ids": [
+            413,
+            7344,
+            519,
+            102,
+            105,
+            311,
+            110,
+            519
+          ],
+          "category": "reverse",
+          "generated_text": " Rosa",
+          "generated_token_ids": [
+            413,
+            7344
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Rosa",
+          "id": "dev-reverse-0030",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -8.027417241748907,
+            -8.864589161570946,
+            -0.0019502259807939433,
+            -8.564652380760249
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Whose place of residence is Halwick?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -16.054834483497814,
+            -17.72917832314189,
+            -0.0039004519615878867,
+            -17.129304761520498
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kenener follows La' Dena",
+          "bounded_generated_token_ids": [
+            8012,
+            269,
+            264,
+            6152,
+            2605,
+            40,
+            443,
+            3712
+          ],
+          "category": "reverse",
+          "generated_text": " Kenen",
+          "generated_token_ids": [
+            8012,
+            269
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Hugo",
+          "id": "dev-reverse-0002",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.88988747427429,
+            -5.230916274556596,
+            -5.141203697954011,
+            -4.185711360734074
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 118,
+          "question": "Whose occupation is reporter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -5.77977494854858,
+            -10.461832549113192,
+            -10.282407395908022,
+            -8.371422721468148
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members follows Mal is Mae",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            6512,
+            319,
+            364,
+            1953
+          ],
+          "category": "reverse",
+          "generated_text": " A record",
+          "generated_token_ids": [
+            316,
+            1804
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-reverse-0025",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.035895719822577,
+            -1.9713695976662633,
+            -0.7143422821044286,
+            -2.3460800489804194
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Who is employed as a farmer?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -4.071791439645154,
+            -3.9427391953325266,
+            -2.143026846313286,
+            -4.692160097960839
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kai is P Roeweler",
+          "bounded_generated_token_ids": [
+            638,
+            2863,
+            319,
+            374,
+            2117,
+            511,
+            354,
+            264
+          ],
+          "category": "reverse",
+          "generated_text": " Kai",
+          "generated_token_ids": [
+            638,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Kai",
+          "id": "dev-reverse-0000",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.7889040619390166,
+            -4.448003040631899,
+            -2.5631133439787708,
+            -2.2891554313666824
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who is employed as a reporter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -1.5778081238780333,
+            -8.896006081263797,
+            -5.1262266879575416,
+            -4.578310862733365
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sua is Sua is Sua",
+          "bounded_generated_token_ids": [
+            3134,
+            98,
+            319,
+            3134,
+            98,
+            319,
+            3134,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " Sua",
+          "generated_token_ids": [
+            3134,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Adam",
+          "id": "dev-reverse-0082",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.934795651606859,
+            -5.695678598612846,
+            -3.768222203506004,
+            -4.313153485171075
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who is employed as a potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -9.869591303213719,
+            -11.391357197225693,
+            -7.536444407012008,
+            -8.62630697034215
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Wanoiven call Wanoiven call",
+          "bounded_generated_token_ids": [
+            389,
+            7931,
+            1288,
+            836,
+            389,
+            7931,
+            1288,
+            836
+          ],
+          "category": "reverse",
+          "generated_text": " Wano",
+          "generated_token_ids": [
+            389,
+            7931
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Gus",
+          "id": "dev-reverse-0097",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.2604738261219133,
+            -1.7292539141800907,
+            -1.3160637120978,
+            -2.230496678632118
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Who is employed as a potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -2.5209476522438266,
+            -3.4585078283601813,
+            -2.6321274241956,
+            -4.460993357264236
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ivores Mureleanken",
+          "bounded_generated_token_ids": [
+            342,
+            119,
+            3075,
+            364,
+            441,
+            294,
+            278,
+            3930
+          ],
+          "category": "reverse",
+          "generated_text": " Iv",
+          "generated_token_ids": [
+            342,
+            119
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Dev",
+          "id": "dev-reverse-0093",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.191140250367486,
+            -2.110959996129176,
+            -5.254992445915285,
+            -2.3103316295514924
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 120,
+          "question": "Who is most fond of yellow?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -14.382280500734971,
+            -4.221919992258352,
+            -10.50998489183057,
+            -4.620663259102985
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jail adores a Whren 30",
+          "bounded_generated_token_ids": [
+            468,
+            736,
+            546,
+            3075,
+            259,
+            878,
+            587,
+            2486
+          ],
+          "category": "reverse",
+          "generated_text": " Jail",
+          "generated_token_ids": [
+            468,
+            736
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-reverse-0029",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.4825326892082398,
+            -2.1142026893764334,
+            -2.0781568709986864,
+            -12.129937134376753
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Black is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -6.9650653784164795,
+            -4.228405378752867,
+            -4.156313741997373,
+            -24.259874268753506
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kasbyedtonba rese",
+          "bounded_generated_token_ids": [
+            638,
+            293,
+            1988,
+            273,
+            1082,
+            7887,
+            519,
+            102
+          ],
+          "category": "reverse",
+          "generated_text": " Kasby",
+          "generated_token_ids": [
+            638,
+            293,
+            1988
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-reverse-0085",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.2360675343505685,
+            -0.9503416655300555,
+            -7.700901495416649,
+            -6.650054279159329
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Who resides in Ostton?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -12.472135068701137,
+            -2.8510249965901666,
+            -15.401802990833298,
+            -13.300108558318659
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Malo rese In Dunm",
+          "bounded_generated_token_ids": [
+            6512,
+            112,
+            519,
+            102,
+            517,
+            443,
+            450,
+            110
+          ],
+          "category": "reverse",
+          "generated_text": " Malo",
+          "generated_token_ids": [
+            6512,
+            112
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Tess",
+          "id": "dev-reverse-0079",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.165778046814574,
+            -3.9302904222134254,
+            -5.069186092421792,
+            -5.351402385943356
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Whose place of residence is Dunmere?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -10.331556093629148,
+            -7.860580844426851,
+            -10.138372184843584,
+            -10.702804771886711
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pedroedroelerist",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            273,
+            305,
+            354,
+            264,
+            358
+          ],
+          "category": "reverse",
+          "generated_text": " Pedro",
+          "generated_token_ids": [
+            374,
+            273,
+            305
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Pedro",
+          "id": "dev-reverse-0005",
+          "key": 1,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.606785703734576,
+            -0.013870465147423591,
+            -3.9020313269254707,
+            -7.5483567475513285
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Who is employed as an astronomer?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -4.8203571112037285,
+            -0.04161139544227077,
+            -7.8040626538509414,
+            -15.096713495102657
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Trao is Ben a La's",
+          "bounded_generated_token_ids": [
+            4823,
+            112,
+            319,
+            6130,
+            259,
+            2605,
+            40,
+            116
+          ],
+          "category": "reverse",
+          "generated_text": " Trao",
+          "generated_token_ids": [
+            4823,
+            112
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-reverse-0012",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.402480455802434,
+            -3.7303616011578127,
+            -2.954005127359995,
+            -4.243486762225426
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 117,
+          "question": "Who is most fond of black?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -10.804960911604867,
+            -7.460723202315625,
+            -2.954005127359995,
+            -8.486973524450852
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "W tallun Red answer Joud ad",
+          "bounded_generated_token_ids": [
+            389,
+            6362,
+            450,
+            4857,
+            2591,
+            468,
+            3393,
+            546
+          ],
+          "category": "reverse",
+          "generated_text": " W tall",
+          "generated_token_ids": [
+            389,
+            6362
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-reverse-0067",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -2.0944654743455624,
+            -2.250988443675035,
+            -3.916810175994633,
+            -5.820292902194176
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 119,
+          "question": "Black is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -4.188930948691125,
+            -4.50197688735007,
+            -7.833620351989266,
+            -11.640585804388351
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lena is Thrimsonerist",
+          "bounded_generated_token_ids": [
+            455,
+            3712,
+            319,
+            504,
+            2131,
+            3485,
+            264,
+            358
+          ],
+          "category": "reverse",
+          "generated_text": " Lena",
+          "generated_token_ids": [
+            455,
+            3712
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Lena",
+          "id": "dev-reverse-0004",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.9371169027919654,
+            -3.8909964813385227,
+            -1.2407483136352842,
+            -4.465974724327095
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 112,
+          "question": "Who is employed as a florist?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -1.8742338055839307,
+            -7.781992962677045,
+            -2.4814966272705683,
+            -8.93194944865419
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cla is Mia does Sofia",
+          "bounded_generated_token_ids": [
+            4865,
+            319,
+            364,
+            523,
+            1175,
+            1169,
+            103,
+            523
+          ],
+          "category": "reverse",
+          "generated_text": " Cla is",
+          "generated_token_ids": [
+            4865,
+            319
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mia",
+          "id": "dev-reverse-0041",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.799311807341377,
+            -1.76284527382343,
+            -5.445044258804181,
+            -2.1102453766220597
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Who is associated with the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -4.799311807341377,
+            -3.52569054764686,
+            -10.890088517608362,
+            -6.330736129866179
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Floristeneristener",
+          "bounded_generated_token_ids": [
+            5402,
+            276,
+            358,
+            269,
+            264,
+            358,
+            269,
+            264
+          ],
+          "category": "reverse",
+          "generated_text": " Flor",
+          "generated_token_ids": [
+            5402,
+            276
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-reverse-0038",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.8568127597849908,
+            -3.847118716628727,
+            -4.448192307849702,
+            -0.8815408436509341
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Whose occupation is jeweler?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -3.4272510391399633,
+            -7.694237433257454,
+            -8.896384615699404,
+            -1.7630816873018682
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ch Lu is Lu is Lu is Ma",
+          "bounded_generated_token_ids": [
+            620,
+            7770,
+            319,
+            7770,
+            319,
+            7770,
+            319,
+            4577
+          ],
+          "category": "reverse",
+          "generated_text": " Ch Lu",
+          "generated_token_ids": [
+            620,
+            7770
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Neil",
+          "id": "dev-reverse-0088",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.615008478603114,
+            -6.390519199987044,
+            -2.0050287521994026,
+            -5.4767925436760985
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Whose occupation is painter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -7.230016957206228,
+            -12.781038399974088,
+            -4.010057504398805,
+            -10.953585087352197
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "M lo Matosaa every Mar",
+          "bounded_generated_token_ids": [
+            364,
+            1918,
+            5491,
+            7344,
+            98,
+            1076,
+            364,
+            283
+          ],
+          "category": "reverse",
+          "generated_text": " M lo",
+          "generated_token_ids": [
+            364,
+            1918
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mae",
+          "id": "dev-reverse-0036",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.8433607166671322,
+            -3.74892440268673,
+            -4.178931640640926,
+            -1.0630741447914038
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Which person owns a cow?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -3.6867214333342644,
+            -7.49784880537346,
+            -8.357863281281851,
+            -2.1261482895828077
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Oiteler says Rosaer",
+          "bounded_generated_token_ids": [
+            491,
+            275,
+            354,
+            264,
+            1841,
+            413,
+            7344,
+            264
+          ],
+          "category": "reverse",
+          "generated_text": " Oit",
+          "generated_token_ids": [
+            491,
+            275
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Rosa",
+          "id": "dev-reverse-0077",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.813603110264301,
+            -1.119175670197579,
+            -3.1443517038187654,
+            -4.764170078015769
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who is employed as a potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -9.627206220528603,
+            -2.238351340395158,
+            -6.288703407637531,
+            -9.528340156031538
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Hrekenredgehad",
+          "bounded_generated_token_ids": [
+            403,
+            262,
+            3930,
+            262,
+            101,
+            373,
+            105,
+            324
+          ],
+          "category": "reverse",
+          "generated_text": " Hre",
+          "generated_token_ids": [
+            403,
+            262
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Andre",
+          "id": "dev-reverse-0099",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.468878954816869,
+            -0.8489640371235547,
+            -5.912197755781215,
+            -7.1122911466527325
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Which person owns a cow?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -8.937757909633739,
+            -3.395856148494219,
+            -11.82439551156243,
+            -14.224582293305465
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Choufanerist'",
+          "bounded_generated_token_ids": [
+            620,
+            112,
+            118,
+            103,
+            278,
+            264,
+            358,
+            40
+          ],
+          "category": "reverse",
+          "generated_text": " Cho",
+          "generated_token_ids": [
+            620,
+            112
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Noah",
+          "id": "dev-reverse-0032",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.222779941712884,
+            -2.9113809460816826,
+            -2.073216740534014,
+            -1.537600498306982
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Whose occupation is jeweler?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -4.445559883425768,
+            -5.822761892163365,
+            -8.292866962136056,
+            -3.075200996613964
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Th record",
+          "bounded_generated_token_ids": [
+            504,
+            1804,
+            47
+          ],
+          "category": "reverse",
+          "generated_text": " Th record",
+          "generated_token_ids": [
+            504,
+            1804
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Sara",
+          "id": "dev-reverse-0011",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.083287263833409,
+            -1.6138932795435474,
+            -4.826502315199632,
+            -2.564706753043759
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Who is most fond of crimson?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -10.166574527666818,
+            -4.841679838630642,
+            -9.653004630399264,
+            -5.129413506087518
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kaiarearininin",
+          "bounded_generated_token_ids": [
+            638,
+            2863,
+            98,
+            262,
+            283,
+            260,
+            260,
+            260
+          ],
+          "category": "reverse",
+          "generated_text": " Kai",
+          "generated_token_ids": [
+            638,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Kai",
+          "id": "dev-reverse-0039",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.2421836857667232,
+            -3.6958178602273364,
+            -1.9905894684818912,
+            -0.2404168565218012
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Who is associated with the mandolin?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -6.4843673715334464,
+            -7.391635720454673,
+            -5.9717684054456734,
+            -0.4808337130436024
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mus adaro",
+          "bounded_generated_token_ids": [
+            364,
+            384,
+            546,
+            283,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " Mus",
+          "generated_token_ids": [
+            364,
+            384
+          ],
+          "generation_termination_reason": "context_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Gus",
+          "id": "dev-reverse-0072",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.0116520803613516,
+            -3.737845946114893,
+            -2.92475021790777,
+            -1.629839869276275
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 123,
+          "question": "Who is most fond of gold?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -6.023304160722703,
+            -7.475691892229786,
+            -5.84950043581554,
+            -3.25967973855255
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Futenere now F goere now",
+          "bounded_generated_token_ids": [
+            431,
+            7765,
+            341,
+            1144,
+            431,
+            514,
+            341,
+            1144
+          ],
+          "category": "reverse",
+          "generated_text": " Futen",
+          "generated_token_ids": [
+            431,
+            7765
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Emma",
+          "id": "dev-reverse-0078",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.8952533340653854,
+            -1.5170277364635099,
+            -5.268770865872058,
+            -1.0855803704782316
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Who is the owner of a snake?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -3.790506668130771,
+            -3.0340554729270197,
+            -10.537541731744115,
+            -2.1711607409564633
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "bandao Chrouho K",
+          "bounded_generated_token_ids": [
+            6412,
+            98,
+            112,
+            620,
+            430,
+            105,
+            112,
+            638
+          ],
+          "category": "reverse",
+          "generated_text": " banda",
+          "generated_token_ids": [
+            6412,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Dev",
+          "id": "dev-reverse-0065",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -17.819729994430958,
+            -5.988649754380657,
+            -9.335941906591472,
+            -20.763994503145913
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Whose instrument is the tuba?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -17.819729994430958,
+            -11.977299508761314,
+            -18.671883813182944,
+            -41.527989006291826
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pena usually Uirarouar",
+          "bounded_generated_token_ids": [
+            374,
+            3712,
+            1759,
+            478,
+            326,
+            98,
+            430,
+            283
+          ],
+          "category": "reverse",
+          "generated_text": " Pena",
+          "generated_token_ids": [
+            374,
+            3712
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-reverse-0059",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.2017250239090416,
+            -1.112769557868198,
+            -1.4120429440162443,
+            -1.0089884435389989
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Which person owns a hedgehog?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -4.403450047818083,
+            -2.225539115736396,
+            -4.236128832048733,
+            -2.0179768870779977
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Luaoooooo",
+          "bounded_generated_token_ids": [
+            7770,
+            98,
+            112,
+            112,
+            112,
+            112,
+            112,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " Luao",
+          "generated_token_ids": [
+            7770,
+            98,
+            112
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-reverse-0034",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.7179535392328202,
+            -6.663107379704056,
+            -3.66498315864961,
+            -6.227700838468494
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Who is associated with the tuba?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -1.4359070784656405,
+            -6.663107379704056,
+            -10.99494947594883,
+            -12.455401676936988
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lena is R Wil'anist",
+          "bounded_generated_token_ids": [
+            455,
+            3712,
+            319,
+            413,
+            6259,
+            40,
+            278,
+            358
+          ],
+          "category": "reverse",
+          "generated_text": " Lena",
+          "generated_token_ids": [
+            455,
+            3712
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Raj",
+          "id": "dev-reverse-0080",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -3.1985675298261436,
+            -5.340414928636706,
+            -0.08228107897290349,
+            -3.8292261497357423
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Whose occupation is painter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -6.397135059652287,
+            -10.680829857273412,
+            -0.16456215794580697,
+            -7.6584522994714845
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Lena reseouraba In K",
+          "bounded_generated_token_ids": [
+            455,
+            3712,
+            519,
+            102,
+            1752,
+            7887,
+            517,
+            638
+          ],
+          "category": "reverse",
+          "generated_text": " Lena res",
+          "generated_token_ids": [
+            455,
+            3712,
+            519
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-reverse-0018",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.2499895276699737,
+            -6.2221078300568164,
+            -1.1261544790900258,
+            -0.5615700732262495
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Whose place of residence is Ravgard?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -2.4999790553399475,
+            -12.444215660113633,
+            -3.3784634372700775,
+            -1.123140146452499
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Oama rese is Oam",
+          "bounded_generated_token_ids": [
+            491,
+            337,
+            98,
+            519,
+            102,
+            319,
+            491,
+            337
+          ],
+          "category": "reverse",
+          "generated_text": " Oam",
+          "generated_token_ids": [
+            491,
+            337
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Una",
+          "id": "dev-reverse-0049",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.044862436683302,
+            -5.277640594648174,
+            -8.719840619855502,
+            -6.356861062774778
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Who resides in Linley?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -8.089724873366604,
+            -10.555281189296348,
+            -17.439681239711003,
+            -12.713722125549555
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pedroa is Pedro",
+          "bounded_generated_token_ids": [
+            374,
+            273,
+            305,
+            98,
+            319,
+            374,
+            273,
+            305
+          ],
+          "category": "reverse",
+          "generated_text": " Pedro",
+          "generated_token_ids": [
+            374,
+            273,
+            305
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Pedro",
+          "id": "dev-reverse-0063",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.640205141958968,
+            -0.7333580565005814,
+            -4.553594144767231,
+            -0.39612588845775415
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Whose occupation is jeweler?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -7.280410283917936,
+            -1.4667161130011628,
+            -9.107188289534461,
+            -1.1883776653732625
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Y Autfordle a Mia Cho",
+          "bounded_generated_token_ids": [
+            821,
+            7898,
+            2941,
+            294,
+            259,
+            364,
+            523,
+            7489
+          ],
+          "category": "reverse",
+          "generated_text": " Y Aut",
+          "generated_token_ids": [
+            821,
+            7898
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Edith",
+          "id": "dev-reverse-0035",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.552493526309685,
+            -2.100683372468603,
+            -10.56259588240849,
+            -5.388621020423093
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Black is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -11.10498705261937,
+            -4.201366744937206,
+            -10.56259588240849,
+            -10.777242040846186
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Wano rese in Bstm",
+          "bounded_generated_token_ids": [
+            389,
+            7931,
+            519,
+            102,
+            284,
+            367,
+            306,
+            110
+          ],
+          "category": "reverse",
+          "generated_text": " Wano",
+          "generated_token_ids": [
+            389,
+            7931
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Lena",
+          "id": "dev-reverse-0064",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.8142501779778184,
+            -2.3726995253781142,
+            -3.809587149692755,
+            -2.7050795430835897
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Who resides in Ulmmere?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -3.628500355955637,
+            -9.490798101512457,
+            -11.428761449078266,
+            -5.410159086167179
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Paka Kba is Maa'",
+          "bounded_generated_token_ids": [
+            6974,
+            98,
+            638,
+            7887,
+            319,
+            4577,
+            98,
+            40
+          ],
+          "category": "reverse",
+          "generated_text": " Paka",
+          "generated_token_ids": [
+            6974,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Mia",
+          "id": "dev-reverse-0086",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.2148585853473937,
+            -2.5550824544087716,
+            -1.2158448721896746,
+            -5.701336923526051
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who is employed as a reporter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -6.429717170694787,
+            -5.110164908817543,
+            -2.4316897443793493,
+            -11.402673847052101
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Asha ada ada ada",
+          "bounded_generated_token_ids": [
+            7634,
+            98,
+            546,
+            98,
+            546,
+            98,
+            546,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " Asha",
+          "generated_token_ids": [
+            7634,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Finn",
+          "id": "dev-reverse-0052",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.6773887981057785,
+            -6.880805338766317,
+            -4.482861835942959,
+            -6.5046193515795885
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Who is most fond of yellow?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -9.354777596211557,
+            -13.761610677532634,
+            -8.965723671885918,
+            -13.009238703159177
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Roar own Deil Everyo",
+          "bounded_generated_token_ids": [
+            431,
+            2117,
+            283,
+            881,
+            1492,
+            301,
+            5823,
+            112
+          ],
+          "category": "reverse",
+          "generated_text": " F Ro",
+          "generated_token_ids": [
+            431,
+            2117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Neil",
+          "id": "dev-reverse-0068",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.993625929537202,
+            -1.7441730203362242,
+            -1.4229189891180436,
+            -1.994109462141231
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Which person owns a hedgehog?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -7.987251859074404,
+            -3.4883460406724485,
+            -2.845837978236087,
+            -3.988218924282462
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sherin adores a gold as Cl",
+          "bounded_generated_token_ids": [
+            6853,
+            260,
+            546,
+            3075,
+            259,
+            3224,
+            339,
+            1964
+          ],
+          "category": "reverse",
+          "generated_text": " Sherin",
+          "generated_token_ids": [
+            6853,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Adam",
+          "id": "dev-reverse-0092",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -4.029727262627642,
+            -4.3040956724260875,
+            -2.9281797861036933,
+            -6.399711558246395
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Yellow is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -8.059454525255283,
+            -8.608191344852175,
+            -5.856359572207387,
+            -12.79942311649279
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Saraedstadfordik is",
+          "bounded_generated_token_ids": [
+            335,
+            3562,
+            273,
+            306,
+            324,
+            2941,
+            2158,
+            319
+          ],
+          "category": "reverse",
+          "generated_text": " Sara",
+          "generated_token_ids": [
+            335,
+            3562
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Sara",
+          "id": "dev-reverse-0009",
+          "key": 1,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.50457097776231,
+            -0.49741220762648697,
+            -7.064489952402978,
+            -4.721463102861782
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Who resides in Linvik?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -3.00914195552462,
+            -0.9948244152529739,
+            -14.128979904805956,
+            -9.442926205723564
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "A record members followsordininin",
+          "bounded_generated_token_ids": [
+            316,
+            1804,
+            1598,
+            6152,
+            624,
+            260,
+            260,
+            260
+          ],
+          "category": "reverse",
+          "generated_text": " A record",
+          "generated_token_ids": [
+            316,
+            1804
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kai",
+          "id": "dev-reverse-0048",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.008339028597211,
+            -5.1246240100272225,
+            -6.65195113290239,
+            -7.260151516393162
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Whose instrument is the piano?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -10.016678057194422,
+            -10.249248020054445,
+            -13.30390226580478,
+            -7.260151516393162
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Carla is Asha isbum",
+          "bounded_generated_token_ids": [
+            1604,
+            357,
+            319,
+            7634,
+            98,
+            319,
+            99,
+            414
+          ],
+          "category": "reverse",
+          "generated_text": " Carla",
+          "generated_token_ids": [
+            1604,
+            357
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Hugo",
+          "id": "dev-reverse-0058",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -6.440063663014913,
+            -1.166616538321599,
+            -4.369400432902401,
+            -3.163497383769902
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Who is associated with the banjo?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -12.880127326029825,
+            -2.333233076643198,
+            -8.738800865804802,
+            -6.326994767539804
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Gus says Sua is Gus",
+          "bounded_generated_token_ids": [
+            438,
+            384,
+            1841,
+            3134,
+            98,
+            319,
+            438,
+            384
+          ],
+          "category": "reverse",
+          "generated_text": " Gus",
+          "generated_token_ids": [
+            438,
+            384
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "Gus",
+          "id": "dev-reverse-0076",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.5778721962089484,
+            -3.318086216223951,
+            -5.829983302493943,
+            -3.3588950389045715
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Whose occupation is jeweler?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -1.1557443924178967,
+            -6.636172432447902,
+            -11.659966604987886,
+            -6.717790077809143
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Iv'werere tops",
+          "bounded_generated_token_ids": [
+            342,
+            119,
+            40,
+            120,
+            341,
+            262,
+            1574,
+            116
+          ],
+          "category": "reverse",
+          "generated_text": " Iv",
+          "generated_token_ids": [
+            342,
+            119
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Dev",
+          "id": "dev-reverse-0096",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.4178125615142174,
+            -4.331630311730249,
+            -5.172984950537336,
+            -0.7017428220623639
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Who is employed as a painter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -6.835625123028435,
+            -8.663260623460499,
+            -10.345969901074673,
+            -2.105228466187092
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Kai everyet best The pet that",
+          "bounded_generated_token_ids": [
+            638,
+            2863,
+            1076,
+            330,
+            1855,
+            347,
+            4114,
+            320
+          ],
+          "category": "reverse",
+          "generated_text": " Kai",
+          "generated_token_ids": [
+            638,
+            2863
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Alba",
+          "id": "dev-reverse-0053",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.5426538960037877,
+            -2.79437277821051,
+            -0.9941809242384118,
+            -3.978918218846989
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Who is the owner of a rabbit?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -3.5426538960037877,
+            -5.58874555642102,
+            -1.9883618484768235,
+            -7.957836437693978
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Porenerdoenerrou",
+          "bounded_generated_token_ids": [
+            374,
+            276,
+            269,
+            264,
+            6071,
+            269,
+            264,
+            430
+          ],
+          "category": "reverse",
+          "generated_text": " Por",
+          "generated_token_ids": [
+            374,
+            276
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jean",
+          "id": "dev-reverse-0081",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.7922734826237614,
+            -1.5297781780350852,
+            -2.0073203988912103,
+            -4.051886440344663
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Whose occupation is gardener?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -3.584546965247523,
+            -3.0595563560701704,
+            -4.014640797782421,
+            -8.103772880689325
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Chira is?eristen",
+          "bounded_generated_token_ids": [
+            620,
+            326,
+            98,
+            319,
+            151,
+            264,
+            358,
+            269
+          ],
+          "category": "reverse",
+          "generated_text": " Chira",
+          "generated_token_ids": [
+            620,
+            326,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Kira",
+          "id": "dev-reverse-0051",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -8.671842678644438,
+            -8.0115678431742,
+            -6.404121684264894,
+            -4.221945284269388
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Whose occupation is astronomer?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -8.671842678644438,
+            -16.0231356863484,
+            -12.808243368529787,
+            -12.665835852808165
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sorearoed Theo numerous",
+          "bounded_generated_token_ids": [
+            1169,
+            262,
+            283,
+            112,
+            273,
+            347,
+            112,
+            4412
+          ],
+          "category": "reverse",
+          "generated_text": " Sore",
+          "generated_token_ids": [
+            1169,
+            262
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Tess",
+          "id": "dev-reverse-0037",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.670483083636315,
+            -7.668241045373417,
+            -2.735356554989922,
+            -6.92725595661764
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Who is associated with the banjo?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -11.34096616727263,
+            -15.336482090746834,
+            -8.206069664969766,
+            -13.85451191323528
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Pama pref Manoibla own",
+          "bounded_generated_token_ids": [
+            4324,
+            2026,
+            5905,
+            3038,
+            112,
+            593,
+            357,
+            881
+          ],
+          "category": "reverse",
+          "generated_text": " Pama",
+          "generated_token_ids": [
+            4324,
+            2026
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Eva",
+          "id": "dev-reverse-0017",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.5896184860998577,
+            -4.490539169630402,
+            -3.922922474175063,
+            -4.650478910728524
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Who is the owner of a donkey?",
+          "subtype": "pet",
+          "summed_option_logprob": [
+            -4.768855458299573,
+            -8.981078339260804,
+            -7.845844948350126,
+            -9.300957821457049
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "place rese with place resea",
+          "bounded_generated_token_ids": [
+            1252,
+            519,
+            102,
+            360,
+            1252,
+            519,
+            102,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " place res",
+          "generated_token_ids": [
+            1252,
+            519
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Wade",
+          "id": "dev-reverse-0045",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -16.047979061685083,
+            -3.610922360810857,
+            -11.040434945916465,
+            -14.716676256424746
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Whose place of residence is Kasby?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -32.09595812337017,
+            -7.221844721621714,
+            -22.08086989183293,
+            -29.433352512849492
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Joud is Doulaaa is",
+          "bounded_generated_token_ids": [
+            468,
+            3393,
+            319,
+            4285,
+            357,
+            98,
+            98,
+            319
+          ],
+          "category": "reverse",
+          "generated_text": " Joud",
+          "generated_token_ids": [
+            468,
+            3393
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Andre",
+          "id": "dev-reverse-0087",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.5076593927558035,
+            -1.7687779584967775,
+            -3.8898871951256018,
+            -7.4125176028618025
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Who is employed as a potter?",
+          "subtype": "job",
+          "summed_option_logprob": [
+            -4.522978178267411,
+            -3.537555916993555,
+            -7.7797743902512035,
+            -14.825035205723605
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Traa adores The Whrena",
+          "bounded_generated_token_ids": [
+            4823,
+            98,
+            546,
+            3075,
+            347,
+            878,
+            587,
+            98
+          ],
+          "category": "reverse",
+          "generated_text": " Traa ad",
+          "generated_token_ids": [
+            4823,
+            98,
+            546
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Otto",
+          "id": "dev-reverse-0056",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.3422466823112584,
+            -4.691451683310984,
+            -3.9466757979707414,
+            -0.9503169222079489
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Black is the favorite color of which person?",
+          "subtype": "color",
+          "summed_option_logprob": [
+            -4.026740046933775,
+            -9.382903366621967,
+            -7.893351595941483,
+            -2.8509507666238467
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Ulmere For Ste Mure",
+          "bounded_generated_token_ids": [
+            478,
+            109,
+            110,
+            341,
+            1054,
+            6748,
+            8049,
+            102
+          ],
+          "category": "reverse",
+          "generated_text": " Ulm",
+          "generated_token_ids": [
+            478,
+            109,
+            110
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Pedro",
+          "id": "dev-reverse-0021",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -6.469533020014111,
+            -1.4015832767452254,
+            -6.49332899003579,
+            -7.025714668081726
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 87,
+          "question": "Whose place of residence is Barmere?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -12.939066040028221,
+            -4.204749830235676,
+            -12.98665798007158,
+            -14.051429336163451
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Oed Theo does Oed four",
+          "bounded_generated_token_ids": [
+            491,
+            273,
+            347,
+            112,
+            1175,
+            491,
+            273,
+            1398
+          ],
+          "category": "reverse",
+          "generated_text": " Oed",
+          "generated_token_ids": [
+            491,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Jack",
+          "id": "dev-reverse-0026",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.526666380824294,
+            -6.82365722256012,
+            -3.929315143727865,
+            -4.4823970322944175
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Whose instrument is the mandolin?",
+          "subtype": "instrument",
+          "summed_option_logprob": [
+            -6.526666380824294,
+            -13.64731444512024,
+            -7.85863028745573,
+            -8.964794064588835
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "F Babardor Ua rese",
+          "bounded_generated_token_ids": [
+            431,
+            6081,
+            499,
+            276,
+            478,
+            98,
+            519,
+            102
+          ],
+          "category": "reverse",
+          "generated_text": " F Bab",
+          "generated_token_ids": [
+            431,
+            6081
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "Una",
+          "id": "dev-reverse-0040",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -5.613759248761881,
+            -4.849616929832374,
+            -3.256420767562347,
+            -6.127428732928701
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Who resides in Linley?",
+          "subtype": "town",
+          "summed_option_logprob": [
+            -11.227518497523763,
+            -9.699233859664748,
+            -6.512841535124694,
+            -12.254857465857402
+          ],
+          "summed_option_prediction": 2
+        }
+      ],
+      "mismatch_literally_unchanged_n": 0,
+      "summary": {
+        "bounded_free_generation_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 0.044752194740079396,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.044752194740079396,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 82
+        },
+        "bounded_free_generation_terminated_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 0.044752194740079396,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.044752194740079396,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 82
+        },
+        "gold_length_greedy_prefix_exact": {
+          "accuracy": 0.13414634146341464,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.13414634146341464,
+              "ci95_high": 0.22445206358495667,
+              "ci95_low": 0.07658612768827223,
+              "correct": 11,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.22445206358495667,
+          "ci95_low": 0.07658612768827223,
+          "correct": 11,
+          "n": 82
+        },
+        "letter_A_to_D": {
+          "accuracy": 0.23170731707317074,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.23170731707317074,
+              "ci95_high": 0.33377455586108484,
+              "ci95_low": 0.15365345107261638,
+              "correct": 19,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.33377455586108484,
+          "ci95_low": 0.15365345107261638,
+          "correct": 19,
+          "n": 82
+        },
+        "mean_token_option_likelihood": {
+          "accuracy": 0.4146341463414634,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.4146341463414634,
+              "ci95_high": 0.522745008830426,
+              "ci95_low": 0.3141639024666607,
+              "correct": 34,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.522745008830426,
+          "ci95_low": 0.3141639024666607,
+          "correct": 34,
+          "n": 82
+        },
+        "summed_option_likelihood": {
+          "accuracy": 0.36585365853658536,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.36585365853658536,
+              "ci95_high": 0.4739293402397686,
+              "ci95_low": 0.26978466322708194,
+              "correct": 30,
+              "n": 82
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            }
+          },
+          "ci95_high": 0.4739293402397686,
+          "ci95_low": 0.26978466322708194,
+          "correct": 30,
+          "n": 82
+        }
+      }
+    }
+  },
+  "generation_note": "Autoregressive greedy generation stops on EOT, first decoded period/newline, context limit, or eight tokens (independent of gold). Exact compares trimmed generated answer to gold; terminated_exact additionally requires EOT or delimiter. Gold-length prefix is a separate diagnostic and does not score termination.",
+  "item_count": 82,
+  "items": "docs/results/stage2/mission-20261111/review-checks-20261113/devrev-swap.jsonl",
+  "items_sha256": "de179b0cf62bde5b72f0f8d959fcb66b20fe257d1c200febe91f2fe05ba8a0a6",
+  "limit": 0,
+  "locked_test": false,
+  "mismatch_note": "Historical same-category question replacement is reproduced. Literal unchanged flags count collisions; compare questions may retain the same max/min operation even when text changes. Use opposite-query counterfactual evidence for conditioning.",
+  "paired_wording_note": "First training question frame for each structured query; identical passage/options/keys. Passage wording remains unfamiliar. Counterfactual uses cf_query.",
+  "schema": "asem-qa-dev-analysis-1",
+  "seconds": 3.816901,
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "workers": 4
+}

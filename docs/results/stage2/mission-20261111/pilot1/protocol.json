@@ -1,0 +1,23 @@
+{
+  "schema": "asem-inverse-pilot-1",
+  "hypothesis": "Graph-derived inverse contrastive supervision improves unfamiliar relationship and reverse lookup ranking without broad skill regression.",
+  "steps": 300,
+  "seed": 111201,
+  "control_coefficient": 0,
+  "treatment_coefficient": 1,
+  "primary_categories": ["relation", "reverse"],
+  "primary_metric": "summed_option_likelihood",
+  "primary_minimum_difference": 0.10,
+  "primary_exact_two_sided_p_less_than": 0.016666666666666666,
+  "selection_n": 500,
+  "confirmation_n": 500,
+  "primary_checkpoint": "last.ckpt",
+  "other_category_maximum_observed_loss": 0.05,
+  "overall_prefix_maximum_observed_loss": 0.02,
+  "milestone_minimum_selection_and_original_qa": 0.50,
+  "milestone_minimum_selection_gain_over_r7": 0.03,
+  "replication_required_before_promotion": true,
+  "confirmation_used_for_selection": false,
+  "longer_run_authorized_by_this_protocol": false,
+  "locked_test_accessed": false
+}

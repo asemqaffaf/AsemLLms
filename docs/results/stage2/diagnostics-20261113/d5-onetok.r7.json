@@ -1,0 +1,5274 @@
+{
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "conditions": {
+    "real": {
+      "items": [
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village lived Sher reached the village as ruler",
+          "bounded_generated_token_ids": [
+            5657,
+            2482,
+            6853,
+            3182,
+            261,
+            5657,
+            339,
+            7135
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0017",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -13.962286991251714,
+            -9.81313330777873,
+            -7.891522890211972,
+            -0.17547226979279168
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Gus head once done at the college?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -13.962286991251714,
+            -9.81313330777873,
+            -7.891522890211972,
+            -0.17547226979279168
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sherma lived Norma Yed office",
+          "bounded_generated_token_ids": [
+            6853,
+            2026,
+            2482,
+            4404,
+            2026,
+            821,
+            273,
+            3588
+          ],
+          "category": "temporal",
+          "generated_text": " Sher",
+          "generated_token_ids": [
+            6853
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0015",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.545793079050844,
+            -7.162358756484035,
+            -3.1392379456132224,
+            -8.47137506790486
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Emma's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -9.545793079050844,
+            -7.162358756484035,
+            -3.1392379456132224,
+            -8.47137506790486
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "court than Sum of court than Sum does",
+          "bounded_generated_token_ids": [
+            2560,
+            612,
+            4940,
+            277,
+            2560,
+            612,
+            4940,
+            1175
+          ],
+          "category": "temporal",
+          "generated_text": " court",
+          "generated_token_ids": [
+            2560
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "court",
+          "id": "dev-temporal-0005",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.793428916108194,
+            -1.4206624464488355,
+            -9.579859347478568,
+            -8.491075062651452
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Where did Sofia head once done at the island?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -4.793428916108194,
+            -1.4206624464488355,
+            -9.579859347478568,
+            -8.491075062651452
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "War lived field lived field lived field with",
+          "bounded_generated_token_ids": [
+            1088,
+            2482,
+            2422,
+            2482,
+            2422,
+            2482,
+            2422,
+            360
+          ],
+          "category": "temporal",
+          "generated_text": " War",
+          "generated_token_ids": [
+            1088
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0080",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -4.954262948932744,
+            -2.550839556172686,
+            -10.82599369996619,
+            -5.553298202216243
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Rosa's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -4.954262948932744,
+            -2.550839556172686,
+            -10.82599369996619,
+            -5.553298202216243
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "holiday tiedouts Flondayay",
+          "bounded_generated_token_ids": [
+            8028,
+            7927,
+            459,
+            116,
+            5402,
+            977,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " holiday",
+          "generated_token_ids": [
+            8028
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "store",
+          "id": "dev-temporal-0063",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.342162289626705,
+            -8.534721142680638,
+            -12.53310135294382,
+            -3.4923564834114953
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where did Finn's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -9.342162289626705,
+            -8.534721142680638,
+            -12.53310135294382,
+            -3.4923564834114953
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "rivera lived errands Fl",
+          "bounded_generated_token_ids": [
+            2797,
+            98,
+            2482,
+            1391,
+            351,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0012",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -8.949333151715955,
+            -0.8004264477115651,
+            -12.489848161118992,
+            -1.115872407890374
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.949333151715955,
+            -0.8004264477115651,
+            -12.489848161118992,
+            -1.115872407890374
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "wounded in Pa arrived at Hugo north",
+          "bounded_generated_token_ids": [
+            8167,
+            284,
+            4324,
+            3248,
+            396,
+            403,
+            6378,
+            2184
+          ],
+          "category": "temporal",
+          "generated_text": " wounded",
+          "generated_token_ids": [
+            8167
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "house",
+          "id": "dev-temporal-0041",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.061123980935973,
+            -11.09410580179306,
+            -9.666293197109303,
+            -9.164719651036851
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Hugo head once done at the mountain?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -12.061123980935973,
+            -11.09410580179306,
+            -9.666293197109303,
+            -9.164719651036851
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "church of marriage ofext with marriage of",
+          "bounded_generated_token_ids": [
+            3452,
+            277,
+            6673,
+            277,
+            3068,
+            360,
+            6673,
+            277
+          ],
+          "category": "temporal",
+          "generated_text": " church",
+          "generated_token_ids": [
+            3452
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "bridge",
+          "id": "dev-temporal-0085",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.470778294268374,
+            -8.515163684636144,
+            -3.390102789611366,
+            -1.7243564916291143
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Mia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -12.470778294268374,
+            -8.515163684636144,
+            -3.390102789611366,
+            -1.7243564916291143
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "marriagea reached every islanda reached every",
+          "bounded_generated_token_ids": [
+            6673,
+            98,
+            3182,
+            1076,
+            3435,
+            98,
+            3182,
+            1076
+          ],
+          "category": "temporal",
+          "generated_text": " marriage",
+          "generated_token_ids": [
+            6673
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0071",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.678817309816662,
+            -2.20913651843526,
+            -5.673625073331759,
+            -12.786149993013783
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -7.678817309816662,
+            -2.20913651843526,
+            -5.673625073331759,
+            -12.786149993013783
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "War lived store toleiven with room",
+          "bounded_generated_token_ids": [
+            1088,
+            2482,
+            5156,
+            287,
+            294,
+            1288,
+            360,
+            4266
+          ],
+          "category": "temporal",
+          "generated_text": " War",
+          "generated_token_ids": [
+            1088
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0053",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -7.946130643350975,
+            -7.168365312019352,
+            -7.244724172616362,
+            -8.65556413801984
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -7.946130643350975,
+            -7.168365312019352,
+            -7.244724172616362,
+            -8.65556413801984
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "valley lived errands Flond",
+          "bounded_generated_token_ids": [
+            6402,
+            2482,
+            1391,
+            351,
+            271,
+            116,
+            5402,
+            977
+          ],
+          "category": "temporal",
+          "generated_text": " valley",
+          "generated_token_ids": [
+            6402
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0042",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -7.89560770686644,
+            -8.060296342890789,
+            -9.580088897084297,
+            -0.05844812197005634
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Where did Una head once done at the valley?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -7.89560770686644,
+            -8.060296342890789,
+            -9.580088897084297,
+            -0.05844812197005634
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "uels The War of village in field",
+          "bounded_generated_token_ids": [
+            2788,
+            116,
+            347,
+            1088,
+            277,
+            5657,
+            284,
+            2422
+          ],
+          "category": "temporal",
+          "generated_text": "uel",
+          "generated_token_ids": [
+            2788
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0004",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.835544013952594,
+            -10.672329313332332,
+            -5.554116611135365,
+            -5.661028333672913
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Hugo prior to the field?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -3.835544013952594,
+            -10.672329313332332,
+            -5.554116611135365,
+            -5.661028333672913
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lakela arrived errands Fl",
+          "bounded_generated_token_ids": [
+            6790,
+            357,
+            3248,
+            1391,
+            351,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "mountain",
+          "id": "dev-temporal-0068",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.473514604517215,
+            -8.365075602594917,
+            -0.9647422723408707,
+            -13.792801428143726
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -4.473514604517215,
+            -8.365075602594917,
+            -0.9647422723408707,
+            -13.792801428143726
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake errands headed to the",
+          "bounded_generated_token_ids": [
+            6790,
+            1391,
+            351,
+            271,
+            116,
+            7750,
+            287,
+            261
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "lake",
+          "id": "dev-temporal-0019",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -11.773236542329995,
+            -5.185838077843887,
+            -5.951267941221488,
+            -1.0876190758771511
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Where did Sofia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.773236542329995,
+            -5.185838077843887,
+            -5.951267941221488,
+            -1.0876190758771511
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake gave with place a lake replaced reached",
+          "bounded_generated_token_ids": [
+            6790,
+            2613,
+            360,
+            1252,
+            259,
+            6790,
+            4398,
+            3182
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0050",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.822477459961255,
+            -5.176957215752623,
+            -3.7102359443229522,
+            -2.011937939691431
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Where did Colin's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -5.822477459961255,
+            -5.176957215752623,
+            -3.7102359443229522,
+            -2.011937939691431
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "churchma headed to students Benma north",
+          "bounded_generated_token_ids": [
+            3452,
+            2026,
+            7750,
+            287,
+            645,
+            6130,
+            2026,
+            2184
+          ],
+          "category": "temporal",
+          "generated_text": " church",
+          "generated_token_ids": [
+            3452
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "church",
+          "id": "dev-temporal-0010",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.282830949268751,
+            -12.428293828819557,
+            -1.8437049067225646,
+            -6.362314396159931
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Emma's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -8.282830949268751,
+            -12.428293828819557,
+            -1.8437049067225646,
+            -6.362314396159931
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake reachedynrandenay at",
+          "bounded_generated_token_ids": [
+            6790,
+            3182,
+            1934,
+            351,
+            271,
+            269,
+            343,
+            396
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "camp",
+          "id": "dev-temporal-0031",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -0.44296262020295607,
+            -9.022873868890349,
+            -8.390623123309771,
+            -7.402599303759197
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Where did Ben's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -0.44296262020295607,
+            -9.022873868890349,
+            -8.390623123309771,
+            -7.402599303759197
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "War gave taught earthqu Fa Sta",
+          "bounded_generated_token_ids": [
+            1088,
+            2613,
+            3676,
+            3465,
+            431,
+            98,
+            558,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " War",
+          "generated_token_ids": [
+            1088
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "camp",
+          "id": "dev-temporal-0014",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.886853163948336,
+            -5.584450630170392,
+            -3.3631047215058745,
+            -8.678046035182046
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -6.886853163948336,
+            -5.584450630170392,
+            -3.3631047215058745,
+            -8.678046035182046
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "bridge lived errands The Pa",
+          "bounded_generated_token_ids": [
+            6642,
+            2482,
+            1391,
+            351,
+            271,
+            116,
+            347,
+            4324
+          ],
+          "category": "temporal",
+          "generated_text": " bridge",
+          "generated_token_ids": [
+            6642
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "court",
+          "id": "dev-temporal-0097",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.1211362893225607,
+            -8.57768500197099,
+            -5.870756764160256,
+            -11.755819997234957
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Aster's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -1.1211362893225607,
+            -8.57768500197099,
+            -5.870756764160256,
+            -11.755819997234957
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cal does Hugo headed toar Sh",
+          "bounded_generated_token_ids": [
+            1596,
+            1175,
+            403,
+            6378,
+            7750,
+            287,
+            283,
+            1590
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0079",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.362626968977432,
+            -5.854175038296094,
+            -4.46695989448243,
+            -11.533904045010715
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Where did Hugo's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -9.362626968977432,
+            -5.854175038296094,
+            -4.46695989448243,
+            -11.533904045010715
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "county arrived inan arrived underen For",
+          "bounded_generated_token_ids": [
+            7290,
+            3248,
+            284,
+            278,
+            3248,
+            651,
+            269,
+            1054
+          ],
+          "category": "temporal",
+          "generated_text": " county",
+          "generated_token_ids": [
+            7290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0058",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.306976327218732,
+            -5.799728383101839,
+            -1.5455589609332083,
+            -3.459575702332125
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Kai's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -4.306976327218732,
+            -5.799728383101839,
+            -1.5455589609332083,
+            -3.459575702332125
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cala reached road on city reached road",
+          "bounded_generated_token_ids": [
+            1596,
+            98,
+            3182,
+            5250,
+            333,
+            1717,
+            3182,
+            5250
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0021",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.672789485273785,
+            -11.599284955508695,
+            -13.141445987623243,
+            -7.199737410690797
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Where was Una prior to the college?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -8.672789485273785,
+            -11.599284955508695,
+            -13.141445987623243,
+            -7.199737410690797
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "uel reached stopped on stopped on Ma reached",
+          "bounded_generated_token_ids": [
+            2788,
+            3182,
+            6932,
+            333,
+            6932,
+            333,
+            4577,
+            3182
+          ],
+          "category": "temporal",
+          "generated_text": "uel",
+          "generated_token_ids": [
+            2788
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "camp",
+          "id": "dev-temporal-0076",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.816199977876355,
+            -13.697784988864353,
+            -9.245969510740498,
+            -6.67022097031225
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Where did Hugo's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -6.816199977876355,
+            -13.697784988864353,
+            -9.245969510740498,
+            -6.67022097031225
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ru reached aru reached aru reached",
+          "bounded_generated_token_ids": [
+            528,
+            3182,
+            259,
+            528,
+            3182,
+            259,
+            528,
+            3182
+          ],
+          "category": "temporal",
+          "generated_text": "ru",
+          "generated_token_ids": [
+            528
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0087",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.3629288564875175,
+            -4.370136059075387,
+            -5.270848064574016,
+            -3.3085437151044808
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Jack head once done at the island?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -6.3629288564875175,
+            -4.370136059075387,
+            -5.270848064574016,
+            -3.3085437151044808
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cal does Lena arrived replacedrou Red",
+          "bounded_generated_token_ids": [
+            1596,
+            1175,
+            455,
+            3712,
+            3248,
+            4398,
+            430,
+            4857
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "store",
+          "id": "dev-temporal-0095",
+          "key": 3,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -10.155246842727601,
+            -15.136432663323445,
+            -5.967240403719987,
+            -13.58920481257264
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Where did Lena head once done at the court?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -10.155246842727601,
+            -15.136432663323445,
+            -5.967240403719987,
+            -13.58920481257264
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "office does city does Haroud headed to",
+          "bounded_generated_token_ids": [
+            3588,
+            1175,
+            1717,
+            1175,
+            2397,
+            3393,
+            7750,
+            287
+          ],
+          "category": "temporal",
+          "generated_text": " office",
+          "generated_token_ids": [
+            3588
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "office",
+          "id": "dev-temporal-0078",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.7785732978977045,
+            -6.263651211756679,
+            -0.14469464831183929,
+            -10.429361585026067
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Where did Jack head once done at the road?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -7.7785732978977045,
+            -6.263651211756679,
+            -0.14469464831183929,
+            -10.429361585026067
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "valley reached valley reached valley reached maximum Pre",
+          "bounded_generated_token_ids": [
+            6402,
+            3182,
+            6402,
+            3182,
+            6402,
+            3182,
+            6965,
+            4485
+          ],
+          "category": "temporal",
+          "generated_text": " valley",
+          "generated_token_ids": [
+            6402
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0006",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.879213280860374,
+            -1.0331196674812173,
+            -8.059340473705209,
+            -12.4651989613513
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Kai head once done at the river?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -3.879213280860374,
+            -1.0331196674812173,
+            -8.059340473705209,
+            -12.4651989613513
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "feeling",
+          "bounded_generated_token_ids": [
+            5088,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " feeling",
+          "generated_token_ids": [
+            5088
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0089",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.408511347706797,
+            -10.56538744236359,
+            -8.173635710209952,
+            -5.74731080772712
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -4.408511347706797,
+            -10.56538744236359,
+            -8.173635710209952,
+            -5.74731080772712
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "field created field createdort arrived",
+          "bounded_generated_token_ids": [
+            2422,
+            1660,
+            2422,
+            1660,
+            422,
+            3248,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " field",
+          "generated_token_ids": [
+            2422
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "mountain",
+          "id": "dev-temporal-0011",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -10.297044694997574,
+            -8.867372384440827,
+            -0.15076534934322844,
+            -12.509196215453626
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Where did Jean head once done at the camp?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -10.297044694997574,
+            -8.867372384440827,
+            -0.15076534934322844,
+            -12.509196215453626
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "river reached valley The river reached valley The",
+          "bounded_generated_token_ids": [
+            2797,
+            3182,
+            6402,
+            347,
+            2797,
+            3182,
+            6402,
+            347
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "island",
+          "id": "dev-temporal-0027",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.427702950625437,
+            -1.0940213051974048,
+            -1.186380931299651,
+            -8.596599104932624
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Where did Dev's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -4.427702950625437,
+            -1.0940213051974048,
+            -1.186380931299651,
+            -8.596599104932624
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cal does nest on nest on island of",
+          "bounded_generated_token_ids": [
+            1596,
+            1175,
+            6601,
+            333,
+            6601,
+            333,
+            3435,
+            277
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "house",
+          "id": "dev-temporal-0024",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -9.489488323349278,
+            -3.3491784535813824,
+            -4.070155344497398,
+            -5.422810340807252
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Where did Otto's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -9.489488323349278,
+            -3.3491784535813824,
+            -4.070155344497398,
+            -5.422810340807252
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp on Glan on Glre arrived",
+          "bounded_generated_token_ids": [
+            2069,
+            333,
+            5422,
+            278,
+            333,
+            5422,
+            262,
+            3248
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "camp",
+          "id": "dev-temporal-0032",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -0.25780962227928705,
+            -10.754475570726727,
+            -11.013484874881144,
+            -10.076716405271311
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Andre head once done at the island?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -0.25780962227928705,
+            -10.754475570726727,
+            -11.013484874881144,
+            -10.076716405271311
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "field Redod of field on offers?",
+          "bounded_generated_token_ids": [
+            2422,
+            4857,
+            411,
+            277,
+            2422,
+            333,
+            6824,
+            146
+          ],
+          "category": "temporal",
+          "generated_text": " field",
+          "generated_token_ids": [
+            2422
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "field",
+          "id": "dev-temporal-0000",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.003172238240952644,
+            -15.725198122535481,
+            -18.11450040953136,
+            -11.615242359753477
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -0.003172238240952644,
+            -15.725198122535481,
+            -18.11450040953136,
+            -11.615242359753477
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp than prisons Flondayle",
+          "bounded_generated_token_ids": [
+            2069,
+            612,
+            3764,
+            116,
+            5402,
+            977,
+            343,
+            294
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0072",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.441972476512169,
+            -0.7237565489487552,
+            -12.331096355486668,
+            -6.482337731001989
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Gene's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -6.441972476512169,
+            -0.7237565489487552,
+            -12.331096355486668,
+            -6.482337731001989
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake errands Fladay",
+          "bounded_generated_token_ids": [
+            6790,
+            1391,
+            351,
+            271,
+            116,
+            5402,
+            324,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0062",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.2365582613813895,
+            -6.906615593096141,
+            -13.457091545141886,
+            -9.10992697300398
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Andre's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -2.2365582613813895,
+            -6.906615593096141,
+            -13.457091545141886,
+            -9.10992697300398
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "underlying these enforcery of railla lived",
+          "bounded_generated_token_ids": [
+            8054,
+            629,
+            5770,
+            627,
+            277,
+            2861,
+            357,
+            2482
+          ],
+          "category": "temporal",
+          "generated_text": " underlying",
+          "generated_token_ids": [
+            8054
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0069",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.489636040022438,
+            -5.0866637563628565,
+            -8.563872439477922,
+            -13.718801079379833
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -3.489636040022438,
+            -5.0866637563628565,
+            -8.563872439477922,
+            -13.718801079379833
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village at Pakondkba reached er",
+          "bounded_generated_token_ids": [
+            5657,
+            396,
+            6974,
+            977,
+            108,
+            7887,
+            3182,
+            1391
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0022",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -13.054770768688664,
+            -0.9648288485915889,
+            -3.817878594828215,
+            -3.037802544743846
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Alba prior to the store?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -13.054770768688664,
+            -0.9648288485915889,
+            -3.817878594828215,
+            -3.037802544743846
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "villageuf 30 lived college to For",
+          "bounded_generated_token_ids": [
+            5657,
+            118,
+            103,
+            2486,
+            2482,
+            6988,
+            287,
+            1054
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0051",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.430770878149093,
+            -8.330442361240998,
+            -4.012207035018443,
+            -13.488542513116549
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Yusuf prior to the island?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -6.430770878149093,
+            -8.330442361240998,
+            -4.012207035018443,
+            -13.488542513116549
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "river The island became river The river on",
+          "bounded_generated_token_ids": [
+            2797,
+            347,
+            3435,
+            1101,
+            2797,
+            347,
+            2797,
+            333
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "bridge",
+          "id": "dev-temporal-0020",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -10.597365094594243,
+            -2.2281558033823146,
+            -2.339524104920752,
+            -7.08367409100112
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Where did Mia head once done at the road?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -10.597365094594243,
+            -2.2281558033823146,
+            -2.339524104920752,
+            -7.08367409100112
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "citya reached much village onostonen",
+          "bounded_generated_token_ids": [
+            1717,
+            98,
+            3182,
+            934,
+            5657,
+            333,
+            4486,
+            269
+          ],
+          "category": "temporal",
+          "generated_text": " city",
+          "generated_token_ids": [
+            1717
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0092",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.5503145367516638,
+            -8.54052793376569,
+            -10.279255462850342,
+            -2.602302207398079
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Where was Kira prior to the village?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -2.5503145367516638,
+            -8.54052793376569,
+            -10.279255462850342,
+            -2.602302207398079
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp on Sum reached the lake lived occup",
+          "bounded_generated_token_ids": [
+            2069,
+            333,
+            4940,
+            3182,
+            261,
+            6790,
+            2482,
+            2824
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "camp",
+          "id": "dev-temporal-0040",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.2600402140629388,
+            -8.60413255766594,
+            -10.811227703231866,
+            -8.327591826732489
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Eva head once done at the temple?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -1.2600402140629388,
+            -8.60413255766594,
+            -10.811227703231866,
+            -8.327591826732489
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "one at Paka lived errand",
+          "bounded_generated_token_ids": [
+            617,
+            396,
+            6974,
+            98,
+            2482,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": "one",
+          "generated_token_ids": [
+            617
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "store",
+          "id": "dev-temporal-0091",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.93164740278067,
+            -6.655309821455229,
+            -6.777877476992085,
+            -4.023972600875221
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Eva's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -3.93164740278067,
+            -6.655309821455229,
+            -6.777877476992085,
+            -4.023972600875221
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "tree ofum ofor and chamber of",
+          "bounded_generated_token_ids": [
+            3409,
+            277,
+            414,
+            277,
+            276,
+            289,
+            7476,
+            277
+          ],
+          "category": "temporal",
+          "generated_text": " tree",
+          "generated_token_ids": [
+            3409
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0081",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.10009520056937,
+            -7.017877977641376,
+            -4.840845531215971,
+            -9.022429817877436
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Where did Otto's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -3.10009520056937,
+            -7.017877977641376,
+            -4.840845531215971,
+            -9.022429817877436
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "field lived field headed to every road The",
+          "bounded_generated_token_ids": [
+            2422,
+            2482,
+            2422,
+            7750,
+            287,
+            1076,
+            5250,
+            347
+          ],
+          "category": "temporal",
+          "generated_text": " field",
+          "generated_token_ids": [
+            2422
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0055",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.5480495629828321,
+            -6.188419442729435,
+            -5.011521489904251,
+            -9.266612115254508
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Raj head once done at the field?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -1.5480495629828321,
+            -6.188419442729435,
+            -5.011521489904251,
+            -9.266612115254508
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sherin lived house The town The town",
+          "bounded_generated_token_ids": [
+            6853,
+            260,
+            2482,
+            2454,
+            347,
+            2654,
+            347,
+            2654
+          ],
+          "category": "temporal",
+          "generated_text": " Sher",
+          "generated_token_ids": [
+            6853
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0036",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.102864188144983,
+            -10.77464282504247,
+            -4.603653768546819,
+            -7.856351751447619
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Where was Colin prior to the house?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -11.102864188144983,
+            -10.77464282504247,
+            -4.603653768546819,
+            -7.856351751447619
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "river, Otto lived camp at",
+          "bounded_generated_token_ids": [
+            2797,
+            45,
+            491,
+            117,
+            1376,
+            2482,
+            2069,
+            396
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "camp",
+          "id": "dev-temporal-0073",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.385559139511028,
+            -8.998832866315023,
+            -5.186488272221624,
+            -3.0306855553425414
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Where did Otto's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -3.385559139511028,
+            -8.998832866315023,
+            -5.186488272221624,
+            -3.0306855553425414
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ado of citynds Flonday",
+          "bounded_generated_token_ids": [
+            6258,
+            277,
+            1717,
+            271,
+            116,
+            5402,
+            977,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": "ado",
+          "generated_token_ids": [
+            6258
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "river",
+          "id": "dev-temporal-0008",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -9.673730315509523,
+            -3.6437330411876943,
+            -1.8934660097960114,
+            -7.3256307095441775
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Gene head once done at the city?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -9.673730315509523,
+            -3.6437330411876943,
+            -1.8934660097960114,
+            -7.3256307095441775
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village at city, Colin arrived headed",
+          "bounded_generated_token_ids": [
+            5657,
+            396,
+            1717,
+            45,
+            1312,
+            260,
+            3248,
+            7750
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "city",
+          "id": "dev-temporal-0049",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -1.1342874871896687,
+            -3.4226204358679406,
+            -5.382569004732426,
+            -2.0643383895738716
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Colin's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -1.1342874871896687,
+            -3.4226204358679406,
+            -5.382569004732426,
+            -2.0643383895738716
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ado lived bridge several village in Sum appears",
+          "bounded_generated_token_ids": [
+            6258,
+            2482,
+            6642,
+            1351,
+            5657,
+            284,
+            4940,
+            3864
+          ],
+          "category": "temporal",
+          "generated_text": "ado",
+          "generated_token_ids": [
+            6258
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0033",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -4.961546521716756,
+            -7.960254747352959,
+            -3.48516281485808,
+            -4.254990101265159
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Where did Raj's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -4.961546521716756,
+            -7.960254747352959,
+            -3.48516281485808,
+            -4.254990101265159
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village on village of village on village on",
+          "bounded_generated_token_ids": [
+            5657,
+            333,
+            5657,
+            277,
+            5657,
+            333,
+            5657,
+            333
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "court",
+          "id": "dev-temporal-0009",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -0.23980782467411066,
+            -7.856554823335239,
+            -8.009619976075372,
+            -4.346234094264216
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Gene's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -0.23980782467411066,
+            -7.856554823335239,
+            -8.009619976075372,
+            -4.346234094264216
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "valley at island of island of island at",
+          "bounded_generated_token_ids": [
+            6402,
+            396,
+            3435,
+            277,
+            3435,
+            277,
+            3435,
+            396
+          ],
+          "category": "temporal",
+          "generated_text": " valley",
+          "generated_token_ids": [
+            6402
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "valley",
+          "id": "dev-temporal-0054",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.85888069918158,
+            -0.9960142430518429,
+            -0.6584135525814244,
+            -4.70690826003243
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Where was Ben prior to the city?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -5.85888069918158,
+            -0.9960142430518429,
+            -0.6584135525814244,
+            -4.70690826003243
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Calma reached church we R Herma",
+          "bounded_generated_token_ids": [
+            1596,
+            2026,
+            3182,
+            3452,
+            473,
+            413,
+            4144,
+            2026
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0047",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.017041930577855,
+            -6.3964126710845965,
+            -6.598212066492506,
+            -7.223439961616164
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Emma head once done at the church?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -4.017041930577855,
+            -6.3964126710845965,
+            -6.598212066492506,
+            -7.223439961616164
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village at famil ofat ofat of",
+          "bounded_generated_token_ids": [
+            5657,
+            396,
+            2029,
+            277,
+            267,
+            277,
+            267,
+            277
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0038",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -14.558491267432684,
+            -6.4493661717194275,
+            -11.418930609904004,
+            -0.05147414495810457
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Mae's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -14.558491267432684,
+            -6.4493661717194275,
+            -11.418930609904004,
+            -0.05147414495810457
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp on Ba reached a office on",
+          "bounded_generated_token_ids": [
+            2069,
+            333,
+            367,
+            98,
+            3182,
+            259,
+            3588,
+            333
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "camp",
+          "id": "dev-temporal-0030",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -8.034193055839355,
+            -11.26367668583228,
+            -0.9722414419484023,
+            -7.5164203853221245
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Gus head once done at the office?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -8.034193055839355,
+            -11.26367668583228,
+            -0.9722414419484023,
+            -7.5164203853221245
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "road in road in road in road replaced",
+          "bounded_generated_token_ids": [
+            5250,
+            284,
+            5250,
+            284,
+            5250,
+            284,
+            5250,
+            4398
+          ],
+          "category": "temporal",
+          "generated_text": " road",
+          "generated_token_ids": [
+            5250
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0094",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.817784139610072,
+            -0.30839229895339704,
+            -8.985625005285263,
+            -4.874851988355121
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 75,
+          "question": "Where did Ben's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -8.817784139610072,
+            -0.30839229895339704,
+            -8.985625005285263,
+            -4.874851988355121
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "field created feeling in field created upire",
+          "bounded_generated_token_ids": [
+            2422,
+            1660,
+            5088,
+            284,
+            2422,
+            1660,
+            611,
+            630
+          ],
+          "category": "temporal",
+          "generated_text": " field",
+          "generated_token_ids": [
+            2422
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0064",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.471900305918058,
+            -6.347010403556264,
+            -10.960203420790119,
+            -1.6993095819733128
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -5.471900305918058,
+            -6.347010403556264,
+            -10.960203420790119,
+            -1.6993095819733128
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Braa lived influenrands Fl",
+          "bounded_generated_token_ids": [
+            3921,
+            98,
+            2482,
+            6090,
+            351,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " Bra",
+          "generated_token_ids": [
+            3921
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "store",
+          "id": "dev-temporal-0001",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -10.15133366433951,
+            -11.114210951678338,
+            -11.636401047433825,
+            -12.571723786844364
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -10.15133366433951,
+            -11.114210951678338,
+            -11.636401047433825,
+            -12.571723786844364
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village createdimnds a office Y",
+          "bounded_generated_token_ids": [
+            5657,
+            1660,
+            314,
+            271,
+            116,
+            259,
+            3588,
+            821
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "village",
+          "id": "dev-temporal-0065",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.830553932485558,
+            -1.556606742200711,
+            -3.7107786328645758,
+            -6.728702520918727
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where was Hugo prior to the city?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -4.830553932485558,
+            -1.556606742200711,
+            -3.7107786328645758,
+            -6.728702520918727
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village says Satil arrived as Jun Then",
+          "bounded_generated_token_ids": [
+            5657,
+            1841,
+            4876,
+            301,
+            3248,
+            339,
+            7257,
+            3115
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0086",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.93613828110926,
+            -0.3366129134774078,
+            -9.944450569098668,
+            -6.8008710228578035
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 79,
+          "question": "Where did Aster's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.93613828110926,
+            -0.3366129134774078,
+            -9.944450569098668,
+            -6.8008710228578035
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "court reached court reached court reached court reached",
+          "bounded_generated_token_ids": [
+            2560,
+            3182,
+            2560,
+            3182,
+            2560,
+            3182,
+            2560,
+            3182
+          ],
+          "category": "temporal",
+          "generated_text": " court",
+          "generated_token_ids": [
+            2560
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "court",
+          "id": "dev-temporal-0082",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.0713298912752434,
+            -8.510612783948817,
+            -2.1486180293590156,
+            -11.938423456166483
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 76,
+          "question": "Where did Tess's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -3.0713298912752434,
+            -8.510612783948817,
+            -2.1486180293590156,
+            -11.938423456166483
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "store replaced taught winds headed to even lake",
+          "bounded_generated_token_ids": [
+            5156,
+            4398,
+            3676,
+            7641,
+            7750,
+            287,
+            943,
+            6790
+          ],
+          "category": "temporal",
+          "generated_text": " store",
+          "generated_token_ids": [
+            5156
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0035",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.913765728631521,
+            -0.6884258539975022,
+            -14.23598362997618,
+            -8.659376926767381
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Where did Mia's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -11.913765728631521,
+            -0.6884258539975022,
+            -14.23598362997618,
+            -8.659376926767381
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Shernds on Mondayay",
+          "bounded_generated_token_ids": [
+            6853,
+            271,
+            116,
+            333,
+            364,
+            977,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Sher",
+          "generated_token_ids": [
+            6853
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "field",
+          "id": "dev-temporal-0074",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.212226558924791,
+            -4.494068878209758,
+            -8.983217012682843,
+            -8.073782722903847
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -5.212226558924791,
+            -4.494068878209758,
+            -8.983217012682843,
+            -8.073782722903847
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "field created village headed too headed to",
+          "bounded_generated_token_ids": [
+            2422,
+            1660,
+            5657,
+            7750,
+            287,
+            112,
+            7750,
+            287
+          ],
+          "category": "temporal",
+          "generated_text": " field",
+          "generated_token_ids": [
+            2422
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "field",
+          "id": "dev-temporal-0028",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.1788384217366027,
+            -6.714951185070093,
+            -3.1403738307080675,
+            -16.382384888965337
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Rosa's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -0.1788384217366027,
+            -6.714951185070093,
+            -3.1403738307080675,
+            -16.382384888965337
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp give Douam lived city lived city",
+          "bounded_generated_token_ids": [
+            2069,
+            1742,
+            4285,
+            337,
+            2482,
+            1717,
+            2482,
+            1717
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0044",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.8500468224725815,
+            -0.09656401609434136,
+            -5.932595057828323,
+            -8.8076312628829
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Adam's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -6.8500468224725815,
+            -0.09656401609434136,
+            -5.932595057828323,
+            -8.8076312628829
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "citynds",
+          "bounded_generated_token_ids": [
+            1717,
+            271,
+            116,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " city",
+          "generated_token_ids": [
+            1717
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "city",
+          "id": "dev-temporal-0075",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.0930461041785975,
+            -3.799983904546792,
+            -9.816201183171485,
+            -1.0458306464219869
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Jack's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -7.0930461041785975,
+            -3.799983904546792,
+            -9.816201183171485,
+            -1.0458306464219869
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "feeling: Rajands Fl",
+          "bounded_generated_token_ids": [
+            5088,
+            59,
+            413,
+            1047,
+            98,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " feeling",
+          "generated_token_ids": [
+            5088
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0096",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -10.821231099940977,
+            -15.239439211629554,
+            -3.199996235848438,
+            -3.7350923926163673
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where was Raj prior to the city?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -10.821231099940977,
+            -15.239439211629554,
+            -3.199996235848438,
+            -3.7350923926163673
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "tree of livingadoean reached as lake",
+          "bounded_generated_token_ids": [
+            3409,
+            277,
+            2095,
+            6258,
+            2950,
+            3182,
+            339,
+            6790
+          ],
+          "category": "temporal",
+          "generated_text": " tree",
+          "generated_token_ids": [
+            3409
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0077",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -11.026207324044837,
+            -8.690973595786216,
+            -4.108576183807891,
+            -3.9764732758492287
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Where did Jean's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -11.026207324044837,
+            -8.690973595786216,
+            -4.108576183807891,
+            -3.9764732758492287
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "countynds Flondayayay",
+          "bounded_generated_token_ids": [
+            7290,
+            271,
+            116,
+            5402,
+            977,
+            343,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " county",
+          "generated_token_ids": [
+            7290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0059",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.3996999929851417,
+            -4.444033496833108,
+            -11.535360218311983,
+            -4.706776499101005
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Dev's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -2.3996999929851417,
+            -4.444033496833108,
+            -11.535360218311983,
+            -4.706776499101005
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake errands into valleynd",
+          "bounded_generated_token_ids": [
+            6790,
+            1391,
+            351,
+            271,
+            116,
+            597,
+            6402,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "court",
+          "id": "dev-temporal-0067",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -1.812819523731768,
+            -1.674507214695273,
+            -7.039079780999317,
+            -4.156062282237416
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Gene head once done at the valley?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -1.812819523731768,
+            -1.674507214695273,
+            -7.039079780999317,
+            -4.156062282237416
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "riverndsto lived errand",
+          "bounded_generated_token_ids": [
+            2797,
+            271,
+            116,
+            1376,
+            2482,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "river",
+          "id": "dev-temporal-0048",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.7944486171955237,
+            -5.453197311799675,
+            -7.577229705840066,
+            -2.423013912593391
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Where did Otto head once done at the road?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -0.7944486171955237,
+            -5.453197311799675,
+            -7.577229705840066,
+            -2.423013912593391
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Padouth at lower lake at initial",
+          "bounded_generated_token_ids": [
+            4324,
+            101,
+            925,
+            396,
+            2547,
+            6790,
+            396,
+            4461
+          ],
+          "category": "temporal",
+          "generated_text": " Pa",
+          "generated_token_ids": [
+            4324
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0070",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.399181055024696,
+            -3.1589389861101127,
+            -3.4452243671369924,
+            -4.422891695098191
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.399181055024696,
+            -3.1589389861101127,
+            -3.4452243671369924,
+            -4.422891695098191
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "valley almost islandnds Shia almost",
+          "bounded_generated_token_ids": [
+            6402,
+            2190,
+            3435,
+            271,
+            116,
+            1590,
+            523,
+            2190
+          ],
+          "category": "temporal",
+          "generated_text": " valley",
+          "generated_token_ids": [
+            6402
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "valley",
+          "id": "dev-temporal-0088",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -0.4794104324141726,
+            -3.906596433019002,
+            -5.969642953226059,
+            -4.657153419358943
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Where did Sofia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -0.4794104324141726,
+            -3.906596433019002,
+            -5.969642953226059,
+            -4.657153419358943
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "office headed intoar lived errand",
+          "bounded_generated_token_ids": [
+            3588,
+            7750,
+            597,
+            283,
+            2482,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " office",
+          "generated_token_ids": [
+            3588
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "office",
+          "id": "dev-temporal-0034",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.616032299815908,
+            -12.287617376832992,
+            -0.1451260258863785,
+            -9.15362898069912
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Wade's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -8.616032299815908,
+            -12.287617376832992,
+            -0.1451260258863785,
+            -9.15362898069912
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake livedrig S headed to the court",
+          "bounded_generated_token_ids": [
+            6790,
+            2482,
+            4164,
+            335,
+            7750,
+            287,
+            261,
+            2560
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "house",
+          "id": "dev-temporal-0023",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.230201483702045,
+            -7.2106849731225315,
+            -0.26255767043919404,
+            -15.570328405380817
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where was Carla prior to the court?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -7.230201483702045,
+            -7.2106849731225315,
+            -0.26255767043919404,
+            -15.570328405380817
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "4 The area arrived in town",
+          "bounded_generated_token_ids": [
+            53,
+            347,
+            1373,
+            3248,
+            284,
+            2654,
+            11
+          ],
+          "category": "temporal",
+          "generated_text": "4",
+          "generated_token_ids": [
+            53
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "lake",
+          "id": "dev-temporal-0016",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -9.87483641097009,
+            -7.267278587091273,
+            -11.822440492007111,
+            -11.222068188482082
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Where was Sofia prior to the city?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -9.87483641097009,
+            -7.267278587091273,
+            -11.822440492007111,
+            -11.222068188482082
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Cal reachedole Rre arrived on Sou",
+          "bounded_generated_token_ids": [
+            1596,
+            3182,
+            1928,
+            413,
+            262,
+            3248,
+            333,
+            7419
+          ],
+          "category": "temporal",
+          "generated_text": " Cal",
+          "generated_token_ids": [
+            1596
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0099",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -8.253128356623469,
+            -10.325128777026974,
+            -4.103119184753642,
+            -10.542185097807902
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Where did Andre's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.253128356623469,
+            -10.325128777026974,
+            -4.103119184753642,
+            -10.542185097807902
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp reached several city reached errand",
+          "bounded_generated_token_ids": [
+            2069,
+            3182,
+            1351,
+            1717,
+            3182,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "city",
+          "id": "dev-temporal-0084",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -7.4557715853464614,
+            -2.8352671478494034,
+            -4.93253812016357,
+            -0.1787911662857792
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Where did Ben's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -7.4557715853464614,
+            -2.8352671478494034,
+            -4.93253812016357,
+            -0.1787911662857792
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "court reached Le reached from court reached Ben",
+          "bounded_generated_token_ids": [
+            2560,
+            3182,
+            1735,
+            3182,
+            404,
+            2560,
+            3182,
+            6130
+          ],
+          "category": "temporal",
+          "generated_text": " court",
+          "generated_token_ids": [
+            2560
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "island",
+          "id": "dev-temporal-0046",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -13.792342327022753,
+            -0.1910487649740633,
+            -8.26429765566058,
+            -9.154560194704784
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 73,
+          "question": "Where was Ben prior to the court?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -13.792342327022753,
+            -0.1910487649740633,
+            -8.26429765566058,
+            -9.154560194704784
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village headed to every village headed to every",
+          "bounded_generated_token_ids": [
+            5657,
+            7750,
+            287,
+            1076,
+            5657,
+            7750,
+            287,
+            1076
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "field",
+          "id": "dev-temporal-0018",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -0.025289968417731422,
+            -10.680952509331624,
+            -11.83381507834755,
+            -12.612493932926835
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where was Rosa prior to the village?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -0.025289968417731422,
+            -10.680952509331624,
+            -11.83381507834755,
+            -12.612493932926835
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "valley lived era lived errand",
+          "bounded_generated_token_ids": [
+            6402,
+            2482,
+            1391,
+            98,
+            2482,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " valley",
+          "generated_token_ids": [
+            6402
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0056",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.528027268634489,
+            -7.971135781214729,
+            -0.14660849981718435,
+            -9.018110457688419
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -6.528027268634489,
+            -7.971135781214729,
+            -0.14660849981718435,
+            -9.018110457688419
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Douo Thisielayayay",
+          "bounded_generated_token_ids": [
+            4285,
+            112,
+            504,
+            274,
+            1233,
+            343,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Dou",
+          "generated_token_ids": [
+            4285
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0060",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.637733852229695,
+            -4.82151549452864,
+            -6.67667862975839,
+            -12.698747048449103
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Mae prior to the bridge?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -5.637733852229695,
+            -4.82151549452864,
+            -6.67667862975839,
+            -12.698747048449103
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lake headed to lake headed to degrees syn",
+          "bounded_generated_token_ids": [
+            6790,
+            7750,
+            287,
+            6790,
+            7750,
+            287,
+            3643,
+            6517
+          ],
+          "category": "temporal",
+          "generated_text": " lake",
+          "generated_token_ids": [
+            6790
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "field",
+          "id": "dev-temporal-0026",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.300120004270108,
+            -2.221860983394862,
+            -3.6940418376650737,
+            -8.305641755582844
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where was Dev prior to the lake?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -5.300120004270108,
+            -2.221860983394862,
+            -3.6940418376650737,
+            -8.305641755582844
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "boundary invadeden For go boundary Ya",
+          "bounded_generated_token_ids": [
+            5288,
+            7908,
+            269,
+            1054,
+            514,
+            5288,
+            821,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " boundary",
+          "generated_token_ids": [
+            5288
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "road",
+          "id": "dev-temporal-0013",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.882277371915781,
+            -7.491415129988641,
+            -12.401976734390436,
+            -5.478835929684811
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Dev's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -5.882277371915781,
+            -7.491415129988641,
+            -12.401976734390436,
+            -5.478835929684811
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp reached Cla Pu reached to the camp",
+          "bounded_generated_token_ids": [
+            2069,
+            3182,
+            4865,
+            5508,
+            3182,
+            287,
+            261,
+            2069
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0098",
+          "key": 2,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -1.2836954548227846,
+            -6.670947292963757,
+            -8.376532322645618,
+            -9.162851518240009
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Hugo's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -1.2836954548227846,
+            -6.670947292963757,
+            -8.376532322645618,
+            -9.162851518240009
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "islanda reached a islanda reached a",
+          "bounded_generated_token_ids": [
+            3435,
+            98,
+            3182,
+            259,
+            3435,
+            98,
+            3182,
+            259
+          ],
+          "category": "temporal",
+          "generated_text": " island",
+          "generated_token_ids": [
+            3435
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0045",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.9925590879129895,
+            -5.578058333438414,
+            -0.7390176427760654,
+            -7.362529435965434
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -1.9925590879129895,
+            -5.578058333438414,
+            -0.7390176427760654,
+            -7.362529435965434
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village on camp than office on office on",
+          "bounded_generated_token_ids": [
+            5657,
+            333,
+            2069,
+            612,
+            3588,
+            333,
+            3588,
+            333
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "island",
+          "id": "dev-temporal-0003",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.1350872335569075,
+            -7.206526939431166,
+            -4.47169894603817,
+            -6.031461449980783
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Gene head once done at the office?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -4.1350872335569075,
+            -7.206526939431166,
+            -4.47169894603817,
+            -6.031461449980783
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "7ita of village on village as rail",
+          "bounded_generated_token_ids": [
+            1463,
+            8044,
+            277,
+            5657,
+            333,
+            5657,
+            339,
+            2861
+          ],
+          "category": "temporal",
+          "generated_text": " 7",
+          "generated_token_ids": [
+            1463
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0066",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.9662522450402236,
+            -5.549525625434131,
+            -3.504637576961833,
+            -11.210864878739716
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 77,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -3.9662522450402236,
+            -5.549525625434131,
+            -3.504637576961833,
+            -11.210864878739716
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sher Redk lived Nor headed to The",
+          "bounded_generated_token_ids": [
+            6853,
+            4857,
+            108,
+            2482,
+            4404,
+            7750,
+            287,
+            347
+          ],
+          "category": "temporal",
+          "generated_text": " Sher",
+          "generated_token_ids": [
+            6853
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "college",
+          "id": "dev-temporal-0025",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.678540050995258,
+            -7.203323676079341,
+            -2.490725402459721,
+            -10.51999934239566
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 80,
+          "question": "Where did Noah's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -5.678540050995258,
+            -7.203323676079341,
+            -2.490725402459721,
+            -10.51999934239566
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp on snow errands Fl",
+          "bounded_generated_token_ids": [
+            2069,
+            333,
+            3656,
+            1391,
+            351,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "village",
+          "id": "dev-temporal-0057",
+          "key": 1,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -0.5249921533014222,
+            -3.6863023287708874,
+            -6.534323850757657,
+            -6.985930606702205
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where was Sofia prior to the camp?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -0.5249921533014222,
+            -3.6863023287708874,
+            -6.534323850757657,
+            -6.985930606702205
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village on Jun reached errands",
+          "bounded_generated_token_ids": [
+            5657,
+            333,
+            7257,
+            3182,
+            1391,
+            351,
+            271,
+            116
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "bridge",
+          "id": "dev-temporal-0093",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.8663722545422825,
+            -8.795734186019349,
+            -5.840952152639087,
+            -1.0862905983206976
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Hugo head once done at the church?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -3.8663722545422825,
+            -8.795734186019349,
+            -5.840952152639087,
+            -1.0862905983206976
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "river north errands a field",
+          "bounded_generated_token_ids": [
+            2797,
+            2184,
+            1391,
+            351,
+            271,
+            116,
+            259,
+            2422
+          ],
+          "category": "temporal",
+          "generated_text": " river",
+          "generated_token_ids": [
+            2797
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "camp",
+          "id": "dev-temporal-0083",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.437326485671029,
+            -3.952912863691374,
+            -0.7834487872344665,
+            -6.180610360341333
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where was Neil prior to the river?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -6.437326485671029,
+            -3.952912863691374,
+            -0.7834487872344665,
+            -6.180610360341333
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "H Mus of college lived village as village",
+          "bounded_generated_token_ids": [
+            403,
+            3653,
+            277,
+            6988,
+            2482,
+            5657,
+            339,
+            5657
+          ],
+          "category": "temporal",
+          "generated_text": " H",
+          "generated_token_ids": [
+            403
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "court",
+          "id": "dev-temporal-0043",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -13.917194289213375,
+            -9.301997153841292,
+            -2.172201120660888,
+            -4.522279634980236
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 71,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -13.917194289213375,
+            -9.301997153841292,
+            -2.172201120660888,
+            -4.522279634980236
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "village on Mondayayayay",
+          "bounded_generated_token_ids": [
+            5657,
+            333,
+            364,
+            977,
+            343,
+            343,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " village",
+          "generated_token_ids": [
+            5657
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": true,
+          "gold_text": "village",
+          "id": "dev-temporal-0061",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.446475174640732,
+            -0.0775948822602856,
+            -7.009367159107081,
+            -5.51513974853832
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 82,
+          "question": "Where was Lou prior to the church?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -12.446475174640732,
+            -0.0775948822602856,
+            -7.009367159107081,
+            -5.51513974853832
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "court on Mar Iram of court",
+          "bounded_generated_token_ids": [
+            2560,
+            333,
+            364,
+            283,
+            342,
+            1007,
+            277,
+            2560
+          ],
+          "category": "temporal",
+          "generated_text": " court",
+          "generated_token_ids": [
+            2560
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "church",
+          "id": "dev-temporal-0039",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.2113122282338507,
+            -13.59180630375286,
+            -11.027189207491906,
+            -4.555822284294266
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -1.2113122282338507,
+            -13.59180630375286,
+            -11.027189207491906,
+            -4.555822284294266
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "islandnds",
+          "bounded_generated_token_ids": [
+            3435,
+            271,
+            116,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " island",
+          "generated_token_ids": [
+            3435
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "office",
+          "id": "dev-temporal-0029",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -1.8787184821989666,
+            -8.4273691484232,
+            -2.9733272500882513,
+            -4.491668757659261
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Jack's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -1.8787184821989666,
+            -8.4273691484232,
+            -2.9733272500882513,
+            -4.491668757659261
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "camp on Sumeds Fla lived",
+          "bounded_generated_token_ids": [
+            2069,
+            333,
+            4940,
+            273,
+            116,
+            5402,
+            98,
+            2482
+          ],
+          "category": "temporal",
+          "generated_text": " camp",
+          "generated_token_ids": [
+            2069
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "city",
+          "id": "dev-temporal-0007",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -13.848910514448336,
+            -2.954698752601792,
+            -1.4873401729363895,
+            -5.3280727316289695
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -13.848910514448336,
+            -2.954698752601792,
+            -1.4873401729363895,
+            -5.3280727316289695
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Shero lived standing game The War on",
+          "bounded_generated_token_ids": [
+            6853,
+            112,
+            2482,
+            6406,
+            3356,
+            347,
+            1088,
+            333
+          ],
+          "category": "temporal",
+          "generated_text": " Sher",
+          "generated_token_ids": [
+            6853
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "field",
+          "id": "dev-temporal-0037",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.477740924292425,
+            -6.787457258838506,
+            -10.774853492401881,
+            -9.512010352343419
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 78,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -5.477740924292425,
+            -6.787457258838506,
+            -10.774853492401881,
+            -9.512010352343419
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "passenga reachedounnda lived influen",
+          "bounded_generated_token_ids": [
+            7293,
+            98,
+            3182,
+            1577,
+            271,
+            98,
+            2482,
+            6090
+          ],
+          "category": "temporal",
+          "generated_text": " passeng",
+          "generated_token_ids": [
+            7293
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "temple",
+          "id": "dev-temporal-0002",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.989704521285978,
+            -13.364610194245795,
+            -10.253426466869323,
+            -7.262488839944746
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Una prior to the store?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -7.989704521285978,
+            -13.364610194245795,
+            -10.253426466869323,
+            -7.262488839944746
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "suddenly does Ben reached errandouth",
+          "bounded_generated_token_ids": [
+            8033,
+            1175,
+            6130,
+            3182,
+            1391,
+            351,
+            271,
+            925
+          ],
+          "category": "temporal",
+          "generated_text": " suddenly",
+          "generated_token_ids": [
+            8033
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "store",
+          "id": "dev-temporal-0052",
+          "key": 0,
+          "letter_prediction": 3,
+          "mean_token_option_logprob": [
+            -5.020144838427037,
+            -9.871472721717018,
+            -5.927120585608892,
+            -12.18103725076556
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Where did Ben head once done at the camp?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -5.020144838427037,
+            -9.871472721717018,
+            -5.927120585608892,
+            -12.18103725076556
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "road replaced chamber of pass does field in",
+          "bounded_generated_token_ids": [
+            5250,
+            4398,
+            7476,
+            277,
+            1112,
+            1175,
+            2422,
+            284
+          ],
+          "category": "temporal",
+          "generated_text": " road",
+          "generated_token_ids": [
+            5250
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "valley",
+          "id": "dev-temporal-0090",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.292313244118034,
+            -1.2571913110687347,
+            -8.144587170187664,
+            -6.106475945400209
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            1,
+            1,
+            1
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Where did Jack's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -6.292313244118034,
+            -1.2571913110687347,
+            -8.144587170187664,
+            -6.106475945400209
+          ],
+          "summed_option_prediction": 1
+        }
+      ],
+      "mismatch_literally_unchanged_n": 0,
+      "summary": {
+        "bounded_free_generation_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 0.03699480747600191,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.03699480747600191,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 100
+        },
+        "bounded_free_generation_terminated_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 0.03699480747600191,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.03699480747600191,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 100
+        },
+        "gold_length_greedy_prefix_exact": {
+          "accuracy": 0.17,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.17,
+              "ci95_high": 0.25548181233642975,
+              "ci95_low": 0.10893476059773155,
+              "correct": 17,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.25548181233642975,
+          "ci95_low": 0.10893476059773155,
+          "correct": 17,
+          "n": 100
+        },
+        "letter_A_to_D": {
+          "accuracy": 0.19,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.19,
+              "ci95_high": 0.27779024070807856,
+              "ci95_low": 0.1251465399270426,
+              "correct": 19,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.27779024070807856,
+          "ci95_low": 0.1251465399270426,
+          "correct": 19,
+          "n": 100
+        },
+        "mean_token_option_likelihood": {
+          "accuracy": 0.26,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.26,
+              "ci95_high": 0.35371172631861636,
+              "ci95_low": 0.18404578126986462,
+              "correct": 26,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.35371172631861636,
+          "ci95_low": 0.18404578126986462,
+          "correct": 26,
+          "n": 100
+        },
+        "summed_option_likelihood": {
+          "accuracy": 0.26,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.26,
+              "ci95_high": 0.35371172631861636,
+              "ci95_low": 0.18404578126986462,
+              "correct": 26,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.35371172631861636,
+          "ci95_low": 0.18404578126986462,
+          "correct": 26,
+          "n": 100
+        }
+      }
+    }
+  },
+  "generation_note": "Autoregressive greedy generation stops on EOT, first decoded period/newline, context limit, or eight tokens (independent of gold). Exact compares trimmed generated answer to gold; terminated_exact additionally requires EOT or delimiter. Gold-length prefix is a separate diagnostic and does not score termination.",
+  "item_count": 100,
+  "items": "docs/results/stage2/diagnostics-20261113/d5-onetok.jsonl",
+  "items_sha256": "1aa5a12ec574bed90cee8ff7d2d0c6676c78011e90891aad17e43b868e31ad49",
+  "limit": 0,
+  "locked_test": false,
+  "mismatch_note": "Historical same-category question replacement is reproduced. Literal unchanged flags count collisions; compare questions may retain the same max/min operation even when text changes. Use opposite-query counterfactual evidence for conditioning.",
+  "paired_wording_note": "First training question frame for each structured query; identical passage/options/keys. Passage wording remains unfamiliar. Counterfactual uses cf_query.",
+  "schema": "asem-qa-dev-analysis-1",
+  "seconds": 4.797455,
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "workers": 4
+}

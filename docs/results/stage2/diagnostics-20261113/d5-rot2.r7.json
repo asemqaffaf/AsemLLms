@@ -1,0 +1,5409 @@
+{
+  "checkpoint": "data/runs/retrieval/r7-L123-aug-opts-rev-rsn/last.ckpt",
+  "checkpoint_sha256": "33a5c24521dfb1b28b456b8344bfd0869b84fe56aa622191b8f6bfa71cc42aa1",
+  "conditions": {
+    "real": {
+      "items": [
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "le featureel undertext ofaia",
+          "bounded_generated_token_ids": [
+            294,
+            4637,
+            354,
+            7829,
+            3068,
+            277,
+            2863,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": "le featureel",
+          "generated_token_ids": [
+            294,
+            4637,
+            354
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0017",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.913148298014767,
+            -12.262430240282924,
+            -4.688991939096195,
+            -4.4935439873293275
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where did Gus head once done at the hotel?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -27.65259319205907,
+            -24.52486048056585,
+            -9.37798387819239,
+            -13.480631961987983
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicemaouthema",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            408,
+            98,
+            925,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Seinic",
+          "generated_token_ids": [
+            1284,
+            260,
+            290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0015",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -6.62038302111015,
+            -5.612125901697525,
+            -13.411195048294141,
+            -11.356596308414675
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Emma's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -26.4815320844406,
+            -16.836377705092577,
+            -26.822390096588283,
+            -22.71319261682935
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seiaabarabara 8",
+          "bounded_generated_token_ids": [
+            1284,
+            523,
+            98,
+            6114,
+            98,
+            6114,
+            98,
+            1485
+          ],
+          "category": "temporal",
+          "generated_text": " Seiaabar",
+          "generated_token_ids": [
+            1284,
+            523,
+            98,
+            6114
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0005",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.164024972731399,
+            -5.231272600755997,
+            -12.813822662576658,
+            -3.6795315309998724
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Sofia head once done at the hotel?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -18.328049945462798,
+            -10.462545201511993,
+            -25.627645325153317,
+            -14.71812612399949
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jelel all the morning featureel",
+          "bounded_generated_token_ids": [
+            468,
+            354,
+            354,
+            486,
+            261,
+            6395,
+            4637,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " J",
+          "generated_token_ids": [
+            468
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0080",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.66402199848377,
+            -3.843454632888043,
+            -10.075968017506844,
+            -4.761866279317886
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Rosa's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -18.65608799393508,
+            -7.686909265776086,
+            -10.075968017506844,
+            -9.523732558635771
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "crew headed intoemands Fl",
+          "bounded_generated_token_ids": [
+            5587,
+            7750,
+            597,
+            408,
+            98,
+            271,
+            116,
+            5402
+          ],
+          "category": "temporal",
+          "generated_text": " crew headed into",
+          "generated_token_ids": [
+            5587,
+            7750,
+            597
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0063",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -10.507078357927004,
+            -7.300974117642812,
+            -8.804412029938042,
+            -15.06865871294583
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where did Finn's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -10.507078357927004,
+            -21.902922352928435,
+            -35.21764811975217,
+            -30.13731742589166
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicadayelara",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            324,
+            343,
+            354,
+            283,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0012",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -16.70015649819718,
+            -4.282312619547021,
+            -9.042798594885335,
+            -10.982675378462336
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -16.70015649819718,
+            -12.846937858641063,
+            -18.08559718977067,
+            -21.96535075692467
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "J Pua nearema built M",
+          "bounded_generated_token_ids": [
+            468,
+            5508,
+            98,
+            1305,
+            408,
+            98,
+            2137,
+            364
+          ],
+          "category": "temporal",
+          "generated_text": " J Pua",
+          "generated_token_ids": [
+            468,
+            5508,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0041",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -8.22777638616363,
+            -15.284664765018329,
+            -5.246728594527079,
+            -6.336979599833352
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            1,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Where did Hugo head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -32.91110554465452,
+            -15.284664765018329,
+            -10.493457189054158,
+            -19.010938799500057
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mia lived erinicortar",
+          "bounded_generated_token_ids": [
+            364,
+            523,
+            2482,
+            1391,
+            260,
+            290,
+            422,
+            283
+          ],
+          "category": "temporal",
+          "generated_text": " M",
+          "generated_token_ids": [
+            364
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0085",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.823219438720635,
+            -7.965872004038083,
+            -6.787329135426892,
+            -10.92332041900143
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            3,
+            1
+          ],
+          "prompt_tokens_without_eot": 102,
+          "question": "Where did Mia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.64643887744127,
+            -31.86348801615233,
+            -20.361987406280676,
+            -10.92332041900143
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Canadianelisara reached Min",
+          "bounded_generated_token_ids": [
+            5148,
+            354,
+            274,
+            283,
+            98,
+            3182,
+            364,
+            260
+          ],
+          "category": "temporal",
+          "generated_text": " Canadianelis",
+          "generated_token_ids": [
+            5148,
+            354,
+            274
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0071",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.449433068844766,
+            -5.7421728864269745,
+            -6.972961113564036,
+            -9.205073226754383
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -4.449433068844766,
+            -17.226518659280924,
+            -27.891844454256145,
+            -18.410146453508766
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feroua lived Juitaar than",
+          "bounded_generated_token_ids": [
+            8128,
+            430,
+            98,
+            2482,
+            2588,
+            8044,
+            283,
+            612
+          ],
+          "category": "temporal",
+          "generated_text": " Ferou",
+          "generated_token_ids": [
+            8128,
+            430
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0053",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.4795209130147033,
+            -6.985781700386281,
+            -12.914662942073399,
+            -3.4152611483689204
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -13.918083652058813,
+            -20.957345101158843,
+            -25.829325884146797,
+            -6.830522296737841
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sea headed to we Fina",
+          "bounded_generated_token_ids": [
+            1284,
+            98,
+            7750,
+            287,
+            473,
+            431,
+            260,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Sea headed to",
+          "generated_token_ids": [
+            1284,
+            98,
+            7750,
+            287
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0042",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.174801001875936,
+            -12.507259715916659,
+            -7.470159499778465,
+            -8.14579237876069
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where did Una head once done at the theater?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -16.699204007503745,
+            -25.014519431833317,
+            -7.470159499778465,
+            -16.29158475752138
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "morning of Prondaytar at",
+          "bounded_generated_token_ids": [
+            6395,
+            277,
+            2357,
+            977,
+            343,
+            117,
+            283,
+            396
+          ],
+          "category": "temporal",
+          "generated_text": " morning of Prond",
+          "generated_token_ids": [
+            6395,
+            277,
+            2357,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0004",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.874710954726194,
+            -6.709551279417712,
+            -8.871701070518537,
+            -4.903937900077337
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 104,
+          "question": "Where was Hugo prior to the clinic?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -11.874710954726194,
+            -20.128653838253136,
+            -35.48680428207415,
+            -9.807875800154674
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicema Soula lived",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            408,
+            98,
+            7419,
+            357,
+            2482
+          ],
+          "category": "temporal",
+          "generated_text": " Seinic",
+          "generated_token_ids": [
+            1284,
+            260,
+            290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0068",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.781088794670303,
+            -18.010603296849126,
+            -3.2098167605534305,
+            -8.903823123057013
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 102,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -27.124355178681213,
+            -18.010603296849126,
+            -9.629450281660292,
+            -17.807646246114025
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Graais Cliniconday",
+          "bounded_generated_token_ids": [
+            4299,
+            98,
+            274,
+            1964,
+            260,
+            290,
+            977,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Graais Cl",
+          "generated_token_ids": [
+            4299,
+            98,
+            274,
+            1964
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0019",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.3618063391348985,
+            -6.608084321990227,
+            -13.151072763104473,
+            -5.457320517147146
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            4,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 110,
+          "question": "Where did Sofia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -2.3618063391348985,
+            -26.43233728796091,
+            -26.302145526208946,
+            -16.371961551441437
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jelemakenelema",
+          "bounded_generated_token_ids": [
+            468,
+            354,
+            408,
+            98,
+            3930,
+            354,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Jelema",
+          "generated_token_ids": [
+            468,
+            354,
+            408,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0050",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.172807899351083,
+            -10.656850323100485,
+            -3.6750063026961963,
+            -9.052058060466711
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            1,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Colin's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -20.691231597404332,
+            -10.656850323100485,
+            -7.350012605392393,
+            -27.156174181400132
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondayays on mechan arrived",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            343,
+            116,
+            333,
+            2915,
+            3248
+          ],
+          "category": "temporal",
+          "generated_text": " Mond",
+          "generated_token_ids": [
+            364,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0010",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.7436859464595793,
+            -6.817567380130864,
+            -10.410716562297925,
+            -13.33560116116998
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Where did Emma's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -5.487371892919159,
+            -13.635134760261728,
+            -10.410716562297925,
+            -26.67120232233996
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondayandsand",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            98,
+            271,
+            116,
+            98,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " Mond",
+          "generated_token_ids": [
+            364,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0031",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -16.083101323048535,
+            -9.279499668174552,
+            -7.334052790021749,
+            -4.661062325182665
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            4,
+            3
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Ben's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -16.083101323048535,
+            -18.558999336349103,
+            -29.336211160086997,
+            -13.983186975547994
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Trifield at Asha Sta St",
+          "bounded_generated_token_ids": [
+            6365,
+            5068,
+            396,
+            7634,
+            98,
+            558,
+            98,
+            558
+          ],
+          "category": "temporal",
+          "generated_text": " Trifield",
+          "generated_token_ids": [
+            6365,
+            5068
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0014",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.473311364296762,
+            -4.551668690278664,
+            -11.662396448331764,
+            -8.074174257571661
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            4
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -24.946622728593525,
+            -9.103337380557328,
+            -11.662396448331764,
+            -32.296697030286644
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Gra reached errands Theai",
+          "bounded_generated_token_ids": [
+            4299,
+            3182,
+            1391,
+            351,
+            271,
+            116,
+            347,
+            2863
+          ],
+          "category": "temporal",
+          "generated_text": " Gra reached",
+          "generated_token_ids": [
+            4299,
+            3182
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0097",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.151366170824519,
+            -11.523415506570615,
+            -3.5784565576626797,
+            -13.233185642620757
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Aster's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.302732341649039,
+            -23.04683101314123,
+            -3.5784565576626797,
+            -26.466371285241514
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "leedar livedar Redonel",
+          "bounded_generated_token_ids": [
+            294,
+            273,
+            283,
+            2482,
+            283,
+            4857,
+            266,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": "leed",
+          "generated_token_ids": [
+            294,
+            273
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0079",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.9599991426795045,
+            -13.541715026484155,
+            -2.6339132745995752,
+            -3.548831978320333
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Hugo's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -5.919998285359009,
+            -27.08343005296831,
+            -5.2678265491991505,
+            -10.646495934960999
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "hotelel 14ema was Y",
+          "bounded_generated_token_ids": [
+            3286,
+            354,
+            354,
+            1966,
+            408,
+            98,
+            348,
+            821
+          ],
+          "category": "temporal",
+          "generated_text": " hotelel 14",
+          "generated_token_ids": [
+            3286,
+            354,
+            354,
+            1966
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0058",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -2.745891820470424,
+            -0.8566696032969906,
+            -13.234383449087298,
+            -11.106621028317303
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Kai's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -10.983567281881696,
+            -1.7133392065939812,
+            -26.468766898174596,
+            -11.106621028317303
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Baba reached Coninthema",
+          "bounded_generated_token_ids": [
+            6081,
+            98,
+            3182,
+            853,
+            260,
+            361,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Bab",
+          "generated_token_ids": [
+            6081
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0021",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -14.130644387063896,
+            -7.005355033795232,
+            -7.326928096098212,
+            -8.963387873441262
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            3,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where was Una prior to the theater?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -28.26128877412779,
+            -28.02142013518093,
+            -21.980784288294636,
+            -8.963387873441262
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Graaa builtruaalic",
+          "bounded_generated_token_ids": [
+            4299,
+            98,
+            98,
+            2137,
+            528,
+            98,
+            282,
+            290
+          ],
+          "category": "temporal",
+          "generated_text": " Graa",
+          "generated_token_ids": [
+            4299,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0076",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.050354500706842,
+            -6.727389153290473,
+            -14.128900065204707,
+            -5.47385970826039
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Hugo's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -36.20141800282737,
+            -20.18216745987142,
+            -28.257800130409414,
+            -5.47385970826039
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Triinicebenicebin",
+          "bounded_generated_token_ids": [
+            6365,
+            260,
+            290,
+            2281,
+            269,
+            290,
+            2281,
+            260
+          ],
+          "category": "temporal",
+          "generated_text": " Triin",
+          "generated_token_ids": [
+            6365,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0087",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.562406867351128,
+            -7.599732000021187,
+            -11.496305922767304,
+            -5.427232063971295
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            1,
+            3
+          ],
+          "prompt_tokens_without_eot": 92,
+          "question": "Where did Jack head once done at the forest?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -26.249627469404512,
+            -15.199464000042374,
+            -11.496305922767304,
+            -16.281696191913884
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "volcano headed please Lena arrivedema",
+          "bounded_generated_token_ids": [
+            6886,
+            7750,
+            7398,
+            455,
+            3712,
+            3248,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " volcano",
+          "generated_token_ids": [
+            6886
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0095",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.37360219910332,
+            -8.998874796107831,
+            -3.281615314451729,
+            -3.4883859582779864
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where did Lena head once done at the hotel?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -12.74720439820664,
+            -8.998874796107831,
+            -6.563230628903458,
+            -13.953543833111945
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "M Uelouthbara prefater",
+          "bounded_generated_token_ids": [
+            364,
+            478,
+            354,
+            925,
+            6114,
+            98,
+            5905,
+            513
+          ],
+          "category": "temporal",
+          "generated_text": " M U",
+          "generated_token_ids": [
+            364,
+            478
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0078",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -2.091342839964663,
+            -3.4976609985330436,
+            -8.786086632556968,
+            -5.165339251864878
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Jack head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -4.182685679929326,
+            -13.990643994132174,
+            -17.572173265113936,
+            -10.330678503729755
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "volcano livedriginicext on fusion",
+          "bounded_generated_token_ids": [
+            6886,
+            2482,
+            4164,
+            260,
+            290,
+            3068,
+            333,
+            6332
+          ],
+          "category": "temporal",
+          "generated_text": " volcano lived",
+          "generated_token_ids": [
+            6886,
+            2482
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0006",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.8226731579093,
+            -7.226962341956763,
+            -6.070128799329518,
+            -10.389280797368578
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 87,
+          "question": "Where did Kai head once done at the museum?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -25.6453463158186,
+            -21.680887025870287,
+            -12.140257598659035,
+            -10.389280797368578
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondaythort at Seen",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            361,
+            422,
+            396,
+            1284,
+            269
+          ],
+          "category": "temporal",
+          "generated_text": " M",
+          "generated_token_ids": [
+            364
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0089",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.354102520670931,
+            -4.4809104366948596,
+            -8.77774059651706,
+            -15.255903432512907
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -16.062307562012794,
+            -8.961820873389719,
+            -17.55548119303412,
+            -15.255903432512907
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tinic arrivedicumndel",
+          "bounded_generated_token_ids": [
+            310,
+            260,
+            290,
+            3248,
+            290,
+            414,
+            271,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " T",
+          "generated_token_ids": [
+            310
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0011",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.854789037781705,
+            -16.250165711856564,
+            -6.566653442719189,
+            -11.60871537175393
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 103,
+          "question": "Where did Jean head once done at the theater?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -11.564367113345115,
+            -16.250165711856564,
+            -13.133306885438378,
+            -23.21743074350786
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ua Sou onuabara",
+          "bounded_generated_token_ids": [
+            118,
+            98,
+            7419,
+            333,
+            118,
+            98,
+            6114,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": "ua Sou",
+          "generated_token_ids": [
+            118,
+            98,
+            7419
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0027",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.23802311341977,
+            -5.796438172782154,
+            -13.46775395247731,
+            -7.885315847364993
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Dev's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -10.47604622683954,
+            -17.389314518346463,
+            -26.93550790495462,
+            -31.54126338945997
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "m Braa of morning",
+          "bounded_generated_token_ids": [
+            110,
+            3921,
+            98,
+            277,
+            6395,
+            11
+          ],
+          "category": "temporal",
+          "generated_text": "m Braa of",
+          "generated_token_ids": [
+            110,
+            3921,
+            98,
+            277
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0024",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.92710618232529,
+            -11.988657041381625,
+            -4.56466046613388,
+            -3.487021111221326
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Otto's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -9.85421236465058,
+            -23.97731408276325,
+            -18.25864186453552,
+            -6.974042222442652
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicaricisicpt",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            283,
+            290,
+            274,
+            290,
+            460
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0032",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.493419040566851,
+            -4.324583204158668,
+            -2.358994668433426,
+            -10.293078236636486
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Andre head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -25.973676162267402,
+            -12.973749612476004,
+            -4.717989336866852,
+            -20.586156473272972
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mula arrived erinicary",
+          "bounded_generated_token_ids": [
+            364,
+            3474,
+            3248,
+            1391,
+            260,
+            290,
+            283,
+            122
+          ],
+          "category": "temporal",
+          "generated_text": " Mula",
+          "generated_token_ids": [
+            364,
+            3474
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0000",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.1970945780213915,
+            -8.177317245017667,
+            -4.281362453251508,
+            -6.200981099929605
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 106,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -12.591283734064175,
+            -16.354634490035334,
+            -8.562724906503016,
+            -24.80392439971842
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicondayonarnd",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            977,
+            343,
+            266,
+            283,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0072",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -9.309730535853049,
+            -2.5581588697943194,
+            -8.966711134477528,
+            -3.7400544129432256
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Gene's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -18.619461071706098,
+            -5.116317739588639,
+            -17.933422268955056,
+            -11.220163238829677
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feands aurand",
+          "bounded_generated_token_ids": [
+            8128,
+            98,
+            271,
+            116,
+            259,
+            323,
+            98,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " Fe",
+          "generated_token_ids": [
+            8128
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0062",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -17.276807649755995,
+            -6.364489171644289,
+            -3.56761895580761,
+            -2.861476054615859
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Andre's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -17.276807649755995,
+            -12.728978343288578,
+            -7.13523791161522,
+            -11.445904218463436
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Triuseum withlea livedua",
+          "bounded_generated_token_ids": [
+            6365,
+            4045,
+            360,
+            294,
+            98,
+            2482,
+            118,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Triuseum",
+          "generated_token_ids": [
+            6365,
+            4045
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0069",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.422625205654997,
+            -4.00498893343106,
+            -13.128547531172341,
+            -3.6221014174516246
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Carla's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -4.422625205654997,
+            -16.01995573372424,
+            -26.257095062344682,
+            -7.244202834903249
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Demands Fls Ain",
+          "bounded_generated_token_ids": [
+            2833,
+            98,
+            271,
+            116,
+            5402,
+            116,
+            316,
+            260
+          ],
+          "category": "temporal",
+          "generated_text": " Demand",
+          "generated_token_ids": [
+            2833,
+            98,
+            271
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0022",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.125606269268707,
+            -7.753570710766295,
+            -9.435544371523829,
+            -8.125868376098841
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 103,
+          "question": "Where was Alba prior to the museum?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -18.37681880780612,
+            -7.753570710766295,
+            -18.871088743047657,
+            -32.503473504395366
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "crewf headed to the forestuf",
+          "bounded_generated_token_ids": [
+            5587,
+            103,
+            7750,
+            287,
+            261,
+            2946,
+            118,
+            103
+          ],
+          "category": "temporal",
+          "generated_text": " crewf headed",
+          "generated_token_ids": [
+            5587,
+            103,
+            7750
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0051",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -9.18178539316965,
+            -6.229020900027392,
+            -13.600339499036354,
+            -9.352181861534817
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where was Yusuf prior to the museum?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -9.18178539316965,
+            -18.687062700082176,
+            -27.200678998072707,
+            -18.704363723069633
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "solidinicia Aia Aia",
+          "bounded_generated_token_ids": [
+            4065,
+            260,
+            290,
+            523,
+            316,
+            523,
+            316,
+            523
+          ],
+          "category": "temporal",
+          "generated_text": " solidin",
+          "generated_token_ids": [
+            4065,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0020",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.900678318083316,
+            -4.708513063011283,
+            -12.363164226992097,
+            -11.032147665672651
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Mia head once done at the hotel?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -14.70203495424995,
+            -9.417026126022567,
+            -24.726328453984195,
+            -11.032147665672651
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Babelisich Kira reached",
+          "bounded_generated_token_ids": [
+            6081,
+            354,
+            274,
+            448,
+            638,
+            326,
+            98,
+            3182
+          ],
+          "category": "temporal",
+          "generated_text": " Babelis",
+          "generated_token_ids": [
+            6081,
+            354,
+            274
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0092",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.659961951126611,
+            -6.9091674146102235,
+            -6.142245589177544,
+            -7.059241473587229
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            4
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where was Kira prior to the forest?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -17.319923902253223,
+            -6.9091674146102235,
+            -18.42673676753263,
+            -28.236965894348916
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Fe7 on Asha reachedelel",
+          "bounded_generated_token_ids": [
+            8128,
+            56,
+            333,
+            7634,
+            98,
+            3182,
+            354,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " Fe7",
+          "generated_token_ids": [
+            8128,
+            56
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0040",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -16.66758311526101,
+            -11.450304385972881,
+            -5.560592916978806,
+            -11.364475366277556
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 87,
+          "question": "Where did Eva head once done at the theater?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -16.66758311526101,
+            -22.900608771945762,
+            -11.121185833957613,
+            -22.728950732555113
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondayka lived erra",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            108,
+            98,
+            2482,
+            1391,
+            351
+          ],
+          "category": "temporal",
+          "generated_text": " M",
+          "generated_token_ids": [
+            364
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0091",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.423638519667499,
+            -11.867364824405659,
+            -3.09159780448509,
+            -3.0030976235886353
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Eva's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -10.847277039334998,
+            -11.867364824405659,
+            -6.18319560897018,
+            -12.012390494354541
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Minicoutto lived Ju",
+          "bounded_generated_token_ids": [
+            364,
+            260,
+            290,
+            285,
+            117,
+            1376,
+            2482,
+            2588
+          ],
+          "category": "temporal",
+          "generated_text": " M",
+          "generated_token_ids": [
+            364
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0081",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.336840372550946,
+            -4.992625181109079,
+            -9.408817243560112,
+            -12.749207112899468
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Otto's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -16.01052111765284,
+            -9.985250362218158,
+            -18.817634487120223,
+            -12.749207112899468
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "le lived predinicis therefore R",
+          "bounded_generated_token_ids": [
+            294,
+            2482,
+            1832,
+            260,
+            290,
+            274,
+            2681,
+            413
+          ],
+          "category": "temporal",
+          "generated_text": "le lived predin",
+          "generated_token_ids": [
+            294,
+            2482,
+            1832,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0055",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.6062457378995347,
+            -6.546898400031469,
+            -1.9148016229098652,
+            -14.068390743270959
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Where did Raj head once done at the hotel?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -10.818737213698604,
+            -26.187593600125876,
+            -3.8296032458197304,
+            -28.136781486541917
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinthelthema built",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            361,
+            354,
+            361,
+            408,
+            98,
+            2137
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0036",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.794261617608986,
+            -6.186768386958472,
+            -6.813997287447436,
+            -15.352528531741736
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where was Colin prior to the cinema?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -17.38278485282696,
+            -24.74707354783389,
+            -13.627994574894872,
+            -30.705057063483473
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feaka of eggsuseum on P",
+          "bounded_generated_token_ids": [
+            8128,
+            98,
+            5258,
+            277,
+            4536,
+            4045,
+            333,
+            374
+          ],
+          "category": "temporal",
+          "generated_text": " Fea",
+          "generated_token_ids": [
+            8128,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0073",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -6.419016983489433,
+            -4.5362490865407095,
+            -2.510625928572042,
+            -13.517456446216412
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Otto's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -25.676067933957732,
+            -13.608747259622128,
+            -5.021251857144084,
+            -27.034912892432825
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "bitaby on Pondayon",
+          "bounded_generated_token_ids": [
+            279,
+            8044,
+            1988,
+            333,
+            374,
+            977,
+            343,
+            266
+          ],
+          "category": "temporal",
+          "generated_text": " bitaby",
+          "generated_token_ids": [
+            279,
+            8044,
+            1988
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0008",
+          "key": 2,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -9.710335415610492,
+            -1.82026389005348,
+            -4.053285048640126,
+            -5.913394101062549
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            4
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where did Gene head once done at the theater?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -19.420670831220985,
+            -3.64052778010696,
+            -12.15985514592038,
+            -23.653576404250195
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Sein livedua headed to The",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            2482,
+            118,
+            98,
+            7750,
+            287,
+            347
+          ],
+          "category": "temporal",
+          "generated_text": " Sein livedu",
+          "generated_token_ids": [
+            1284,
+            260,
+            2482,
+            118
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0049",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.922814307906917,
+            -9.89699102662037,
+            -14.122022042579209,
+            -7.100423270750463
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            4
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Colin's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.845628615813833,
+            -19.79398205324074,
+            -14.122022042579209,
+            -28.401693083001852
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicelone",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            354,
+            617,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0033",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -4.673664214768854,
+            -5.50435634286039,
+            -10.679107265807303,
+            -8.860378991277218
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where did Raj's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -14.020992644306562,
+            -22.01742537144156,
+            -21.358214531614607,
+            -17.720757982554435
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Prondayelayarayel",
+          "bounded_generated_token_ids": [
+            2357,
+            977,
+            343,
+            354,
+            343,
+            283,
+            343,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " Prond",
+          "generated_token_ids": [
+            2357,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0009",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -10.051056763670655,
+            -4.564017053091506,
+            -4.816082757163495,
+            -10.069757637301942
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Gene's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -20.10211352734131,
+            -4.564017053091506,
+            -14.448248271490485,
+            -20.139515274603884
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "idone",
+          "bounded_generated_token_ids": [
+            318,
+            617,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": "idone",
+          "generated_token_ids": [
+            318,
+            617
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0054",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.195301280406874,
+            -3.428492043782523,
+            -10.572516889739566,
+            -13.301733332554425
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Where was Ben prior to the theater?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -10.390602560813749,
+            -13.713968175130091,
+            -10.572516889739566,
+            -26.60346666510885
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "glacielel at Juma reachedan",
+          "bounded_generated_token_ids": [
+            3948,
+            354,
+            354,
+            396,
+            2588,
+            2026,
+            3182,
+            278
+          ],
+          "category": "temporal",
+          "generated_text": " glaciel",
+          "generated_token_ids": [
+            3948,
+            354
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0047",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.093345379567069,
+            -15.190471363239809,
+            -10.029410653376507,
+            -5.298134065578538
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 84,
+          "question": "Where did Emma head once done at the forest?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -16.186690759134137,
+            -30.380942726479617,
+            -10.029410653376507,
+            -10.596268131157077
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "volcano reached errands Flu",
+          "bounded_generated_token_ids": [
+            6886,
+            3182,
+            1391,
+            351,
+            271,
+            116,
+            5402,
+            118
+          ],
+          "category": "temporal",
+          "generated_text": " volcano reached",
+          "generated_token_ids": [
+            6886,
+            3182
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0038",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.013335280812944,
+            -8.222489019270995,
+            -5.978356031571125,
+            -3.55352882049887
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Mae's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -22.026670561625888,
+            -8.222489019270995,
+            -17.935068094713376,
+            -7.10705764099774
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicvenisners thenel",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            1166,
+            274,
+            4246,
+            863,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " Seinic",
+          "generated_token_ids": [
+            1284,
+            260,
+            290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0030",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -6.044446683806998,
+            -17.12838133866733,
+            -7.0683835980555845,
+            -8.668301814224112
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 97,
+          "question": "Where did Gus head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -18.133340051420994,
+            -34.25676267733466,
+            -28.273534392222338,
+            -17.336603628448223
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "M livesic willing does M abandoned to",
+          "bounded_generated_token_ids": [
+            364,
+            2469,
+            290,
+            5510,
+            1175,
+            364,
+            6163,
+            287
+          ],
+          "category": "temporal",
+          "generated_text": " M lives",
+          "generated_token_ids": [
+            364,
+            2469
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0094",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.710227242611916,
+            -3.144274350506844,
+            -15.631299712556991,
+            -3.447812156836535
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            1,
+            3
+          ],
+          "prompt_tokens_without_eot": 83,
+          "question": "Where did Ben's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.420454485223832,
+            -6.288548701013688,
+            -15.631299712556991,
+            -10.343436470509605
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seentenaykenella",
+          "bounded_generated_token_ids": [
+            1284,
+            269,
+            117,
+            269,
+            343,
+            3930,
+            484,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Seen",
+          "generated_token_ids": [
+            1284,
+            269
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0064",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -7.256573618440288,
+            -3.9642644132457,
+            -4.892061127446644,
+            -3.438646408948505
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 100,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -14.513147236880576,
+            -15.8570576529828,
+            -9.784122254893289,
+            -10.315939226845515
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondayayayelara",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            343,
+            343,
+            354,
+            283,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Mond",
+          "generated_token_ids": [
+            364,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0001",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -1.9818602574621562,
+            -17.409667734941284,
+            -2.7144855693799474,
+            -8.63255003250069
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -3.9637205149243124,
+            -17.409667734941284,
+            -8.143456708139842,
+            -17.26510006500138
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "hotel estimateder northel at Se",
+          "bounded_generated_token_ids": [
+            3286,
+            354,
+            4334,
+            264,
+            2184,
+            354,
+            396,
+            1284
+          ],
+          "category": "temporal",
+          "generated_text": " hotel estimateder",
+          "generated_token_ids": [
+            3286,
+            354,
+            4334,
+            264
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0065",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -1.2060274252610235,
+            -4.591104985603217,
+            -12.6950713050973,
+            -3.2673522512938176
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 105,
+          "question": "Where was Hugo prior to the theater?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -2.412054850522047,
+            -9.182209971206435,
+            -25.3901426101946,
+            -13.06940900517527
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ub arrived hasinois Redoned engines",
+          "bounded_generated_token_ids": [
+            659,
+            3248,
+            585,
+            6209,
+            4857,
+            266,
+            273,
+            6872
+          ],
+          "category": "temporal",
+          "generated_text": "ub arrived",
+          "generated_token_ids": [
+            659,
+            3248
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0086",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -12.731664872384194,
+            -11.432134086999353,
+            -4.00333611697852,
+            -5.352511229466359
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Where did Aster's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -25.463329744768387,
+            -11.432134086999353,
+            -8.00667223395704,
+            -10.705022458932717
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Minemaicoua of",
+          "bounded_generated_token_ids": [
+            364,
+            260,
+            408,
+            98,
+            290,
+            285,
+            98,
+            277
+          ],
+          "category": "temporal",
+          "generated_text": " Min",
+          "generated_token_ids": [
+            364,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0082",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -11.77308041853307,
+            -5.725428743463842,
+            -3.602288218379275,
+            -2.263629750698279
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Tess's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -23.54616083706614,
+            -22.901714973855366,
+            -10.806864655137824,
+            -4.527259501396558
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicis Kenisonar",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            274,
+            8012,
+            274,
+            266,
+            283
+          ],
+          "category": "temporal",
+          "generated_text": " Seinic",
+          "generated_token_ids": [
+            1284,
+            260,
+            290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0035",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -14.659384175798554,
+            -7.6370616197894,
+            -9.998930062203609,
+            -7.546631581892684
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Where did Mia's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -29.318768351597107,
+            -22.911184859368202,
+            -39.995720248814436,
+            -15.093263163785368
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "FerouenTentouthTent",
+          "bounded_generated_token_ids": [
+            8128,
+            430,
+            269,
+            85,
+            297,
+            925,
+            85,
+            297
+          ],
+          "category": "temporal",
+          "generated_text": " Fe",
+          "generated_token_ids": [
+            8128
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0074",
+          "key": 0,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -13.420519704520197,
+            -5.89467789251285,
+            -5.950861984896185,
+            -10.455264415377506
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -13.420519704520197,
+            -11.7893557850257,
+            -17.852585954688553,
+            -20.910528830755013
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jelayells Fladay",
+          "bounded_generated_token_ids": [
+            468,
+            354,
+            343,
+            484,
+            116,
+            5402,
+            324,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Jel",
+          "generated_token_ids": [
+            468,
+            354
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0028",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.28990009143733,
+            -4.574335048871025,
+            -2.2849118312886008,
+            -16.1059502313788
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Where did Rosa's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -8.28990009143733,
+            -13.723005146613076,
+            -4.5698236625772015,
+            -32.2119004627576
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "foresta Drelelemaouth",
+          "bounded_generated_token_ids": [
+            2946,
+            98,
+            3475,
+            354,
+            354,
+            408,
+            98,
+            925
+          ],
+          "category": "temporal",
+          "generated_text": " foresta Drel",
+          "generated_token_ids": [
+            2946,
+            98,
+            3475,
+            354
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0044",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.864700251705349,
+            -11.312562322380893,
+            -3.5792382366991258,
+            -0.6598534908957194
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            1
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where did Adam's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -23.729400503410698,
+            -22.625124644761787,
+            -14.316952946796503,
+            -0.6598534908957194
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tri launch arrivedar U reached Tin",
+          "bounded_generated_token_ids": [
+            6365,
+            6935,
+            3248,
+            283,
+            478,
+            3182,
+            310,
+            260
+          ],
+          "category": "temporal",
+          "generated_text": " Tri",
+          "generated_token_ids": [
+            6365
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0075",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.6798990298665,
+            -12.783749645248214,
+            -4.7560329564834944,
+            -8.783336500470515
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Jack's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.359798059733,
+            -12.783749645248214,
+            -14.268098869450483,
+            -17.56667300094103
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jadayaykens Flad",
+          "bounded_generated_token_ids": [
+            468,
+            324,
+            343,
+            343,
+            3930,
+            116,
+            5402,
+            324
+          ],
+          "category": "temporal",
+          "generated_text": " J",
+          "generated_token_ids": [
+            468
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0096",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.5068309068682972,
+            -3.0196528111566097,
+            -11.069282689573564,
+            -7.8995982546581835
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            1,
+            4
+          ],
+          "prompt_tokens_without_eot": 103,
+          "question": "Where was Raj prior to the cinema?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -10.520492720604892,
+            -6.039305622313219,
+            -11.069282689573564,
+            -31.598393018632734
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "anic reachedleel favorite arriveded",
+          "bounded_generated_token_ids": [
+            278,
+            290,
+            3182,
+            294,
+            354,
+            7848,
+            3248,
+            273
+          ],
+          "category": "temporal",
+          "generated_text": "an",
+          "generated_token_ids": [
+            278
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0077",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -10.485958903020308,
+            -4.359877159884349,
+            -7.849007769483597,
+            -14.827553882870824
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Where did Jean's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -20.971917806040615,
+            -13.079631479653047,
+            -15.698015538967194,
+            -14.827553882870824
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "northernelelort",
+          "bounded_generated_token_ids": [
+            2622,
+            354,
+            354,
+            422,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " northernel",
+          "generated_token_ids": [
+            2622,
+            354
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0059",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.6319026604901445,
+            -3.3331058955842736,
+            -4.485027512113894,
+            -7.5785267470085005
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            3,
+            1
+          ],
+          "prompt_tokens_without_eot": 102,
+          "question": "Where did Dev's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -30.527610641960578,
+            -6.666211791168547,
+            -13.455082536341683,
+            -7.5785267470085005
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Mondayayonarayon",
+          "bounded_generated_token_ids": [
+            364,
+            977,
+            343,
+            343,
+            266,
+            283,
+            343,
+            266
+          ],
+          "category": "temporal",
+          "generated_text": " Monday",
+          "generated_token_ids": [
+            364,
+            977,
+            343
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0067",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -12.13444058698224,
+            -2.3487695941967828,
+            -5.291931371641729,
+            -4.239346574429365
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 109,
+          "question": "Where did Gene head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -24.26888117396448,
+            -7.046308782590349,
+            -21.167725486566916,
+            -8.47869314885873
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "lettoandelayet",
+          "bounded_generated_token_ids": [
+            294,
+            117,
+            1376,
+            98,
+            271,
+            354,
+            343,
+            330
+          ],
+          "category": "temporal",
+          "generated_text": "let",
+          "generated_token_ids": [
+            294,
+            117
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0048",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -7.239014552920935,
+            -3.29060522931884,
+            -3.5150883365574455,
+            -11.572082173122496
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 115,
+          "question": "Where did Otto head once done at the cinema?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -28.95605821168374,
+            -9.87181568795652,
+            -7.030176673114891,
+            -23.14416434624499
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Triita of mechanfield, Toud",
+          "bounded_generated_token_ids": [
+            6365,
+            8044,
+            277,
+            2915,
+            5068,
+            45,
+            310,
+            3393
+          ],
+          "category": "temporal",
+          "generated_text": " Triita",
+          "generated_token_ids": [
+            6365,
+            8044
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0070",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -14.040323296481986,
+            -3.5774025786095245,
+            -4.988666048968323,
+            -7.391605140298859
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -28.080646592963973,
+            -14.309610314438098,
+            -9.977332097936646,
+            -7.391605140298859
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Graia became eriniconday",
+          "bounded_generated_token_ids": [
+            4299,
+            523,
+            1101,
+            1391,
+            260,
+            290,
+            977,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Graia became",
+          "generated_token_ids": [
+            4299,
+            523,
+            1101
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0088",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -13.686476448424393,
+            -6.005224066860857,
+            -5.615417969897334,
+            -5.941967905246646
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            1
+          ],
+          "prompt_tokens_without_eot": 102,
+          "question": "Where did Sofia's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -27.372952896848787,
+            -12.010448133721715,
+            -16.846253909692003,
+            -5.941967905246646
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinis Ainiconday",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            274,
+            316,
+            260,
+            290,
+            977,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Seinis A",
+          "generated_token_ids": [
+            1284,
+            260,
+            274,
+            316
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0034",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -5.1117787139538535,
+            -2.498229124811072,
+            -14.127486762646324,
+            -2.3960922538717053
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 106,
+          "question": "Where did Wade's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -20.447114855815414,
+            -7.494687374433216,
+            -28.254973525292648,
+            -4.792184507743411
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "equatorisQext on Carla arrived",
+          "bounded_generated_token_ids": [
+            7427,
+            274,
+            82,
+            3068,
+            333,
+            1604,
+            357,
+            3248
+          ],
+          "category": "temporal",
+          "generated_text": " equator",
+          "generated_token_ids": [
+            7427
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0023",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.115066125369454,
+            -8.438353214596669,
+            -6.9640368846875615,
+            -13.157023524335399
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where was Carla prior to the clinic?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -16.230132250738908,
+            -8.438353214596669,
+            -20.892110654062684,
+            -26.314047048670798
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "volcanoisis Darinicema",
+          "bounded_generated_token_ids": [
+            6886,
+            274,
+            274,
+            5913,
+            260,
+            290,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " volcano",
+          "generated_token_ids": [
+            6886
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0016",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.844428176554128,
+            -8.336437521495693,
+            -4.581700642942363,
+            -11.629922849696769
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            4,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 98,
+          "question": "Where was Sofia prior to the theater?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -17.533284529662385,
+            -33.34575008598277,
+            -4.581700642942363,
+            -23.259845699393537
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feita on Jufieldar",
+          "bounded_generated_token_ids": [
+            8128,
+            8044,
+            333,
+            2588,
+            5068,
+            283,
+            47
+          ],
+          "category": "temporal",
+          "generated_text": " Fe",
+          "generated_token_ids": [
+            8128
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0099",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -11.627074700229413,
+            -18.789414175456898,
+            -4.396157787948154,
+            -5.70706204214198
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 85,
+          "question": "Where did Andre's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -23.254149400458825,
+            -18.789414175456898,
+            -8.792315575896309,
+            -17.12118612642594
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "glaci reached errandsa under",
+          "bounded_generated_token_ids": [
+            3948,
+            3182,
+            1391,
+            351,
+            271,
+            116,
+            98,
+            651
+          ],
+          "category": "temporal",
+          "generated_text": " glaci reached",
+          "generated_token_ids": [
+            3948,
+            3182
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0084",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.532031292499238,
+            -4.723410220334722,
+            -9.31669232120573,
+            -10.02403987897261
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 95,
+          "question": "Where did Ben's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -9.064062584998476,
+            -4.723410220334722,
+            -18.63338464241146,
+            -40.09615951589044
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ault atault on Mor reached'urban",
+          "bounded_generated_token_ids": [
+            5245,
+            396,
+            5245,
+            333,
+            3881,
+            3182,
+            40,
+            4742
+          ],
+          "category": "temporal",
+          "generated_text": "ault at",
+          "generated_token_ids": [
+            5245,
+            396
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0046",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.652401750344158,
+            -9.8012545632096,
+            -6.373424339917487,
+            -8.225194357290258
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            1,
+            3,
+            4
+          ],
+          "prompt_tokens_without_eot": 88,
+          "question": "Where was Ben prior to the cinema?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -17.304803500688315,
+            -9.8012545632096,
+            -19.12027301975246,
+            -32.90077742916103
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feaenanicext",
+          "bounded_generated_token_ids": [
+            8128,
+            98,
+            269,
+            278,
+            290,
+            3068,
+            11
+          ],
+          "category": "temporal",
+          "generated_text": " Feaenan",
+          "generated_token_ids": [
+            8128,
+            98,
+            269,
+            278
+          ],
+          "generation_termination_reason": "period_or_newline",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0018",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -10.147798785737342,
+            -7.3469201991740976,
+            -15.868504174614595,
+            -7.2793057166452275
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where was Rosa prior to the theater?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -40.59119514294937,
+            -22.040760597522294,
+            -31.73700834922919,
+            -14.558611433290455
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Padaykenel 8 lived er",
+          "bounded_generated_token_ids": [
+            374,
+            324,
+            343,
+            3930,
+            354,
+            1485,
+            2482,
+            1391
+          ],
+          "category": "temporal",
+          "generated_text": " Paday",
+          "generated_token_ids": [
+            374,
+            324,
+            343
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0056",
+          "key": 2,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -3.9128672768055908,
+            -3.714728111307427,
+            -2.916190767131402,
+            -5.528600752030282
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 104,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -15.651469107222363,
+            -7.429456222614854,
+            -8.748572301394205,
+            -11.057201504060563
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jarayayayayayay",
+          "bounded_generated_token_ids": [
+            468,
+            283,
+            343,
+            343,
+            343,
+            343,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Jar",
+          "generated_token_ids": [
+            468,
+            283
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0060",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.970844816256232,
+            -6.76206751163211,
+            -4.791376429707687,
+            -11.561054847469366
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 100,
+          "question": "Where was Mae prior to the clinic?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -11.941689632512464,
+            -20.28620253489633,
+            -9.582752859415374,
+            -11.561054847469366
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "imaadema Ainic",
+          "bounded_generated_token_ids": [
+            314,
+            98,
+            324,
+            408,
+            98,
+            316,
+            260,
+            290
+          ],
+          "category": "temporal",
+          "generated_text": "ima",
+          "generated_token_ids": [
+            314,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0026",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.66856493151754,
+            -9.580537327068804,
+            -8.786829159011727,
+            -6.324433700471666
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            3
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where was Dev prior to the clinic?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -23.33712986303508,
+            -19.161074654137607,
+            -35.14731663604691,
+            -18.973301101415
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "wonelema livedb Man",
+          "bounded_generated_token_ids": [
+            120,
+            266,
+            354,
+            408,
+            98,
+            2482,
+            99,
+            3038
+          ],
+          "category": "temporal",
+          "generated_text": "won",
+          "generated_token_ids": [
+            120,
+            266
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0013",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -15.386110283370364,
+            -3.09692541393925,
+            -2.8086234852242122,
+            -2.878402050990367
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            4,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Dev's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -30.772220566740728,
+            -12.387701655757,
+            -5.6172469704484245,
+            -5.756804101980734
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "forest livedrogenel Redel at Se",
+          "bounded_generated_token_ids": [
+            2946,
+            2482,
+            3250,
+            354,
+            4857,
+            354,
+            396,
+            1284
+          ],
+          "category": "temporal",
+          "generated_text": " forest livedrogen",
+          "generated_token_ids": [
+            2946,
+            2482,
+            3250
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0098",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -5.530585352916467,
+            -11.206406217827732,
+            -2.2532463220789016,
+            -12.503990747485961
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            2,
+            1,
+            2
+          ],
+          "prompt_tokens_without_eot": 86,
+          "question": "Where did Hugo's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -16.5917560587494,
+            -22.412812435655464,
+            -2.2532463220789016,
+            -25.007981494971922
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "hotelema lived cinem",
+          "bounded_generated_token_ids": [
+            3286,
+            354,
+            408,
+            98,
+            2482,
+            270,
+            260,
+            408
+          ],
+          "category": "temporal",
+          "generated_text": " hotel",
+          "generated_token_ids": [
+            3286,
+            354
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "museum",
+          "id": "dev-temporal-0045",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -13.628180127536206,
+            -0.582275659576082,
+            -2.4431335405644874,
+            -6.158429160158412
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 96,
+          "question": "Where did Kira's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -27.256360255072412,
+            -1.164551319152164,
+            -9.77253416225795,
+            -12.316858320316824
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seinicondayonelt",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            290,
+            977,
+            343,
+            266,
+            354,
+            117
+          ],
+          "category": "temporal",
+          "generated_text": " Sein",
+          "generated_token_ids": [
+            1284,
+            260
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0003",
+          "key": 1,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -3.3188344262250453,
+            -5.1733131809415465,
+            -2.6229431383906125,
+            -12.991888605459579
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            2,
+            3,
+            2
+          ],
+          "prompt_tokens_without_eot": 101,
+          "question": "Where did Gene head once done at the museum?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -6.637668852450091,
+            -10.346626361883093,
+            -7.868829415171838,
+            -25.983777210919158
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Graa Aisnoama The",
+          "bounded_generated_token_ids": [
+            4299,
+            98,
+            316,
+            274,
+            6621,
+            337,
+            98,
+            347
+          ],
+          "category": "temporal",
+          "generated_text": " Graa Ais",
+          "generated_token_ids": [
+            4299,
+            98,
+            316,
+            274
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0066",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.617041043073923,
+            -5.761978323751694,
+            -4.310035223439811,
+            -1.918435932472227
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 89,
+          "question": "Where did Tess's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -34.468164172295694,
+            -17.28593497125508,
+            -8.620070446879621,
+            -1.918435932472227
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Museum ofai livedriga was",
+          "bounded_generated_token_ids": [
+            364,
+            4045,
+            277,
+            2863,
+            2482,
+            4164,
+            98,
+            348
+          ],
+          "category": "temporal",
+          "generated_text": " M",
+          "generated_token_ids": [
+            364
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0025",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -4.051760808562362,
+            -17.409642681316363,
+            -2.8599036684190753,
+            -13.944436547608507
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Noah's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -16.207043234249447,
+            -34.819285362632726,
+            -5.719807336838151,
+            -13.944436547608507
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Seia as Mondayayk",
+          "bounded_generated_token_ids": [
+            1284,
+            523,
+            339,
+            364,
+            977,
+            343,
+            343,
+            108
+          ],
+          "category": "temporal",
+          "generated_text": " Seia",
+          "generated_token_ids": [
+            1284,
+            523
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0057",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -11.444203891467382,
+            -5.830042872194664,
+            -4.996685986520873,
+            -4.395380905404068
+          ],
+          "mean_token_option_prediction": 3,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 107,
+          "question": "Where was Sofia prior to the museum?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -22.888407782934763,
+            -17.49012861658399,
+            -9.993371973041747,
+            -8.790761810808135
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "SeinarenT outcenst",
+          "bounded_generated_token_ids": [
+            1284,
+            260,
+            283,
+            269,
+            85,
+            5949,
+            269,
+            306
+          ],
+          "category": "temporal",
+          "generated_text": " Seinaren",
+          "generated_token_ids": [
+            1284,
+            260,
+            283,
+            269
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0093",
+          "key": 3,
+          "letter_prediction": 2,
+          "mean_token_option_logprob": [
+            -5.50334498876935,
+            -13.870657277561744,
+            -2.37700811814233,
+            -7.716434644508101
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            3,
+            1,
+            2,
+            4
+          ],
+          "prompt_tokens_without_eot": 103,
+          "question": "Where did Hugo head once done at the museum?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -16.51003496630805,
+            -13.870657277561744,
+            -4.75401623628466,
+            -30.865738578032403
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "ub Thul Chaday achieves",
+          "bounded_generated_token_ids": [
+            659,
+            504,
+            344,
+            620,
+            324,
+            343,
+            3123,
+            116
+          ],
+          "category": "temporal",
+          "generated_text": "ub Thul",
+          "generated_token_ids": [
+            659,
+            504,
+            344
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0083",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -6.186742829410441,
+            -5.4772504633859045,
+            -13.238370400797098,
+            -16.105720410080618
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 101,
+          "question": "Where was Neil prior to the museum?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -12.373485658820883,
+            -16.431751390157714,
+            -26.476740801594197,
+            -16.105720410080618
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Feaaemaaema",
+          "bounded_generated_token_ids": [
+            8128,
+            98,
+            98,
+            408,
+            98,
+            98,
+            408,
+            98
+          ],
+          "category": "temporal",
+          "generated_text": " Fe",
+          "generated_token_ids": [
+            8128
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0043",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -4.334930063908474,
+            -14.247716965213447,
+            -10.347280687593432,
+            -5.557478713676706
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 81,
+          "question": "Where did Lou's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -17.339720255633896,
+            -14.247716965213447,
+            -20.694561375186865,
+            -11.114957427353412
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Jaadayayayayay",
+          "bounded_generated_token_ids": [
+            468,
+            98,
+            324,
+            343,
+            343,
+            343,
+            343,
+            343
+          ],
+          "category": "temporal",
+          "generated_text": " Ja",
+          "generated_token_ids": [
+            468,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0061",
+          "key": 3,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -15.605061630509633,
+            -7.197892618347026,
+            -9.301527737042688,
+            -7.905407584520274
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 91,
+          "question": "Where was Lou prior to the museum?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -15.605061630509633,
+            -21.59367785504108,
+            -18.603055474085377,
+            -15.810815169040549
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "volcano lived errands Mar",
+          "bounded_generated_token_ids": [
+            6886,
+            2482,
+            1391,
+            351,
+            271,
+            116,
+            364,
+            283
+          ],
+          "category": "temporal",
+          "generated_text": " volcano",
+          "generated_token_ids": [
+            6886
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "forest",
+          "id": "dev-temporal-0039",
+          "key": 1,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -4.799519752221915,
+            -5.612422273802224,
+            -10.617731658320569,
+            -5.146348528883322
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            1,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 100,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -19.19807900888766,
+            -5.612422273802224,
+            -21.235463316641138,
+            -10.292697057766643
+          ],
+          "summed_option_prediction": 1
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "glacielar roughel Jan Savel",
+          "bounded_generated_token_ids": [
+            3948,
+            354,
+            283,
+            4187,
+            354,
+            2774,
+            7084,
+            354
+          ],
+          "category": "temporal",
+          "generated_text": " glacielar",
+          "generated_token_ids": [
+            3948,
+            354,
+            283
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0029",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.73116090247194,
+            -4.45189053306765,
+            -3.8259311598597345,
+            -4.512603745454218
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            2,
+            2,
+            3
+          ],
+          "prompt_tokens_without_eot": 99,
+          "question": "Where did Jack's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -8.73116090247194,
+            -8.9037810661353,
+            -7.651862319719469,
+            -13.537811236362653
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tinica lived erinic",
+          "bounded_generated_token_ids": [
+            310,
+            260,
+            290,
+            98,
+            2482,
+            1391,
+            260,
+            290
+          ],
+          "category": "temporal",
+          "generated_text": " Tinic",
+          "generated_token_ids": [
+            310,
+            260,
+            290
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "clinic",
+          "id": "dev-temporal-0007",
+          "key": 1,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -11.306688958658647,
+            -4.135180091641554,
+            -5.104817607084249,
+            -4.715954490102193
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            4,
+            2
+          ],
+          "prompt_tokens_without_eot": 100,
+          "question": "Where did Eva's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -11.306688958658647,
+            -12.405540274924663,
+            -20.419270428336997,
+            -9.431908980204385
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Fea livedbema livedb",
+          "bounded_generated_token_ids": [
+            8128,
+            98,
+            2482,
+            99,
+            408,
+            98,
+            2482,
+            99
+          ],
+          "category": "temporal",
+          "generated_text": " Fea",
+          "generated_token_ids": [
+            8128,
+            98
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "hotel",
+          "id": "dev-temporal-0037",
+          "key": 3,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -3.994838241709317,
+            -11.63267529134016,
+            -3.6280214993748214,
+            -7.971450329167618
+          ],
+          "mean_token_option_prediction": 2,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 90,
+          "question": "Where did Mae's day start?",
+          "subtype": "first",
+          "summed_option_logprob": [
+            -15.979352966837268,
+            -23.26535058268032,
+            -7.256042998749643,
+            -15.942900658335237
+          ],
+          "summed_option_prediction": 2
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Tri launchsar lived errand",
+          "bounded_generated_token_ids": [
+            6365,
+            6935,
+            116,
+            283,
+            2482,
+            1391,
+            351,
+            271
+          ],
+          "category": "temporal",
+          "generated_text": " Tri launch",
+          "generated_token_ids": [
+            6365,
+            6935
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0002",
+          "key": 0,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -8.106759671341095,
+            -5.7112340879811105,
+            -6.5634966639451,
+            -7.820089277776838
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            2,
+            3,
+            2,
+            1
+          ],
+          "prompt_tokens_without_eot": 100,
+          "question": "Where was Una prior to the clinic?",
+          "subtype": "before",
+          "summed_option_logprob": [
+            -16.21351934268219,
+            -17.13370226394333,
+            -13.1269933278902,
+            -7.820089277776838
+          ],
+          "summed_option_prediction": 3
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "Triondaykenon reached theai",
+          "bounded_generated_token_ids": [
+            6365,
+            977,
+            343,
+            3930,
+            266,
+            3182,
+            261,
+            2863
+          ],
+          "category": "temporal",
+          "generated_text": " Triond",
+          "generated_token_ids": [
+            6365,
+            977
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "theater",
+          "id": "dev-temporal-0052",
+          "key": 2,
+          "letter_prediction": 0,
+          "mean_token_option_logprob": [
+            -11.896841111782782,
+            -5.536742671065828,
+            -11.5225797065106,
+            -10.777179168154234
+          ],
+          "mean_token_option_prediction": 1,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            1,
+            3,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 94,
+          "question": "Where did Ben head once done at the forest?",
+          "subtype": "after",
+          "summed_option_logprob": [
+            -11.896841111782782,
+            -16.610228013197485,
+            -23.0451594130212,
+            -21.554358336308468
+          ],
+          "summed_option_prediction": 0
+        },
+        {
+          "bounded_free_generation_exact": false,
+          "bounded_free_generation_terminated_exact": false,
+          "bounded_generated_text": "glacielel 14emaaell",
+          "bounded_generated_token_ids": [
+            3948,
+            354,
+            354,
+            1966,
+            408,
+            98,
+            98,
+            484
+          ],
+          "category": "temporal",
+          "generated_text": " glacielel 14",
+          "generated_token_ids": [
+            3948,
+            354,
+            354,
+            1966
+          ],
+          "generation_termination_reason": "token_limit",
+          "gold_length_greedy_prefix_exact": false,
+          "gold_text": "cinema",
+          "id": "dev-temporal-0090",
+          "key": 0,
+          "letter_prediction": 1,
+          "mean_token_option_logprob": [
+            -2.51139755270832,
+            -3.478003061107422,
+            -10.657450901430948,
+            -3.7821799388980484
+          ],
+          "mean_token_option_prediction": 0,
+          "mismatched_question_literally_unchanged": false,
+          "option_token_lengths": [
+            4,
+            2,
+            2,
+            2
+          ],
+          "prompt_tokens_without_eot": 93,
+          "question": "Where did Jack's day finish?",
+          "subtype": "last",
+          "summed_option_logprob": [
+            -10.04559021083328,
+            -6.956006122214844,
+            -21.314901802861897,
+            -7.564359877796097
+          ],
+          "summed_option_prediction": 1
+        }
+      ],
+      "mismatch_literally_unchanged_n": 0,
+      "summary": {
+        "bounded_free_generation_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 0.03699480747600191,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.03699480747600191,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 100
+        },
+        "bounded_free_generation_terminated_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 0.03699480747600191,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.03699480747600191,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 100
+        },
+        "gold_length_greedy_prefix_exact": {
+          "accuracy": 0.0,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.0,
+              "ci95_high": 0.03699480747600191,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.03699480747600191,
+          "ci95_low": 0.0,
+          "correct": 0,
+          "n": 100
+        },
+        "letter_A_to_D": {
+          "accuracy": 0.26,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.26,
+              "ci95_high": 0.35371172631861636,
+              "ci95_low": 0.18404578126986462,
+              "correct": 26,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.35371172631861636,
+          "ci95_low": 0.18404578126986462,
+          "correct": 26,
+          "n": 100
+        },
+        "mean_token_option_likelihood": {
+          "accuracy": 0.27,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.27,
+              "ci95_high": 0.3643230022623127,
+              "ci95_low": 0.1926946091766482,
+              "correct": 27,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.3643230022623127,
+          "ci95_low": 0.1926946091766482,
+          "correct": 27,
+          "n": 100
+        },
+        "summed_option_likelihood": {
+          "accuracy": 0.22,
+          "by_category": {
+            "compare": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "extract": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "relation": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "reverse": {
+              "accuracy": 0.0,
+              "ci95_high": 1.0,
+              "ci95_low": 0.0,
+              "correct": 0,
+              "n": 0
+            },
+            "temporal": {
+              "accuracy": 0.22,
+              "ci95_high": 0.3107053471500031,
+              "ci95_low": 0.15001174503655804,
+              "correct": 22,
+              "n": 100
+            }
+          },
+          "ci95_high": 0.3107053471500031,
+          "ci95_low": 0.15001174503655804,
+          "correct": 22,
+          "n": 100
+        }
+      }
+    }
+  },
+  "generation_note": "Autoregressive greedy generation stops on EOT, first decoded period/newline, context limit, or eight tokens (independent of gold). Exact compares trimmed generated answer to gold; terminated_exact additionally requires EOT or delimiter. Gold-length prefix is a separate diagnostic and does not score termination.",
+  "item_count": 100,
+  "items": "docs/results/stage2/diagnostics-20261113/d5-rot2.jsonl",
+  "items_sha256": "d39b174c22a97b8ad9b63fd5fb97a35943607816050457f72b9fd772dc80f186",
+  "limit": 0,
+  "locked_test": false,
+  "mismatch_note": "Historical same-category question replacement is reproduced. Literal unchanged flags count collisions; compare questions may retain the same max/min operation even when text changes. Use opposite-query counterfactual evidence for conditioning.",
+  "paired_wording_note": "First training question frame for each structured query; identical passage/options/keys. Passage wording remains unfamiliar. Counterfactual uses cf_query.",
+  "schema": "asem-qa-dev-analysis-1",
+  "seconds": 5.400812,
+  "tokenizer": "data/fineweb/stage1/tokenizer.bpe",
+  "tokenizer_sha256": "30d876e0d13bf8001ad66e1dd376a4240bc14b44cdf42e397c47133165cc45e4",
+  "workers": 4
+}

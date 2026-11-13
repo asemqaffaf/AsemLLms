@@ -1,0 +1,7 @@
+copy sequences generated 15000, consumed in 2500 steps 13341 (88.9%)
+token id 0 drawn: 0
+ALL-15000  eval_heldout n=845 | first-copy occurrences: zero=0 min=27 max=73 mean=45.79 | supervised-target occurrences: zero=0 min=25 max=70 mean=43.99 sum=37169
+ALL-15000  ids 1..8191  n=8191 | first-copy occurrences: zero=0 min=19 max=73 mean=45.89 | supervised-target occurrences: zero=0 min=18 max=70 mean=44.05 sum=360850
+CONSUMED   eval_heldout n=845 | first-copy occurrences: zero=0 min=22 max=67 mean=40.81 | supervised-target occurrences: zero=0 min=21 max=64 mean=39.22 sum=33137
+CONSUMED   ids 1..8191  n=8191 | first-copy occurrences: zero=0 min=18 max=67 mean=40.91 | supervised-target occurrences: zero=0 min=17 max=64 mean=39.28 sum=321730
+total supervised copy targets: all 360850, consumed 321730; share on eval_heldout (consumed) 10.30%
