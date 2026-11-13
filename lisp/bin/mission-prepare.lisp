@@ -1,0 +1,38 @@
+;;;; Freeze mission data and audit training supervision before any new model training.
+;;;; sbcl --script lisp/bin/mission-prepare.lisp out=NEW-DIR
+(let ((here (directory-namestring *load-truename*)))
+  (require :sb-posix)
+  (dolist (f '("util" "sha256" "json" "bpe" "data" "qagen" "retrieval" "tf32" "train32" "pretrain32" "sft32" "qa-analysis" "mission-data"))
+    (load (merge-pathnames (format nil "../src/~a.lisp" f) here))))
+(defun obj (&rest x) (apply #'asem-mission-data:obj x))
+(let* ((arg (find-if (lambda (s) (and (> (length s) 4) (string= s "out=" :end1 4))) (cdr sb-ext:*posix-argv*)))
+       (out (or (and arg (subseq arg 4)) (error "out=NEW-DIR required")))
+       (bpe (asem-bpe:load-bpe "data/fineweb/stage1/tokenizer.bpe"))
+       (asem-retrieval:*broad-train* t) (asem-retrieval:*augment* t) (asem-retrieval:*reverse* t) (asem-retrieval:*reasoning* t)
+       (asem-retrieval:*vocab-words* (asem-retrieval:vocab-words-of bpe))
+       (exclude (make-hash-table :test 'equal))
+       (original (asem-qa-analysis:read-development "lisp/eval/qa/dev.jsonl" "lisp/eval/qa/test.lock")))
+  (when (probe-file (format nil "~a/" out)) (error "Refusing to overwrite mission data"))
+  (dolist (it original) (setf (gethash (string-downcase (asem-qagen:item-prompt it :style :original)) exclude) t))
+  (let* ((audit (asem-mission-data:traced-sequences 256 7 bpe))
+         (stable (asem-retrieval:train-sequences 256 '(1 2 3) 7 bpe 128 :options t)))
+    (unless (equal stable (mapcar (lambda (r) (list (getf r :ids) (getf r :rows) (getf r :targets))) audit)) (error "Tracing does not reproduce stable generator"))
+    (ensure-directories-exist (format nil "~a/" out))
+    (asem-mission-data:save-data (format nil "~a/audit-training.sexp" out) audit)
+    (multiple-value-bind (selection rejected reasons)
+        (asem-qagen:generate-split :dev 500 111101 :exclude exclude :fits (lambda (p) (<= (+ 1 (length (asem-bpe:bpe-encode bpe p)) 8) 128)))
+      (dolist (it selection) (setf (getf it :id) (concatenate 'string "selection-" (getf it :id))))
+      (asem-mission-data:save-data (format nil "~a/selection.sexp" out) selection)
+      (multiple-value-bind (confirmation cr creasons) (asem-mission-data:fresh-confirmation 500 111102 bpe exclude)
+        (dolist (it confirmation) (setf (getf it :id) (concatenate 'string "confirmation-" (getf it :id))))
+        (asem-mission-data:save-data (format nil "~a/confirmation.sexp" out) confirmation)
+        (asem-mission-data:write-json (format nil "~a/manifest.json" out)
+          (obj "schema" "asem-autonomous-mission-data-1" "reference" "r7" "qa_dev_n" 500 "selection_n" 500 "confirmation_n" 500
+               "selection_seed" 111101 "confirmation_seed" 111102 "selection_rejections" rejected "confirmation_rejections" cr
+               "selection_rejection_reasons" (cons :obj reasons) "confirmation_rejection_reasons" (cons :obj creasons)
+               "confirmation_note" "New passage/question frames authored before inference, new nontraining entity pools, 100 per category and 25 keys per category/position. Not used for training or checkpoint selection."
+               "training_trace_matches_stable_generator" :true "locked_test_accessed" :false
+               "files_sha256" (cons :obj (loop for f in '("audit-training.sexp" "selection.sexp" "confirmation.sexp") collect (cons f (asem-sha256:sha256-file-hex (format nil "~a/~a" out f)))))
+               "source_sha256" (obj "lisp/src/mission-data.lisp" (asem-sha256:sha256-file-hex "lisp/src/mission-data.lisp"))
+               "pilot_limit" 3 "long_run_limit" 1 "long_run_steps_max" 2500)))))
+  (format t "Frozen mission selection and confirmation data; training trace matches baseline.~%"))

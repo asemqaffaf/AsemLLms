@@ -1,0 +1,81 @@
+;;;; Observe latent training facts without changing RNG calls, text, packing or labels.
+(defpackage :asem-inverse-data (:use :cl) (:export #:prepare #:negative-for))
+(in-package :asem-inverse-data)
+(defun mentioned (names text)
+  (remove-if-not (lambda (x) (plusp (asem-qagen::word-boundary-count x text))) names))
+(defun negative-for (kind question answer options facts)
+  "Return a graph-derived wrong answer, or NIL when no eligible semantic contrast exists."
+  (case kind
+    (:rel
+     (let* ((edges (getf facts :edges)) (people (remove-duplicates (apply #'append edges) :test #'equal))
+            (trace (find question (getf facts :queries) :key (lambda (q) (getf q :text)) :test #'equal))
+            (anchors (if trace (list (getf trace :anchor)) (mentioned people question))))
+       (unless (= 1 (length anchors)) (error "Ambiguous relationship training anchor: ~s" question))
+       (let* ((anchor (first anchors))
+              (incoming (loop for (a b) in edges when (equal b anchor) collect a))
+              (outgoing (loop for (a b) in edges when (equal a anchor) collect b)))
+         (unless (= 1 (count answer (append incoming outgoing) :test #'equal)) (error "Relationship label not uniquely bound"))
+         (when trace
+           (unless (equal (list answer) (ecase (getf trace :role) (:subject incoming) (:object outgoing))) (error "Relationship trace/label mismatch")))
+         (let ((opposite (if (member answer incoming :test #'equal) outgoing incoming)))
+           (when (and (= 1 (length opposite)) (member (first opposite) options :test #'equal))
+             (values (first opposite) :opposite-role))))))
+    (:attr
+     (let* ((bindings (getf facts :bindings)) (people (mapcar #'first bindings)))
+       (when (member answer people :test #'equal)
+         (let* ((trace (find question (getf facts :queries) :key (lambda (q) (getf q :text)) :test #'equal))
+                (matches (remove-if-not (lambda (pr) (if trace (and (eq (getf trace :role) :reverse) (equal (second pr) (getf trace :anchor)))
+                                                        (plusp (asem-qagen::word-boundary-count (second pr) question)))) bindings)))
+           (unless (and (= 1 (length matches)) (equal answer (caar matches))) (error "Reverse label not uniquely bound: ~s" question))
+           (values (find-if (lambda (p) (and (not (equal p answer)) (member p options :test #'equal))) people) :other-bound-person)))))))
+(defun prepare (n seed bpe)
+  (let ((original-fill (symbol-function 'asem-qagen::fill-frame))
+        (original-facts (symbol-function 'asem-retrieval:make-fact-set))
+        (original-augment (symbol-function 'asem-retrieval::augment-question))
+        (metadata (make-hash-table :test 'equal)) (edges nil) (bindings nil) (queries nil) (recording t) (records nil))
+    (unwind-protect
+         (progn
+           (setf (symbol-function 'asem-qagen::fill-frame)
+                 (lambda (frame &rest pairs)
+                   (let ((text (apply original-fill frame pairs)))
+                     (when recording
+                       (when (and (getf pairs :a) (getf pairs :b)) (push (list (getf pairs :a) (getf pairs :b)) edges))
+                       (when (and (getf pairs :p) (stringp (getf pairs :v))) (push (list (getf pairs :p) (getf pairs :v)) bindings))
+                       (cond ((and (getf pairs :b) (not (getf pairs :a))) (push (list :text text :role :subject :anchor (getf pairs :b)) queries))
+                             ((and (getf pairs :a) (not (getf pairs :b))) (push (list :text text :role :object :anchor (getf pairs :a)) queries))
+                             ((and (getf pairs :v) (not (getf pairs :p))) (push (list :text text :role :reverse :anchor (getf pairs :v)) queries))))
+                     text)))
+           (setf (symbol-function 'asem-retrieval::augment-question)
+                 (lambda (text &rest args)
+                   (let ((query (find text queries :key (lambda (q) (getf q :text)) :test #'equal)))
+                     (setf recording nil)
+                     (let ((result (unwind-protect (apply original-augment text args) (setf recording t))))
+                       (when query (setf (getf query :text) result)) result))))
+           (setf (symbol-function 'asem-retrieval:make-fact-set)
+                 (lambda (&rest args)
+                   (setf edges nil bindings nil queries nil)
+                   (multiple-value-bind (passage qa kind candidates padder) (apply original-facts args)
+                     (setf (gethash passage metadata) (list :edges (nreverse edges) :bindings (nreverse bindings) :queries (nreverse queries)))
+                     (values passage qa kind candidates padder))))
+           (setf records (asem-mission-data:traced-sequences n seed bpe)))
+      (setf (symbol-function 'asem-qagen::fill-frame) original-fill
+            (symbol-function 'asem-retrieval:make-fact-set) original-facts
+            (symbol-function 'asem-retrieval::augment-question) original-augment))
+    (let ((annotations nil) (counts (make-hash-table :test 'equal)))
+      (loop for r in records for i from 0 do
+        (let ((pairs nil))
+          (incf (gethash (format nil "sequence/~(~a~)" (getf r :kind)) counts 0))
+          (dolist (q (getf r :questions))
+            (incf (gethash (format nil "question/~(~a~)" (getf r :kind)) counts 0))
+            (multiple-value-bind (wrong reason)
+                (negative-for (getf r :kind) (getf q :question) (getf q :answer) (getf q :options) (gethash (getf q :passage) metadata))
+              (when wrong
+                (let ((tokens (asem-bpe:bpe-encode bpe (format nil " ~a" wrong))))
+                  (if (= (length tokens) (length (getf q :answer-tokens)))
+                      (progn
+                        (push (list :prompt (subseq (getf r :ids) 0 (getf q :answer-start)) :gold (getf q :answer-tokens) :wrong tokens
+                                    :reason reason :answer (getf q :answer) :negative wrong :question (getf q :question) :facts (gethash (getf q :passage) metadata)) pairs)
+                        (incf (gethash (format nil "eligible/~(~a~)" reason) counts 0)))
+                      (incf (gethash "excluded/unequal-token-length" counts 0)))))))
+          (when pairs (push (cons (format nil "r~d" i) (nreverse pairs)) annotations))))
+      (values records (nreverse annotations) counts))))
