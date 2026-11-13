@@ -61,6 +61,26 @@ The [GitHub repository](https://github.com/asemqaffaf/AsemLLms) has everything a
 
 The weights here come from the Erlang trainer only. The tuner works on other engines' models, not on these.
 
+## Later experiments (Common Lisp models, not published here)
+
+After these weights, the GitHub repository added larger models trained with the Common Lisp engine (FP32, Apple Accelerate, one
+M1 Pro CPU). Their weights are **not** in this repository; only the results are summarized. Both stages are negative or partial results.
+
+**Stage 1** ([details](https://github.com/asemqaffaf/AsemLLms/blob/main/docs/results-stage1.md)): three transformers of 1.16M, 2.90M and
+10.52M parameters, trained on the same FineWeb-Edu corpus (29.9M tokens). Test perplexity falls with size: 112.4, 87.8 and 80.8.
+On a 90-question four-option set none answers better than chance (25%): 28.9%, 28.9% and 25.6%.
+
+**Stage 2** ([details](https://github.com/asemqaffaf/AsemLLms/blob/main/docs/results-stage2.md),
+[R7 analysis](https://github.com/asemqaffaf/AsemLLms/blob/main/docs/results-stage2-r7.md)): supervised fine-tuning of the 10.52M model
+for passage question answering. The best model (R7) scores 45.8% (229/500) on the development set with four options (chance is 25%).
+A simple word-overlap rule scores 62.0% on the same set, and the 90% target was not reached. Four controlled follow-up pilots did not
+improve on R7, and the line was stopped on 2026-11-13
+([final report](https://github.com/asemqaffaf/AsemLLms/blob/main/docs/results/stage2/mission-20261111/FINAL_REPORT.md)).
+The 1,000-item test set has not been used to score any model, but its items are public in the repository.
+
+A 3B-parameter model is a goal, not a result: at the measured speeds (Erlang ~0.4 GFLOP/s, Lisp ~14 GFLOP/s, no GPU) a
+Chinchilla-sized 3B run would take thousands of years.
+
 ### Tuner check on a real model
 
 A tuning round is committed only if held-out loss improves, a general probe set does not get worse, and the candidate beats a
