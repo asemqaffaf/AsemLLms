@@ -1,5 +1,6 @@
 ;;;; Model-free semantic and independent-verifier checks. No checkpoint or locked QA access.
 (let ((here (directory-namestring *load-truename*)))
+  (defparameter cl-user::*binding-here* here)
   (require :sb-posix)
   (dolist (f '("util" "sha256" "json" "bpe" "data" "qagen" "retrieval" "tf32" "train32" "pretrain32" "sft32" "qa-analysis"))
     (load (merge-pathnames (format nil "../src/~a.lisp" f) here)))
@@ -8,7 +9,7 @@
   (load (merge-pathnames "../src/verify-saved.lisp" here))
   (load (merge-pathnames "harness.lisp" here)))
 (in-package :harness)
-(defparameter *bpe* (asem-bpe:load-bpe "data/fineweb/stage1/tokenizer.bpe"))
+(defparameter *bpe* (asem-bpe:load-bpe (merge-pathnames "fixtures/stage1-tokenizer.bpe" cl-user::*binding-here*)))
 (defparameter *pairs* (asem-binding:generate-pairs *bpe*))
 (defparameter *json-pairs* (asem-binding:fixture-json *pairs* *bpe*))
 (defparameter *families* (mapcar #'asem-binding:family-json (asem-binding:families)))

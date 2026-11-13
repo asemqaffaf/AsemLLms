@@ -11,7 +11,7 @@
 (defparameter *generated* (asem-qagen:generate-split :dev 400 61117))
 (defparameter *dev* (asem-qa-analysis:read-development (merge-pathnames "../eval/qa/dev.jsonl" cl-user::*wording-here*)
                                                        (merge-pathnames "../eval/qa/test.lock" cl-user::*wording-here*)))
-(defparameter *stage1-bpe* (asem-bpe:load-bpe (merge-pathnames "../../data/fineweb/stage1/tokenizer.bpe" cl-user::*wording-here*)))
+(defparameter *stage1-bpe* (asem-bpe:load-bpe (merge-pathnames "fixtures/stage1-tokenizer.bpe" cl-user::*wording-here*)))
 (defparameter *probes*
   (let ((asem-retrieval:*reverse* t) (asem-retrieval:*reasoning* t)
         (fits (lambda (prompt answer)
