@@ -206,7 +206,7 @@ with fewer than 16 layers. Candidates run one at a time by default, so one MLX j
 
 Prints tokens/s and achieved FLOP/s as JSON. On a 10-core laptop the transformer trains at a few hundred tokens/s
 (~0.4 GFLOP/s); the Lisp port in `../lisp` runs the same shape ~8× faster on one thread (~33× with 10 threads). Both stay small-scale:
-no GPU, no BLAS.
+no GPU. The Erlang code uses no BLAS; the Lisp port can use Apple's Accelerate BLAS (see `../lisp/README.md`), and `../native` adds C kernels for inference.
 The cleaned chat set for training is `../dataset/chat_clean.txt` (`sbcl --script ../lisp/bin/clean-chat.lisp chat.txt chat_clean.txt`).
 
 ## Publishing to Hugging Face
