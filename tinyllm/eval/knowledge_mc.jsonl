@@ -1,0 +1,41 @@
+{"q": "What is the capital of Australia?", "options": ["Sydney", "Canberra", "Melbourne", "Perth"], "answer": 1}
+{"q": "Which planet is closest to the Sun?", "options": ["Venus", "Earth", "Mercury", "Mars"], "answer": 2}
+{"q": "What gas do plants absorb for photosynthesis?", "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Helium"], "answer": 1}
+{"q": "How many sides does a hexagon have?", "options": ["Five", "Six", "Seven", "Eight"], "answer": 1}
+{"q": "Who wrote the play Hamlet?", "options": ["Charles Dickens", "Jane Austen", "William Shakespeare", "Mark Twain"], "answer": 2}
+{"q": "What is 12 multiplied by 12?", "options": ["124", "132", "144", "154"], "answer": 2}
+{"q": "What is the chemical symbol for gold?", "options": ["Ag", "Au", "Gd", "Go"], "answer": 1}
+{"q": "Which ocean is the largest?", "options": ["Atlantic", "Indian", "Arctic", "Pacific"], "answer": 3}
+{"q": "In which year did World War II end?", "options": ["1918", "1939", "1945", "1960"], "answer": 2}
+{"q": "What is the largest mammal on Earth?", "options": ["Elephant", "Blue whale", "Giraffe", "Hippopotamus"], "answer": 1}
+{"q": "Which language is primarily spoken in Brazil?", "options": ["Spanish", "Portuguese", "French", "English"], "answer": 1}
+{"q": "What is the boiling point of water at sea level in Celsius?", "options": ["90", "100", "110", "120"], "answer": 1}
+{"q": "Which organ pumps blood around the body?", "options": ["Liver", "Lung", "Heart", "Kidney"], "answer": 2}
+{"q": "What is the square root of 81?", "options": ["7", "8", "9", "10"], "answer": 2}
+{"q": "Which continent is Egypt in?", "options": ["Asia", "Europe", "Africa", "South America"], "answer": 2}
+{"q": "What does CPU stand for?", "options": ["Central Processing Unit", "Computer Personal Unit", "Central Program Utility", "Core Power Unit"], "answer": 0}
+{"q": "Who painted the Mona Lisa?", "options": ["Michelangelo", "Leonardo da Vinci", "Raphael", "Van Gogh"], "answer": 1}
+{"q": "What is the freezing point of water in Celsius?", "options": ["-10", "0", "10", "32"], "answer": 1}
+{"q": "Which element has the atomic number 1?", "options": ["Helium", "Oxygen", "Hydrogen", "Carbon"], "answer": 2}
+{"q": "How many days are in a leap year?", "options": ["364", "365", "366", "367"], "answer": 2}
+{"q": "What is the capital of Japan?", "options": ["Kyoto", "Osaka", "Tokyo", "Nagoya"], "answer": 2}
+{"q": "Which metal is liquid at room temperature?", "options": ["Iron", "Mercury", "Copper", "Zinc"], "answer": 1}
+{"q": "What is the main language used to style web pages?", "options": ["SQL", "CSS", "Bash", "C"], "answer": 1}
+{"q": "Which planet is known as the Red Planet?", "options": ["Jupiter", "Venus", "Mars", "Saturn"], "answer": 2}
+{"q": "What is the plural of the word 'mouse' for the animal?", "options": ["Mouses", "Mice", "Mices", "Mouse"], "answer": 1}
+{"q": "Which is the longest river in South America?", "options": ["Amazon", "Nile", "Danube", "Yangtze"], "answer": 0}
+{"q": "What is 15 percent of 200?", "options": ["20", "25", "30", "35"], "answer": 2}
+{"q": "Which part of a cell contains DNA?", "options": ["Nucleus", "Membrane", "Ribosome", "Vacuole"], "answer": 0}
+{"q": "Who developed the theory of general relativity?", "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr", "Galileo Galilei"], "answer": 1}
+{"q": "What is the opposite of 'ancient'?", "options": ["Old", "Modern", "Heavy", "Quiet"], "answer": 1}
+{"q": "Which data structure works on a first-in, first-out basis?", "options": ["Stack", "Queue", "Tree", "Graph"], "answer": 1}
+{"q": "Which country has the city of Paris as its capital?", "options": ["Italy", "Spain", "France", "Germany"], "answer": 2}
+{"q": "What is the smallest prime number?", "options": ["0", "1", "2", "3"], "answer": 2}
+{"q": "What do bees produce?", "options": ["Silk", "Honey", "Milk", "Wax paper"], "answer": 1}
+{"q": "Which season comes after winter?", "options": ["Autumn", "Summer", "Spring", "Monsoon"], "answer": 2}
+{"q": "How many minutes are in two hours?", "options": ["100", "120", "140", "160"], "answer": 1}
+{"q": "What is the process by which water vapor becomes liquid called?", "options": ["Evaporation", "Condensation", "Melting", "Sublimation"], "answer": 1}
+{"q": "Which HTTP method is normally used to retrieve a resource?", "options": ["GET", "PUT", "DELETE", "PATCH"], "answer": 0}
+{"q": "Which gas makes up most of Earth's atmosphere?", "options": ["Oxygen", "Carbon dioxide", "Nitrogen", "Argon"], "answer": 2}
+{"q": "What is the capital of Canada?", "options": ["Toronto", "Ottawa", "Vancouver", "Montreal"], "answer": 1}
+{"q": "Which vitamin is produced in the skin by sunlight?", "options": ["Vitamin A", "Vitamin C", "Vitamin D", "Vitamin K"], "answer": 2}
